@@ -1,0 +1,121 @@
+.login-screen {
+  --background: transparent;
+  ion-grid {
+    --ion-grid-padding: 0px;
+  }
+  .login-screen-page-content {
+    text-align: center !important;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    .header-logo {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 78px;
+    }
+    .welcome-header {
+      color: #ffffff;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 30px;
+      letter-spacing: 0.2px;
+      line-height: 32px;
+    }
+    form {
+      margin-top: 35px;
+      .right-content-input .right-content p {
+        color: white;
+      }
+      .checkbox-container {
+        text-align: left !important;
+        ion-item {
+          --background: transparent;
+          --color: white;
+          --background-activated: var(--input-blue-border-color);
+          .checkbox-checked {
+            --background-checked: white !important;
+            --border-color-checked: white !important;
+            --border-radius: 2px !important;
+            --checkmark-color: #3a52ce;
+            --size: 14px;
+            border-color: white !important;
+            border: none !important;
+          }
+          .checkbox-square-label {
+            font-family: 'Averta W05 Regular';
+            font-size: 16px;
+            line-height: 24px;
+            margin: 0;
+          }
+          .checkbox-square {
+            --background: transparent;
+            --border-radius: 0%;
+            --size: 16px;
+            --border-radius: 2px !important;
+            --border-color: var(--input-blue-border-color);
+            box-sizing: border-box;
+            margin-right: 8px;
+          }
+        }
+      }
+      .login-btn-margin {
+        margin-bottom: 32px;
+      }
+      ion-button.button-disabled {
+        --opacity: 1;
+        --color: rgba(255, 255, 255, 0.25) !important;
+      }
+    }
+    .forgot {
+      opacity: 0.5;
+      color: #ffffff;
+      font-family: 'Averta W05 Semibold5179739';
+      font-size: 14px;
+      line-height: 20px;
+      margin-top: 34px;
+      margin-bottom: 27px;
+    }
+    .login-content-bottom {
+      padding-left: 20px;
+      height: 95px;
+      border-radius: 12px;
+      background-color: #ffffff;
+      box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.08);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      div {
+        width: 70%;
+        p.earn-even-more {
+          height: 21px;
+          width: 250px;
+          color: #070a18;
+          font-family: 'Averta W05 Bold5204651';
+          font-size: 16px;
+          letter-spacing: -0.32px;
+          line-height: 21px;
+          margin: 0 0 6px 0;
+          text-align: left;
+        }
+        p.earn-even-more-content {
+          height: 47px;
+          width: 216px;
+          color: #070a18;
+          font-family: 'Averta W05 Regular';
+          font-size: 14px;
+          line-height: 20px;
+          margin: 0;
+          text-align: left;
+        }
+      }
+      img {
+        margin: 0;
+        height: 70px;
+        width: 70px;
+      }
+    }
+    .help-button {
+      margin-top: 10px;
+    }
+  }
+}

@@ -1,0 +1,52 @@
+.contact-preferences-page {
+  .meed-bank {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+    .contact-pref-title {
+      font-family: 'Averta W05 Semibold5179739' !important;
+      color: #070a18;
+      letter-spacing: -0.4px;
+      line-height: 24px;
+      font-size: 20px;
+    }
+
+    .contact-pref-message {
+      font-family: 'Averta W05 Regular' !important;
+      color: #606477;
+      font-size: 16px !important;
+      line-height: 24px;
+      margin-top: -20px;
+    }
+  }
+  .list-ios {
+    margin: 0px !important;
+  }
+  .meed-pref {
+    margin-top: 0px !important;
+  }
+
+  .meed-bank-options {
+    height: 70px;
+    display: flex;
+    align-items: center;
+    .meed-bank-options-email {
+      font-family: 'Averta W05 Regular' !important;
+      color: #070a18;
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  ion-item {
+    border-bottom: 1px solid #ebedf2 !important;
+  }
+  ion-list {
+    ion-item:last-child {
+      border-bottom: none !important;
+    }
+  }
+}

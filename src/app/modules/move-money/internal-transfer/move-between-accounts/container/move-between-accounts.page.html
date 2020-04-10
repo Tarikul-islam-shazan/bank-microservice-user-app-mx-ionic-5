@@ -1,0 +1,129 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'move-money-module.internal-transfer.move-between-accounts.header-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="move-money-content-wrapper">
+    <div class="account-switcher-block">
+      <div *ngIf="facade.fromAccount" class="from-account-block" (click)="facade.openFromAccountActionSheet()">
+        <div class="account-icon">
+          <div
+            [ngClass]="{'img-checking': facade.isActiveAccount(facade.accountType.DDA, facade.transferFor.FromAccount), 'img-savings': facade.isActiveAccount(facade.accountType.SSA, facade.transferFor.FromAccount), 'img-loc': facade.isActiveAccount(facade.accountType.LOC, facade.transferFor.FromAccount)}"
+          ></div>
+        </div>
+        <div class="account-content">
+          <div class="account-title ion-text-uppercase">
+            {{facade.accountTypeTranslation(facade.fromAccount.accountType)}} (•••{{facade.fromAccount.accountNumber |
+            slice: -4}})
+          </div>
+          <div class="account-amount">{{facade.fromAccount.availableBalance | negToPos }}</div>
+        </div>
+        <div *ngIf="!facade.fromScheduledTransfers" class="dropdown-icon">
+          <ion-icon name="chevron-down"></ion-icon>
+        </div>
+      </div>
+      <div class="account-divider">
+        <div class="left-border"></div>
+        <div class="divider-content">
+          {{'move-money-module.internal-transfer.move-between-accounts.transfer-to' | translate}}
+        </div>
+        <div class="right-border"></div>
+      </div>
+      <div *ngIf="facade.toAccount" class="to-account-block" (click)="facade.openToAccountActionSheet()">
+        <div class="account-icon">
+          <div
+            [ngClass]="{'img-checking': facade.isActiveAccount(facade.accountType.DDA, facade.transferFor.ToAccount), 'img-savings': facade.isActiveAccount(facade.accountType.SSA, facade.transferFor.ToAccount), 'img-loc': facade.isActiveAccount(facade.accountType.LOC, facade.transferFor.ToAccount)}"
+          ></div>
+        </div>
+        <div class="account-content">
+          <div class="account-title ion-text-uppercase">
+            {{facade.accountTypeTranslation(facade.toAccount.accountType)}} (•••{{facade.toAccount.accountNumber |
+            slice: -4}})
+          </div>
+          <div class="account-amount">{{facade.toAccount.availableBalance | negToPos}}</div>
+        </div>
+        <div *ngIf="!facade.fromScheduledTransfers" class="dropdown-icon">
+          <ion-icon name="chevron-down"></ion-icon>
+        </div>
+      </div>
+    </div>
+
+    <div class="moved-amount-block">
+      <div class="block-title">
+        {{'move-money-module.internal-transfer.move-between-accounts.amount-title' | translate}}
+      </div>
+      <ion-input
+        [disabled]="facade.fromScheduledTransfers && !facade.modifiedScheduleTransfer"
+        appInputDecimalMask
+        type="tel"
+        [(decModel)]="facade.transfer.amount"
+        placeholder="{{'move-money-module.internal-transfer.move-between-accounts.amount-placeholder-text' | translate}}"
+        (ionChange)="facade.onInputAmountChange()"
+      ></ion-input>
+      <div *ngIf="facade.isAmountExceedAvailableBalance" class="amount-error">
+        {{'move-money-module.internal-transfer.move-between-accounts.amount-error-text' | translate}}
+      </div>
+    </div>
+
+    <div class="schedule-block" (click)="openScheduleModal()">
+      <div class="block-title">
+        {{'move-money-module.internal-transfer.move-between-accounts.schedule-title' | translate}}
+      </div>
+      <div class="schedule-content-wrapper">
+        <div class="schedule-icon">
+          <div class="img-calendar"></div>
+        </div>
+        <div class="schedule-date">{{ facade.transfer.transferDate | date:'MMM dd, yyyy'}}</div>
+        <div *ngIf="!facade.fromScheduledTransfers || facade.modifiedScheduleTransfer" class="schedule-edit">
+          {{'move-money-module.internal-transfer.move-between-accounts.schedule-edit-button' | translate}}
+        </div>
+      </div>
+    </div>
+    <div class="note-block">
+      <div class="block-title">
+        {{'move-money-module.internal-transfer.move-between-accounts.note-title' | translate}}
+      </div>
+      <ion-input
+        [disabled]="facade.fromScheduledTransfers && !facade.modifiedScheduleTransfer"
+        [(ngModel)]="facade.transfer.notes"
+        type="text"
+        placeholder="{{'move-money-module.internal-transfer.move-between-accounts.note-placeholder' | translate}}"
+      >
+      </ion-input>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="footer-content ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      *ngIf="!facade.fromScheduledTransfers || facade.modifiedScheduleTransfer"
+      [disabled]="facade.isAmountExceedAvailableBalance || facade.transfer.amount <= 0 || !facade.transfer?.amount"
+      (click)="goToConfirm()"
+      expand="block"
+      class="white-button confirm-button"
+    >
+      {{'move-money-module.internal-transfer.move-between-accounts.confirm-button' | translate}}
+    </ion-button>
+    <ion-grid *ngIf="facade.fromScheduledTransfers && !facade.modifiedScheduleTransfer">
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="facade.editScheduledTransfe()" expand="block" class="white-button">
+            {{'move-money-module.internal-transfer.confirm-details.edit-button' | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="goToCancel()" expand="block" fill="clear" class="cancel-btn">
+            {{'move-money-module.internal-transfer.confirm-details.cancel-transfer-button' | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

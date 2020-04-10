@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="17px" viewBox="0 0 20 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 57.1 (101010) - https://sketch.com -->
+    <title>EEDDCC18-9CCE-4264-80DC-99B5E5CAA500</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="02-Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="10-4-1-Card" transform="translate(-30.000000, -560.000000)">
+            <g id="Icons-/-Report-Lost-/-24x24-Report-Lost" transform="translate(28.000000, 557.000000)">
+                <rect id="Container" fill-rule="nonzero" x="0" y="0" width="24" height="24"></rect>
+                <path d="M12.8574929,5.42915488 L20.0913025,17.4855042 C20.3754507,17.9590845 20.2218856,18.5733448 19.7483054,18.8574929 C19.59289,18.9507422 19.4150536,19 19.2338096,19 L4.76619038,19 C4.21390563,19 3.76619038,18.5522847 3.76619038,18 C3.76619038,17.8187561 3.81544821,17.6409196 3.90869745,17.4855042 L11.1425071,5.42915488 C11.4266552,4.95557461 12.0409155,4.80200955 12.5144958,5.08615771 C12.6552454,5.17060747 12.7730432,5.28840527 12.8574929,5.42915488 Z" id="Triangle" stroke="#435CDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <circle id="Oval" fill="#435CDC" cx="12" cy="16" r="1"></circle>
+                <rect id="Rectangle" fill="#435CDC" x="11" y="10" width="2" height="4"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

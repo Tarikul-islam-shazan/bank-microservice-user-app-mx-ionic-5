@@ -1,0 +1,16 @@
+<ion-content scrollY="false">
+  <div class="slider-container">
+    <ion-slides [options]="slideOpts" pager="true">
+      <ion-slide *ngFor="let sliderContent of introSliderOptions">
+        <app-intro-slider-content [sliderContent]="sliderContent"></app-intro-slider-content>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>
+<ion-footer class="footer-container">
+  <ion-toolbar>
+    <ion-button class="blue-button" expand="block" (click)="facade.goToSignUpEmail()">
+      {{ 'signup-module.intro-page.get-started' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

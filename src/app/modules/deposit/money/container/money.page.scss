@@ -1,0 +1,46 @@
+ion-list {
+  ion-item {
+    display: flex !important;
+    align-items: center !important;
+    height: 100px !important;
+    border-bottom: 1px solid #ebedf2 !important;
+    ion-radio {
+      margin-left: -15px !important;
+    }
+    &:last-child {
+      border-bottom: none !important;
+    }
+    .ques-mark {
+      z-index: 10;
+    }
+  }
+}
+
+.content-wrapper {
+  .content-title {
+    margin-top: 100px;
+    margin-bottom: 30px;
+    color: #070a18;
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 24px;
+    letter-spacing: 0.16px;
+    line-height: 30px;
+  }
+  .radio-content {
+    .radio-title {
+      color: #070a18;
+      font-family: 'Averta W05 Regular';
+      font-size: 16px;
+      letter-spacing: -0.15px;
+      line-height: 16px;
+    }
+    .radio-subtitle {
+      margin-top: 5px;
+      color: #8c90a3;
+      font-family: 'Averta W05 Regular';
+      font-size: 14px;
+      letter-spacing: 0.15px;
+      line-height: 14px;
+    }
+  }
+}

@@ -1,0 +1,91 @@
+ion-content {
+  --padding-bottom: 0px !important;
+  --padding-end: 0px !important;
+  --padding-start: 0px !important;
+  --padding-top: 0px !important;
+}
+.tab-bar-block {
+  margin-top: 2vh;
+  padding: 0 20px;
+  height: 34px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .tab-item {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    width: 162px;
+    color: rgb(255, 254, 254, 0.5);
+    font-family: 'Averta W05 Regular';
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    line-height: 18px;
+    text-align: center;
+  }
+  .active-tab-item {
+    height: 100%;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    width: 162px;
+    font-family: 'Averta W05 Regular';
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: 0.2px;
+    line-height: 18px;
+    text-align: center;
+    border-bottom: 2px #ffffff solid;
+  }
+}
+.content-wrapper {
+  height: 100%;
+
+  .map-wrapper {
+    height: 100%;
+    agm-map {
+      padding: 0;
+      height: 100%;
+    }
+  }
+  .list-wrapper {
+    .list-item {
+      margin-left: 20px;
+      padding: 20px 0;
+      min-height: 100px;
+      display: flex;
+      border-bottom: 1px #ebedef solid;
+      .map-image {
+        margin-right: 20px;
+        height: 60px;
+        width: 60px;
+        background: rgb(255, 254, 254, 0.5);
+      }
+      .item-content {
+        width: 60%;
+        .bank-name {
+          color: #070a18;
+          font-family: 'Averta W05 Regular';
+          font-size: 15px;
+          line-height: 22px;
+        }
+        .bank-address {
+          width: 149px;
+          color: #8c90a3;
+          font-family: 'Averta W05 Regular';
+          font-size: 14px;
+          line-height: 22px;
+        }
+      }
+      .item-distance {
+        color: #435cdc;
+        font-family: 'Averta W05 Regular';
+        font-size: 14px;
+        line-height: 22px;
+        text-align: right;
+      }
+    }
+  }
+}

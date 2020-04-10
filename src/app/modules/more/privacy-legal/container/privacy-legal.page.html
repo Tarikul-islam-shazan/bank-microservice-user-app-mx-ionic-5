@@ -1,0 +1,26 @@
+<ion-header meed class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>{{ 'more-module.privacy-legal-page.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="privacy-legal-container">
+    <ion-text>{{ 'more-module.privacy-legal-page.body-title' | translate }}</ion-text>
+    <ng-container *ngIf="(privacyLegalFacade.privacyAndLegalDocuments$| async) as privacyAndLegal">
+      <ion-list no-padding margin-top>
+        <ion-item
+          *ngFor="let privacyAndLegal of privacyAndLegal"
+          (click)="privacyLegalFacade.showDocument(privacyAndLegal)"
+        >
+          <ion-label>
+            {{privacyAndLegal.title}}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </ng-container>
+  </div>
+</ion-content>

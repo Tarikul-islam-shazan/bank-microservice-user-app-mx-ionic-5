@@ -1,0 +1,112 @@
+ion-button.blue-button {
+  font-family: 'Averta W05 Bold5204651' !important;
+  font-size: 1.6rem !important;
+  letter-spacing: 0.2px !important;
+  line-height: 1.6rem !important;
+  --color: var(--button-white-text-color) !important;
+  --border-width: 0px;
+  --border-color: var(--button-white-active-background-color) !important;
+  --border-style: solid;
+  height: 60px !important;
+  width: 100%;
+  --border-radius: 12px !important;
+  --background: rgba(255, 255, 255, 0.15);
+  text-transform: none;
+}
+ion-button.blue-button.button-disabled {
+  --opacity: 1;
+  --color: rgba(255, 255, 255, 0.25) !important;
+}
+.white-button {
+  font-family: 'Averta W05 Bold5204651' !important;
+  font-size: 1.6rem !important;
+  letter-spacing: 0.2px !important;
+  line-height: 1.6rem !important;
+  --color: var(--button-white-text-color) !important;
+  --border-width: 2px;
+  --border-color: var(--button-white-active-background-color) !important;
+  --border-style: solid;
+  height: 60px !important;
+  width: 100%;
+  --border-radius: 12px !important;
+  --background: #435cdc !important;
+  text-transform: none;
+  white-space: normal;
+}
+.round-button-text-black {
+  height: 60px !important;
+  --background-activated: none !important;
+  --border-radius: 12px !important;
+  --border-color: var(--button-border-color) !important;
+  --border-width: 2px !important;
+  --color: var(--button-border-text-black) !important;
+  --color-activated: var(--button-border-text-black) !important;
+}
+.round-button-text-red {
+  height: 60px !important;
+  --background-activated: none !important;
+  --border-radius: 12px !important;
+  --border-color: var(--button-border-color) !important;
+  --border-width: 2px !important;
+  --color-activated: var(--button-border-text-red) !important;
+  --color: var(--button-border-text-red) !important;
+}
+.blue-outline-button {
+  padding: 12px;
+  margin-bottom: 10px !important;
+  height: 60px;
+  width: 100%;
+  border-radius: 12px;
+  font-family: 'Averta W05 Semibold5179739' !important;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: none;
+  margin: auto;
+  --color: #ffffff;
+  --box-shadow: none !important;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  --background: transparent;
+  --background-activated: transparent !important;
+  --background-hover: transparent;
+  background: transparent !important;
+}
+
+.grey-outline-button {
+  padding: 12px;
+  margin-bottom: 10px !important;
+  height: 60px;
+  width: 100%;
+  border-radius: 12px;
+  font-family: 'Averta W05 Semibold5179739' !important;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: none;
+  margin: auto;
+  --color: #35394c;
+  --box-shadow: none !important;
+  border: 2px solid #ebedf2;
+  --background: transparent;
+  --background-activated: transparent !important;
+  --background-hover: transparent;
+  background: transparent !important;
+}
+
+.green-button {
+  margin-bottom: 10px !important;
+  height: 60px;
+  width: 100%;
+  border-radius: 12px;
+  font-family: 'Averta W05 Semibold5179739' !important;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  text-transform: none;
+  margin: auto;
+  --color: #0cda91;
+  --box-shadow: none !important;
+  --background: #e6fbf4 !important;
+  --background-activated: transparent !important;
+  --background-hover: transparent;
+}

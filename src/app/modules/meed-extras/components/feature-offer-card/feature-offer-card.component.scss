@@ -1,0 +1,29 @@
+.offer-wrapper {
+  text-align: center;
+  .featured-img {
+    height: 70px;
+    width: 100px;
+    display: block;
+    padding-top: 20px;
+  }
+
+  .featured-offer-value {
+    color: #070a18;
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 24px;
+    line-height: 20px;
+    text-align: center;
+    margin-bottom: 8px !important;
+    margin-top: 5px;
+  }
+
+  .featured-offer-text {
+    color: #606477;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    letter-spacing: -0.27px;
+    line-height: 20px;
+    text-align: center;
+    margin-top: 5px !important;
+  }
+}

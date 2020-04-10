@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'move-money-module.send-money.home.page-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="home-page">
+    <form [formGroup]="searchForm">
+      <ion-item class="search-field" lines="none">
+        <ion-icon name="search" slot="start"></ion-icon>
+        <ion-input
+          (ionInput)="typeahead($event.target.value)"
+          (keydown.space)="$event.preventDefault();"
+          formControlName="recipientEmail"
+          type="email"
+          placeholder="{{'move-money-module.send-money.home.search-field' | translate}}"
+          required
+        >
+        </ion-input>
+        <ion-button
+          class="search-clear-button"
+          (click)="clearSearchInput()"
+          *ngIf="searchForm.value.recipientEmail"
+          fill="clear"
+          slot="end"
+        >
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </form>
+    <div class="list-container">
+      <ion-list class="requests-list">
+        <ion-list-header class="list-header">
+          <ion-label class="ion-text-capitalize"
+            >{{'move-money-module.send-money.home.request-list-header' | translate}}
+          </ion-label>
+        </ion-list-header>
+        <ion-item
+          (click)="facade.selectRequest(fundRequest)"
+          *ngFor="let fundRequest of facade.fundRequests | contactsFilter:filterValue:'senderEmail'"
+          button="full"
+          lines="none"
+        >
+          <ion-label class="ion-text-wrap">
+            <h3 class="title">{{fundRequest.senderEmail}}</h3>
+            <p class="details">
+              {{'move-money-module.send-money.home.requested-on' | translate}} {{ fundRequest.createdAt | date: 'MMMM
+              dd, yyyy' }}
+            </p>
+          </ion-label>
+          <div slot="end" class="amount">${{fundRequest.amount | number: '1.2-2'}}</div>
+        </ion-item>
+      </ion-list>
+      <ion-list class="paid-list">
+        <ion-list-header class="list-header">
+          <ion-label class="ion-text-capitalize"
+            >{{'move-money-module.send-money.home.paid-list-header' | translate}}
+          </ion-label>
+          <ion-button (click)="facade.toggleContactsModify()" size="small" fill="clear">
+            {{'move-money-module.send-money.home.paid-list-button' | translate}}
+          </ion-button>
+        </ion-list-header>
+        <ion-item
+          (click)="facade.isContactsModifyEnable ? facade.contactModify(contact) : facade.contactSelected(contact)"
+          lines="full"
+          *ngFor="let contact of facade.contacts | contactsFilter:filterValue:'email'"
+        >
+          <ion-label class="ion-text-wrap">
+            <h3 class="title">{{contact.email}}</h3>
+          </ion-label>
+          <ion-button *ngIf="facade.isContactsModifyEnable" fill="clear" slot="end"
+            ><ion-icon slot="icon-only" name="create"></ion-icon
+          ></ion-button>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      [disabled]="searchForm.invalid"
+      (click)="facade.continue(searchForm.value.recipientEmail)"
+      class="white-button"
+      expand="block"
+    >
+      {{'move-money-module.send-money.home.next-button' | translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

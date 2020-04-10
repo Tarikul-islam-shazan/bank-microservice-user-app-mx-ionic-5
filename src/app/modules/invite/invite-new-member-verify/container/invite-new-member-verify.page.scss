@@ -1,0 +1,95 @@
+ion-header {
+  ion-toolbar {
+    ion-back-button {
+      --padding-end: 0px !important;
+    }
+    ion-title {
+      color: #ffffff;
+      font-family: 'Averta W05 Regular5345108' !important;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      line-height: 20px;
+      text-align: center;
+    }
+  }
+}
+
+ion-content {
+  div.invite-label {
+    color: #8c90a3;
+    font-family: 'Averta W05 Bold5204651' !important;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 16px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  div.email-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    min-height: 60px !important;
+    height: auto !important;
+    width: 100% !important;
+    border: 2px solid var(--input-white-focus-border-color) !important;
+    border-radius: 12px !important;
+    padding: 15px 15px !important;
+    margin-bottom: 10px;
+
+    ion-chip {
+      min-height: 30px;
+      height: auto;
+      word-break: break-all;
+      word-wrap: break-word;
+      flex-direction: row;
+      border-radius: 16px;
+      padding-top: 0px;
+      padding-right: 0px;
+      padding-bottom: 0px;
+      --background: #f4f6fd !important;
+
+      ion-label {
+        color: #435cdc;
+        font-family: 'Averta W05 Regular' !important;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 28px;
+        padding-right: 12px !important;
+      }
+      ion-button {
+        width: 24px;
+        height: 24px;
+        --padding-start: 3px;
+        --padding-end: 7px;
+        color: #070a18;
+        ion-icon {
+          font-size: 24px;
+        }
+      }
+    }
+    ion-chip.existing-member-email {
+      --background: rgba(254, 76, 85, 0.1) !important;
+
+      ion-label {
+        color: #fe4c55;
+        font-family: 'Averta W05 Semibold5179739' !important;
+      }
+      ion-button {
+        color: #070a18;
+      }
+    }
+  }
+
+  div.invite-note {
+    color: #fe4c55 !important;
+    font-family: 'Averta W05 Regular' !important;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: -0.1px;
+    line-height: 20px;
+    padding-left: 20px;
+  }
+}

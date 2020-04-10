@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="21px" viewBox="0 0 22 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Icons / Rewards / Kids</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Playground" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons-/-Rewards-/-Kids" transform="translate(-1.000000, -1.753333)">
+            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+            <g id="Group-13" transform="translate(2.000000, 3.000000)" stroke="#435CDC" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M2.1561174,7.65904399 L8.82311964,7.65904399 C9.40449958,2.55301466 11.9575142,-2.28261854e-13 16.4821636,-2.28261854e-13 L19.3761927,6.65429034 L13.9490269,6.65429034 L17.0142547,15.8226138" id="Path-5"></path>
+                <path d="M2.27373675e-13,13.7098043 C2.51356753,16.2244873 5.98669373,17.7799582 9.82311964,17.7799582 L9.82311964,17.7799582 C13.5310062,17.7799582 16.8995299,16.3269732 19.3903791,13.9593146" id="Path"></path>
+                <path d="M2.71440335,15.7448813 L5.01316519,8.00949541" id="Path-6"></path>
+                <polyline id="Path-7" points="6.18694381 17.1780073 7.32681876 13.7098043 12.2886274 13.7098043 13.349942 16.7103842"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

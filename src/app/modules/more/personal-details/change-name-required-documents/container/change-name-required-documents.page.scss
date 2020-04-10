@@ -1,0 +1,85 @@
+.content-wrapper {
+  .scan-header {
+    color: #8c90a3;
+    font-family: 'Averta W05 Regular';
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 16px;
+  }
+  .scan-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    .scan-button-wrapper {
+      position: relative;
+      max-width: 157px;
+      max-height: 90px;
+      img.preview {
+        width: 157px;
+        height: 90px;
+      }
+      .tick-icon {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        color: #0cda91;
+      }
+      margin: 10px 0;
+      &.front {
+        margin-right: 20px;
+      }
+      &.back {
+      }
+      &.certificate {
+      }
+      .scan-button {
+        height: 90px;
+        width: 157px;
+        border: 1px dashed #ebedf2;
+        border-radius: 4px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        .button-image {
+          height: 40px;
+          width: 40px;
+        }
+        .button-text {
+          margin-top: 5px;
+          color: #435cdc;
+          font-family: 'Averta W05 Regular';
+          font-size: 11px;
+          font-weight: 600;
+          letter-spacing: -0.25px;
+          line-height: 14px;
+          text-align: center;
+        }
+      }
+    }
+  }
+  .scan-info-wrapper {
+    margin-top: 45px;
+    .scan-info-header {
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 18px;
+      color: #070a18;
+    }
+    ul {
+      padding-inline-start: 14px;
+      list-style: none;
+      font-family: 'Averta W05 Regular5345108';
+      font-size: 16px;
+      color: #606477;
+      line-height: 24px;
+    }
+    ul li::before {
+      content: '\2022';
+      color: #435cdc;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+  }
+}

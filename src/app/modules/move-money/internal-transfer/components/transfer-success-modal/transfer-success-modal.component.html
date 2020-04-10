@@ -1,0 +1,65 @@
+<ion-content fullscreen class="transfer-success-modal-content">
+  <div class="main-container top-margin">
+    <div class="content-wrapper">
+      <div class="img-block">
+        <img src="assets/img/success.png" />
+      </div>
+      <div class="title-block">
+        <span class="title">
+          <span translate>
+            {{ 'move-money-module.internal-transfer.transfer-success-modal.transfer-title' }}
+          </span>
+          <span translate>
+            {{
+              isScheduleTransfer()
+                ? 'move-money-module.internal-transfer.transfer-success-modal.transfer-recurring'
+                : 'move-money-module.internal-transfer.transfer-success-modal.transfer-immediate'
+            }}
+          </span>
+          <br /><span>{{ transferModalData.amount | negToPos }} </span>
+          <span translate>{{ 'move-money-module.internal-transfer.transfer-success-modal.transfer-from' }} </span>
+          <span>{{ accountTypeTranslation(transferModalData.fromAccountType) }}</span>
+          <br />{{ 'move-money-module.internal-transfer.transfer-success-modal.transfer-to' | translate }}
+          <span>{{ accountTypeTranslation(transferModalData.toAccountType) }}</span>
+        </span>
+      </div>
+      <div class="subtitle-block">
+        <div class="subtitle-text">
+          <span *ngIf="isScheduleTransfer()">
+            {{
+              'move-money-module.internal-transfer.transfer-success-modal.schedule-subtitle-text'
+                | translate: { frequency: transferModalData.frequency }
+            }}
+          </span>
+          <span *ngIf="!isScheduleTransfer()">
+            {{
+              'move-money-module.internal-transfer.transfer-success-modal.occurring-subtitle-text'
+                | translate: { frequency: transferModalData.frequency }
+            }}
+          </span>
+          {{ transferModalData.transferDate | date: 'MMM dd, yyyy' }}
+        </div>
+        <div class="subtitle-ref">
+          {{ 'move-money-module.internal-transfer.transfer-success-modal.reference-text' | translate }}
+          {{ transferModalData.transferId }}
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="footer-content ion-no-border">
+  <ion-toolbar>
+    <ion-button (click)="dismiss()" expand="block" class="white-button">
+      {{ 'move-money-module.internal-transfer.transfer-success-modal.done-button' | translate }}
+    </ion-button>
+    <ion-button
+      *ngIf="isScheduleTransfer()"
+      (click)="dismiss({ scheduled: true })"
+      expand="block"
+      fill="clear"
+      class="scheduled-btn"
+    >
+      {{ 'move-money-module.internal-transfer.transfer-success-modal.scheduled-button' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

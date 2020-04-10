@@ -1,0 +1,28 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="header-close-button" slot="start" (click)="dismiss()"></div>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="content-wrapper">
+    <div class="header-title">
+      {{ 'signup-module.signup-approved-page.page-title' | translate }}
+    </div>
+    <div class="header-subtitle">
+      {{ 'signup-module.signup-approved-page.page-subtitle' | translate }}
+    </div>
+    <div class="vault-img">
+      <img src="assets/img/vault-wheel.gif" />
+    </div>
+    <div class="footer-text">
+      {{ 'signup-module.signup-approved-page.footer-text' | translate }}
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" (click)="next()">
+      {{ 'signup-module.signup-approved-page.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

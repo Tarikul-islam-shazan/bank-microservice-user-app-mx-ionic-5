@@ -1,0 +1,21 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div slot="start" class="header-close-button" (click)="dismiss()"></div>
+    <ion-title>{{ 'state-modal.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+  <ion-searchbar
+    class="white-searchbar"
+    placeholder="{{ 'state-modal.placeholder-text' | translate }}"
+    mode="ios"
+    inputmode="text"
+    type="text"
+    (ionChange)="searchState($event)"
+  ></ion-searchbar>
+</ion-header>
+<ion-content>
+  <div class="content-wrapper">
+    <div class="option-item ion-activatable" *ngFor="let state of countryStates" (click)="dismiss(state)">
+      <p>{{ state.stateName }}</p>
+    </div>
+  </div>
+</ion-content>

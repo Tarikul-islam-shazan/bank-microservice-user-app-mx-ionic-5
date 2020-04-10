@@ -1,0 +1,47 @@
+<ion-header meed class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>{{ 'more-module.statements-page.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content class="statements-page override-ion-content-padding">
+  <div class="clearfix" *ngIf="(statementFacade?.$statements | async) as statements">
+    <!-- <p text-center *ngIf="noStatementMsg">No Statements available</p> -->
+    <ion-slides #slides [options]="{initialSlide: statements.length - 1,speed: 400}" (ionSlideWillChange)="doCheck()">
+      <ion-slide *ngFor="let year of statements; let j = index">
+        <div class="clearfix">
+          <div class="yearWrapper">
+            <div *ngIf="!isBeginning" (click)="slidePrevious()" class="year-arrow">
+              <ion-icon name="chevron-back"></ion-icon>
+            </div>
+            <div class="year-wrapper" text-center (click)="selectStatementYear(year); yearSelection = j">
+              <b>{{ year.year | slice: -4 }}</b>
+            </div>
+            <div *ngIf="!isEnd" (click)="slideNext()" class="year-arrow">
+              <ion-icon name="chevron-forward"></ion-icon>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix">
+          <ion-list>
+            <ion-item *ngFor="let month of year.months; let i = index; last as isLast">
+              <div class="clearfix" style="padding: 20px 0;">
+                <div class="clearfix month-wrapper" (click)="readpdf($event, month, 'DDA')">
+                  <div class="clearfix">
+                    <img src="assets/svg/statements-list.svg" alt="statements-image" />
+                    <span class="year-section">{{ month.statementDate | date: 'MMM yyyy' }}</span>
+                  </div>
+                  <div class=" icon-arrow">
+                    <img id="button-view-{{ i }}" src="assets/svg/arrow.svg" alt="arrow" srcset="" />
+                  </div>
+                </div>
+              </div>
+            </ion-item>
+          </ion-list>
+        </div>
+      </ion-slide>
+    </ion-slides>
+  </div>
+</ion-content>

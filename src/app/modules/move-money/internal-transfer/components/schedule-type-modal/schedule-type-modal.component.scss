@@ -1,0 +1,30 @@
+.schedule-modal-toolbar {
+  --background: white;
+  --color: black;
+}
+.schedule-modal-content {
+  --padding-start: 0px !important;
+  .schedule-type-list,
+  .schedule-date {
+    .header {
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 11px;
+      color: #8c90a3;
+      letter-spacing: 1px;
+      line-height: 11px;
+    }
+    ion-item {
+      --min-height: 58px;
+    }
+    .img-calendar {
+      height: 15px;
+      width: 16px;
+      margin-right: 10px;
+    }
+    .edit-text {
+      font-family: 'Averta W05 Bold5204651' !important;
+      font-size: 12px;
+      color: #435cdc;
+    }
+  }
+}

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="22px" height="17px" viewBox="0 0 22 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 58 (101010) - https://sketch.com -->
+    <title>94BC0644-C883-4CFB-BBEA-B78CD1F65574</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2-1-1-Dashboard" transform="translate(-252.000000, -727.000000)">
+            <g id="Components-/-Tab-Bar-/-Tab-Bar-(Rewards)-Components-/-Tab-Bar-/-Tab-Bar-(Home)" transform="translate(0.000000, 707.000000)">
+                <g id="24x24px-Invite-(Inactive)-Icons-/-24x24px-/-Invite-/-Inactive" transform="translate(250.000000, 17.000000)">
+                    <g id="Icons-/-Invite-/-24x24px-Invite-(Inactive)">
+                        <rect id="Rectangle-14-Copy-2" x="0" y="0" width="24" height="24"></rect>
+                        <path d="M3,19 L14,19" id="Path-3" stroke="#B7BBCE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M14,13.3432121 C13.373005,13.1209617 12.7031723,13 12,13 C8.6862915,13 6,15.6862915 6,19" id="Path" stroke="#B7BBCE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <circle id="Oval" stroke="#B7BBCE" stroke-width="2" cx="12" cy="7" r="3"></circle>
+                        <path d="M20,13 L20,19" id="Path-5" stroke="#B7BBCE" stroke-width="2" stroke-linecap="round"></path>
+                        <path d="M20,13 L20,19" id="Path-5-Copy" stroke="#B7BBCE" stroke-width="2" stroke-linecap="round" transform="translate(20.000000, 16.000000) rotate(-270.000000) translate(-20.000000, -16.000000) "></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

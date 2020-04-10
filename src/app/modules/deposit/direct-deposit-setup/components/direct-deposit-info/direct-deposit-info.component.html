@@ -1,0 +1,35 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div class="header-close-button" (click)="dismiss()"></div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="direct-deposit-info-content">
+  <div class="content-wrapper">
+    <div class="direct-diposit-info-header">
+      <p>{{ 'deposit.direct-deposit-info.header-text' | translate }}</p>
+    </div>
+    <div class="info-text">
+      <p>{{ 'deposit.direct-deposit-info.info-text-1' | translate }}</p>
+    </div>
+    <div class="info-text">
+      <p>{{ 'deposit.direct-deposit-info.info-text-2' | translate }}</p>
+    </div>
+
+    <div class="info-text">
+      <p>{{ 'deposit.direct-deposit-info.info-text-3' | translate }}</p>
+    </div>
+
+    <div class="info-text">
+      <p>{{ 'deposit.direct-deposit-info.info-text-4' | translate }}</p>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" (click)="continue()">
+      {{ 'deposit.direct-deposit-info.continue-btn-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

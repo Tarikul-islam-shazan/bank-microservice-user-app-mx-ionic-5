@@ -1,0 +1,26 @@
+<ion-list no-padding no-margin class="transaction-container">
+  <ion-item no-margin *ngIf="transaction.toAccount">
+    <ion-label>
+      <h2 class="label-h2">{{ 'dashboard-module.transaction-details.to-text' | translate }}</h2>
+    </ion-label>
+    <div slot="end">{{ transaction.toAccount }}</div>
+  </ion-item>
+  <ion-item no-margin>
+    <ion-label>
+      <h2 class="label-h2">{{ 'dashboard-module.transaction-details.type-text' | translate }}</h2>
+    </ion-label>
+    <div slot="end">{{ transaction.transactionType }}</div>
+  </ion-item>
+  <ion-item no-margin>
+    <ion-label>
+      <h2 class="label-h2">{{ 'dashboard-module.transaction-details.notes-text' | translate }}</h2>
+    </ion-label>
+    <div slot="end">{{ transaction.notes }}</div>
+  </ion-item>
+  <ion-item no-margin>
+    <ion-label>
+      <h2 class="label-h2">{{ 'dashboard-module.transaction-details.reference-text' | translate }}</h2>
+      <h2 class="reference-margin">{{ transaction.referenceNumber }}</h2>
+    </ion-label>
+  </ion-item>
+</ion-list>

@@ -1,0 +1,83 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'rewards.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="rewards-items">
+      <ion-col size="6" (click)="goToMeedExtraPage()">
+        <div class="item-icon">
+          <img class="meed-extra-icon" />
+        </div>
+        <div class="item-content">
+          <div class="item-name">
+            {{ 'rewards.reward-meed' | translate }}<span class="extra"
+              >{{ 'rewards.reward-meed-extra-name' | translate }}</span
+            >
+          </div>
+          <div class="item-note">{{ 'rewards.reward-meed-extra-note' | translate }}</div>
+        </div>
+      </ion-col>
+      <ion-col size="6" (click)="goToMeedSharePage()">
+        <div class="item-icon">
+          <img class="meed-share-icon" />
+        </div>
+        <div class="item-content">
+          <div class="item-name">
+            {{ 'rewards.reward-meed' | translate }}<span class="share"
+              >{{ 'rewards.reward-meed-share-name' | translate }}</span
+            >
+          </div>
+          <div class="item-note">{{ 'rewards.reward-meed-share-note' | translate }}</div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="rewards-items">
+      <ion-col size="6" (click)="goToMeedTravelPage()">
+        <div class="item-icon">
+          <img class="meed-travel-icon" />
+        </div>
+        <div class="item-content">
+          <div class="item-name">
+            {{ 'rewards.reward-meed' | translate }}<span class="travel"
+              >{{ 'rewards.reward-meed-travel-name' | translate }}</span
+            >
+          </div>
+          <div class="item-note">{{ 'rewards.reward-meed-travel-note' | translate }}</div>
+        </div>
+      </ion-col>
+      <ion-col size="6" (click)="goToMeedCoverPage()">
+        <div class="item-icon">
+          <img class="meed-cover-icon" />
+        </div>
+        <div class="item-content">
+          <div class="item-name">
+            {{ 'rewards.reward-meed' | translate }}<span class="cover"
+              >{{ 'rewards.reward-meed-cover-name' | translate }}</span
+            >
+          </div>
+          <div class="item-note">{{ 'rewards.reward-meed-cover-note' | translate }}</div>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="reward-bottom-card">
+      <ion-col size="8">
+        <div class="reward-card-content">
+          <div class="earn-even-more-title">
+            {{ 'rewards.reward-earn-even-more-header' | translate }}
+          </div>
+          <div class="earn-even-more-note">
+            {{ 'rewards.reward-earn-even-more-content' | translate }}
+          </div>
+        </div>
+      </ion-col>
+      <ion-col class="ion-text-right">
+        <img class="dollar-icon" />
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

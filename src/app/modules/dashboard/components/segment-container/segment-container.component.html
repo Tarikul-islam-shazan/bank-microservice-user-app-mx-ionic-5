@@ -1,0 +1,14 @@
+<div class="segment-container-block">
+  <div class="segment-bar">
+    <div class="segment-item" *ngFor="let eachSegment of segmentItemList; let i = index">
+      <div
+        [ngClass]="{ active: eachSegment.reference === selectedItem }"
+        class="segment-item-content"
+        (click)="tapToSelect(i)"
+        translate
+      >
+        {{ eachSegment.name }}
+      </div>
+    </div>
+  </div>
+</div>

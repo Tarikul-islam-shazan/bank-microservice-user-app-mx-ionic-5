@@ -1,0 +1,19 @@
+.modal-auto-height {
+  &.bottom {
+    align-items: flex-end;
+  }
+  --height: auto;
+  align-items: flex-end;
+  .modal-wrapper {
+    border-radius: 10px 10px 0 0;
+  }
+  .ion-page {
+    position: relative;
+    display: block;
+    contain: content;
+    .modal-content {
+      max-height: 80vh;
+      padding: 30px 20px 20px 20px;
+    }
+  }
+}

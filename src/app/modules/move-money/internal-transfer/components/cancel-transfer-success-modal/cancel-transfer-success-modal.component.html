@@ -1,0 +1,29 @@
+<ion-content fullscreen class="cancel-transfer-success-modal-content">
+  <div class="main-container top-margin">
+    <div class="content-wrapper">
+      <div class="img-block">
+        <img src="assets/img/success.png" />
+      </div>
+      <div class="title-block">
+        <span class="title">
+          <span translate>
+            {{ 'move-money-module.internal-transfer.cancel-transfer-success-modal.transfer-title' }}
+          </span>
+        </span>
+      </div>
+      <div class="subtitle-block">
+        <div class="subtitle-ref">
+          {{ 'move-money-module.internal-transfer.cancel-transfer-success-modal.reference-text' | translate }}
+          {{ transferModalData.transferId }}
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="footer-content ion-no-border">
+  <ion-toolbar>
+    <ion-button (click)="dismiss()" expand="block" class="white-button">
+      {{ 'move-money-module.internal-transfer.cancel-transfer-success-modal.done-button' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

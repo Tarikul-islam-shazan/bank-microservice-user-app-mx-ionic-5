@@ -1,0 +1,9 @@
+<div class="offer-wrapper">
+  <div class="featured-img">
+    <mbc-image-loader [src]="featuredOffer.image" [title]="featuredOffer.merchant"></mbc-image-loader>
+  </div>
+  <p class="featured-offer-value">{{ featuredOffer.offerValue ? featuredOffer.offerValue + '%' : '' }}</p>
+  <p class="featured-offer-text">
+    {{ getTranslation('meed-extra-module.feature-offer-component.cash-back-text') | async }}
+  </p>
+</div>

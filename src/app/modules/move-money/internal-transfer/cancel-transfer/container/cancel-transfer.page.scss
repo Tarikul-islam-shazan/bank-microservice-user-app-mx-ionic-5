@@ -1,0 +1,55 @@
+.cancel-transfer-content-wrapper {
+  .title {
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 11px;
+    color: #8c90a3;
+    letter-spacing: 1px;
+    line-height: 16px;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+  }
+  .amount-block {
+    margin-top: 30px;
+    margin-bottom: 45px;
+    .amount {
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 24px;
+      color: #070a18;
+      line-height: 24px;
+    }
+  }
+  .account-block,
+  .scheduled-block {
+    ion-label {
+      font-family: 'Averta W05 Regular5345108';
+      font-size: 16px;
+      color: #070a18;
+    }
+  }
+  .account-block {
+    margin-bottom: 20px;
+    ion-item {
+      --min-height: 70px;
+      --padding-start: 0px;
+    }
+  }
+  .scheduled-block {
+    margin-bottom: 10px;
+    ion-item {
+      --padding-start: 0px;
+      .img-calendar {
+        height: 15px;
+        width: 16px;
+        margin-right: 15px;
+      }
+    }
+  }
+  .note-block {
+    margin-bottom: 50px;
+    .note-description {
+      font-family: 'Averta W05 Regular5345108';
+      font-size: 16px;
+      color: #070a18;
+    }
+  }
+}

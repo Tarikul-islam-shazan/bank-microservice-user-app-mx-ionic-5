@@ -1,0 +1,25 @@
+<ion-header meed class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>{{ 'more-module.card-replace-page.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="card-replace-page override-ion-content-padding">
+  <div class="container">
+    <div class="header-text">
+      <h4>{{ 'more-module.card-replace-page.replace-card-text' | translate }}</h4>
+    </div>
+    <div class="sub-text">
+      <p>{{ 'more-module.card-replace-page.card-call' | translate:{'callNumber':cardReplaceFacade.supportNumber} }}</p>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border" *ngIf="cardReplaceFacade.isCordova()">
+  <ion-button class="white-button" expand="block" (click)="cardReplaceFacade.callANumber()">
+    {{ 'more-module.card-replace-page.btn-text' | translate }}
+  </ion-button>
+</ion-footer>

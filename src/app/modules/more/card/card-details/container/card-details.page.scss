@@ -1,0 +1,105 @@
+.card-details-page {
+  ion-item {
+    --padding-start: 20px !important;
+  }
+  .list-item {
+    align-items: center;
+    padding-top: 24px;
+    padding-bottom: 24px;
+
+    .unfreeze-img {
+      background-color: #435cdc;
+      text-align: center;
+      .item-icon {
+        margin-top: 11px;
+      }
+    }
+
+    .item-img {
+      background-color: #dde3fd;
+      text-align: center;
+      .item-icon {
+        margin-top: 11px;
+      }
+    }
+
+    .list-item-icon {
+      float: left;
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+    }
+
+    .text-wrapper {
+      float: left;
+      margin-left: 20px;
+
+      .item-header {
+        color: #070a18;
+        font-family: 'Averta W05 Regular';
+        font-size: 16px;
+        letter-spacing: -0.15px;
+        line-height: 16px;
+        margin-bottom: 8px;
+      }
+
+      .item-header-without-subheader {
+        color: #070a18;
+        font-family: 'Averta W05 Regular';
+        font-size: 16px;
+        letter-spacing: -0.15px;
+        line-height: 16px;
+        margin-top: 10px;
+      }
+
+      .item-subheader {
+        color: #8c90a3;
+        font-family: 'Averta W05 Regular';
+        font-size: 14px;
+        letter-spacing: 0.15px;
+        line-height: 14px;
+      }
+    }
+  }
+
+  .card-management-img {
+    border-radius: 30px !important;
+  }
+
+  .card-number {
+    top: 50%;
+    width: 100%;
+    margin: 0 auto;
+    color: #b5c1ff;
+    position: absolute;
+    font-size: 10.5px;
+    line-height: 13px;
+    letter-spacing: 0.94px;
+    font-family: 'Averta W05 Bold5204651';
+  }
+
+  .md-alert-text-center {
+    text-align: center;
+  }
+
+  .img-container {
+    display: block;
+    position: relative;
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .label-text {
+    font-size: 15px;
+  }
+
+  .heading {
+    --color: #4d4d4d;
+    font-weight: bold !important;
+  }
+
+  .valuebold {
+    --color: #4d4d4d;
+  }
+}

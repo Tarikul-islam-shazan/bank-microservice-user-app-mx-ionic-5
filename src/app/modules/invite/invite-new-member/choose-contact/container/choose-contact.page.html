@@ -1,0 +1,82 @@
+<ion-header class="white-header" no-border>
+  <ion-toolbar>
+    <div slot="start" class="header-close-button" (click)="facade.onBackClick()"></div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="search-bar">
+      <ion-col size="12" class="ion-no-padding">
+        <ion-item class="search-field" lines="none">
+          <ion-icon name="search" slot="start"></ion-icon>
+          <ion-input
+            (ionChange)="facade.searchContact($event.target.value)"
+            type="text"
+            placeholder="{{'invite-module.invite-new-member-page.choose-contact-modal.search-input-placeholder' | translate }}"
+            required
+          ></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row class="list-view">
+      <ion-col size="12" class="ion-no-padding">
+        <!-- Search Contacts -->
+        <ion-list lines="none" *ngIf="facade.searchString !== ''">
+          <ion-item *ngFor="let contact of facade.searchContacts">
+            <ion-label>
+              <h2>{{contact.name}}</h2>
+              <p>{{contact.emails[0]}}</p>
+            </ion-label>
+            <ion-checkbox
+              [(ngModel)]="contact.selected"
+              (ionChange)="facade.onSelectSearchContact(contact)"
+              mode="md"
+              slot="end"
+            ></ion-checkbox>
+          </ion-item>
+        </ion-list>
+        <!-- Search Contacts -->
+
+        <!-- Contacts List -->
+        <ion-list lines="none" *ngIf="facade.searchString === ''">
+          <ion-item *ngFor="let contact of facade.contacts">
+            <ion-label>
+              <h2>{{contact.name}}</h2>
+              <p>{{contact.emails[0]}}</p>
+            </ion-label>
+            <ion-checkbox
+              [(ngModel)]="contact.selected"
+              (ionChange)="facade.onSelectContact(contact)"
+              mode="md"
+              slot="end"
+            ></ion-checkbox>
+          </ion-item>
+        </ion-list>
+        <!-- Contacts List -->
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-infinite-scroll
+    threshold="10%"
+    *ngIf="facade.searchString === ''"
+    (ionInfinite)="facade.doInfinite($event)"
+    [disabled]="facade.infiniteScrollDisabled"
+  >
+    <ion-infinite-scroll-content loadingSpinner="null" loadingText=""> </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      (click)="facade.onAddFriendClick()"
+      [disabled]="facade.enableAddFriendButton()"
+      class="white-button"
+      expand="block"
+    >
+      {{ 'invite-module.invite-new-member-page.choose-contact-modal.add-friends-button' | translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

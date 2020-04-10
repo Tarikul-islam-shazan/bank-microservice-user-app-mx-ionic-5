@@ -1,0 +1,50 @@
+.section-title {
+  color: #070a18;
+  font-family: 'Averta W05 Bold5204651';
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: -0.36px;
+  line-height: 21px;
+  margin-top: 37px;
+}
+
+.header-search-img {
+  margin-right: 20px;
+  height: 15px;
+  width: 15px;
+}
+
+.featured-slider-wrapper {
+  height: 170px;
+  width: 43% !important;
+  border: 2px solid #ebedf2;
+  border-radius: 6px;
+  background-color: #ffffff;
+  margin-right: 10px;
+}
+
+.categories-slider-wrapper {
+  height: 130px;
+  width: 23% !important;
+  background-color: #ffffff;
+  margin-right: 10px;
+}
+
+.list-wrapper {
+  margin: 40px 0px;
+
+  .list-item {
+    padding: 15px 0px !important;
+    border-bottom: 1px solid #f4f6fd !important;
+  }
+}
+
+.list-item-text {
+  p {
+    color: #070a18;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    letter-spacing: -0.27px;
+    line-height: 20px;
+  }
+}

@@ -1,0 +1,35 @@
+.direct-deposit-complete-content {
+  .deposit-email-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+  }
+
+  .info-content {
+    .info-title {
+      font-family: 'Averta W05 ExtraBold';
+      font-size: 30px;
+      letter-spacing: 0.2px;
+      line-height: 30px;
+      color: #000;
+      text-align: center;
+      margin: 30px 0;
+    }
+    .info-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 4vh;
+      .info-text {
+        font-family: 'Averta W05 Regular';
+        padding: 0px 37.4px;
+        font-size: 16px;
+        color: #606477;
+        line-height: 24px;
+        text-align: center;
+        margin-bottom: 4vh;
+      }
+    }
+  }
+}

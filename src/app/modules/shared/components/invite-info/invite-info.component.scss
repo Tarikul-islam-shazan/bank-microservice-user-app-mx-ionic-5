@@ -1,0 +1,45 @@
+.invite-wrapper {
+  text-align: center;
+  background-color: #f4f6fd;
+  margin-left: -20px;
+  margin-right: -20px;
+  margin-bottom: -20px;
+
+  padding: 20px;
+
+  .meed-share-emoji {
+    color: #070a18;
+    font-family: 'Apple Color Emoji';
+    font-size: 28px;
+    line-height: 21px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .invite-header {
+    color: #070a18;
+    font-family: 'Averta W05 Semibold5179739';
+    font-size: 20px;
+    letter-spacing: -0.6px;
+    line-height: 20px;
+    text-align: center;
+    width: 100%;
+  }
+
+  .invite-subheader {
+    color: #606477;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    margin-bottom: 4.8%;
+    padding-left: 25px;
+    padding-right: 25px;
+    width: 100%;
+  }
+
+  .invite-btn {
+    margin-top: 30px;
+    text-transform: none;
+  }
+}

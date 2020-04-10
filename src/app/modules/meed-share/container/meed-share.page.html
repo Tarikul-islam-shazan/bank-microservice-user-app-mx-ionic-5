@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'meed-share-page.header-title' | translate}}</ion-title>
+    <div slot="end" (click)="meedShareFacade.showModal()">
+      <img class="header-info-img" src="assets/img/white-question.png" alt="info" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="(meedShareFacade.meedShare$ | async) as meedShare">
+    <div class="data-part">
+      <meed-share-card
+        title="meed-share-page.main-page.active-share-text"
+        value="{{meedShare.totalInvitees}}"
+        image="assets/svg/active_share.svg"
+        serial="1"
+      ></meed-share-card>
+      <meed-share-card
+        title="meed-share-page.main-page.this-month-text"
+        value="{{meedShare.lastMonthDistribution}}"
+        image="assets/svg/this_month_share.svg"
+        serial="2"
+      ></meed-share-card>
+      <meed-share-card
+        title="meed-share-page.main-page.total-text"
+        value="{{meedShare.totalDistribution}}"
+        image="assets/svg/double-doller.svg"
+        serial="3"
+      ></meed-share-card>
+    </div>
+    <div class="invite-section">
+      <invite-info
+        *ngIf="(meedShare.totalInvitees && meedShare.lastMonthDistribution && meedShare.totalDistribution) && (meedShare.totalInvitees != 0 && meedShare.lastMonthDistribution != 0 && meedShare.totalDistribution != 0)"
+        emoji="🚀"
+        header="meed-share-page.main-page.non-zero-invite-header"
+        description="meed-share-page.main-page.non-zero-invite-sub-header"
+        inviteBtn="true"
+      ></invite-info>
+      <invite-info
+        *ngIf="(!meedShare.totalInvitees && !meedShare.lastMonthDistribution && !meedShare.totalDistribution) || (meedShare.totalInvitees == 0 && meedShare.lastMonthDistribution == 0 && meedShare.totalDistribution == 0)"
+        emoji="💵"
+        header="meed-share-page.main-page.zero-invite-header"
+        description="meed-share-page.main-page.zero-invite-sub-header"
+        inviteBtn="true"
+      >
+      </invite-info>
+    </div>
+  </div>
+</ion-content>

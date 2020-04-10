@@ -1,0 +1,39 @@
+.meed-cover-wrapper {
+  .cover-image {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+    img {
+      width: 150px;
+      height: 150px;
+    }
+  }
+
+  .meed-cover-text {
+    width: 100%;
+    font-family: 'Averta W05 Semibold5179739';
+    font-size: 18px;
+    line-height: 21px;
+    text-align: center;
+    margin-top: 31px;
+    color: #070a18;
+    #cover-text {
+      color: #b27cfb;
+    }
+  }
+  .cover-description {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    p {
+      padding-left: 25px;
+      padding-right: 25px;
+      font-size: 16px;
+      font-family: 'Averta W05 Regular5345108';
+      line-height: 24px;
+      color: #606477;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,47 @@
+<ion-header class="white-header ion-no-border">
+  <ion-toolbar>
+    <div slot="start" class="header-close-button" (click)="dismiss()"></div>
+    <ion-title> {{'more-module.personal-details.change-email-address-modal.header-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <form [formGroup]="changeEmailForm" novalidate>
+      <ion-list lines="none" class="input-list">
+        <ion-item>
+          <ion-label position="stacked">
+            {{ 'more-module.personal-details.change-email-address-modal.registered-email-text' | translate }}
+          </ion-label>
+          <ion-input type="email" class="white-input" formControlName="currentEmail"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">
+            {{ 'more-module.personal-details.change-email-address-modal.new-email-text' | translate }}</ion-label
+          >
+          <ion-input type="email" class="white-input" formControlName="newEmail"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">
+            {{ 'more-module.personal-details.change-email-address-modal.confirm-email-text' | translate }}</ion-label
+          >
+          <ion-input type="email" class="white-input" formControlName="confirmEmail"></ion-input>
+        </ion-item>
+        <div
+          *ngIf="changeEmailForm.controls.confirmEmail.dirty && changeEmailForm.controls.confirmEmail.errors?.mustMatch"
+          class="error-msg"
+        >
+          {{ 'more-module.personal-details.change-email-address-modal.errors.email-address-mismatch-text' | translate }}
+        </div>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" [disabled]="changeEmailForm.invalid" (click)="save()">
+      {{ 'more-module.personal-details.change-email-address-modal.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

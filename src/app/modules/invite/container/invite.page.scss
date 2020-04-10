@@ -1,0 +1,100 @@
+ion-list {
+  contain: none !important;
+  margin-bottom: 1px;
+}
+ion-title {
+  font-family: 'Averta W05 Regular5345108';
+  font-size: 16px;
+  letter-spacing: 0.2px;
+}
+ion-item {
+  --padding-start: 0px;
+  --inner-padding-end: 0px;
+}
+ion-grid {
+  padding-inline-end: 0px;
+}
+.invite-part {
+  margin-top: -20px;
+}
+.invitee-track {
+  margin-top: 40px;
+
+  .invitees-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    font-family: 'Averta W05 Bold5204651' !important;
+    color: #8c90a3;
+    letter-spacing: 1px;
+    font-size: 11px;
+    margin-bottom: 25px;
+  }
+  .track-list {
+    padding-inline-end: 0px !important;
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    margin-right: -20px;
+    margin-bottom: 72px;
+    text-align: center;
+    align-content: center;
+
+    .track-avater {
+      width: 60px;
+      height: 60px;
+      background-color: #f4f6fd;
+      border-radius: 50%;
+      margin-right: 20px !important;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 4px;
+      margin-top: 1px;
+      .track-initials {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        font-family: 'Averta W05 Bold5204651' !important;
+        font-size: 14px;
+        color: #435cdc;
+        margin-top: 20px;
+      }
+      .track-icon {
+        position: relative;
+        bottom: 5px;
+        float: right;
+        width: 17px;
+        z-index: 1000;
+      }
+    }
+    .track-email {
+      font-family: 'Averta W05 Regular' !important;
+      font-size: 11px;
+      letter-spacing: -0.25px;
+      display: flex;
+      flex-direction: column;
+      color: #070a18;
+      text-align: center;
+      align-content: center;
+      word-wrap: break-word;
+      width: 60px;
+      height: 28px;
+      overflow-wrap: break-word;
+    }
+    .track-email-status {
+      font-family: 'Averta W05 Semibold5179739' !important;
+      font-size: 12px;
+      letter-spacing: -0.1px;
+      display: flex;
+      flex-direction: column;
+      color: #b7bbce;
+      text-align: center;
+      word-wrap: break-word;
+      width: 60px;
+      height: 28px;
+      overflow-wrap: break-word;
+      text-transform: capitalize;
+    }
+  }
+}

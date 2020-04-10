@@ -1,0 +1,20 @@
+ion-content {
+  --background: var(--ion-color-primary);
+  .slider-container {
+    height: 100%;
+    ion-slides {
+      height: 100%;
+      --bullet-background: #ebedf2;
+      --bullet-background-active: #ffffff;
+      ion-slide {
+        height: inherit;
+      }
+    }
+  }
+}
+
+ion-footer {
+  ion-toolbar {
+    --background: var(--ion-color-primary);
+  }
+}

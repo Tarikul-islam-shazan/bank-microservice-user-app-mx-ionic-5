@@ -1,0 +1,87 @@
+ion-header {
+  ion-toolbar {
+    ion-title {
+      color: #ffffff;
+      font-family: 'Averta W05 Regular';
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      line-height: 20px;
+      text-align: center;
+    }
+  }
+}
+
+ion-content {
+  div.badge-content {
+    div.invitees-title {
+      height: 16px;
+      width: 57px;
+      color: #8c90a3;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 11px;
+      letter-spacing: 1px;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+    div.invitees-badges {
+      ion-chip {
+        min-height: 30px;
+        height: auto;
+        word-break: break-all;
+        word-wrap: break-word;
+        flex-direction: row;
+        border-radius: 16px;
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        margin-left: 0;
+        --background: #f4f6fd !important;
+
+        ion-label {
+          color: #435cdc;
+          font-family: 'Averta W05 Regular' !important;
+          font-size: 13px;
+          font-weight: 600;
+          letter-spacing: 0;
+          line-height: 30px;
+        }
+        ion-button {
+          width: 24px;
+          height: 24px;
+          --padding-start: 3px;
+          --padding-end: 7px;
+          color: #070a18;
+          ion-icon {
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+  div.message-content {
+    margin-top: 40px;
+    div.message-title {
+      color: #8c90a3;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 11px;
+      letter-spacing: 1px;
+      line-height: 16px;
+      text-transform: uppercase;
+    }
+    div.textarea-box {
+      border: 2px solid #070a18;
+      border-radius: 12px;
+      box-sizing: border-box;
+      margin-top: 10px;
+      padding: 10px 16px;
+      ion-textarea {
+        height: auto;
+        color: #070a18;
+        font-family: 'Averta W05 Regular';
+        font-size: 15px;
+        line-height: 22px;
+      }
+    }
+  }
+}

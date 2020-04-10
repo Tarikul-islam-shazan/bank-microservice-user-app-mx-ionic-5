@@ -1,0 +1,97 @@
+<ion-content class="safe-area-content">
+  <!--safe area adding-->
+  <div class="signup-compressed-screen">
+    <div class="signup-compressed-screen-pagecontent">
+      <div class="header-logo">
+        <span class="white-meed-logo"></span>
+      </div>
+      <h1 class="title">{{ 'signup-module.signup-compressed-page.title' | translate }}</h1>
+      <form [formGroup]="signupNicknameForm" novalidate>
+        <div class="ion-margin-bottom">
+          <div class="right-content-input">
+            <ion-input
+              appInputMaxLength="{{nickNameMaxLength}}"
+              placeholder="{{ 'signup-module.signup-compressed-page.nick-name-placeholder' | translate }}"
+              type="text"
+              class="blue-input ion-text-left"
+              formControlName="nickname"
+            >
+            </ion-input>
+            <div class="right-content">
+              <p>{{ nickNameCharacterCount }}</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="ion-margin-bottom">
+          <ion-input
+            (ionFocus)="inviterEmailClick()"
+            [attr.readonly]="isInviterEmailReadOnly"
+            class="blue-input ion-text-left"
+            formControlName="inviterEmailOrCode"
+            placeholder="{{ 'signup-module.signup-compressed-page.inviter-email-placeholder' | translate }}"
+            type="text"
+          >
+          </ion-input>
+        </div>
+
+        <div class="ion-margin-bottom">
+          <p class="inviter-seperator-text">
+            {{ 'signup-module.signup-compressed-page.inviter-or-own-seperator-text' | translate }}
+          </p>
+        </div>
+
+        <div class="ion-margin-bottom">
+          <div class="checkbox-container">
+            <ion-grid class="ion-no-padding ion-no-margin">
+              <ion-row>
+                <ion-item lines="none" class="login-option">
+                  <ion-label class="ion-text-wrap checkbox-square-label">
+                    <ion-text>
+                      {{ 'signup-module.signup-compressed-page.inviter-found-own-checkbox-text' | translate }}
+                    </ion-text>
+                  </ion-label>
+                  <ion-checkbox
+                    (ionChange)="changeCheckboxValue()"
+                    class="checkbox-square"
+                    color="primary"
+                    formControlName="inviterFoundOwn"
+                    mode="md"
+                    slot="start"
+                  ></ion-checkbox>
+                </ion-item>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </div>
+
+        <div class="ion-margin-bottom">
+          <div class="dropdown-input" (click)="openCountryModal()">
+            <ion-input
+              readonly
+              class="blue-input ion-text-left"
+              type="text"
+              formControlName="country"
+              [placeholder]="'signup-module.signup-compressed-page.country-placeholder-text' | translate"
+            >
+            </ion-input>
+            <ion-icon name="chevron-down"></ion-icon>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="ion-no-border">
+    <ion-button
+      class="blue-outline-button"
+      expand="block"
+      [disabled]="signupNicknameForm.invalid"
+      (click)="continueSignup()"
+    >
+      {{ 'signup-module.signup-compressed-page.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

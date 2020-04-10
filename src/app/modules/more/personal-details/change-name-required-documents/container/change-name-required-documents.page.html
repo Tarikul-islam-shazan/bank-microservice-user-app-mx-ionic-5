@@ -1,0 +1,111 @@
+<ion-header class="white-header" no-border>
+  <ion-toolbar>
+    <div slot="start" class="header-close-button" (click)="dismiss()"></div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div class="scan-header">{{'more-module.change-name-required-documents.scan-header' | translate}}</div>
+    <div class="scan-wrapper">
+      <div class="front scan-button-wrapper">
+        <ion-icon name="checkmark-circle" class="tick-icon" *ngIf="facade.frontIdImage"></ion-icon>
+        <img
+          class="preview"
+          [src]="facade.frontIdImage"
+          *ngIf="facade.frontIdImage"
+          (click)="takePhoto(documentImageType.FrontImage)"
+        />
+        <ion-input
+          #frontIdImageInput
+          [hidden]="true"
+          id="web-image-front-id-image"
+          type="file"
+          accept="image/*"
+          (ionChange)="uploadImage(documentImageType.FrontImage)"
+        ></ion-input>
+        <div class="scan-button" *ngIf="!facade.frontIdImage" (click)="takePhoto(documentImageType.FrontImage)">
+          <div class="button-image">
+            <img src="assets/img/camera.png" />
+          </div>
+          <div class="button-text">{{'more-module.change-name-required-documents.front-id' | translate}}</div>
+        </div>
+      </div>
+      <div class="back scan-button-wrapper">
+        <ion-icon name="checkmark-circle" class="tick-icon" *ngIf="facade.backIdImage"></ion-icon>
+        <img
+          class="preview"
+          [src]="facade.backIdImage"
+          *ngIf="facade.backIdImage"
+          (click)="takePhoto(documentImageType.BackImage)"
+        />
+        <ion-input
+          #backIdImageInput
+          [hidden]="true"
+          id="web-image-back-id-image"
+          type="file"
+          accept="image/*"
+          (ionChange)="uploadImage(documentImageType.BackImage)"
+        ></ion-input>
+        <div class="scan-button" *ngIf="!facade.backIdImage" (click)="takePhoto(documentImageType.BackImage)">
+          <div class="button-image">
+            <img src="assets/img/camera.png" />
+          </div>
+          <div class="button-text">{{'more-module.change-name-required-documents.back-id' | translate}}</div>
+        </div>
+      </div>
+      <div class="certificate scan-button-wrapper">
+        <ion-icon name="checkmark-circle" class="tick-icon" *ngIf="facade.documentImage"></ion-icon>
+        <img
+          class="preview"
+          [src]="facade.documentImage"
+          *ngIf="facade.documentImage"
+          (click)="takePhoto(documentImageType.DocumentImage)"
+        />
+        <ion-input
+          #documentImageInput
+          [hidden]="true"
+          id="web-image-document-image"
+          type="file"
+          accept="image/*"
+          (ionChange)="uploadImage(documentImageType.DocumentImage)"
+        ></ion-input>
+        <div class="scan-button" *ngIf="!facade.documentImage" (click)="takePhoto(documentImageType.DocumentImage)">
+          <div class="button-image">
+            <img src="assets/img/camera.png" />
+          </div>
+          <div class="button-text">{{facade.requiredDocument}}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scan-info-wrapper">
+      <div class="scan-info-header">{{'more-module.change-name-required-documents.note-text' | translate}}</div>
+
+      <ul>
+        <li>{{'more-module.change-name-required-documents.note.text1' | translate}}</li>
+        <li>
+          {{'more-module.change-name-required-documents.note.text2' | translate}}
+        </li>
+        <li>{{'more-module.change-name-required-documents.note.text3' | translate}}</li>
+        <li>{{'more-module.change-name-required-documents.note.text4' | translate}}</li>
+        <li>
+          {{'more-module.change-name-required-documents.note.text5' | translate}}
+        </li>
+      </ul>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      class="white-button"
+      expand="block"
+      [disabled]="!facade.checkIsAllRequiredDocumentsAvailable()"
+      (click)="save()"
+    >
+      {{'more-module.change-name-required-documents.save-button-text' | translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

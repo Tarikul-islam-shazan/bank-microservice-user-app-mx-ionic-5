@@ -1,0 +1,29 @@
+ion-toolbar {
+  --background: #ffffff;
+}
+.icon-black-ques-mark {
+  margin-right: 20px;
+}
+
+.content-wrapper {
+  .info-content {
+    .info-title {
+      font-family: 'Averta W05 ExtraBold';
+      font-size: 32px;
+      font-weight: bold;
+      letter-spacing: 0.16px;
+      line-height: 32px;
+      text-align: center;
+      padding: 0px 35px;
+    }
+    .info-paragraph {
+      padding: 0px 32px;
+      margin-top: 30px;
+      color: #606477;
+      font-family: 'Averta W05 Regular';
+      font-size: 16px;
+      line-height: 24px;
+      text-align: center;
+    }
+  }
+}

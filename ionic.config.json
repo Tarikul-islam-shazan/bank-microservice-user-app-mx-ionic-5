@@ -1,0 +1,10 @@
+{
+  "name": "meedbankingclub",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular",
+  "hooks": {
+    "build:before": "./scripts/ionic-build-before-hook.js"
+  }
+}

@@ -1,0 +1,65 @@
+<div class="content-block">
+  <div class="monthly-block">
+    <div class="saved-item">
+      <div id="title">{{ 'dashboard-module.ssa-transaction-page.save-this-month-text' | translate }}</div>
+      <div id="amount">
+        {{ monthlyTotalSave | negToPos }}
+      </div>
+    </div>
+    <div class="target-item">
+      <div id="title">{{ 'dashboard-module.ssa-transaction-page.monthly-saving-target-text' | translate }}</div>
+      <div id="amount">
+        {{ monthlySavingTarget | negToPos }}
+      </div>
+    </div>
+  </div>
+  <div class="circle-progress-block">
+    <div class="circle-progress-wrapper">
+      <round-progress
+        class="active-progress"
+        [current]="progress"
+        [max]="100"
+        [color]="'#FFD04D'"
+        [background]="'#F4F6FD'"
+        [radius]="125"
+        [stroke]="10"
+        [semicircle]="true"
+        [rounded]="true"
+        [clockwise]="true"
+        [responsive]="false"
+        [duration]="800"
+        [animation]="'easeInOutQuart'"
+        [animationDelay]="0"
+      ></round-progress>
+      <div class="title">{{ 'dashboard-module.ssa-transaction-page.progress-text' | translate }}</div>
+      <div class="percentage">{{ progress }}%</div>
+    </div>
+  </div>
+
+  <div class="need-to-save-block">
+    <div class="title">{{ 'dashboard-module.ssa-transaction-page.hit-target-box-text' | translate }}</div>
+    <div class="save-range-block">
+      <div class="daily">
+        <div class="amount">
+          {{ savingTarget.daily | negToPos }}
+        </div>
+        <div class="title">{{ 'dashboard-module.ssa-transaction-page.daily-text' | translate }}</div>
+      </div>
+      <div class="weekly">
+        <div class="amount">
+          {{ savingTarget.weekly | negToPos }}
+        </div>
+        <div class="title">{{ 'dashboard-module.ssa-transaction-page.weekly-text' | translate }}</div>
+      </div>
+      <div class="monthly">
+        <div class="amount">
+          {{ savingTarget.monthly | negToPos }}
+        </div>
+        <div class="title">{{ 'dashboard-module.ssa-transaction-page.monthly-text' | translate }}</div>
+      </div>
+    </div>
+    <div class="error" *ngIf="monthlySavingTarget === 0">
+      {{ 'dashboard-module.ssa-transaction-page.go-to-goal-setup-text' | translate }}
+    </div>
+  </div>
+</div>

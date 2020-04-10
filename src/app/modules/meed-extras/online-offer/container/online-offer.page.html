@@ -1,0 +1,33 @@
+<ion-header class="white-header ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="online-offer-container">
+  <div class="offer-image">
+    <mbc-image-loader [src]="_offer.image" [title]="_offer.merchant"></mbc-image-loader>
+  </div>
+  <div class="store-name">
+    <p>{{_offer.merchant}}</p>
+  </div>
+  <div class="offer-description">
+    <p>{{ _offer.tenWord }}</p>
+  </div>
+  <div class="shop-now-btn">
+    <ion-button class="white-button" expand="block" (click)="goToExternalLink()">
+      {{ 'meed-extra-module.online-offer-page.shop-now-text' | translate }}
+    </ion-button>
+  </div>
+  <div class="devider"></div>
+  <div class="header-text">
+    <p>{{ 'meed-extra-module.online-offer-page.offer-details-text' | translate }}</p>
+  </div>
+  <div class="sub-header-text">
+    <p>
+      {{ _offer.twentyWord }}
+    </p>
+  </div>
+</ion-content>

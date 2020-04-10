@@ -1,0 +1,43 @@
+<ion-header class="white-header ion-no-border">
+  <ion-toolbar>
+    <div slot="start" class="header-close-button" (click)="dismiss()"></div>
+    <ion-title> {{'more-module.personal-details.change-nick-name-modal.header-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <form [formGroup]="changeNicknameForm" novalidate>
+      <div class="title-input-field">
+        <div class="field-title">
+          {{ 'more-module.personal-details.change-nick-name-modal.nick-name-text' | translate }}
+        </div>
+        <div class="right-content-input">
+          <ion-input
+            formControlName="nickname"
+            class="white-input"
+            type="text"
+            [appInputMaxLength]="nickNameMaxLength"
+            required
+          >
+          </ion-input>
+          <div class="right-content">
+            <p>{{ nickNameCharacterCount }}</p>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      [disabled]="changeNicknameForm.invalid || !isFormValueChanged"
+      (click)="save()"
+      class="white-button"
+      expand="block"
+    >
+      {{ 'more-module.personal-details.change-nick-name-modal.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

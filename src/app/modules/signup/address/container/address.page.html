@@ -1,0 +1,264 @@
+<ion-header class="ion-no-border white-header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="content-wrapper">
+    <div class="step-counter">
+      <step-counter [step]="'signup-module.signup-address-page.step-text'" [stepNo]="3"></step-counter>
+    </div>
+    <div class="header-title">{{ 'signup-module.signup-address-page.page-title' | translate }}</div>
+    <form [formGroup]="addressForm">
+      <div class="personalForm-wrapper">
+        <ion-input
+          (ionFocus)="isInputFieldSkip('addressLine1')"
+          [ngClass]="
+            addressForm.controls.addressLine1.invalid && skipErrorFields.addressLine1 ? 'error-input' : 'white-input'
+          "
+          class="white-input"
+          id="address-line1"
+          type="text"
+          formControlName="addressLine1"
+          placeholder="{{ 'signup-module.signup-address-page.address-form.home-address' | translate }}"
+        ></ion-input>
+        <div
+          *ngIf="addressForm.controls.addressLine1.invalid && !addressForm.controls.addressLine1.pristine"
+          class="error-msg"
+        >
+          {{ 'signup-module.signup-address-page.address-form.error.address-error' | translate }}
+        </div>
+        <ion-input
+          (ionFocus)="isInputFieldSkip('addressLine2')"
+          [ngClass]="
+            addressForm.controls.addressLine2.invalid && skipErrorFields.addressLine2 ? 'error-input' : 'white-input'
+          "
+          class="white-input"
+          id="address-line2"
+          type="text"
+          formControlName="addressLine2"
+          placeholder="{{ 'signup-module.signup-address-page.address-form.address-line' | translate }}"
+        ></ion-input>
+        <ion-input
+          (ionFocus)="isInputFieldSkip('city')"
+          [ngClass]="addressForm.controls.city.invalid && skipErrorFields.city ? 'error-input' : 'white-input'"
+          class="white-input"
+          id="city"
+          type="text"
+          formControlName="city"
+          placeholder="{{ 'signup-module.signup-address-page.address-form.city' | translate }}"
+        ></ion-input>
+        <div *ngIf="!addressForm.controls.city.pristine">
+          <div *ngIf="addressForm.controls.city.hasError('required')" class="error-msg">
+            {{ 'signup-module.signup-address-page.address-form.error.city-error' | translate }}
+          </div>
+          <div
+            *ngIf="!addressForm.controls.city.hasError('required') && !addressForm.controls.city.valid"
+            class="error-msg"
+          >
+            {{ 'signup-module.signup-address-page.address-form.error.city-valid-error' | translate }}
+          </div>
+        </div>
+        <div class="dropdown-input" (click)="openStateModal()">
+          <ion-input
+            (ionFocus)="isInputFieldSkip('state')"
+            [ngClass]="addressForm.controls.state.invalid && skipErrorFields.state ? 'error-input' : 'white-input'"
+            readonly
+            class="white-input"
+            id="state"
+            type="text"
+            formControlName="state"
+            placeholder="{{ 'signup-module.signup-address-page.address-form.state' | translate }}"
+          ></ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </div>
+        <ion-input
+          (focus)="isInputFieldSkip('zipCode')"
+          [ngClass]="addressForm.controls.zipCode.invalid && skipErrorFields.zipCode ? 'error-input' : 'white-input'"
+          class="white-input"
+          id="zip-code"
+          type="tel"
+          appFormateZipCode
+          formControlName="zipCode"
+          placeholder="{{ 'signup-module.signup-address-page.address-form.zip-code' | translate }}"
+        ></ion-input>
+        <div *ngIf="!addressForm.controls.zipCode.pristine">
+          <div class="error-msg" *ngIf="addressForm.controls.zipCode.hasError('required')">
+            {{ 'signup-module.signup-address-page.address-form.error.zip-code-require-code' | translate }}
+          </div>
+          <div
+            class="error-msg"
+            *ngIf="!addressForm.controls.zipCode.hasError('required') && addressForm.controls.zipCode.invalid"
+          >
+            {{ 'signup-module.signup-address-page.address-form.error.zip-code-error' | translate }}
+          </div>
+        </div>
+        <br />
+        <br />
+        <ion-input
+          (focus)="isInputFieldSkip('mobilePhone')"
+          [ngClass]="
+            addressForm.controls.mobilePhone.invalid && skipErrorFields.mobilePhone ? 'error-input' : 'white-input'
+          "
+          class="white-input"
+          id="mobile-phone"
+          type="tel"
+          formControlName="mobilePhone"
+          [appMaskInput]="phoneMask"
+          placeholder="{{ 'signup-module.signup-address-page.address-form.mobile' | translate }}"
+        ></ion-input>
+        <div
+          *ngIf="addressForm.controls.mobilePhone.invalid && !addressForm.controls.mobilePhone.pristine"
+          class="error-msg"
+        >
+          {{ 'signup-module.signup-address-page.address-form.error.phone-number-error' | translate }}
+        </div>
+        <ion-input
+          (focus)="isInputFieldSkip('workPhone')"
+          class="white-input"
+          id="work-phone"
+          type="tel"
+          formControlName="workPhone"
+          [appMaskInput]="phoneMask"
+          placeholder="{{ 'signup-module.signup-address-page.address-form.work-phone' | translate }}"
+        >
+        </ion-input>
+        <div
+          *ngIf="addressForm.controls.workPhone.invalid && !addressForm.controls.workPhone.pristine"
+          class="error-msg"
+        >
+          {{ 'signup-module.signup-address-page.address-form.error.work-phone-number-error' | translate }}
+        </div>
+        <ion-input
+          (ionFocus)="isInputFieldSkip('workPhoneExtension')"
+          class="white-input"
+          id="work-phone-extension"
+          type="tel"
+          formControlName="workPhoneExtension"
+          placeholder="{{ 'signup-module.signup-address-page.address-form.work-phone-extension' | translate }}"
+        >
+        </ion-input>
+      </div>
+      <div class="text-content">{{ 'signup-module.signup-address-page.text-1' | translate }}</div>
+      <div class="text-content">{{ 'signup-module.signup-address-page.text-2' | translate }}</div>
+      <div class="text-title-content">{{ 'signup-module.signup-address-page.text-3' | translate }}</div>
+      <div class="text-content">{{ 'signup-module.signup-address-page.text-4' | translate }}</div>
+      <ion-list class="custom-armed-forces-list">
+        <!-- custom-armed-forces-list class for styling list-->
+        <ion-radio-group formControlName="isRelatedToArmedForces" (ionChange)="dependentFromShow($event)">
+          <ion-item lines="none">
+            <ion-label
+              >{{'signup-module.signup-address-page.armed-forces-related-member-radio-btn' | translate }}</ion-label
+            >
+            <ion-radio slot="start" mode="md" [value]="radioOption.Member"></ion-radio>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-label
+              >{{'signup-module.signup-address-page.armed-forces-related-dependent-radio-btn' | translate }}</ion-label
+            >
+            <ion-radio slot="start" mode="md" [value]="radioOption.Dependent"></ion-radio>
+          </ion-item>
+
+          <ion-item lines="none">
+            <ion-label
+              >{{'signup-module.signup-address-page.armed-forces-related-neither-radio-btn' | translate }}</ion-label
+            >
+            <ion-radio slot="start" mode="md" [value]="radioOption.Neither" checked></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </form>
+    <form [formGroup]="armedForcesForm" *ngIf="isDependent">
+      <div class="armed-forces-form-wrapper">
+        <div class="text-content">{{ 'signup-module.signup-address-page.text-5' | translate }}</div>
+        <ion-list lines="none" class="input-list">
+          <ion-input
+            (ionFocus)="isInputFieldSkipForArmedForcesForm('armedForcesMemberFirstName')"
+            [ngClass]="
+          armedForcesForm.controls.armedForcesMemberFirstName.invalid && skipErrorFieldsForArmedForcesForm.armedForcesMemberFirstName ? 'error-input' : 'white-input'
+        "
+            class="white-input"
+            id="armed-forces-member-first-name"
+            type="text"
+            formControlName="armedForcesMemberFirstName"
+            placeholder="{{ 'signup-module.signup-address-page.address-form.armed-forces-member-first-name' | translate }}"
+          ></ion-input>
+          <div
+            *ngIf="armedForcesForm.controls.armedForcesMemberFirstName.invalid && !armedForcesForm.controls.armedForcesMemberFirstName.pristine"
+            class="error-msg"
+          >
+            {{ 'signup-module.signup-address-page.address-form.error.armed-forces-first-name-error' | translate }}
+          </div>
+          <ion-input
+            (ionFocus)="isInputFieldSkipForArmedForcesForm('armedForcesMemberLastName')"
+            [ngClass]="
+          armedForcesForm.controls.armedForcesMemberLastName.invalid && skipErrorFieldsForArmedForcesForm.armedForcesMemberLastName ? 'error-input' : 'white-input'
+        "
+            class="white-input"
+            id="armed-forces-member-last-name"
+            type="text"
+            formControlName="armedForcesMemberLastName"
+            placeholder="{{ 'signup-module.signup-address-page.address-form.armed-forces-member-last-name' | translate }}"
+          ></ion-input>
+          <div
+            *ngIf="armedForcesForm.controls.armedForcesMemberLastName.invalid && !armedForcesForm.controls.armedForcesMemberLastName.pristine"
+            class="error-msg"
+          >
+            {{ 'signup-module.signup-address-page.address-form.error.armed-forces-last-name-error' | translate }}
+          </div>
+          <div class="clearfix form-item">
+            <div class="datetime-input">
+              <ion-item lines="none">
+                <ion-datetime
+                  id="date-of-birth"
+                  displayFormat="{{ 'signup-module.signup-address-page.address-form.date-of-birth-display-format' | translate }}"
+                  [max]="facade.maxDate"
+                  placeholder="{{'signup-module.signup-personal.personal-form.date-of-birth' | translate }}"
+                  formControlName="armedForcesMemberDob"
+                ></ion-datetime>
+                <ion-icon name="chevron-down" slot="end"></ion-icon>
+              </ion-item>
+            </div>
+            <div *ngIf="armedForcesForm.controls.armedForcesMemberDob.invalid" class="error-msg">
+              {{ 'signup-module.signup-address-page.address-form.error.date-error' | translate }}
+            </div>
+          </div>
+          <input
+            (focus)="isInputFieldSkipForArmedForcesForm('armedForcesSocialSecurityPin')"
+            [ngClass]="
+          armedForcesForm.controls.armedForcesSocialSecurityPin.invalid && !armedForcesForm.controls.armedForcesSocialSecurityPin.pristine? 'error-input'
+          : 'white-input'
+      "
+            id="armed-forces-social-security-pin"
+            type="tel"
+            formControlName="armedForcesSocialSecurityPin"
+            mask="000-00-0000"
+            placeholder="{{ 'signup-module.signup-address-page.address-form.armed-forces-social-security-pin' | translate }}"
+          />
+          <div
+            *ngIf="armedForcesForm.controls.armedForcesSocialSecurityPin.invalid && !armedForcesForm.controls.armedForcesSocialSecurityPin.pristine"
+            class="error-msg"
+          >
+            {{ 'signup-module.signup-address-page.address-form.error.ssn-error' | translate }}
+          </div>
+        </ion-list>
+      </div>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      class="white-button"
+      expand="block"
+      (click)="next()"
+      [disabled]="isDependent ? armedForcesForm.invalid : addressForm.invalid"
+    >
+      {{ 'signup-module.signup-address-page.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

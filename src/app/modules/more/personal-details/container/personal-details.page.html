@@ -1,0 +1,106 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title> {{'more-module.personal-details.header-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full" *ngIf="(facade.customer$ | async) as customer">
+    <ion-item>
+      <div class="detail-content">
+        <ion-label class="ion-text-uppercase detail-header"
+          >{{'more-module.personal-details.full-name' | translate}}
+        </ion-label>
+        <ion-item class="ion-no-padding" lines="none">
+          <ion-label class="details-info">
+            {{customer.firstName}} {{customer.middleName}} {{customer.lastName}}
+          </ion-label>
+          <ion-button fill="clear" slot="end" class="ion-text-uppercase" strong="true" (click)="openModal('name')">
+            {{'more-module.personal-details.btn-edit' | translate}}
+          </ion-button>
+        </ion-item>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <div class="detail-content">
+        <ion-label class="ion-text-uppercase detail-header">
+          {{'more-module.personal-details.name-or-nickname' | translate}}
+        </ion-label>
+        <ion-item class="ion-no-padding" lines="none">
+          <ion-label class="details-info">
+            {{customer.nickname}}
+          </ion-label>
+          <ion-button fill="clear" slot="end" class="ion-text-uppercase" (click)="openModal('nickname')">
+            {{'more-module.personal-details.btn-edit' | translate}}</ion-button
+          >
+        </ion-item>
+      </div>
+    </ion-item>
+
+    <ion-item>
+      <div class="detail-content">
+        <ion-label class="ion-text-uppercase detail-header">
+          {{'more-module.personal-details.street-address' | translate}}</ion-label
+        >
+        <ion-item class="ion-no-padding" lines="none">
+          <ion-label class="details-info">
+            <div class="street-address">{{customer.address}}</div>
+            <div class="street-address">{{ customer.city }}, {{ customer.state }} {{ customer.zipCode }}</div>
+          </ion-label>
+          <ion-button
+            fill="clear"
+            slot="end"
+            class="ion-align-self-start ion-text-uppercase"
+            (click)="openModal('address')"
+          >
+            {{'more-module.personal-details.btn-edit' | translate}}</ion-button
+          >
+        </ion-item>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="detail-content">
+        <ion-label class="ion-text-uppercase detail-header"
+          >{{'more-module.personal-details.email' | translate}}
+        </ion-label>
+        <ion-item class="ion-no-padding" lines="none">
+          <ion-label class="details-info ion-text-wrap">
+            {{customer.email}}
+          </ion-label>
+          <ion-button fill="clear" slot="end" class="ion-text-uppercase" (click)="openModal('email')">
+            {{'more-module.personal-details.btn-edit' | translate}}</ion-button
+          >
+        </ion-item>
+      </div>
+    </ion-item>
+
+    <ion-item lines="none">
+      <div class="detail-content">
+        <ion-label class="detail-header ion-text-uppercase">
+          {{'more-module.personal-details.phone' | translate}}</ion-label
+        >
+        <div>
+          <ion-item class="ion-no-padding" lines="none">
+            <img class="img-icon-mobile" />
+            <ion-label class="details-info ion-text-wrap">
+              {{customer.mobilePhone}}
+            </ion-label>
+            <ion-button fill="clear" slot="end" class="ion-text-uppercase" (click)="openModal('mobile')">
+              {{'more-module.personal-details.btn-edit' | translate}}</ion-button
+            >
+          </ion-item>
+          <ion-item class="ion-no-padding" lines="none">
+            <img class="img-icon-briefcase" />
+            <ion-label class="details-info ion-text-wrap" [ngClass]="!customer.workPhone? 'optional' : ''">
+              {{customer.workPhone ? customer.workPhone : 'more-module.personal-details.add-work-phone' | translate}}
+            </ion-label>
+          </ion-item>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

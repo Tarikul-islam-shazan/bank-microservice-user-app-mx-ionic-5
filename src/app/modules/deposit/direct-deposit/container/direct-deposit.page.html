@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="header-text" color="light">{{ 'deposit.direct-deposit.header' | translate }}</ion-title>
+    <div slot="end" class="icon-white-ques-mark" (click)="facade.openInfoModal()"></div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="direct-deposit-content">
+  <div class="content-wrapper">
+    <div class="deposit-content">
+      <div class="deposit-info">
+        <div id="title">
+          <p>{{ 'deposit.direct-deposit.title-text' | translate }}</p>
+        </div>
+        <div id="description">
+          <p>
+            {{ 'deposit.direct-deposit.subtitle-text' | translate }}
+          </p>
+        </div>
+      </div>
+      <div class="depositer-block">
+        <form [formGroup]="depositForm">
+          <ion-input
+            class="white-input"
+            #business
+            id="businessName"
+            type="text"
+            formControlName="businessName"
+            hide-keyboard
+            placeholder="{{ 'deposit.direct-deposit.placeholder-text' | translate }}"
+            required
+          ></ion-input>
+        </form>
+      </div>
+      <div class="terms-block">
+        <div class="checkbox-wrapper">
+          <ion-checkbox mode="md" [(ngModel)]="isChecked"></ion-checkbox>
+        </div>
+        <div class="check-box-text">
+          <span>
+            {{ 'deposit.direct-deposit.checkbox-text' | translate }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      class="white-button"
+      expand="block"
+      [disabled]="depositForm.invalid || !isChecked"
+      (click)="emailDepositForm()"
+    >
+      {{ 'deposit.direct-deposit.btn-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

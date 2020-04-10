@@ -1,0 +1,57 @@
+.content-item-container {
+  .content-item {
+    margin-right: -20px;
+    height: 90px;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #ebedf2 !important;
+    justify-content: space-between;
+    align-items: center;
+    .content-block {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      .avatar {
+        margin-right: 25px;
+      }
+      .content {
+        .sub-title {
+          font-family: 'Averta W05 Bold5204651';
+          font-size: 14px;
+          color: #b7bbce;
+          letter-spacing: 0.2px;
+          line-height: 24px;
+        }
+        .title {
+          color: #8c90a3;
+          font-family: 'Averta W05 Bold5204651';
+          font-size: 11px;
+          font-weight: bold;
+          letter-spacing: 1px;
+          line-height: 16px;
+          text-transform: uppercase;
+        }
+        .balance {
+          color: #070a18;
+          font-family: 'Averta W05 Bold5204651';
+          font-size: 14px;
+          letter-spacing: 0.2px;
+          margin-top: 4px;
+          line-height: 24px;
+          span {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+    .img-arrow-right {
+      height: 14px;
+      width: 14px;
+      margin-right: 20px;
+    }
+  }
+  .content-item:last-child {
+    border-bottom: none;
+  }
+}

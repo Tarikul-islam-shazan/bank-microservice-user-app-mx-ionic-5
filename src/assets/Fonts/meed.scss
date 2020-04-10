@@ -1,0 +1,47 @@
+$meed-custom-font-path: $font-path !default;
+
+@font-face {
+  font-family: 'Averta W05 Semibold5179739';
+  src: url('#{$meed-custom-font-path}/Fonts/averta/5179739/a76ac5ce-4fb4-48bb-b92d-1b21145d167b.eot?#iefix');
+  src: url('#{$meed-custom-font-path}/Fonts/averta/5179739/a76ac5ce-4fb4-48bb-b92d-1b21145d167b.eot?#iefix')
+      format('eot'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5179739/d5339194-6c77-43ab-b1ca-81798e81bbe6.woff2') format('woff2'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5179739/016e4a2b-a350-4db5-81b4-84184f4bc8e2.woff') format('woff'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5179739/1dd06b47-e2ed-46fe-a2fa-21f10a26ba68.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Averta W05 Bold5204651';
+  src: url('#{$meed-custom-font-path}/Fonts/averta/5204651/fbf19079-c8b1-489e-afe7-dac8bdebb7af.eot?#iefix');
+  src: url('#{$meed-custom-font-path}/Fonts/averta/5204651/fbf19079-c8b1-489e-afe7-dac8bdebb7af.eot?#iefix')
+      format('eot'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5204651/7da3bf9d-6f81-483b-9e6f-5ddd0b7a5372.woff2') format('woff2'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5204651/1eceb596-742a-454a-a300-14eed3d828cc.woff') format('woff'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5204651/a1ca04fc-c39f-49ca-895d-112f4b63ca67.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Averta W05 Regular5345108';
+  src: url('#{$meed-custom-font-path}/Fonts/averta/5345108/513a6dbd-6ed6-4ed6-b433-f30ee4fd83ec.eot?#iefix');
+  src: url('#{$meed-custom-font-path}/Fonts/averta/5345108/513a6dbd-6ed6-4ed6-b433-f30ee4fd83ec.eot?#iefix')
+      format('eot'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5345108/d02cc25f-189b-4af6-a351-cd55c66a0de5.woff2') format('woff2'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5345108/17c318a8-9db6-4ddc-84ec-d7aac0a16946.woff') format('woff'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5345108/f4c9fa80-125f-41a1-9cc0-071195855cb8.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Averta W05 Regular';
+  src: url('#{$meed-custom-font-path}/Fonts/averta/5347752/3b03f6ec-36d7-4d82-a44b-21fe353d130c.eot?#iefix');
+  src: url('#{$meed-custom-font-path}/Fonts/averta/5347752/3b03f6ec-36d7-4d82-a44b-21fe353d130c.eot?#iefix')
+      format('eot'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5347752/1884c706-11df-4e95-bc48-bf0b86c5ea0d.woff2') format('woff2'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5347752/9d8f231a-02b6-4182-a102-bf4e36246ad8.woff') format('woff'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5347752/28241ae0-5375-47a3-9b79-2c9b71a80c64.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Averta W05 ExtraBold';
+  src: url('#{$meed-custom-font-path}/Fonts/averta/5348477/0d096152-3543-42ae-ad98-2f20f56541f1.eot?#iefix');
+  src: url('#{$meed-custom-font-path}/Fonts/averta/5348477/0d096152-3543-42ae-ad98-2f20f56541f1.eot?#iefix')
+      format('eot'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5348477/6ada8443-8508-4921-b90c-21905186652c.woff2') format('woff2'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5348477/88c52f02-ec9b-4792-aceb-6ab75a4e2eac.woff') format('woff'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5348477/cf0c14c7-26eb-4af3-8057-7ebb0aee352b.ttf') format('truetype');
+}

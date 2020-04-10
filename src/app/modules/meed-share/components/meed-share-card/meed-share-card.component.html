@@ -1,0 +1,19 @@
+<div class="meed-share-card-wrapper">
+  <div class="share-card">
+    <div class="image-part">
+      <img class="meed-share-img" src="{{ image ? image : '' }}" alt="share" height="24px" width="24px" />
+    </div>
+    <div class="text-part">
+      <div class="title-part" translate>
+        {{ title }}
+      </div>
+      <div
+        [ngClass]="value ? (value == 0 ? 'meed-share-zero-data' : 'meed-share-data') : 'meed-share-zero-data'"
+        translate
+      >
+        {{ valueCheck(serial, value) }}
+      </div>
+    </div>
+  </div>
+</div>
+<div class="divider"></div>

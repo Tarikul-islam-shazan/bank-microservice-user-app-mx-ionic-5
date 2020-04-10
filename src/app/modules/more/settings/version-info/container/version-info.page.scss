@@ -1,0 +1,32 @@
+.version-contnet {
+  .version {
+    height: 126px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    border-bottom: 1px solid #ebedf2 !important;
+
+    .version-num {
+      font-family: 'Averta W05 Bold5204651' !important;
+      font-size: 11px !important;
+      letter-spacing: 1px;
+      line-height: 24px;
+      color: #8c90a3;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .version-data {
+      font-family: 'Averta W05 Regular' !important;
+      font-size: 16px;
+      color: #070a18;
+      letter-spacing: -0.25px;
+    }
+  }
+
+  .version:last-child {
+    height: 84px !important;
+    border-bottom: 0 solid #ebedf2 !important;
+  }
+}

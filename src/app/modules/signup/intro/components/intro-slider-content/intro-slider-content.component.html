@@ -1,0 +1,22 @@
+<div class="slide-container" align-self-center>
+  <ng-container *ngIf="sliderContent.image; then hasFeatureImage; else noFeatureImage"></ng-container>
+  <ng-template #hasFeatureImage>
+    <div class="has-feature-image">
+      <span class="white-meed-logo custom-feature-image"></span>
+    </div>
+  </ng-template>
+  <ng-template #noFeatureImage>
+    <span class="white-meed-logo no-feature-image"></span>
+  </ng-template>
+
+  <ng-container *ngIf="sliderContent.image">
+    <img [src]="sliderContent.image" class="feature-image" />
+  </ng-container>
+
+  <div class="title">
+    <span [innerHtml]="sliderContent.title | translate"></span>
+  </div>
+  <div class="details">
+    <span [innerHtml]="sliderContent.details | translate"></span>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="invite-wrapper">
+  <div class="meed-share-emoji">
+    <p>{{ emoji ? emoji : '🤜🤛' }}</p>
+  </div>
+  <div class="invite-header">
+    <p translate>
+      {{ header ? header : 'invite-card-component.header' }}
+    </p>
+  </div>
+  <div class="invite-subheader">
+    <p translate>
+      {{ description ? description : 'invite-card-component.sub-header' }}
+    </p>
+  </div>
+  <div *ngIf="inviteBtn" class="invite-btn">
+    <ion-button id="button-invite-user" ion-button expand="block" class="white-button" (click)="goToInvite()" translate>
+      {{ 'invite-card-component.invite-btn' }}
+    </ion-button>
+  </div>
+</div>

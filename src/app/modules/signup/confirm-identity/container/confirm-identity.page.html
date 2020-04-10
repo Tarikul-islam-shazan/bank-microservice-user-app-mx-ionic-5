@@ -1,0 +1,43 @@
+<ion-header class="ion-no-border white-header">
+  <ion-toolbar>
+    <ion-buttons slot="start"> <ion-back-button mode="md" icon="arrow-back"></ion-back-button> </ion-buttons
+  ></ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="content-wrapper">
+    <div class="step-counter">
+      <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
+    </div>
+    <div class="header-title">{{ 'signup-module.confirm-identity-page.page-title' | translate }}</div>
+    <div class="identityForm-wrapper">
+      <p class="form-subtitle">{{ 'signup-module.confirm-identity-page.page-subtitle' | translate }}</p>
+      <form [formGroup]="identityForm">
+        <div class="dropdown-input" (click)="openOptionsModal()">
+          <ion-input
+            readonly
+            class="white-input"
+            id="identityType"
+            type="text"
+            formControlName="identityType"
+            placeholder="{{ 'signup-module.confirm-identity-page.identity-form.file' | translate }}"
+          ></ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </div>
+        <ion-input
+          class="white-input"
+          id="identityNumber"
+          type="text"
+          formControlName="identityNumber"
+          placeholder="{{ 'signup-module.confirm-identity-page.identity-form.identityNumber' | translate }}"
+        ></ion-input>
+      </form>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" [disabled]="identityForm.invalid" (click)="next()">
+      {{ 'signup-module.confirm-identity-page.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

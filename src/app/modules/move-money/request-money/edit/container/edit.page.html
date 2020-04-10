@@ -1,0 +1,66 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'move-money-module.request-money.edit.page-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="requestEditForm">
+    <div class="edit-page">
+      <div class="request-block">
+        <div class="title">{{'move-money-module.request-money.edit.request-title' | translate}}</div>
+        <ion-list>
+          <ion-item *ngFor="let fundRequest of facade.fundRequests" lines="inset">
+            <ion-label class="ion-text-wrap">
+              <h3 class="title-label">{{fundRequest.receiverEmail}}</h3>
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+      <div class="amount-block">
+        <div class="title">{{'move-money-module.request-money.edit.amount-title' | translate}}</div>
+        <ion-input formControlName="amount" appInputDecimalMask type="tel" placeholder="$0.00"></ion-input>
+        <div class="amount-error-default">
+          {{'move-money-module.request-money.edit.amount-error-default' | translate}}
+        </div>
+      </div>
+      <div class="note-block">
+        <div class="title">{{'move-money-module.request-money.edit.note-title' | translate}}</div>
+        <ion-input
+          formControlName="message"
+          type="text"
+          placeholder="{{'move-money-module.request-money.edit.note-input' | translate}}"
+        >
+        </ion-input>
+      </div>
+    </div>
+  </form>
+</ion-content>
+<ion-footer class="footer-content ion-no-border">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            [disabled]="requestEditForm.invalid"
+            (click)="facade.gotoConfirm(requestEditForm.value)"
+            expand="block"
+            class="white-button"
+          >
+            {{'move-money-module.request-money.edit.confirm-button' | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="facade.cancelEdit()" expand="block" fill="clear" class="cancel-btn">
+            {{'move-money-module.request-money.edit.cancel-button' | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

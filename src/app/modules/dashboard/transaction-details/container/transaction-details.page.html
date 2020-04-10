@@ -1,0 +1,20 @@
+<ion-header class="ion-no-border">
+  <account-transaction-header
+    title="{{ 'dashboard-module.transaction-details.title-text' | translate }}"
+    [accountInfo]="(transactionDetailsFacade.account)"
+  >
+    <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+  </account-transaction-header>
+</ion-header>
+
+<ion-content class="content-wrapper">
+  <ng-container *ngIf="(transactionDetailsFacade.transaction) as transaction">
+    <account-balance
+      title="{{ 'dashboard-module.transaction-details.amount-text' | translate }}"
+      [amount]="transaction?.amount"
+      balanceColor="#435cdc"
+    >
+    </account-balance>
+    <mbc-transaction-details-content [transaction]="transaction"> </mbc-transaction-details-content>
+  </ng-container>
+</ion-content>

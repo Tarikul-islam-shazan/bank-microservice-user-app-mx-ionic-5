@@ -1,0 +1,63 @@
+.step-counter-wrapper {
+  display: flex;
+  margin-bottom: 19px;
+  /* remove extra margin for notch */
+  .graph-wrapper {
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .text-wrapper {
+    height: 25px;
+  }
+
+  svg {
+    transform: rotate(-90deg);
+    align-items: center;
+  }
+  .step-counter-text {
+    color: #435cdc;
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 15px;
+    letter-spacing: -0.2px;
+    line-height: 19px;
+    margin-left: 3px;
+  }
+  .circle {
+    stroke-width: 15;
+  }
+
+  .progress-1 {
+    stroke: #435cdc;
+    stroke-dasharray: 250;
+    stroke-dashoffset: 250;
+  }
+
+  .progress-2 {
+    stroke: #435cdc;
+    stroke-dasharray: 310;
+    stroke-dashoffset: 270;
+  }
+
+  .progress-3 {
+    stroke: #435cdc;
+    stroke-dasharray: 420;
+    stroke-dashoffset: 420;
+  }
+  .progressAnimation {
+    animation: progress 1s linear forwards;
+  }
+
+  @keyframes progress {
+    100% {
+      stroke-dashoffset: 135.717;
+      /* stroke-dasharray times (1 - decimal percentage)*/
+      /* example: 339.292 * ( 1 - 0.6 ) = 135.717 */
+    }
+    0% {
+      stroke-dashoffset: 339.292;
+    }
+  }
+}

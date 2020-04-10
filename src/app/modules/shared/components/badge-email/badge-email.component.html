@@ -1,0 +1,15 @@
+<div class="badge-email-input-wrapper">
+  <div class="input-wrapper">
+    <div class="badge-emails" *ngFor="let email of inputEmails; let i = index">
+      <div class="email">{{ email }}</div>
+      <ion-icon name="close" (click)="removeEmail(i)"></ion-icon>
+    </div>
+    <input
+      placeholder="{{ placeholder }}"
+      type="text"
+      autocapitalize="off"
+      [(ngModel)]="email"
+      (keyup)="createBadgeEmail($event)"
+    />
+  </div>
+</div>

@@ -1,0 +1,77 @@
+<ion-header class="ion-no-border">
+  <account-transaction-header
+    title="{{ 'dashboard-module.loc-transaction-page.title-text' | translate }}"
+    (showModal)="showModal($event)"
+    iconName="help-circle-outline"
+    [accountInfo]="(lineOfCreditFacade.lineOfCreditAccount$ | async)"
+  >
+    <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+  </account-transaction-header>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <account-balance
+      title="{{ 'dashboard-module.loc-transaction-page.available-text' | translate }}"
+      [amount]="(lineOfCreditFacade.lineOfCreditAccount$ | async).availableBalance"
+    >
+    </account-balance>
+
+    <transaction-summary [summary]="(lineOfCreditFacade.accountOverview$ | async)"> </transaction-summary>
+
+    <div class="payment-due-wrapper">
+      <div class="payment-due-block">
+        <div class="payment-due-content">
+          <div class="title">
+            {{ 'dashboard-module.loc-transaction-page.minimum-payment-due-text' | translate }}
+          </div>
+          <div class="right-content">
+            {{ (lineOfCreditFacade.lineOfCreditAccount$ | async).minimumDue | negToPos }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ion-button expand="full" class="grey-outline-button">
+      {{ 'dashboard-module.loc-transaction-page.make-payment-text' | translate }}
+    </ion-button>
+
+    <div class="transaction-container pending-transaction-margin">
+      <div>
+        <span class="transaction-title">
+          {{ 'dashboard-module.loc-transaction-page.pending-transaction-text' | translate }}
+        </span>
+        <span class="show-hide-title" (click)="lineOfCreditFacade.showHideTransactions()" translate>
+          {{(lineOfCreditFacade.showHide$ | async) ? 'dashboard-module.loc-transaction-page.hide-text' :
+          'dashboard-module.loc-transaction-page.show-text'}}
+        </span>
+      </div>
+      <div class="transaction-title">
+        {{ (lineOfCreditFacade.pendingAmount$ | async) | negToPos }}
+      </div>
+    </div>
+
+    <ng-container *ngIf="(lineOfCreditFacade.showHide$ | async)">
+      <transaction-card
+        [transactions]="(lineOfCreditFacade.pendingTransactions$ | async)"
+        notFound="{{ 'dashboard-module.loc-transaction-page.no-pending-transaction-text' | translate }}"
+      >
+      </transaction-card>
+    </ng-container>
+
+    <div class="transaction-container recent-transaction-margin">
+      <div class="transaction-title">
+        {{ 'dashboard-module.loc-transaction-page.recent-transaction-text' | translate }}
+      </div>
+      <div>
+        <ion-icon name="search" (click)="toggleSearchAccordion()"></ion-icon>
+      </div>
+    </div>
+    <advanced-search (search)="submitSearch($event)" *ngIf="searchAccordion"></advanced-search>
+    <transaction-card
+      [transactions]="(lineOfCreditFacade.postedTransactions$ | async)"
+      notFound="{{ 'dashboard-module.loc-transaction-page.no-recent-transaction-text' | translate }}"
+    >
+    </transaction-card>
+  </div>
+</ion-content>

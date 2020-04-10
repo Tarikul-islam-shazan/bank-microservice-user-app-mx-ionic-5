@@ -1,0 +1,16 @@
+<div class="location-offer-card-wrapper">
+  <div class="store-image">
+    <mbc-image-loader [src]="locationOffer.offer.image" [title]="locationOffer.offer.merchant"></mbc-image-loader>
+  </div>
+  <div class="text-wrapper">
+    <div class="store-name">
+      <p>{{ locationOffer?.offer?.merchant }}</p>
+    </div>
+    <div class="offer-description">
+      <p>{{ locationOffer?.store?.address }}<br />{{ locationOffer?.store?.city }}, {{ locationOffer?.store?.zip }}</p>
+    </div>
+    <div class="offer-type">
+      {{ locationOffer?.offer?.shopType }}
+    </div>
+  </div>
+</div>

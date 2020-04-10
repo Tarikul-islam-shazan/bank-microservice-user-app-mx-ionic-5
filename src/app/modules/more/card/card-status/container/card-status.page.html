@@ -1,0 +1,37 @@
+<ion-header meed class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>{{ 'more-module.card-status-page.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="card-status-page override-ion-content-padding">
+  <div class="container">
+    <div class="clearfix">
+      <div class="text-header">
+        <p>{{ 'more-module.card-status-page.header-text' | translate }}</p>
+      </div>
+      <div class="disclaimer">
+        <p>{{ 'more-module.card-status-page.disclaimer-text-1' | translate }}</p>
+      </div>
+      <div class="disclaimer">
+        <p>{{ 'more-module.card-status-page.disclaimer-text-2' | translate }}</p>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border" *ngIf="(cardStatusFacade.cards$ | async)?.cards[0] as card">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" (click)="updateCardStatus(card.cardId,card.isCardActive)">
+      <ng-template [ngIf]="card.isCardActive" [ngIfElse]="unfreezeCard">
+        {{ 'more-module.card-status-page.btn-text-freeze' | translate }}
+      </ng-template>
+      <ng-template #unfreezeCard>
+        {{ 'more-module.card-status-page.btn-text-unfreeze' | translate }}
+      </ng-template>
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,22 @@
+ion-footer {
+  ion-toolbar {
+    --padding-start: 20px !important;
+    --padding-end: 20px !important;
+    --padding-bottom: 20px !important;
+    --padding-top: 0px;
+    --border-style: none !important;
+
+    .toolbar-content-wrapper {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+}
+
+ion-footer.footer-md:before {
+  background-image: none;
+  background-repeat: no-repeat;
+}

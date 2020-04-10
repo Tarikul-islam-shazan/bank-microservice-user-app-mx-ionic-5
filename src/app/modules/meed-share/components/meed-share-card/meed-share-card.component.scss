@@ -1,0 +1,58 @@
+.meed-share-card-wrapper {
+  height: 128px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .share-card {
+    display: flex;
+    flex-direction: row;
+    .image-part {
+      height: 40px;
+      width: 40px;
+      border-radius: 50%;
+      background-color: #eaecf7;
+      margin-right: 15px;
+      .meed-share-img {
+        margin-left: 8px !important;
+        margin-top: 6px !important;
+      }
+    }
+
+    .text-part {
+      .title-part {
+        color: #8c90a3;
+        font-family: 'Averta W05 Bold5204651';
+        font-size: 11px;
+        letter-spacing: 1px;
+        line-height: 16px;
+        text-transform: uppercase;
+      }
+
+      .meed-share-zero-data {
+        color: #d4d7e2;
+        font-family: 'Averta W05 Bold5204651';
+        font-size: 19px;
+        font-weight: bold;
+        letter-spacing: 0.19px;
+        line-height: 24px;
+      }
+
+      .meed-share-data {
+        color: #070a18;
+        font-family: 'Averta W05 Bold5204651';
+        font-size: 19px;
+        font-weight: bold;
+        letter-spacing: 0.19px;
+        line-height: 24px;
+      }
+    }
+  }
+}
+
+.divider {
+  background-color: #f4f6fd;
+  height: 1px;
+  margin-left: -20px;
+  margin-right: -20px;
+}

@@ -1,0 +1,27 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div slot="end" class="icon-black-ques-mark" (click)="facade.openInfoModal()"></div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div class="info-content">
+      <div class="info-title">{{ 'deposit.direct-deposit-setup.info-title' | translate }}</div>
+      <div class="info-paragraph">
+        {{ 'deposit.direct-deposit-setup.info-paragraph-text-1' | translate }}
+        <br /><br />{{ 'deposit.direct-deposit-setup.info-paragraph-text-2' | translate }}
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" (click)="facade.setupDirectDeposit()">
+      {{ 'deposit.direct-deposit-setup.white-button-text' | translate }}
+    </ion-button>
+    <ion-button class="grey-outline-button" expand="block" (click)="facade.exploreApp()">
+      {{ 'deposit.direct-deposit-setup.grey-outline-button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

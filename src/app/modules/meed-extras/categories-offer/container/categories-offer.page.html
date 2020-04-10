@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ categoriesOfferFacade?.category?.name }}</ion-title>
+    <div slot="end" (click)="goToSearchPage()">
+      <img class="header-search-img" src="assets/img/white-search.png" alt="search" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<div class="alphabet-list">
+  <ul>
+    <li *ngFor="let alphabet of alphabets" (click)="scrollTo(alphabet)">
+      {{ alphabet }}
+    </li>
+  </ul>
+</div>
+
+<ion-content>
+  <div>
+    <div class="alphabetic-list-wrapper">
+      <div class="alphabetic-offer-list">
+        <div
+          *ngFor="let subOfferList of categoriesOfferFacade.categoriesOffers$ | async"
+          id="{{ subOfferList[0].index }}"
+        >
+          <div *ngFor="let offer of subOfferList">
+            <offer-card *ngIf="!offer.index" (OfferClick)="setOffer($event)" [offer]="offer"> </offer-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

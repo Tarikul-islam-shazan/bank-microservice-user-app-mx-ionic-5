@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back" (click)="facade.onClickBack()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'invite-module.invite-new-member-page.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div>
+      <div class="invite-label">
+        {{ 'invite-module.invite-new-member-page.invite-label' | translate }}
+      </div>
+      <div class="email-container">
+        <ion-chip *ngFor="let contact of facade.inviteeContact; let i = index">
+          <ion-label *ngIf="contact.name">{{ contact.name }}</ion-label>
+          <ion-label *ngIf="!contact.name">{{ contact.email }}</ion-label>
+          <ion-button fill="clear" size="small" (click)="facade.removeContact(i)">
+            <ion-icon slot="icon-only" name="close"></ion-icon>
+          </ion-button>
+        </ion-chip>
+        <div>
+          <ion-input
+            class="input-field"
+            [(ngModel)]="facade.email"
+            (keyup)="facade.createContactBadge($event.target.value)"
+            placeholder="{{ 'invite-module.invite-new-member-page.invite-input-placeholder' | translate }}"
+            type="text"
+          ></ion-input>
+        </div>
+      </div>
+      <div class="invite-note ion-text-center">
+        {{ 'invite-module.invite-new-member-page.invite-note' | translate }}
+      </div>
+    </div>
+  </div>
+
+  <div class="invite-divider" *ngIf="facade.isCordova">
+    <div class="left-border"></div>
+    <div class="divider-content">
+      {{ 'invite-module.invite-new-member-page.invite-or-divider' | translate }}
+    </div>
+    <div class="right-border"></div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      expand="block"
+      class="grey-outline-button"
+      *ngIf="facade.isCordova"
+      (click)="facade.onChooseFromContact()"
+    >
+      {{ 'invite-module.invite-new-member-page.choose-contact-button' | translate }}
+    </ion-button>
+    <ion-button
+      expand="block"
+      class="white-button"
+      [disabled]="(facade.inviteeContact.length <= 0 ) && (!facade.isValidEmail())"
+      (click)="facade.onContinueClick()"
+    >
+      {{ 'invite-module.invite-new-member-page.continue-button' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

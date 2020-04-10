@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="40px" height="40px" viewBox="0 0 40 40" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 58 (101010) - https://sketch.com -->
+    <title>95FBC0E6-FF76-42AA-B1EC-F8ACE64A6253</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2-1-1-Dashboard" transform="translate(-20.000000, -475.000000)">
+            <g id="Component-/-Dashboard-/-Account-/-Line-of-Credit-Component-/-Dashboard-/-Account-/-V3" transform="translate(0.000000, 445.000000)">
+                <g id="Element-/-Icon-/-Dashboard-/-Account-/-Checking-Element-/-Icon-/-Dashboard-/-Account-/-Credit" transform="translate(20.000000, 30.000000)">
+                    <circle id="Base" fill="#FFEEE0" cx="20" cy="20" r="20"></circle>
+                    <g id="Icons-/-Checking-Account-/-24x24-Checking-Account-Icons-/-24x24px-/-Credit" transform="translate(8.000000, 8.000000)">
+                        <path d="M14.8473221,13.5124153 C14.8473221,14.765237 14.0753457,15.5891648 12.85758,15.8036117 L12.85758,16.3313162 C12.85758,16.70062 12.5582,17 12.1888961,17 C11.8195922,17 11.5202123,16.70062 11.5202123,16.3313162 L11.5202123,15.8036117 L11.5202123,15.8036117 C10.7373629,15.6681716 9.99800517,15.2844244 9.3673765,14.6410835 C8.40483801,13.6591422 9.54134303,12.4766608 10.4003028,13.3205418 C11.0091856,13.9187359 11.7267975,14.1557562 12.25957,14.1557562 C12.6727405,14.1557562 12.9228174,13.9525959 12.9228174,13.6591422 C12.9228174,13.3318284 12.7162322,13.1399549 11.8898912,12.8803612 C10.6286338,12.496614 9.54134303,12.03386 9.54134303,10.5665914 C9.54134303,9.38148984 10.2698279,8.50112867 11.5202123,8.2979684 L11.5202123,7.66868384 C11.5202123,7.29937995 11.8195922,7 12.1888961,7 C12.5582,7 12.85758,7.29937995 12.85758,7.66868384 L12.85758,8.36568849 L12.85758,8.36568849 C13.5425732,8.52370203 14.2275664,8.87358916 14.7168472,9.29119639 C15.4543838,9.92069288 14.6196521,11.2469899 13.7165397,10.6004515 C13.085911,10.1489842 12.5640115,9.99097065 12.1182222,9.99097065 C11.6615601,9.99097065 11.4441019,10.1602709 11.4441019,10.4424379 C11.4441019,10.7020316 11.672433,10.9051919 12.3900449,11.1309255 C13.9013791,11.5936795 14.8473221,12.0112867 14.8473221,13.5124153 Z" id="$" fill="#FE964C" fill-rule="nonzero"></path>
+                        <g id="Group" transform="translate(12.000000, 12.000000) rotate(-30.000000) translate(-12.000000, -12.000000) translate(3.000000, 1.000000)" stroke="#FE964C" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                            <path d="M0,11 C0,15.9705627 4.02943725,20 9,20 M18,11 C18,6.02943725 13.9705627,2 9,2" id="Shape"></path>
+                            <polyline id="Path-17" points="9 4 7 2 9 0"></polyline>
+                            <polyline id="Path-17" transform="translate(10.000000, 20.000000) scale(-1, 1) translate(-10.000000, -20.000000) " points="11 22 9 20 11 18"></polyline>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

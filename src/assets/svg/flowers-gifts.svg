@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="21px" viewBox="0 0 20 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Icons / Rewards / Gifts</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Playground" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons-/-Rewards-/-Gifts" transform="translate(-2.000000, -1.753333)">
+            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+            <path d="M7,8 C7.01873442,4.66666667 8.04258434,3 10.0715498,3 C12.8153357,3 13.1532818,8 7.60516648,8" id="Shape" stroke="#435CDC" stroke-width="2" stroke-linecap="round" transform="translate(9.500000, 5.500000) scale(-1, 1) translate(-9.500000, -5.500000) "></path>
+            <path d="M12,20 L12,8" id="Path-10" stroke="#435CDC" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M12,8 C12.0187344,4.66666667 13.0425843,3 15.0715498,3 C17.8153357,3 18.1532818,8 12.6051665,8" id="Shape" stroke="#435CDC" stroke-width="2" stroke-linecap="round"></path>
+            <path d="M19,13 L19,18.7142857 C19,19.9766509 18.2164983,21 17.25,21 L6.75,21 C5.78350169,21 5,19.9766509 5,18.7142857 L5,13" id="Path" stroke="#435CDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <rect id="Rectangle" stroke="#435CDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="3" y="8" width="18" height="5" rx="2"></rect>
+        </g>
+    </g>
+</svg>

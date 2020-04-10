@@ -1,0 +1,29 @@
+<ion-content class="safe-area-content">
+  <!--safe area adding-->
+  <div class="signup-email-screen">
+    <div class="header-logo">
+      <span class="white-meed-logo"></span>
+    </div>
+    <div class="signup-email-screen-pagecontent">
+      <div class="title">{{ 'signup-module.signup-email-page.title' | translate }}</div>
+      <form [formGroup]="signupEmailForm" novalidate>
+        <ion-input
+          class="blue-input ion-text-left"
+          formControlName="email"
+          placeholder="{{ 'signup-module.signup-email-page.email-placeholder' | translate }}"
+          type="text"
+          appInputTrimWhitespace
+        >
+        </ion-input>
+        <ion-button
+          [disabled]="signupEmailForm.invalid"
+          (click)="continueSignup(signupEmailForm.value)"
+          class="blue-button"
+          expand="block"
+        >
+          {{ 'signup-module.signup-email-page.button-continue' | translate }}
+        </ion-button>
+      </form>
+    </div>
+  </div>
+</ion-content>

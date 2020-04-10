@@ -1,0 +1,38 @@
+.scanid-content {
+  margin-top: 27px;
+  .scan-welcome-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .scan-id-header-title {
+    color: #070a18;
+    font-family: 'Averta W05 ExtraBold';
+    font-size: 30px;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    margin-bottom: 30px;
+  }
+  .info-description {
+    font-size: 16px;
+    color: #606477;
+    line-height: 24px;
+    font-family: 'Averta W05 Regular5345108' !important;
+    .info-sub-header {
+      color: #070a18;
+      font-family: 'Averta W05 Bold5204651' !important;
+      font-size: 18px;
+      letter-spacing: -0.36px;
+      line-height: 21px;
+    }
+  }
+  .jumio-display-iframe {
+    height: calc(100vh - 60px);
+    width: 100%;
+    background-color: transparent;
+    border: none;
+    padding: 0px 0px 20px 0px;
+    margin: -20px -20px 0px 0px;
+    position: absolute;
+  }
+}

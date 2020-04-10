@@ -1,0 +1,10 @@
+<div class="content-block">
+  <div class="history-block">
+    <div class="title">{{ 'dashboard-module.ssa-transaction-page.transactions-text' | translate }}</div>
+    <transaction-card
+      [transactions]="transactions"
+      notFound="{{ 'dashboard-module.ssa-transaction-page.no-recent-transaction-text' | translate }}"
+    >
+    </transaction-card>
+  </div>
+</div>

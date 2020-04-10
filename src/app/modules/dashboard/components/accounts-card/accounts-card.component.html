@@ -1,0 +1,21 @@
+<div class="content-item-container">
+  <div class="content-item">
+    <div class="content-block">
+      <div class="avatar">
+        <span [class]="accountInfo.imageClass"> </span>
+      </div>
+      <div class="content">
+        <div class="title">{{ accountInfo.title | translate }}</div>
+        <div class="balance">
+          {{ 'dashboard-module.account-card-component.available-text' | translate }}
+          <span>{{ accountData.availableBalance | negToPos }}</span>
+        </div>
+        <div class="sub-title">
+          {{ 'dashboard-module.account-card-component.balance-text' | translate }}
+          {{ accountData.currentBalance | negToPos }}
+        </div>
+      </div>
+    </div>
+    <span class="img-arrow-right"> </span>
+  </div>
+</div>

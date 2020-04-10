@@ -1,0 +1,61 @@
+<ion-content class="safe-area-content">
+  <!--safe area adding-->
+  <div class="log-in-success-content">
+    <ion-row no-padding align-items-center>
+      <ion-col col-lg-4 offset-lg-4 col-md-6 offset-md-3 col-sm-8 offset-sm-2 no-padding>
+        <div class="header-logo">
+          <span class="white-meed-logo"></span>
+        </div>
+        <div id="logInSuccessSubtitle" class="subtitle-content header-title">
+          <span> {{facade.userNickname}},<br />{{ 'signup-module.log-in-success-page.header-text' | translate }} </span>
+        </div>
+        <div class="meed-stepper">
+          <div class="stepper-content">
+            <div class="step">
+              <div class="v-stepper">
+                <div class="line-empty"></div>
+                <div class="circle">
+                  1
+                </div>
+                <div class="line"></div>
+              </div>
+              <div class="stepper-content">
+                <span>{{ 'signup-module.log-in-success-page.step-one-text' | translate }}</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="v-stepper">
+                <div class="line"></div>
+                <div class="circle">
+                  2
+                </div>
+                <div class="line"></div>
+              </div>
+              <div class="stepper-content">
+                <span>{{ 'signup-module.log-in-success-page.step-two-text' | translate }}</span>
+              </div>
+            </div>
+            <div class="step">
+              <div class="v-stepper">
+                <div class="line"></div>
+                <div class="circle">
+                  3
+                </div>
+                <div class="line-empty"></div>
+              </div>
+              <div class="stepper-content">
+                <span>{{ 'signup-module.log-in-success-page.step-three-text' | translate }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="loginInSuccessFooterDescription" class="footer-description">
+          <p>{{ 'signup-module.log-in-success-page.next-step-info' | translate }}</p>
+        </div>
+        <ion-button id="loginInSuccessBtn" class="blue-button" expand="block" (click)="continue()">
+          {{ 'signup-module.log-in-success-page.btn-text' | translate }}
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

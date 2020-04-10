@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="18px" viewBox="0 0 20 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 58 (101010) - https://sketch.com -->
+    <title>5B7EE95A-2E84-4ACE-B998-A224AF69A499</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="2-1-1-Dashboard" transform="translate(-102.000000, -727.000000)">
+            <g id="Components-/-Tab-Bar-/-Tab-Bar-(Rewards)-Components-/-Tab-Bar-/-Tab-Bar-(Home)" transform="translate(0.000000, 707.000000)">
+                <g id="24x24px-Move-Money-(Inactive)-Icons-/-24x24px-/-Move-Money-/-Inactive" transform="translate(100.000000, 17.000000)">
+                    <rect id="Container" x="0" y="0" width="24" height="24"></rect>
+                    <path d="M13,16 L3,16" id="Path-2" stroke="#B7BBCE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(8.000000, 16.000000) scale(-1, -1) translate(-8.000000, -16.000000) "></path>
+                    <polyline id="Path-6" stroke="#B7BBCE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="7.00407824 20 3 16 7.00407824 11.9982789"></polyline>
+                    <path d="M21,8.00172112 L11,8.00172112" id="Path-2-Copy-3" stroke="#B7BBCE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(16.000000, 8.001721) scale(-1, -1) translate(-16.000000, -8.001721) "></path>
+                    <polyline id="Path-6-Copy" stroke="#B7BBCE" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(19.002039, 8.000861) scale(-1, 1) translate(-19.002039, -8.000861) " points="21.0040782 12.0017211 17 8.00172112 21.0040782 4"></polyline>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

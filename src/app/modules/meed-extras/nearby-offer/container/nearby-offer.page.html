@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'meed-extra-module.nearby-offer-page.header-title' | translate }}</ion-title>
+    <div slot="end" (click)="goToSearchPage()">
+      <img class="header-search-img" src="assets/img/white-search.png" alt="search" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="nearby-wrapper">
+    <div class="location-text">
+      <p>{{ 'meed-extra-module.nearby-offer-page.location-text' | translate }}</p>
+    </div>
+    <div class="my-location-text">
+      <p>
+        1011 Elkgrove Ave., Venice, Los Angeles
+      </p>
+    </div>
+    <div class="zip-code-search-wrapper">
+      <form [formGroup]="zipOfferForm" (ngSubmit)="findOffers(zipOfferForm.value.zipCode)">
+        <div class="nput-field-container">
+          <ion-input
+            class="white-input"
+            id="zipCode"
+            type="number"
+            hide-keyboard
+            placeholder="{{ 'meed-extra-module.nearby-offer-page.zip-code-placeholder' | translate }}"
+            formControlName="zipCode"
+            required
+          ></ion-input>
+          <ion-button type="submit" [disabled]="zipOfferForm.invalid" class="grey-outline-button" expand="block">
+            {{ 'meed-extra-module.nearby-offer-page.search-btn' | translate }}
+          </ion-button>
+        </div>
+      </form>
+    </div>
+
+    <div class="offer-result">
+      <offer-card (OfferClick)="setOffer($event)" *ngFor="let offer of offers$ | async" [offer]="offer"></offer-card>
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,96 @@
+.content-wrapper {
+  .blue-wrapper {
+    margin: -20px;
+    background-color: #435cdc;
+    padding-top: 16px;
+  }
+
+  .tab-content-wrapper {
+    margin-top: 20px;
+
+    .content-block {
+      margin-top: 44px;
+      .goals-block {
+        margin-top: 59px;
+      }
+      .goals-block {
+        .title {
+          color: #070a18;
+          font-family: 'Averta W05 Bold5204651';
+          font-size: 18px;
+          letter-spacing: -0.36px;
+          line-height: 21px;
+          margin-bottom: 26px;
+        }
+        .goals-empty-block {
+          padding: 30px;
+          height: 180px;
+          border-radius: 12px;
+          background-color: rgba(244, 246, 253, 0.75);
+          .tree {
+            ion-img {
+              height: 32px;
+              widows: 32px;
+            }
+            margin-bottom: 22px;
+          }
+          .title {
+            margin-bottom: 10px;
+            color: #070a18;
+            font-family: 'Averta W05 Regular';
+            font-size: 16px;
+            letter-spacing: -0.15px;
+            line-height: 16px;
+            text-align: center;
+          }
+          .subtitle {
+            color: #8c90a3;
+            font-family: 'Averta W05 Regular';
+            font-size: 16px;
+            letter-spacing: -0.15px;
+            line-height: 16px;
+            text-align: center;
+          }
+        }
+        .goals-list-block {
+          .goal-item,
+          .history-item {
+            height: 85px;
+            padding: 24px 0;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            margin-right: -20px;
+            border-bottom: 1px solid #ebedf2;
+            .item-content {
+              .item-title {
+                color: #070a18;
+                font-family: 'Averta W05 Regular';
+                font-size: 16px;
+                letter-spacing: -0.15px;
+                line-height: 16px;
+                margin-bottom: 5px;
+              }
+              .item-subtitle {
+                color: #8c90a3;
+                font-family: 'Averta W05 Regular';
+                font-size: 14px;
+                letter-spacing: 0.15px;
+                line-height: 14px;
+                span {
+                  color: #fe964c;
+                }
+              }
+            }
+            .img-arrow-right {
+              height: 14px;
+              width: 14px;
+              margin-right: 20px;
+            }
+          }
+        }
+      }
+    }
+  }
+}

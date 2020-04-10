@@ -1,0 +1,61 @@
+<ion-header meed class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>{{ 'more-module.account-info-page.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="account-info-page override-ion-content-padding">
+  <div class="clearfix">
+    <!-- Item Dividers in a List -->
+    <ion-list>
+      <ion-item>
+        <div class="clearfix">
+          <h6 class="heading">
+            {{ 'more-module.account-info-page.account-number' | translate }}
+          </h6>
+          <p class="valuebold">{{ accountInfoFacade?.accountInfo.accountNumber }}</p>
+          <p class="subtext">
+            {{ 'more-module.account-info-page.disclaimer-text' | translate }}
+          </p>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <div class="clearfix">
+          <h6 class="heading">
+            {{ 'more-module.account-info-page.bank-routing-number' | translate }}
+          </h6>
+          <p class="valuebold">{{ accountInfoFacade?.accountInfo.routingNumber }}</p>
+          <p class="subtext">
+            {{ 'more-module.account-info-page.disclaimer-text' | translate }}
+          </p>
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <div class="clearfix">
+          <h6 class="heading">
+            {{ 'more-module.account-info-page.inviter-email' | translate }}
+          </h6>
+          <p class="valuebold onlyValue">
+            {{ accountInfoFacade?.memberInfo.inviter }}
+          </p>
+        </div>
+      </ion-item>
+
+      <ion-item lines="none">
+        <div class="clearfix">
+          <h6 class="heading">
+            {{ 'more-module.account-info-page.member-since' | translate }}
+          </h6>
+          <p class="valuebold onlyValue">
+            {{ accountInfoFacade?.memberInfo.createdDate | date: 'MMM dd, yyyy' }}
+          </p>
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,111 @@
+<ion-header meed class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'more-module.virtual-assistant.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="virtual-assistant-content" #scrollElement>
+  <div class="message-wrap">
+    <div
+      *ngFor="let msg of virtualAssistantFacade.messageList"
+      class="message"
+      [class.left]=" msg.userId === virtualAssistantFacade.toUser.id "
+      [class.right]=" msg.userId === virtualAssistantFacade.user.id "
+    >
+      <ion-spinner name="dots" *ngIf="msg.status === 'pending'"></ion-spinner>
+      <div class="msg-detail">
+        <div class="msg-content">
+          <p class="line-breaker" [innerHtml]="msg.message | safeHtml"></p>
+          <ion-list *ngIf="msg.relativeResults.length > 0" class="related-results">
+            <ng-container *ngFor="let relativeResult of msg.relativeResults">
+              <ion-item
+                *ngIf="relativeResult.recognition_id != 'self'"
+                detail="false"
+                button="true"
+                (click)="sendFaqMsg(relativeResult)"
+              >
+                <ion-label class="ion-text-wrap">
+                  {{relativeResult.question_text}}
+                </ion-label>
+                <ion-icon name="arrow-forward-outline" item-end></ion-icon>
+              </ion-item>
+            </ng-container>
+            <ng-container *ngFor="let dialogueResult of msg.dialogueResults">
+              <button
+                *ngIf="dialogueResult.DTreeRequestType == 2"
+                [ngClass]="{'dialogue-background-color':dialogueResult.isdisabled}"
+                ion-item
+                detail-none
+                color="meedBlue"
+                (click)="sendDialogueMsg(dialogueResult,msg)"
+                [disabled]="dialogueResult.isdisabled"
+              >
+                {{dialogueResult.click_text}}
+                <ion-icon name="arrow-forward-outline" item-end></ion-icon>
+              </button>
+              <button
+                *ngIf="dialogueResult.DTreeRequestType == 3"
+                [ngClass]="{'dialogue-background-color':dialogueResult.isdisabled}"
+                ion-item
+                detail-none
+                color="meedBlue"
+                (click)="sendDialogueMsg(dialogueResult,msg)"
+                [disabled]="dialogueResult.isdisabled"
+              >
+                {{dialogueResult.click_text}}
+                <ion-icon name="arrow-back-outline" item-start></ion-icon>
+              </button>
+            </ng-container>
+          </ion-list>
+        </div>
+        <div class="msg-info">
+          <p>
+            {{msg.time | timeAgo}}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div>
+    <ion-list *ngIf="virtualAssistantFacade.messageList.length == 1" class="common-question">
+      <ion-list-header>
+        <ion-label>
+          COMMON QUESTIONS
+        </ion-label>
+      </ion-list-header>
+      <ion-item
+        *ngFor="let suggestedEntry of virtualAssistantFacade.suggestedEntries"
+        detail="false"
+        class="ion-text-right"
+        button="true"
+        (click)="submitSuggestedEntry(suggestedEntry)"
+      >
+        <ion-label>
+          {{suggestedEntry}}
+        </ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+
+<ion-footer class="virtual-assistant-footer">
+  <ion-toolbar>
+    <ion-item lines="none">
+      <ion-input
+        debounce="400"
+        [(ngModel)]="inputMessage"
+        (keyup.enter)="sendMessage()"
+        (ionFocus)="onFocus()"
+        (ionChange)="typeAhead()"
+        type="text"
+        placeholder="Type your question here..."
+      ></ion-input>
+      <ion-button [disabled]="inputMessage.length == 0 ? true: false" fill="clear" item-right (click)="sendMessage()">
+        <ion-icon slot="icon-only" name="arrow-up-circle-outline"></ion-icon>
+      </ion-button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>

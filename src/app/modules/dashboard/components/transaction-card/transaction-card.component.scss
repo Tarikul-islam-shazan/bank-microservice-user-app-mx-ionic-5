@@ -1,0 +1,42 @@
+.transactions-container {
+  .transaction-subtitle {
+    color: #b7bbce;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .transaction-item {
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ebedf2;
+    margin-right: -20px;
+    .item-content {
+      .content-title {
+        margin-bottom: 6px;
+        color: #070a18;
+        font-family: 'Averta W05 Regular';
+        font-size: 16px;
+        letter-spacing: -0.15px;
+        line-height: 16px;
+      }
+      .content-subtitle {
+        color: #8c90a3;
+        font-family: 'Averta W05 Regular';
+        font-size: 14px;
+        letter-spacing: 0.15px;
+        line-height: 14px;
+      }
+    }
+    .item-amount {
+      color: #070a18;
+      font-family: 'Averta W05 Semibold5179739';
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: -0.1px;
+      line-height: 16px;
+      margin-right: 20px;
+    }
+  }
+}

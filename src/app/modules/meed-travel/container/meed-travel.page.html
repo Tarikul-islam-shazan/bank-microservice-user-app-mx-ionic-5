@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'meed-travel-page.header-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="meed-cover-wrapper">
+    <div class="cover-image">
+      <img src="assets/img/rewards/travel.png" />
+    </div>
+    <div class="meed-cover-text">
+      {{'meed-travel-page.main-page.meed-text' | translate}}<span id="cover-text"
+        >{{'meed-travel-page.main-page.travel-text' | translate}}</span
+      >
+    </div>
+    <div class="cover-description">
+      <p>{{'meed-travel-page.main-page.description-text-1' | translate}}</p>
+    </div>
+
+    <div class="cover-description">
+      <p>{{'meed-travel-page.main-page.description-text-2' | translate}}</p>
+    </div>
+
+    <div class="cover-description">
+      <p>{{'meed-travel-page.main-page.description-text-3' | translate}}</p>
+    </div>
+
+    <div class="book-meed-travel-btn">
+      <ion-button class="white-button " expand="block" (click)="book()">
+        {{'meed-travel-page.main-page.book-btn-text' | translate}}
+      </ion-button>
+    </div>
+
+    <div class="travel-bottom-info">
+      <p>
+        {{'meed-travel-page.main-page.cash-back-text' | translate}}
+      </p>
+      <a href="" tappable (click)="$event.preventDefault(); viewPolicy()"
+        >{{'meed-travel-page.main-page.travel-terms-text' | translate}}</a
+      >
+    </div>
+  </div>
+</ion-content>

@@ -1,0 +1,36 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button appSuppress="Home" tab="home">
+      <div class="tab-icon">
+        <span class="icon-home"></span>
+      </div>
+      <ion-label>{{ 'dashboard-tabs.tab-home-text' | translate }}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button class="move-money" appSuppress="MoveMoney" tab="move-money">
+      <div class="tab-icon">
+        <span class="icon-move-money"></span>
+      </div>
+      <ion-label>{{ 'dashboard-tabs.tab-move-money-text' | translate }}</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button appSuppress="Rewards" tab="rewards">
+      <div class="tab-icon">
+        <span class="icon-rewards"></span>
+      </div>
+      <ion-label>{{ 'dashboard-tabs.tab-rewards-text' | translate }}</ion-label>
+    </ion-tab-button>
+    <ion-tab-button appSuppress="Invite" tab="invite">
+      <div class="tab-icon">
+        <span class="icon-invite"></span>
+      </div>
+      <ion-label>{{ 'dashboard-tabs.tab-invite-text' | translate }}</ion-label>
+    </ion-tab-button>
+    <ion-tab-button tab="more">
+      <div class="tab-icon">
+        <span class="icon-more"></span>
+      </div>
+      <ion-label>{{ 'dashboard-tabs.tab-more-text' | translate }}</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

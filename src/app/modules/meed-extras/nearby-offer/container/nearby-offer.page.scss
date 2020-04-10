@@ -1,0 +1,29 @@
+.header-search-img {
+  margin-right: 20px;
+  height: 15px;
+  width: 15px;
+}
+
+.nearby-wrapper {
+  .location-text {
+    color: #070a18;
+    font-family: 'Averta W05 Bold5204651' !important;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.36px;
+    line-height: 21px;
+    p {
+      margin-bottom: 8px;
+    }
+  }
+  .my-location-text {
+    color: #606477;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    line-height: 24px;
+    p {
+      margin: 0px !important;
+    }
+    margin-bottom: 20px;
+  }
+}

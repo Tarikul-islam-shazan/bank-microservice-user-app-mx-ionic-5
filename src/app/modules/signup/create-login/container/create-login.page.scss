@@ -1,0 +1,41 @@
+.content-wrapper {
+  margin-top: 27px;
+}
+.title-input-field {
+  margin-bottom: 26px;
+  .field-title {
+    margin-bottom: 10px;
+    color: #8c90a3;
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    line-height: 1.1rem;
+    text-transform: uppercase;
+  }
+}
+.validation-tags {
+  margin: 20px 0 35px 0;
+  .tags-row {
+    margin-bottom: 10px;
+    .tags {
+      padding: 8px 15px;
+      margin-left: 5px;
+      background-color: #f4f6fd;
+      border-radius: 15px;
+      color: #8c90a3;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 1.2rem;
+      line-height: 2rem;
+    }
+    .green-tags {
+      padding: 8px 15px;
+      margin-left: 5px;
+      background-color: rgb(12, 218, 145, 0.1);
+      border-radius: 15px;
+      color: #0cda91;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 1.2rem;
+      line-height: 2rem;
+    }
+  }
+}

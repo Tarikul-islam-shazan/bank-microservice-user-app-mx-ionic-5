@@ -1,0 +1,1629 @@
+{
+  "account-recovery": {
+    "page-title": "Recuperación de cuenta",
+    "forgot-username-text": "Olvidé el nombre de usuario",
+    "forgot-password-text": "Olvidé la contraseña"
+  },
+  "login-module": {
+    "create-login-page": {
+      "welcome-back": "¡Bienvenido de nuevo!",
+      "login-button-text": "Iniciar sesión",
+      "login-form": {
+        "username": "Nombre de usuario",
+        "password": "Contraseña",
+        "remember-username": "Guardar nombre de usuario",
+        "remember-face-id-or-touch-id": "Usar Face/Touch ID",
+        "remember-touch-id": "Usar Touch ID",
+        "forgot-username-Password": "¿Olvidaste tu nombre de usuario o contraseña?",
+        "show-password": "Mostrar",
+        "hide-password": "Ocultar"
+      },
+      "signup-button-text": "Sign up",
+      "help-button-text": "Ayuda",
+      "help-modal-message": "Contáctate con el servicio de atención al cliente.",
+      "help-modal-call-no": "Llama al +1-833-213-6333",
+      "help-modal-cancle-btn-text": "Cancelar",
+      "meed-reward-earnMore": "¡Gana aún más! ",
+      "meed-reward-tryAndEarnedCashBack": "Prueba MeedRewards™ y gana hasta un 5 % de devolución en efectivo",
+      "status-denied": {
+        "title": "Lo sentimos",
+        "content": "Tu solicitud se denegó."
+      },
+      "status-on-hold": {
+        "title": "Lo sentimos",
+        "content": "Su solicitud aún está siendo procesada. Le enviaremos una notificación una vez que se haya tomado una decisión. Por favor, regrese más tarde."
+      },
+      "modal-action-btn": {
+        "modal-dismiss-button-text": "Descartar"
+      }
+    },
+    "forgot-password-page": {
+      "page-title": "Olvidé la contraseña",
+      "input-lable-userName": "Indica tu nombre de usuario",
+      "security-question-title": "Responde a estas preguntas de seguridad para recuperar tu contraseña",
+      "form-input-placeholders": {
+        "date": "MM / DD / YYYY",
+        "ssn": "123-45-6789"
+      },
+      "button-name": "Continuar"
+    },
+    "change-password": {
+      "page-title": "Cambiar contraseña",
+      "title": "Elige una nueva contraseña.",
+      "label-new-password": "Nueva contraseña",
+      "label-repeat-password": "Nueva contraseña",
+      "btn-change-password": "Cambiar contraseña",
+      "btn-modal-okay": "Correcto",
+      "modal-succces-title-message": "La contraseña se modificó correctamente.",
+      "modal-success-btn-finish": "Finalizar"
+    },
+    "forgot-username-page": {
+      "page-title": "Olvidé el nombre de usuario",
+      "input-label-email": "Por favor, indica tu dirección de correo electrónico.",
+      "btn-label": "Continuar",
+      "forgot-username-modal": {
+        "modal-title": "Revisar tu correo electrónico para recuperar tu nombre de usuario.",
+        "modal-btn": "Finalizar"
+      }
+    }
+  },
+  "dashboard-module": {
+    "loc-transaction-page": {
+      "title-text": "Línea de crédito",
+      "available-text": "Disponible",
+      "minimum-payment-due-text": "Pago mínimo adeudado",
+      "minimum-payment-date-text": "Minimum Payment Date",
+      "make-payment-text": " Realizar pago",
+      "hide-text": "Ocultar",
+      "show-text": "Mostrar",
+      "pending-transaction-text": "Transacciones pendientes",
+      "recent-transaction-text": "Transacciones recientes",
+      "no-pending-transaction-text": "Sin transacciones pendientes",
+      "no-recent-transaction-text": "No Recent Transactions",
+      "credit-limit-text": "Límite de crédito",
+      "balance-text": "Saldo"
+    },
+    "dda-transaction-page": {
+      "title-text": "Comprobando",
+      "available-text": "Disponible",
+      "hide-text": "Ocultar",
+      "show-text": "Mostrar",
+      "pending-transaction-text": "Transacciones pendientes",
+      "recent-transaction-text": "Transacciones recientes",
+      "no-pending-transaction-text": "Sin transacciones pendientes",
+      "no-recent-transaction-text": "No Recent Transactions",
+      "balance-text": "Saldo",
+      "pending-text": "Pendiente"
+    },
+    "ssa-transaction-page": {
+      "title-text": "Ahorros",
+      "available-text": "Disponible",
+      "balance-text": "Saldo",
+      "funds-on-hold-text": "Fondos en espera",
+      "transactions-text": "Transacciones",
+      "monthly-saving-target-text": "Objetivos de ahorro mensual",
+      "target-text": "Objetivos",
+      "goal-setup-text": "Configuración de meta",
+      "history-text": "Historial",
+      "save-this-month-text": "Ahorrado este mes",
+      "progress-text": "Progreso",
+      "hit-target-box-text": "Para alcanzar tu objetivo, debes ahorrar:",
+      "daily-text": "Diariamente",
+      "weekly-text": "Semanalmente",
+      "monthly-text": "Mensualmente",
+      "saving-goal-text": "Metas de ahorro",
+      "no-active-goal-text": "Aún no tienes un meta activa",
+      "maybe-start-saving-text": "Tal vez comenzar a ahorrar para tus próximas vacaciones...",
+      "per-month-text": "al mes",
+      "no-recent-transaction-text": "No Recent Transactions",
+      "add-saving-goal-button-text": "Agregar meta de ahorro",
+      "save-now-button-text": "Ahorrar ahora",
+      "go-to-goal-setup-text": "Por favor, ve a configuración de objetivos para establecer el objetivo mensual."
+    },
+    "home-page": {
+      "hi-text": "¡Hola",
+      "available-meedflex-text": "Puedes gastar hasta",
+      "available-checking-text": "Disponible en cuenta corriente",
+      "available-credit-text": "Crédito disponible",
+      "rewards-text": "Con Meed, has ganado recompensas de "
+    },
+    "savings-goal": {
+      "new-header-text": "Nuevo objetivo de ahorro",
+      "edit-header-text": "Editar objetivo de ahorro",
+      "goal-name-text": "Nombre de la meta",
+      "monthly-amount-text": "Monto mensual",
+      "monthly-mininmum-target-text": "El objetivo mensual debe ser mayor que 10",
+      "years-of-savings-text": "Años de ahorro",
+      "projected-value-text": "Valor proyectado",
+      "by-year-text": "Por año",
+      "create-savings-goal-text": "Crear objetivo de ahorro",
+      "update-goal-text": "Actualizar meta",
+      "delete-goal-text": "Eliminar meta"
+    },
+    "transaction-details": {
+      "title-text": "Detalles de la transacción",
+      "amount-text": "Importe",
+      "to-text": "Hasta",
+      "type-text": "Tipo",
+      "notes-text": "Notas",
+      "date-text": "Fecha",
+      "time-text": "Hora",
+      "reference-text": "Referencia #"
+    },
+    "account-card-component": {
+      "available-text": "Disponible:",
+      "balance-text": "Saldo:",
+      "checking-text": "Comprobando",
+      "loc-text": "Línea de crédito",
+      "savings-text": "Ahorros"
+    },
+    "advanced-search": {
+      "keyword-text": "Palabras clave",
+      "amount-range-text": "Intervalo de importe",
+      "date-text": "Fecha",
+      "to-text": "Hasta",
+      "debit-text": "Débito",
+      "credit-text": "Crédito",
+      "clear-text": "Borrar",
+      "search-text": "Buscar",
+      "date-display-format": "MMM DD, YYYY"
+    }
+  },
+  "dashboard-tabs": {
+    "tab-home-text": "Inicio",
+    "tab-move-money-text": "Transferir dinero",
+    "tab-rewards-text": "Recompensas",
+    "tab-invite-text": "Invitar",
+    "tab-more-text": "Más"
+  },
+  "signup-module": {
+    "components": {
+      "step-counter": {
+        "counter-text": "Paso {{currentStep}} de {{totlaStep}}"
+      }
+    },
+    "intro-page": {
+      "intro-do-money-differently-title": "Haz dinero de forma diferente!",
+      "intro-do-money-differently-details": "Un enfoque completamente nuevo de la<br />banca móvil, que te ayuda a ganar<br />más, a ahorrar más y a obtener más.",
+      "intro-more-rewards-title": "¡Más recompensas ideales para ti!",
+      "intro-more-rewards-details": "Podrías ganar<br />100 USD y ahorrar cientos de dólares con 3 programas diferentes de devolución de efectivo<br />.",
+      "intro-get-paid-instantly-title": "¡Recibe el pago al instante!",
+      "intro-get-paid-instantly-details": "No más esperas.<br />Sin cargos por cobro de cheques.<br />&nbsp;",
+      "intro-send-money-anyone-anywhere-title": "Envía dinero a cualquiera,<br />en cualquier lugar.",
+      "intro-send-money-anyone-anywhere-details": "Los miembros reciben el pago en tiempo real.<br />Enlaces a transferencias internacionales.",
+      "intro-atms-title": "Todo esto por solo<br />9.95 USD al mes",
+      "intro-atms-details": "Lo mismo que vale un par de<br />cafés. Y puedes fácilmente<br />recuperar eso... ¡y más!",
+      "get-started": "Comenzar"
+    },
+    "signup-email-page": {
+      "welcome-back": "¡Dar una buena acogida!",
+      "login-form": {
+        "username": "nombre de usuario",
+        "password": "contraseña"
+      },
+      "email-placeholder": "Tu correo electrónico",
+      "forgot-password": "Olvidó Passowrd?",
+      "title": "Bienvenido a Meed!",
+      "button-continue": "Continuar"
+    },
+    "signup-compressed-page": {
+      "title": "¡Bienvenidos a Meed!",
+      "nick-name-placeholder": "¿Cómo te llamaremos?",
+      "inviter-email-placeholder": "Dinos el correo electrónico o el código de la persona que te invitó",
+      "inviter-or-own-seperator-text": "o",
+      "inviter-found-own-checkbox-text": "Marca aquí si nos encontraste por su cuenta",
+      "country-placeholder-text": "¿De dónde te nos unes?",
+      "button-text": "Continuar",
+      "modals": {
+        "inviter-found-own-modal-title": "Desmarca “Nos encontraste por tu cuenta” antes de ingresar un correo electrónico o código de la persona que te invitó.",
+        "inviter-found-own-modal-button": "Aceptar",
+        "country-choose-modal-text": "Choose Country",
+        "country-unavailable-modal-title": "Todavía no estamos ahí",
+        "country-unavailable-modal-description": "Lamentablemente, solo tenemos actividades en EE. UU. en este momento. Síguenos en las redes sociales para ser el primero en enterarte de nuestros planes comerciales"
+      }
+    },
+    "signup-personal": {
+      "page-title": "Información general",
+      "button-text": "Próximo",
+      "personal-form": {
+        "first-name": "Nombre",
+        "middle-name": "Segundo nombre (Opcional)",
+        "last-name": "Apellido",
+        "prefix": "Prefijo (Opcional)",
+        "date-of-birth": "Fecha de nacimiento",
+        "date-of-birth-display-format": "MM / DD / YYYY",
+        "social-security": "N.º de seguridad social #",
+        "occupation": "Ocupación",
+        "source-of-income": "Fuente de ingresos",
+        "monthly-income": "Ingresos mensuales $ (Opcional)",
+        "monthly-withdrawl": "Retiros mensuales",
+        "monthly-deposit": "Depósitos mensuales",
+        "mothers-maiden-name": "Mother's maiden name",
+        "errors": {
+          "valid-first-name-text": "Por favor, introduce un nombre válido.",
+          "valid-last-name-text": "Por favor, introduce un apellido válido.",
+          "valid-date-of-birth-text": "Por favor, selecciona una fecha válida.",
+          "valid-social-security-text": "Por favor, introduce un número de seguridad social válido."
+        }
+      }
+    },
+    "inviter-page": {
+      "page-title": "Invitar miembros",
+      "header-text": "¡Hazlos felices!",
+      "subheader-text1": "Cuéntanos quién te invitó para que podamos",
+      "subheader-text2": "darles su MeedShare ™.",
+      "inviter-email-placeholder": "Correo electrónico o código del invitado",
+      "inviter-btn": "Hacer continuación",
+      "no-one-invite-btn": "Nadie me invito"
+    },
+    "log-in-success-page": {
+      "header-text": "Estás a solo minutos de una increíble banca.",
+      "step-one-text": "Establecer credenciales de seguridad",
+      "step-two-text": "Tomar escaneos de identificación",
+      "step-three-text": "Solicitud bancaria completa",
+      "next-step-info": "El siguiente paso es configurar su nombre de usuario y contraseña.",
+      "btn-text": "¡Vamos a hacerlo!"
+    },
+    "verification-page": {
+      "header-text": "Verificacion de email",
+      "resend-btn-text": "Vuelva a enviar el código de verificación",
+      "footer-text": "Te acabamos de enviar un código para ingresar arriba. Si no lo ve, verifique su carpeta Spam / Junk y agréguenos a su libreta de direcciones.",
+      "error-text": "¡Uy! Por favor, vuelva a ingresar el código correcto.",
+      "wrong-code-text": "Codigo erroneo. Inténtalo de nuevo.",
+      "modal-title": "verificacion de email",
+      "modal-description": "Hacemos esto para asegurarnos de que el correo electrónico que ha utilizado sea válido y funcione: utilizamos su dirección de correo electrónico para identificarlo en nuestros sistemas, ¡así que es bastante importante!",
+      "resend-error-text": "Demasiadas entradas de código erróneas.",
+      "resend-footer-text": "Has utilizado el código incorrecto demasiadas veces. Haz clic en 'Reenviar' y te enviaremos un nuevo código."
+    },
+    "signup-address-page": {
+      "page-title": "¿Dónde vives?",
+      "button-text": "Próximo",
+      "address-form": {
+        "home-address": "Direccion de casa",
+        "address-line": "Dirección línea 2",
+        "city": "Ciudad",
+        "state": "Estado",
+        "zip-code": "Código postal",
+        "zipCode-validation-text": "Zip Code must be 5 or 10 characters",
+        "mobile": "Número de teléfono móvil",
+        "work-phone": "Teléfono de trabajo (opcional)",
+        "work-phone-extension": "Extensión del teléfono de trabajo",
+        "armed-forces-member-first-name": "Nombre",
+        "armed-forces-member-last-name": "Apellido",
+        "armed-forces-social-security-pin": "N.º de seguridad social #",
+        "armed-forces-member-dob-label": "Fecha de nacimiento",
+        "error": {
+          "zip-code-require-code": "Por favor, introduce un código postal válido.",
+          "zip-code-error": "Este código postal es incorrecto. Por favor, introduce un código postal correcto.",
+          "address-error": "Por favor, introduce una dirección válida.",
+          "city-error": "Por favor, introduce el nombre de la ciudad.",
+          "city-valid-error": "Por favor, introduce un nombre de ciudad válido.",
+          "phone-number-error": "Por favor, introduce un número de teléfono válido",
+          "work-phone-number-error": "Por favor, introduce un número de teléfono laboral válido.",
+          "armed-forces-first-name-error": "Por favor, introduce un nombre válido.",
+          "armed-forces-last-name-error": "Por favor, introduce un apellido válido.",
+          "date-error": "Please select valid date.",
+          "ssn-error": "Introduce un número de SSN válido."
+        }
+      },
+      "text-1": "Cuando active su tarjeta, llame desde uno de estos números.",
+      "text-2": "Al ingresar su número de teléfono y hacer clic en “Siguiente”, nos está dando permiso para contactarlo sobre esta aplicación.",
+      "text-3": "Fuerzas Armadas de EE. UU.",
+      "text-4": "¿Es usted miembro o dependiente de un miembro de las Fuerzas Armadas de los EE. UU., Como el Ejército, la Armada, el Cuerpo de Marines, la Fuerza Aérea o la Guardia Costera, que está en servicio activo bajo una llamada u orden que no especifica un período de 30 días o menos, o en servicio activo de Guardia y Reserva (generalmente por un período de 180 días consecutivos o más)?",
+      "text-5": "Introduce a continuación la información del miembro de las Fuerzas Armadas.",
+      "armed-forces-related-member-radio-btn": "Sí, soy miembro.",
+      "armed-forces-related-dependent-radio-btn": "Sí, soy dependiente.",
+      "armed-forces-related-neither-radio-btn": "No, no soy ni uno ni otro."
+    },
+    "confirm-identity-page": {
+      "page-title": "confirme su identidad",
+      "page-subtitle": "Elige tu documento de identidad",
+      "button-text": "Próximo",
+      "identity-form": {
+        "file": "Escoger",
+        "identityNumber": "Número de identidad"
+      },
+      "identification-type-driver-license": "Permiso de conducir",
+      "identification-type-state-id": "Tarjeta de identificación",
+      "identification-type-passport": "Pasaporte",
+      "identification-type-military-id": "Tarjeta militar",
+      "server-error": "Error del servidor. Por favor, inténtalo de nuevo."
+    },
+    "country-of-residence": {
+      "header-text": "¿De dónde nos acompañas?",
+      "usa-btn-text": "Estados Unidos",
+      "other-btn-text": "Otra",
+      "modal-title": "Aún no estamos allí",
+      "modal-description": "Lamentablemente, solo vivimos en los EE. UU. En este momento. Síganos en las redes sociales para ser el primero en enterarse de nuestros planes de implementación"
+    },
+    "create-login-page": {
+      "page-title": "Crear un inicio de sesión",
+      "button-text": "Hacer continuación",
+      "username-label": "Escoge nombre de usuario",
+      "password-label": "elegir una contraseña",
+      "repeat-password-label": "repite la contraseña",
+      "validation-tags": {
+        "characters": "8+ personajes",
+        "uppercase": "Mayúscula",
+        "lowercase": "En minúscula",
+        "number": "Número",
+        "letters": "letras y numeros solamente",
+        "special-character": "(!@#$%^&*-)",
+        "password-match": "Coincide la contraseña"
+      },
+      "login-form": {
+        "username": "Nombre de usuario",
+        "password": "Contraseña",
+        "repeatPassword": "repite la contraseña",
+        "rememberUsername": "Guardar nombre de usuario",
+        "rememberFaceId": "Usar ID de cara",
+        "forgotUsernameOrPassword": "¿Ha olvidado su nombre de usuario o contraseña?",
+        "username-tip-modal-title": "Consejos sobre el nombre de usuario",
+        "username-tip-modal-details": "Por motivos de seguridad, se recomienda que tu nombre de usuario no sea tu correo electrónico ni tu nombre completo, y no debe contener caracteres o dígitos repetidos o consecutivos."
+      }
+    },
+    "questions": {
+      "header-text": "Preguntas de seguridad",
+      "instruction-text": "Si alguna vez olvida su contraseña, deberá responder estas preguntas para demostrar quién es usted. ¡Solo otra forma de mantener segura su cuenta!",
+      "securityQuestion1": "pregunta de seguridad 1",
+      "securityQuestion2": "Pregunta de seguridad 2",
+      "securityQuestion3": "Pregunta de seguridad 3",
+      "question-placeholder-text": "Por favor elija",
+      "answer-placeholder-text": "Responder",
+      "continue-btn": "Hacer continuación"
+    },
+    "identity-verification-page": {
+      "page-title": "Verificación de identidad",
+      "page-subtitle": "Para confirmar su identidad, responda estas {{totalQuestion}} preguntas.",
+      "button-text": "Próximo",
+      "question-title": "Preguntas"
+    },
+    "terms-conditions-page": {
+      "page-title": "Términos y condiciones",
+      "button-text": "Próximo",
+      "page-subtitle": "Antes de finalizar su solicitud, nos gustaría que lea algunas cosas. Desafortunadamente, ninguno está en las listas de los más vendidos ...",
+      "terms_text_1": "He leído y acepto que recibiré todas las divulgaciones y comunicaciones de Meed descritas en el ",
+      "terms_text_2": "Acepto que recibiré una tarjeta de débito y que he leído y acepto estos términos de Meed: ",
+      "terms_text_3": "He leído y acepto estos términos adicionales de Meed: ",
+      "terms_text_4": "he leído y estoy de acuerdo con ",
+      "terms_text_5": "Con respecto a mi número de identificación de contribuyente, he leído y acepto: ",
+      "corporate-terms": "Reconozco que la participación en el programa de descuento Meed@Work requiere que se comparta cierta información con mi empleador. Doy mi consentimiento para que Vast Bank, N.A. confirme a mi empleador que tengo una cuenta en la institución al compartir el nombre legal y la dirección del correo electrónico asociada con mis cuentas de Meed Banking Club.",
+      "corporate-terms-share-checkbox": "Aceptar para compartir.",
+      "corporate-terms-not-share-checkbox": "No compartir. Entiendo que no seré elegible para el descuento de la tarifa."
+    },
+    "signup-deny-page": {
+      "page-title": "Desafortunadamente…",
+      "page-subtitle": "Ha habido un problema con su solicitud y, por lo tanto, el Banco ha tenido que rechazar su solicitud para convertirse en miembro del Meed Banking Club.",
+      "page-subtitle1": "Lamentamos que no se nos una en este momento.",
+      "button-text": "Hecho"
+    },
+    "signup-approved-page": {
+      "page-title": "¡Felicidades! Has sido aprobado!",
+      "page-subtitle": "Y tus datos cifrados están seguros y protegidos. ¡Puedes disfrutar de los beneficios de la membresía con total confianza!",
+      "button-text": "Next Step",
+      "footer-text": "Un paso más - mueva dinero a su cuenta."
+    },
+    "scan-id": {
+      "page-title": "Escanea tu ID",
+      "description-text-1": "Información importante sobre los procedimientos para abrir una cuenta nueva",
+      "description-text-2": "Estamos a punto de pedirte que escanees tu identificación (una licencia de conducir, ID del estado o pasaporte), y luego te tomes una selfie.",
+      "description-text-3": "Esto significa que cuando abra una cuenta, le pediremos su nombre, dirección, fecha de nacimiento y otra información que nos permita identificarlo. El siguiente paso es escanear su licencia de conducir, pasaporte o identificación estatal, luego tomar una selfie.",
+      "button-text": "Ha sido todo",
+      "button-text-jumio-initialized": "Cancelar",
+      "button-text-processing-done": "Listo"
+    }
+  },
+  "deposit": {
+    "direct-deposit-start": {
+      "header-text": "Muevamos dinero a su cuenta.",
+      "subtitle-text": "¡Felicitaciones, has sido aprobado! Ahora muevamos dinero a su cuenta.",
+      "direct-deposit-title": "Deposito directo",
+      "direct-deposit-info-text": "El depósito directo le permite a su empleador pagarle al instante, de 2 a 4 días más rápido que con un cheque."
+    },
+    "direct-deposit-info": {
+      "header-text": "¡Reciba pagos al instante y gane dinero!",
+      "info-text-1": "El depósito directo le permite a su empleador enviar su pago instantáneamente a su cuenta de Meed; reciba el pago de 2 a 4 días más rápido que con un cheque. No más tarifas de espera o cambio de cheques.",
+      "info-text-2": "Nos dices el nombre de la empresa de tu empleador. Le enviaremos un formulario por correo electrónico con sus datos completos. Usted lo verifica y luego se lo entrega a su empleador. ¡Ellos harán el resto!",
+      "info-text-3": "The month after your first direct deposit is made, you’ll receive $9.95 cash back in your Checking account.",
+      "info-text-4": "And you’ll also earn a Share, entitling you to MeedShare cash back from the bank every month.",
+      "continue-btn-text": "Hacer continuación"
+    },
+    "direct-deposit-setup": {
+      "info-title": "¿Quieres recibir el pago al instante?",
+      "info-paragraph-text-1": "El depósito directo le permite a tu empleador pagarte al instante, entre 2 y 4 días más rápido que con un cheque.",
+      "info-paragraph-text-2": "Te hemos enviado un formulario precargado por correo electrónico.",
+      "white-button-text": "Configurar el depósito directo",
+      "grey-outline-button-text": "Explora la aplicación"
+    },
+    "direct-deposit": {
+      "header": "Deposito directo",
+      "title-text": "Deposito directo",
+      "subtitle-text": "Ingrese el nombre de su empleador a continuación. Le enviaremos un formulario de depósito directo que puede enviar a su empleador.",
+      "placeholder-text": "Nombre del empleador",
+      "checkbox-text": "Acepto recibir por correo electrónico un formulario de depósito directo que incluye el nombre de mi empleador, mi número de cuenta bancaria y número de ruta.",
+      "btn-text": "Formulario de depósito directo por correo electrónico"
+    },
+    "direct-deposit-complete": {
+      "thank-you-text": "¡Gracias!",
+      "info-text": "Por favor revise su correo electrónico para el formulario de depósito directo. Una vez que haya verificado que toda la información correcta está allí, entréguesela a su empleador; ellos harán el resto.",
+      "info-text-2": "Remember – after your first direct deposit, you’ll receive $9.95 cash back and be entitled to MeedShare!",
+      "btn-text": "Exploremos un poco"
+    },
+    "deposit-money-page": {
+      "header-title": "Depósito de dinero",
+      "page-title": "Elige cómo transferir dinero",
+      "echeck-title": "eCheck de otro banco",
+      "echeck-subtitle": "Dinero disponible en 2 días hábiles.",
+      "credit-title": "Tarjetas de crédito/débito",
+      "credit-subtitle": "Dinero disponible en 2 días hábiles.",
+      "eTransfer-title": "Transferencia electrónica desde otro banco",
+      "eTransfer-subtitle": "¡Próximamente será posible",
+      "button-text": "Transferir el"
+    },
+    "paystand-page": {
+      "echeck-title": "eCheck de otro banco",
+      "credit-title": "Tarjeta de crédito / débito",
+      "disclaimer-text": "Los fondos estarán disponibles para el cliente en los siguientes plazos: 2 días hábiles para eCheck y para tarjeta de débito/crédito."
+    },
+    "deposit-echeck-page": {
+      "header-title": "eCheck de otro banco",
+      "button-text": "Continuar",
+      "subscription-title": "Subscription Fee",
+      "total-title": "Total",
+      "max-amount-error": "El límite máximo de depósito es de $509.95."
+    },
+    "deposit-thank-you": {
+      "thank-you-title": "¡Gracias! Este pago ya está liquidado.",
+      "ref-text": "Árbitro",
+      "btn-text": "Hecho"
+    }
+  },
+  "invite-module": {
+    "invite-page": {
+      "page-title": "Invitar miembros",
+      "header-title": "Meed es mejor juntos",
+      "sub-header-title": "Disfruta de beneficios adicionales al invitar a amigos y familiares a que se unan al Club.",
+      "invitees-header": "INVITACIONES ENVIADAS",
+      "invite-btn": "Invitar a un amigo"
+    },
+    "invite-new-member-page": {
+      "header-title": "Invitar a un nuevo miembro",
+      "invite-label": "Personas Invitadas",
+      "invite-input-placeholder": "Introducir correo electrónico",
+      "invite-note": "Para introducir más correos electrónicos, sepáralos con un “Espacio”.",
+      "invite-or-divider": "O",
+      "choose-contact-button": "Elige entre tus contactos",
+      "continue-button": "Continuar",
+      "choose-contact-modal": {
+        "search-input-placeholder": "Search friends",
+        "add-friends-button": "Add friends"
+      },
+      "permission-setting-modal": {
+        "title": "Enable Contacts",
+        "details": "Please enable Contacts from the settings.",
+        "setting-button-text": "Setting",
+        "cancel-button-text": "Cancel"
+      }
+    },
+    "invite-new-member-verify": {
+      "header-title": "Invitar a un nuevo miembro",
+      "invite-label": "Personas Invitadas",
+      "invite-already-member": "Already a member of Meed Banking Club.",
+      "invite-red-already-member": "Las direcciones de correo electrónico que están en rojo ya son miembros de Meed Banking Club, por lo que no recibirán una invitación.",
+      "continue-button": "Continuar"
+    },
+    "invite-new-member-confirm": {
+      "header-title": "Invitar a un nuevo miembro",
+      "invitees-title": "Personas Invitadas",
+      "edit-message-title": "EDITA TU MENSAJE A CONTINUACIÓN",
+      "invite-message": "Deberías unirte a mí como miembro del Meed Banking Club. ¡Meed es mejor si estamos juntos!\n\nPodrás tener una excelente forma de hacer tus operaciones bancarias directamente desde tu teléfono. Además, los tres programas de reembolso de efectivo podrán ayudarte a ganar y ahorrar cientos de dólares. ¡Será como recibir un sueldo extra cada año!",
+      "invite-new-member-confirm-btn": "Invitar"
+    },
+    "invite-success-modal": {
+      "success-modal-title": "¡Buen trabajo! ¡Ganarás una acción por cada persona que se una y mantenga una cuenta activa!",
+      "success-modal-button": "¡Disfruta de MeedShare!"
+    }
+  },
+  "more-module": {
+    "more-page": {
+      "header-title": "Más",
+      "profile": "PERFIL",
+      "preferences": "PREFERENCIAS",
+      "help-or-support": "AYUDA Y SOPORTE",
+      "personal-details": "Detalles personales",
+      "account-details": "Detalles de la cuenta",
+      "debit-card": "Débito tarjeta",
+      "statement": "Estados de cuenta",
+      "settings": "Configuración y seguridad",
+      "sign-in-with-face-or-touch-id": "Iniciar sesión con Face/Touch ID",
+      "sign-in-with-touch-id": "Iniciar sesión con Touch ID",
+      "atm-finder": "Buscador de cajeros automáticos",
+      "privacy-legal": "Privacidad y legal",
+      "message-center": "Centro de mensajes",
+      "contact-us": "Ponte en contacto con nosotros",
+      "log-out": "Cerrar sesión"
+    },
+    "account-info-page": {
+      "header-title": "Detalles de la cuenta",
+      "account-number": "Número de cuenta",
+      "bank-routing-number": "Número de ruta del banco",
+      "inviter-email": "Correo electrónico de la persona que te invitó",
+      "member-since": "Miembro desde",
+      "disclaimer-text": "Esta es la información de tu cuenta personal. Ten cuidado al compartirla."
+    },
+    "card-details-page": {
+      "header-title": "Tarjeta",
+      "freeze-card": "Desactivar tarjeta",
+      "unfreeze-card": "Reactivar tarjeta",
+      "forgot-pin": "Forgotten PIN",
+      "stolen-card": "Pérdida/robo",
+      "replace-card": "Reemplazar tarjeta",
+      "card-pin": "PIN de la tarjeta",
+      "hold-subheader": "Coloca la tarjeta temporalmente en espera",
+      "call-immediately-text": "Haz clic aquí para llamarnos inmediatamente.",
+      "deactivated-text": "Esta tarjeta se desactivará temporalmente.",
+      "replace-card-subheader": "Llama si tu tarjeta no funciona",
+      "replace-card-unfreze-text": "Pulsa de nuevo para descongelar",
+      "change-pin-subheader": "Llama para cambiar o restablecer tu PIN",
+      "pin-protaction-text": "Protege siempre tu PIN"
+    },
+    "card-status-page": {
+      "header-title": "Desactivar tarjeta",
+      "header-text": "Desactiva su tarjeta Meed",
+      "disclaimer-text-1": "Si has perdido temporalmente o extraviado tu tarjeta Meed, desactívala y se mantendrá inhabilitada hasta que la encuentres.  ",
+      "disclaimer-text-2": "Cuando la encuentres, regresa aquí, reactívala y utilízala normalmente.",
+      "btn-text-freeze": "Desactivar tarjeta",
+      "btn-text-unfreeze": "Reactivar tarjeta"
+    },
+    "card-lost-page": {
+      "header-title": "Pérdida/robo",
+      "header-text": "Denunciar la pérdida o el robo de la tarjeta Meed",
+      "stolen-text-1": "Si tu tarjeta Meed se pierde o te la roban, la asistencia se encuentra a sólo una llamada telefónica. Llámanos inmediatamente y un representante del banco revisará tu cuenta para buscar alguna transacción no autorizada.",
+      "stolen-text-2": "Ten en cuenta que cuando informes que tu tarjeta de débito ha sido extraviada o robada, desactivaremos inmediatamente tu tarjeta y enviaremos una nueva tarjeta con un nuevo número para tu protección.",
+      "btn-text": "Llamar ahora"
+    },
+    "card-replace-page": {
+      "header-title": "Reemplazar tarjeta",
+      "replace-card-text": "Reemplaza tu tarjeta Meed",
+      "card-call": "Si tienes que reemplazar la tarjeta de débito, llama al.",
+      "btn-text": "Llamar ahora"
+    },
+    "card-pin-page": {
+      "header-title": "PIN de la tarjeta",
+      "header-text": "Cambiar o restablecer el PIN de la tarjeta Meed",
+      "card-pin-call": "Si tienes que cambiar o restablecer el PIN de la tarjeta de débito, llama al {{callNumber}}",
+      "btn-text": "Llamar ahora"
+    },
+    "statements-page": {
+      "header-title": "Estados de cuenta"
+    },
+    "virtual-assistant": {
+      "header-title": "Ayuda",
+      "live-chat": {
+        "loading-message": "Live chat initialize...",
+        "message-code-1": "El tiempo de espera esperado es de {{expectedWaitTime}} segundos. Por favor, espera mientras te conectamos con un agente.",
+        "message-code-6": "Enviaremos tu conversación a un experto en tu problema. Será procesada cuanto antes.",
+        "message-code-8": "Enviaremos tu conversación a un experto en tu problema. Será procesada cuanto antes.",
+        "message-code-10": "Ahora estás conectado a {{agentName}}.",
+        "message-code-13": "El agente dio por terminada la sesión de chat.",
+        "message-code-31": "El agente está temporalmente inaccesible. Espera por favor.",
+        "message-code-33": "El agente se reconectó.",
+        "message-code-35": "El chat fue dado por terminado por el agente en estado suspendido por falla de red."
+      }
+    },
+    "change-name-required-documents": {
+      "scan-header": "ESCANEA TUS DOCUMENTOS",
+      "front-id": "Frente del documento",
+      "back-id": "Dorso del documento",
+      "save-button-text": "Guardar",
+      "note-text": "Nota",
+      "note": {
+        "text1": "Todos los documentos deben estar vigentes. No aceptaremos documentos de identidad vencidos.",
+        "text2": "Las cuatro esquinas del documento y toda la información necesaria para la verificación de la solicitud de cambio deben verse claramente.",
+        "text3": "Por favor, proporciona una imagen del frente y del dorso del documento de identificación con foto.",
+        "text4": "Si el documento requiere una firma, esta debe estar en manuscrita. No podemos aceptar firmas electrónicas.",
+        "text5": "Los documentos emitidos por el gobierno (por ejemplo, un documento de identidad estatal o un pasaporte) deben ser a color. Otros documentos pueden tener una foto en blanco y negro."
+      },
+      "permission-info-modal": {
+        "title": "Habilita la cámara y el almacenamiento",
+        "details": "Por favor, habilita la cámara y el almacenamiento desde la configuración.",
+        "setting-button-text": "Configuración",
+        "cancel-button-text": "Cancelar"
+      }
+    },
+    "settings-page": {
+      "header-title": "Configuración y seguridad",
+      "change-language-text": "Cambiar idioma",
+      "contact-preference-text": "Preferencias de contacto",
+      "version-info-text": "Información de la versión",
+      "sweep-text": "Transferencia automática",
+      "change-password-text": "Cambiar contraseña"
+    },
+    "atm-finder-page": {
+      "header-title": "Buscar cajeros automáticos",
+      "map-view-tab": "Vista de mapa",
+      "atm-list-tab": "Vista de lista"
+    },
+    "change-language": {
+      "header-title": "Cambiar idioma",
+      "english-text": "Inglesa",
+      "spanish-text": "Española"
+    },
+    "contact-preference": {
+      "header-title": "Preferencias de contacto",
+      "vast-bank-header": "Meed Banking utiliza la tecnología de Vast Bank, N.A.",
+      "vast-bank-sub-header": "Estas notificaciones te avisan de cambios en el saldo, fraude, transacciones, contraseñas únicas, ofertas y mucho más.",
+      "email-text": "Correo electrónico",
+      "push-text": "Notificación push",
+      "meed-header": "Meed Banking Club",
+      "meed-sub-header": "Estas notificaciones le proporcionan las actualizaciones más recientes sobre MeedShare, MeedExtras, MeedTravel y MeedCover."
+    },
+    "privacy-legal-page": {
+      "header-title": "Privacidad y legal",
+      "body-title": "Haz clic para ver cualquiera de los documentos de abajo."
+    },
+    "version-info": {
+      "header-title": "Información de la versión",
+      "version-text": "VERSIÓN",
+      "release-text": "FECHA DE PUBLICACIÓN"
+    },
+    "sweep": {
+      "header-title": "Transferencia automática",
+      "slider-title": "Desliza para activar las transferencias automáticas DESACTIVADO/ACTIVADO",
+      "slider-on": "ACTIVADO",
+      "slider-off": "DESACTIVADO",
+      "sweep-message": "La \"cuenta de transferencia\" ayuda a minimizar el interés adeudado en tu línea de crédito transfiriendo automáticamente los fondos disponibles de tu cuenta corriente al final de cada día para pagar el saldo de crédito más rápido. Esta es una alternativa estupenda si prefieres no esperar hasta adeudar el pago mensual.",
+      "sweep-save-btn": "Guardar cambios",
+      "sweep-modal-title": "Información",
+      "sweep-modal-details": "Changed saved successfully",
+      "sweep-modal-btn-text": "Aceptar"
+    },
+    "change-password": {
+      "page-title": "Cambiar contraseña",
+      "title": "Elige una nueva contraseña.",
+      "current-password-placeholder": "Contraseña",
+      "current-password-label": "Contraseña actual",
+      "new-password-label": "Nueva contraseña",
+      "new-password-placeholder": "Contraseña",
+      "repeat-password-label": "Repetir contraseña",
+      "btn-change-password": "Cambiar contraseña",
+      "modal-succces-title-message": "Tu contraseña se cambió correctamente.",
+      "modal-success-btn-finish": "Finalizar"
+    },
+    "message-center": {
+      "header-title": "Centro de mensajes",
+      "empty-inbox": "Tu bandeja de entrada está vacía"
+    },
+    "personal-details": {
+      "header-title": "Detalles personales",
+      "btn-edit": "Editar",
+      "full-name": "Pago  Nombre",
+      "name-or-nickname": "Nombre o apodo",
+      "street-address": "DIRECCIÓN",
+      "email": "Correo electrónico",
+      "phone": "teléfono",
+      "add-work-phone": "Añade un teléfono laboral",
+      "change-full-name-modal": {
+        "header-title": "Cambiar nombre",
+        "first-name": "Nombre",
+        "middle-name": "Segundo nombre",
+        "last-name": "Apellido",
+        "reason-placeholder": "Elegir motivos",
+        "reason-for-name-change": "Lý do đổi tên",
+        "valid-doc-need-message": "Necesitarás una identificación o un pasaporte válidos {{documentName}} ",
+        "next-btn": "Siguiente",
+        "reasons-list": {
+          "misspell": "Hay un error de escritura del nombre legal en tu cuenta",
+          "misspell-document": "Certificado de nacimiento",
+          "marriage": "Matrimonio",
+          "marriage-document": "Certificado de matrimonio",
+          "divoce": "Divorcio",
+          "divoce-document": "Decreto de divorcio",
+          "court": "Orden judicial",
+          "court-document": "Orden judicial",
+          "adoption": "Adopción",
+          "adoption-document": "Certificado de adopción"
+        }
+      },
+      "change-nick-name-modal": {
+        "header-title": "Cambia el alias o apodo",
+        "nick-name-text": "Nombre o apodo",
+        "button-text": "Guardar"
+      },
+      "change-address-modal": {
+        "header-title": "Cambiar dirección de la calle",
+        "address-text": "Línea de dirección",
+        "city-text": "Ciudad",
+        "state-text": "Estado",
+        "zip-code-text": "Código postal",
+        "button-text": "Guardar",
+        "errors": {
+          "zip-code-required-text": "Zip code is required.",
+          "zip-code-character-text": "Zip code must be 5 or 10 characters"
+        }
+      },
+      "change-email-address-modal": {
+        "header-title": "Cambiar correo electrónico",
+        "registered-email-text": "Correo electrónico registrado actual",
+        "new-email-text": "Correo electrónico nuevo",
+        "confirm-email-text": "Confirmar correo electrónico",
+        "button-text": "Guardar",
+        "errors": {
+          "email-address-valid-text": "Por favor, introduce una dirección de correo electrónico válida",
+          "email-address-mismatch-text": "El correo electrónico nuevo y el correo electrónico de confirmación deben ser los mismos"
+        }
+      },
+      "change-phone-no-modal": {
+        "header-title": "Cambiar número de teléfono",
+        "phone-no-text": "Número de teléfono",
+        "work-phone-no-text": "Número de teléfono del trabajo",
+        "button-text": "Guardar"
+      }
+    },
+    "biometric-modal-alert-message": "Debes volver a iniciar sesión con la casilla biométrica comprobada.",
+    "logout-modal-confirmation-details": "¿Estás seguro de que deseas cerrar sesión?",
+    "logout-modal-yes-button": "Sí",
+    "logout-modal-no-button": "No"
+  },
+  "meed-extra-module": {
+    "extra-page": {
+      "header-title": "Meed Extras",
+      "featured-offer-title": "Ofertas destacadas",
+      "categories-title": "Categorías",
+      "nearby-text": "Ver ofertas cercanas",
+      "all-offer-text": "Ver todas las ofertas"
+    },
+    "offer-search": {
+      "header-title": "Search Deals",
+      "search-offer-placeholder": "Search Offer",
+      "type-text": "Type",
+      "category-text": "Category",
+      "result-text": "Result"
+    },
+    "all-deals-page": {
+      "header-title": "Todas las ofertas",
+      "all-deals-title": "Todas las ofertas"
+    },
+    "instore-offer-page": {
+      "active-deal-text": "Active Offer",
+      "activated-text": "Activado",
+      "offer-details-text": "Detalles de la oferta",
+      "locations-text": "Ubicaciones",
+      "nearest-text": "Más cercana",
+      "search-zip-info-text": "Para buscar otras ubicaciones, introduce un código postal diferente a continuación.",
+      "zip-code-placeholder": "Código postal",
+      "search-btn-text": "Buscar la ubicación más cercana"
+    },
+    "online-offer-page": {
+      "shop-now-text": "Comprar ahora",
+      "offer-details-text": "ofrece detalles"
+    },
+    "nearby-offer-page": {
+      "header-title": "Ofertas cercanas",
+      "location-text": "Tu ubicación",
+      "zip-code-placeholder": "Código postal",
+      "search-btn": "Buscar la ubicación más cercana"
+    },
+    "feature-offer-component": {
+      "cash-back-text": "Reembolso"
+    },
+    "filter-component": {
+      "reset-btn-text": "RESET",
+      "search-by-text": "Buscar",
+      "search-btn-text": "Buscar"
+    },
+    "extra-intro-component": {
+      "remember_text": "Recuerda que…",
+      "meed_extras_card_explanation": "Todas las compras deben realizarse con tu tarjeta de débito Meed Visa.",
+      "meed_extras_schudule_explanation": "Puede tomar hasta 90 días para que la devolución de efectivo se acredite en tu cuenta de ahorros.",
+      "meed_extras_opt_in_explanation": "Debes activar las ofertas de suscripción antes de comprar.",
+      "meed_extras_online_explanation": "Para realizar una compra en línea, sigue los enlaces de la aplicación al sitio del minorista.",
+      "meed_extras_cookie_explanation": "Si has desactivado las cookies, no se puede realizar un seguimiento de tu compra en línea ni de la devolución de efectivo asignada.",
+      "ok_btn_text": "Correcto",
+      "donot_show_btn": "Don't show again"
+    }
+  },
+  "error-message-module": {
+    "code-0": "No se puede conectar a la red. Comprueba tu conexión a Internet.",
+    "code-100": "Unable to update sweep account state",
+    "code-201": "Current user Session ID not found",
+    "code-301": "Unable to get access token",
+    "code-302": "Headers must be set before accessing them",
+    "code-303": "Session timeout",
+    "code-401": "Your account is locked",
+    "code-402": "Username or password is incorrect",
+    "code-404": "La nueva contraseña no puede ser la misma que la anterior.",
+    "code-403": "La respuesta es incorrecta.",
+    "code-405": "Tu cuenta sea ha bloqueado debido a múltiples intentos fallidos de inicio de sesión. Llámanos al 1-833-213-6333",
+    "code-410": "La información que has introducido no coincide con nuestros registros. ¡Vamos a arreglarlo! Llámanos al 833-213-6333.",
+    "code-412": "La contraseña nueva no debe ser la misma que la contraseña actual",
+    "code-413": "La contraseña que ingresaste no coincide con tu contraseña actual. Corrige la contraseña e inténtalo de nuevo.",
+    "code-602": "Username already exists",
+    "code-603": "A member with this TIN number is already exists",
+    "code-604": "Gracias por enviar tu información para una cuenta en Meed Banking Club. Lamentamos informarte que no podemos procesar tu solicitud en este momento. Los registros de seguro social asociados con la información que proporcionaste están atribuidos a una persona menor de edad. Comunícate con el IRS si esta información es incorrecta",
+    "code-605": "Gracias por enviar tu información para una cuenta en Meed Banking Club. Lamentamos informarte que no podemos procesar tu solicitud en este momento. Los registros de seguro social asociados con la información que proporcionaste están asignados a una persona fallecida. Comunícate con el IRS si esta información es incorrecta.",
+    "code-606": "Application is not acceptable",
+    "code-607": "Identity verification not found",
+    "code-608": "Application denied",
+    "code-609": {
+      "modal-adverse-action-header": "Aviso de acción adversa",
+      "modal-adverse-action-notice-date-title": "Fecha de aviso: ",
+      "modal-adverse-action-message": "Lo sentimos, pero no podemos atender tu solicitud de abrir una cuenta de depósito en nuestra institución financiera en este momento.  Nuestra decisión se basó, en todo o en parte, en la información obtenida en un informe de la agencia de informes de crédito que se indica a continuación.  Tienes derecho, en virtud de la Ley de Equidad de Informes de Crédito (Fair Credit Reporting Act), a conocer la información contenida en tu expediente de la agencia de informes de crédito. La agencia de informes de crédito no participó en nuestra decisión, y no puede dar razones específicas de por qué hemos denegado tu solicitud de abrir una cuenta de depósito en nuestra institución. También tienes derecho a obtener una copia gratuita del informe de la agencia, si lo solicitas, a más tardar, 60 días después de recibir este aviso. Además, si consideras que cualquier información contenida en el informe que recibas es inexacta o incompleta, tienes derecho a cuestionar el asunto con la agencia de informes de crédito.",
+      "modal-adverse-action-address-line1": "Chex Systems, Inc.",
+      "modal-adverse-action-address-line2": "Attn:  Consumer Relations",
+      "modal-adverse-action-address-line3": "7805 Hudson Road, Suite 100",
+      "modal-adverse-action-address-line4": "Woodbury, MN 55125",
+      "modal-adverse-action-address-line5": "Telephone: 800-428-9623",
+      "modal-adverse-action-address-line6": "Fax:  602-659-2197",
+      "modal-adverse-action-address-line7": "Web:  www.chexsystems.com",
+      "modal-adverse-action-footer": "Si tienes alguna pregunta sobre tu informe de crédito, debes ponerte en contacto con la agencia de informes de crédito utilizando la información de contacto anterior.",
+      "modal-adverse-action-button-title": "Aceptar"
+    },
+    "code-610": "Thank you for applying for Meed Banking Club. Based on the information provided we are unable to complete your application. For questions on the application process please call Meed Banking Club at 1(833)-213-6333. Ref ID Authentication.",
+    "code-611": "Thank you for applying for Meed Banking Club. Based on the information provided we are unable to complete your application. For questions on the application process please call Meed Banking Club at 1(833)-213-6333. Ref ID Authentication.",
+    "code-612": "Tu solicitud se denegó.",
+    "code-701": "Unable to find the customer",
+    "code-702": "Error desconocido",
+    "code-703": "Email Address already exist",
+    "code-706": "OTP is expired",
+    "code-801": "Insufficient balance",
+    "code-802": "Daily access limit exceed",
+    "code-803": "Weekly access limit exceed",
+    "code-804": "Monthly access limit exceed",
+    "code-805": "Daily counter limit exceed",
+    "code-806": "Monthly counter limit exceed",
+    "code-807": "Immediate Transfers cannot be modified",
+    "code-901": "The invitee is already a member",
+    "code-902": "Failed to send invitation",
+    "code-1100": "This type of email is not allowed",
+    "code-1101": "Invalid email address",
+    "code-1102": "New verification code is required",
+    "code-1103": "Invalid verification code",
+    "code-1104": "Verification code is expired",
+    "code-1105": "This verification code is already used",
+    "code-1201": "Invalid request parameter",
+    "code-1202": {
+      "country-unavailable-modal-title": "We're not there yet",
+      "country-unavailable-modal-description": "Unfortunately we're only live in the US at the moment. Follow us on social media to be the first to hear about our roll-out plans",
+      "country-unavailable-modal-button-text": "Aceptar"
+    },
+    "code-1203": "Username or Password is not correct",
+    "code-1204": "Language not supported",
+    "code-1205": "El correo electrónico o el código introducido no pertenecen a un usuario de Meed existente. Comprueba si lo escribiste correctamente o prueba el correo electrónico/código de otro invitado.",
+    "code-1501": "Authentication token missing",
+    "code-1502": "Authentication token invalid or expired",
+    "code-1601": "The savings goal is not found.",
+    "code-1701": "No bank found",
+    "code-1702": "No location found within this address",
+    "code-2001": "Unable to get Jumio Data",
+    "code-2002": "jumio verification faild",
+    "code-2003": "jumio verfication status pending",
+    "code-2201": "Invalid phone number",
+    "code-2202": "Invalid process date.",
+    "code-4000": "Error desconocido",
+    "code-4004": "Url not found",
+    "code-5000": "¡Huy! Algo ha fallado.",
+    "code-5001": "¡Huy! Algo ha fallado.",
+    "error-title": "Error",
+    "error-title-unfortunately": "Lamentablemente…",
+    "ok-button": "Aceptar",
+    "dismiss-button": "Descartar"
+  },
+  "move-money-module": {
+    "home-page": {
+      "page-title": "Transferir dinero",
+      "move-money": "Transferir dinero a Meed",
+      "transfer-money": "Transferir dinero y pagar facturas",
+      "menu": {
+        "direct-deposit": "Depósito Directo",
+        "transfer-from-other-banks": "Transferencia de otros bancos",
+        "mobile-check-deposit": "Depósito móvil de cheques",
+        "credit-debit-card": "Tarjeta de crédito/débito",
+        "send-money": "Enviar dinero",
+        "request-money": "Solicitar dinero",
+        "send-money-internationally": "Enviar dinero a nivel internacional",
+        "move-between-accounts": "Transferir entre cuentas",
+        "scheduled-transfers": "Transferencias programadas",
+        "pay-bills": "Pagar recibos",
+        "mail-a-check": "Enviar cheque por correo",
+        "transfer-to-other-banks": "Transferencia a otros bancos"
+      }
+    },
+    "transfer-from-other-bank-page": {
+      "header-title": "Transferencia de otro banco",
+      "page-title": "Elige cómo transferir dinero",
+      "echeck-title": "eCheck de otro banco",
+      "echeck-subtitle": "Dinero disponible en 2 días hábiles",
+      "other-bank-title": "Transferencia electrónica desde otro banco",
+      "other-bank-subtitle": "¡Próximamente será posible",
+      "button-text": "Continuar"
+    },
+    "internal-transfer": {
+      "move-between-accounts": {
+        "header-title": "Transferir entre cuentas",
+        "transfer-to": "A",
+        "amount-title": "Cantidad a transferir",
+        "amount-placeholder-text": "$0.00",
+        "amount-error-text": "El importe solicitado supera el saldo disponible.",
+        "schedule-title": "Programar",
+        "schedule-edit-button": "EDITAR",
+        "note-title": "Nota",
+        "note-placeholder": "Añadir una nota",
+        "confirm-button": "Confirmar detalles",
+        "checking-text": "Comprobando",
+        "savings-text": "Ahorros",
+        "line-of-credit-text": "Línea de crédito",
+        "action-sheet": {
+          "transfer-from-header": "TRANSFERENCIA DESDE",
+          "transfer-to-header": "TRANSFERENCIA A",
+          "saving-button": "Comprobando",
+          "checking-button": "Ahorros",
+          "line-of-credit-button": "Línea de crédito",
+          "cancel-button": "Cancelar"
+        }
+      },
+      "confirm-details": {
+        "header-title": "Confirmar detalles",
+        "amount-title": "Cantidad a transferir",
+        "transfer-from": "DESDE",
+        "transfer-to": "A",
+        "schedule-title": "Programar",
+        "note-title": "Nota",
+        "move-money-button": "Transferir dinero",
+        "edit-button": "EDITAR",
+        "cancel-button": "Cancelar",
+        "cancel-transfer-button": "Cancelar transferencia",
+        "save-changes-button": "Guardar cambios",
+        "checking-text": "Comprobando",
+        "savings-text": "Ahorros",
+        "line-of-credit-text": "Línea de crédito"
+      },
+      "transfer-success-modal": {
+        "transfer-title": "Has",
+        "transfer-immediate": "transferido",
+        "transfer-recurring": "programadas",
+        "transfer-from": "desde",
+        "transfer-to": "a",
+        "schedule-subtitle-text": "Con una frecuencia de {{frequency}} desde ",
+        "occurring-subtitle-text": "Con una frecuencia de {{frequency}} desde ",
+        "reference-text": "N.º de ref. #",
+        "done-button": "Listo",
+        "checking-text": "Comprobando",
+        "savings-text": "Ahorros",
+        "line-of-credit-text": "Línea de crédito",
+        "scheduled-button": "Ver transferencias programadas"
+      },
+      "cancel-transfer-success-modal": {
+        "transfer-title": "Tu transferencia se ha cancelado.",
+        "reference-text": "N.º de ref.",
+        "done-button": "Listo"
+      },
+      "schedule-type-modal": {
+        "header-title": "Programar transferencia",
+        "transfer-frequency": {
+          "header": "¿CON QUÉ FRECUENCIA?",
+          "once": "Una vez",
+          "weekly": "Semanalmente",
+          "monthly": "Mensual",
+          "yearly": "Anualmente"
+        },
+        "schedule-date-header": "FECHA",
+        "schedule-date-display-format": "MMM DD, YYYY",
+        "schedule-date-edit-button": "EDITAR",
+        "continue-button": "Continuar"
+      },
+      "scheduled-transfers": {
+        "header-title": "Programar transferencias",
+        "make-new-transfer": "Hacer una transferencia nueva",
+        "active-transfer-header": "Transferencias activas",
+        "transfer-to": "A",
+        "scheduled-on": "Programada para el",
+        "frequency-on": "el"
+      },
+      "cancel-transfer": {
+        "header-title": "Cancelar transferencia",
+        "amount-title": "Cantidad a transferir",
+        "transfer-from": "Formulario",
+        "transfer-to": "A",
+        "schedule-title": "Programada",
+        "cancel-button": "Cancelar transferencia",
+        "checking-text": "Comprobando",
+        "savings-text": "Ahorros",
+        "line-of-credit-text": "Línea de crédito",
+        "transfer-date": "MMM dd, yyyy"
+      }
+    },
+    "pay-bills": {
+      "home": {
+        "header-title": "Pagar recibo",
+        "page-title": "Administra tus facturas mensuales y pagos recurrentes.",
+        "biller-direct-title": "Pagar con tarjeta de débito",
+        "biller-direct-details": "Paga a los principales emisores de facturas digitales como Netflix, AT&T, Hulu, etc.",
+        "bill-pay-title": "Servicio de pago de factura",
+        "bill-pay-details": "Paga a cualquier persona de forma electrónica o por cheque.",
+        "card-swap-title": "Intercambio de tarjeta",
+        "card-swap-details": "Consolida todos tus pagos de suscripciones en un solo lugar.",
+        "continue-button-text": "Continuar"
+      },
+      "biller-direct": {
+        "header-title": "Pagar con tarjeta de débito"
+      },
+      "card-swap": {
+        "header-title": "Intercambio de tarjeta"
+      },
+      "biller-direct-modal": {
+        "title": "Pagar con tarjeta de débito",
+        "details": "Paga con tu tarjeta de débito Visa de Meed a través de más de 5000 sitios web de emisores de facturas. Añade tus facturas y, a continuación, realiza o programa pagos."
+      },
+      "bill-pay-service-modal": {
+        "title": "Servicio de pago de factura",
+        "details": "Paga prácticamente a cualquier persona o empresa a través de tu cuenta corriente de Meed. El pago electrónico suele tardar entre 1 y 3 días hábiles. Establece recordatorios, paga de forma segura tus facturas y programa pagos recurrentes."
+      },
+      "card-swap-modal": {
+        "title": "Intercambio de tarjeta",
+        "details": "Registra tu tarjeta MeedCard con tus proveedores de servicios y suscripciones; después, cualquier cambio o actualización en los detalles de la tarjeta se puede gestionar una vez, en segundos."
+      },
+      "bill-pay": {
+        "page-title": "Pagar recibo",
+        "add-payee-button-title": "Agregar un beneficiario",
+        "payees-list-title": "Mis beneficiarios de pago de facturas",
+        "continue-button-title": "Continuar"
+      },
+      "add-payee-address": {
+        "page-title": "Pagar recibo",
+        "page-header": "Solo un poco más de información sobre a quién quieres pagar",
+        "form-input-placeholders": {
+          "address": "Línea de dirección",
+          "city": "Ciudad",
+          "state": "Estado",
+          "zip-code": "Código postal",
+          "phone": "Número de teléfono"
+        },
+        "errors": {
+          "address-required-text": "Address is required.",
+          "city-required-text": "City is required.",
+          "state-required-text": "State is required.",
+          "zip-code-required-text": "Zip code is required.",
+          "zip-code-character-text": "Zip code must be 5 or 10 characters",
+          "phone-no-required-text": "Phone number is required."
+        },
+        "success-modal": {
+          "title": "Your added a new payee! Now you can make payments from this app. Allow a 5-day delivery time",
+          "button-done-text": "Listo",
+          "button-payment-text": "Realiza un pago"
+        }
+      },
+      "add-payee": {
+        "page-title": "Pagar recibo",
+        "page-header": "Proporciona la información solicitada a continuación",
+        "form-input-placeholders": {
+          "payee-name": "Nombre del beneficiario",
+          "payee-nickname": "Apodo del beneficiario (opcional)",
+          "payee-account": "N.º de cuenta del beneficiario#",
+          "payee-confirm-account": "Confirmar el N.º de cuenta#",
+          "payee-type": "Tipo de beneficiario",
+          "payee-type-option-one": "Empresa",
+          "payee-type-option-two": "Persona"
+        },
+        "continue-button-title": "Continuar",
+        "cancel-button-title": "Cancelar",
+        "delete-button-title": "Eliminar",
+        "errors": {
+          "payee-name-required-text": "Payee name is required.",
+          "payee-name-alpha-numeric-text": "Please provide a valid name.",
+          "account-no-required-text": "Account number is required",
+          "account-mis-match-text": "Account number doesn't match."
+        },
+        "modal": {
+          "content": "You added a new payee! Now you can make payments from this app. Allow a {{addPayeeDeliveryInterval}}-day delivery time",
+          "done-button": "Listo",
+          "payment-button": "Make payment",
+          "delete-payee-title": "¿Estás seguro de que quieres eliminar este pago?",
+          "yes-button": "Sí",
+          "no-button": "No"
+        }
+      },
+      "bill-payment": {
+        "page-title": "Pagar recibo",
+        "payee-action": "VER/BORRAR",
+        "payment-amount-title": "Monto de pago",
+        "calendar-title": "Enviar el",
+        "date-action": "EDITAR",
+        "repeat-toggle-title": "Repetir el pago mensualmente",
+        "info": "La hora límite es a las 8 p. m. (hora del este) para la entrega electrónica en 1 día hábil",
+        "continue-button-title": "Continuar",
+        "buttons": {
+          "confirm-button-text": "Confirmar detalles",
+          "delete-button-text": "Eliminar",
+          "done-button-text": "Listo",
+          "ok-button-text": "Ok",
+          "yes-button-text": "Sí",
+          "no-button-text": "No"
+        },
+        "errors": {
+          "min-amount-limit-text": "Minimum amount should not be less than $1.00 USD.",
+          "max-amount-limit-text": "The amount you entered exceeds the limit of $1,000.00 per payment. Please enter an amount less than that."
+        },
+        "modal": {
+          "title": "You've scheduled {{paymentAmount}} to {{payeeName}}",
+          "content": "Occuring {{paymentFrequency}} {{paymentPreposition}} {{paymentExecutionDate}}",
+          "payment-edit-success-text": "Pago editado correctamente?",
+          "payment-delete-text": "¿Estás seguro de que quieres eliminar este pago?"
+        }
+      }
+    },
+    "send-money": {
+      "home": {
+        "page-title": "Enviar dinero",
+        "search-field": "Correo electrónico o nombre de contacto existente",
+        "request-list-header": "Solicitudes para mí",
+        "requested-on": "Realizada el",
+        "paid-list-header": "Personas a las que les he pagado",
+        "paid-list-button": "VER/BORRAR",
+        "next-button": "Siguiente"
+      },
+      "edit": {
+        "page-title": "Enviar dinero",
+        "sending-title": "Enviando a",
+        "amount-title": "Importe a enviar",
+        "amount-error-default": "La cantidad mínima no debe ser inferior a 1 USD.",
+        "note-title": "Nota",
+        "note-input": "Añadir una nota",
+        "confirm-button": "Confirmar detalles",
+        "cancel-button": "Cancelar"
+      },
+      "confirm": {
+        "page-title": "Confirmar detalles",
+        "amount-title": "Importe a enviar",
+        "sending-title": "Enviando a",
+        "note-title": "Nota",
+        "send-money-button": "EDITAR",
+        "edit-button": "Cancelar",
+        "cancel-button": "Cancelar"
+      },
+      "contact-modify": {
+        "page-title": "Editar información de amigo",
+        "form-title": "CORREO ELECTRÓNICO DEL AMIGO",
+        "form-email-placeholder": "Correo electrónico",
+        "remember-title": "Tu lista de contactos no se verá afectada por esta edición",
+        "save-button": "Guardar cambios",
+        "delete-button": "Eliminar contacto",
+        "modal": {
+          "content-update": "¿Estás seguro de que deseas actualizar {{email}} ?",
+          "content-delete": "¿Estás seguro de que deseas eliminar {{email}} ?",
+          "yes-button": "Sí",
+          "no-button": "No"
+        }
+      },
+      "request-details": {
+        "page-title": "Solicitar detalles",
+        "amount-title": "IMPORTE A ENVIAR",
+        "request-from": "Enviando a",
+        "note-title": "Nota",
+        "pay-button": "Pay",
+        "decline-button": "Rechazar",
+        "modal": {
+          "content": "¿Estás seguro de que deseas cancelar?",
+          "yes-button": "Sí",
+          "no-button": "No"
+        }
+      },
+      "ipay": {
+        "contact-info": {
+          "page-title": "Enviar dinero",
+          "form-title": "Tu amigo no es miembro de Meed, por lo que necesitamos un poco más de información.",
+          "first-name": "Nombre",
+          "last-name": "Apellido",
+          "mobile-number": "Número de celular",
+          "email": "Correo electrónico",
+          "send-invitation": "Enviar también a mi amigo una invitación para unirse a Meed.",
+          "next-button": "Siguiente"
+        },
+        "contact-keyword": {
+          "page-title": "Enviar dinero",
+          "form-title": "Crear una palabra clave",
+          "form-details": "The keyword is a one time password you need to send to your friend.  Without it they won’t be able to access the money you’re sending.  Don’t forget it!",
+          "keyword": "Palabra clave",
+          "confirm-keyword": "Confirmar palabra clave",
+          "remember-share": "Recuerda compartir la palabra clave lo antes posible!",
+          "next-button": "Siguiente"
+        }
+      }
+    },
+    "request-money": {
+      "page-title": "Solicitar dinero",
+      "home": {
+        "page-title": "Solicitar dinero",
+        "search-field": "Correo electrónico",
+        "search-field-hints": "Para introducir más correos electrónicos, sepáralos con un “Espacio”.",
+        "unpaid-request-list-header": "Mis solicitudes no pagadas",
+        "request-list-header": "Solicitudes que he hecho",
+        "request-list-button": "EDITAR/BORRAR",
+        "next-button": "Siguiente"
+      },
+      "selected": {
+        "page-title": "Solicitar dinero",
+        "selected-list-header": "Enviar solicitud a",
+        "next-button": "Siguiente"
+      },
+      "edit": {
+        "page-title": "Enviar dinero",
+        "request-title": "Enviar solicitud a",
+        "amount-title": "Importe solicitado",
+        "amount-error-default": "La cantidad mínima no debe ser inferior a 1 USD.",
+        "note-title": "Nota",
+        "note-input": "Añadir una nota",
+        "confirm-button": "Confirmar detalles",
+        "cancel-button": "Cancelar"
+      },
+      "confirm": {
+        "page-title": "Confirmar detalles",
+        "amount-title": "Requesting From Each",
+        "request-title": "Enviar solicitud a",
+        "note-title": "Nota",
+        "request-money-button": "Solicitar dinero",
+        "edit-button": "Editar",
+        "cancel-button": "Cancelar"
+      },
+      "cancel": {
+        "page-title": "Solicitar detalles",
+        "amount-title": "Importe solicitado",
+        "request-from": "Desde",
+        "note-title": "Nota",
+        "cancel-button": "Cancelar",
+        "modal": {
+          "content": "¿Estás seguro de que deseas cancelar?",
+          "yes-button": "Sí",
+          "no-button": "No"
+        }
+      }
+    },
+    "send-money-internationally": {
+      "page-title": "Transferencias internacionales",
+      "page-header": "¡Envía dinero desde los Estados Unidos a amigos y familiares en otros países!",
+      "page-sub-header": "Meed está formando una red de bancos miembro en todo el mundo para proporcionar acceso a transferencias de dinero inmediatas y de bajo costo. Hasta que esté disponible en su país de destino, puedes probar con uno de los proveedores externos a continuación.",
+      "about-the-links": "Acerca de los enlaces de terceros",
+      "international-transferPage-message-1": "Meed ofrece enlaces a sitios web de terceros que pueden interesarles a nuestros miembros y que se proporcionan únicamente para tu comodidad.",
+      "international-transferPage-message-2": "Meed no es responsable del contenido de los sitios web de terceros vinculados. No somos representantes de dichos terceros ni avalamos o garantizamos sus productos. No declaramos ni garantizamos la exactitud de la información contenida en los sitios vinculados. Recomendamos que siempre verifiques la información que obtienes en los sitios web vinculados antes de actuar de acuerdo con esa información.",
+      "modal-title": "Nota",
+      "modal-description": "Estás saliendo de la aplicación de Meed y dirigiéndote a un sitio web externo, con términos y condiciones diferentes.",
+      "modal-btn": "Estoy de acuerdo"
+    },
+    "mail-check": {
+      "bill-pay": {
+        "page-title": "Enviar cheque por correo",
+        "add-payee-button-title": "Agregar un beneficiario",
+        "payees-list-title": "Mis beneficiarios de pago de facturas",
+        "continue-button-title": "Continuar"
+      },
+      "add-payee-address": {
+        "page-title": "Enviar cheque por correo",
+        "page-header": "Solo un poco más de información sobre a quién quieres pagar",
+        "form-input-placeholders": {
+          "address": "Línea de dirección",
+          "city": "Ciudad",
+          "state": "Estado",
+          "zip-code": "Código postal",
+          "phone": "Número de teléfono"
+        },
+        "errors": {
+          "address-required-text": "Address is required.",
+          "city-required-text": "City is required.",
+          "state-required-text": "State is required.",
+          "zip-code-required-text": "Zip code is required.",
+          "zip-code-character-text": "Zip code must be 5 or 10 characters",
+          "phone-no-required-text": "Phone number is required."
+        },
+        "success-modal": {
+          "title": "Your added a new payee! Now you can make payments from this app. Allow a 5-day delivery time",
+          "button-done-text": "Listo",
+          "button-payment-text": "Realiza un pago"
+        }
+      },
+      "add-payee": {
+        "page-title": "Enviar cheque por correo",
+        "page-header": "Proporciona la información solicitada a continuación",
+        "form-input-placeholders": {
+          "payee-name": "Nombre del beneficiario",
+          "payee-nickname": "Apodo del beneficiario (opcional)",
+          "payee-account": "N.º de cuenta del beneficiario#",
+          "payee-confirm-account": "Confirmar el N.º de cuenta#",
+          "payee-type": "Tipo de beneficiario",
+          "payee-type-option-one": "Empresa",
+          "payee-type-option-two": "Persona"
+        },
+        "continue-button-title": "Continuar",
+        "cancel-button-title": "Cancelar",
+        "delete-button-title": "Eliminar",
+        "errors": {
+          "payee-name-required-text": "Payee name is required.",
+          "payee-name-alpha-numeric-text": "Please provide a valid name.",
+          "account-no-required-text": "Account number is required",
+          "account-mis-match-text": "Account number doesn't match."
+        },
+        "modal": {
+          "content": "You added a new payee! Now you can make payments from this app. Allow a {{addPayeeDeliveryInterval}}-day delivery time",
+          "done-button": "Listo",
+          "payment-button": "Make payment",
+          "delete-payee-title": "¿Estás seguro de que quieres eliminar este pago?",
+          "yes-button": "Sí",
+          "no-button": "No"
+        }
+      },
+      "bill-payment": {
+        "page-title": "Enviar cheque por correo",
+        "payee-action": "VER/BORRAR",
+        "payment-amount-title": "Monto de pago",
+        "calendar-title": "Enviar el",
+        "date-action": "EDITAR",
+        "repeat-toggle-title": "Repetir el pago mensualmente",
+        "info": "La hora límite es a las 8 p. m. (hora del este) para la entrega electrónica en 1 día hábil",
+        "continue-button-title": "Continuar",
+        "buttons": {
+          "confirm-button-text": "Confirmar detalles",
+          "delete-button-text": "Eliminar",
+          "done-button-text": "Listo",
+          "ok-button-text": "Ok",
+          "yes-button-text": "Sí",
+          "no-button-text": "No"
+        },
+        "errors": {
+          "min-amount-limit-text": "Minimum amount should not be less than $1.00 USD.",
+          "max-amount-limit-text": "The amount you entered exceeds the limit of $1,000.00 per payment. Please enter an amount less than that."
+        },
+        "modal": {
+          "title": "You've scheduled {{paymentAmount}} to {{payeeName}}",
+          "content": "Occuring {{paymentFrequency}} {{paymentPreposition}} {{paymentExecutionDate}}",
+          "payment-edit-success-text": "Pago editado correctamente?",
+          "payment-delete-text": "¿Estás seguro de que quieres eliminar este pago?"
+        }
+      }
+    }
+  },
+  "rewards": {
+    "header-title": "Recompensas",
+    "reward-meed": "Meed",
+    "reward-meed-extra-name": "Extras™",
+    "reward-meed-extra-note": "Devolución en efectivo en compras",
+    "reward-meed-share-name": "Share™",
+    "reward-meed-share-note": "Ganar compartiendo",
+    "reward-meed-travel-name": "Travel™",
+    "reward-meed-travel-note": "Devolución en efectivo en viajes",
+    "reward-meed-cover-name": "Cover™",
+    "reward-meed-cover-note": "Tranquilidad",
+    "reward-earn-even-more-header": "¡Gana aún más!",
+    "reward-earn-even-more-content": "Prueba MeedRewards™ y gana hasta un 5 % de devolución en efectivo"
+  },
+  "info-modal-module": {
+    "eCheck-from-other-bank": {
+      "title": "eCheck de otro banco",
+      "details": {
+        "content1": "Un eCheck retira dinero de otra cuenta bancaria y la deposita en tu cuenta Meed.",
+        "content2": "Es muy fácil de usar.  Inicia sesión en el sitio de tu banco utilizando tus credenciales seguras y personalizadas."
+      }
+    },
+    "eTransfer-from-other-bank": {
+      "title": "Transferencia electrónica desde otro banco",
+      "details": {
+        "content1": "¡PRÓXIMAMENTE SERÁ POSIBLE! Una transferencia electrónica (ACH) permite <br/> que se transfiera dinero de tu otra cuenta bancaria a tu cuenta Meed. Para utilizar una transferencia electrónica, necesitarás los datos de la cuenta de tu otro banco."
+      }
+    },
+    "please-note": {
+      "title": "Ten en cuenta",
+      "details": {
+        "content1": "Se aplicará un cargo por transferencia del 3 %, que se añadirá a la transacción de tu tarjeta."
+      },
+      "buttons": {
+        "button1": "Continuar",
+        "button2": "No, gracias"
+      }
+    },
+    "allow-location-services": {
+      "title": "Habilitar los servicios de ubicación",
+      "details": {
+        "content1": "Por favor, permite que Meed utilice los servicios de ubicación desde la configuración."
+      },
+      "buttons": {
+        "button1": "Configuración",
+        "button2": "Cancelar"
+      }
+    },
+    "line-of-credit-page": {
+      "title": "Línea de crédito",
+      "details": {
+        "content1": "Tu línea de crédito (LDC) comienza automáticamente cuando tu cuenta corriente está vacía.",
+        "content2": "A través de tu LDC puedes pedir prestado el 75 % de lo que tengas en tu cuenta de ahorros.",
+        "content3": "Si tienes 100 USD en tu cuenta de ahorros, tu LDC es de 75 USD.",
+        "content4": "La tasa de interés de tu línea de crédito es actualmente: {{apr}} % de tasa de porcentaje anual (APR)",
+        "content5": "Para más información, consulta 'Asistente Virtual' en 'Ponte en contacto con nosotros' en el menú 'Más'."
+      }
+    },
+    "saving-page": {
+      "title": "Ahorros",
+      "details": {
+        "content1": "<b>Ahorros Objetivo</b>te permite elegir para qué ahorrar y, luego, cuánto quieres ahorrar al mes para ello. Todos los días, la aplicación calcula cuánto tienes que ahorrar para alcanzar tu objetivo.",
+        "content2": "<b>Los fondos retenidos</b> reflejan el monto de seguridad para el dinero pedido prestado de la línea de crédito, que luego se ajusta para garantizar que tus obligaciones no excedan el 75 % de tu saldo de ahorros.  Aquí también están las transacciones pendientes que el banco no ha compensado y liberado por completo.  Los fondos retenidos pasan a estar disponibles cuando se liberen las transacciones pendientes o cuando el saldo de la línea de crédito se reduzca o se pague en su totalidad.",
+        "content3": "La <b>tasa de interés</b> en tus ahorros es actualmente: 1.25% APY, ${{interestRate}} YTD",
+        "content4": "<b>Aumentar tus ahorros</b> maximizando tus <br/> reembolsos en efectivo de MeedExtras, MeedTravel y MeedShare – ¡pagan directamente a tu cuenta de ahorro!"
+      }
+    },
+    "home-page": {
+      "title1": "Saldo disponible",
+      "title2": "Dinero disponible",
+      "title3": "MeedRewards™",
+      "details": {
+        "content1": "Tu saldo disponible combina el dinero disponible en tu cuenta corriente con el crédito disponible en tu línea de crédito. Esto ayuda a proteger tus ahorros, proporcionándote un mayor poder adquisitivo siempre que lo necesites.'",
+        "content2": "El dinero “disponible” consiste todos los pagos en su cuenta que se han aprobado por completo. Todos los pagos que aún no hayan sido aprobados aparecerán en tu “Saldo”, pero no estarán “Disponibles” para gastar hasta que estén aprobados.",
+        "content3": "Este es el reembolso total que ganaste a través de MeedExtras, MeedTravel y MeedShare.",
+        "content4": "Para más información, consulta 'Asistente Virtual' en 'Ponte en contacto con nosotros' en el menú 'Más'.",
+        "credits-only-message": "Gracias por iniciar sesión en la aplicación Meed Banking Club. Actualmente, esta cuenta está bloqueada debido a la actividad reciente. Para obtener más información, marca {{callNumber}} para hablar con un representante del servicio de atención al cliente."
+      },
+      "actionButtons": {
+        "yes-button": "Sí"
+      }
+    },
+    "login-page": {
+      "details": {
+        "content1": "Contáctate con el servicio de atención al cliente."
+      },
+      "actionButtons": {
+        "button1": "Llama al +1-833-213-6333",
+        "button2": "Cancelar"
+      }
+    },
+    "card-page": {
+      "details": {
+        "title": "Llamada",
+        "content1": "Do you want to call {{callNumber}}?"
+      },
+      "actionButtons": {
+        "button1": "Llamada",
+        "button2": "Cancelar"
+      }
+    },
+    "deposit-money-page": {
+      "eCheck": {
+        "title": "eCheck de otro banco",
+        "details": {
+          "content1": "Un eCheck retira dinero de otra cuenta bancaria y la deposita en tu cuenta Meed.",
+          "content2": "Es muy fácil de usar.  Inicia sesión en el sitio de tu banco utilizando tus credenciales seguras y personalizadas."
+        }
+      },
+      "credit": {
+        "title": "Tarjeta de crédito/débito",
+        "details": {
+          "content1": "Puedes utilizar una tarjeta de crédito o débito para transferir dinero a tu cuenta de Meed.  Solo tienes que introducir los datos de tu tarjeta."
+        }
+      },
+      "eTransfer": {
+        "title": "Transferencia electrónica desde otro banco",
+        "details": {
+          "content1": "¡PRÓXIMAMENTE SERÁ POSIBLE! Una transferencia electrónica (ACH) permite <br/> que se transfiera dinero de tu otra cuenta bancaria a tu cuenta Meed. Para utilizar una transferencia electrónica, necesitarás los datos de la cuenta de tu otro banco."
+        }
+      },
+      "move-money-page": {
+        "info": {
+          "title": "Límites de transacción de su dinero",
+          "details": {
+            "content-list": "Diario - 1 transacción <br /> Semanal - 3 transacciones <br /> Mensual - 5 transacciones",
+            "content-description": "<br /> Si supera su límite, puede establecer un depósito directo o un depósito móvil de cheques"
+          },
+          "buttons": {
+            "continue-button": "Continuar"
+          }
+        }
+      }
+    },
+    "close-account-echeck-card-info": {
+      "detail": "Gracias por iniciar sesión en la aplicación Meed Banking Club.  Tus cuentas de Meed Banking Club se han cerrado. Para obtener más información, marca +1-833-213-6333 para hablar con un representante del servicio de atención al cliente.",
+      "button-text": "Correcto"
+    },
+    "scan-id": {
+      "jumio-camera-permission-error-message": "Para que podamos ayudarte con la solicitud, se te pedirá que tomes una foto de una de tus ID de la lista que aparece a continuación, seguida de una imagen de ti mismo."
+    },
+    "coming-soon-feature": {
+      "title": "Coming Soon!",
+      "details": "We’re working hard to bring you this and other useful ways to manage your money. Please check back with us later!",
+      "okay-button-text": "Okay"
+    }
+  },
+  "meed-share-page": {
+    "header-title": "Meed Share",
+    "main-page": {
+      "zero-invite-header": "¡Empieza a ganar dinero hoy mismo!",
+      "zero-invite-sub-header": "Ganas una acción por cualquier persona que hayas suscrito a Meed mientras mantengan una cuenta activa. Mientras más acciones tengas, mayor será tu participación en MeedShare.",
+      "zero-invite-btn": "Invitar a un amigo",
+      "non-zero-invite-header": "¡Aumenta tus ingresos ahora!",
+      "non-zero-invite-sub-header": "Ganas una acción por cualquier persona que hayas suscrito a Meed mientras mantengan una cuenta activa. Mientras más acciones tengas, mayor será tu participación en MeedShare.",
+      "non-zero-invite-btn": "Invitar a un amigo",
+      "active-share-text": "ACCIONES ACTIVAS",
+      "this-month-text": "ESTE MES ",
+      "total-text": "TOTAL",
+      "modal-title": "¡Gane con MeedShare!",
+      "modal-text-1": "Todos los meses, los bancos miembros de Meed devuelven una parte determinada de los ingresos generados por las cuentas de Meed Banking Club. Esto es MeedShare.<br />&nbsp;",
+      "modal-text-2": "Y cada mes, MeedShare se divide entre todos los miembros en todo el mundo según el número de 'acciones'. Usted gana una acción cuando alguien abre una cuenta de Meed porque usted lo ha invitado, y mantendrá dicha acción durante el tiempo que esa cuenta permanezca abierta y activa.<br />&nbsp;",
+      "modal-text-3": "Un miembro con 2 acciones recibirá el doble de dinero que alguien con 1 acción, etc.<br />&nbsp;",
+      "modal-text-4": "Además, recibirá un reembolso de $9.95 en su cuenta de cheques cada vez que sus primeros 12 invitados completen 3 meses de membresía.<br />&nbsp;",
+      "modal-text-5": "Si trae a 12 miembros, también le acreditaremos una cantidad extra de $50 en su cuenta de ahorros. Si trae a 24, le acreditaremos $100 más."
+    }
+  },
+  "invite-card-component": {
+    "header": "Meed es mejor juntos",
+    "sub-header": "Disfruta de beneficios adicionales cuando recibas a amigos y familiares que se unan al Club.",
+    "invite-btn": "Invitar a amigos"
+  },
+  "biometric-authentication-service": {
+    "permission-request": {
+      "title": "Meed Biometric Sign On",
+      "description": "Meed use face ID or finger print for biometric authentication"
+    }
+  },
+  "mobile-check-deposit": {
+    "header-title": "Depósito móvil de cheques",
+    "amount-label": "Importe del cheque",
+    "scan-check-lebel": "Escanea el cheque",
+    "front-scan-check-lebel": "ANVERSO",
+    "back-scan-check-lebel": "REVERSO",
+    "note-label": "Nota",
+    "note-input-placeholder": "Añadir una nota",
+    "submit-button-text": "Depositar cheque",
+    "permission-info-modal": {
+      "title": "Habilita la cámara y el almacenamiento",
+      "details": "Por favor, habilita la cámara y el almacenamiento desde la configuración.",
+      "setting-button-text": "Configuración",
+      "cancel-button-text": "Cancelar"
+    }
+  },
+  "meed-cover-page": {
+    "header-title": "Meed Cover",
+    "main-page": {
+      "meed-text": "Meed",
+      "cover-text": "Cover",
+      "description-text": "Todos los miembros de Meed Banking Club están cubiertos por un seguro contra muerte accidental de $10.000.",
+      "hotline-text": "El número de línea directa de reclamos es:",
+      "hotline-number": "1-888-799-6642",
+      "view-policy-btn-text": "Ver política"
+    }
+  },
+  "app-upgrade": {
+    "header-title": "Información",
+    "button-update-text": "Actualizar",
+    "button-notnow-text": "No ahora",
+    "force-message": "La versión actual de la aplicación está desactualizada. Por favor, actualiza para iniciar sesión.",
+    "soft-message": "Hay disponible una nueva versión de Meed app."
+  },
+  "meed-travel-page": {
+    "header-title": "MeedTravel",
+    "main-page": {
+      "meed-text": "Meed",
+      "travel-text": "Travel",
+      "description-text-1": "Al reservar con MeedTravel, obtendrás precios increíblemente bajos, así como:​",
+      "description-text-2": "Hasta un 10% de reembolso al utilizar tu tarjeta de débito Meed Visa.",
+      "description-text-3": "Hasta un 5% de reembolso en todas las demás tarjetas de crédito..",
+      "book-btn-text": "Reservar a través de MeedTravel",
+      "cash-back-text": "Recuerda que puede tomar hasta 90 días para que la devolución de efectivo se acredite en tu cuenta de ahorros.",
+      "travel-terms-text": "Términos y condiciones de MeedTravel",
+      "modal-title": "Nota",
+      "modal-description": "Estás saliendo de la aplicación de Meed y dirigiéndote a un sitio web externo, con términos y condiciones diferentes.",
+      "modal-btn": "Estoy de acuerdo"
+    }
+  },
+  "signup-credentials-created": {
+    "header-title": "Your account is created!",
+    "message": "you’re just minutes away from amazing banking. Please Log in to complete Bank Application",
+    "login-button": "Iniciar sesión"
+  },
+  "otp-modal-verification": {
+    "title": "Introduce el código.",
+    "info-text": "Por motivos de seguridad, hemos enviado un código de confirmación a tu teléfono móvil. Introdúcelo arriba para continuar."
+  },
+  "logout-success-modal": {
+    "header-title": "Has cerrado sesión.",
+    "message": "Gracias por formar parte de la comunidad de Meed Banking Club!",
+    "login-button": "Iniciar sesión"
+  },
+  "state-modal": {
+    "header-title": "Seleccionar estado",
+    "placeholder-text": "Buscar estado"
+  }
+}

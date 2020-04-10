@@ -1,0 +1,94 @@
+.instore-offer-container {
+  .offer-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 8px;
+    margin-top: 0px !important;
+    img {
+      max-height: 120px;
+    }
+  }
+
+  .store-name {
+    color: #070a18;
+    font-family: 'Averta W05 ExtraBold';
+    font-size: 30px;
+    letter-spacing: 0.2px;
+    line-height: 30px;
+    text-align: center;
+  }
+
+  .offer-description {
+    color: #606477;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  .active-btn {
+    margin-top: 32px;
+  }
+
+  .devider {
+    height: 1px;
+    background-color: #f4f6fd;
+    margin-top: 20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-bottom: -20px;
+  }
+
+  .header-text {
+    color: #070a18;
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 18px;
+    letter-spacing: -0.36px;
+    line-height: 21px;
+    margin-top: 40px;
+  }
+
+  .sub-header-text {
+    color: #606477;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    line-height: 24px;
+  }
+  .location-text {
+    color: #070a18;
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 18px;
+    letter-spacing: -0.36px;
+    line-height: 21px;
+    margin-top: 40px;
+  }
+
+  .nearest-address {
+    color: #606477;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    line-height: 24px;
+    p {
+      margin: 0px !important;
+    }
+  }
+
+  .distence-wrapper {
+    color: #435cdc !important;
+    font-family: 'Averta W05 Bold5204651' !important;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  .zip-code-text {
+    color: #606477;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}

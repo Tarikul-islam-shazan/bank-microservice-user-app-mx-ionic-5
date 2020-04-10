@@ -1,0 +1,71 @@
+<ion-header class="white-header ion-no-border">
+  <ion-toolbar>
+    <div slot="start" class="header-close-button" (click)="dismiss()"></div>
+    <ion-title> {{'more-module.personal-details.change-address-modal.header-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <form [formGroup]="changeAddressForm" novalidate>
+      <ion-list lines="none" class="input-list">
+        <ion-item>
+          <ion-label position="stacked"
+            >{{'more-module.personal-details.change-address-modal.address-text' | translate}}
+          </ion-label>
+          <ion-input type="text" class="white-input" formControlName="address"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"
+            >{{'more-module.personal-details.change-address-modal.city-text' | translate}}
+          </ion-label>
+          <ion-input type="text" class="white-input" formControlName="city"></ion-input>
+        </ion-item>
+        <div class="dropdown-input-wrapper">
+          <div class="label-text">{{'more-module.personal-details.change-address-modal.state-text' | translate}}</div>
+          <div class="dropdown-input" (click)="openStateModal()">
+            <ion-input readonly class="white-input" type="text" formControlName="state"></ion-input>
+            <ion-icon name="chevron-down"></ion-icon>
+          </div>
+        </div>
+        <ion-item>
+          <ion-label position="stacked">
+            {{'more-module.personal-details.change-address-modal.zip-code-text' | translate}}</ion-label
+          >
+          <ion-input appFormateZipCode type="tel" class="white-input" formControlName="zipCode"></ion-input>
+        </ion-item>
+        <div
+          class="clearfix"
+          *ngIf="changeAddressForm.controls.zipCode.dirty && changeAddressForm.controls.zipCode.invalid"
+        >
+          <ng-template
+            [ngIf]="changeAddressForm.controls.zipCode.errors?.zipCodeValidation"
+            [ngIfElse]="payeeZipCodeInvalidError"
+          >
+            <div class="error-msg">
+              {{'more-module.personal-details.change-address-modal.errors.zip-code-character-text' | translate}}
+            </div>
+          </ng-template>
+          <ng-template #payeeZipCodeInvalidError>
+            <div class="error-msg">
+              {{'more-module.personal-details.change-address-modal.errors.zip-code-required-text' | translate}}
+            </div>
+          </ng-template>
+        </div>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      class="white-button"
+      expand="block"
+      [disabled]=" changeAddressForm.invalid || !isFormValueChanged"
+      (click)="save()"
+    >
+      {{'more-module.personal-details.change-address-modal.button-text' | translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

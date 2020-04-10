@@ -1,0 +1,21 @@
+<!-- ion-no-border, text-center replace with ion-border, ion-text-center and adding light color-->
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button (click)="dismiss()">
+        <ion-icon slot="icon-only" name="close" color="light"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title class="ion-text-center">{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <pdf-viewer
+    [src]="{ data: binary }"
+    [original-size]="false"
+    [autoresize]="false"
+    [render-text]="false"
+    [show-all]="true"
+    style="display: block"
+  ></pdf-viewer>
+</ion-content>

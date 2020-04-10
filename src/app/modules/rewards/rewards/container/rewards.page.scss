@@ -1,0 +1,120 @@
+ion-content {
+  --padding-start: 0px !important;
+  --padding-end: 0px !important;
+  --padding-top: 0px !important;
+  --padding-bottom: 0px !important;
+  ion-grid {
+    --ion-grid-padding: 0px;
+    --ion-grid-column-padding: 0px;
+    ion-row.rewards-items {
+      ion-col {
+        padding-top: 20px;
+        padding-bottom: 13px;
+
+        &:nth-child(odd) {
+          border-right: 1px solid #f4f6fd;
+          border-bottom: 1px solid #f4f6fd;
+        }
+        &:nth-child(even) {
+          border-bottom: 1px solid #f4f6fd;
+        }
+        div.item-icon {
+          width: 97px;
+          display: block;
+          margin: 0 auto;
+          img.meed-extra-icon {
+            content: url('~/assets/img/rewards/extras.png');
+            height: 97px;
+            width: 97px;
+          }
+          img.meed-share-icon {
+            content: url('~/assets/img/rewards/share.png');
+            height: 97px;
+            width: 97px;
+          }
+          img.meed-travel-icon {
+            content: url('~/assets/img/rewards/travel.png');
+            height: 97px;
+            width: 97px;
+          }
+          img.meed-cover-icon {
+            content: url('~/assets/img/rewards/cover.png');
+            height: 97px;
+            width: 97px;
+          }
+        }
+
+        div.item-content {
+          text-align: center;
+          div.item-name {
+            font-family: 'Averta W05 Regular';
+            font-size: 18px;
+            font-weight: 600;
+            letter-spacing: -0.36px;
+            line-height: 21px;
+            text-align: center;
+            span.extra {
+              color: #0cda91;
+            }
+            span.share {
+              color: #fe964c;
+            }
+            span.travel {
+              color: #53c9ff;
+            }
+            span.cover {
+              color: #b27cfb;
+            }
+          }
+          div.item-note {
+            color: #606477;
+            font-family: 'Averta W05 Regular';
+            font-size: 14px;
+            line-height: 24px;
+            text-align: center;
+          }
+        }
+      }
+    }
+
+    ion-row.reward-bottom-card {
+      margin: 20px !important;
+      width: auto;
+      height: 121px;
+      border-radius: 12px;
+      background-color: #ffffff;
+      box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.08);
+      justify-content: space-between;
+      align-items: center;
+
+      div.reward-card-content {
+        margin: 24px 20px;
+        div.earn-even-more-title {
+          height: 21px;
+          width: 250px;
+          color: #070a18;
+          font-family: 'Averta W05 Regular';
+          font-size: 16px;
+          font-weight: 600;
+          letter-spacing: -0.32px;
+          line-height: 21px;
+          margin: 0 0 11px 0;
+        }
+        div.earn-even-more-note {
+          height: 47px;
+          width: 216px;
+          color: #070a18;
+          font-family: 'Averta W05 Regular';
+          font-size: 14px;
+          line-height: 20px;
+          margin: 0;
+        }
+      }
+      img.dollar-icon {
+        height: 70px;
+        width: 70px;
+        content: url('~/assets/img/rewards/dollar.png');
+      }
+    }
+  }
+}

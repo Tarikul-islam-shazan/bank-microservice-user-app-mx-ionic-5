@@ -1,0 +1,7 @@
+project.ext {
+    eventbusVersion = '3.1.1'
+    compileSdkVersion = project.ext.defaultCompileSdkVersion
+    coreMinSdk = project.ext.defaultMinSdkVersion
+    targetSdkVersion = project.ext.defaultTargetSdkVersion
+    uaSkipApplyGoogleServicesPlugin = true
+}

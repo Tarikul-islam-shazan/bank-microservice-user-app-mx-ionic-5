@@ -1,0 +1,75 @@
+<ion-header translucent>
+  <ion-toolbar class="schedule-modal-toolbar">
+    <ion-title class="ion-text-center">{{
+      'move-money-module.internal-transfer.schedule-type-modal.header-title' | translate
+    }}</ion-title>
+    <ion-buttons slot="start">
+      <div class="header-close-button" (click)="dismiss()"></div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content fullscreen class="schedule-modal-content">
+  <ion-list class="schedule-type-list">
+    <ion-radio-group [(ngModel)]="transfer.frequency">
+      <ion-list-header class="header">
+        <ion-label>{{
+          'move-money-module.internal-transfer.schedule-type-modal.transfer-frequency.header' | translate
+        }}</ion-label>
+      </ion-list-header>
+
+      <ion-item lines="full">
+        <ion-label>{{
+          'move-money-module.internal-transfer.schedule-type-modal.transfer-frequency.once' | translate
+        }}</ion-label>
+        <ion-radio slot="start" value="Once" checked></ion-radio>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label>{{
+          'move-money-module.internal-transfer.schedule-type-modal.transfer-frequency.weekly' | translate
+        }}</ion-label>
+        <ion-radio slot="start" value="Weekly"></ion-radio>
+      </ion-item>
+
+      <ion-item lines="full">
+        <ion-label>{{
+          'move-money-module.internal-transfer.schedule-type-modal.transfer-frequency.monthly' | translate
+        }}</ion-label>
+        <ion-radio slot="start" value="Monthly"></ion-radio>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label>{{
+          'move-money-module.internal-transfer.schedule-type-modal.transfer-frequency.yearly' | translate
+        }}</ion-label>
+        <ion-radio slot="start" value="Yearly"></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+  <ion-list class="schedule-date">
+    <ion-list-header class="header">
+      <ion-label>{{
+        'move-money-module.internal-transfer.schedule-type-modal.schedule-date-header' | translate
+      }}</ion-label>
+    </ion-list-header>
+    <ion-item lines="none">
+      <div class="img-calendar"></div>
+      <ion-datetime
+        min="{{ minimumCalendarDate }}"
+        [(ngModel)]="transfer.transferDate"
+        displayFormat="{{
+          'move-money-module.internal-transfer.schedule-type-modal.schedule-date-display-format' | translate
+        }}"
+      ></ion-datetime>
+      <div class="edit-text" slot="end">
+        {{ 'move-money-module.internal-transfer.schedule-type-modal.schedule-date-edit-button' | translate }}
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>
+<ion-footer class="footer-content ion-no-border">
+  <ion-toolbar>
+    <ion-button (click)="dismiss()" expand="block" class="white-button">
+      {{ 'move-money-module.internal-transfer.schedule-type-modal.continue-button' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

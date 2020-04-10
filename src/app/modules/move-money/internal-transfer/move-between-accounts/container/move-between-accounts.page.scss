@@ -1,0 +1,190 @@
+.move-money-content-wrapper {
+  .account-switcher-block {
+    display: flex;
+    flex-direction: column;
+    margin-top: -20px;
+    .from-account-block,
+    .to-account-block {
+      height: 120px;
+      display: flex;
+      align-items: center;
+      .account-icon {
+        margin-right: 15px;
+      }
+      .account-content {
+        .account-title {
+          font-family: 'Averta W05 Bold5204651';
+          color: #8c90a3;
+          font-size: 11px;
+          font-weight: bold;
+          letter-spacing: 1px;
+          line-height: 16px;
+        }
+        .account-amount {
+          color: #070a18;
+          font-family: 'Averta W05 Bold5204651';
+          font-size: 19px;
+          font-weight: bold;
+          letter-spacing: 0.19px;
+          line-height: 24px;
+        }
+      }
+      .dropdown-icon {
+        margin-left: auto;
+      }
+    }
+    .to-account-block {
+      padding: 0 20px;
+      margin: 0 -20px;
+      border-bottom: 1px solid #ebedf2;
+    }
+    .account-divider {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .left-border,
+      .right-border {
+        border-top: 1px solid #ebedf2;
+        width: 50%;
+      }
+      .left-border {
+        margin-left: -20px;
+      }
+      .right-border {
+        margin-right: -20px;
+      }
+      .divider-content {
+        font-family: 'Averta W05 Semibold5179739';
+        font-size: 12px;
+        height: 40px;
+        width: 40px;
+        border: 1px solid #ebedf2;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        color: #435cdc;
+        align-items: center;
+      }
+    }
+  }
+
+  .moved-amount-block,
+  .schedule-block,
+  .note-block {
+    margin-top: 40px;
+    font-family: 'Averta W05 Regular';
+    .block-title {
+      font-weight: bold;
+      margin-bottom: 8px;
+      color: #8c90a3;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 1px;
+      line-height: 16px;
+    }
+  }
+
+  .moved-amount-block {
+    ion-input {
+      font-weight: bold;
+      font-size: 30px;
+      letter-spacing: 0.2px;
+      line-height: 30px;
+      color: #070a18;
+      margin: 0;
+      caret-color: #435cdc;
+      --placeholder-color: #d4d7e2;
+      --padding-top: 0;
+      --padding-bottom: 0;
+      --padding-start: 0;
+      --padding-end: 0;
+      input {
+        padding: 0;
+      }
+    }
+  }
+  .schedule-block {
+    margin-top: 45px;
+    .schedule-content-wrapper {
+      margin-top: 18px;
+      display: flex;
+      flex-direction: row;
+      .schedule-icon {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-right: 10px;
+        .img-calendar {
+          height: 15px;
+          width: 16px;
+        }
+      }
+      .schedule-date {
+        color: #070a18;
+        font-family: 'Averta W05 Regular';
+        font-size: 16px;
+        letter-spacing: -0.25px;
+        line-height: 20px;
+      }
+      .schedule-edit {
+        margin-left: auto;
+        color: #435cdc;
+        font-family: 'Averta W05 Regular';
+        font-weight: bold;
+        font-size: 12px;
+        line-height: 20px;
+      }
+    }
+  }
+
+  .note-block {
+    margin-bottom: 45px;
+    ion-input {
+      --placeholder-color: #b7bbce;
+      color: #070a18;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 16px;
+      letter-spacing: -0.25px;
+      line-height: 24px;
+    }
+  }
+  .amount-error {
+    margin-top: 20px;
+    font-size: 14px;
+    color: #f53d3d;
+  }
+}
+.footer-content {
+  &:before {
+    background-image: none;
+  }
+  .confirm-button.button-disabled {
+    opacity: 0.2;
+  }
+  ion-grid {
+    --ion-grid-padding: 0px;
+    ion-col {
+      --ion-grid-column-padding: 0px;
+      ion-button {
+        text-transform: none;
+        min-width: auto;
+        height: 60px !important;
+        --border-radius: 12px !important;
+        --border-width: 2px;
+        --border-style: solid;
+        --border-color: #dfe1e6;
+        font-family: 'Averta W05 Bold5204651';
+        font-size: 16px;
+        &.edit-btn {
+          --color: #070a18;
+        }
+        &.cancel-btn {
+          --color: #fe4c55;
+        }
+        &.white-button {
+          --color: #fe4c55;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,52 @@
+<ion-header mode="ios" class="ion-no-border no-line">
+  <ion-toolbar class="dashboard-toolbar" mode="ios">
+    <ion-title>
+      <span class="white-meed-logo"></span>
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="icon-white-ques-mark" (click)="openInfoModal()"></ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="content-wrapper">
+  <div class="blue-content-wrapper">
+    <div class="header-greetings">
+      {{ 'dashboard-module.home-page.hi-text' | translate }} {{homeFacade.member?.nickname}}!
+    </div>
+    <div class="available-amount-content" (click)="openInfoModal()">
+      <account-balance
+        title="dashboard-module.home-page.available-meedflex-text"
+        [amount]="homeFacade.availableMeedFlex"
+        balanceColor="#FFFFFF"
+      >
+      </account-balance>
+    </div>
+    <div class="balance-box">
+      <ion-progress-bar [value]="homeFacade.progressBar.percentage"></ion-progress-bar>
+      <div class="balance-content">
+        <div class="balance-title">
+          <span>{{ 'dashboard-module.home-page.available-checking-text' | translate }}</span> <span>+</span>
+          <span>{{ 'dashboard-module.home-page.available-credit-text' | translate }}</span>
+        </div>
+        <div class="balance-amount">
+          <ng-container *ngFor="let progressBarListItem of homeFacade.progressBar.amountLists">
+            <span>{{ progressBarListItem | negToPos }}</span>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-content">
+    <div class="account-list">
+      <ng-container *ngFor="let account of homeFacade.accountSummary">
+        <accounts-card [accountData]="account" (click)="goToDetailsPage(account)"> </accounts-card>
+      </ng-container>
+    </div>
+  </div>
+  <div class="reward-block">
+    {{ 'dashboard-module.home-page.rewards-text' | translate }} &nbsp;<span
+      >{{ homeFacade.getReward() | negToPos }}</span
+    >
+  </div>
+</ion-content>

@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'move-money-module.internal-transfer.scheduled-transfers.header-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="list-content-wrapper">
+    <ion-item
+      [routerLink]="'/move-money/internal-transfer'"
+      routerDirection="forward"
+      class="new-transfer"
+      detail="false"
+      button="true"
+      lines="none"
+    >
+      <ion-button>
+        <ion-icon slot="icon-only" name="add"></ion-icon>
+      </ion-button>
+      <ion-label>{{'move-money-module.internal-transfer.scheduled-transfers.make-new-transfer' | translate}}</ion-label>
+    </ion-item>
+    <ion-list class="schedule-transfer-list">
+      <ion-list-header class="list-header">
+        <ion-label
+          >{{'move-money-module.internal-transfer.scheduled-transfers.active-transfer-header' | translate}}</ion-label
+        >
+      </ion-list-header>
+      <ion-item
+        (click)="scheduledTransferFacade.gotoConformDetails(transaction)"
+        *ngFor="let transaction of scheduledTransferFacade.transactionList"
+        button="true"
+        lines="full"
+      >
+        <ion-label class="ion-text-wrap">
+          <h3 class="title">
+            {{ scheduledTransferFacade.getAccountType(transaction.debtorAccount) }}
+            {{'move-money-module.internal-transfer.scheduled-transfers.transfer-to' | translate}} {{
+            scheduledTransferFacade.getAccountType(transaction.creditorAccount) }}
+          </h3>
+          <p class="details">
+            <span *ngIf="transaction.frequency === 'Once'"
+              >{{'move-money-module.internal-transfer.scheduled-transfers.scheduled-on' | translate}} {{
+              transaction.transferDate | date: 'MMMM dd' }}</span
+            >
+            <span *ngIf="transaction.frequency != 'Once'">
+              {{ transaction.frequency }} {{'move-money-module.internal-transfer.scheduled-transfers.frequency-on' |
+              translate}} {{ transaction.transferDate | date: 'MMMM dd'}}</span
+            >
+          </p>
+        </ion-label>
+        <div slot="end" class="amount">{{ transaction.amount | negToPos }}</div>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

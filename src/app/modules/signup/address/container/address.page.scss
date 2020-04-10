@@ -1,0 +1,47 @@
+ion-content {
+  --padding-top: 0px !important;
+}
+.content-wrapper {
+  margin-top: 27px;
+  .text-content {
+    color: #606477 !important;
+    font-family: 'Averta W05 Regular' !important;
+    font-size: 1.6rem !important;
+    line-height: 2.4rem !important;
+    margin-top: 12px !important;
+    margin-bottom: 22px !important;
+  }
+  .text-title-content {
+    color: #070a18 !important;
+    font-family: 'Averta W05 Semibold5179739' !important;
+    font-size: 1.8rem !important;
+    letter-spacing: -0.36px !important;
+    line-height: 2.1rem !important;
+    margin-top: 43px !important;
+  }
+
+  ion-item {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    border-bottom: 1px solid #ebedf2;
+    ion-label {
+      color: #070a18;
+      font-family: 'Averta W05 Regular' !important;
+      font-size: 16px;
+      letter-spacing: -0.25px;
+      line-height: 20px;
+    }
+    ion-radio {
+      margin-left: -15px !important;
+    }
+  }
+  /* ion-list global style remove using custom-armed-forces-list */
+  ion-list.custom-armed-forces-list {
+    ion-item {
+      &:last-child {
+        border-bottom: none !important;
+      }
+    }
+  }
+}

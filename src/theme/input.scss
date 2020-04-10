@@ -1,0 +1,388 @@
+.verification-input {
+  input {
+    background-color: #435cdc;
+    color: #ffffff !important;
+    font-size: 32px !important;
+    border: none !important;
+    font-weight: 600 !important;
+    line-height: 24px !important;
+    text-align: center !important;
+    font-family: 'Averta W05 ExtraBold' !important;
+    height: 80px !important;
+    letter-spacing: 10px !important;
+    caret-color: #ffffff !important;
+  }
+}
+
+.verification-code-error {
+  input {
+    color: #fe4c55 !important;
+  }
+}
+
+.blue-input {
+  input {
+    height: 60px !important;
+    width: 100% !important;
+    padding-left: 20px !important;
+    margin-bottom: 10px !important;
+    border: 2px solid var(--input-blue-border-color) !important;
+    border-radius: 12px !important;
+    font-family: 'Averta W05 Regular' !important;
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+    caret-color: var(--input-blue-caret-color) !important;
+    color: var(--input-blue-text-color) !important;
+    &:focus {
+      color: var(--input-blue-text-color) !important;
+      border: 2px solid var(--input-blue-focus-border-color) !important;
+    }
+    &:disabled {
+      font-family: 'Averta W05 Regular' !important;
+      font-size: 1.5rem !important;
+      color: #b7bbce !important;
+      line-height: 1.5rem !important;
+    }
+    &::placeholder {
+      font-size: 1.5rem !important;
+      line-height: 1.5rem !important;
+      color: var(--input-blue-placeholder-color) !important;
+    }
+  }
+}
+.white-input {
+  input {
+    height: 60px !important;
+    width: 100% !important;
+    padding-left: 20px !important;
+    margin-bottom: 10px !important;
+    border: 2px solid var(--input-white-border-color) !important;
+    border-radius: 12px !important;
+    font-family: 'Averta W05 Regular' !important;
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+    caret-color: var(--input-white-caret-color) !important;
+    color: var(--input-white-text-color) !important;
+
+    &:focus {
+      color: var(--input-white-text-color) !important;
+      border: 2px solid var(--input-white-focus-border-color) !important;
+    }
+    &::placeholder {
+      font-size: 1.5rem !important;
+      line-height: 2rem !important;
+      color: var(--input-white-placeholder-color) !important;
+    }
+    &::disabled {
+      font-family: 'Averta W05 Regular' !important;
+      font-size: 1.5rem !important;
+      color: #b7bbce !important;
+      line-height: 1.5rem !important;
+      opacity: 1 !important;
+    }
+  }
+}
+input.white-input {
+  height: 60px !important;
+  width: 100% !important;
+  padding-left: 20px !important;
+  margin-bottom: 10px !important;
+  border: 2px solid var(--input-white-border-color) !important;
+  border-radius: 12px !important;
+  font-family: 'Averta W05 Regular' !important;
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+  caret-color: var(--input-white-caret-color) !important;
+  color: var(--input-white-text-color) !important;
+  outline: none;
+
+  &:focus {
+    color: var(--input-white-text-color) !important;
+    border: 2px solid var(--input-white-focus-border-color) !important;
+  }
+  &::placeholder {
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+    color: var(--input-white-placeholder-color) !important;
+  }
+  &::disabled {
+    font-family: 'Averta W05 Regular' !important;
+    font-size: 1.5rem !important;
+    color: #b7bbce !important;
+    line-height: 1.5rem !important;
+    opacity: 1 !important;
+  }
+}
+.error-input {
+  input {
+    height: 60px !important;
+    width: 100% !important;
+    padding-left: 20px !important;
+    margin-bottom: 10px !important;
+    border: 2px solid #fe4c55 !important;
+    border-radius: 12px !important;
+    font-family: 'Averta W05 Regular' !important;
+    font-size: 1.5rem !important;
+    line-height: 1.5rem !important;
+    caret-color: var(--input-white-caret-color) !important;
+    color: var(--input-white-text-color) !important;
+
+    &:focus {
+      color: var(--input-white-text-color) !important;
+      border: 2px solid #fe4c55 !important;
+    }
+    &::placeholder {
+      font-size: 1.5rem !important;
+      line-height: 1.5rem !important;
+      color: var(--input-white-placeholder-color) !important;
+    }
+    &::disabled {
+      font-family: 'Averta W05 Regular' !important;
+      font-size: 1.5rem !important;
+      color: #b7bbce !important;
+      line-height: 20px;
+      opacity: 1 !important;
+    }
+  }
+}
+
+input.error-input {
+  height: 60px !important;
+  width: 100% !important;
+  padding-left: 20px !important;
+  margin-bottom: 10px !important;
+  border: 2px solid #fe4c55 !important;
+  border-radius: 12px !important;
+  font-family: 'Averta W05 Regular' !important;
+  font-size: 1.5rem !important;
+  line-height: 1.5rem !important;
+  caret-color: var(--input-white-caret-color) !important;
+  color: var(--input-white-text-color) !important;
+  outline: none;
+
+  &:focus {
+    color: var(--input-white-text-color) !important;
+    border: 2px solid #fe4c55 !important;
+  }
+  &::placeholder {
+    font-size: 1.5rem !important;
+    line-height: 1.5rem !important;
+    color: var(--input-white-placeholder-color) !important;
+  }
+  &::disabled {
+    font-family: 'Averta W05 Regular' !important;
+    font-size: 1.5rem !important;
+    color: #b7bbce !important;
+    line-height: 20px;
+    opacity: 1 !important;
+  }
+}
+
+.datetime-input {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px !important;
+  ion-item {
+    width: 100% !important;
+    height: 60px !important;
+    border: 2px solid var(--input-white-border-color) !important;
+    border-radius: 12px !important;
+    position: relative !important;
+    font-family: 'Averta W05 Regular' !important;
+    ion-label {
+      display: none !important;
+    }
+    ion-datetime {
+      font-size: 1.5rem !important;
+      line-height: 2rem !important;
+      margin-top: 7px !important;
+      font-family: 'Averta W05 Regular' !important;
+      --placeholder-color: var(--input-white-placeholder-color) !important;
+      --padding-start: 20px !important;
+      --padding-end: 0px !important;
+    }
+    ion-icon {
+      font-size: 1.6rem;
+      position: absolute !important;
+      color: #070a18 !important;
+      right: 11px;
+      margin-top: 5px;
+    }
+  }
+}
+.right-content-input {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 60px !important;
+  margin-bottom: 10px !important;
+  ion-input {
+    position: relative;
+    input {
+      margin-bottom: 0 !important;
+    }
+  }
+  .right-content {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    z-index: 10;
+    p {
+      color: #070a18;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 1.2rem;
+      line-height: 2rem;
+      text-transform: uppercase;
+    }
+    ion-icon {
+      font-size: 1.6rem;
+      color: #070a18 !important;
+    }
+  }
+}
+
+ion-searchbar.white-searchbar {
+  margin-top: 40px !important;
+  --background: #ffffff;
+  .searchbar-input-container {
+    height: 60px;
+    .searchbar-search-icon {
+      color: var(--input-white-placeholder-color) !important;
+      width: 24px;
+      margin-left: 8px !important;
+    }
+    input {
+      height: 60px !important;
+      width: 100% !important;
+      padding-left: 50px !important;
+      margin-bottom: 10px !important;
+      border: 2px solid var(--input-white-border-color) !important;
+      border-radius: 12px !important;
+      font-family: 'Averta W05 Regular' !important;
+      font-size: 1.5rem !important;
+      line-height: 2rem !important;
+      caret-color: var(--input-white-caret-color) !important;
+      color: var(--input-white-text-color) !important;
+
+      &:focus {
+        color: var(--input-white-text-color) !important;
+        border: 2px solid var(--input-white-focus-border-color) !important;
+      }
+      &::placeholder {
+        font-size: 1.7rem !important;
+        line-height: 2rem !important;
+        color: var(--input-white-placeholder-color) !important;
+      }
+      &::disabled {
+        font-family: 'Averta W05 Regular' !important;
+        font-size: 1.5rem !important;
+        color: #b7bbce !important;
+        line-height: 1.5rem !important;
+        opacity: 1 !important;
+      }
+    }
+  }
+}
+
+ion-list.input-list {
+  ion-item {
+    --inner-padding-bottom: 0;
+    --inner-padding-end: 0;
+    --inner-padding-start: 0;
+    --inner-padding-top: 0;
+    --padding-bottom: 10px;
+    --padding-end: 0;
+    --padding-start: 0;
+    --padding-top: 0;
+    --highlight-color-invalid: none;
+    --highlight-color-valid: none;
+    ion-label {
+      margin-bottom: 10px !important;
+      color: #8c90a3 !important;
+      font-family: 'Averta W05 Bold5204651' !important;
+      font-size: 1.1rem !important;
+      letter-spacing: 1px !important;
+      line-height: 1.1rem !important;
+      text-transform: uppercase !important;
+    }
+  }
+  .dropdown-input-wrapper {
+    margin-top: 10px;
+    .label-text {
+      margin-bottom: 10px !important;
+      color: #8c90a3 !important;
+      font-family: 'Averta W05 Bold5204651' !important;
+      font-size: 1.1rem !important;
+      letter-spacing: 1px !important;
+      line-height: 1.1rem !important;
+      text-transform: uppercase !important;
+    }
+  }
+  .input-info {
+    padding-left: 20px;
+    color: #b7bbce;
+    font-family: 'Averta W05 Regular' !important;
+    font-size: 12px !important;
+    font-weight: 600;
+    letter-spacing: -0.1px;
+    line-height: 20px;
+  }
+}
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
+.title-input-field {
+  margin-bottom: 26px;
+  .field-title {
+    margin-bottom: 10px;
+    color: #8c90a3;
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+    line-height: 1.1rem;
+    text-transform: uppercase;
+  }
+}
+.validation-tags {
+  margin: 20px 0 35px 0;
+  .tags-row {
+    margin-bottom: 10px;
+    .tags {
+      padding: 8px 15px;
+      margin-left: 5px;
+      background-color: #f4f6fd;
+      border-radius: 15px;
+      color: #8c90a3;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 1.2rem;
+      line-height: 2rem;
+    }
+    .green-tags {
+      padding: 8px 15px;
+      margin-left: 5px;
+      background-color: rgb(12, 218, 145, 0.1);
+      border-radius: 15px;
+      color: #0cda91;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 1.2rem;
+      line-height: 2rem;
+    }
+  }
+}
+
+.error-msg {
+  color: red;
+  font-family: 'Averta W05 Regular';
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 16px;
+  margin-bottom: 10px;
+}

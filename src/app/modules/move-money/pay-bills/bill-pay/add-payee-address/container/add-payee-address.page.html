@@ -1,0 +1,115 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'move-money-module.pay-bills.add-payee-address.page-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div class="form-title">{{'move-money-module.pay-bills.add-payee-address.page-header' | translate}}</div>
+    <form [formGroup]="addPayeeAddressForm" novalidate>
+      <ion-list lines="none" class="input-list">
+        <div class="clearfix form-item">
+          <ion-input
+            [placeholder]="'move-money-module.pay-bills.add-payee-address.form-input-placeholders.address' | translate"
+            class="white-input"
+            formControlName="street"
+            type="text"
+          >
+          </ion-input>
+          <div
+            class="clearfix error-msg"
+            *ngIf="addPayeeAddressForm.controls.street.dirty && addPayeeAddressForm.controls.street.invalid"
+          >
+            {{'move-money-module.pay-bills.add-payee-address.errors.address-required-text' | translate}}
+          </div>
+        </div>
+        <div class="clearfix form-item">
+          <ion-input
+            [placeholder]="'move-money-module.pay-bills.add-payee-address.form-input-placeholders.city' | translate"
+            class="white-input"
+            formControlName="city"
+            type="text"
+          >
+          </ion-input>
+          <div
+            class="clearfix error-msg"
+            *ngIf="addPayeeAddressForm.controls.city.dirty && addPayeeAddressForm.controls.city.invalid"
+          >
+            {{'move-money-module.pay-bills.add-payee-address.errors.city-required-text' | translate}}
+          </div>
+        </div>
+        <div class="dropdown-input" (click)="openStateModal()">
+          <ion-input
+            [placeholder]="'move-money-module.pay-bills.add-payee-address.form-input-placeholders.state' | translate"
+            class="white-input"
+            formControlName="state"
+            id="state"
+            readonly
+            type="text"
+          >
+          </ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </div>
+
+        <div class="clearfix form-item">
+          <ion-input
+            [maxlength]="zipCodeMaxLength"
+            [placeholder]="'move-money-module.pay-bills.add-payee-address.form-input-placeholders.zip-code' | translate"
+            appFormateZipCode
+            class="white-input"
+            inputmode="numeric"
+            formControlName="postCode"
+            type="tel"
+          >
+          </ion-input>
+          <div
+            class="clearfix"
+            *ngIf="addPayeeAddressForm.controls.postCode.dirty && addPayeeAddressForm.controls.postCode.invalid"
+          >
+            <ng-template
+              [ngIf]="addPayeeAddressForm.controls.postCode.errors?.zipCodeValidation"
+              [ngIfElse]="payeeZipCodeInvalidError"
+            >
+              <div class="error-msg">
+                {{'move-money-module.pay-bills.add-payee-address.errors.zip-code-character-text' | translate}}
+              </div>
+            </ng-template>
+            <ng-template #payeeZipCodeInvalidError>
+              <div class="error-msg">
+                {{'move-money-module.pay-bills.add-payee-address.errors.zip-code-required-text' | translate}}
+              </div>
+            </ng-template>
+          </div>
+        </div>
+
+        <div class="clearfix form-item">
+          <input
+            [placeholder]="'move-money-module.pay-bills.add-payee-address.form-input-placeholders.phone' | translate"
+            class="white-input"
+            formControlName="phone"
+            inputmode="tel"
+            mask="(000) 000-0000"
+            type="tel"
+          />
+          <div
+            class="clearfix error-msg"
+            *ngIf="addPayeeAddressForm.controls.phone.dirty && addPayeeAddressForm.controls.phone.invalid"
+          >
+            {{'move-money-module.pay-bills.add-payee-address.errors.phone-no-required-text' | translate}}
+          </div>
+        </div>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" (click)="continue()" [disabled]="addPayeeAddressForm.invalid">
+      {{ 'move-money-module.pay-bills.bill-pay.continue-button-title' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

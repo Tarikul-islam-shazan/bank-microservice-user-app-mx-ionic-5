@@ -1,0 +1,66 @@
+.transactions-summary-container {
+  .summary-icon {
+    .icon-default-color {
+      color: #070a18;
+    }
+    .saving-icon-color {
+      color: #b7bbce;
+    }
+  }
+  .summary-container-saving-background {
+    background-color: #435cdc;
+  }
+  .summary-container-default-background {
+    opacity: 0.75;
+    background-color: #f4f6fd;
+  }
+  .summary-container {
+    border-radius: 12px;
+    padding: 19px;
+    font-family: 'Averta W05 Semibold5179739';
+    .saving-summary-padding {
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+    .card-item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 15px;
+      .card-left {
+        font-size: 14px;
+        letter-spacing: 0.2px;
+        line-height: 18px;
+      }
+      .card-left-default-color {
+        color: #8c90a3;
+      }
+      .card-left-saving-color {
+        color: #ffffff;
+        opacity: 0.6;
+      }
+      .card-right {
+        font-size: 16px;
+        letter-spacing: -0.32px;
+        line-height: 21px;
+      }
+      .card-right-saving-color {
+        color: #ffffff;
+        opacity: 0.75;
+      }
+      .card-right-default-color {
+        color: #606477;
+      }
+      .card-right-available {
+        font-size: 18px;
+        letter-spacing: -0.36px;
+        line-height: 21px;
+      }
+      .card-right-available-saving-color {
+        color: #ffffff;
+      }
+    }
+    .card-item:last-child {
+      margin-bottom: 0px !important;
+    }
+  }
+}

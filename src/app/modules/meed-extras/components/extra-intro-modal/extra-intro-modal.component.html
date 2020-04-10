@@ -1,0 +1,62 @@
+<ion-header class="white-header ion-no-border">
+  <ion-toolbar>
+    <div class="header-close-button" slot="start" (click)="dismiss()"></div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="head-text">
+    <p>{{ 'meed-extra-module.extra-intro-component.remember_text' | translate }}</p>
+  </div>
+  <div class="text-img-wrapper">
+    <div class="img-wrapper">
+      <img src="assets/img/card-icon.png" alt="card-icon" />
+    </div>
+    <div class="text-wrapper">
+      <p>{{ 'meed-extra-module.extra-intro-component.meed_extras_card_explanation' | translate }}</p>
+    </div>
+  </div>
+  <div class="text-img-wrapper">
+    <div class="img-wrapper">
+      <img src="assets/img/scheduled-icon.png" alt="card-icon" />
+    </div>
+    <div class="text-wrapper">
+      <p>{{ 'meed-extra-module.extra-intro-component.meed_extras_schudule_explanation' | translate }}</p>
+    </div>
+  </div>
+  <div class="text-img-wrapper">
+    <div class="img-wrapper">
+      <img src="assets/img/activate.png" alt="card-icon" />
+    </div>
+    <div class="text-wrapper">
+      <p>{{ 'meed-extra-module.extra-intro-component.meed_extras_opt_in_explanation' | translate }}</p>
+    </div>
+  </div>
+  <div class="text-img-wrapper">
+    <div class="img-wrapper">
+      <img src="assets/img/redirect.png" alt="card-icon" />
+    </div>
+    <div class="text-wrapper">
+      {{ 'meed-extra-module.extra-intro-component.meed_extras_online_explanation' | translate }}
+    </div>
+  </div>
+  <div class="text-img-wrapper">
+    <div class="img-wrapper">
+      <img src="assets/img/cookie.png" alt="card-icon" />
+    </div>
+    <div class="text-wrapper">
+      <p>{{ 'meed-extra-module.extra-intro-component.meed_extras_cookie_explanation' | translate }}</p>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" (click)="dismiss()">
+      {{ 'meed-extra-module.extra-intro-component.ok_btn_text' | translate }}
+    </ion-button>
+    <ion-button class="grey-outline-button" expand="block" (click)="meedExtraInfoModelHide()">
+      {{ 'meed-extra-module.extra-intro-component.donot_show_btn' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

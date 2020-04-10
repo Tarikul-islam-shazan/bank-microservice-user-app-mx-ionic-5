@@ -1,0 +1,7 @@
+<! -- text-center replace with ion-text-center -->
+<div class="balance-container">
+  <div class="title ion-text-center" [style.color]="balanceColor" translate>{{ title }}</div>
+  <div class="balance-amount ion-text-center" [style.color]="balanceColor">
+    {{ amount | negToPos }}
+  </div>
+</div>

@@ -1,0 +1,41 @@
+.item-title {
+  font-family: 'Averta W05 Bold5204651' !important;
+  font-size: 11px !important;
+  letter-spacing: 1px !important;
+  line-height: 24px !important;
+  color: #8c90a3 !important;
+  text-transform: uppercase !important;
+}
+
+.white-button {
+  margin: auto !important;
+}
+
+ion-item {
+  --padding-start: 0;
+  --padding-end: 0;
+  --margin-left: 0;
+  --margin-right: 0;
+  --inner-padding-end: 0;
+}
+
+ion-col {
+  --ion-grid-column-padding: 0 !important;
+}
+
+.button-content {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.checkbox-label {
+  margin-left: 5px;
+}
+
+.left-button {
+  padding-right: 5px;
+}
+
+.right-button {
+  padding-left: 5px;
+}

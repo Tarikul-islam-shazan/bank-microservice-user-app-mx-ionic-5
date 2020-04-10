@@ -1,0 +1,29 @@
+<ion-header class="white-header ion-no-border">
+  <ion-toolbar>
+    <div class="header-close-button" slot="start" (click)="dismiss()"></div>
+    <ion-title>{{ getTranslation('meed-extra-module.filter-component.search-by-text') | async }} {{ title }}</ion-title>
+    <div (click)="reset()" slot="end">
+      <p class="reset-text">{{ getTranslation('meed-extra-module.filter-component.reset-btn-text') | async }}</p>
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item *ngFor="let option of options" class="list-item" lines="none">
+    <ion-label>{{ option.name ? option.name : option.text }}</ion-label>
+    <ion-checkbox
+      class="item-checkbox"
+      [(ngModel)]="option.isChecked"
+      mode="md"
+      slot="end"
+      (ionChange)="changeSelection()"
+    ></ion-checkbox>
+  </ion-item>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar
+    ><ion-button [disabled]="!isActive" class="white-button" expand="block" (click)="categoryFilter()">
+      {{ getTranslation('meed-extra-module.filter-component.search-btn-text') | async }}
+    </ion-button></ion-toolbar
+  >
+</ion-footer>

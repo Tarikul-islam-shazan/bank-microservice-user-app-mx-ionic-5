@@ -1,0 +1,14 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-icon class="close-icon" slot="start" name="close" mode="ios" (click)="dismiss()"></ion-icon>
+    <ion-title>{{ 'signup-module.signup-compressed-page.modals.country-choose-modal-text' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="modal-content ion-padding">
+  <div class="content-wrapper">
+    <div class="option-item ion-activatable" *ngFor="let country of countries" (click)="dismiss(country)">
+      <p>{{ country.countryName }}</p>
+    </div>
+  </div>
+</div>

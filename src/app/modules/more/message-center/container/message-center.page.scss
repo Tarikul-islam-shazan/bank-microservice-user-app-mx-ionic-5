@@ -1,0 +1,37 @@
+ion-content {
+  --padding-top: 40px !important;
+  --padding-end: 0px !important;
+}
+.no-inbox-text {
+  font-family: 'Averta W05 Regular5345108';
+  color: #606477;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+ion-item {
+  font-family: 'Averta W05 Regular5345108';
+  --inner-padding-top: 16px;
+  --inner-padding-bottom: 16px;
+  --padding-start: 0px;
+  --inner-padding-end: 20px;
+  ion-text {
+    h3 {
+      color: #070a18;
+      font-size: 16px;
+      letter-spacing: -0.15px;
+      line-height: 16px;
+    }
+    .unread-msg {
+      font-family: 'Averta W05 Semibold5179739' !important;
+    }
+  }
+  .message-center-date {
+    margin-top: 6px;
+    font-family: 'Averta W05 Regular5345108';
+    color: #8c90a3;
+    font-size: 14px;
+    letter-spacing: 0.15px;
+    line-height: 14px;
+  }
+}

@@ -1,0 +1,31 @@
+<ion-header class="white-header ion-no-border">
+  <ion-toolbar> </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="content-wrapper">
+    <div class="img-block">
+      <img src="assets/img/success.png" />
+    </div>
+    <div class="title-block" *ngFor="let content of contents">
+      <span [innerHTML]="content.title | translate: content.values" class="title"> </span>
+    </div>
+    <div *ngFor="let content of contents">
+      <div class="subtitle-block" *ngFor="let detail of content.details">
+        <div class="subtitle-text" [innerHTML]="detail | translate: content.values"></div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border" *ngIf="actionButtons?.length > 0">
+  <ion-toolbar>
+    <ion-button
+      (click)="actionButton.handler($event)"
+      *ngFor="let actionButton of actionButtons"
+      class="{{ actionButton.cssClass }}"
+      expand="block"
+    >
+      {{actionButton.text | translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,26 @@
+ion-content {
+  --background: var(--ion-color-meedblue);
+}
+.signup-email-screen {
+  margin-top: 27px;
+  .signup-email-screen-pagecontent {
+    text-align: center !important;
+  }
+  .header-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 35px;
+  }
+  .title {
+    color: white;
+    font-family: 'Averta W05 ExtraBold' !important;
+    font-size: 30px;
+    padding-left: 8vw;
+    padding-right: 8vw;
+    letter-spacing: 0.2px;
+    line-height: 32px;
+    margin-top: 15px;
+    margin-bottom: 35px;
+  }
+}

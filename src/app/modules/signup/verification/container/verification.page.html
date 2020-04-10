@@ -1,0 +1,58 @@
+<ion-content class="safe-area-content">
+  <!--safe area adding-->
+  <div class="verification-content">
+    <ion-row>
+      <ion-col col-lg-4 col-md-6 col-sm-8 no-padding offset-lg-4 offset-md-3 offset-sm-2 align-self-center>
+        <div class="help-icon" (click)="openInfo()">
+          <img src="assets/icon/svg/help-outline.svg" alt="help icon" srcset="" />
+        </div>
+        <div class="header-logo">
+          <span class="white-meed-logo"></span>
+        </div>
+        <div class="signup-verification-header">
+          <span>{{ 'signup-module.verification-page.header-text' | translate }}</span>
+        </div>
+        <div *ngIf="!isInput" class="resend-code-wrapper">
+          <div class="resend-error-text">{{ 'signup-module.verification-page.resend-error-text' | translate }}</div>
+          <ion-button class="blue-outline-button resend-btn" (click)="resend()">
+            {{ 'signup-module.verification-page.resend-btn-text' | translate }}
+          </ion-button>
+        </div>
+        <div *ngIf="isInput">
+          <div class="code-grid" #content>
+            <ion-item>
+              <ion-input
+                class="verification-input"
+                [ngClass]="{'verification-code-error': codeError}"
+                #hiddenInput
+                type="tel"
+                maxlength="6"
+                [(ngModel)]="verificationCode"
+                [appMaskInput]="emailVerification"
+                (ngModelChange)="trackVerificationCodeChange()"
+              ></ion-input>
+            </ion-item>
+          </div>
+          <p id="verification-note" *ngIf="codeError" class="verification-error">
+            {{ 'signup-module.verification-page.error-text' | translate }}
+          </p>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+
+<ion-footer class="verification-footer">
+  <ion-toolbar>
+    <ion-row>
+      <ion-col col-lg-4 col-md-6 col-sm-8 no-padding offset-lg-4 offset-md-3 offset-sm-2 text-center>
+        <p class="verification-note" *ngIf="isInput">
+          {{ 'signup-module.verification-page.footer-text' | translate }}
+        </p>
+        <p class="verification-note" *ngIf="!isInput">
+          {{ 'signup-module.verification-page.resend-footer-text' | translate }}
+        </p>
+      </ion-col>
+    </ion-row>
+  </ion-toolbar>
+</ion-footer>

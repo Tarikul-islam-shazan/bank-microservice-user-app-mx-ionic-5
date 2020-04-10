@@ -1,0 +1,57 @@
+<ion-header class="ion-no-border">
+  <account-transaction-header
+    title="{{ 'dashboard-module.dda-transaction-page.title-text' | translate }}"
+    [accountInfo]="checkingFacade.checkingAccount$ | async"
+  >
+    <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+  </account-transaction-header>
+</ion-header>
+<ion-content>
+  <div class="content-wrapper">
+    <account-balance
+      title="{{ 'dashboard-module.dda-transaction-page.available-text' | translate }}"
+      [amount]="(checkingFacade.checkingAccount$ | async).availableBalance"
+    >
+    </account-balance>
+    <transaction-summary [summary]="checkingFacade.accountOverview$ | async"> </transaction-summary>
+
+    <div class="transaction-container pending-transaction-margin">
+      <div>
+        <span class="transaction-title">
+          {{ 'dashboard-module.dda-transaction-page.pending-transaction-text' | translate }}
+        </span>
+
+        <span class="show-hide-title" (click)="checkingFacade.showHideTransactions()" translate>
+          {{(checkingFacade.showHide$ | async) ? 'dashboard-module.dda-transaction-page.hide-text' :
+          'dashboard-module.dda-transaction-page.show-text'}}
+        </span>
+      </div>
+      <div class="transaction-title">
+        {{ (checkingFacade.pendingAmount$ | async) | negToPos }}
+      </div>
+    </div>
+    <ng-container *ngIf="(checkingFacade.showHide$ | async)">
+      <transaction-card
+        [transactions]="checkingFacade.pendingTransactions$ | async"
+        notFound=" {{ 'dashboard-module.dda-transaction-page.no-pending-transaction-text' | translate }}"
+      >
+      </transaction-card>
+    </ng-container>
+
+    <div class="transaction-container recent-transaction-margin">
+      <div class="transaction-title">
+        {{ 'dashboard-module.dda-transaction-page.recent-transaction-text' | translate }}
+      </div>
+      <div>
+        <ion-icon name="search" (click)="toggleSearchAccordion()"></ion-icon>
+      </div>
+    </div>
+    <advanced-search (search)="submitSearch($event)" *ngIf="searchAccordion"></advanced-search>
+    <transaction-card
+      [transactions]="checkingFacade.postedTransactions$ | async"
+      notFound="{{ 'dashboard-module.dda-transaction-page.no-recent-transaction-text' | translate }}"
+      (selectedTransaction)="checkingFacade.selectedTransaction($event)"
+    >
+    </transaction-card>
+  </div>
+</ion-content>

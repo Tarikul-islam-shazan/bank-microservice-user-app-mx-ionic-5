@@ -1,0 +1,46 @@
+.transfer-success-modal-content {
+  .top-margin {
+    margin-top: 56px;
+  }
+  .content-wrapper {
+    .img-block {
+      display: flex;
+      justify-content: center;
+      align-content: center;
+      margin-top: 56px;
+      img {
+        height: 265px;
+        width: 265px;
+      }
+    }
+    .title-block {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      .title {
+        font-family: 'Averta W05 ExtraBold';
+        font-size: 24px;
+        color: #070a18;
+        letter-spacing: 0.16px;
+        line-height: 32px;
+        text-align: center;
+        height: 96px;
+        width: 275px;
+      }
+    }
+    .subtitle-block {
+      font-family: 'Averta W05 Regular5345108';
+      font-size: 16px;
+      text-align: center;
+      margin-top: 30px;
+      .subtitle-text {
+        color: #606477;
+      }
+      .subtitle-ref {
+        color: #b7bbce;
+        margin-top: 10px;
+      }
+    }
+  }
+}

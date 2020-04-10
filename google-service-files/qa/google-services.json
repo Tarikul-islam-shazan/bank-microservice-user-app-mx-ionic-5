@@ -1,0 +1,155 @@
+{
+  "project_info": {
+    "project_number": "1010705522908",
+    "firebase_url": "https://meedbankingclub-qa.firebaseio.com",
+    "project_id": "meedbankingclub-qa",
+    "storage_bucket": "meedbankingclub-qa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010705522908:android:c35b71f57f0187d7",
+        "android_client_info": {
+          "package_name": "com.demo.meedbankingclub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010705522908-ngo8viode4gr293uiut0lfo6cs3b4pl8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnwBHpAnygFUh-N-t1dXR0Lw0P558teRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010705522908-ngo8viode4gr293uiut0lfo6cs3b4pl8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1010705522908-pq2k0hkacjlls0n1jmkfcfjrehbhep9k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.prod.meedbankingclub"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010705522908:android:1a066ed676a07b05",
+        "android_client_info": {
+          "package_name": "com.prod.meedbankingclub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010705522908-ngo8viode4gr293uiut0lfo6cs3b4pl8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnwBHpAnygFUh-N-t1dXR0Lw0P558teRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010705522908-ngo8viode4gr293uiut0lfo6cs3b4pl8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1010705522908-pq2k0hkacjlls0n1jmkfcfjrehbhep9k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.prod.meedbankingclub"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010705522908:android:779b65b7fce96edd",
+        "android_client_info": {
+          "package_name": "com.qa.meedbankingclub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010705522908-ngo8viode4gr293uiut0lfo6cs3b4pl8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnwBHpAnygFUh-N-t1dXR0Lw0P558teRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010705522908-ngo8viode4gr293uiut0lfo6cs3b4pl8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1010705522908-pq2k0hkacjlls0n1jmkfcfjrehbhep9k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.prod.meedbankingclub"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1010705522908:android:ef6697cd66ae36ab",
+        "android_client_info": {
+          "package_name": "com.uat.meedbankingclub"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1010705522908-ngo8viode4gr293uiut0lfo6cs3b4pl8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnwBHpAnygFUh-N-t1dXR0Lw0P558teRU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1010705522908-ngo8viode4gr293uiut0lfo6cs3b4pl8.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1010705522908-pq2k0hkacjlls0n1jmkfcfjrehbhep9k.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.prod.meedbankingclub"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

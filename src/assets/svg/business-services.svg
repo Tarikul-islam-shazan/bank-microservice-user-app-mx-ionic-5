@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Icon-Business</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-19">
+            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+            <rect id="Rectangle" stroke="#435CDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="3" y="6" width="18" height="6" rx="2"></rect>
+            <path d="M20,12 L20,16.2 C20,17.7463973 18.9766509,19 17.7142857,19 L6.28571429,19 C5.02334914,19 4,17.7463973 4,16.2 L4,12" id="Path" stroke="#435CDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M14.8,3 L14.8,4.2 C14.8,4.6418278 14.4418278,5 14,5 L10,5 C9.5581722,5 9.2,4.6418278 9.2,4.2 L9.2,3" id="Path" stroke="#435CDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(12.000000, 4.000000) scale(1, -1) translate(-12.000000, -4.000000) "></path>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,99 @@
+<ion-header class="ion-no-border">
+  <account-transaction-header
+    title="{{ 'dashboard-module.ssa-transaction-page.title-text' | translate }}"
+    (showModal)="savingTransactionsFacade.openInfoModal($event)"
+    iconName="help-circle-outline"
+    [accountInfo]="savingTransactionsFacade.savingAccount"
+  >
+    <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+  </account-transaction-header>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div class="blue-wrapper">
+      <account-balance
+        title="{{ 'dashboard-module.ssa-transaction-page.available-text' | translate }}"
+        [amount]="savingTransactionsFacade.savingAccount?.availableBalance"
+        balanceColor="#FFFFFF"
+      >
+      </account-balance>
+
+      <transaction-summary [summary]="savingTransactionsFacade?.transactionSummary" summaryOption="2">
+      </transaction-summary>
+      <mbc-segment-container
+        [segmentContainer]="savingTransactionsFacade.segmentContainer"
+        (emitSegmentItem)="selectTab($event)"
+      ></mbc-segment-container>
+    </div>
+    <div class="tab-content-wrapper">
+      <!-- Target Tab Content -->
+      <div *ngIf="savingTransactionsFacade.selectedTab === 'tab-target'">
+        <mbc-savings-target
+          [monthlyTotalSave]="savingTransactionsFacade.monthlyTotalSave"
+          [monthlySavingTarget]="savingTransactionsFacade.monthlySavingTarget"
+          [progress]="savingTransactionsFacade.progress"
+          [savingTarget]="savingTransactionsFacade.savingTarget"
+        ></mbc-savings-target>
+      </div>
+      <!-- Goal Tab Content -->
+      <div *ngIf="savingTransactionsFacade.selectedTab === 'tab-goal'">
+        <div class="content-block">
+          <account-balance
+            title="{{ 'dashboard-module.ssa-transaction-page.monthly-saving-target-text' | translate }}"
+            [amount]="savingTransactionsFacade.monthlySavingTarget"
+          >
+          </account-balance>
+          <div class="goals-block">
+            <div class="title">{{ 'dashboard-module.ssa-transaction-page.saving-goal-text' | translate }}</div>
+            <ng-container *ngIf="savingTransactionsFacade?.listOfSavingGoal.length === 0">
+              <div class="goals-empty-block">
+                <div class="tree">
+                  <ion-img src="assets/img/desert-island.png"></ion-img>
+                </div>
+                <div class="title">{{ 'dashboard-module.ssa-transaction-page.no-active-goal-text' | translate }}</div>
+                <div class="subtitle">
+                  {{ 'dashboard-module.ssa-transaction-page.maybe-start-saving-text' | translate }}
+                </div>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="savingTransactionsFacade?.listOfSavingGoal.length > 0">
+              <div class="goals-list-block">
+                <div
+                  class="goal-item"
+                  *ngFor="let item of savingTransactionsFacade?.listOfSavingGoal"
+                  (click)="savingTransactionsFacade.modifyGoal(item)"
+                >
+                  <div class="item-content">
+                    <div class="item-title">{{item.name}}</div>
+                    <div class="item-subtitle">
+                      {{item.targetAmount}} {{ 'dashboard-module.ssa-transaction-page.per-month-text' | translate }}
+                    </div>
+                  </div>
+                  <div class="img-arrow-right"></div>
+                </div>
+              </div>
+            </ng-container>
+          </div>
+        </div>
+      </div>
+      <!-- History Tab Content -->
+      <div *ngIf="savingTransactionsFacade.selectedTab === 'tab-history'">
+        <mbc-savings-history
+          [transactions]="savingTransactionsFacade.transactions.postedTransactions"
+        ></mbc-savings-history>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border" *ngIf="savingTransactionsFacade.selectedTab !== 'tab-history'">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" (click)="savingTransactionsFacade.goToSelectedPage()" translate>
+      {{ savingTransactionsFacade.selectedTab === 'tab-goal' ?
+      'dashboard-module.ssa-transaction-page.add-saving-goal-button-text' :
+      'dashboard-module.ssa-transaction-page.save-now-button-text'}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

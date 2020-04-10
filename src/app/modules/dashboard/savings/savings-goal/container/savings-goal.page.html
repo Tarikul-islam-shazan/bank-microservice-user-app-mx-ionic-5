@@ -1,0 +1,130 @@
+<!-- text-center like attribute shift to class and also using our global input -->
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title translate
+      >{{ savingGoalFacade.savingsGoalState.isNew ? 'dashboard-module.savings-goal.new-header-text':
+      'dashboard-module.savings-goal.edit-header-text'}}</ion-title
+    >
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="saving-goal-container">
+    <div class="saving-goal-form">
+      <ion-list lines="none" class="input-list">
+        <div class="title-input-field">
+          <div class="field-title">{{ 'dashboard-module.savings-goal.goal-name-text' | translate }}</div>
+          <div class="right-content-input">
+            <ion-input
+              class="white-input"
+              type="text"
+              [(ngModel)]="savingGoalFacade.savingsGoalState.savingsGoal.name"
+              placeholder="{{ 'dashboard-module.savings-goal.goal-name-text' | translate }}"
+            ></ion-input>
+          </div>
+        </div>
+        <ion-item class="custom-ion-item">
+          <ion-grid class="ion-no-padding">
+            <ion-row class="ion-no-padding">
+              <ion-col size="6" class="ion-no-padding">
+                <div class="field-title upper-case-font">
+                  {{ 'dashboard-module.savings-goal.monthly-amount-text' | translate }}
+                </div>
+                <ion-input
+                  class="mask-input ion-no-padding"
+                  appInputDecimalMask
+                  type="tel"
+                  [(decModel)]="savingGoalFacade.savingsGoalState.savingsGoal.targetAmount"
+                  (ionChange)="savingGoalFacade.updateAmount(0)"
+                ></ion-input>
+                <div *ngIf="savingGoalFacade.savingsGoalState.savingsGoal.targetAmount < 10" class="error" fixed>
+                  {{ 'dashboard-module.savings-goal.monthly-mininmum-target-text' | translate }}
+                </div>
+              </ion-col>
+              <ion-col size="6" class="ion-no-padding">
+                <div class="button-group">
+                  <ion-button (click)="savingGoalFacade.updateAmount(1)" fill="clear">
+                    <ion-icon slot="icon-only" name="add"></ion-icon>
+                  </ion-button>
+                  <ion-button (click)="savingGoalFacade.updateAmount(2)" fill="clear">
+                    <ion-icon slot="icon-only" name="remove"></ion-icon>
+                  </ion-button>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+        <ion-item class="custom-ion-item">
+          <ion-grid class="ion-no-padding">
+            <ion-row class="ion-no-padding">
+              <ion-col size="6" class="ion-no-padding">
+                <div class="field-title upper-case-font">
+                  {{ 'dashboard-module.savings-goal.years-of-savings-text' | translate }}
+                </div>
+                <ion-label class="mask-input">{{savingGoalFacade.savingsGoalState.savingsGoal.yearOfSaving}}</ion-label>
+              </ion-col>
+              <ion-col size="6" class="ion-no-padding">
+                <div class="button-group">
+                  <ion-button (click)="savingGoalFacade.updateYear(1)" fill="clear">
+                    <ion-icon slot="icon-only" name="add"></ion-icon>
+                  </ion-button>
+                  <ion-button (click)="savingGoalFacade.updateYear(2)" fill="clear">
+                    <ion-icon slot="icon-only" name="remove"></ion-icon>
+                  </ion-button>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list>
+    </div>
+    <ion-item class="saving-goal-card" lines="none">
+      <ion-grid class="ion-no-padding">
+        <ion-row class="ion-no-padding">
+          <ion-col size="6">
+            <div class="title ion-text-center">{{ savingGoalFacade.calculatePNR() | negToPos }}</div>
+            <div class="sub-title ion-text-center">
+              {{ 'dashboard-module.savings-goal.projected-value-text' | translate }}
+            </div>
+          </ion-col>
+          <ion-col size="6">
+            <div class="title ion-text-center">{{savingGoalFacade.getYear()}}</div>
+            <div class="sub-title ion-text-center">{{ 'dashboard-module.savings-goal.by-year-text' | translate }}</div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      *ngIf="savingGoalFacade.savingsGoalState.isNew"
+      class="white-button"
+      expand="block"
+      [disabled]="savingGoalFacade.checkIsDisable()"
+      (click)="savingGoalFacade.addSavingGoal()"
+    >
+      {{ 'dashboard-module.savings-goal.create-savings-goal-text' | translate }}
+    </ion-button>
+    <ion-button
+      *ngIf="!savingGoalFacade.savingsGoalState.isNew"
+      class="white-button"
+      [disabled]="savingGoalFacade.checkIsDisable()"
+      (click)="savingGoalFacade.editSavingGoal()"
+      expand="block"
+    >
+      {{ 'dashboard-module.savings-goal.update-goal-text' | translate }}
+    </ion-button>
+    <ion-button
+      *ngIf="!savingGoalFacade.savingsGoalState.isNew"
+      class="grey-outline-button"
+      expand="block"
+      (click)="savingGoalFacade.deleteSavingGoal()"
+    >
+      {{ 'dashboard-module.savings-goal.delete-goal-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

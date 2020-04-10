@@ -1,0 +1,50 @@
+.content-wrapper {
+  margin-top: 27px;
+  .header-subtitle {
+    height: 58px;
+    color: #606477;
+    font-family: 'Averta W05 Regular';
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    margin-bottom: 30px;
+  }
+  .questions-wrapper {
+    .questions-header-title {
+      color: #070a18;
+      font-family: 'Averta W05 Semibold5179739';
+      font-size: 1.8rem;
+    }
+    .question-item {
+      .options {
+        .question-title {
+          color: #606477;
+          font-family: 'Averta W05 Regular';
+          font-size: 1.6rem;
+          line-height: 2.4rem;
+          margin: 40px 0 10px 0;
+        }
+        ion-list {
+          ion-item {
+            display: flex !important;
+            align-items: center !important;
+            height: 70px !important;
+            border-bottom: 1px solid #ebedf2 !important;
+            ion-label {
+              color: #070a18;
+              font-family: 'Averta W05 Regular';
+              font-size: 1.6rem;
+              letter-spacing: -0.25px;
+              line-height: 2rem;
+            }
+            ion-radio {
+              margin-left: -15px !important;
+            }
+            &:last-child {
+              border-bottom: none !important;
+            }
+          }
+        }
+      }
+    }
+  }
+}

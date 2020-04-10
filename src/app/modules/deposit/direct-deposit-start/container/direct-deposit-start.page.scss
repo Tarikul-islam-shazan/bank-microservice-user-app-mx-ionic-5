@@ -1,0 +1,59 @@
+.direct-deposit-start-content {
+  font-family: Averta W05 Regular5345108;
+  .header-title {
+    margin-top: 50px;
+    margin-bottom: 28px !important;
+    color: #070a18;
+    font-family: Averta W05 ExtraBold;
+    font-size: 30px;
+    letter-spacing: 0.2px;
+    line-height: 30px;
+  }
+  .subtitle {
+    color: #606477;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    line-height: 24px;
+    margin-bottom: 30px;
+  }
+  .list-content {
+    height: 160px;
+    .forword-arrow-icon {
+      height: 14px;
+      width: 14px;
+      top: 40px;
+      position: relative;
+    }
+    .item-image {
+      height: 32px;
+      width: 32px;
+      color: #435cdc;
+      margin-top: 5px;
+    }
+    .item-content {
+      display: flex;
+      margin-top: 6.4vh;
+      margin-bottom: 2.4vh;
+    }
+    .item-info {
+      padding-left: 30px;
+      padding-bottom: 33px;
+      width: 100%;
+      border-bottom: 1px solid rgba(106, 109, 126, 0.2);
+      #info-title {
+        font-size: 16px;
+        font-family: Averta W05 Regular5345108;
+        color: #070a18;
+        line-height: 24px;
+        margin-bottom: 10px;
+      }
+      #info-description {
+        color: #6a6d7e;
+        font-family: Averta W05 Regular;
+        font-size: 14px;
+        line-height: 20px;
+        padding-right: 25px;
+      }
+    }
+  }
+}

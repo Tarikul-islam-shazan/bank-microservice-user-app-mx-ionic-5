@@ -1,0 +1,159 @@
+<ion-content class="safe-area-content">
+  <!-- safe area adding -->
+  <div class="content-wrapper">
+    <div class="step-counter">
+      <step-counter [step]="'signup-module.create-login-page.step-text'" [stepNo]="1"></step-counter>
+    </div>
+    <div class="header-title">{{ 'signup-module.create-login-page.page-title' | translate }}</div>
+  </div>
+  <div class="loginForm-wrapper">
+    <form [formGroup]="createLoginForm">
+      <div class="title-input-field">
+        <div class="field-title">{{ 'signup-module.create-login-page.username-label' | translate }}</div>
+        <div class="right-content-input">
+          <ion-input
+            id="username"
+            class="white-input"
+            type="text"
+            formControlName="username"
+            placeholder="{{ 'signup-module.create-login-page.login-form.username' | translate }}"
+            appInputTrimWhitespace
+          ></ion-input>
+          <div class="right-content" (click)="showUsernameHint()">
+            <img src="assets/svg/question-mark.svg" />
+          </div>
+        </div>
+        <div class="validation-tags">
+          <div class="tags-row">
+            <span
+              [ngClass]="
+                createLoginForm.controls['username'].hasError('minlength') ||
+                createLoginForm.controls['username'].hasError('required')
+                  ? 'tags'
+                  : 'green-tags'
+              "
+              >{{ 'signup-module.create-login-page.validation-tags.characters' | translate }}</span
+            >
+            <span
+              [ngClass]="
+                createLoginForm.controls['username'].hasError('allowedUsernameCharacters') ||
+                createLoginForm.controls['username'].hasError('required')
+                  ? 'tags'
+                  : 'green-tags'
+              "
+              >{{ 'signup-module.create-login-page.validation-tags.letters' | translate }}</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="title-input-field">
+        <div class="field-title">{{ 'signup-module.create-login-page.password-label' | translate }}</div>
+        <div class="right-content-input">
+          <ion-input
+            id="password"
+            class="white-input"
+            clearOnEdit="false"
+            [type]="isPasswordVisible ? 'text' : 'password'"
+            formControlName="password"
+            placeholder="{{ 'signup-module.create-login-page.login-form.password' | translate }}"
+          ></ion-input>
+          <div class="right-content" (click)="showPassword()">
+            <p>{{ isPasswordVisible ? 'hide' : 'show' }}</p>
+          </div>
+        </div>
+        <div class="validation-tags">
+          <div class="tags-row">
+            <span
+              [ngClass]="
+                createLoginForm.controls['password'].hasError('oneLowerCase') ||
+                createLoginForm.controls['password'].hasError('required')
+                  ? 'tags'
+                  : 'green-tags'
+              "
+              >{{ 'signup-module.create-login-page.validation-tags.lowercase' | translate }}</span
+            >
+            <span
+              [ngClass]="
+                createLoginForm.controls['password'].hasError('oneUpperCase') ||
+                createLoginForm.controls['password'].hasError('required')
+                  ? 'tags'
+                  : 'green-tags'
+              "
+              >{{ 'signup-module.create-login-page.validation-tags.uppercase' | translate }}</span
+            >
+            <span
+              [ngClass]="
+                createLoginForm.controls['password'].hasError('oneNumber') ||
+                createLoginForm.controls['password'].hasError('required')
+                  ? 'tags'
+                  : 'green-tags'
+              "
+              >{{ 'signup-module.create-login-page.validation-tags.number' | translate }}</span
+            >
+          </div>
+          <div class="tags-row">
+            <span
+              [ngClass]="
+                createLoginForm.controls['password'].hasError('allowedPasswordSpecialChars') ||
+                createLoginForm.controls['password'].hasError('required')
+                  ? 'tags'
+                  : 'green-tags'
+              "
+              >{{ 'signup-module.create-login-page.validation-tags.special-character' | translate }}</span
+            >
+            <span
+              [ngClass]="
+                createLoginForm.controls['password'].hasError('minlength') ||
+                createLoginForm.controls['password'].hasError('required')
+                  ? 'tags'
+                  : 'green-tags'
+              "
+              >{{ 'signup-module.create-login-page.validation-tags.characters' | translate }}</span
+            >
+          </div>
+        </div>
+      </div>
+      <div class="title-input-field">
+        <div class="field-title">{{ 'signup-module.create-login-page.repeat-password-label' | translate }}</div>
+        <div class="right-content-input">
+          <ion-input
+            id="repeatPassword"
+            class="white-input"
+            clearOnEdit="false"
+            [type]="isRepeatPasswordVisible ? 'text' : 'password'"
+            formControlName="repeatPassword"
+            placeholder="{{ 'signup-module.create-login-page.login-form.repeatPassword' | translate }}"
+            (ionChange)="isPasswordMatch()"
+          ></ion-input>
+          <div class="right-content" (click)="showRepeatPassword()">
+            <p>{{ isRepeatPasswordVisible ? 'hide' : 'show' }}</p>
+          </div>
+        </div>
+        <div class="validation-tags">
+          <div class="tags-row">
+            <span
+              [ngClass]="
+                !isPasswordMatch() || createLoginForm.controls['repeatPassword'].hasError('required')
+                  ? 'tags'
+                  : 'green-tags'
+              "
+              >{{ 'signup-module.create-login-page.validation-tags.password-match' | translate }}</span
+            >
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      class="white-button"
+      expand="block"
+      (click)="continue()"
+      [disabled]="createLoginForm.invalid || !isPasswordMatch()"
+    >
+      {{ 'signup-module.create-login-page.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

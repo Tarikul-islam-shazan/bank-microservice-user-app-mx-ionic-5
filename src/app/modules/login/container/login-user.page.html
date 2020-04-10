@@ -1,0 +1,110 @@
+<ion-content class="ion-padding login-screen">
+  <ion-grid class="ion-no-paddding ion-no-margin">
+    <ion-row class="ion-no-paddding ion-no-margin">
+      <ion-col size="12" sizeMd="8" offsetMd="2" sizeLg="6" offsetLg="3" class="ion-no-paddding ion-no-margin">
+        <div class="login-screen-page-content">
+          <div class="header-logo">
+            <span class="white-meed-logo"></span>
+          </div>
+          <h1 class="welcome-header">
+            {{ 'login-module.create-login-page.welcome-back' | translate }}
+          </h1>
+          <form [formGroup]="loginForm" novalidate>
+            <ion-input
+              formControlName="username"
+              type="text"
+              class="blue-input ion-text-left"
+              placeholder="{{ 'login-module.create-login-page.login-form.username' | translate }}"
+              appInputTrimWhitespace
+            ></ion-input>
+            <div class="right-content-input">
+              <ion-input
+                formControlName="password"
+                class="blue-input ion-text-left"
+                clearOnEdit="false"
+                placeholder="{{ 'login-module.create-login-page.login-form.password' | translate }}"
+                [type]="isPasswordVisible ? 'text': 'password'"
+              >
+              </ion-input>
+              <div class="right-content white-text" (click)="passwordShowHide()">
+                <p translate>
+                  {{ isPasswordVisible ?
+                  'login-module.create-login-page.login-form.hide-password':'login-module.create-login-page.login-form.show-password'}}
+                </p>
+              </div>
+            </div>
+            <ion-button
+              class="blue-button login-btn-margin"
+              type="submit"
+              expand="block"
+              [disabled]="loginForm.invalid"
+              (click)="doLogin()"
+            >
+              {{ 'login-module.create-login-page.login-button-text' | translate }}
+            </ion-button>
+
+            <div class="checkbox-container">
+              <ion-grid class="ion-no-paddding ion-no-margin">
+                <ion-row>
+                  <ion-col size="6" class="ion-no-paddding">
+                    <ion-item lines="none" class="login-option">
+                      <ion-label class="ion-text-wrap checkbox-square-label">
+                        <ion-text>
+                          {{ 'login-module.create-login-page.login-form.remember-username' | translate }}
+                        </ion-text>
+                      </ion-label>
+                      <ion-checkbox
+                        formControlName="rememberUsername"
+                        mode="md"
+                        color="primary"
+                        slot="start"
+                        class="checkbox-square"
+                      ></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                  <ion-col size="6" class="ion-no-paddding" *ngIf="loginFacade.isCordova">
+                    <ion-item class="login-option" lines="none" [disabled]="!loginFacade.biometricAvailable">
+                      <ion-label class="ion-text-wrap checkbox-square-label">
+                        <ion-text translate>
+                          {{ loginFacade.rememberFaceIdOrPasswordText}}
+                        </ion-text>
+                      </ion-label>
+                      <ion-checkbox
+                        formControlName="rememberBiometric"
+                        mode="md"
+                        color="primary"
+                        slot="start"
+                        class="checkbox-square"
+                      ></ion-checkbox>
+                    </ion-item>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </form>
+          <p class="forgot" routerLink="/account-recovery">
+            {{ 'login-module.create-login-page.login-form.forgot-username-Password' | translate }}
+          </p>
+          <ion-row>
+            <ion-col>
+              <div class="login-content-bottom">
+                <div class="login-content-bottom-text">
+                  <p class="earn-even-more">
+                    {{ 'login-module.create-login-page.meed-reward-earnMore' | translate }}
+                  </p>
+                  <p class="earn-even-more-content">
+                    {{ 'login-module.create-login-page.meed-reward-tryAndEarnedCashBack' | translate }}
+                  </p>
+                </div>
+                <img src="assets/img/login/dollar.png" />
+              </div>
+              <ion-button class="blue-outline-button help-button" expand="block" (click)="loginFacade.openHelpModal()">
+                {{ 'login-module.create-login-page.help-button-text' | translate }}
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

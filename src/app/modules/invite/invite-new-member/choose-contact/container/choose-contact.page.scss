@@ -1,0 +1,56 @@
+ion-content {
+  --padding-end: 0px !important;
+  ion-grid {
+    ion-row.search-bar {
+      margin-right: 20px;
+      ion-item.search-field {
+        border: 2px solid var(--input-white-border-color);
+        border-radius: 12px;
+        &.item-has-focus {
+          border-color: #070a18;
+        }
+        ion-input {
+          height: 60px;
+          font-family: 'Averta W05 Regular';
+          font-size: 15px;
+          letter-spacing: 0;
+          line-height: 20px;
+        }
+        ion-icon {
+          margin-right: 10px;
+        }
+        .search-clear-button {
+          margin-inline-start: 0;
+        }
+      }
+    }
+
+    ion-row.list-view {
+      margin-top: 35px;
+      ion-item {
+        --padding-start: -1px !important;
+        --padding-end: 10px !important;
+        &:last-child {
+          border-bottom: none;
+        }
+        border-bottom: 1px solid var(--input-white-border-color);
+        ion-label {
+          h2 {
+            color: #070a18;
+            font-family: 'Averta W05 Regular';
+            font-size: 16px;
+            letter-spacing: -0.25px;
+            line-height: 20px;
+          }
+          p {
+            color: #8c90a3;
+            font-family: 'Averta W05 Regular';
+            font-size: 15px;
+            letter-spacing: 0;
+            line-height: 22px;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+<ion-header meed class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>{{ 'more-module.card-lost-page.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="card-lost-page override-ion-content-padding">
+  <div class="container">
+    <div class="clearfix">
+      <div class="header-text-1">
+        <h4>{{ 'more-module.card-lost-page.header-text' | translate }}</h4>
+      </div>
+      <div class="sub-text">
+        <p>{{ 'more-module.card-lost-page.stolen-text-1' | translate }}</p>
+      </div>
+      <div class="header-text-2">
+        <h4>To report a lost or stolen card, call<br />{{cardLostFacade.supportNumber}}</h4>
+      </div>
+      <div class="sub-text">
+        <p>{{ 'more-module.card-lost-page.stolen-text-2' | translate }}</p>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border" *ngIf="cardLostFacade.isCordova()">
+  <ion-button class="white-button" expand="block" (click)="cardLostFacade.callANumber()">
+    {{ 'more-module.card-lost-page.btn-text' | translate }}
+  </ion-button>
+</ion-footer>

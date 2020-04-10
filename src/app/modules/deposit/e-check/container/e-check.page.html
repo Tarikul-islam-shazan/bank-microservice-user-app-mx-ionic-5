@@ -1,0 +1,75 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ navBarTitle | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div class="account-wrapper">
+      <div class="account">
+        <div class="account-icon">
+          <div class="checking">
+            <img src="assets/svg/checking.svg" />
+          </div>
+        </div>
+        <div class="account-input-wrapper">
+          <div class="account-title">
+            To Checking (•••• {{ transferableAccounts?.checking.accountNumber | slice: -4 }})
+          </div>
+          <div class="account-input">
+            <ion-input
+              appInputDecimalMask
+              [(decModel)]="accountsAmount.checkingAmount"
+              type="tel"
+              placeholder="$0.00"
+              (ionChange)="calculateTotal()"
+            ></ion-input>
+          </div>
+        </div>
+      </div>
+      <div class="account">
+        <div class="account-icon">
+          <div class="savings">
+            <img src="assets/svg/savings.svg" />
+          </div>
+        </div>
+        <div class="account-input-wrapper">
+          <div class="account-title">
+            To Savings (•••• {{ transferableAccounts?.savings.accountNumber | slice: -4 }})
+          </div>
+          <div class="account-input">
+            <ion-input
+              appInputDecimalMask
+              [(decModel)]="accountsAmount.savingsAmount"
+              type="tel"
+              placeholder="$0.00"
+              (ionChange)="calculateTotal()"
+            ></ion-input>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="checkIsExceedMaxAmount()" class="max-amount-error">
+        {{ 'deposit.deposit-echeck-page.max-amount-error' | translate }}
+      </div>
+    </div>
+    <div class="subscription-fee-wrapper">
+      <div class="subscription-title">{{ 'deposit.deposit-echeck-page.subscription-title' | translate }}</div>
+      <div class="subscription-amount">${{ subscriptionFee }}</div>
+    </div>
+    <div class="total-amount-wrapper">
+      <div class="total-title">{{ 'deposit.deposit-echeck-page.total-title' | translate }}</div>
+      <div class="total-amount">${{ totalAmount }}</div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" (click)="continue()">
+      {{ 'deposit.deposit-echeck-page.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

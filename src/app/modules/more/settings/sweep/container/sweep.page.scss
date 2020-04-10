@@ -1,0 +1,46 @@
+.sweep-page {
+  .list-ios {
+    margin: 0px !important;
+  }
+
+  ion-label {
+    font-family: 'Averta W05 Regular' !important;
+    font-size: 16px;
+    line-height: 24px;
+    color: #606477;
+    text-overflow: none;
+    margin-right: 0px;
+  }
+
+  .sweep-message {
+    font-family: 'Averta W05 Regular' !important;
+    font-size: 16px;
+    line-height: 24px;
+    color: #606477;
+  }
+
+  ion-footer {
+    padding-top: 20px;
+    button {
+      height: 60px !important;
+      border-radius: 12px !important;
+      text-transform: none;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 16px;
+      line-height: 16px;
+    }
+  }
+
+  ion-item {
+    --padding-start: 0;
+    --padding-end: 0;
+    --margin-left: 0;
+    --margin-right: 0;
+    --inner-padding-end: 0;
+  }
+
+  ion-grid {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+}

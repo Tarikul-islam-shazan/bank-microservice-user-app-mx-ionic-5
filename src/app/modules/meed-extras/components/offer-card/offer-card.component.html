@@ -1,0 +1,16 @@
+<div class="offer-card-wrapper" (click)="goToOffer(offer)">
+  <div class="store-image">
+    <mbc-image-loader [src]="offer.image" [title]="offer.merchant"></mbc-image-loader>
+  </div>
+  <div class="text-wrapper">
+    <div class="store-name">
+      <p>{{ offer.merchant }}</p>
+    </div>
+    <div class="offer-description">
+      <p>{{ offer.tenWord }}</p>
+    </div>
+    <div class="offer-type">
+      {{ offer.shopType }}
+    </div>
+  </div>
+</div>

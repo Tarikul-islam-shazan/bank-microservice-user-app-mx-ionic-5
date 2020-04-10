@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'account-recovery.page-title'|translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <ion-list mode="md">
+      <ion-item detail-icon="arrow-forward" detail (click)="navigateToPage('forgot-password')">
+        <ion-label>{{'account-recovery.forgot-password-text'|translate}}</ion-label>
+      </ion-item>
+      <ion-item detail-icon="arrow-forward" detail (click)="navigateToPage('forgot-username')">
+        <ion-label>{{'account-recovery.forgot-username-text'|translate}}</ion-label>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>

@@ -1,0 +1,32 @@
+<ion-content class="direct-deposit-start-content">
+  <div class="content-wrapper">
+    <div id="directDepositHeaderTitle" class="header-title">
+      <span>{{ 'deposit.direct-deposit-start.header-text' | translate }}</span>
+    </div>
+    <div id="directDepositHeaderSubtitle" class="subtitle">
+      <span>
+        {{ 'deposit.direct-deposit-start.subtitle-text' | translate }}
+      </span>
+    </div>
+    <div class="list-content">
+      <div class="item-content" (click)="next()">
+        <div class="item-image">
+          <img src="assets/svg/transfer_to_bank.svg" />
+        </div>
+        <div class="item-info">
+          <div id="info-title">
+            <span>
+              {{ 'deposit.direct-deposit-start.direct-deposit-title' | translate }}
+            </span>
+          </div>
+          <div id="info-description">
+            <span>
+              {{ 'deposit.direct-deposit-start.direct-deposit-info-text' | translate }}
+            </span>
+          </div>
+        </div>
+        <img class="forword-arrow-icon" src="assets/svg/forword-arrow.svg" alt="forword-arrow" />
+      </div>
+    </div>
+  </div>
+</ion-content>

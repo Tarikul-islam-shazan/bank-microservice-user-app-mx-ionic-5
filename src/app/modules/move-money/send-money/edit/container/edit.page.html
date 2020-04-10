@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'move-money-module.send-money.edit.page-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="p2pEditForm">
+    <div class="edit-page">
+      <div class="sending-block">
+        <div class="title">{{'move-money-module.send-money.edit.sending-title' | translate}}</div>
+        <div class="recipient">{{facade.receiverEmail}}</div>
+      </div>
+      <div class="amount-block">
+        <div class="title">{{'move-money-module.send-money.edit.amount-title' | translate}}</div>
+        <ion-input formControlName="amount" appInputDecimalMask type="tel" placeholder="$0.00"></ion-input>
+        <div class="amount-error-default">{{'move-money-module.send-money.edit.amount-error-default' | translate}}</div>
+      </div>
+      <div class="note-block">
+        <div class="title">{{'move-money-module.send-money.edit.note-title' | translate}}</div>
+        <ion-input
+          formControlName="message"
+          type="text"
+          placeholder="{{'move-money-module.send-money.edit.note-input' | translate}}"
+        >
+        </ion-input>
+      </div>
+    </div>
+  </form>
+</ion-content>
+<ion-footer class="footer-content ion-no-border">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button
+            [disabled]="p2pEditForm.invalid"
+            (click)="facade.gotoConfirm(p2pEditForm.value)"
+            expand="block"
+            class="white-button"
+          >
+            {{'move-money-module.send-money.edit.confirm-button' | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="facade.cancelEdit()" expand="block" fill="clear" class="cancel-btn">
+            {{'move-money-module.send-money.edit.cancel-button' | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

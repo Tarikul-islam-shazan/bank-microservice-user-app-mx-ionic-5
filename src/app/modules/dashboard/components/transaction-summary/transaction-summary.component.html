@@ -1,0 +1,56 @@
+<! -- chevron-down-outline and chevron-down-outline icon replace with arrow-down and arrow-up -->
+<div class="transactions-summary-container">
+  <div (click)="showHideAccountSummary()" class="summary-icon ion-text-center ion-margin-top">
+    <ion-icon
+      name="chevron-down-outline"
+      *ngIf="isHide"
+      [ngClass]="{
+        'icon-default-color': summaryOption == 1,
+        'saving-icon-color': summaryOption == 2
+      }"
+    ></ion-icon>
+    <ion-icon
+      name="chevron-up-outline"
+      *ngIf="!isHide"
+      margin-bottom
+      [ngClass]="{
+        'icon-default-color': summaryOption == 1,
+        'saving-icon-color': summaryOption == 2
+      }"
+    ></ion-icon>
+  </div>
+  <div
+    class="summary-container"
+    *ngIf="!isHide"
+    [ngClass]="{
+      'summary-container-saving-background': summaryOption == 2,
+      'summary-container-default-background': summaryOption == 1
+    }"
+  >
+    <ng-container *ngFor="let eachSummary of summary; let i = index">
+      <div class="card-item" [ngClass]="{ 'saving-summary-padding': summaryOption == 2 }">
+        <div
+          class="card-left"
+          [ngClass]="{ 'card-left-saving-color': summaryOption == 2, 'card-left-default-color': summaryOption == 1 }"
+          translate
+        >
+          {{ eachSummary.title }}
+        </div>
+        <div
+          class="card-right"
+          *ngIf="summary.length - 1 !== i"
+          [ngClass]="{ 'card-right-saving-color': summaryOption == 2, 'card-right-default-color': summaryOption == 1 }"
+        >
+          {{ eachSummary.amount | negToPos }}
+        </div>
+        <div
+          class="card-right-available"
+          *ngIf="summary.length - 1 === i"
+          [ngClass]="{ 'card-right-available-saving-color': summaryOption == 2 }"
+        >
+          {{ eachSummary.amount | negToPos }}
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

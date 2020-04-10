@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="17px" viewBox="0 0 24 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Icons / Rewards / Sport</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Playground" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Icons-/-Rewards-/-Sport" transform="translate(0.000000, -3.753333)">
+            <rect id="Rectangle" x="0" y="0" width="24" height="24"></rect>
+            <g id="Football" transform="translate(1.000000, 5.000000)">
+                <rect id="Rectangle" fill="#435CDC" x="3" y="2" width="2" height="10" rx="1"></rect>
+                <rect id="Rectangle" fill="#435CDC" x="17" y="2" width="2" height="10" rx="1"></rect>
+                <path d="M11,14 C14.67315,14 18.0309268,12.0807782 21.0733303,8.24233474 L21.0733463,8.24234742 C21.6501931,7.51456952 21.6501937,6.48546575 21.0733477,5.7576872 C18.0309396,1.91922907 14.673157,0 11,0 C7.32685,0 3.96907324,1.91922175 0.926669714,5.75766526 L0.926653716,5.75765258 C0.349806864,6.48543048 0.349806288,7.51453425 0.926652325,8.2423128 C3.96906045,12.0807709 7.32684301,14 11,14 Z" id="Oval" stroke="#435CDC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                <rect id="Rectangle" fill="#435CDC" x="6" y="6" width="10" height="2" rx="1"></rect>
+                <rect id="Rectangle" fill="#435CDC" transform="translate(9.000000, 7.000000) scale(-1, 1) translate(-9.000000, -7.000000) " x="8" y="4" width="2" height="6" rx="1"></rect>
+                <rect id="Rectangle" fill="#435CDC" transform="translate(13.000000, 7.000000) scale(-1, 1) translate(-13.000000, -7.000000) " x="12" y="4" width="2" height="6" rx="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>

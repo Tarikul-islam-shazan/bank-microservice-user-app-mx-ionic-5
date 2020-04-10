@@ -1,0 +1,26 @@
+.pay-bills-home {
+  .content-title {
+    margin-top: 60px;
+    margin-bottom: 30px;
+    color: #070a18;
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 24px;
+    letter-spacing: 0.16px;
+    line-height: 30px;
+  }
+  .bill-options-list {
+    ion-item {
+      --min-height: 110px;
+      --padding-start: 0px;
+      border-bottom: 1px solid #ebedf2 !important;
+      &:last-child {
+        border-bottom: none !important;
+      }
+      ion-button {
+        --padding-end: 0px;
+        margin: 0;
+        z-index: 10;
+      }
+    }
+  }
+}

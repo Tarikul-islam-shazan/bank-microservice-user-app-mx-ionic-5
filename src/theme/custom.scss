@@ -1,0 +1,228 @@
+/***********************Global CSS Class**************************/
+.clearfix {
+  &::after {
+    display: block;
+    clear: both;
+    content: '';
+  }
+}
+
+.override-ion-content-padding {
+  --padding-start: 0 !important;
+  --padding-end: 0 !important;
+  --padding-top: 0 !important;
+  --padding-bottom: 0 !important;
+}
+
+.header-title {
+  color: #070a18 !important;
+  font-family: 'Averta W05 ExtraBold' !important;
+  font-size: 3rem !important;
+  letter-spacing: 0.2px !important;
+  line-height: 3rem !important;
+  margin-bottom: 50px !important;
+}
+.header-subtitle {
+  height: 58px;
+  color: #606477;
+  font-family: 'Averta W05 Regular';
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  margin-bottom: 30px;
+}
+.header-close-button {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  &:after {
+    content: url('assets/svg/close-icon.svg');
+  }
+}
+
+.borderless-header {
+  ion-toolbar {
+    --min-height: 0 !important;
+    --border-width: 0 !important;
+    --padding-bottom: 0;
+    --padding-end: 0;
+    --padding-start: 0;
+    --padding-top: 0;
+  }
+}
+
+.icon-black-ques-mark {
+  content: url('assets/svg/question-mark.svg');
+}
+.scan-id-logo {
+  width: 177px;
+  height: 120px;
+  content: url('assets/img/signup/scan-id.png');
+}
+/* white-question-mark Icon Scss*/
+.white-ques-mark {
+  content: url('assets/img/white-question-mark.png');
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.icon-white-ques-mark {
+  content: url('assets/svg/question-mark.svg');
+  filter: invert(100%) sepia(98%) saturate(9%) hue-rotate(189deg) brightness(103%) contrast(103%);
+}
+
+.img-checking {
+  height: 40px;
+  width: 40px;
+  content: url('assets/img/dashboard/checking.png');
+}
+.img-loc {
+  height: 40px;
+  width: 40px;
+  content: url('assets/img/dashboard/credit.png');
+}
+.img-savings {
+  height: 40px;
+  width: 40px;
+  content: url('assets/img/dashboard/saving.png');
+}
+.img-arrow-right {
+  height: 32px;
+  width: 32px;
+  content: url('assets/img/arrow-right.png');
+}
+.white-meed-logo {
+  height: 31px;
+  width: 59.23px;
+  content: url('assets/meed_white_logo.png');
+}
+.img-direct-deposit {
+  height: 19px;
+  width: 32px;
+  content: url('assets/img/direct-deposit.png');
+}
+.img-send-money-internationally {
+  height: 22px;
+  width: 22px;
+  content: url('assets/img/direct-deposit.png');
+}
+.img-move-money-arrow-right {
+  height: 14px;
+  width: 14px;
+  content: url('assets/img/move-money-arrow-right.png');
+}
+.img-transfer-from-other-bank {
+  height: 22px;
+  width: 27px;
+  content: url('assets/img/transfer-from-other-bank.png');
+}
+.img-mobile-check-deposit {
+  height: 20px;
+  width: 24px;
+  content: url('assets/img/mobile-check-deposit.png');
+}
+.img-credit-debit-card {
+  height: 18px;
+  width: 24px;
+  content: url('assets/img/credit-debit-card.png');
+}
+.img-send-money {
+  height: 21px;
+  width: 24px;
+  content: url('assets/img/send_money_icon.png');
+}
+.img-request-money {
+  height: 21px;
+  width: 24px;
+  content: url('assets/img/request_money_icon.png');
+}
+.img-move-between-accounts {
+  height: 18px;
+  width: 22px;
+  content: url('assets/img/move-between-accounts.png');
+}
+.img-schedule-transfer {
+  height: 20px;
+  width: 22px;
+  content: url('assets/img/schedule-transfer.png');
+}
+.img-pay-bills {
+  height: 21px;
+  width: 22px;
+  content: url('assets/img/pay-bills.png');
+}
+.img-mail-a-check {
+  height: 15px;
+  width: 24px;
+  content: url('assets/img/mail-a-check.png');
+}
+.img-transfer-to-other-bank {
+  height: 15px;
+  width: 24px;
+  content: url('assets/img/transfer-to-other-bank.png');
+}
+.img-calendar {
+  height: 24px;
+  width: 24px;
+  content: url('assets/img/calendar.png');
+}
+.message-ceter-delete {
+  height: 40px;
+  width: 40px;
+  content: url('assets/img/message-ceter-delete.png');
+}
+.account-type-action-sheet {
+  .action-sheet-group {
+    .action-sheet-title {
+      display: flex;
+      align-items: center;
+      height: 51px;
+      padding: 0 0 0 20px;
+      text-align: left;
+      color: #8c90a3;
+      font-family: 'Averta W05 Regular';
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      line-height: 16px;
+      background-image: none;
+    }
+    .action-sheet-button {
+      height: 80px;
+      border-bottom: 1px solid #ebedf2;
+      .action-sheet-button-inner {
+        justify-content: left;
+        color: #070a18;
+        font-family: 'Averta W05 Regular';
+        font-size: 16px;
+        letter-spacing: -0.25px;
+        line-height: 24px;
+        .action-sheet-icon {
+          font-size: 4rem;
+          margin-right: 15px;
+        }
+      }
+    }
+    .action-sheet-cancel {
+      height: 60px;
+      border: none;
+      .action-sheet-button-inner {
+        color: #435cdc;
+        font-family: 'Averta W05 Regular';
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 0.2px;
+        line-height: 16px;
+        justify-content: center;
+      }
+    }
+  }
+}
+/* safe area content add for notch issue */
+.safe-area-content {
+  --padding-top: var(--ion-safe-area-top) !important;
+  --padding-bottom: var(--ion-safe-area-bottom) !important;
+}
+.form-item {
+  margin-bottom: 10px;
+}

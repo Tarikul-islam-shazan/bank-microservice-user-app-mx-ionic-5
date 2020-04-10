@@ -1,0 +1,53 @@
+.offer-card-wrapper {
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #ebedf2;
+
+  .store-image {
+    width: 100px;
+    min-width: 100px;
+    max-width: 100px;
+    display: block;
+
+    margin-top: 30px;
+  }
+  .text-wrapper {
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+
+    .store-name {
+      color: #070a18;
+      font-family: 'Averta W05 Regular';
+      font-size: 16px;
+      letter-spacing: -0.27px;
+      line-height: 20px;
+      p {
+        margin: 16px 0px 0px;
+      }
+    }
+    .offer-description {
+      color: #606477;
+      font-family: 'Averta W05 Regular';
+      font-size: 16px;
+      line-height: 24px;
+      p {
+        margin: 8px 0px 12px;
+      }
+    }
+    .offer-type {
+      color: #8c90a3;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 12px;
+      line-height: 20px;
+      text-align: center;
+      padding: 3px;
+      border-radius: 8px;
+      background-color: #f4f6fd;
+      height: 30px;
+      width: 90px;
+      margin-bottom: 20px;
+      text-transform: capitalize;
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.badge-email-input-wrapper {
+  background: #fff;
+  .input-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    box-sizing: border-box;
+    min-height: 60px;
+    min-width: 335px;
+    border: 2px solid #070a18;
+    border-radius: 12px;
+    padding: 15px;
+    .badge-emails {
+      display: flex;
+      max-width: 335px;
+      flex-direction: row;
+      align-items: center;
+      padding-left: 10px;
+      padding-right: 5px;
+      margin-bottom: 5px;
+      margin-right: 5px;
+      border-radius: 15px;
+      background-color: #f4f6fd;
+      word-wrap: break-word;
+      .email {
+        color: #435cdc;
+        font-family: 'Averta W05 Semibold5179739';
+        font-size: 13px;
+        line-height: 28px;
+      }
+    }
+    input {
+      width: 335px;
+      border: none;
+      color: #070a18;
+      font-family: 'Averta W05 Regular';
+      font-size: 15px;
+      line-height: 20px;
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+}

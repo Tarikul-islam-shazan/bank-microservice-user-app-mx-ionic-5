@@ -1,0 +1,225 @@
+<ion-content class="safe-area-content">
+  <!--safe area adding-->
+  <div class="content-wrapper">
+    <div class="step-counter">
+      <step-counter [step]="'signup-module.signup-personal.step-text'" [stepNo]="3"></step-counter>
+    </div>
+    <div class="header-title">{{ 'signup-module.signup-personal.page-title' | translate }}</div>
+    <div class="personal-form-wrapper">
+      <form [formGroup]="personalForm" novalidate>
+        <ion-list lines="none" class="input-list">
+          <!-- prefix showing first in a form -->
+          <div class="clearfix ">
+            <div class="dropdown-input" (click)="openOptionsModal('prefix', prefixOptions)">
+              <ion-input
+                (ionFocus)="isInputFieldSkip('prefix')"
+                [ngClass]="personalForm.controls.prefix.invalid && skipErrorFields.prefix ? 'error-input' : 'white-input'"
+                readonly
+                class="white-input"
+                id="prefix"
+                type="text"
+                formControlName="prefix"
+                placeholder="{{ 'signup-module.signup-personal.personal-form.prefix' | translate }}"
+              ></ion-input>
+              <ion-icon name="chevron-down"></ion-icon>
+            </div>
+          </div>
+          <div class="clearfix">
+            <ion-input
+              [ngClass]="
+              personalForm.controls.firstName.invalid && skipErrorFields.firstName ? 'error-input' : 'white-input'
+            "
+              (ionFocus)="isInputFieldSkip('firstName')"
+              class="white-input ion-text-capitalize"
+              id="first-name"
+              type="text"
+              formControlName="firstName"
+              placeholder="{{ 'signup-module.signup-personal.personal-form.first-name' | translate }}"
+              [appMaskInput]="onlyOneWordInput"
+            ></ion-input>
+            <div
+              *ngIf="personalForm.controls.firstName.dirty && personalForm.controls.firstName.invalid"
+              class="error-msg"
+              position="fixed"
+            >
+              {{ 'signup-module.signup-personal.personal-form.errors.valid-first-name-text' | translate }}
+            </div>
+          </div>
+          <div class="clearfix">
+            <ion-input
+              class="white-input ion-text-capitalize"
+              id="middle-name"
+              type="text"
+              [appMaskInput]="wordsInput"
+              formControlName="middleName"
+              placeholder="{{ 'signup-module.signup-personal.personal-form.middle-name' | translate }}"
+            ></ion-input>
+          </div>
+          <div class="clearfix">
+            <ion-input
+              (ionFocus)="isInputFieldSkip('lastName')"
+              [ngClass]="personalForm.controls.lastName.invalid && skipErrorFields.lastName ? 'error-input' : 'white-input'"
+              class="white-input ion-text-capitalize"
+              id="last-name"
+              [appMaskInput]="onlyOneWordInput"
+              type="text"
+              formControlName="lastName"
+              placeholder="{{ 'signup-module.signup-personal.personal-form.last-name' | translate }}"
+            ></ion-input>
+            <div
+              *ngIf="personalForm.controls.lastName.dirty && personalForm.controls.lastName.invalid"
+              class="error-msg"
+              position="fixed"
+            >
+              {{ 'signup-module.signup-personal.personal-form.errors.valid-last-name-text' | translate }}
+            </div>
+          </div>
+          <div class="clearfix">
+            <div class="datetime-input">
+              <ion-item lines="none">
+                <ion-datetime
+                  id="date-of-birth"
+                  displayFormat="{{ 'signup-module.signup-personal.personal-form.date-of-birth-display-format' | translate }}"
+                  [max]="facade.maxDate"
+                  placeholder="{{'signup-module.signup-personal.personal-form.date-of-birth' | translate }}"
+                  formControlName="dateOfBirth"
+                ></ion-datetime>
+                <ion-icon name="chevron-down" slot="end"></ion-icon>
+              </ion-item>
+            </div>
+            <div *ngIf="isDateOfBirthInvalid()" class="error-msg" position="fixed">
+              {{ 'signup-module.signup-personal.personal-form.errors.valid-date-of-birth-text' | translate }}
+            </div>
+          </div>
+          <div class="clearfix">
+            <input
+              (focus)="isInputFieldSkip('socialSecurityNo')"
+              [ngClass]="
+              personalForm.controls.socialSecurityNo.invalid && skipErrorFields.socialSecurityNo
+                ? 'error-input'
+                : 'white-input'
+            "
+              class="white-input"
+              id="social-security-no"
+              type="tel"
+              formControlName="socialSecurityNo"
+              mask="000-00-0000"
+              placeholder="{{ 'signup-module.signup-personal.personal-form.social-security' | translate }}"
+            />
+            <div
+              *ngIf="!isSocialSecurityNoInvalid() &&
+                    (personalForm.controls.socialSecurityNo.dirty || personalForm.controls.socialSecurityNo.touched)"
+              class="error-msg"
+              position="fixed"
+            >
+              {{ 'signup-module.signup-personal.personal-form.errors.valid-social-security-text' | translate }}
+            </div>
+          </div>
+          <br />
+          <br />
+          <div class="clearfix">
+            <div class="dropdown-input" (click)="openOptionsModal('occupation', occupationOptions)">
+              <ion-input
+                (ionFocus)="isInputFieldSkip('occupation')"
+                [ngClass]="
+                  personalForm.controls.occupation.invalid && skipErrorFields.occupation ? 'error-input' : 'white-input'
+                "
+                readonly
+                class="white-input"
+                id="occupation"
+                type="text"
+                formControlName="occupation"
+                placeholder="{{ 'signup-module.signup-personal.personal-form.occupation' | translate }}"
+              ></ion-input>
+              <ion-icon name="chevron-down"></ion-icon>
+            </div>
+          </div>
+          <div class="clearfix">
+            <ion-input
+              (ionFocus)="isInputFieldSkip('monthlyIncome')"
+              [ngClass]="
+                personalForm.controls.monthlyIncome.invalid && skipErrorFields.monthlyIncome
+                  ? 'error-input'
+                  : 'white-input'
+              "
+              class="white-input"
+              id="monthly-income"
+              appInputDecimalMask
+              decModel="0"
+              type="tel"
+              formControlName="monthlyIncome"
+              placeholder="{{ 'signup-module.signup-personal.personal-form.monthly-income' | translate }}"
+            ></ion-input>
+          </div>
+          <div class="clearfix">
+            <div class="dropdown-input" (click)="openOptionsModal('sourceOfIncome', sourceOfIncomeOptions)">
+              <ion-input
+                (ionFocus)="isInputFieldSkip('sourceOfIncome')"
+                [ngClass]="
+                personalForm.controls.sourceOfIncome.invalid && skipErrorFields.sourceOfIncome
+                  ? 'error-input'
+                  : 'white-input'
+              "
+                readonly
+                class="white-input"
+                id="source-of-income"
+                type="text"
+                formControlName="sourceOfIncome"
+                placeholder="{{ 'signup-module.signup-personal.personal-form.source-of-income' | translate }}"
+              >
+              </ion-input>
+              <ion-icon name="chevron-down"></ion-icon>
+            </div>
+          </div>
+          <div class="clearfix">
+            <div class="dropdown-input" (click)="openOptionsModal('monthlyWithdrawal', monthlyWithdrawalOptions)">
+              <ion-input
+                (ionFocus)="isInputFieldSkip('monthlyWithdrawal')"
+                [ngClass]="
+                personalForm.controls.monthlyWithdrawal.invalid && skipErrorFields.monthlyWithdrawal
+                  ? 'error-input'
+                  : 'white-input'
+              "
+                readonly
+                class="white-input"
+                id="monthly-withdrawal"
+                type="text"
+                formControlName="monthlyWithdrawal"
+                placeholder="{{ 'signup-module.signup-personal.personal-form.monthly-withdrawl' | translate }}"
+              >
+              </ion-input>
+              <ion-icon name="chevron-down"></ion-icon>
+            </div>
+          </div>
+          <div class="clearfix">
+            <div class="dropdown-input" (click)="openOptionsModal('monthlyDeposit', monthlyDepositOptions)">
+              <ion-input
+                (ionFocus)="isInputFieldSkip('monthlyDeposit')"
+                [ngClass]="
+                personalForm.controls.monthlyDeposit.invalid && skipErrorFields.monthlyDeposit
+                  ? 'error-input'
+                  : 'white-input'
+              "
+                readonly
+                class="white-input"
+                id="monthly-deposit"
+                type="text"
+                formControlName="monthlyDeposit"
+                placeholder="{{ 'signup-module.signup-personal.personal-form.monthly-deposit' | translate }}"
+              ></ion-input>
+              <ion-icon name="chevron-down"></ion-icon>
+            </div>
+          </div>
+        </ion-list>
+      </form>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" (click)="next()" [disabled]="personalForm.invalid">
+      {{ 'signup-module.signup-personal.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

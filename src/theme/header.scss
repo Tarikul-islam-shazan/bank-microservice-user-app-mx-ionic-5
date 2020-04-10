@@ -1,0 +1,38 @@
+ion-header {
+  ion-toolbar {
+    font-family: 'Averta W05 Semibold5179739' !important;
+    --background: #435cdc;
+    --min-height: 51px;
+    --color: #ffffff;
+    /* Title sizw and font-family update*/
+    ion-title {
+      padding-left: unset;
+      padding-right: unset;
+      padding-inline-start: 90px;
+      padding-inline-end: 90px;
+      left: 0px;
+      top: 0px;
+      padding-top: 0px;
+      padding-bottom: 0px;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      font-size: 16px;
+      letter-spacing: 0.2px;
+      line-height: 20px;
+      text-align: center;
+      box-sizing: border-box;
+      pointer-events: none;
+      transform: translateZ(0px);
+    }
+  }
+}
+
+.white-header {
+  ion-toolbar {
+    --background: #ffffff !important;
+    --min-height: 50px !important;
+    --color: #000000 !important;
+    --border-color: #ffffff;
+  }
+}

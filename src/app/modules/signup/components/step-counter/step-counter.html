@@ -1,0 +1,22 @@
+<div class="step-counter-wrapper">
+  <div class="graph-wrapper">
+    <svg width="19" height="19" viewBox="0 0 120 120">
+      <circle class="circle" cx="60" cy="60" r="45" fill="none" stroke="#e6e6e6" />
+      <circle
+        id="progress"
+        class="circle progressAnimation"
+        [ngClass]="stepNo == 1 ? 'progress-1' : stepNo == 2 ? 'progress-2' : 'progress-3'"
+        cx="60"
+        cy="60"
+        r="45"
+        fill="none"
+        stroke-linecap="round"
+      />
+    </svg>
+  </div>
+  <div class="text-wrapper">
+    <span class="step-counter-text"
+      >{{'signup-module.components.step-counter.counter-text'|translate:{currentStep:stepNo,totlaStep:3} }}</span
+    >
+  </div>
+</div>

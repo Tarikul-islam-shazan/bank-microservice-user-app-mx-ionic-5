@@ -1,0 +1,21 @@
+.selected-page {
+  .selected-list {
+    .list-header {
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 11px;
+      color: #8c90a3;
+      letter-spacing: 1px;
+      line-height: 16px;
+      margin-bottom: 10px;
+      padding-left: 0;
+    }
+    ion-item {
+      --padding-start: 0px;
+      .title {
+        font-family: 'Averta W05 Regular5345108';
+        color: #070a18;
+        font-size: 16px;
+      }
+    }
+  }
+}

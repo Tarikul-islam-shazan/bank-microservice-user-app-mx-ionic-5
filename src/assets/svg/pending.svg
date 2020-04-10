@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="18px" height="18px" viewBox="0 0 18 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 58 (101010) - https://sketch.com -->
+    <title>AD296511-7FD1-4E25-9F5D-CEC6E6270CC7</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="9-1-1-Invite" transform="translate(-142.000000, -466.000000)">
+            <g id="Components-/-Badge-/-Pending-2" transform="translate(142.000000, 466.000000)">
+                <rect id="Container" x="0" y="0" width="18" height="18"></rect>
+                <circle id="Oval" fill="#FFD159" cx="9" cy="9" r="9"></circle>
+                <polyline id="Path-11" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" points="9 6 9 9.27272727 12 12"></polyline>
+            </g>
+        </g>
+    </g>
+</svg>

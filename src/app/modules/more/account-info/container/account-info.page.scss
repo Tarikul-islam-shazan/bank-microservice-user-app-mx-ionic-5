@@ -1,0 +1,36 @@
+.account-info-page {
+  ion-item {
+    --padding-start: 20px !important;
+    margin: 30px 0 !important;
+  }
+
+  h6.heading {
+    color: #8c90a3;
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 11px !important;
+    letter-spacing: 1px;
+    line-height: 16px;
+    text-transform: uppercase;
+  }
+
+  p.valuebold {
+    color: #070a18;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px !important;
+    letter-spacing: -0.25px;
+    line-height: 24px;
+  }
+
+  p.subtext {
+    color: #b7bbce;
+    font-family: 'Averta W05 Regular';
+    font-size: 12px !important;
+    font-weight: 600;
+    line-height: 20px;
+    margin-bottom: 30px !important;
+  }
+
+  p.onlyValue {
+    margin-bottom: 30px !important;
+  }
+}

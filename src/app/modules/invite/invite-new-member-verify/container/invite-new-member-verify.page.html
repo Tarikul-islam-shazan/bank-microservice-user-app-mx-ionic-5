@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back" (click)="facade.onBackClick()"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'invite-module.invite-new-member-verify.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div>
+    <div class="invite-label">
+      {{ 'invite-module.invite-new-member-verify.invite-label' | translate }}
+    </div>
+    <div class="email-container">
+      <ion-chip
+        *ngFor="let contact of facade.inviteeContacts"
+        [class.existing-member-email]="contact.isAlreadyMeedMember"
+      >
+        <ion-label *ngIf="contact.name">{{ contact.name }}</ion-label>
+        <ion-label *ngIf="!contact.name">{{ contact.email }}</ion-label>
+      </ion-chip>
+    </div>
+    <div class="invite-note">
+      <div *ngIf="facade.onlyHasExistingMeedMemberEmails()">
+        {{ 'invite-module.invite-new-member-verify.invite-already-member' | translate }}
+      </div>
+      <div *ngIf="!facade.onlyHasExistingMeedMemberEmails()">
+        {{ 'invite-module.invite-new-member-verify.invite-red-already-member' | translate }}
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      expand="block"
+      class="white-button"
+      [disabled]="facade.onlyHasExistingMeedMemberEmails()"
+      (click)="facade.onContinueClick()"
+    >
+      {{ 'invite-module.invite-new-member-verify.continue-button' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

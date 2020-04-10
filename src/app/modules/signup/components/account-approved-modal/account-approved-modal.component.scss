@@ -1,0 +1,37 @@
+.header-title {
+  text-align: center;
+  height: 80px;
+  margin-bottom: 0 !important;
+  p {
+    margin: 0;
+  }
+}
+.header-subtitle {
+  margin: 0 30px;
+  text-align: center !important;
+}
+.vault-img {
+  height: 295px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 70px;
+  img {
+    height: 185px;
+    width: 185px;
+  }
+}
+.footer-text {
+  padding: 0 30px;
+  text-align: center;
+  margin-top: 10vh;
+  margin-bottom: 32px;
+  color: #606477;
+  font-family: 'Averta W05 Regular';
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+}
+ion-toolbar {
+  --background: #ffffff;
+}

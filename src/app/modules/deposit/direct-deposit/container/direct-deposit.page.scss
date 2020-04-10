@@ -1,0 +1,74 @@
+.header-blue {
+  .header-text {
+    --color: #ffffff;
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 16px;
+    letter-spacing: 0.2px;
+    line-height: 20px;
+    text-align: center;
+  }
+}
+.icon-white-ques-mark {
+  margin-right: 20px !important;
+}
+.info-modal-text-content .modal-sub-title {
+  text-align: center;
+}
+
+.direct-deposit-content {
+  .deposit-info {
+    margin-bottom: 28px;
+    #title {
+      font-family: 'Averta W05 ExtraBold';
+      font-size: 30px;
+      color: #070a18;
+    }
+    #description {
+      font-size: 16px;
+      line-height: 24px;
+      color: #606477;
+    }
+  }
+  .depositer-block {
+    margin-bottom: 24px;
+    ion-label {
+      font-family: 'Averta W05 Bold5204651' !important;
+      font-size: 11px;
+      text-transform: uppercase;
+      color: #8c90a3;
+    }
+  }
+  .terms-block {
+    display: flex;
+    .checkbox-wrapper {
+      height: 50px;
+      margin-right: 20px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+    }
+    .checkbox .checkbox-icon {
+      height: 20px !important;
+      width: 20px !important;
+      border-radius: 3px !important;
+    }
+    .checkbox-checked .checkbox-inner {
+      left: 5px !important;
+      top: 2px !important;
+    }
+
+    .checkbox .checkbox-checked {
+      height: 20px !important;
+      width: 20px !important;
+      border: 2px solid #435cdc !important;
+      background: #435cdc !important;
+    }
+    .check-box-text {
+      height: 96px;
+      color: #606477;
+      font-family: 'Averta W05 Regular';
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+}

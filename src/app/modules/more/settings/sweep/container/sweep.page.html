@@ -1,0 +1,52 @@
+<ion-header meed class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>{{ 'more-module.sweep.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="sweep-page">
+  <div>
+    <ion-grid>
+      <ion-row>
+        <ion-col size="10">
+          <ion-item lines="none">
+            <ion-label class="slide-text">{{ 'more-module.sweep.slider-title' | translate }}</ion-label>
+            <ion-toggle
+              mode="md"
+              id="sweep-state-toggle"
+              style="padding-top:15px;"
+              [(ngModel)]="sweepFacade.sweepStatus"
+            ></ion-toggle>
+          </ion-item>
+        </ion-col>
+        <ion-col size="2">
+          <ion-item lines="none">
+            <ion-label class="slide-text"
+              >{{(sweepFacade.sweepStatus? 'more-module.sweep.slider-on': 'more-module.sweep.slider-off') |
+              translate}}</ion-label
+            >
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <div class="clearfix">
+      <div class="sweep-message">
+        <p>
+          {{ 'more-module.sweep.sweep-message' | translate }}
+        </p>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" (click)="sweepFacade.changeSweepStatus()">
+      {{ 'more-module.sweep.sweep-save-btn' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,99 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'move-money-module.internal-transfer.confirm-details.header-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="confirm-details-content-wrapper">
+    <div class="ion-text-center amount-block">
+      <div class="title">{{'move-money-module.internal-transfer.confirm-details.amount-title' | translate}}</div>
+      <div class="amount">${{facade.transfer?.amount | number: '1.2-2'}}</div>
+    </div>
+    <div class="account-block">
+      <div class="title">{{'move-money-module.internal-transfer.confirm-details.transfer-from' | translate}}</div>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <span
+            [ngClass]="{'img-checking': facade.isActiveAccount(facade.accountType.DDA, facade.transferFor.FromAccount), 'img-savings': facade.isActiveAccount(facade.accountType.SSA, facade.transferFor.FromAccount), 'img-loc': facade.isActiveAccount(facade.accountType.LOC, facade.transferFor.FromAccount)}"
+          ></span>
+        </ion-avatar>
+        <ion-label>
+          {{facade.accountTypeTranslation(facade.fromAccount?.accountType)}} (•••• {{facade.fromAccount?.accountNumber |
+          slice: -4}})
+        </ion-label>
+      </ion-item>
+    </div>
+    <div class="account-block">
+      <div class="title">{{'move-money-module.internal-transfer.confirm-details.transfer-to' | translate}}</div>
+      <ion-item lines="none">
+        <ion-avatar slot="start">
+          <span
+            [ngClass]="{'img-checking': facade.isActiveAccount(facade.accountType.DDA, facade.transferFor.ToAccount), 'img-savings': facade.isActiveAccount(facade.accountType.SSA, facade.transferFor.ToAccount), 'img-loc': facade.isActiveAccount(facade.accountType.LOC, facade.transferFor.ToAccount)}"
+          ></span>
+        </ion-avatar>
+        <ion-label>
+          {{facade.accountTypeTranslation(facade.toAccount?.accountType)}} (•••• {{facade.toAccount?.accountNumber |
+          slice: -4}})
+        </ion-label>
+      </ion-item>
+    </div>
+    <div class="scheduled-block">
+      <div class="title">{{'move-money-module.internal-transfer.confirm-details.schedule-title' | translate}}</div>
+      <ion-item lines="none">
+        <div slot="start" class="img-calendar"></div>
+        <ion-label>
+          {{facade.transfer?.transferDate | date:'MMM dd, yyyy'}}
+        </ion-label>
+      </ion-item>
+    </div>
+    <div class="note-block">
+      <div class="title">{{'move-money-module.internal-transfer.confirm-details.note-title' | translate}}</div>
+      <div class="note-description">{{facade.transfer?.notes}}</div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="footer-content ion-no-border">
+  <ion-toolbar>
+    <ion-grid *ngIf="!facade.fromScheduledTransfers">
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="moveMoney()" expand="block" class="white-button">
+            {{'move-money-module.internal-transfer.confirm-details.move-money-button' | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="backToEdit()" expand="block" fill="clear" class="edit-btn">
+            {{'move-money-module.internal-transfer.confirm-details.edit-button' | translate}}
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="cancelTransection()" expand="block" fill="clear" class="cancel-btn">
+            {{'move-money-module.internal-transfer.confirm-details.cancel-button' | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-grid *ngIf="facade.fromScheduledTransfers">
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="updateScheduledTransfer()" expand="block" class="white-button">
+            {{'move-money-module.internal-transfer.confirm-details.save-changes-button' | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="backToEditScheduledModify()" expand="block" fill="clear" class="edit-btn">
+            {{'move-money-module.internal-transfer.confirm-details.edit-button' | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

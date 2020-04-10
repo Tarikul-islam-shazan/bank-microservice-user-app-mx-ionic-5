@@ -1,0 +1,26 @@
+<ion-content class="direct-deposit-complete-content">
+  <div class="content-wrapper">
+    <div class="deposit-email-img">
+      <img src="assets/svg/envelop.svg" />
+    </div>
+    <div class="info-content">
+      <p class="info-title">{{ 'deposit.direct-deposit-complete.thank-you-text' | translate }}</p>
+      <div class="info-description">
+        <div class="info-text">
+          {{ 'deposit.direct-deposit-complete.info-text' | translate }}
+        </div>
+        <div class="info-text">
+          {{ 'deposit.direct-deposit-complete.info-text-2' | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" (click)="exploreApp()">
+      {{ 'deposit.direct-deposit-complete.btn-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

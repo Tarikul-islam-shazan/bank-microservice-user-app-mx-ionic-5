@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'move-money-module.send-money.confirm.page-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="confirm-page">
+    <div class="ion-text-center amount-block">
+      <div class="title">{{'move-money-module.send-money.confirm.amount-title' | translate}}</div>
+      <div class="amount">${{facade.amount}}</div>
+    </div>
+    <div class="sending-block">
+      <div class="title">{{'move-money-module.send-money.confirm.sending-title' | translate}}</div>
+      <div class="description">{{facade.receiverEmail}}</div>
+    </div>
+    <div class="note-block">
+      <div class="title">{{'move-money-module.send-money.confirm.sending-title' | translate}}</div>
+      <div class="description">{{facade.message}}</div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="footer-content ion-no-border">
+  <ion-toolbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="facade.submitP2PTransfer()" expand="block" class="white-button">
+            {{'move-money-module.send-money.confirm.send-money-button' | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-button (click)="facade.backToEdit()" expand="block" fill="clear" class="edit-btn">
+            {{'move-money-module.send-money.confirm.edit-button' | translate}}
+          </ion-button>
+        </ion-col>
+        <ion-col>
+          <ion-button (click)="facade.cancelSendMoney()" expand="block" fill="clear" class="cancel-btn">
+            {{'move-money-module.send-money.confirm.cancel-button' | translate}}
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-footer>

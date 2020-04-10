@@ -1,0 +1,121 @@
+ion-content {
+  --padding-end: 0 !important;
+  ion-list {
+    --padding-top: 40px !important;
+    --padding-start: 20px !important;
+
+    ion-list-header {
+      -webkit-padding-start: 0px !important;
+
+      ion-label {
+        --padding-start: 0px;
+        color: #8c90a3;
+        font-family: 'Averta W05 Bold5204651';
+        font-size: 11px;
+        font-weight: bold;
+        letter-spacing: 1px;
+        line-height: 16px;
+      }
+    }
+
+    ion-item {
+      display: flex;
+      height: 70px;
+      --padding-start: 0px;
+      ion-label {
+        color: #070a18;
+        font-family: 'Averta W05 Regular';
+        font-size: 1.6rem;
+        letter-spacing: -0.25px;
+        line-height: 2rem;
+        &.red-text {
+          color: #fe4c55;
+        }
+      }
+      img.icon-end {
+        margin-right: 12px;
+      }
+    }
+    ion-item:last-child {
+      border-bottom: none;
+    }
+  }
+
+  .icon-user {
+    width: 22px;
+    height: 22px;
+    content: url('~/assets/img/icon_user.png');
+  }
+
+  .icon-bank {
+    width: 22px;
+    height: 22px;
+    content: url('~/assets/img/icon_account.png');
+  }
+
+  .icon-debit-card {
+    width: 24px;
+    height: 18px;
+    content: url('~/assets/img/icon_card.png');
+  }
+
+  .icon-statement {
+    width: 22px;
+    height: 22px;
+    content: url('~/assets/img/icon_statement.png');
+  }
+
+  .icon-setting {
+    width: 22px;
+    height: 22px;
+    content: url('~/assets/img/icon_setting.png');
+  }
+
+  .icon-faceid {
+    width: 22px;
+    height: 22px;
+    content: url('~/assets/img/icon_faceid.png');
+  }
+
+  .icon-atm {
+    width: 22px;
+    height: 24px;
+    content: url('~/assets/img/icon_atm.png');
+  }
+
+  .icon-privacy {
+    width: 18px;
+    height: 21px;
+    content: url('~/assets/img/icon_privacy.png');
+  }
+
+  .icon-envelope {
+    width: 22px;
+    height: 16px;
+    content: url('~/assets/img/icon_envelope.png');
+  }
+
+  .icon-chat {
+    width: 22px;
+    height: 22px;
+    content: url('~/assets/img/icon_chat.png');
+  }
+
+  .icon-logout {
+    width: 22px;
+    height: 22px;
+    content: url('~/assets/img/icon_logout.png');
+  }
+
+  .icon-logout {
+    height: 22px;
+    width: 26px;
+    margin-right: 12px;
+    content: url('~/assets/img/logout.png');
+  }
+  .img-arrow-right {
+    height: 14px;
+    width: 14px;
+    margin-right: 12px;
+  }
+}

@@ -1,0 +1,94 @@
+.statements-page {
+  .month-wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .swiper-container {
+    height: auto !important;
+  }
+  .swiper-zoom-container {
+    display: block !important;
+  }
+  .slide-zoom {
+    text-align: start;
+  }
+
+  .swiper-slide {
+    text-align: start;
+  }
+
+  .yearWrapper {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 40px 20px;
+  }
+
+  .year-wrapper {
+    color: #070a18;
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 18px;
+    letter-spacing: 0.2px;
+    line-height: 30px;
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .year-arrow {
+    padding-top: 5px;
+  }
+
+  .year-section {
+    color: #070a18;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    letter-spacing: -0.25px;
+    line-height: 20px;
+    padding-left: 20px;
+    vertical-align: top;
+  }
+  .md-statements-year-header {
+    --background-color: #ffffff;
+    font-weight: bold;
+    justify-content: center;
+    -webkit-justify-content: center;
+  }
+  .md-statement-list {
+    .md-statement-divider {
+      padding-top: 0px !important;
+      padding-bottom: 0px !important;
+      --color: #b7bbce;
+      font-weight: 500;
+    }
+    .md-statement-item {
+      .item-inner {
+        margin-left: 8px;
+      }
+      .md-statement-item-title {
+        --color: #b7bbce;
+        font-weight: 200;
+      }
+      .md-statement-item-date {
+        font-weight: 200;
+        --color: #b7bbce;
+      }
+    }
+  }
+
+  .meed-img-dda {
+    margin-right: 7px !important;
+  }
+  .meed-img-loc {
+    margin-right: 7px !important;
+  }
+
+  .icon-arrow {
+    position: absolute;
+    right: 0;
+    margin-right: 20px;
+  }
+}

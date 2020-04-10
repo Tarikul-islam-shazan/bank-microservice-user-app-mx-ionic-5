@@ -1,0 +1,32 @@
+<ion-content fullscreen class="transfer-success-modal-content">
+  <div class="main-container top-margin">
+    <div class="content-wrapper">
+      <div class="img-block">
+        <img src="assets/img/success.png" />
+      </div>
+      <div class="title-block">
+        <span class="title">
+          <span
+            >You’ve sent <br />
+            ${{ data.amount }} to
+          </span>
+          <br />
+          <span>{{ data.receiverEmail }}</span>
+        </span>
+      </div>
+      <div class="subtitle-block">
+        <div class="subtitle-text">
+          {{ data.createdAt | date: 'MMM dd, yyyy' }}
+        </div>
+        <div class="subtitle-ref">Ref # {{ data.confirmationCode }}</div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="footer-content ion-no-border">
+  <ion-toolbar>
+    <ion-button (click)="dismiss()" expand="block" class="white-button">
+      Done
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,131 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'move-money-module.mail-check.add-payee.page-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div class="add-payee-form">
+      <div class="step-one">
+        <div class="form-title">{{'move-money-module.mail-check.add-payee.page-header' | translate}}</div>
+        <form [formGroup]="addPayeeForm" novalidate>
+          <ion-list lines="none" class="input-list">
+            <div class="clearfix form-item">
+              <ion-input
+                [placeholder]="'move-money-module.mail-check.add-payee.form-input-placeholders.payee-name' | translate"
+                [readonly]="billPayee.payeeId"
+                class="white-input"
+                formControlName="fullName"
+                type="text"
+              >
+              </ion-input>
+              <div
+                class="clearfix"
+                *ngIf="addPayeeForm.controls.fullName.dirty && addPayeeForm.controls.fullName.invalid"
+              >
+                <ng-template
+                  [ngIf]="addPayeeForm.controls.fullName.errors.alphaNumericWithSpace"
+                  [ngIfElse]="payeeNameRequiredError"
+                >
+                  <div class="error-msg">
+                    {{'move-money-module.mail-check.add-payee.errors.payee-name-alpha-numeric-text' | translate}}
+                  </div>
+                </ng-template>
+                <ng-template #payeeNameRequiredError>
+                  <div class="error-msg">
+                    {{'move-money-module.mail-check.add-payee.errors.payee-name-required-text' | translate}}
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+            <div class="clearfix form-item">
+              <ion-input
+                [placeholder]="'move-money-module.mail-check.add-payee.form-input-placeholders.payee-nickname' | translate"
+                [readonly]="billPayee.payeeId"
+                class="white-input"
+                formControlName="nickName"
+                type="text"
+              >
+              </ion-input>
+            </div>
+            <div class="clearfix form-item">
+              <ion-input
+                [maxlength]="accountNumberMaxLength"
+                [placeholder]="'move-money-module.mail-check.add-payee.form-input-placeholders.payee-account' | translate"
+                [readonly]="billPayee.payeeId"
+                class="white-input"
+                formControlName="accountNumber"
+                inputmode="numeric"
+                type="number"
+              >
+              </ion-input>
+              <div
+                class="clearfix error-msg"
+                *ngIf="addPayeeForm.controls.accountNumber.dirty && addPayeeForm.controls.accountNumber.invalid"
+              >
+                {{'move-money-module.mail-check.add-payee.errors.account-no-required-text' | translate}}
+              </div>
+            </div>
+            <div class="clearfix form-item">
+              <ion-input
+                [maxlength]="accountNumberMaxLength"
+                [placeholder]="'move-money-module.mail-check.add-payee.form-input-placeholders.payee-confirm-account' | translate"
+                [readonly]="billPayee.payeeId"
+                class="white-input"
+                formControlName="confirmAccountNumber"
+                inputmode="numeric"
+                type="number"
+              >
+              </ion-input>
+              <div class="clearfix error-msg" *ngIf="addPayeeForm.controls.confirmAccountNumber.errors?.mustMatch">
+                {{'move-money-module.mail-check.add-payee.errors.account-mis-match-text' | translate}}
+              </div>
+            </div>
+            <div class="clearfix form-item payee-type-radio">
+              <div class="title">
+                {{'move-money-module.mail-check.add-payee.form-input-placeholders.payee-type' | translate}}
+              </div>
+              <ion-radio-group formControlName="type">
+                <ion-item>
+                  <ion-label
+                    >{{'move-money-module.mail-check.add-payee.form-input-placeholders.payee-type-option-one' |
+                    translate}}</ion-label
+                  >
+                  <ion-radio
+                    mode="md"
+                    slot="start"
+                    [value]="billPayeeType.Company"
+                    checked
+                    [disabled]="billPayee.payeeId"
+                  ></ion-radio>
+                </ion-item>
+              </ion-radio-group>
+            </div>
+          </ion-list>
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ng-template [ngIf]="billPayee.payeeId" [ngIfElse]="payeeIdNotPresent">
+      <ion-button class="white-button" expand="block" (click)="cancel()">
+        {{'move-money-module.mail-check.add-payee.cancel-button-title' | translate}}
+      </ion-button>
+      <ion-button class="grey-outline-button" expand="block" (click)="delete()">
+        {{'move-money-module.mail-check.add-payee.delete-button-title' | translate}}
+      </ion-button>
+    </ng-template>
+
+    <ng-template #payeeIdNotPresent>
+      <ion-button class="white-button" expand="block" (click)="continue()" [disabled]="addPayeeForm.invalid">
+        {{'move-money-module.mail-check.add-payee.continue-button-title' | translate}}
+      </ion-button>
+    </ng-template>
+  </ion-toolbar>
+</ion-footer>

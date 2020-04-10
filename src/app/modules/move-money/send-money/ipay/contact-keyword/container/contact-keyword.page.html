@@ -1,0 +1,52 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'move-money-module.send-money.ipay.contact-keyword.page-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="contact-keyword">
+    <div class="contact-keyword-form">
+      <div class="form-title">{{'move-money-module.send-money.ipay.contact-keyword.form-title' | translate}}</div>
+      <div class="form-details">{{'move-money-module.send-money.ipay.contact-keyword.form-details' | translate}}</div>
+      <form [formGroup]="contactKeywordForm">
+        <ion-list lines="none" class="input-list">
+          <ion-item>
+            <ion-input
+              type="text"
+              class="white-input"
+              formControlName="sharedSecret"
+              placeholder="{{'move-money-module.send-money.ipay.contact-keyword.keyword' | translate}}"
+            ></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input
+              type="text"
+              class="white-input"
+              formControlName="confirmsharedSecret"
+              placeholder="{{'move-money-module.send-money.ipay.contact-keyword.confirm-keyword' | translate}}"
+            ></ion-input>
+          </ion-item>
+        </ion-list>
+        <div class="form-details">
+          {{'move-money-module.send-money.ipay.contact-keyword.remember-share' | translate}}
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      [disabled]="contactKeywordForm.invalid"
+      (click)="facade.continue(contactKeywordForm.value.sharedSecret)"
+      class="white-button"
+      expand="block"
+      >{{'move-money-module.send-money.ipay.contact-keyword.next-button' | translate}}</ion-button
+    >
+  </ion-toolbar>
+</ion-footer>

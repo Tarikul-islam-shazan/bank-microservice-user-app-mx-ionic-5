@@ -1,0 +1,82 @@
+{
+  "appSettings": {
+    "localization": {
+      "country": "us",
+      "language": "en",
+      "locale": "en-us"
+    },
+    "appInfo": {
+      "version": "0.0.1"
+    },
+    "menus": [
+      {
+        "menuName": "Home",
+        "position": 1
+      },
+      {
+        "menuName": "moveMoney",
+        "position": 2,
+        "childMenus": [
+          {
+            "menuName": "directDeposit",
+            "position": 1
+          },
+          {
+            "menuName": "TransferFromOtherBank",
+            "position": 2
+          },
+          {
+            "menuName": "mobileCheckDeposit",
+            "position": 3
+          },
+          {
+            "menuName": "payBills",
+            "position": 4
+          },
+          {
+            "menuName": "payFriends",
+            "position": 5
+          }
+        ]
+      },
+      {
+        "menuName": "rewards",
+        "position": 3
+      },
+      {
+        "menuName": "invite",
+        "position": 4
+      },
+      {
+        "menuName": "more",
+        "position": 5,
+        "childMenus": [
+          {
+            "menuName": "personalDetails",
+            "position": 1
+          },
+          {
+            "menuName": "accountDetails",
+            "position": 2
+          },
+          {
+            "menuName": "debitCard",
+            "position": 3
+          },
+          {
+            "menuName": "statements",
+            "position": 4
+          },
+          {
+            "menuName": "settings",
+            "position": 5
+          },
+          {
+            "menuName": "contanctUs",
+            "position": 6
+          }
+        ]
+      }
+    ]
+  }
+}

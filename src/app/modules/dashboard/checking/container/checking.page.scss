@@ -1,0 +1,29 @@
+.content-wrapper {
+  margin-top: 20px;
+  .pending-transaction-margin {
+    margin-top: 48px;
+  }
+  .recent-transaction-margin {
+    margin-top: 36px;
+  }
+  .transaction-container {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Averta W05 Bold5204651';
+    margin-bottom: 18px;
+    .transaction-title {
+      color: #070a18;
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: -0.36px;
+      line-height: 21px;
+      margin-bottom: 18px;
+      margin-right: 8px;
+    }
+    .show-hide-title {
+      color: #b7bbce;
+      font-size: 12px;
+      line-height: 20px;
+    }
+  }
+}

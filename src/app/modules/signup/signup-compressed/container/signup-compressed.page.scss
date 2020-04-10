@@ -1,0 +1,78 @@
+ion-content {
+  --background: var(--ion-color-meedblue);
+}
+.signup-compressed-screen {
+  margin-top: 27px;
+  .signup-compressed-screen-pagecontent {
+    text-align: center !important;
+    .header-logo {
+      margin-bottom: 35px;
+    }
+    ion-item {
+      --background: transparent !important;
+    }
+    .title {
+      color: white;
+      letter-spacing: 0.2px;
+      line-height: 30px;
+      margin-bottom: 35px;
+      font-family: 'Averta W05 ExtraBold';
+    }
+    .right-content > p {
+      color: white;
+    }
+
+    .inviter-seperator-text {
+      color: white;
+      font-family: 'Averta W05 ExtraBold';
+      font-size: 16px;
+    }
+  }
+
+  ion-input[readonly='true'] {
+    opacity: 0.4;
+  }
+
+  .checkbox-container {
+    text-align: left !important;
+    ion-item {
+      --background: transparent;
+      --color: white;
+      --background-activated: var(--input-blue-border-color);
+      .checkbox-checked {
+        --background-checked: white !important;
+        --border-color-checked: white !important;
+        --border-radius: 2px !important;
+        --checkmark-color: #3a52ce;
+        --size: 14px;
+        border-color: white !important;
+        border: none !important;
+      }
+      .checkbox-square-label {
+        font-family: 'Averta W05 Regular';
+        font-size: 16px;
+        line-height: 24px;
+        margin: 0;
+      }
+      .checkbox-square {
+        --background: transparent;
+        --border-radius: 0%;
+        --size: 16px;
+        --border-radius: 2px !important;
+        --border-color: var(--input-blue-border-color);
+        box-sizing: border-box;
+        margin-right: 8px;
+      }
+    }
+  }
+}
+
+ion-icon {
+  color: white !important;
+}
+
+ion-footer {
+  ion-toolbar {
+    --background: #2f47bd !important;
+  }
+}

@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'deposit.deposit-money-page.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div class="content-title">{{ 'deposit.deposit-money-page.page-title' | translate }}</div>
+    <ion-list lines="none">
+      <ion-radio-group [(ngModel)]="moveMoneyOption">
+        <ion-item>
+          <ion-radio slot="start" [value]="registrationFeePaymentType.ECHECK" mode="md"></ion-radio>
+          <div class="radio-content">
+            <div class="radio-title">{{ 'deposit.deposit-money-page.echeck-title' | translate }}</div>
+            <div class="radio-subtitle">{{ 'deposit.deposit-money-page.echeck-subtitle' | translate }}</div>
+          </div>
+          <div class="ques-mark" slot="end" (click)="openCheckModal()">
+            <img src="assets/svg/question-mark.svg" />
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-radio slot="start" [value]="registrationFeePaymentType.ACH" mode="md"></ion-radio>
+          <div class="radio-content">
+            <div class="radio-title">{{ 'deposit.deposit-money-page.eTransfer-title' | translate }}</div>
+            <div class="radio-subtitle">{{ 'deposit.deposit-money-page.eTransfer-subtitle' | translate }}</div>
+          </div>
+          <div class="ques-mark" slot="end" (click)="openEtransferModal()">
+            <img src="assets/svg/question-mark.svg" />
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-radio slot="start" [value]="registrationFeePaymentType.DEBITCARD" mode="md"></ion-radio>
+          <div class="radio-content">
+            <div class="radio-title">{{ 'deposit.deposit-money-page.credit-title' | translate }}</div>
+            <div class="radio-subtitle">{{ 'deposit.deposit-money-page.credit-subtitle' | translate }}</div>
+          </div>
+          <div class="ques-mark" slot="end" (click)="openCreditModal()">
+            <img src="assets/svg/question-mark.svg" />
+          </div>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button (click)="precessMoneyInput()" class="white-button" expand="block">
+      {{ 'deposit.deposit-money-page.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

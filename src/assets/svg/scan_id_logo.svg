@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="265px" height="265px" viewBox="0 0 265 265" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 56.3 (101010) - https://sketch.com -->
+    <title>D4D7BF3B-86C0-4822-8C57-F894A02C4069</title>
+    <desc>Created with sketchtool.</desc>
+    <defs>
+        <linearGradient x1="3.63215729%" y1="69.381295%" x2="74.7364927%" y2="32.1459174%" id="linearGradient-1">
+            <stop stop-color="#2F47BD" offset="0%"></stop>
+            <stop stop-color="#435CDC" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="02-Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-8-1-Bank-Application-ID" transform="translate(-55.000000, -175.000000)">
+            <g id="Illustration-/-260x260px-Scan-Your-ID" transform="translate(40.000000, 161.000000)">
+                <rect id="Rectangle" x="0" y="0" width="295" height="300"></rect>
+                <path d="M245.270367,113.33065 C259.62438,158.033191 246.141861,220.303891 214.511768,245.452831 C182.830411,270.60177 133.052745,258.62895 96.0398973,226.861868 C59.0783141,195.094787 34.9328139,143.533444 45.4932662,104.847396 C56.1049829,66.2215123 101.473916,40.3505935 145.151127,41.0124077 C188.879602,41.614057 230.967618,68.6882743 245.270367,113.33065 Z" id="blob3-copy" fill="#EBEEFF" transform="translate(147.000000, 150.000000) scale(1, -1) rotate(-75.000000) translate(-147.000000, -150.000000) "></path>
+                <g id="Group" transform="translate(145.893891, 149.635813) rotate(-14.000000) translate(-145.893891, -149.635813) translate(30.893891, 72.135813)">
+                    <rect id="Rectangle" fill="url(#linearGradient-1)" x="8" y="8" width="215" height="140" rx="6"></rect>
+                    <g id="Scan-Border" transform="translate(0.758078, 0.970296)" stroke="#0CDA91" stroke-linecap="round" stroke-linejoin="round" stroke-width="4">
+                        <path d="M0.271626169,32.1653334 L0.271626169,7.06329258 C0.271626169,3.597424 3.08286146,0.787782378 6.55069594,0.787782378 L31.666975,0.787782378" id="Path"></path>
+                        <path d="M196.787165,1.51354806 L221.903444,1.51354806 C225.371278,1.51354806 228.182513,4.32318969 228.182513,7.78905827 L228.182513,32.8910991" id="02"></path>
+                        <path d="M32.1560351,153.521972 L7.03975602,153.521972 C3.57192154,153.521972 0.760686248,150.71233 0.760686248,147.246462 L0.760686248,122.144421" id="03"></path>
+                        <path d="M228.185121,120.687673 L228.185121,145.789714 C228.185121,149.255583 225.373886,152.065224 221.906052,152.065224 L196.789773,152.065224" id="04"></path>
+                    </g>
+                    <rect id="Rectangle" fill="#FFFFFF" opacity="0.2" x="33" y="38" width="70" height="80" rx="2"></rect>
+                    <rect id="Rectangle" fill="#FFFFFF" opacity="0.2" x="113" y="38" width="85" height="8" rx="2"></rect>
+                    <rect id="Rectangle" fill="#FFFFFF" opacity="0.2" x="113" y="74" width="75" height="8" rx="2"></rect>
+                    <rect id="Rectangle" fill="#FFFFFF" opacity="0.2" x="113" y="56" width="65" height="8" rx="2"></rect>
+                    <rect id="Rectangle" fill="#FFFFFF" opacity="0.2" x="113" y="92" width="45" height="8" rx="2"></rect>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

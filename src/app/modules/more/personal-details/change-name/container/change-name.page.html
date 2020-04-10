@@ -1,0 +1,81 @@
+<ion-header class="white-header ion-no-border">
+  <ion-toolbar>
+    <div slot="start" class="header-close-button" (click)="dismiss()"></div>
+    <ion-title> {{'more-module.personal-details.change-full-name-modal.header-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <form [formGroup]="changeNameForm" novalidate>
+      <ion-list lines="none" class="input-list">
+        <ion-item>
+          <ion-label position="stacked"
+            >{{'more-module.personal-details.change-full-name-modal.first-name'|translate}}
+          </ion-label>
+          <ion-input
+            type="text"
+            class="white-input"
+            formControlName="firstName"
+            (ionChange)="removeSpaceFromName('firstName')"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked"
+            >{{'more-module.personal-details.change-full-name-modal.middle-name'|translate}}
+          </ion-label>
+          <ion-input
+            type="text"
+            class="white-input"
+            formControlName="middleName"
+            (ionChange)="removeSpaceFromName('middleName')"
+          ></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">
+            {{'more-module.personal-details.change-full-name-modal.last-name'|translate}}</ion-label
+          >
+          <ion-input
+            type="text"
+            class="white-input"
+            formControlName="lastName"
+            (ionChange)="removeSpaceFromName('lastName')"
+          ></ion-input>
+        </ion-item>
+        <div class="dropdown-input-wrapper" (click)="openModal()">
+          <div class="label-text">
+            {{'more-module.personal-details.change-full-name-modal.reason-for-name-change' | translate}}
+          </div>
+          <div class="dropdown-input">
+            <ion-input
+              readonly
+              class="white-input"
+              type="text"
+              formControlName="reason"
+              placeholder="{{'more-module.personal-details.change-full-name-modal.reason-placeholder' | translate}}"
+            >
+            </ion-input>
+            <ion-icon name="chevron-down"></ion-icon>
+          </div>
+          <div class="input-info" *ngIf="selectedReason">
+            {{"more-module.personal-details.change-full-name-modal.valid-doc-need-message"| translate:
+            {documentName:selectedReason.subText} }}
+          </div>
+        </div>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      class="white-button"
+      expand="block"
+      [disabled]="changeNameForm.invalid || !isFormValueChanged"
+      (click)="next()"
+    >
+      {{'more-module.personal-details.change-full-name-modal.next-btn' | translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,80 @@
+.saving-goal-container {
+  /* highlight-color-focused change for input field */
+  ion-item {
+    --highlight-color-focused: #ffffff !important;
+  }
+  .custom-ion-item {
+    margin-top: 40px;
+    .field-title {
+      margin-bottom: 10px;
+      color: #8c90a3;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 11px;
+      letter-spacing: 0.4px;
+      line-height: 11px;
+      text-transform: uppercase;
+    }
+    .upper-case-font {
+      text-transform: none !important;
+    }
+    .error {
+      color: red;
+      font-size: 14px;
+    }
+    .mask-input {
+      color: #070a18 !important;
+      font-family: 'Averta W05 Bold5204651' !important;
+      font-size: 30px !important;
+      letter-spacing: 0.2px !important;
+      line-height: 30px !important;
+    }
+    ion-input {
+      --padding-top: 0px;
+    }
+    .button-group {
+      height: 50px;
+      float: right;
+      border-radius: 12px;
+      width: fit-content;
+      overflow: hidden;
+      margin: 0 !important;
+      border: 1px solid #ebedf2;
+      ion-button {
+        --background: white;
+        --color: #606477;
+        --background-activated: white;
+        --background-hover: white;
+        height: 42px !important;
+        width: 64px;
+      }
+      ion-button:first-child {
+        border-right: 1px solid #ebedf2;
+      }
+    }
+  }
+  .saving-goal-card {
+    margin-top: 50px;
+    --background: #f4f6fd;
+    --border-radius: 12px;
+    --padding-start: 0px;
+    --inner-padding-top: 20px;
+    --inner-padding-bottom: 20px;
+    --inner-padding-top: 20px;
+    --inner-padding-top: 20px;
+    ion-grid {
+      --ion-grid-column-padding: 20px;
+      font-family: 'Averta W05 Semibold5179739';
+      letter-spacing: 0.2px;
+      .title {
+        color: #070a18;
+        font-size: 18px;
+        line-height: 30px;
+      }
+      .sub-title {
+        color: #b7bbce;
+        font-size: 14px;
+        line-height: 18px;
+      }
+    }
+  }
+}

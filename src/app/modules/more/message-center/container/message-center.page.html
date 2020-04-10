@@ -1,0 +1,34 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title translate>{{ 'more-module.message-center.header-title-text'}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ng-container *ngIf="messageCenterFacade.messages as messages">
+    <ng-container *ngIf="messages.length then hasMessage else noMessage"></ng-container>
+    <ng-template #noMessage>
+      <div translate class="no-inbox-text">{{ 'more-module.message-center.empty-inbox-text'}}</div>
+    </ng-template>
+    <ng-template #hasMessage>
+      <ion-list no-padding no-margin>
+        <ion-item
+          tappable
+          [lines]="messages.length !== (i+1) ? 'full': 'none'"
+          *ngFor="let message of messages; let i=index"
+        >
+          <ion-label (click)="messageCenterFacade.showMessageDetails(message)">
+            <ion-text>
+              <h3 [ngClass]="{ 'unread-msg' : message.isRead != true}">{{message.title}}</h3>
+            </ion-text>
+            <p class="message-center-date">{{message.dateTime | date: 'MMM d, yyyy' }}</p>
+          </ion-label>
+          <span class="message-ceter-delete" (click)="messageCenterFacade.deleteMessageConfirmation(message)"></span>
+        </ion-item>
+      </ion-list>
+    </ng-template>
+  </ng-container>
+</ion-content>

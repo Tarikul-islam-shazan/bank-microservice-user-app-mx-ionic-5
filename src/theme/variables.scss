@@ -1,0 +1,115 @@
+// Ionic Variables and Theming. For more info, please see:
+// http://ionicframework.com/docs/theming/
+
+/** Ionic CSS Variables **/
+$font-path: '../assets/';
+:root {
+  /** Default rem font-size: 1rem = 10px **/
+  font-size: 10px !important;
+
+  /** primary **/
+  --ion-color-primary: #435cdc;
+  --ion-color-primary-rgb: 67, 92, 220;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #3b51c2;
+  --ion-color-primary-tint: #566ce0;
+
+  /** secondary **/
+  --ion-color-secondary: #0cd1e8;
+  --ion-color-secondary-rgb: 12, 209, 232;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #0bb8cc;
+  --ion-color-secondary-tint: #24d6ea;
+
+  /** tertiary **/
+  --ion-color-tertiary: #7044ff;
+  --ion-color-tertiary-rgb: 112, 68, 255;
+  --ion-color-tertiary-contrast: #ffffff;
+  --ion-color-tertiary-contrast-rgb: 255, 255, 255;
+  --ion-color-tertiary-shade: #633ce0;
+  --ion-color-tertiary-tint: #7e57ff;
+
+  /** success **/
+  --ion-color-success: #10dc60;
+  --ion-color-success-rgb: 16, 220, 96;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #0ec254;
+  --ion-color-success-tint: #28e070;
+
+  /** warning **/
+  --ion-color-warning: #ffce00;
+  --ion-color-warning-rgb: 255, 206, 0;
+  --ion-color-warning-contrast: #ffffff;
+  --ion-color-warning-contrast-rgb: 255, 255, 255;
+  --ion-color-warning-shade: #e0b500;
+  --ion-color-warning-tint: #ffd31a;
+
+  /** danger **/
+  --ion-color-danger: #f04141;
+  --ion-color-danger-rgb: 245, 61, 61;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #d33939;
+  --ion-color-danger-tint: #f25454;
+
+  /** dark **/
+  --ion-color-dark: #222428;
+  --ion-color-dark-rgb: 34, 34, 34;
+  --ion-color-dark-contrast: #ffffff;
+  --ion-color-dark-contrast-rgb: 255, 255, 255;
+  --ion-color-dark-shade: #1e2023;
+  --ion-color-dark-tint: #383a3e;
+
+  /** medium **/
+  --ion-color-medium: #989aa2;
+  --ion-color-medium-rgb: 152, 154, 162;
+  --ion-color-medium-contrast: #ffffff;
+  --ion-color-medium-contrast-rgb: 255, 255, 255;
+  --ion-color-medium-shade: #86888f;
+  --ion-color-medium-tint: #a2a4ab;
+
+  /** light **/
+  --ion-color-light: #f4f5f8;
+  --ion-color-light-rgb: 244, 244, 244;
+  --ion-color-light-contrast: #000000;
+  --ion-color-light-contrast-rgb: 0, 0, 0;
+  --ion-color-light-shade: #d7d8da;
+  --ion-color-light-tint: #f5f6f9;
+
+  /** light **/
+  --ion-color-meedblue: linear-gradient(0deg, #2f47bd 0%, #435cdc 100%);
+  /** <ion-button color="meedblue">Favorite</ion-button> **/
+  .ion-color-meedblue {
+    --ion-color-base: var(--ion-color-meedblue);
+  }
+
+  /** Input color **/
+  --input-white-border-color: #ebedf2;
+  --input-white-focus-border-color: #070a18;
+  --input-white-placeholder-color: #b7bbce;
+  --input-white-text-color: #070a18;
+  --input-white-caret-color: #435cdc;
+
+  --input-blue-border-color: rgb(255, 255, 255, 0.15);
+  --input-blue-focus-border-color: #ffffff;
+  --input-blue-placeholder-color: rgb(255, 255, 255, 0.5);
+  --input-blue-text-color: #ffffff;
+  --input-blue-caret-color: #ffffff;
+
+  /** Button color**/
+  --button-white-active-background-color: #435cdc;
+  --button-white-disable-background-color: #f4f6fd;
+  --button-white-text-color: #ffffff;
+
+  --button-blue-active-background-color: #435cdc;
+  --button-blue-disable-background-color: rgb(255, 255, 255, 0.15);
+  --button-blue-text-color: #ffffff;
+  --button-border-color: #ebedf2;
+  --button-border-text-black: #070a18;
+  --button-border-text-red: #fe4c55;
+}
+
+@import './../assets/Fonts/meed';

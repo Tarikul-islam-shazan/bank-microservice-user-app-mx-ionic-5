@@ -1,0 +1,59 @@
+.direct-deposit-info-content {
+  font-family: 'Averta W05 Regular5345108';
+  .navBar {
+    display: flex;
+    #back-button {
+      margin-left: 20px;
+      margin-top: 20px !important;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      ion-icon {
+        font-size: 30px;
+        font-weight: bold;
+        color: #070a18;
+      }
+    }
+    #nav-title {
+      width: 100%;
+      p {
+        text-align: center;
+        font-size: 16px;
+        color: #070a18;
+        padding-right: 30px;
+      }
+    }
+  }
+
+  .direct-diposit-info-img {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+  }
+
+  .direct-diposit-info-header {
+    color: #070a18;
+    font-family: 'Averta W05 ExtraBold';
+    font-size: 30px;
+    font-weight: 800;
+    letter-spacing: 0.2px;
+    line-height: 30px;
+    text-align: center;
+  }
+  .info-text {
+    color: #606477;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+    margin-bottom: 4vh;
+    padding: 0px 32px;
+  }
+  .info-text:last {
+    margin-bottom: 6vh;
+  }
+}
+ion-toolbar {
+  --background: #ffffff;
+  --color: #000000;
+}

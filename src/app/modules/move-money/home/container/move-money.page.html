@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{'move-money-module.home-page.page-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list no-padding no-margin *ngFor="let item of facade.menuList">
+    <ion-list-header no-padding class="move-money-header header-margin">
+      {{ item.optionName | translate }}
+    </ion-list-header>
+    <ion-item
+      class="move-money-menu"
+      appSuppress="{{eachOption.appSuppress}}"
+      *ngFor="let eachOption of item.options"
+      detail="false"
+      (click)="eachOption.onClick($event)"
+    >
+      <span [class]="eachOption.iconClass"></span>
+      <ion-label class="title custom-title-margin">{{ eachOption.itemName | translate}}</ion-label>
+      <span class="img-move-money-arrow-right custom-margin"></span>
+    </ion-item>
+  </ion-list>
+</ion-content>

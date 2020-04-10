@@ -1,0 +1,73 @@
+.content-wrapper {
+  margin-top: 27px;
+  #signup-terms-info {
+    color: #606477;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    line-height: 24px;
+    margin: 42px 0px;
+  }
+  .tnc-wrapper {
+    .tnc-item {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      align-items: flex-start;
+      border-bottom: 1px solid #ebedf2;
+      padding-bottom: 3vh;
+      margin-bottom: 3vh;
+      .tnc-content {
+        width: 86%;
+        .tnc-title {
+          font-family: 'Averta W05 Regular';
+          font-size: 1.6rem;
+          color: #070a18 !important;
+          line-height: 24px;
+        }
+        .tnc-link {
+          font-family: 'Averta W05 Regular';
+          font-size: 1.6rem;
+          color: #435cdc;
+          line-height: 24px;
+          text-decoration: underline;
+        }
+      }
+      .tnc-checkbox {
+        display: flex;
+        margin-top: 10px;
+      }
+    }
+    .tnc-item:last-child {
+      border: none;
+    }
+
+    .tnc-item.ack-item {
+      flex-direction: column;
+      justify-content: flex-start;
+      padding-left: 4px;
+
+      div.checkbox-group {
+        ion-row {
+          margin-top: 10px;
+          ion-col {
+            ion-item {
+              --padding-start: -10px;
+              ion-label {
+                margin-right: 0px;
+                font-family: 'Averta W05 Regular';
+                font-size: 1.6rem;
+                color: #070a18 !important;
+                line-height: 24px;
+              }
+              ion-checkbox {
+                align-self: baseline;
+                margin-top: 14px;
+                margin-right: 16px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

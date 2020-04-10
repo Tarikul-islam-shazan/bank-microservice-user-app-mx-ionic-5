@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: sketchtool 57.1 (101010) - https://sketch.com -->
+    <title>18EEEC20-485D-41D6-A6CD-A5CD77566377</title>
+    <desc>Created with sketchtool.</desc>
+    <g id="Design" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="1-4-1-Log-In-Verification-Empty" transform="translate(-329.000000, -54.000000)">
+            <g id="Icons-/-Info-/-32x32-Info-(White)" transform="translate(323.000000, 48.000000)">
+                <rect id="Container" fill-rule="nonzero" x="0" y="0" width="32" height="32"></rect>
+                <circle id="Oval" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" cx="16" cy="16" r="9"></circle>
+                <path d="M16.5005,17.604 L15.0965,17.604 C15.0705,17.435 15.0445,17.266 15.0445,17.071 C15.0445,16.382 15.3305,15.745 16.0715,15.186 L16.6955,14.718 C17.0855,14.432 17.2545,14.081 17.2545,13.691 C17.2545,13.093 16.8255,12.521 15.9545,12.521 C15.0315,12.521 14.6285,13.262 14.6285,13.99 C14.6285,14.146 14.6415,14.289 14.6805,14.406 L13.0425,14.341 C12.9905,14.159 12.9775,13.951 12.9775,13.756 C12.9775,12.352 14.0305,11 15.9545,11 C17.9695,11 19.0225,12.274 19.0225,13.587 C19.0225,14.614 18.5025,15.342 17.7355,15.888 L17.2025,16.265 C16.7475,16.59 16.5005,16.993 16.5005,17.526 L16.5005,17.604 Z M14.7975,19.489 C14.7975,18.917 15.2525,18.449 15.8245,18.449 C16.3965,18.449 16.8645,18.917 16.8645,19.489 C16.8645,20.061 16.3965,20.516 15.8245,20.516 C15.2525,20.516 14.7975,20.061 14.7975,19.489 Z" id="?" fill="#FFFFFF" fill-rule="nonzero"></path>
+            </g>
+        </g>
+    </g>
+</svg>

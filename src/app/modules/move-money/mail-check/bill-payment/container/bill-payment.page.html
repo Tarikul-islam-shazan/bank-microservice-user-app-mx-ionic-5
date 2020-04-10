@@ -1,0 +1,94 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back" (click)="navigateToPage('/move-money/mail-check')">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'move-money-module.mail-check.bill-payment.page-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div class="payee-block">
+      <div class="payee-icon">
+        <img src="assets/svg/statements-list.svg" />
+      </div>
+      <div class="payee-info">
+        <div class="payee-name">{{billPayee.fullName}}</div>
+        <div class="payee-action" (click)="navigateToPage('/move-money/mail-check/add-payee')">
+          {{'move-money-module.mail-check.bill-payment.payee-action' | translate}}
+        </div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <form [formGroup]="billPaymentForm" novalidate>
+        <div class="payment-amount-block">
+          <div class="title">{{'move-money-module.mail-check.bill-payment.payment-amount-title' | translate}}</div>
+          <ion-input placeholder="{{ '0.00' | negToPos }}" appInputDecimalMask type="tel" formControlName="amount">
+          </ion-input>
+          <div
+            class="clearfix"
+            *ngIf="billPaymentForm.controls.amount.dirty && billPaymentForm.controls.amount.invalid"
+          >
+            <div class="error-msg" *ngIf="billPaymentForm.controls.amount.hasError('minimumTransferAmount')">
+              {{'move-money-module.mail-check.bill-payment.errors.min-amount-limit-text' | translate}}
+            </div>
+          </div>
+          <div class="error-msg" *ngIf="billPaymentForm.controls.amount.hasError('maximumTransferAmount')">
+            {{'move-money-module.mail-check.bill-payment.errors.max-amount-limit-text' | translate}}
+          </div>
+        </div>
+        <div class="calendar-block">
+          <div class="title">{{'move-money-module.mail-check.bill-payment.calendar-title' | translate}}</div>
+          <div class="calendar-content">
+            <img src="assets/img/calendar.png" />
+            <div class="date-info">
+              <div class="date">
+                <ion-datetime
+                  [max]="maxDate"
+                  [min]="minDate"
+                  cancelable="false"
+                  displayFormat="MMM DD, YYYY"
+                  formControlName="executionDate"
+                ></ion-datetime>
+              </div>
+              <div class="date-action">{{'move-money-module.mail-check.bill-payment.date-action' | translate}}</div>
+            </div>
+          </div>
+        </div>
+        <div class="repeat-toggle-block">
+          <div class="title">{{'move-money-module.mail-check.bill-payment.repeat-toggle-title' | translate}}</div>
+          <ion-toggle slot="end" formControlName="frequency"></ion-toggle>
+        </div>
+      </form>
+    </div>
+    <div class="info-block">
+      <ion-icon slot="start" name="medical"></ion-icon>
+      {{'move-money-module.mail-check.bill-payment.info' | translate}}
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ng-template [ngIf]="billPayee.amount" [ngIfElse]="paymentNotEditAble">
+      <ion-button
+        [disabled]="billPaymentForm.disabled || billPaymentForm.invalid"
+        (click)="update()"
+        class="white-button"
+        expand="block"
+      >
+        {{'move-money-module.mail-check.bill-payment.buttons.confirm-button-text' | translate}}
+      </ion-button>
+
+      <ion-button (click)="delete()" class="grey-outline-button" expand="block">
+        {{'move-money-module.mail-check.bill-payment.buttons.delete-button-text' | translate}}
+      </ion-button>
+    </ng-template>
+    <ng-template #paymentNotEditAble>
+      <ion-button [disabled]="billPaymentForm.invalid" (click)="add()" class="white-button" expand="block">
+        {{'move-money-module.mail-check.bill-payment.buttons.confirm-button-text' | translate}}
+      </ion-button>
+    </ng-template>
+  </ion-toolbar>
+</ion-footer>

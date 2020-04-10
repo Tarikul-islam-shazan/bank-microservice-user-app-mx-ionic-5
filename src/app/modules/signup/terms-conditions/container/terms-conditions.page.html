@@ -1,0 +1,129 @@
+<ion-content class="safe-area-content">
+  <div class="content-wrapper">
+    <div class="step-counter">
+      <step-counter [step]="'signup-module.terms-conditions-page.step-text'" [stepNo]="3"></step-counter>
+    </div>
+    <div class="header-title">
+      <p>{{ 'signup-module.terms-conditions-page.page-title' | translate }}</p>
+    </div>
+    <p id="signup-terms-info">
+      {{ 'signup-module.terms-conditions-page.page-subtitle' | translate }}
+    </p>
+    <ion-list>
+      <div class="tnc-wrapper">
+        <div class="tnc-item" *ngFor="let item of termsConditions; let i = index">
+          <div class="tnc-content">
+            <span *ngIf="item.title === 'tnc1'" class="tnc-title"
+              >{{ 'signup-module.terms-conditions-page.terms_text_1' | translate }}</span
+            >
+            <span *ngIf="item.title === 'tnc2'" class="tnc-title"
+              >{{ 'signup-module.terms-conditions-page.terms_text_2' | translate }}</span
+            >
+            <span *ngIf="item.title === 'tnc3'" class="tnc-title"
+              >{{ 'signup-module.terms-conditions-page.terms_text_3' | translate }}</span
+            >
+            <span *ngIf="item.title === 'tnc4'" class="tnc-title"
+              >{{ 'signup-module.terms-conditions-page.terms_text_4' | translate }}</span
+            >
+            <span *ngIf="item.title === 'tnc5'" class="tnc-title"
+              >{{ 'signup-module.terms-conditions-page.terms_text_5' | translate }}</span
+            >
+
+            <span
+              *ngFor="let doc of item.documents; let indx = index"
+              class="tnc-link ion-text-start"
+              (click)="showPdf(doc.pdf, doc.title)"
+            >
+              <span
+                >{{ doc.title }}{{ item.documents.length != 1 && indx < item.documents.length - 1 ? ', ' : '.' }}</span
+              >
+            </span>
+          </div>
+          <div class="tnc-checkbox">
+            <ion-checkbox
+              *ngIf="item.title === 'tnc1'"
+              mode="md"
+              [(ngModel)]="isTermsAccepted1"
+              checked="true"
+            ></ion-checkbox>
+            <ion-checkbox
+              *ngIf="item.title === 'tnc2'"
+              mode="md"
+              [(ngModel)]="isTermsAccepted2"
+              checked="true"
+            ></ion-checkbox>
+            <ion-checkbox
+              *ngIf="item.title === 'tnc3'"
+              mode="md"
+              [(ngModel)]="isTermsAccepted3"
+              checked="true"
+            ></ion-checkbox>
+            <ion-checkbox
+              *ngIf="item.title === 'tnc4'"
+              mode="md"
+              [(ngModel)]="isTermsAccepted4"
+              checked="true"
+            ></ion-checkbox>
+            <ion-checkbox
+              *ngIf="item.title === 'tnc5'"
+              mode="md"
+              [(ngModel)]="isTermsAccepted5"
+              checked="true"
+            ></ion-checkbox>
+          </div>
+        </div>
+
+        <!-- Acknowledge that participation -->
+
+        <div class="tnc-item ack-item" *ngIf="this.showCorporateTnc">
+          <div class="tnc-content">
+            <span class="tnc-title">
+              {{ 'signup-module.terms-conditions-page.corporate-terms' | translate }}
+            </span>
+          </div>
+
+          <div class="checkbox-group">
+            <ion-row>
+              <ion-col class="ion-no-padding">
+                <ion-item lines="none">
+                  <ion-label class="ion-text-wrap">
+                    {{ 'signup-module.terms-conditions-page.corporate-terms-share-checkbox' | translate }}
+                  </ion-label>
+                  <ion-checkbox
+                    [(ngModel)]="corporateTnCAccepted"
+                    (ionChange)="onCorporateTnCAccepted()"
+                    slot="start"
+                    mode="md"
+                  ></ion-checkbox>
+                </ion-item>
+              </ion-col>
+
+              <ion-col class="ion-no-padding">
+                <ion-item lines="none">
+                  <ion-label class="ion-text-wrap">
+                    {{ 'signup-module.terms-conditions-page.corporate-terms-not-share-checkbox' | translate }}
+                  </ion-label>
+                  <ion-checkbox
+                    [(ngModel)]="corporateTnCNotAccepted"
+                    (ionChange)="onCorporateTnCNotAccepted()"
+                    slot="start"
+                    mode="md"
+                  ></ion-checkbox>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </div>
+        </div>
+
+        <!-- Acknowledge that participation -->
+      </div>
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" (click)="acceptTermsConditions()" [disabled]="!isTermsAccepted()">
+      {{ 'signup-module.terms-conditions-page.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

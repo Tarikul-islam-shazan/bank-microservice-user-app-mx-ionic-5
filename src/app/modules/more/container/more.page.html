@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'more-module.more-page.header-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list lines="full" *ngFor="let menu of moreMenuList">
+    <ion-list-header>
+      <ion-label>{{menu.optionName | translate}}</ion-label>
+    </ion-list-header>
+    <ion-item
+      *ngFor="let item of menu.options; let i = index"
+      (click)="item.handler(item)"
+      appSuppress="{{item.suppress}}"
+      lines="{{menu.options.length === (i+1)? 'none':''}}"
+    >
+      <img slot="start" [class]="item.iconClass" />
+      <ion-label class="{{facade.getLabelClass(item.route)}}">
+        {{item.menuItemName | translate}}
+      </ion-label>
+      <img slot="end" class="img-arrow-right" *ngIf="item.route !== 'face-id' " />
+      <ng-container *ngIf="item.route === 'face-id'">
+        <ion-toggle
+          slot="end"
+          [disabled]="!item.isNativeFeatureAvailable"
+          [(ngModel)]="facade.isFaceIdOrTouchIDisEnabled"
+          (ngModelChange)="facade.disableOrShowAlertBiometricLogin()"
+        ></ion-toggle>
+      </ng-container>
+    </ion-item>
+  </ion-list>
+</ion-content>

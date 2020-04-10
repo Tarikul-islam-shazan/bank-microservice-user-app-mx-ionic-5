@@ -1,0 +1,88 @@
+.dashboard-toolbar {
+  --min-height: 110px;
+  --border-color: transparent;
+  --border-style: none;
+  ion-title {
+    align-items: flex-end;
+    .white-meed-logo {
+      width: 65px !important;
+      height: auto;
+    }
+  }
+  ion-buttons {
+    margin-right: 6px;
+    margin-top: 18px;
+  }
+  .icon-white-ques-mark {
+    width: 20px;
+    height: 20px;
+  }
+}
+.content-wrapper {
+  --padding-bottom: 0px !important;
+  .blue-content-wrapper {
+    padding: 0 20px;
+    padding-bottom: 6px;
+    background-color: #435cdc;
+    margin: -20px -20px 0;
+    .header-greetings {
+      color: #ffffff;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 24px;
+      line-height: 30px;
+      text-align: center;
+      padding-top: 35px;
+    }
+    .available-amount-content {
+      margin-top: 23px;
+      margin-bottom: 35px;
+    }
+
+    .balance-box {
+      ion-progress-bar {
+        --buffer-background: #fe964c;
+        --progress-background: #0cda91;
+      }
+      .balance-content {
+        margin-top: 10px;
+        .balance-title {
+          display: flex;
+          justify-content: space-between;
+          opacity: 0.5;
+          color: #ffffff;
+          font-family: 'Averta W05 Bold5204651';
+          font-size: 13px;
+          letter-spacing: 0.2px;
+          line-height: 16px;
+        }
+        .balance-amount {
+          margin-top: 4px;
+          display: flex;
+          justify-content: space-between;
+          color: #ffffff;
+          font-family: 'Averta W05 Bold5204651';
+          font-size: 13px;
+          letter-spacing: 0.2px;
+          line-height: 16px;
+        }
+      }
+    }
+  }
+}
+.reward-block {
+  border: 1px solid #ebedf2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 -20px;
+  height: 60px;
+  background-color: #f4f6fd;
+  color: rgba(7, 10, 24, 0.5);
+  font-family: 'Averta W05 Bold5204651';
+  font-size: 13px;
+  letter-spacing: 0.2px;
+  line-height: 16px;
+  span {
+    color: #070a18;
+  }
+}

@@ -1,0 +1,47 @@
+ion-content {
+  --padding-top: 10px !important;
+  --padding-bottom: 0px !important;
+  --padding-start: 0px !important;
+  --padding-end: 0px !important;
+}
+.move-money-header {
+  margin-left: 20px;
+  color: #070a18;
+  font-family: 'Averta W05 Semibold5179739' !important;
+  font-size: 20px;
+  text-transform: none;
+  letter-spacing: -0.6px;
+}
+.move-money-menu {
+  &.item-disabled {
+    pointer-events: all;
+  }
+}
+.custom-margin {
+  margin-right: 15px;
+}
+.end-icon-padding {
+  padding: 9px;
+}
+ion-item {
+  --inner-padding-top: 19px;
+  --inner-padding-bottom: 19px;
+  --padding-start: 15px;
+  --inner-padding-start: 5px;
+}
+.title {
+  color: #070a18;
+  font-family: 'Averta W05 Regular' !important;
+  font-size: 16px;
+  letter-spacing: -0.25px;
+  line-height: 20px;
+}
+.custom-title-margin {
+  margin-left: 20px;
+}
+ion-item:last-child {
+  --inner-border-width: 0;
+}
+.header-margin {
+  margin-top: 30px;
+}

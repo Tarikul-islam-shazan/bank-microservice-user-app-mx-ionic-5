@@ -1,0 +1,80 @@
+ion-tab-button.move-money {
+  ion-label {
+    width: 75px;
+  }
+}
+ion-tab-button {
+  --color: #b7bbce;
+  --color-selected: #435cdc !important;
+  .tab-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    width: 25px;
+    margin: 4px 0;
+    .icon-home {
+      content: url('/assets/svg/home.svg');
+    }
+    .icon-move-money {
+      content: url('/assets/svg/move-money.svg');
+    }
+    .icon-rewards {
+      content: url('/assets/svg/rewards.svg');
+    }
+    .icon-invite {
+      content: url('/assets/svg/invite.svg');
+    }
+    .icon-more {
+      content: url('/assets/svg/more_inactive.svg');
+    }
+  }
+  ion-label {
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 11px;
+    letter-spacing: -0.25px;
+    line-height: 14px;
+    text-align: center;
+    white-space: nowrap;
+  }
+}
+ion-tab-bar {
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.tab-selected {
+  .tab-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 25px;
+    width: 25px;
+    margin: 4px 0;
+    .icon-home {
+      height: 20px;
+      width: 20px;
+      content: url('/assets/img/icon-home-active.png');
+    }
+    .icon-move-money {
+      height: 18px;
+      width: 20px;
+      content: url('/assets/img/icon-move-money-active.png');
+    }
+    .icon-rewards {
+      height: 17px;
+      width: 22px;
+      content: url('/assets/img/icon-reward-active.png');
+    }
+    .icon-invite {
+      height: 17px;
+      width: 22px;
+      content: url('/assets/img/icon-invite-active.png');
+    }
+    .icon-more {
+      height: 4px;
+      width: 18px;
+      content: url('/assets/img/icon-more-active.png');
+    }
+  }
+}

@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'move-money-module.request-money.home.page-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="home-page">
+    <badge-email
+      (typeahead)="typeahead($event)"
+      (emailsOnChange)="facade.onInputEmailsChanges($event)"
+      [inputEmails]="facade.receiverEmails"
+      placeholder="{{'move-money-module.request-money.home.search-field' | translate}}"
+    ></badge-email>
+    <ion-item class="input-hints" lines="none">
+      <ion-label>{{'move-money-module.request-money.home.search-field-hints'}}</ion-label>
+    </ion-item>
+
+    <div class="list-container">
+      <ion-list class="requests-list">
+        <ion-list-header class="list-header">
+          <ion-label class="ion-text-capitalize">
+            {{'move-money-module.request-money.home.unpaid-request-list-header' | translate}}</ion-label
+          >
+        </ion-list-header>
+        <ion-item
+          (click)="facade.selectRequest(fundRequest)"
+          *ngFor="let fundRequest of facade.fundRequests"
+          button="true"
+          lines="none"
+        >
+          <ion-label class="ion-text-wrap">
+            <h3 class="title">To {{fundRequest.receiverEmail}}</h3>
+            <p class="details">
+              {{ fundRequest.createdAt | date: 'MMMM dd, yyyy' }}
+            </p>
+          </ion-label>
+          <div slot="end" class="amount">${{fundRequest.amount}}</div>
+        </ion-item>
+      </ion-list>
+      <ion-list class="paid-list">
+        <ion-list-header class="list-header">
+          <ion-label class="ion-text-capitalize">
+            {{'move-money-module.request-money.home.request-list-header' | translate}}</ion-label
+          >
+          <ion-button size="small" fill="clear">
+            {{'move-money-module.request-money.home.request-list-button' | translate}}
+          </ion-button>
+        </ion-list-header>
+        <ion-item
+          (click)="facade.contactSelected(contact)"
+          *ngFor="let contact of facade.contacts | contactsFilter:filterKey"
+          button="true"
+          lines="inset"
+        >
+          <ion-label class="ion-text-wrap">
+            <h3 class="title">{{contact.email}}</h3>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      [disabled]="!facade.receiverEmails?.length"
+      (click)="facade.continue()"
+      class="white-button"
+      expand="block"
+    >
+      {{'move-money-module.request-money.home.next-button' | translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,73 @@
+<ion-header meed class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>{{ 'more-module.settings-page.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="settings-page override-ion-content-padding">
+  <ion-list class="list-wrapper">
+    <ion-item button="true" (click)="navigateToPage('change-language')" detail="false">
+      <div class="clearfix">
+        <div class="clearfix item-wrapper">
+          <div class="clearfix">
+            <span class="list-title">{{ 'more-module.settings-page.change-language-text' | translate }}</span>
+          </div>
+          <div class=" icon-arrow">
+            <img id="button-view-change-language" src="assets/svg/arrow.svg" alt="arrow" srcset="" />
+          </div>
+        </div>
+      </div>
+    </ion-item>
+    <ion-item button="true" (click)="navigateToPage('contact-preferences')" detail="false">
+      <div class="clearfix">
+        <div class="clearfix item-wrapper">
+          <div class="clearfix">
+            <span class="list-title">{{ 'more-module.settings-page.contact-preference-text' | translate }}</span>
+          </div>
+          <div class=" icon-arrow">
+            <img id="button-view-contact-preferences" src="assets/svg/arrow.svg" alt="arrow" srcset="" />
+          </div>
+        </div>
+      </div>
+    </ion-item>
+    <ion-item button="true" (click)="navigateToPage('version-info')" detail="false">
+      <div class="clearfix">
+        <div class="clearfix item-wrapper">
+          <div class="clearfix">
+            <span class="list-title">{{ 'more-module.settings-page.version-info-text' | translate }}</span>
+          </div>
+          <div class=" icon-arrow">
+            <img id="button-view-version-info" src="assets/svg/arrow.svg" alt="arrow" srcset="" />
+          </div>
+        </div>
+      </div>
+    </ion-item>
+    <ion-item button="true" (click)="navigateToPage('sweep')" detail="false">
+      <div class="clearfix">
+        <div class="clearfix item-wrapper">
+          <div class="clearfix">
+            <span class="list-title">{{ 'more-module.settings-page.sweep-text' | translate }}</span>
+          </div>
+          <div class=" icon-arrow">
+            <img id="button-view-version-info" src="assets/svg/arrow.svg" alt="arrow" srcset="" />
+          </div>
+        </div>
+      </div>
+    </ion-item>
+    <ion-item lines="none" button="true" (click)="navigateToPage('change-password')" detail="false">
+      <div class="clearfix">
+        <div class="clearfix item-wrapper">
+          <div class="clearfix">
+            <span class="list-title">{{ 'more-module.settings-page.change-password-text' | translate }}</span>
+          </div>
+          <div class=" icon-arrow">
+            <img id="button-view-version-info" src="assets/svg/arrow.svg" alt="arrow" srcset="" />
+          </div>
+        </div>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content>

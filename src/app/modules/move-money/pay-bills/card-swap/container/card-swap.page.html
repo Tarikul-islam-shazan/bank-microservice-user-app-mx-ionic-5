@@ -1,0 +1,18 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'move-money-module.pay-bills.card-swap.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="card-swap">
+    <iframe
+      *ngIf="cardSwapFacade.cardSwapSrcURL"
+      [src]="cardSwapFacade.cardSwapSrcURL"
+      class="card-swap-iframe"
+    ></iframe>
+  </div>
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-content *ngIf="facade.identityQuestions" class="safe-area-content">
+  <!-- safe area adding -->
+  <div class="content-wrapper">
+    <div class="step-counter">
+      <step-counter [step]="'signup-module.identity-verification-page.step-text'" [stepNo]="3"></step-counter>
+    </div>
+    <div class="header-title">{{ 'signup-module.identity-verification-page.page-title' | translate }}</div>
+    <div class="header-subtitle">
+      {{ 'signup-module.identity-verification-page.page-subtitle' |
+      translate:{totalQuestion:facade.identityQuestions.length} }}
+    </div>
+    <div class="questions-wrapper">
+      <div class="questions-header-title">
+        {{ 'signup-module.identity-verification-page.question-title' | translate }}
+      </div>
+      <div class="question-item">
+        <div class="options">
+          <ion-list>
+            <ion-radio-group
+              *ngFor="let question of facade.identityQuestions"
+              (ionChange)="identityQuestionAnswerd($event,question.id)"
+              [value]="facade.getAnsweredId(question.id)"
+            >
+              <div class="question-title">{{ question.question }}</div>
+              <ion-item lines="none" *ngFor="let option of question.availableAnswers">
+                <ion-label>{{ option.answer }}</ion-label>
+                <ion-radio slot="start" mode="md" value="{{ option.id }}"></ion-radio>
+              </ion-item>
+            </ion-radio-group>
+          </ion-list>
+        </div>
+      </div>
+    </div>
+
+    <ion-button
+      class="white-button"
+      expand="block"
+      [disabled]="facade.answerdQestions.length!=facade.identityQuestions.length"
+      (click)="facade.submitAnswer(facade.answerdQestions)"
+    >
+      {{ 'signup-module.identity-verification-page.button-text' | translate }}
+    </ion-button>
+  </div>
+</ion-content>

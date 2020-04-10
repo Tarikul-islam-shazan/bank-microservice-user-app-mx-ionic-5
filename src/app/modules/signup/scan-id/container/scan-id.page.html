@@ -1,0 +1,66 @@
+<ion-content class="safe-area-content">
+  <!-- safe area adding -->
+  <div class="scanid-content">
+    <ng-container
+      *ngTemplateOutlet="(scanIDFacade.jumioWebInitialized | async) ? jumioIframeTemplate : defaultTemplate"
+    >
+    </ng-container>
+    <ng-template #defaultTemplate>
+      <step-counter [step]="'signup-module.scan-id.step'" [stepNo]="2"></step-counter>
+      <div class="scan-id-header-title">
+        {{ 'signup-module.scan-id.page-title' | translate }}
+      </div>
+      <div class="scan-welcome-img">
+        <span class="scan-id-logo"></span>
+      </div>
+      <div class="info-description">
+        <p class="info-sub-header">
+          {{ 'signup-module.scan-id.description-text-1' | translate }}
+        </p>
+        <p>
+          {{ 'signup-module.scan-id.description-text-2' | translate }}
+        </p>
+        <p>
+          {{ 'signup-module.scan-id.description-text-3' | translate }}
+        </p>
+      </div>
+    </ng-template>
+    <ng-template #jumioIframeTemplate>
+      <iframe
+        [src]="scanIDFacade.jumioWebInitialized | async"
+        class="jumio-display-iframe"
+        allow="camera;fullscreen"
+        allowfullscreen
+      >
+      </iframe>
+    </ng-template>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      *ngIf="!(scanIDFacade.jumioWebInitialized | async) && !scanIDFacade.jumioProcessingDone "
+      class="white-button"
+      expand="block"
+      (click)="scanIDFacade.startNetverify()"
+    >
+      {{ 'signup-module.scan-id.button-text' | translate }}
+    </ion-button>
+    <ion-button
+      *ngIf="(scanIDFacade.jumioWebInitialized | async) && !scanIDFacade.jumioProcessingDone"
+      class="white-button"
+      expand="block"
+      (click)="scanIDFacade.cancelJumioWeb()"
+    >
+      {{ 'signup-module.scan-id.button-text-jumio-initialized' | translate }}
+    </ion-button>
+    <ion-button
+      *ngIf="scanIDFacade.jumioProcessingDone"
+      class="white-button"
+      expand="block"
+      (click)="scanIDFacade.gotoSignupPersonal()"
+    >
+      {{ 'signup-module.scan-id.button-text-processing-done' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

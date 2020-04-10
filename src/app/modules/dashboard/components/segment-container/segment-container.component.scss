@@ -1,0 +1,29 @@
+.segment-container-block {
+  margin-top: 16px;
+  display: flex;
+  justify-content: center;
+  .segment-bar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    .segment-item {
+      margin-right: 35px;
+      .segment-item-content {
+        padding: 10px 12px;
+        color: rgb(255, 254, 254, 0.5);
+        font-family: 'Averta W05 Semibold5179739';
+        font-size: 14px;
+        letter-spacing: 0.2px;
+        line-height: 18px;
+        text-align: center;
+      }
+      & .active {
+        color: #ffffff;
+        border-bottom: 3px solid #ffffff;
+      }
+    }
+    .segment-item:last-child {
+      margin-right: 0;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+<ion-header meed class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>{{ 'more-module.version-info.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="version-contnet">
+  <ion-list lines="none">
+    <div class="version">
+      <div class="version-num">
+        <p>{{ 'more-module.version-info.version-text' | translate }}</p>
+      </div>
+      <div class="version-data">
+        <p>{{versionInfoFacade.version}}</p>
+      </div>
+    </div>
+    <div class="version">
+      <div class="version-num">
+        <p>{{ 'more-module.version-info.release-text' | translate }}</p>
+      </div>
+      <div class="version-data version-date-margin">
+        <p>{{versionInfoFacade.releaseDate | date: 'MMMM dd, yyyy'}}</p>
+      </div>
+    </div>
+    <div class="version">
+      <div class="version-data">
+        <p id="copyright-text">
+          &copy; {{versionInfoFacade.releaseDate | date: 'yyyy'}} Meed
+        </p>
+      </div>
+    </div>
+  </ion-list>
+</ion-content>

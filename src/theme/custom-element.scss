@@ -1,0 +1,320 @@
+/***********************Ionic component CSS Class**************************/
+ion-content {
+  --padding-start: 20px !important;
+  --padding-end: 20px !important;
+  --padding-top: 20px !important;
+  --padding-bottom: 20px !important;
+}
+
+ion-footer {
+  ion-toolbar {
+    --padding-start: 20px !important;
+    --padding-end: 20px !important;
+    --padding-bottom: 20px !important;
+    --padding-top: 0px;
+    --border-style: none !important;
+  }
+}
+
+/***********************Global CSS Class**************************/
+.header-title {
+  color: #070a18 !important;
+  font-family: 'Averta W05 ExtraBold' !important;
+  font-size: 3rem !important;
+  letter-spacing: 0.2px !important;
+  line-height: 3rem !important;
+  margin-bottom: 50px !important;
+}
+.header-subtitle {
+  height: 58px;
+  color: #606477;
+  font-family: 'Averta W05 Regular';
+  font-size: 1.6rem;
+  line-height: 2.4rem;
+  margin-bottom: 30px;
+}
+.header-close-button {
+  margin-bottom: 30px;
+  &:after {
+    content: url('assets/svg/close-icon.svg');
+  }
+}
+/***********************Global Input CSS Class**************************/
+.blue-input {
+  input {
+    height: 60px !important;
+    width: 100% !important;
+    padding-left: 20px !important;
+    margin-bottom: 10px !important;
+    border: 2px solid var(--input-blue-border-color) !important;
+    border-radius: 12px !important;
+    font-family: 'Averta W05 Regular' !important;
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+    caret-color: var(--input-blue-caret-color) !important;
+    color: var(--input-blue-text-color) !important;
+    &:focus {
+      color: var(--input-blue-text-color) !important;
+      border: 2px solid var(--input-blue-focus-border-color) !important;
+    }
+    &:disabled {
+      font-family: 'Averta W05 Regular' !important;
+      font-size: 1.5rem !important;
+      color: #b7bbce !important;
+      line-height: 1.5rem !important;
+    }
+    &::placeholder {
+      font-size: 1.5rem !important;
+      line-height: 1.5rem !important;
+      color: var(--input-blue-placeholder-color) !important;
+    }
+  }
+}
+.white-input {
+  input {
+    height: 60px !important;
+    width: 100% !important;
+    padding-left: 20px !important;
+    margin-bottom: 10px !important;
+    border: 2px solid var(--input-white-border-color) !important;
+    border-radius: 12px !important;
+    font-family: 'Averta W05 Regular' !important;
+    font-size: 1.5rem !important;
+    line-height: 2rem !important;
+    caret-color: var(--input-white-caret-color) !important;
+    color: var(--input-white-text-color) !important;
+
+    &:focus {
+      color: var(--input-white-text-color) !important;
+      border: 2px solid var(--input-white-focus-border-color) !important;
+    }
+    &::placeholder {
+      font-size: 1.5rem !important;
+      line-height: 2rem !important;
+      color: var(--input-white-placeholder-color) !important;
+    }
+    &::disabled {
+      font-family: 'Averta W05 Regular' !important;
+      font-size: 1.5rem !important;
+      color: #b7bbce !important;
+      line-height: 1.5rem !important;
+      opacity: 1 !important;
+    }
+  }
+}
+.error-input {
+  input {
+    height: 60px !important;
+    width: 100% !important;
+    padding-left: 20px !important;
+    margin-bottom: 10px !important;
+    border: 2px solid #fe4c55 !important;
+    border-radius: 12px !important;
+    font-family: 'Averta W05 Regular' !important;
+    font-size: 1.5rem !important;
+    line-height: 1.5rem !important;
+    caret-color: var(--input-white-caret-color) !important;
+    color: var(--input-white-text-color) !important;
+
+    &:focus {
+      color: var(--input-white-text-color) !important;
+      border: 2px solid #fe4c55 !important;
+    }
+    &::placeholder {
+      font-size: 1.5rem !important;
+      line-height: 1.5rem !important;
+      color: var(--input-white-placeholder-color) !important;
+    }
+    &::disabled {
+      font-family: 'Averta W05 Regular' !important;
+      font-size: 1.5rem !important;
+      color: #b7bbce !important;
+      line-height: 20px;
+      opacity: 1 !important;
+    }
+  }
+}
+
+.datetime-input {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px !important;
+  ion-item {
+    width: 100% !important;
+    height: 60px !important;
+    border: 2px solid var(--input-white-border-color) !important;
+    border-radius: 12px !important;
+    position: relative !important;
+    ion-label {
+      display: none !important;
+    }
+    ion-datetime {
+      margin-top: 7px !important;
+      line-height: 2.2rem !important;
+    }
+  }
+  ion-icon {
+    font-size: 1.6rem;
+    height: 60px !important;
+    position: absolute !important;
+    left: 85vw !important;
+    display: flex !important;
+    align-items: center !important;
+    color: #070a18 !important;
+  }
+}
+
+/***********************Global Button CSS Class******************************/
+.blue-button {
+  font-family: 'Averta W05 Bold5204651' !important;
+  font-size: 1.6rem !important;
+  letter-spacing: 0.2px !important;
+  line-height: 1.6rem !important;
+  --color: var(--button-white-text-color) !important;
+  --border-width: 2px;
+  --border-color: var(--button-white-active-background-color) !important;
+  --border-style: solid;
+  height: 60px !important;
+  --border-radius: 12px !important;
+  --background: #ffffff !important;
+  opacity: 0.15;
+}
+.white-button {
+  font-family: 'Averta W05 Bold5204651' !important;
+  font-size: 1.6rem !important;
+  letter-spacing: 0.2px !important;
+  line-height: 1.6rem !important;
+  --color: var(--button-white-text-color) !important;
+  --border-width: 2px;
+  --border-color: var(--button-white-active-background-color) !important;
+  --border-style: solid;
+  height: 60px !important;
+  --border-radius: 12px !important;
+  --background: #435cdc !important;
+}
+.round-button-text-black {
+  height: 60px !important;
+  --background-activated: none !important;
+  --border-radius: 12px !important;
+  --border-color: var(--button-border-color) !important;
+  --border-width: 2px !important;
+  --color: var(--button-border-text-black) !important;
+  --color-activated: var(--button-border-text-black) !important;
+}
+.round-button-text-red {
+  height: 60px !important;
+  --background-activated: none !important;
+  --border-radius: 12px !important;
+  --border-color: var(--button-border-color) !important;
+  --border-width: 2px !important;
+  --color-activated: var(--button-border-text-red) !important;
+  --color: var(--button-border-text-red) !important;
+}
+
+/***********************Global DropDown Input CSS Class******************************/
+.dropdown-input {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 60px !important;
+  margin-bottom: 10px !important;
+  ion-input {
+    position: relative !important;
+    pointer-events: none;
+    input {
+      margin-bottom: 0 !important;
+    }
+  }
+  img {
+    height: 60px;
+    width: 20px;
+    position: absolute;
+    right: 20px;
+  }
+  ion-icon {
+    font-size: 1.6rem;
+    height: 60px !important;
+    position: absolute;
+    right: 20px;
+    display: flex !important;
+    align-items: center !important;
+    color: #070a18 !important;
+  }
+}
+
+/***********************Global Blue Background outline btn******************************/
+
+.blue-outline-button {
+  padding: 12px;
+  margin-bottom: 10px !important;
+  height: 60px;
+  width: 100%;
+  border-radius: 12px;
+  font-family: 'Averta W05 Semibold5179739' !important;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+  margin: auto;
+  --color: #ffffff;
+  --box-shadow: none !important;
+  border: 2px solid rgba(255, 255, 255, 0.15);
+  --background: transparent;
+  --background-activated: transparent !important;
+  --background-hover: transparent;
+  background: transparent !important;
+}
+
+.right-content-input {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 60px !important;
+  margin-bottom: 10px !important;
+  ion-input {
+    position: relative;
+    input {
+      margin-bottom: 0 !important;
+    }
+  }
+  .right-content {
+    position: absolute;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    z-index: 10;
+    p {
+      color: #070a18;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 1.2rem;
+      line-height: 2rem;
+      text-transform: uppercase;
+    }
+    ion-icon {
+      font-size: 1.6rem;
+      color: #070a18 !important;
+    }
+  }
+}
+/********** Modal auto height based on content position from bottom **************/
+.modal-auto-height {
+  &.bottom {
+    align-items: flex-end;
+  }
+  --height: auto;
+  align-items: flex-end;
+  .modal-wrapper {
+    border-radius: 10px 10px 0 0;
+  }
+  .ion-page {
+    position: relative;
+    display: block;
+    contain: content;
+    .modal-content {
+      max-height: 80vh;
+      overflow: auto;
+      padding: 30px 20px 20px 20px;
+    }
+  }
+}
+/********** End Modal auto height based on content position from bottom ************/

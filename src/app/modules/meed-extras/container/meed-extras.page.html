@@ -1,0 +1,65 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ 'meed-extra-module.extra-page.header-title' | translate }}</ion-title>
+    <div slot="end" (click)="meedExtraFacade.goToSearch()">
+      <img class="header-search-img" src="assets/img/white-search.png" alt="search" />
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="featured-offer-section">
+    <p class="section-title">{{ 'meed-extra-module.extra-page.featured-offer-title' | translate }}</p>
+    <div class="featured-sliders">
+      <ion-slides [options]="feturedSlideOpts">
+        <ion-slide
+          class="featured-slider-wrapper"
+          *ngFor="let featuredOffer of featuredOffers$ | async"
+          (click)="setOffer(featuredOffer)"
+        >
+          <feature-offer-card [featuredOffer]="featuredOffer"></feature-offer-card>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+  <div class="categories-section">
+    <p class="section-title">{{ 'meed-extra-module.extra-page.categories-title' | translate }}</p>
+    <div class="categories-sliders">
+      <ion-slides [options]="categoriesSlideOpts">
+        <ion-slide
+          class="categories-slider-wrapper"
+          *ngFor="let category of categories$ | async"
+          (click)="setCategory(category)"
+        >
+          <category-card [category]="category"></category-card>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </div>
+  <div class="near-all-offer-section">
+    <ion-list no-lines class="list-wrapper">
+      <ion-item lines="none" class="list-item" (click)="goToNearbyOffersPage()">
+        <div class="list-item-text">
+          <p>{{ 'meed-extra-module.extra-page.nearby-text' | translate }}</p>
+        </div>
+        <div slot="end">
+          <img src="assets/svg/arrow.svg" alt="arrow" />
+        </div>
+      </ion-item>
+      <ion-item lines="none" class="list-item" (click)="goToAllOffer()">
+        <div class="list-item-text">
+          <p>{{ 'meed-extra-module.extra-page.all-offer-text' | translate }}</p>
+        </div>
+        <div slot="end">
+          <img src="assets/svg/arrow.svg" alt="arrow" />
+        </div>
+      </ion-item>
+    </ion-list>
+  </div>
+  <div class="invite-section">
+    <invite-info inviteBtn="true"></invite-info>
+  </div>
+</ion-content>
