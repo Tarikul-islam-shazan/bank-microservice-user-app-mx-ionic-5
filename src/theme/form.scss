@@ -1,0 +1,21 @@
+form {
+  ion-list {
+    ion-item {
+      --highlight-color-focused: none;
+      --padding-bottom: 0px;
+      --padding-end: 0px;
+      --padding-start: 0px;
+      --padding-top: 0px;
+      --inner-padding-end: 0px;
+      ion-label {
+        font-size: 1.7rem;
+      }
+      ion-icon {
+        font-size: 20px;
+        position: absolute;
+        right: 15px;
+        top: 20px;
+      }
+    }
+  }
+}

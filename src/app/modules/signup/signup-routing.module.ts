@@ -69,6 +69,45 @@ export const SIGNUP_ROUTES: Routes = [
   {
     path: 'intro',
     loadChildren: () => import('./intro/intro.module').then(m => m.IntroPageModule)
+  },
+  {
+    path: 'general-information',
+    loadChildren: () =>
+      import('./general-information/general-information.module').then(m => m.GeneralInformationPageModule)
+  },
+  {
+    path: 'living-information',
+    loadChildren: () =>
+      import('./living-information/living-information.module').then(m => m.LivingInformationPageModule)
+  },
+  {
+    path: 'personal-information',
+    loadChildren: () =>
+      import('./personal-information/personal-information.module').then(m => m.PersonalInformationPageModule)
+  },
+  {
+    path: 'account-selection',
+    loadChildren: () => import('./account-selection/account-selection.module').then(m => m.AccountSelectionPageModule)
+  },
+  {
+    path: 'beneficiary-information',
+    loadChildren: () =>
+      import('./beneficiary-information/beneficiary-information.module').then(m => m.BeneficiaryInformationPageModule)
+  },
+  {
+    path: 'identity-confirmation',
+    loadChildren: () =>
+      import('./identity-confirmation/identity-confirmation.module').then(m => m.IdentityConfirmationPageModule)
+  },
+  {
+    path: 'funding-information',
+    loadChildren: () =>
+      import('./funding-information/funding-information.module').then(m => m.FundingInformationPageModule)
+  },
+  {
+    path: 'government-disclosure',
+    loadChildren: () =>
+      import('./government-disclosure/government-disclosure.module').then(m => m.GovernmentDisclosurePageModule)
   }
 ];
 
