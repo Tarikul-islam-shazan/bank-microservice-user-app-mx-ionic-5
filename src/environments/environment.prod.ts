@@ -2,7 +2,7 @@ export const environment = {
   production: true,
   label: 'production',
   deployment: 'prod',
-  serviceUrl: 'https://meedv2-tfqa.meedbankingclub.com/api/v1.0.0',
+  serviceUrl: 'https://services-mxqa.meedbankingclub.com',
   loadingControllerOptions: {
     message: 'Please wait...'
   },
@@ -10,7 +10,7 @@ export const environment = {
     apiToken: 'e3facdd9-292d-42da-80fd-6c356d9c8161',
     apiSecret: 'mhYjhzEd49svDm2Sh0T5nHWxM52tqigS',
     dataCenter: 'US', // Datacenter can either be US or EU
-    callbackUrl: 'https://meedv2-tfqa.meedbankingclub.com/api/v1.0.0/jumio-verification',
+    callbackUrl: 'https://services-mxqa.meedbankingclub.com/jumio-verification',
     customerIssuingCountry: 'USA', // ISO 3166-1 alpha-3 country code
     documentTypes: ['DRIVER_LICENSE', 'PASSPORT', 'IDENTITY_CARD'], // ['DRIVER_LICENSE', 'PASSPORT', 'IDENTITY_CARD', 'VISA'],
     iframeOrigin: 'https://meed.netverify.com'
