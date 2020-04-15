@@ -1,0 +1,49 @@
+.header-title {
+  margin-bottom: 30px !important;
+}
+
+.content-block {
+  margin-bottom: 15px;
+  .title {
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 1.2rem;
+    color: #606477;
+  }
+  .description {
+    font-family: 'Averta W05 Regular';
+    font-size: 1.5rem;
+    color: #606477;
+    margin-bottom: 15px;
+  }
+  .scan-button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 10px 0;
+    .scan-button {
+      height: 120px;
+      width: 160px;
+      border: 2px dashed #ebedf2;
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding-top: 15px;
+      .button-image {
+        height: 40px;
+        width: 40px;
+      }
+      .button-text {
+        width: 90%;
+        margin-top: 5px;
+        color: #435cdc;
+        font-family: 'Averta W05 Bold5204651';
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: -0.25px;
+        line-height: 14px;
+        text-align: center;
+      }
+    }
+  }
+}

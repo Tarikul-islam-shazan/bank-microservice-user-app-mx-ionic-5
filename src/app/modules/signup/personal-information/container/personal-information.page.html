@@ -1,0 +1,67 @@
+<ion-header class="white-header ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="content-wrapper">
+    <div class="step-counter">
+      <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
+    </div>
+    <div class="header-title">Personal Information</div>
+    <form>
+      <ion-list lines="none">
+        <ion-item>
+          <ion-input class="white-input" type="text" placeholder="Country of Birth"></ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input class="white-input" type="text" placeholder="Nationality"></ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input class="white-input" type="text" placeholder="Place of Birth"></ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input class="white-input" type="text" placeholder="Sex"></ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input class="white-input" type="text" placeholder="Marital Status"></ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input class="white-input" type="text" placeholder="Highest Level of Education"></ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input class="white-input" type="text" placeholder="Profession"></ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input class="white-input" type="text" placeholder="Occupation"></ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input class="white-input" type="text" placeholder="Economic Activity"></ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-item>
+        <ion-item>
+          <ion-input class="white-input" type="text" placeholder="Banxico Activity"></ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" [routerLink]="['/signup/funding-information']">
+      {{ 'signup-module.signup-address-page.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

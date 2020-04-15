@@ -1,0 +1,50 @@
+<ion-header class="white-header ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="content-wrapper">
+    <div class="step-counter">
+      <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
+    </div>
+    <div class="header-title">Beneficiary Information</div>
+
+    <div class="content-block">
+      <form>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-input class="white-input" type="text" placeholder="First Name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input class="white-input" type="text" placeholder="Second Name (Optional)"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input class="white-input" type="text" placeholder="Paternal Last Name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input class="white-input" type="text" placeholder="Maternal Last Name (Optional)"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input class="white-input" type="text" placeholder="Date of Birth"></ion-input>
+            <ion-icon name="chevron-down"></ion-icon>
+          </ion-item>
+          <ion-item>
+            <ion-input class="white-input" type="text" placeholder="Relationship"></ion-input>
+            <ion-icon name="chevron-down"></ion-icon>
+          </ion-item>
+        </ion-list>
+      </form>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" [routerLink]="['/signup/account-selection']">
+      {{ 'signup-module.signup-address-page.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

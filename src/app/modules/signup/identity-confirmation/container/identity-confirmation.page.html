@@ -1,0 +1,54 @@
+<ion-header class="white-header ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="content-wrapper">
+    <div class="step-counter">
+      <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
+    </div>
+    <div class="header-title">Identity Confirmation</div>
+    <div class="content-block">
+      <div class="description">
+        To verify your address, please take an image of a utility bill from the last 3 months. Select from valid bill
+        types below:
+      </div>
+      <form>
+        <ion-item lines="none">
+          <ion-input class="white-input" type="text" placeholder="Address Document Type"></ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-item>
+      </form>
+    </div>
+    <div class="content-block">
+      <div class="scan-button-wrapper">
+        <div class="scan-button">
+          <img class="button-image" src="assets/img/camera.png" />
+          <div class="button-text">Scan Utility Bill</div>
+        </div>
+      </div>
+    </div>
+    <div class="content-block">
+      <div class="description">
+        Last step! Please take a picture of your face together with a piece of paper with your signature on it.
+      </div>
+      <div class="scan-button-wrapper">
+        <div class="scan-button">
+          <img class="button-image" src="assets/img/camera.png" />
+          <div class="button-text">Take Picture</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block">
+      {{ 'signup-module.signup-address-page.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

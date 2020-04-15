@@ -1,0 +1,97 @@
+<ion-header class="white-header ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="content-wrapper">
+    <div class="step-counter">
+      <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
+    </div>
+    <div class="header-title">Government Disclosure</div>
+    <div class="content-block">
+      <ion-list lines="none">
+        <ion-radio-group name="auto" value="no">
+          <ion-list-header>
+            <ion-label>Do you hold a position in the government?</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Yes, I do</ion-label>
+            <ion-radio mode="md" slot="start" value="yes"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>No, I don't</ion-label>
+            <ion-radio mode="md" slot="start" value="no"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+    <div class="content-block">
+      <div class="title">Your Government Information</div>
+      <ion-item lines="none">
+        <ion-input class="white-input" type="text" placeholder="Position"></ion-input>
+        <ion-icon name="chevron-down"></ion-icon>
+      </ion-item>
+      <ion-item lines="none">
+        <ion-input class="white-input" type="text" placeholder="Association"></ion-input>
+      </ion-item>
+      <ion-list lines="none">
+        <ion-radio-group name="auto" value="no">
+          <ion-list-header>
+            <ion-label>Do you have a relative who holds a position in the government?</ion-label>
+          </ion-list-header>
+          <ion-item>
+            <ion-label>Yes, I do</ion-label>
+            <ion-radio mode="md" slot="start" value="yes"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label>No, I don't</ion-label>
+            <ion-radio mode="md" slot="start" value="no"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+    <div class="content-block">
+      <div class="title">Your Relative Information</div>
+      <form>
+        <ion-list lines="none">
+          <ion-item>
+            <ion-input class="white-input" type="text" placeholder="First Name"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input class="white-input" type="text" placeholder="Second Name (Optional)"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input class="white-input" type="text" placeholder="Paternal Last Name (Optional)"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input class="white-input" type="text" placeholder="Maternal Last Name (Optional)"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input class="white-input" type="text" placeholder="Position"></ion-input>
+            <ion-icon name="chevron-down"></ion-icon>
+          </ion-item>
+          <ion-item>
+            <ion-input class="white-input" type="text" placeholder="Home Address"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input class="white-input" type="text" placeholder="Phone"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-input class="white-input" type="text" placeholder="Participation %"></ion-input>
+          </ion-item>
+        </ion-list>
+      </form>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block" [routerLink]="['/signup/verification']">
+      {{ 'signup-module.signup-address-page.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
