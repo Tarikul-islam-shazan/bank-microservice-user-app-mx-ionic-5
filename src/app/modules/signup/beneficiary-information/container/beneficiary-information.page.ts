@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { BeneficiaryFacade } from '../facade/facade';
 
 @Component({
   selector: 'mbc-beneficiary-information',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./beneficiary-information.page.scss']
 })
 export class BeneficiaryInformationPage implements OnInit {
-  constructor() {}
+  constructor(public facade: BeneficiaryFacade) {}
 
   ngOnInit() {}
 }
