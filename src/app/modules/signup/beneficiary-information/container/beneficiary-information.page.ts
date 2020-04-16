@@ -71,7 +71,7 @@ export class BeneficiaryInformationPage implements OnInit {
   }
 
   async openOptionsModal(formControlName: string, options: DropdownOption[]): Promise<any> {
-    // this.isInputFieldSkip(formControlName);
+    this.isInputFieldSkip(formControlName);
     try {
       const modal = await this.modalCtrl.create({
         component: DropdownModalComponent,
@@ -83,6 +83,22 @@ export class BeneficiaryInformationPage implements OnInit {
       this[formControlName] = data ? data : null;
       this.beneficiaryFormApplication[formControlName] = data.value;
     } catch (error) {}
+  }
+
+  isInputFieldSkip(formControlName: string) {
+    const formFields: string[] = Object.keys(this.beneficiaryForm.controls);
+    const currentFieldIndex = formFields.indexOf(formControlName);
+    for (let i = currentFieldIndex - 1; i >= 0; i--) {
+      const field = formFields[i];
+      if (this.beneficiaryForm.controls[field].invalid) {
+        this.skipErrorFields[field] = true;
+      }
+    }
+
+    for (let i = currentFieldIndex + 1; i < formFields.length; i++) {
+      const field = formFields[i];
+      this.skipErrorFields[field] = false;
+    }
   }
   next(): void {}
 }

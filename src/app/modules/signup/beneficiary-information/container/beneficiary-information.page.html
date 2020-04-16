@@ -13,6 +13,7 @@
               [ngClass]="
               beneficiaryForm.controls.firstName.invalid && skipErrorFields.firstName ? 'error-input' : 'white-input'
             "
+              (ionFocus)="isInputFieldSkip('firstName')"
               class="white-input ion-text-capitalize"
               id="first-name"
               type="text"
@@ -53,6 +54,7 @@
               [ngClass]="
               beneficiaryForm.controls.parentalName.invalid && skipErrorFields.parentalName ? 'error-input' : 'white-input'
             "
+              (ionFocus)="isInputFieldSkip('parentalName')"
               class="white-input ion-text-capitalize"
               id="parental-name"
               type="text"
@@ -71,7 +73,7 @@
           <div class="clearfix">
             <ion-input
               [ngClass]="
-              beneficiaryForm.controls.maternalLastName.invalid && skipErrorFields.maternalLastName ? 'error-input' : 'white-input'
+              beneficiaryForm.controls.maternalLastName.invalid ? 'error-input' : 'white-input'
             "
               class="white-input ion-text-capitalize"
               id="maternal-name"
