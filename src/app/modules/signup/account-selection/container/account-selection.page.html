@@ -5,43 +5,49 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
+
 <ion-content>
-  <div class="content-wrapper">
-    <div class="step-counter">
-      <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
-    </div>
-    <div class="header-title">Account Selection</div>
-    <form>
-      <ion-list>
-        <ion-radio-group name="account" value="full">
-          <ion-item lines="none" class="radio-item">
-            <ion-label>Full</ion-label>
-            <ion-radio slot="start" mode="md" value="full"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label class="ion-text-wrap"
-              >I am applying for a Full Account with no deposit or transaction restriction..</ion-label
-            >
-          </ion-item>
-          <ion-item lines="none" class="radio-item">
-            <ion-label>Express</ion-label>
-            <ion-radio slot="start" mode="md" value="express"></ion-radio>
-          </ion-item>
-          <ion-item lines="none">
-            <ion-label class="ion-text-wrap"
-              >I am applying for an Express Account and understand that I will have monthly deposit or transaction
-              restrictions</ion-label
-            >
-          </ion-item>
-        </ion-radio-group>
-      </ion-list>
-    </form>
+  <div class="step-counter">
+    <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
   </div>
+  <div class="header-title">{{ 'signup-module.signup-account-selection.page-title' | translate }}</div>
+
+  <ion-list lines="none">
+    <ion-radio-group name="account" [(ngModel)]="facade.accountLevel">
+      <ion-item lines="full">
+        <ion-radio slot="start" mode="md" [value]="facade.level.Full"></ion-radio>
+        <ion-label class="ion-text-wrap">
+          <div class="title">{{'signup-module.signup-account-selection.account-level-full-title' | translate}}</div>
+          <div class="details">
+            {{'signup-module.signup-account-selection.account-level-full-details' | translate}}
+          </div>
+        </ion-label>
+        <ion-button slot="end" fill="clear" (click)="facade.openInfoModal(facade.level.Full)">
+          <img class="icon-question-mark" />
+        </ion-button>
+      </ion-item>
+
+      <ion-item>
+        <ion-radio slot="start" mode="md" [value]="facade.level.Express"></ion-radio>
+        <ion-label class="ion-text-wrap">
+          <div class="title">
+            {{'signup-module.signup-account-selection.account-level-express-title' | translate}}
+          </div>
+          <div class="details">
+            {{'signup-module.signup-account-selection.account-level-express-details' | translate}}
+          </div>
+        </ion-label>
+        <ion-button slot="end" fill="clear" (click)="facade.openInfoModal(facade.level.Express)">
+          <img class="icon-question-mark" />
+        </ion-button>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" [routerLink]="['/signup/personal-information']">
+    <ion-button class="white-button" expand="block" (click)="facade.onClickNext()">
       {{ 'signup-module.signup-address-page.button-text' | translate }}
     </ion-button>
   </ion-toolbar>
