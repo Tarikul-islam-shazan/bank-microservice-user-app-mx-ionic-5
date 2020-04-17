@@ -260,11 +260,15 @@ export interface IAccountLevel {
   accountLevel: string;
 }
 // interface for beneficiary
-export interface IBeneficiaryApplication {
+export interface IBeneficiaryInfo {
   firstName?: string;
   secondName?: string;
-  parentalName?: string;
-  maternalLastName?: string;
   dateOfBirth?: string;
+  paternalLastName?: string;
+  maternalLastName?: string;
   relationship?: string;
+}
+
+export interface BeneficiaryResponse {
+  beneficiary?: any;
 }

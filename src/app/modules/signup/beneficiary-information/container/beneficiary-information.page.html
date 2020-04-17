@@ -21,33 +21,20 @@
               placeholder="{{ 'signup-module.signup-personal.personal-form.first-name' | translate }}"
               [appMaskInput]="onlyOneWordInput"
             ></ion-input>
-            <div
-              *ngIf="beneficiaryForm.controls.firstName.dirty && beneficiaryForm.controls.firstName.invalid"
-              class="error-msg"
-              position="fixed"
-            >
-              {{ 'signup-module.signup-personal.personal-form.errors.valid-first-name-text' | translate }}
-            </div>
           </div>
           <div class="clearfix">
             <ion-input
               [ngClass]="
               beneficiaryForm.controls.secondName.invalid && skipErrorFields.secondName ? 'error-input' : 'white-input'
             "
+              (ionFocus)="isInputFieldSkip('secondName')"
               class="white-input ion-text-capitalize"
               id="second-name"
               type="text"
               formControlName="secondName"
-              placeholder="Second Name"
+              placeholder="Second Name (optional)"
               [appMaskInput]="onlyOneWordInput"
             ></ion-input>
-            <div
-              *ngIf="beneficiaryForm.controls.secondName.dirty && beneficiaryForm.controls.secondName.invalid"
-              class="error-msg"
-              position="fixed"
-            >
-              {{ 'signup-module.signup-personal.personal-form.errors.valid-first-name-text' | translate }}
-            </div>
           </div>
           <div class="clearfix">
             <ion-input
@@ -62,49 +49,34 @@
               placeholder="Parental Name"
               [appMaskInput]="onlyOneWordInput"
             ></ion-input>
-            <div
-              *ngIf="beneficiaryForm.controls.parentalName.dirty && beneficiaryForm.controls.parentalName.invalid"
-              class="error-msg"
-              position="fixed"
-            >
-              {{ 'signup-module.signup-personal.personal-form.errors.valid-first-name-text' | translate }}
-            </div>
           </div>
           <div class="clearfix">
             <ion-input
               [ngClass]="
               beneficiaryForm.controls.maternalLastName.invalid ? 'error-input' : 'white-input'
             "
+              (ionFocus)="isInputFieldSkip('maternalLastName')"
               class="white-input ion-text-capitalize"
               id="maternal-name"
               type="text"
               formControlName="maternalLastName"
-              placeholder="Maternal Last Name"
+              placeholder="Maternal Last Name (optional)"
               [appMaskInput]="onlyOneWordInput"
             ></ion-input>
-            <div
-              *ngIf="beneficiaryForm.controls.maternalLastName.dirty && beneficiaryForm.controls.maternalLastName.invalid"
-              class="error-msg"
-              position="fixed"
-            >
-              {{ 'signup-module.signup-personal.personal-form.errors.valid-first-name-text' | translate }}
-            </div>
           </div>
           <div class="clearfix">
             <div class="datetime-input">
               <ion-item lines="none">
                 <ion-datetime
+                  [ngClass]="beneficiaryForm.controls.dateOfBirth.invalid && skipErrorFields.dateOfBirth ? 'error-input' : 'white-input'"
+                  (ionFocus)="isInputFieldSkip('dateOfBirth')"
                   id="date-of-birth"
                   displayFormat="{{ 'signup-module.signup-personal.personal-form.date-of-birth-display-format' | translate }}"
-                  [max]="facade.maxDate"
                   placeholder="{{'signup-module.signup-personal.personal-form.date-of-birth' | translate }}"
                   formControlName="dateOfBirth"
                 ></ion-datetime>
                 <ion-icon name="chevron-down" slot="end"></ion-icon>
               </ion-item>
-            </div>
-            <div *ngIf="isDateOfBirthInvalid()" class="error-msg" position="fixed">
-              {{ 'signup-module.signup-personal.personal-form.errors.valid-date-of-birth-text' | translate }}
             </div>
           </div>
           <div class="clearfix ">
@@ -129,13 +101,7 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button
-      class="white-button"
-      expand="block"
-      (click)="next()"
-      [disabled]="beneficiaryForm.invalid"
-      [routerLink]="['/signup/account-selection']"
-    >
+    <ion-button class="white-button" expand="block" (click)="next()" [disabled]="beneficiaryForm.invalid">
       {{ 'signup-module.signup-address-page.button-text' | translate }}
     </ion-button>
   </ion-toolbar>

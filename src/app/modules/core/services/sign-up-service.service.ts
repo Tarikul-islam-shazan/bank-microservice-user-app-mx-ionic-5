@@ -25,7 +25,8 @@ import {
   IdentityAnswer,
   IGeneralInfo,
   IAccountLevel,
-  IAddressInfo
+  IAddressInfo,
+  IBeneficiaryInfo
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
 import { Logger } from './logger.service';
@@ -364,6 +365,16 @@ export class SignUpService {
       `${this.baseUrl}/bank/onboarding/apply/account-level`,
       { accountLevel },
       { headers: this.headerService.getMemberIdHeader() }
+    );
+  }
+
+  submitBeneficiaryApplication(beneficiaryApplication: IBeneficiaryInfo): Observable<any> {
+    return this.http.post<ApplyForBankResponse>(
+      this.baseUrl + 'bank/onboarding/apply/beneficiary-info',
+      beneficiaryApplication,
+      {
+        headers: this.headerService.getUserNameMemberICustomerIdHeader()
+      }
     );
   }
 }

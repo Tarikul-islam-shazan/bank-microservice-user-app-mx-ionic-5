@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 import { Component, OnInit } from '@angular/core';
 import { BeneficiaryFacade } from '../facade/facade';
-import { IBeneficiaryApplication } from '@app/core/models/dto/signup';
+import { IBeneficiaryInfo } from '@app/core/models/dto/signup';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IinputOption, InputFormatType } from '@app/shared/directives/mask-input.directive';
 import { AnalyticsService } from '@app/analytics/services/analytics.service';
@@ -15,7 +15,7 @@ import { DropdownModalComponent } from '@app/shared/components';
   styleUrls: ['./beneficiary-information.page.scss']
 })
 export class BeneficiaryInformationPage implements OnInit {
-  beneficiaryFormApplication: IBeneficiaryApplication;
+  beneficiaryFormApplication: IBeneficiaryInfo = {};
   beneficiaryForm: FormGroup;
   skipErrorFields: Record<string, string | boolean>;
   onlyOneWordInput: IinputOption;
@@ -49,7 +49,7 @@ export class BeneficiaryInformationPage implements OnInit {
       secondName: ['', Validators.maxLength(26)],
       parentalName: ['', [Validators.required, Validators.maxLength(26)]],
       maternalLastName: ['', Validators.maxLength(26)],
-      dateOfBirth: [moment().format('YYYY-MM-DD'), Validators.required],
+      dateOfBirth: ['', Validators.required],
       relationship: ['', Validators.required]
     });
     this.skipErrorFields = Object.assign({}, this.beneficiaryForm.value);
@@ -62,12 +62,6 @@ export class BeneficiaryInformationPage implements OnInit {
         value: 'PA'
       }
     ];
-  }
-
-  isDateOfBirthInvalid(): boolean {
-    const payDate = moment(this.beneficiaryForm.value.dateOfBirth).format('YYYY-MM-DD');
-    const chkDate = moment(payDate, 'YYYY-MM-DD', true);
-    return !chkDate.isValid();
   }
 
   async openOptionsModal(formControlName: string, options: DropdownOption[]): Promise<any> {
@@ -100,5 +94,27 @@ export class BeneficiaryInformationPage implements OnInit {
       this.skipErrorFields[field] = false;
     }
   }
-  next(): void {}
+
+  capitalized(word: string): string {
+    return word.charAt(0).toUpperCase() + word.slice(1);
+  }
+
+  next(): void {
+    const {
+      firstName,
+      secondName,
+      parentalName,
+      maternalLastName,
+      dateOfBirth,
+      relationship
+    } = this.beneficiaryForm.value;
+    this.beneficiaryFormApplication.firstName = this.capitalized(firstName);
+    this.beneficiaryFormApplication.secondName = this.capitalized(secondName);
+    this.beneficiaryFormApplication.paternalLastName = this.capitalized(parentalName);
+    this.beneficiaryFormApplication.maternalLastName = this.capitalized(maternalLastName);
+    this.beneficiaryFormApplication.dateOfBirth = dateOfBirth;
+    this.beneficiaryFormApplication.relationship = relationship;
+
+    this.facade.submit(this.beneficiaryFormApplication);
+  }
 }
