@@ -20,6 +20,7 @@
               formControlName="firstName"
               placeholder="{{ 'signup-module.signup-personal.personal-form.first-name' | translate }}"
               [appMaskInput]="onlyOneWordInput"
+              appInputMaxLength="{{maxLength}}"
             ></ion-input>
           </div>
           <div class="clearfix">
@@ -34,6 +35,7 @@
               formControlName="secondName"
               placeholder="Second Name (optional)"
               [appMaskInput]="onlyOneWordInput"
+              appInputMaxLength="{{maxLength}}"
             ></ion-input>
           </div>
           <div class="clearfix">
@@ -48,6 +50,7 @@
               formControlName="parentalName"
               placeholder="Parental Name"
               [appMaskInput]="onlyOneWordInput"
+              appInputMaxLength="{{maxLength}}"
             ></ion-input>
           </div>
           <div class="clearfix">
@@ -62,6 +65,7 @@
               formControlName="maternalLastName"
               placeholder="Maternal Last Name (optional)"
               [appMaskInput]="onlyOneWordInput"
+              appInputMaxLength="{{maxLength}}"
             ></ion-input>
           </div>
           <div class="clearfix">

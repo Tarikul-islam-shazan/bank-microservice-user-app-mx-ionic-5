@@ -21,6 +21,7 @@ export class BeneficiaryInformationPage implements OnInit {
   onlyOneWordInput: IinputOption;
   wordsInput: IinputOption;
   relationship: DropdownOption[];
+  maxLength = 26;
   constructor(
     public facade: BeneficiaryFacade,
     private formBuilder: FormBuilder,
