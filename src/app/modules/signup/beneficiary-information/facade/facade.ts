@@ -17,7 +17,7 @@ export class BeneficiaryFacade {
     // this.analytics.logEvent(AnalyticsEventTypes.GeneralInfoSubmitted);
     // [routerLink]="['/signup/account-selection']"
     this.signUpService.submitBeneficiaryApplication(beneficiary).subscribe(resp => {
-      console.log(resp);
+      // console.log(resp);
       // this.analytics.logEvent(AnalyticsEventTypes.IdDocumentSubmitted);
       this.router.navigate(['/signup/account-selection']);
     });
