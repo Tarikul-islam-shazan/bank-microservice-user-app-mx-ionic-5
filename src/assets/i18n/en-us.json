@@ -464,6 +464,18 @@
         "mobile-number": "Mobile Number"
       },
       "permission-text": "By entering your telephone number and clicking \"Next\", you are giving us permission to contact you about this application"
+    },
+    "signup-beneficiary-page": {
+      "page-title": "Beneficiary Information",
+      "beneficiary-form": {
+        "first-name": "First name",
+        "second-name": "Second name (optional)",
+        "parental-name": "Parental name",
+        "maternal-last-name": "Maternal name (optional)",
+        "dob": "Date of birth",
+        "relationship": "Relationship"
+      },
+      "button-text-processing-done": "Next"
     }
   },
   "deposit": {

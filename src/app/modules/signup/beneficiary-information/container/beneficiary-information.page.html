@@ -3,7 +3,9 @@
     <div class="step-counter">
       <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
     </div>
-    <div class="header-title">Beneficiary Information</div>
+    <div class="header-title">
+      {{ 'signup-module.signup-beneficiary-page.page-title' | translate }}
+    </div>
 
     <div class="content-block">
       <form [formGroup]="beneficiaryForm" novalidate>
@@ -18,7 +20,7 @@
               id="first-name"
               type="text"
               formControlName="firstName"
-              placeholder="{{ 'signup-module.signup-personal.personal-form.first-name' | translate }}"
+              placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.first-name' | translate }}"
               [appMaskInput]="onlyOneWordInput"
               appInputMaxLength="{{maxLength}}"
             ></ion-input>
@@ -33,7 +35,7 @@
               id="second-name"
               type="text"
               formControlName="secondName"
-              placeholder="Second Name (optional)"
+              placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.second-name' | translate }}"
               [appMaskInput]="onlyOneWordInput"
               appInputMaxLength="{{maxLength}}"
             ></ion-input>
@@ -48,7 +50,7 @@
               id="parental-name"
               type="text"
               formControlName="parentalName"
-              placeholder="Parental Name"
+              placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.parental-name' | translate }}"
               [appMaskInput]="onlyOneWordInput"
               appInputMaxLength="{{maxLength}}"
             ></ion-input>
@@ -63,7 +65,7 @@
               id="maternal-name"
               type="text"
               formControlName="maternalLastName"
-              placeholder="Maternal Last Name (optional)"
+              placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.maternal-last-name' | translate }}"
               [appMaskInput]="onlyOneWordInput"
               appInputMaxLength="{{maxLength}}"
             ></ion-input>
@@ -76,7 +78,7 @@
                   (ionFocus)="isInputFieldSkip('dateOfBirth')"
                   id="date-of-birth"
                   displayFormat="{{ 'signup-module.signup-personal.personal-form.date-of-birth-display-format' | translate }}"
-                  placeholder="{{'signup-module.signup-personal.personal-form.date-of-birth' | translate }}"
+                  placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.dob' | translate }}"
                   formControlName="dateOfBirth"
                 ></ion-datetime>
                 <ion-icon name="chevron-down" slot="end"></ion-icon>
@@ -92,7 +94,7 @@
                 id="relationship"
                 type="text"
                 formControlName="relationship"
-                placeholder="{{ 'signup-module.signup-personal.personal-form.prefix' | translate }}"
+                placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.relationship' | translate }}"
               ></ion-input>
               <ion-icon name="chevron-down"></ion-icon>
             </div>
@@ -106,7 +108,7 @@
 <ion-footer>
   <ion-toolbar>
     <ion-button class="white-button" expand="block" (click)="next()" [disabled]="beneficiaryForm.invalid">
-      {{ 'signup-module.signup-address-page.button-text' | translate }}
+      {{ 'signup-module.signup-beneficiary-page.button-text-processing-done' | translate }}
     </ion-button>
   </ion-toolbar>
 </ion-footer>
