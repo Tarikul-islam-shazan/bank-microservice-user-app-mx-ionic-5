@@ -1,7 +1,12 @@
 <ion-content class="safe-area-content">
   <div class="content-wrapper">
-    <div class="step-counter">
-      <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
+    <div class="test">
+      <div class="step-counter">
+        <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
+      </div>
+      <div (click)="openBeneficiaryModal()">
+        <img src="assets/svg/question-mark.svg" />
+      </div>
     </div>
     <div class="header-title">
       {{ 'signup-module.signup-beneficiary-page.page-title' | translate }}

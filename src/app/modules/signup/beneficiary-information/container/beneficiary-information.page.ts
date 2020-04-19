@@ -118,4 +118,8 @@ export class BeneficiaryInformationPage implements OnInit {
 
     this.facade.submit(this.beneficiaryFormApplication);
   }
+
+  openBeneficiaryModal(): void {
+    // console.log("working");
+  }
 }
