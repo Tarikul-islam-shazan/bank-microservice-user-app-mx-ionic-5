@@ -1441,7 +1441,7 @@
         "content1": "Your Line of Credit (LOC) automatically kicks in when your Checking account is empty.",
         "content2": "Through your LOC you can borrow 75% of whatever you have in your Savings account.",
         "content3": "If you’ve $100 in Savings, your LOC is $75.",
-        "content4": "The interest rate on your Line of Credit is currently:  15.49% APR",
+        "content4": "The interest rate on your Line of Credit is currently: {{interestRate}}% APR",
         "content5": "For more info, see ‘Virtual Assistant’ under ‘Contact Us’ in the More menu."
       }
     },

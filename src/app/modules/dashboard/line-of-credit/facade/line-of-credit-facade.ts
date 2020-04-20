@@ -1,22 +1,26 @@
 import { Injectable } from '@angular/core';
 import { AccountType, IAccount, ITransaction, ITransactionQueries } from '@app/core';
-import { AccountTransaction, IAccountOverview } from '@app/dashboard/models';
+import { AccountTransaction, IAccountOverview, IInterestRate } from '@app/dashboard/models';
 import { AccountService } from '@app/core/services/account.service';
 import { LineOfCreditState } from './line-of-credit-state';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, shareReplay } from 'rxjs/operators';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
+import { ModalService, IMeedModalContent } from '@app/shared/services/modal.service';
+import { InterestRateService } from '@app/dashboard/services/interest-rate.service';
 
 @Injectable()
 export class LineOfCreditFacade {
   constructor(
     private accountService: AccountService,
     private lineOfCreditState: LineOfCreditState,
-    private analytics: AnalyticsService
+    private analytics: AnalyticsService,
+    private modalService: ModalService,
+    private interestRateService: InterestRateService
   ) {
     this.initialize();
   }
-
+  interestRate$: Observable<IInterestRate>;
   lineOfCreditAccount$: Observable<Partial<IAccount>> = this.lineOfCreditState.lineOfCreditAccount$;
 
   pendingTransactions$: Observable<ITransaction[]> = this.lineOfCreditState.pendingTransactions$;
@@ -83,6 +87,61 @@ export class LineOfCreditFacade {
 
   showHideTransactions() {
     this.lineOfCreditState.setShowHideState(!this.lineOfCreditState.getShowHideValue());
+  }
+
+  /**
+   * @method locAccount return accout of LOC
+   *
+   * @readonly
+   * @type {IAccount}
+   * @memberof LineOfCreditFacade
+   */
+  get locAccount(): IAccount {
+    return this.accountService
+      .getCachedAccountSummary()
+      .find((account: IAccount) => account.accountType === AccountType.LOC);
+  }
+
+  /**
+   * @method return interestRate$ obserable
+   * @author Utpaul<Utpal.Sarker@brainstation23.com>
+   * Ticket: GMA-4873
+   * Issue: LOC interest rate set by calling http request
+   * @readonly
+   * @type {Observable<IInterestRate>}
+   * @memberof LineOfCreditFacade
+   */
+  get interestRate(): Observable<IInterestRate> {
+    if (!this.interestRate$) {
+      this.interestRate$ = this.interestRateService.getInterestRate(this.locAccount.accountId).pipe(shareReplay(1));
+    }
+    return this.interestRate$;
+  }
+
+  /**
+   * showing modal of a LOC clicking question option
+   *
+   * @memberof LineOfCreditFacade
+   */
+  async showModal() {
+    this.interestRate.subscribe(async (interestRate: IInterestRate) => {
+      const componentProps: IMeedModalContent = {
+        contents: [
+          {
+            title: 'info-modal-module.line-of-credit-page.title',
+            details: [
+              'info-modal-module.line-of-credit-page.details.content1',
+              'info-modal-module.line-of-credit-page.details.content2',
+              'info-modal-module.line-of-credit-page.details.content3',
+              'info-modal-module.line-of-credit-page.details.content4',
+              'info-modal-module.line-of-credit-page.details.content5'
+            ],
+            values: { interestRate: interestRate.amount.toString() }
+          }
+        ]
+      };
+      await this.modalService.openInfoModalComponent({ componentProps });
+    });
   }
 
   makePayment() {
