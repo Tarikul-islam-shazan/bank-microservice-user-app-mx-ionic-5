@@ -22,7 +22,8 @@ import {
   ISignUpDirectDepositAccounts,
   IMemberApplication,
   IdentityQuestion,
-  IdentityAnswer
+  IdentityAnswer,
+  IGeneralInfo
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
 import { Logger } from './logger.service';
@@ -312,5 +313,12 @@ export class SignUpService {
           this.identityQuestions = res.questions;
         })
       );
+  }
+
+  applyGeneralInformation(generalInfo: IGeneralInfo): Observable<IMember> {
+    const url = this.baseUrlOnboarding + 'apply/general-info';
+    return this.http.post<IMember>(url, generalInfo, {
+      headers: this.headerService.getMemberICustomerIdHeader()
+    });
   }
 }

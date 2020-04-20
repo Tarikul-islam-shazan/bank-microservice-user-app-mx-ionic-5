@@ -10,60 +10,78 @@
     <div class="step-counter">
       <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
     </div>
-    <div class="header-title">General Information</div>
+    <div class="header-title">{{ 'signup-module.general-info-page.page-title' | translate }}</div>
     <form [formGroup]="generalForm">
       <ion-list lines="none">
         <ion-item>
-          <ion-input formControlName="firstName" class="white-input" type="text" placeholder="First Name"></ion-input>
+          <ion-input
+            [ngClass]="generalForm.controls.firstName.invalid && generalForm.controls.firstName.touched ? 'error-input' : 'white-input'"
+            appInputMaxLength="{{nameMaxLength}}"
+            formControlName="firstName"
+            class="white-input"
+            type="text"
+            placeholder="{{ 'signup-module.general-info-page.generalForm.first-name' | translate }}"
+          ></ion-input>
         </ion-item>
         <ion-item>
           <ion-input
+            appInputMaxLength="{{nameMaxLength}}"
             formControlName="secondName"
             class="white-input"
             type="text"
-            placeholder="Second Name (Optional)"
+            placeholder="{{ 'signup-module.general-info-page.generalForm.second-name' | translate }}"
           ></ion-input>
         </ion-item>
         <ion-item>
           <ion-input
+            appInputMaxLength="{{nameMaxLength}}"
             formControlName="paternalLastName"
             class="white-input"
             type="text"
-            placeholder="Paternal Last Name"
+            placeholder="{{ 'signup-module.general-info-page.generalForm.paternal-last-name' | translate }}"
           ></ion-input>
         </ion-item>
         <ion-item>
           <ion-input
-            formControlName="MaternalLastName"
+            appInputMaxLength="{{nameMaxLength}}"
+            formControlName="maternalLastName"
             class="white-input"
             type="text"
-            placeholder="Maternal Last Name (Optional)"
+            placeholder="{{ 'signup-module.general-info-page.generalForm.maternal-last-name' | translate }}"
           ></ion-input>
         </ion-item>
-        <ion-item>
-          <ion-input
+        <ion-item class="date-input">
+          <ion-label *ngIf="!generalForm.controls.dateOfBirth.value"
+            >{{ 'signup-module.general-info-page.generalForm.date-of-birth' | translate }}</ion-label
+          >
+          <ion-datetime
             formControlName="dateOfBirth"
-            class="white-input"
-            type="text"
-            placeholder="Date of Birth"
-          ></ion-input>
+            displayFormat="{{ 'signup-module.general-info-page.generalForm.date-of-birth-display-format' | translate }}"
+            [max]="facade.maxDate"
+          ></ion-datetime>
           <ion-icon name="chevron-down"></ion-icon>
         </ion-item>
         <ion-item>
-          <ion-input formControlName="curm" class="white-input" type="text" placeholder="CURP"></ion-input>
+          <ion-input
+            appInputMaxLength="{{curpMaxLength}}"
+            formControlName="curp"
+            class="white-input"
+            type="text"
+            placeholder="{{ 'signup-module.general-info-page.generalForm.curp' | translate }}"
+          ></ion-input>
         </ion-item>
         <ion-item>
           <ion-input
+            appInputMaxLength="10"
             formControlName="mobileNumber"
             class="white-input"
-            type="text"
-            placeholder="Mobile Number"
+            type="number"
+            placeholder="{{ 'signup-module.general-info-page.generalForm.mobile-number' | translate }}"
           ></ion-input>
         </ion-item>
         <ion-item>
           <ion-label class="ion-text-wrap question"
-            >Do we need to include any messaging regarding the mobile number such as opt in for SMS
-            messaging?</ion-label
+            >{{ 'signup-module.general-info-page.permission-text' | translate }}</ion-label
           >
         </ion-item>
       </ion-list>
@@ -76,10 +94,10 @@
     <ion-button
       class="white-button"
       expand="block"
-      [routerLink]="['/signup/living-information']"
-      routerLinkActive="router-link-active"
+      (click)="applyGeneralInformation()"
+      [disabled]="generalForm.invalid"
     >
-      {{ 'signup-module.signup-address-page.button-text' | translate }}
+      {{ 'signup-module.general-info-page.next-button-text' | translate }}
     </ion-button>
   </ion-toolbar>
 </ion-footer>

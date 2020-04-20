@@ -71,7 +71,7 @@ export class PersonalPage implements OnInit {
     });
     this.skipErrorFields = Object.assign({}, this.personalForm.value);
     this.memberApplication = this.personalForm.value;
-    this.initJumioDataIntoForm();
+    // this.initJumioDataIntoForm();
   }
   /**
    * set data to personalForm

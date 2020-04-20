@@ -71,7 +71,7 @@ export class ScanIDFacade {
            */
           if (parsedDocumentData.jumioPlatform === JumioPlatformType.NATIVE) {
             this.ngZone.run(() => {
-              this.router.navigate(['/signup/personal']);
+              this.router.navigate(['/signup/general-information']);
             });
           }
         }
@@ -168,9 +168,9 @@ export class ScanIDFacade {
    * Date: March 06, 2020
    * Developer: Utpaul <Utpal.Sarker@brainstation23.com>
    */
-  gotoSignupPersonal() {
+  gotoSignupGeneralInformation() {
     this.analytics.logEvent(AnalyticsEventTypes.IdVerificationCompleted);
-    this.router.navigate(['/signup/personal']);
+    this.router.navigate(['/signup/general-information']);
   }
 
   /**
