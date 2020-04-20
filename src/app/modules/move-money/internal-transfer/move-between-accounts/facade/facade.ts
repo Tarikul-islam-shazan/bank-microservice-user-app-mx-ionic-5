@@ -155,7 +155,7 @@ export class InternalTransferFacade {
   generateActionSheetButtons(transferFor: TransferFor) {
     const actionSheetOptions = [
       {
-        icon: 'checking',
+        icon: 'ios-checking', // GMA-4251 wrong icon showing
         text: this.translate.instant(
           'move-money-module.internal-transfer.move-between-accounts.action-sheet.checking-button'
         ),
@@ -167,7 +167,7 @@ export class InternalTransferFacade {
         role: AccountType.DDA
       },
       {
-        icon: 'savings',
+        icon: 'ios-savings', // GMA-4251 wrong icon showing
         text: this.translate.instant(
           'move-money-module.internal-transfer.move-between-accounts.action-sheet.saving-button'
         ),
