@@ -261,12 +261,12 @@ export interface IAccountLevel {
 }
 // interface for beneficiary
 export interface IBeneficiaryInfo {
-  firstName?: string;
+  firstName: string;
   secondName?: string;
-  dateOfBirth?: string;
-  paternalLastName?: string;
+  dateOfBirth: string;
+  paternalLastName: string;
   maternalLastName?: string;
-  relationship?: string;
+  relationship: string;
 }
 
 export interface BeneficiaryResponse {

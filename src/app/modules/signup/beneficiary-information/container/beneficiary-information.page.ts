@@ -1,7 +1,6 @@
 import * as moment from 'moment';
 import { Component, OnInit } from '@angular/core';
 import { BeneficiaryFacade } from '../facade/facade';
-import { IBeneficiaryInfo } from '@app/core/models/dto/signup';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IinputOption, InputFormatType } from '@app/shared/directives/mask-input.directive';
 import { AnalyticsService } from '@app/analytics/services/analytics.service';
@@ -9,13 +8,16 @@ import { PAGES } from '@app/core/models/constants';
 import { DropdownOption } from '@app/signup/models/signup';
 import { ModalController } from '@ionic/angular';
 import { DropdownModalComponent } from '@app/shared/components';
+import { IBeneficiaryInfo } from '@app/core/models/dto/signup';
+import { IMeedModalContent } from '@app/shared/models/modal';
+import { ModalService } from '@app/shared';
 @Component({
   selector: 'mbc-beneficiary-information',
   templateUrl: './beneficiary-information.page.html',
   styleUrls: ['./beneficiary-information.page.scss']
 })
 export class BeneficiaryInformationPage implements OnInit {
-  beneficiaryFormApplication: IBeneficiaryInfo = {};
+  beneficiaryFormApplication: Partial<IBeneficiaryInfo> = {};
   beneficiaryForm: FormGroup;
   skipErrorFields: Record<string, string | boolean>;
   onlyOneWordInput: IinputOption;
@@ -26,7 +28,8 @@ export class BeneficiaryInformationPage implements OnInit {
     public facade: BeneficiaryFacade,
     private formBuilder: FormBuilder,
     private analyticsService: AnalyticsService,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private modalService: ModalService
   ) {
     this.onlyOneWordInput = {
       type: InputFormatType.ONLY_ONE_WORD
@@ -114,12 +117,19 @@ export class BeneficiaryInformationPage implements OnInit {
     this.beneficiaryFormApplication.paternalLastName = this.capitalized(parentalName);
     this.beneficiaryFormApplication.maternalLastName = this.capitalized(maternalLastName);
     this.beneficiaryFormApplication.dateOfBirth = dateOfBirth;
-    this.beneficiaryFormApplication.relationship = relationship;
 
     this.facade.submit(this.beneficiaryFormApplication);
   }
 
-  openBeneficiaryModal(): void {
-    // console.log("working");
+  async openBeneficiaryModal() {
+    const componentProps: IMeedModalContent = {
+      contents: [
+        {
+          title: 'To be decided',
+          details: ['To be decided', 'To be decided']
+        }
+      ]
+    };
+    await this.modalService.openInfoModalComponent({ componentProps });
   }
 }

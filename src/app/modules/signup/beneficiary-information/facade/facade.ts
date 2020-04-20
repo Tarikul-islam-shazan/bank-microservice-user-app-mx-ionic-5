@@ -13,7 +13,8 @@ export class BeneficiaryFacade {
     private analytics: AnalyticsService
   ) {}
 
-  submit(beneficiary: IBeneficiaryInfo) {
+  submit(beneficiary: Partial<IBeneficiaryInfo>) {
+    // console.log(beneficiary);
     // this.analytics.logEvent(AnalyticsEventTypes.GeneralInfoSubmitted);
     // [routerLink]="['/signup/account-selection']"
     this.signUpService.submitBeneficiaryApplication(beneficiary).subscribe(resp => {

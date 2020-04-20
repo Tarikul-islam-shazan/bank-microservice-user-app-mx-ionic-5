@@ -368,7 +368,7 @@ export class SignUpService {
     );
   }
 
-  submitBeneficiaryApplication(beneficiaryApplication: IBeneficiaryInfo): Observable<any> {
+  submitBeneficiaryApplication(beneficiaryApplication: Partial<IBeneficiaryInfo>): Observable<any> {
     return this.http.post<ApplyForBankResponse>(
       this.baseUrl + 'bank/onboarding/apply/beneficiary-info',
       beneficiaryApplication,
