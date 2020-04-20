@@ -53,16 +53,29 @@
             --border-radius: 2px !important;
             --border-color: var(--input-blue-border-color);
             box-sizing: border-box;
-            margin-right: 8px;
           }
         }
       }
       .login-btn-margin {
         margin-bottom: 32px;
       }
+
       ion-button.button-disabled {
         --opacity: 1;
         --color: rgba(255, 255, 255, 0.25) !important;
+      }
+
+      .login-submit-button-div {
+        width: 99%;
+        margin-left: -1px;
+
+        ion-button {
+          width: 100% !important;
+        }
+      }
+
+      ion-text {
+        font-size: 16px;
       }
     }
     .forgot {
