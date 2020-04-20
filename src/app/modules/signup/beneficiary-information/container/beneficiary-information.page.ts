@@ -116,7 +116,7 @@ export class BeneficiaryInformationPage implements OnInit {
     this.beneficiaryFormApplication.secondName = this.capitalized(secondName);
     this.beneficiaryFormApplication.paternalLastName = this.capitalized(parentalName);
     this.beneficiaryFormApplication.maternalLastName = this.capitalized(maternalLastName);
-    this.beneficiaryFormApplication.dateOfBirth = dateOfBirth;
+    this.beneficiaryFormApplication.dateOfBirth = moment(dateOfBirth).format('MM/DD/YYYY');
 
     this.facade.submit(this.beneficiaryFormApplication);
   }
