@@ -22,7 +22,8 @@ import {
   ISignUpDirectDepositAccounts,
   IMemberApplication,
   IdentityQuestion,
-  IdentityAnswer
+  IdentityAnswer,
+  IAccountLevel
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
 import { Logger } from './logger.service';
@@ -312,5 +313,13 @@ export class SignUpService {
           this.identityQuestions = res.questions;
         })
       );
+  }
+
+  selectAccountLevel(accountLevel: string): Observable<IAccountLevel> {
+    return this.http.post<IAccountLevel>(
+      `${this.baseUrl}/bank/onboarding/apply/account-level`,
+      { accountLevel },
+      { headers: this.headerService.getMemberIdHeader() }
+    );
   }
 }

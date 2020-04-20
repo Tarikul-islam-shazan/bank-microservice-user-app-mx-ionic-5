@@ -222,6 +222,18 @@
         "country-unavailable-modal-description": "Unfortunately we’re only live in the US at the moment. Follow us on social media to be the first to hear about our roll-out plans"
       }
     },
+    "signup-account-selection": {
+      "step-text": "Step 3 of 3",
+      "page-title": "Select your desired account level",
+      "account-level-full-title": "Full (Recommended)",
+      "account-level-full-details": "I am applying for a Full Account with no deposit or transaction restriction..",
+      "account-level-full-modal-title": "Full (Recommended)",
+      "account-level-full-model-details": "I am applying for a Full Account with no deposit or transaction restriction..",
+      "account-level-express-title": "Express",
+      "account-level-express-details": "I am applying for an Express Account and understand that I will have monthly deposit or transaction restrictions",
+      "account-level-express-modal-title": "Express",
+      "account-level-express-model-details": "I am applying for an Express Account and understand that I will have monthly deposit or transaction restrictions"
+    },
     "signup-personal": {
       "page-title": "General Information",
       "button-text": "Next",
