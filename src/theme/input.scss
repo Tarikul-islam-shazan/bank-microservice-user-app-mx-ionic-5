@@ -1,8 +1,8 @@
 ion-input.background-input {
-  --background: #f4f6fd;
-  border-radius: 12px !important;
-  margin-bottom: 10px !important;
   input {
+    border-radius: 12px !important;
+    margin-bottom: 10px !important;
+    background-color: #f4f6fd !important;
     color: #8c90a3 !important;
     height: 60px !important;
     width: 100% !important;

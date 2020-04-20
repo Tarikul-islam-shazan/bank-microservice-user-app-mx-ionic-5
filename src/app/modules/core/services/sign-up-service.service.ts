@@ -22,7 +22,8 @@ import {
   ISignUpDirectDepositAccounts,
   IMemberApplication,
   IdentityQuestion,
-  IdentityAnswer
+  IdentityAnswer,
+  IAddressInfo
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
 import { Logger } from './logger.service';
@@ -310,6 +311,41 @@ export class SignUpService {
       .pipe(
         tap((res: ApplyForBankResponse) => {
           this.identityQuestions = res.questions;
+        })
+      );
+  }
+
+  /**
+   *
+   *
+   * @param {number} postalCode
+   * @returns {Observable<Partial<IAddressInfo>>}
+   * @memberof SignUpService
+   */
+  getStateCityMunicipality(postalCode: number): Observable<Partial<IAddressInfo[]>> {
+    return this.http.get<Partial<IAddressInfo[]>>(
+      `${this.baseUrl}/bank/onboarding/${postalCode}/state-city-municipality`,
+      {
+        headers: this.headerService.getBankIdentifierHeader()
+      }
+    );
+  }
+
+  /**
+   *
+   *
+   * @param {IAddressInfo} addressInfo
+   * @returns {Observable<IMember>}
+   * @memberof SignUpService
+   */
+  submitAddressInfo(addressInfo: IAddressInfo): Observable<IMember> {
+    return this.http
+      .post<IMember>(this.baseUrl + '/bank/onboarding/apply/address-info', addressInfo, {
+        headers: this.headerService.getUserNameMemberICustomerIdHeader()
+      })
+      .pipe(
+        tap((res: IMember) => {
+          this.member = res;
         })
       );
   }

@@ -345,6 +345,25 @@
       "armed-forces-related-dependent-radio-btn": "Yes, I am a dependent.",
       "armed-forces-related-neither-radio-btn": "No, I am neither."
     },
+    "signup-address-information-page": {
+      "page-title": "Where do you live?",
+      "button-text": "Next",
+      "step-text": "Step 3 of 3",
+      "address-form": {
+        "address-type": "Address Type",
+        "property-type": "Property Type",
+        "street-name": "Street Name",
+        "outdoor-number": "Outdoor Number",
+        "interior-number": "Interior Number",
+        "post-code": "Post Code",
+        "city": "City",
+        "state": "State",
+        "municipality": "Municipality",
+        "suburb": "Suburb",
+        "dateOfResidence": "Date @ Residence",
+        "dateFormate": "DD/MM/YYYY"
+      }
+    },
     "confirm-identity-page": {
       "page-title": "Confirm your identity",
       "page-subtitle": "Choose your identity document",
