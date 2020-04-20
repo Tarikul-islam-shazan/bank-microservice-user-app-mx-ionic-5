@@ -15,7 +15,10 @@ import { ModalService, IMeedModalContent } from '@app/shared/services/modal.serv
  */
 export enum LogoutReason {
   AppSessionTimeOut = 0,
-  ByUser = 1
+  ByUser = 1,
+  AuthTokenMissing = 2,
+  AuthTokenInValidOrExpired = 3,
+  AuthSessionTimeout = 4
 }
 
 @Injectable({
@@ -45,8 +48,10 @@ export class LogoutService {
   async isLoggedOut(): Promise<boolean> {
     switch (this.logoutReason) {
       case LogoutReason.AppSessionTimeOut:
-        return await this.successModal();
       case LogoutReason.ByUser:
+      case LogoutReason.AuthTokenMissing:
+      case LogoutReason.AuthTokenInValidOrExpired:
+      case LogoutReason.AuthSessionTimeout:
         return await this.successModal();
     }
   }
