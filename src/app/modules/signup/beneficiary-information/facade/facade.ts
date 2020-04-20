@@ -20,7 +20,7 @@ export class BeneficiaryFacade {
     this.signUpService.submitBeneficiaryApplication(beneficiary).subscribe(resp => {
       // console.log(resp);
       // this.analytics.logEvent(AnalyticsEventTypes.IdDocumentSubmitted);
-      this.router.navigate(['/signup/account-selection']);
+      this.router.navigateByUrl('/signup/account-selection');
     });
   }
 }
