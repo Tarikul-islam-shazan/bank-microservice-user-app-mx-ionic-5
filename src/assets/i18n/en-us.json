@@ -936,7 +936,6 @@
       "menu": {
         "direct-deposit": "Direct Deposit",
         "transfer-from-other-banks": "Transfer From Other Banks",
-        "mobile-check-deposit": "Mobile Check Deposit",
         "credit-debit-card": "Credit / Debit Card",
         "send-money": "Send Money",
         "request-money": "Request Money",
@@ -1563,22 +1562,6 @@
     "permission-request": {
       "title": "Meed Biometric Sign On",
       "description": "Meed use face ID or finger print for biometric authentication"
-    }
-  },
-  "mobile-check-deposit": {
-    "header-title": "Mobile Check Deposit",
-    "amount-label": "Check amount",
-    "scan-check-lebel": "Scan the check",
-    "front-scan-check-lebel": "FRONT",
-    "back-scan-check-lebel": "BACK",
-    "note-label": "Note",
-    "note-input-placeholder": "Add a note",
-    "submit-button-text": "Deposit Check",
-    "permission-info-modal": {
-      "title": "Enable Camera and Storage",
-      "details": "Please enable Camera and Storage from the settings.",
-      "setting-button-text": "Setting",
-      "cancel-button-text": "Cancel"
     }
   },
   "meed-cover-page": {
