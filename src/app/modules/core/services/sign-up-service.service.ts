@@ -196,8 +196,7 @@ export class SignUpService {
   }
 
   createLogin(formValue: { username$: string; password$: string }): Observable<IMember> {
-    const member: IMember = this.member;
-    const bodyParams = { username: formValue.username$, email: member.email, password: formValue.password$ };
+    const bodyParams = { username: formValue.username$, password: formValue.password$ };
     return this.http
       .post<IMember>(this.baseUrl + '/bank/onboarding/create-login', bodyParams, {
         headers: this.headerService.getMemberIdHeader()
