@@ -1562,7 +1562,7 @@
   "invite-card-component": {
     "header": "Meed es mejor juntos",
     "sub-header": "Disfruta de beneficios adicionales cuando recibas a amigos y familiares que se unan al Club.",
-    "invite-btn": "Invitar a amigos"
+    "invite-btn": "Invitar a un amigo"
   },
   "biometric-authentication-service": {
     "permission-request": {
