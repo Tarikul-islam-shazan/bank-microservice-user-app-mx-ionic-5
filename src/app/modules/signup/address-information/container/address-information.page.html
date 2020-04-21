@@ -8,11 +8,11 @@
 <ion-content>
   <div class="content-wrapper">
     <div class="step-counter">
-      <step-counter [step]="signup-module.signup-address-information-page.step-text" [stepNo]="3"></step-counter>
+      <step-counter [step]="'signup-module.signup-address-information-page.step-text'" [stepNo]="3"></step-counter>
     </div>
     <div class="header-title">{{ 'signup-module.signup-address-information-page.page-title' | translate }}</div>
     <form [formGroup]="addressForm" novalidate>
-      <div class="dropdown-input" (click)="openOptionsModal('addressTypeField',addressType, [])">
+      <div class="dropdown-input" (click)="openOptionsModal('addressTypeField','addressType', facade.addressTypeList)">
         <ion-input
           (ionFocus)="isInputFieldSkip('addressTypeField')"
           [ngClass]="
@@ -27,7 +27,10 @@
         ></ion-input>
         <ion-icon name="chevron-down"></ion-icon>
       </div>
-      <div class="dropdown-input" (click)="openOptionsModal('propertyTypeField',propertyType, [])">
+      <div
+        class="dropdown-input"
+        (click)="openOptionsModal('propertyTypeField','propertyType', facade.propertyTypeList)"
+      >
         <ion-input
           (ionFocus)="isInputFieldSkip('propertyTypeField')"
           [ngClass]="
@@ -84,7 +87,7 @@
       ></ion-input>
 
       <ion-input
-        (ionChange)="facade.getPostalCodeInfo($event.target.value)"
+        (ionChange)="getPostalCodeInfo($event.target.value)"
         (ionFocus)="isInputFieldSkip('postCode')"
         [ngClass]="
             addressForm.controls.postCode.invalid && skipErrorFields.postCode ? 'error-input' : 'white-input'
@@ -99,45 +102,45 @@
       ></ion-input>
 
       <ion-input
-        (ionFocus)="isInputFieldSkip('state')"
+        (ionFocus)="isInputFieldSkip('stateField')"
         [ngClass]="
-            addressForm.controls.state.invalid && skipErrorFields.state ? 'error-input' : 'background-input'
+            addressForm.controls.stateField.invalid && skipErrorFields.stateField ? 'error-input' : 'background-input'
           "
         readonly
-        id="state"
-        formControlName="state"
+        id="stateField"
+        formControlName="stateField"
         class="background-input"
         type="text"
         placeholder="{{ 'signup-module.signup-address-information-page.address-form.state' | translate }}"
       ></ion-input>
 
       <ion-input
-        (ionFocus)="isInputFieldSkip('municipality')"
+        (ionFocus)="isInputFieldSkip('municipalityField')"
         [ngClass]="
-            addressForm.controls.municipality.invalid && skipErrorFields.municipality ? 'error-input' : 'background-input'
+            addressForm.controls.municipalityField.invalid && skipErrorFields.municipalityField ? 'error-input' : 'background-input'
           "
         readonly
-        id="municipality"
-        formControlName="municipality"
+        id="municipalityField"
+        formControlName="municipalityField"
         class="background-input"
         type="text"
         placeholder="{{ 'signup-module.signup-address-information-page.address-form.municipality' | translate }}"
       ></ion-input>
 
       <ion-input
-        (ionFocus)="isInputFieldSkip('city')"
+        (ionFocus)="isInputFieldSkip('cityField')"
         [ngClass]="
-            addressForm.controls.city.invalid && skipErrorFields.city ? 'error-input' : 'background-input'
+            addressForm.controls.cityField.invalid && skipErrorFields.cityField ? 'error-input' : 'background-input'
           "
         readOnly
-        id="city"
-        formControlName="city"
+        id="cityField"
+        formControlName="cityField"
         class="background-input"
         type="text"
         placeholder="{{ 'signup-module.signup-address-information-page.address-form.city' | translate }}"
       ></ion-input>
 
-      <div class="dropdown-input" (click)="openOptionsModal('suburbField',suburb, [])">
+      <div class="dropdown-input" (click)="openSuburbModal('suburbField','suburb', postalCodeData)">
         <ion-input
           (ionFocus)="isInputFieldSkip('suburbField')"
           [ngClass]="
@@ -161,7 +164,7 @@
           "
             id="dateOfResidence"
             placeholder="{{ 'signup-module.signup-address-information-page.address-form.dateOfResidence' | translate }}"
-            formControlName="timeOfResidence"
+            formControlName="dateOfResidence"
             displayFormat="{{ 'signup-module.signup-address-information-page.address-form.dateFormate' | translate }}"
           ></ion-datetime>
           <ion-icon name="chevron-down"></ion-icon>
@@ -173,12 +176,7 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button
-      class="white-button"
-      [disabled]="addressForm.invalid"
-      expand="block"
-      [routerLink]="['/signup/beneficiary-information']"
-    >
+    <ion-button class="white-button" [disabled]="addressForm.invalid" expand="block" (click)="next()">
       {{ 'signup-module.signup-address-information-page.button-text' | translate }}
     </ion-button>
   </ion-toolbar>

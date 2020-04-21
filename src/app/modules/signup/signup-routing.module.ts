@@ -77,6 +77,7 @@ export const SIGNUP_ROUTES: Routes = [
   },
   {
     path: 'address-information',
+    data: { title: PAGES.SIGNUP_ADDRESS_INFORMATION.NAME },
     loadChildren: () =>
       import('./address-information/address-information.module').then(m => m.AddressInformationPageModule)
   },

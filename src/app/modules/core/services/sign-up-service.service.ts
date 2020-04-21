@@ -341,7 +341,7 @@ export class SignUpService {
   submitAddressInfo(addressInfo: IAddressInfo): Observable<IMember> {
     return this.http
       .post<IMember>(this.baseUrl + '/bank/onboarding/apply/address-info', addressInfo, {
-        headers: this.headerService.getUserNameMemberICustomerIdHeader()
+        headers: this.headerService.getMemberICustomerIdHeader()
       })
       .pipe(
         tap((res: IMember) => {

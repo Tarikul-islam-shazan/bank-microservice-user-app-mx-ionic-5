@@ -1,33 +1,75 @@
+/**
+ * Feature: Address Information Facade
+ * Details: This facade is responsible to call functionality from signup service for address info data.
+ * Date: April 21, 2020
+ * Developer: Sudipta Ghosh <sudipta.ghosh@bs-23.net>
+ */
+
 import { Injectable } from '@angular/core';
-import { SignUpService, IScannedIdData, JumioApiService, IMemberApplication, IAddressInfo } from '@app/core';
+import { SignUpService, IAddressInfo } from '@app/core';
+import {
+  StaticDataService,
+  StaticDataCategory,
+  StaticDataSubCategory,
+  IDropdownOption
+} from '@app/core/services/static-data.service';
 import { Router } from '@angular/router';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
+import { Observable } from 'rxjs';
+/**
+ *
+ *
+ * @export
+ * @class AddressInformationFacade
+ */
 @Injectable()
 export class AddressInformationFacade {
   public maxDate: string;
-  public postalCodeData: Partial<IAddressInfo[]>;
+  public addressTypeList: IDropdownOption[] = [];
+  public propertyTypeList: IDropdownOption[] = [];
+
   constructor(
     private signUpService: SignUpService,
-    private jumioService: JumioApiService,
     private router: Router,
-    private analytics: AnalyticsService
+    private analytics: AnalyticsService,
+    private staticDataService: StaticDataService
   ) {}
 
-  getJumioScanData(): IScannedIdData {
-    return this.jumioService.scannedIdData;
-  }
-
-  getPostalCodeInfo(postalCode): any {
-    if (postalCode.toString().length === 6) {
-      this.signUpService.getStateCityMunicipality(postalCode).subscribe((data: Partial<IAddressInfo[]>) => {
-        this.postalCodeData = data;
+  /**
+   *
+   * @description get addressType and propertyType from static data
+   * @memberof AddressInformationFacade
+   */
+  getStaticData(): void {
+    this.staticDataService
+      .get(StaticDataCategory.SignupOption, [StaticDataSubCategory.AddressType, StaticDataSubCategory.PropertyType])
+      .subscribe(data => {
+        this.addressTypeList = data.AddressType;
+        this.propertyTypeList = data.PropertyType;
       });
-    }
   }
 
-  goToNext(memberApp: IMemberApplication) {
-    Object.assign(this.signUpService.memberApplication, memberApp);
-    this.analytics.logEvent(AnalyticsEventTypes.AddressInfoSubmitted);
-    this.router.navigate(['/signup/confirm-identity']);
+  /**
+   *
+   *
+   * @param {*} postalCode
+   * @returns {Observable<Partial<IAddressInfo[]>>}
+   * @memberof AddressInformationFacade
+   */
+  getPostalCodeInfo(postalCode): Observable<Partial<IAddressInfo[]>> {
+    return this.signUpService.getStateCityMunicipality(postalCode);
+  }
+
+  /**
+   *
+   *
+   * @param {IAddressInfo} addressInfoData
+   * @memberof AddressInformationFacade
+   */
+  goToNext(addressInfoData: IAddressInfo) {
+    this.signUpService.submitAddressInfo(addressInfoData).subscribe(data => {
+      this.analytics.logEvent(AnalyticsEventTypes.AddressInfoSubmitted);
+      this.router.navigate(['/signup/beneficiary-information']);
+    });
   }
 }

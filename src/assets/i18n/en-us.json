@@ -888,6 +888,8 @@
     "code-610": "Thank you for applying for Meed Banking Club. Based on the information provided we are unable to complete your application. For questions on the application process please call Meed Banking Club at 1(833)-213-6333. Ref ID Authentication.",
     "code-611": "Thank you for applying for Meed Banking Club. Based on the information provided we are unable to complete your application. For questions on the application process please call Meed Banking Club at 1(833)-213-6333. Ref ID Authentication.",
     "code-612": "Your application has been denied.",
+    "code-616": "Post code does not exist",
+    "code-617": "The Customer Id provided does not exist.",
     "code-701": "Unable to find the customer",
     "code-702": "unknown",
     "code-703": "Email Address already exist",

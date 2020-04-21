@@ -9,11 +9,10 @@ export interface IRegisteredMember extends IMember {
 }
 
 export interface IMember {
-  id?: any;
   _id?: any;
   email?: string;
   priorEmails?: [string];
-  inviter?: IMember['id'] | string | null;
+  inviter?: IMember['_id'] | string | null;
   inviterCode?: string;
   inviterEmail?: string;
   corporateTncAccepted?: boolean;
@@ -65,11 +64,6 @@ export enum ApplicationStatus {
   Denied = 'application-denied'
 }
 
-// export enum AccountStatus {
-//   Opened = 'account-opened',
-//   Closed = 'account-closed',
-//   InProgress = 'account-in-progress'
-// }
 export enum MemberAccountStatus {
   Opened = 'account-opened',
   Closed = 'account-closed',
