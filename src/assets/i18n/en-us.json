@@ -1582,7 +1582,7 @@
     }
   },
   "meed-cover-page": {
-    "header-title": "Meed Cover",
+    "header-title": "MeedCover",
     "main-page": {
       "meed-text": "Meed",
       "cover-text": "Cover",
