@@ -894,6 +894,7 @@
     "code-807": "Immediate Transfers cannot be modified",
     "code-901": "The invitee is already a member",
     "code-902": "Failed to send invitation",
+    "code-903": "Invalid invitee email",
     "code-1100": "This type of email is not allowed",
     "code-1101": "Invalid email address",
     "code-1102": "New verification code is required",
