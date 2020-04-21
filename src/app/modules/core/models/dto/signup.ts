@@ -268,7 +268,3 @@ export interface IBeneficiaryInfo {
   maternalLastName?: string;
   relationship: string;
 }
-
-export interface BeneficiaryResponse {
-  beneficiary?: any;
-}
