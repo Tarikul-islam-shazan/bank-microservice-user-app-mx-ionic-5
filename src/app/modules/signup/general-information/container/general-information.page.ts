@@ -2,7 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GeneralInformationFacade } from '../facade';
 import { IGeneralInfo } from '@app/core';
-
+import * as moment from 'moment';
+/**
+ * * Ticket: MM2-3
+ * * Issue Details: General Information API Integration
+ * * Developer Feedback: API integrated
+ * Date: April 21, 2020
+ * Developer: Zahidul Islam <zahidul@bs-23.net>
+ */
 @Component({
   selector: 'mbc-general-information',
   templateUrl: './general-information.page.html',
@@ -26,23 +33,24 @@ export class GeneralInformationPage implements OnInit {
       maternalLastName: ['', [Validators.maxLength(26)]],
       dateOfBirth: ['', [Validators.required]],
       curp: ['', [Validators.required, Validators.minLength(18), Validators.maxLength(18)]],
-      mobileNumber: ['', [Validators.required, Validators.maxLength(10)]]
+      mobileNumber: ['', [Validators.required, Validators.pattern('\\d{10}')]]
     });
   }
 
   initJumioDataIntoForm() {
-    const { firstName, lastName, dateOfBirth } = this.facade.getJumioScannedIdData();
-    const [first, ...rest] = firstName.split(' ');
+    const { firstName, dateOfBirth } = this.facade.getJumioScannedIdData();
     this.generalForm.patchValue({
-      firstName: first ? first : '',
-      middleName: rest ? rest.join(' ') : '',
-      lastName: lastName ? lastName : '',
+      firstName: firstName ? firstName : '',
       dateOfBirth: dateOfBirth ? dateOfBirth : ''
     });
   }
 
   applyGeneralInformation() {
     const generalInfo = this.generalForm.value as IGeneralInfo;
-    this.facade.applyGeneralInformation(generalInfo);
+    generalInfo.dateOfBirth = moment(generalInfo.dateOfBirth).format('MM/DD/YYYY');
+    generalInfo.mobileNumber = generalInfo.mobileNumber.toString();
+    if (this.generalForm.valid) {
+      this.facade.applyGeneralInformation(generalInfo);
+    }
   }
 }

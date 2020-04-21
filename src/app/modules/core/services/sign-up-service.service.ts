@@ -196,8 +196,7 @@ export class SignUpService {
   }
 
   createLogin(formValue: { username$: string; password$: string }): Observable<IMember> {
-    const member: IMember = this.member;
-    const bodyParams = { username: formValue.username$, email: member.email, password: formValue.password$ };
+    const bodyParams = { username: formValue.username$, password: formValue.password$ };
     return this.http
       .post<IMember>(this.baseUrl + '/bank/onboarding/create-login', bodyParams, {
         headers: this.headerService.getMemberIdHeader()
@@ -316,7 +315,8 @@ export class SignUpService {
   }
 
   applyGeneralInformation(generalInfo: IGeneralInfo): Observable<IMember> {
-    const url = this.baseUrlOnboarding + 'apply/general-info';
+    generalInfo.email = this.member.email;
+    const url = this.baseUrl + '/bank/onboarding/apply/general-info';
     return this.http.post<IMember>(url, generalInfo, {
       headers: this.headerService.getMemberICustomerIdHeader()
     });

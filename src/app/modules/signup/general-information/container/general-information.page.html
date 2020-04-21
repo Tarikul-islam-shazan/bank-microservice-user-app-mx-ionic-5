@@ -1,9 +1,5 @@
 <ion-header class="white-header ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button icon="arrow-back"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+  <ion-toolbar> </ion-toolbar>
 </ion-header>
 <ion-content>
   <div class="content-wrapper">
@@ -25,6 +21,7 @@
         </ion-item>
         <ion-item>
           <ion-input
+            [ngClass]="generalForm.controls.secondName.invalid && generalForm.controls.secondName.touched ? 'error-input' : 'white-input'"
             appInputMaxLength="{{nameMaxLength}}"
             formControlName="secondName"
             class="white-input"
@@ -34,6 +31,7 @@
         </ion-item>
         <ion-item>
           <ion-input
+            [ngClass]="generalForm.controls.paternalLastName.invalid && generalForm.controls.paternalLastName.touched ? 'error-input' : 'white-input'"
             appInputMaxLength="{{nameMaxLength}}"
             formControlName="paternalLastName"
             class="white-input"
@@ -43,6 +41,7 @@
         </ion-item>
         <ion-item>
           <ion-input
+            [ngClass]="generalForm.controls.maternalLastName.invalid && generalForm.controls.maternalLastName.touched ? 'error-input' : 'white-input'"
             appInputMaxLength="{{nameMaxLength}}"
             formControlName="maternalLastName"
             class="white-input"
@@ -57,12 +56,14 @@
           <ion-datetime
             formControlName="dateOfBirth"
             displayFormat="{{ 'signup-module.general-info-page.generalForm.date-of-birth-display-format' | translate }}"
+            pickerFormat="{{ 'signup-module.general-info-page.generalForm.date-of-birth-display-format' | translate }}"
             [max]="facade.maxDate"
           ></ion-datetime>
           <ion-icon name="chevron-down"></ion-icon>
         </ion-item>
         <ion-item>
           <ion-input
+            [ngClass]="generalForm.controls.curp.invalid && generalForm.controls.curp.touched ? 'error-input' : 'white-input'"
             appInputMaxLength="{{curpMaxLength}}"
             formControlName="curp"
             class="white-input"
@@ -72,10 +73,11 @@
         </ion-item>
         <ion-item>
           <ion-input
+            [ngClass]="generalForm.controls.mobileNumber.invalid && generalForm.controls.mobileNumber.touched ? 'error-input' : 'white-input'"
             appInputMaxLength="10"
             formControlName="mobileNumber"
             class="white-input"
-            type="number"
+            type="tel"
             placeholder="{{ 'signup-module.general-info-page.generalForm.mobile-number' | translate }}"
           ></ion-input>
         </ion-item>
