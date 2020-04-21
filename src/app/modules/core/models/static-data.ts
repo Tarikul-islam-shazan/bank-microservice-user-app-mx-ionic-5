@@ -20,3 +20,8 @@ export interface IStaticData {
   bank?: string;
   data: any;
 }
+export interface IDropdownOption {
+  text: string;
+  subText?: string;
+  value: string;
+}

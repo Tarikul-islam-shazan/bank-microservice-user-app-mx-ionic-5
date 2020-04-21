@@ -3,7 +3,7 @@ import { environment } from '@env/environment';
 import { HttpClient } from '@angular/common/http';
 import { MemberService } from '@app/core/services/member.service';
 import { IMember } from '@app/core/models/dto/member';
-import { StaticDataCategory, StaticDataSubCategory, IStaticData } from '@app/core/models/static-data';
+import { StaticDataCategory, StaticDataSubCategory, IStaticData, IDropdownOption } from '@app/core/models/static-data';
 import { SettingsService } from '@app/core/services/settings.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -25,7 +25,7 @@ export class StaticDataService {
   get(
     category: StaticDataCategory,
     subCategory: StaticDataSubCategory[]
-  ): Observable<{ [key: string]: { value: string; text: string } }> {
+  ): Observable<{ [key: string]: IDropdownOption }> {
     const bank = this.member.bank;
     return this.http
       .get<any[]>(`${this.baseUrl}/static-data`, {
@@ -38,7 +38,7 @@ export class StaticDataService {
       );
   }
 
-  mappingResponse(staticdatas: IStaticData[]): { [key: string]: { value: string; text: string } } {
+  mappingResponse(staticdatas: IStaticData[]): { [key: string]: IDropdownOption } {
     const finalData = {};
     staticdatas.forEach(staticData => {
       const subCategory = staticData.subCategory;
@@ -46,8 +46,8 @@ export class StaticDataService {
     });
     return finalData;
   }
-  mappingData(staticData: { code: string; value: any }[]): { value: string; text: string }[] {
-    const staticDataformat: { value: string; text: string }[] = [];
+  mappingData(staticData: { code: string; value: any }[]): IDropdownOption[] {
+    const staticDataformat: IDropdownOption[] = [];
     staticData.forEach(data => {
       staticDataformat.push({
         value: data.code,
