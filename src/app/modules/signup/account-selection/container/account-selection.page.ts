@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccountSelectionFacade } from '../facade/account-selection-facade';
 
 @Component({
   selector: 'mbc-account-selection',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./account-selection.page.scss']
 })
 export class AccountSelectionPage implements OnInit {
-  constructor() {}
+  constructor(public facade: AccountSelectionFacade) {}
 
   ngOnInit() {}
 }

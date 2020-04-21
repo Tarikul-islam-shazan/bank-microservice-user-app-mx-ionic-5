@@ -4,9 +4,11 @@ import { AccountSelectionPageRoutingModule } from './account-selection-routing.m
 import { AccountSelectionPage } from './container/account-selection.page';
 import { SignupComponentsModule } from '../components';
 import { SharedModule } from '@app/shared';
+import { AccountSelectionFacade } from './facade/account-selection-facade';
 
 @NgModule({
   imports: [SharedModule, SignupComponentsModule, AccountSelectionPageRoutingModule],
-  declarations: [AccountSelectionPage]
+  declarations: [AccountSelectionPage],
+  providers: [AccountSelectionFacade]
 })
 export class AccountSelectionPageModule {}

@@ -222,3 +222,22 @@ export interface ISignUpDirectDepositAccounts {
   bankAccountNumber?: string;
   registrationFeeRequest?: RegistrationFeeRequest;
 }
+
+export interface IAccountLevel {
+  _id: any;
+  email: string;
+  username: string;
+  nickname: string;
+  applicationStatus: string;
+  applicationProgress: string;
+  accountStatus: string;
+  country: string;
+  language: string;
+  inviter: string;
+  bank: string;
+  identifier: string;
+  createdDate: string;
+  updatedDate: string;
+  customerId: string;
+  accountLevel: string;
+}

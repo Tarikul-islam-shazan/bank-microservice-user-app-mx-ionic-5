@@ -23,7 +23,8 @@ import {
   IMemberApplication,
   IdentityQuestion,
   IdentityAnswer,
-  IGeneralInfo
+  IGeneralInfo,
+  IAccountLevel
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
 import { Logger } from './logger.service';
@@ -320,5 +321,12 @@ export class SignUpService {
     return this.http.post<IMember>(url, generalInfo, {
       headers: this.headerService.getMemberICustomerIdHeader()
     });
+  }
+  selectAccountLevel(accountLevel: string): Observable<IAccountLevel> {
+    return this.http.post<IAccountLevel>(
+      `${this.baseUrl}/bank/onboarding/apply/account-level`,
+      { accountLevel },
+      { headers: this.headerService.getMemberIdHeader() }
+    );
   }
 }
