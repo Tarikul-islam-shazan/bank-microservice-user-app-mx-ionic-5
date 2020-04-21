@@ -25,7 +25,7 @@ export class StaticDataService {
   get(
     category: StaticDataCategory,
     subCategory: StaticDataSubCategory[]
-  ): Observable<{ [key: string]: IDropdownOption }> {
+  ): Observable<{ [key: string]: IDropdownOption[] }> {
     const bank = this.member.bank;
     return this.http
       .get<any[]>(`${this.baseUrl}/static-data`, {
@@ -38,7 +38,7 @@ export class StaticDataService {
       );
   }
 
-  mappingResponse(staticdatas: IStaticData[]): { [key: string]: IDropdownOption } {
+  mappingResponse(staticdatas: IStaticData[]): { [key: string]: IDropdownOption[] } {
     const finalData = {};
     staticdatas.forEach(staticData => {
       const subCategory = staticData.subCategory;
