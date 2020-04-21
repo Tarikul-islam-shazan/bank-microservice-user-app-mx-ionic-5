@@ -23,7 +23,6 @@ export class BeneficiaryInformationPage implements OnInit {
   skipErrorFields: Record<string, string | boolean>;
   onlyOneWordInput: IinputOption;
   wordsInput: IinputOption;
-  relationship: DropdownOption[];
   maxLength = 26;
 
   constructor(
@@ -47,7 +46,7 @@ export class BeneficiaryInformationPage implements OnInit {
     this.initBeneficiaryForm();
 
     // this might be changed also since dropdown data is coming from backed
-    this.initDropDownOptions();
+    this.facade.fetchRelationshipData();
   }
 
   private initBeneficiaryForm(): void {
@@ -60,21 +59,6 @@ export class BeneficiaryInformationPage implements OnInit {
       relationship: ['', Validators.required]
     });
     this.skipErrorFields = Object.assign({}, this.beneficiaryForm.value);
-  }
-
-  private initDropDownOptions() {
-    this.facade.fetchRelationshipData().subscribe(resp => {
-      // this.relationship = resp;
-      // Object.assign(this.relationship, resp);
-
-      this.relationship = [];
-      // resp.Relationship.forEach(data => {
-      //   this.relationship.push({
-      //     value: data.value,
-      //     text: data.text
-      //   });
-      // });
-    });
   }
 
   async openOptionsModal(formControlName: string, options: DropdownOption[]): Promise<any> {

@@ -5,15 +5,17 @@ import {
   SignUpService,
   StaticDataService,
   StaticDataCategory,
-  StaticDataSubCategory
+  StaticDataSubCategory,
+  IDropdownOption
 } from '@app/core';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { IBeneficiaryInfo } from '@app/core/models/dto/signup';
 import { Observable } from 'rxjs';
+import { DropdownOption } from '@app/signup/models/signup';
 
 @Injectable()
 export class BeneficiaryFacade {
-  relationship: any;
+  relationshipData: DropdownOption[];
   constructor(
     private router: Router,
     private jumioService: JumioApiService,
@@ -22,16 +24,22 @@ export class BeneficiaryFacade {
     private staticDataService: StaticDataService
   ) {}
 
-  fetchRelationshipData(): Observable<{ [key: string]: { value: string; text: string } }> {
-    return this.staticDataService.get(StaticDataCategory.SignupOption, [StaticDataSubCategory.Relationship]);
+  fetchRelationshipData() {
+    return this.staticDataService
+      .get(StaticDataCategory.SignupOption, [StaticDataSubCategory.Relationship])
+      .subscribe(resp => {
+        this.relationshipData = [];
+        resp.Relationship.forEach(data => {
+          this.relationshipData.push({
+            value: data.value,
+            text: data.text
+          });
+        });
+      });
   }
 
   submit(beneficiary: Partial<IBeneficiaryInfo>) {
-    // console.log(beneficiary);
-    // this.analytics.logEvent(AnalyticsEventTypes.GeneralInfoSubmitted);
-    // [routerLink]="['/signup/account-selection']"
     this.signUpService.submitBeneficiaryApplication(beneficiary).subscribe(resp => {
-      // console.log(resp);
       // this.analytics.logEvent(AnalyticsEventTypes.IdDocumentSubmitted);
       this.router.navigateByUrl('/signup/account-selection');
     });

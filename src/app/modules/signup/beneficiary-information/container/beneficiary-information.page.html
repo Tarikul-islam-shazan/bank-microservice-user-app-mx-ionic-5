@@ -91,7 +91,7 @@
             </div>
           </div>
           <div class="clearfix ">
-            <div class="dropdown-input" (click)="openOptionsModal('relationship', relationship)">
+            <div class="dropdown-input" (click)="openOptionsModal('relationship', this.facade.relationshipData)">
               <ion-input
                 [ngClass]="beneficiaryForm.controls.relationship.invalid && skipErrorFields.relationship ? 'error-input' : 'white-input'"
                 readonly
