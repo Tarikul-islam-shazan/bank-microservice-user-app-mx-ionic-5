@@ -8,25 +8,33 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class SearchOffersFacade {
-  public searchedOffers = [];
-  public searchField = '';
-  public categoryFieldText = '';
-  public categoryFieldValue = '';
-  public typeFieldText = '';
-  public typeFieldValue = '';
-  public typeList = [
-    {
-      text: 'Online',
-      value: 'online'
-    },
+  searchedOffers = [];
+  searchField = '';
+  categoryFieldText = '';
+  categoryFieldValue = '';
+  typeFieldText = '';
+  typeFieldValue = '';
+  typeList = [
     {
       text: 'In Store',
       value: 'instore'
+    },
+    {
+      text: 'Online',
+      value: 'online'
     }
   ];
   constructor(private meedExtraService: MeedExtraService, private modalCtrl: ModalController, private router: Router) {}
 
-  async openFilterModal(filterType: string, categories: Category[] = []) {
+  /**
+   * @summary opens filter modal
+   *
+   * @param {string} filterType
+   * @param {Category[]} [categories=[]]
+   * @returns {Promise<void>}
+   * @memberOf SearchOffersFacade
+   */
+  async openFilterModal(filterType: string, categories: Category[] = []): Promise<void> {
     if (filterType === 'category') {
       this.categoryFilter(categories);
     } else {
@@ -34,7 +42,15 @@ export class SearchOffersFacade {
     }
   }
 
-  async categoryFilter(categories: Category[]) {
+  /**
+   * @summary filters offer category
+   *
+   * @private
+   * @param {Category[]} categories
+   * @returns {Promise<void>}
+   * @memberOf SearchOffersFacade
+   */
+  private async categoryFilter(categories: Category[]): Promise<void> {
     const categoriesModal = await this.modalCtrl.create({
       component: FilterModalComponent,
       componentProps: { data: categories, type: 'Category' }
@@ -62,7 +78,14 @@ export class SearchOffersFacade {
     }
   }
 
-  async typeFilter() {
+  /**
+   * @summary filters offer type
+   *
+   * @private
+   * @returns {Promise<void>}
+   * @memberOf SearchOffersFacade
+   */
+  private async typeFilter(): Promise<void> {
     const typeModal = await this.modalCtrl.create({
       component: FilterModalComponent,
       componentProps: { data: this.typeList, type: 'Type' }
@@ -90,7 +113,13 @@ export class SearchOffersFacade {
     }
   }
 
-  async searchOffer() {
+  /**
+   * @summary searches offers
+   *
+   * @returns {Promise<void>}
+   * @memberOf SearchOffersFacade
+   */
+  async searchOffer(): Promise<void> {
     if (this.searchField !== '' || this.typeFieldValue !== '' || this.categoryFieldValue !== '') {
       const params = {
         keyword: this.searchField,
@@ -103,6 +132,12 @@ export class SearchOffersFacade {
     }
   }
 
+  /**
+   * @summary clears search text
+   *
+   * @returns {void}
+   * @memberOf SearchOffersFacade
+   */
   clearSearch(): void {
     this.typeFieldText = '';
     this.typeFieldValue = '';
@@ -112,6 +147,13 @@ export class SearchOffersFacade {
     this.searchedOffers = [];
   }
 
+  /**
+   * @summary sets offer to navigate offers page
+   *
+   * @param {Offer} offer
+   * @returns {void}
+   * @memberOf SearchOffersFacade
+   */
   setOffer(offer: Offer): void {
     this.meedExtraService.offer = offer;
     if (offer.shopType === 'online') {
@@ -121,6 +163,12 @@ export class SearchOffersFacade {
     }
   }
 
+  /**
+   * @summary loads category
+   *
+   * @returns {Observable<Category[]>}
+   * @memberOf SearchOffersFacade
+   */
   loadCategory(): Observable<Category[]> {
     return this.meedExtraService.categories;
   }
