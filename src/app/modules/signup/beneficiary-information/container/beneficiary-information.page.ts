@@ -11,6 +11,7 @@ import { DropdownModalComponent } from '@app/shared/components';
 import { IBeneficiaryInfo } from '@app/core/models/dto/signup';
 import { IMeedModalContent } from '@app/shared/models/modal';
 import { ModalService } from '@app/shared';
+import { async } from '@angular/core/testing';
 @Component({
   selector: 'mbc-beneficiary-information',
   templateUrl: './beneficiary-information.page.html',
@@ -24,6 +25,7 @@ export class BeneficiaryInformationPage implements OnInit {
   wordsInput: IinputOption;
   relationship: DropdownOption[];
   maxLength = 26;
+
   constructor(
     public facade: BeneficiaryFacade,
     private formBuilder: FormBuilder,
@@ -43,6 +45,7 @@ export class BeneficiaryInformationPage implements OnInit {
     // this name will be changed
     this.analyticsService.setCurrentScreenName(PAGES.SIGNUP_PERSONAL.NAME);
     this.initBeneficiaryForm();
+
     // this might be changed also since dropdown data is coming from backed
     this.initDropDownOptions();
   }
@@ -60,12 +63,18 @@ export class BeneficiaryInformationPage implements OnInit {
   }
 
   private initDropDownOptions() {
-    this.relationship = [
-      {
-        text: 'Management Business Financial',
-        value: 'PA'
-      }
-    ];
+    this.facade.fetchRelationshipData().subscribe(resp => {
+      // this.relationship = resp;
+      // Object.assign(this.relationship, resp);
+
+      this.relationship = [];
+      // resp.Relationship.forEach(data => {
+      //   this.relationship.push({
+      //     value: data.value,
+      //     text: data.text
+      //   });
+      // });
+    });
   }
 
   async openOptionsModal(formControlName: string, options: DropdownOption[]): Promise<any> {
@@ -104,14 +113,7 @@ export class BeneficiaryInformationPage implements OnInit {
   }
 
   next(): void {
-    const {
-      firstName,
-      secondName,
-      parentalName,
-      maternalLastName,
-      dateOfBirth,
-      relationship
-    } = this.beneficiaryForm.value;
+    const { firstName, secondName, parentalName, maternalLastName, dateOfBirth } = this.beneficiaryForm.value;
     this.beneficiaryFormApplication.firstName = this.capitalized(firstName);
     this.beneficiaryFormApplication.secondName = this.capitalized(secondName);
     this.beneficiaryFormApplication.paternalLastName = this.capitalized(parentalName);
