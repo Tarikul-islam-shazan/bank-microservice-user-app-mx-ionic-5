@@ -23,8 +23,9 @@ import {
   IMemberApplication,
   IdentityQuestion,
   IdentityAnswer,
-  IAddressInfo,
-  IAccountLevel
+  IGeneralInfo,
+  IAccountLevel,
+  IAddressInfo
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
 import { Logger } from './logger.service';
@@ -315,6 +316,13 @@ export class SignUpService {
       );
   }
 
+  applyGeneralInformation(generalInfo: IGeneralInfo): Observable<IMember> {
+    generalInfo.email = this.member.email;
+    const url = this.baseUrl + '/bank/onboarding/apply/general-info';
+    return this.http.post<IMember>(url, generalInfo, {
+      headers: this.headerService.getMemberICustomerIdHeader()
+    });
+  }
 
   /**
    *
@@ -350,7 +358,7 @@ export class SignUpService {
         })
       );
   }
-  
+
   selectAccountLevel(accountLevel: string): Observable<IAccountLevel> {
     return this.http.post<IAccountLevel>(
       `${this.baseUrl}/bank/onboarding/apply/account-level`,

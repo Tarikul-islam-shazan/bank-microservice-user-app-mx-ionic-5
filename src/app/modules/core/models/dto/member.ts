@@ -148,3 +148,14 @@ export enum BillPayProvider {
   IPAY = 'IPAY',
   Q2 = 'Q2'
 }
+
+export interface IGeneralInfo {
+  firstName: string;
+  secondName?: string;
+  dateOfBirth: string;
+  paternalLastName: string;
+  maternalLastName?: string;
+  curp: string;
+  mobileNumber: string;
+  email: string;
+}

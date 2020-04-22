@@ -449,6 +449,21 @@
       "button-text": "I’m good to go",
       "button-text-jumio-initialized": "Cancel",
       "button-text-processing-done": "Done"
+    },
+    "general-info-page": {
+      "page-title": "General Information",
+      "next-button-text": "Next",
+      "generalForm": {
+        "first-name": "First Name",
+        "second-name": "Second Name (Optional)",
+        "paternal-last-name": "Paternal Last Name",
+        "maternal-last-name": "Maternal Last Name (Optional)",
+        "date-of-birth-display-format": "MM / DD / YYYY",
+        "date-of-birth": "Date of birth",
+        "curp": "CURP",
+        "mobile-number": "Mobile Number"
+      },
+      "permission-text": "By entering your telephone number and clicking \"Next\", you are giving us permission to contact you about this application"
     }
   },
   "deposit": {
