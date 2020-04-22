@@ -472,11 +472,6 @@
       "eTransfer-subtitle": "¡Próximamente será posible",
       "button-text": "Transferir el"
     },
-    "paystand-page": {
-      "echeck-title": "eCheck de otro banco",
-      "credit-title": "Tarjeta de crédito / débito",
-      "disclaimer-text": "Los fondos estarán disponibles para el cliente en los siguientes plazos: 2 días hábiles para eCheck y para tarjeta de débito/crédito."
-    },
     "deposit-echeck-page": {
       "header-title": "eCheck de otro banco",
       "button-text": "Continuar",

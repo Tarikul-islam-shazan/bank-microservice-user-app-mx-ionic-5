@@ -79,10 +79,6 @@ export const PAGES: Page = {
     NAME: 'signup-direct-deposit-start',
     ROUTE_PATH: 'deposit/direct-deposit-start'
   },
-  DIRECT_DEPOSIT_PAYSTAND: {
-    NAME: 'signup-direct-deposit-paystand',
-    ROUTE_PATH: 'deposit/paystand'
-  },
   SIGNUP_SCANID: {
     NAME: 'signup-scan-id-instructions',
     ROUTE_PATH: '/signup/scanid'

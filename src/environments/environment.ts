@@ -19,11 +19,6 @@ export const environment = {
     documentTypes: ['DRIVER_LICENSE', 'PASSPORT', 'IDENTITY_CARD'], // ['DRIVER_LICENSE', 'PASSPORT', 'IDENTITY_CARD', 'VISA'],
     iframeOrigin: 'https://meed.netverify.com'
   },
-  paystand: {
-    scriptSource: 'https://checkout.paystand.co/v4/js/paystand.checkout.js',
-    publishableKey: 'ioond5qdfwarj1f24f8ss3x6',
-    environment: 'sandbox'
-  },
   firebaseConfig: {
     apiKey: 'AIzaSyBrogRURZ8KlCKF154gROjJexEqQ7RoMQE',
     authDomain: 'meedbankingclub-qa.firebaseapp.com',
