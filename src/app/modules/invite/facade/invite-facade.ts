@@ -5,7 +5,7 @@
  * Developer: Rahadur Rahman <rahadur.rahman@brainstation23.com>
  */
 import { Injectable } from '@angular/core';
-import { InviteService } from './../services/invite.service';
+import { InviteService } from '../services/invite.service';
 import { Observable } from 'rxjs';
 import { Invitation } from '../models/invite';
 
@@ -16,7 +16,10 @@ export enum InviteStatus {
 
 @Injectable()
 export class InviteFacade {
-  constructor(private inviteService: InviteService) {}
+  private _invitations: Invitation[];
+  constructor(private inviteService: InviteService) {
+    this._invitations = [];
+  }
 
   /**
    * Get all invitations from InvitationService.
@@ -24,12 +27,23 @@ export class InviteFacade {
    *
    * @param null
    * @returns Observable<Invitation[]>
+   * @returns _invitations { Invitation[] }
    */
-  get invitations(): Observable<Invitation[]> {
-    return this.inviteService.invitations;
+  get invitations(): Invitation[] {
+    return this._invitations;
+  }
+
+  set invitations(invitations: Invitation[]) {
+    this._invitations = invitations;
   }
 
   get status(): typeof InviteStatus {
     return InviteStatus;
+  }
+
+  initialize() {
+    this.inviteService.getInvitations().subscribe((invitations: Invitation[]) => {
+      this.invitations = invitations;
+    });
   }
 }

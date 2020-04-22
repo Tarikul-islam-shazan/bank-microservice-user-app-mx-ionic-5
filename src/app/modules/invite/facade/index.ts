@@ -1,4 +1,4 @@
-import { InviteFacade } from './invite-facad';
-export * from './invite-facad';
+import { InviteFacade } from './invite-facade';
+export * from './invite-facade';
 
 export const INVITE_FACADE = [InviteFacade];

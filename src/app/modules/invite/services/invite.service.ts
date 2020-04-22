@@ -16,8 +16,6 @@ import { map, share } from 'rxjs/operators';
 
 @Injectable()
 export class InviteService {
-  private _invitations$: Observable<Invitation[]>;
-
   private _inviteeContacts: InviteeContact[];
 
   constructor(private headerService: HeaderService, private http: HttpClient) {
@@ -31,12 +29,10 @@ export class InviteService {
    * @param null
    * @returns Observable<Invitation[]>
    */
-  private getInvitations(): Observable<Invitation[]> {
-    return this.http
-      .get<Invitation[]>(`${environment.serviceUrl}/invitations`, {
-        headers: this.headerService.getMemberIdHeader()
-      })
-      .pipe(share());
+  getInvitations(): Observable<Invitation[]> {
+    return this.http.get<Invitation[]>(`${environment.serviceUrl}/invitations`, {
+      headers: this.headerService.getMemberIdHeader()
+    });
   }
 
   /**
@@ -55,11 +51,6 @@ export class InviteService {
       .pipe(
         map((response: Invitation[]) => {
           if (response) {
-            this._invitations$ = this._invitations$.pipe(
-              map((invitations: Invitation[]) => {
-                return invitations;
-              })
-            );
             return true;
           } else {
             return false;
@@ -111,21 +102,6 @@ export class InviteService {
         return inviteeContact;
       }
     });
-  }
-
-  /**
-   * This get invitations property method return _invitations$ which value is
-   * populated by getInvitations() method and return an Observable array
-   * to invitation facade.
-   *
-   * @param { null }
-   * @returns { _invitations$: Observable<Invitation[]> }
-   */
-  get invitations(): Observable<Invitation[]> {
-    if (!this._invitations$) {
-      this._invitations$ = this.getInvitations();
-    }
-    return this._invitations$;
   }
 
   /**
