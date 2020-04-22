@@ -222,6 +222,18 @@
         "country-unavailable-modal-description": "Lamentablemente, solo tenemos actividades en EE. UU. en este momento. Síguenos en las redes sociales para ser el primero en enterarte de nuestros planes comerciales"
       }
     },
+    "signup-account-selection": {
+      "step-text": "Step 3 of 3",
+      "page-title": "Select your desired account level",
+      "account-level-full-title": "Full (Recommended)",
+      "account-level-full-details": "I am applying for a Full Account with no deposit or transaction restriction..",
+      "account-level-full-modal-title": "Full (Recommended)",
+      "account-level-full-model-details": "I am applying for a Full Account with no deposit or transaction restriction..",
+      "account-level-express-title": "Express",
+      "account-level-express-details": "I am applying for an Express Account and understand that I will have monthly deposit or transaction restrictions",
+      "account-level-express-modal-title": "Express",
+      "account-level-express-model-details": "I am applying for an Express Account and understand that I will have monthly deposit or transaction restrictions"
+    },
     "signup-personal": {
       "page-title": "Información general",
       "button-text": "Próximo",
@@ -828,7 +840,7 @@
     },
     "filter-component": {
       "reset-btn-text": "RESET",
-      "search-by-text": "Buscar",
+      "search-by-text": "Buscar Por",
       "search-btn-text": "Buscar"
     },
     "extra-intro-component": {
@@ -896,6 +908,7 @@
     "code-807": "Immediate Transfers cannot be modified",
     "code-901": "The invitee is already a member",
     "code-902": "Failed to send invitation",
+    "code-903": "Invalid invitee email",
     "code-1100": "This type of email is not allowed",
     "code-1101": "Invalid email address",
     "code-1102": "New verification code is required",
@@ -938,7 +951,6 @@
       "menu": {
         "direct-deposit": "Depósito Directo",
         "transfer-from-other-banks": "Transferencia de otros bancos",
-        "mobile-check-deposit": "Depósito móvil de cheques",
         "credit-debit-card": "Tarjeta de crédito/débito",
         "send-money": "Enviar dinero",
         "request-money": "Solicitar dinero",
@@ -1571,7 +1583,7 @@
   "invite-card-component": {
     "header": "Meed es mejor juntos",
     "sub-header": "Disfruta de beneficios adicionales cuando recibas a amigos y familiares que se unan al Club.",
-    "invite-btn": "Invitar a amigos"
+    "invite-btn": "Invitar a un amigo"
   },
   "biometric-authentication-service": {
     "permission-request": {
@@ -1579,24 +1591,8 @@
       "description": "Meed use face ID or finger print for biometric authentication"
     }
   },
-  "mobile-check-deposit": {
-    "header-title": "Depósito móvil de cheques",
-    "amount-label": "Importe del cheque",
-    "scan-check-lebel": "Escanea el cheque",
-    "front-scan-check-lebel": "ANVERSO",
-    "back-scan-check-lebel": "REVERSO",
-    "note-label": "Nota",
-    "note-input-placeholder": "Añadir una nota",
-    "submit-button-text": "Depositar cheque",
-    "permission-info-modal": {
-      "title": "Habilita la cámara y el almacenamiento",
-      "details": "Por favor, habilita la cámara y el almacenamiento desde la configuración.",
-      "setting-button-text": "Configuración",
-      "cancel-button-text": "Cancelar"
-    }
-  },
   "meed-cover-page": {
-    "header-title": "Meed Cover",
+    "header-title": "MeedCover",
     "main-page": {
       "meed-text": "Meed",
       "cover-text": "Cover",

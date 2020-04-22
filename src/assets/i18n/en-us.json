@@ -222,6 +222,18 @@
         "country-unavailable-modal-description": "Unfortunately we’re only live in the US at the moment. Follow us on social media to be the first to hear about our roll-out plans"
       }
     },
+    "signup-account-selection": {
+      "step-text": "Step 3 of 3",
+      "page-title": "Select your desired account level",
+      "account-level-full-title": "Full (Recommended)",
+      "account-level-full-details": "I am applying for a Full Account with no deposit or transaction restriction..",
+      "account-level-full-modal-title": "Full (Recommended)",
+      "account-level-full-model-details": "I am applying for a Full Account with no deposit or transaction restriction..",
+      "account-level-express-title": "Express",
+      "account-level-express-details": "I am applying for an Express Account and understand that I will have monthly deposit or transaction restrictions",
+      "account-level-express-modal-title": "Express",
+      "account-level-express-model-details": "I am applying for an Express Account and understand that I will have monthly deposit or transaction restrictions"
+    },
     "signup-personal": {
       "page-title": "General Information",
       "button-text": "Next",
@@ -794,7 +806,7 @@
   "meed-extra-module": {
     "extra-page": {
       "header-title": "Meed Extras",
-      "featured-offer-title": "Featured Offer",
+      "featured-offer-title": "Featured Offers",
       "categories-title": "Categories",
       "nearby-text": "See Nearby Offers",
       "all-offer-text": "See All Offers"
@@ -825,7 +837,7 @@
       "offer-details-text": "Offer details"
     },
     "nearby-offer-page": {
-      "header-title": "Nearby Offer",
+      "header-title": "Nearby Offers",
       "location-text": "Your Location",
       "zip-code-placeholder": "ZIP Code",
       "search-btn": "Search the nearest location"
@@ -835,7 +847,7 @@
     },
     "filter-component": {
       "reset-btn-text": "RESET",
-      "search-by-text": "Search",
+      "search-by-text": "Search By",
       "search-btn-text": "Search"
     },
     "extra-intro-component": {
@@ -903,6 +915,7 @@
     "code-807": "Immediate Transfers cannot be modified",
     "code-901": "The invitee is already a member",
     "code-902": "Failed to send invitation",
+    "code-903": "Invalid invitee email",
     "code-1100": "This type of email is not allowed",
     "code-1101": "Invalid email address",
     "code-1102": "New verification code is required",
@@ -945,7 +958,6 @@
       "menu": {
         "direct-deposit": "Direct Deposit",
         "transfer-from-other-banks": "Transfer From Other Banks",
-        "mobile-check-deposit": "Mobile Check Deposit",
         "credit-debit-card": "Credit / Debit Card",
         "send-money": "Send Money",
         "request-money": "Request Money",
@@ -1566,7 +1578,7 @@
   "invite-card-component": {
     "header": "Meed is better together",
     "sub-header": "Enjoy extra earnings when you welcome friends and family who join the Club.",
-    "invite-btn": "Invite friends"
+    "invite-btn": "Invite a friend"
   },
   "biometric-authentication-service": {
     "permission-request": {
@@ -1574,24 +1586,8 @@
       "description": "Meed use face ID or finger print for biometric authentication"
     }
   },
-  "mobile-check-deposit": {
-    "header-title": "Mobile Check Deposit",
-    "amount-label": "Check amount",
-    "scan-check-lebel": "Scan the check",
-    "front-scan-check-lebel": "FRONT",
-    "back-scan-check-lebel": "BACK",
-    "note-label": "Note",
-    "note-input-placeholder": "Add a note",
-    "submit-button-text": "Deposit Check",
-    "permission-info-modal": {
-      "title": "Enable Camera and Storage",
-      "details": "Please enable Camera and Storage from the settings.",
-      "setting-button-text": "Setting",
-      "cancel-button-text": "Cancel"
-    }
-  },
   "meed-cover-page": {
-    "header-title": "Meed Cover",
+    "header-title": "MeedCover",
     "main-page": {
       "meed-text": "Meed",
       "cover-text": "Cover",

@@ -1,8 +1,45 @@
-ion-item.radio-item {
-  --padding-top: 15px;
-  --color: #070a18;
-}
-ion-item {
-  --color: #606477;
-  --inner-padding-bottom: 10px;
+ion-content {
+  ion-list {
+    ion-radio-group {
+      ion-item {
+        --padding-start: 0px;
+        margin-top: 30px;
+        ion-radio {
+          align-self: flex-start;
+          margin-top: 3px !important;
+          margin-right: 20px !important;
+        }
+        ion-label {
+          margin-top: 0px;
+
+          div.title {
+            font-family: 'Averta W05 Semibold5179739';
+            font-size: 16px;
+            letter-spacing: -0.15px;
+            line-height: 16px;
+            color: var(--input-white-text-color, '#070a18');
+            margin-bottom: 8px;
+          }
+          div.details {
+            width: 220px;
+            color: #8c90a3;
+            font-family: 'Averta W05 Regular5345108';
+            font-size: 14px;
+            letter-spacing: 0.15px;
+            line-height: 14px;
+          }
+        }
+
+        ion-button {
+          align-self: flex-start;
+          margin-top: 0px !important;
+          img.icon-question-mark {
+            content: url('~/assets/svg/question-mark.svg');
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
+    }
+  }
 }

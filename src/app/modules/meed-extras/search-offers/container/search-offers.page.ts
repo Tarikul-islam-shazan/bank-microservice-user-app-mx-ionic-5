@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SearchOffersFacade } from '../facade';
 import { Observable } from 'rxjs';
-import { Category } from '@app/core';
+import { Category, Offer } from '@app/core';
 
 @Component({
   selector: 'search-offers',
@@ -20,11 +20,26 @@ export class SearchOffersPage implements OnInit {
     this.categories$ = this.searchOffersFacade.loadCategory();
   }
 
-  goToofferPage(offer) {
+  /**
+   * @summary sets offer and navigates to the offer's page
+   *
+   * @param {Offer} offer
+   * @returns {void}
+   * @memberOf SearchOffersPage
+   */
+  goToOfferPage(offer: Offer): void {
     this.searchOffersFacade.setOffer(offer);
   }
 
-  openFilterModal(type: string, categories: Category[] = []) {
+  /**
+   * @summary opens filter modal
+   *
+   * @param {string} type
+   * @param {Category[]} [categories=[]]
+   * @returns {void}
+   * @memberOf SearchOffersPage
+   */
+  openFilterModal(type: string, categories: Category[] = []): void {
     if (type === 'type') {
       this.searchOffersFacade.openFilterModal(type, []);
     } else {

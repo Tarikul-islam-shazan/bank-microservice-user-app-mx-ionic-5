@@ -23,7 +23,8 @@ import {
   IMemberApplication,
   IdentityQuestion,
   IdentityAnswer,
-  IAddressInfo
+  IAddressInfo,
+  IAccountLevel
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
 import { Logger } from './logger.service';
@@ -196,8 +197,7 @@ export class SignUpService {
   }
 
   createLogin(formValue: { username$: string; password$: string }): Observable<IMember> {
-    const member: IMember = this.member;
-    const bodyParams = { username: formValue.username$, email: member.email, password: formValue.password$ };
+    const bodyParams = { username: formValue.username$, password: formValue.password$ };
     return this.http
       .post<IMember>(this.baseUrl + '/bank/onboarding/create-login', bodyParams, {
         headers: this.headerService.getMemberIdHeader()
@@ -315,6 +315,7 @@ export class SignUpService {
       );
   }
 
+
   /**
    *
    *
@@ -348,5 +349,13 @@ export class SignUpService {
           this.member = res;
         })
       );
+  }
+  
+  selectAccountLevel(accountLevel: string): Observable<IAccountLevel> {
+    return this.http.post<IAccountLevel>(
+      `${this.baseUrl}/bank/onboarding/apply/account-level`,
+      { accountLevel },
+      { headers: this.headerService.getMemberIdHeader() }
+    );
   }
 }

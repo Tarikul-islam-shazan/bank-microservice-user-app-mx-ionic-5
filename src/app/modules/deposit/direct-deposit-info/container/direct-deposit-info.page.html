@@ -5,7 +5,6 @@
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
-
 <ion-content class="direct-deposit-info-content">
   <div class="content-wrapper">
     <div class="direct-diposit-info-header">
@@ -30,7 +29,7 @@
 
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" (click)="continue()">
+    <ion-button class="white-button" expand="block" (click)="directDepositFacade.continue()">
       {{ 'deposit.direct-deposit-info.continue-btn-text' | translate }}
     </ion-button>
   </ion-toolbar>

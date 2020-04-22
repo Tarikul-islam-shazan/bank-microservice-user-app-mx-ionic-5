@@ -23,5 +23,10 @@ export const REG_EX_PATTERNS = {
   ONLY_NUMBER: /\D/g, // only numbers,
   COMMA_OPERATOR: /,/g, // all comma in a string
   NO_SECIAL_CHARACTER: /[&\/\\#,+()$~%.'":*?<>{}-]/g, // no special character
-  PHONE_MASK: /[\/\D/g\/\s/g\-\(\)']+/g // only for phone mask
+  PHONE_MASK: /[\/\D/g\/\s/g\-\(\)']+/g, // only for phone mask
+  ALLOW_ONLY_NUMBERS: /[^0-9]/g,
+  ALLOW_ONLY_NUMBERS_AND_DOT: /[^0-9.]/g,
+  NOT_ALLOW_COMMA: /(^,*)/g,
+  MONEY_WITH_COMMA: /^(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,3})*/,
+  SSN_NO: /[^0-9]/g
 };
