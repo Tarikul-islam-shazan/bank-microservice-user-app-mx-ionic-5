@@ -467,6 +467,8 @@
     },
     "signup-beneficiary-page": {
       "page-title": "Beneficiary Information",
+      "step": "Step 3 of 3",
+      "count": "3",
       "beneficiary-form": {
         "first-name": "First name",
         "second-name": "Second name (optional)",

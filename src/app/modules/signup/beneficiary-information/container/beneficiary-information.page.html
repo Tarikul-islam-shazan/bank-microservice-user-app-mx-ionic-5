@@ -2,7 +2,10 @@
   <div class="content-wrapper">
     <div class="beneficiary-header">
       <div class="step-counter">
-        <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
+        <step-counter
+          [step]="'signup-module.signup-beneficiary-page.step'"
+          [stepNo]="'signup-module.signup-beneficiary-page.count'"
+        ></step-counter>
       </div>
       <div (click)="openBeneficiaryModal()">
         <img src="assets/svg/question-mark.svg" />
