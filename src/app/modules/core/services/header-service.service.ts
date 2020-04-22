@@ -50,6 +50,14 @@ export class HeaderService {
     });
   }
 
+  getMemberIdCustomerIdHeader(): HttpHeaders {
+    return new HttpHeaders({
+      'meedbankingclub-bank-identifier': this.settingService.getSettings().userSettings.bankIdentifier,
+      'meedbankingclub-memberid': this.member._id,
+      'meedbankingclub-customerid': this.member.customerId
+    });
+  }
+
   getOtpHeader(otpId: string, otpToken: string) {
     return new HttpHeaders({
       'meedbankingclub-bank-identifier': this.settingService.getSettings().userSettings.bankIdentifier,

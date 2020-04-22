@@ -8,46 +8,89 @@
 <ion-content>
   <div class="content-wrapper">
     <div class="step-counter">
-      <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
+      <step-counter [step]="'signup-module.funding-information-page.step-text'" [stepNo]="3"></step-counter>
     </div>
-    <div class="header-title">Who will be providing the funding?</div>
-
+    <div class="header-title">{{ 'signup-module.funding-information-page.page-title' | translate }}</div>
     <div class="content-block">
       <ion-list lines="none">
-        <ion-radio-group name="auto" value="no">
+        <ion-radio-group name="auto" value="yes" (ionChange)="checkSelfFund($event)">
           <ion-list-header>
-            <ion-label>Are you providing the funds for this account or is someone else?</ion-label>
+            <ion-label
+              >{{ 'signup-module.funding-information-page.fund-provider-selector-title' | translate }}</ion-label
+            >
           </ion-list-header>
           <ion-item>
-            <ion-label>Yes, I am.</ion-label>
+            <ion-label
+              >{{ 'signup-module.funding-information-page.fund-provider-selector-option-one' | translate }}</ion-label
+            >
             <ion-radio mode="md" slot="start" value="yes"></ion-radio>
           </ion-item>
           <ion-item>
-            <ion-label>No, someone else.</ion-label>
+            <ion-label
+              >{{ 'signup-module.funding-information-page.fund-provider-selector-option-two' | translate }}</ion-label
+            >
             <ion-radio mode="md" slot="start" value="no"></ion-radio>
           </ion-item>
         </ion-radio-group>
       </ion-list>
     </div>
     <div class="content-block">
-      <form>
+      <form [formGroup]="fundingInformationForm" *ngIf="!isSelfFund">
         <ion-list lines="none">
           <ion-item>
-            <ion-input class="white-input" type="text" placeholder="First Name"></ion-input>
+            <ion-input
+              [ngClass]="
+          fundingInformationForm.controls.firstName.invalid  ? 'error-input' : 'white-input'
+        "
+              id="first-name"
+              type="text"
+              formControlName="firstName"
+              placeholder="{{ 'signup-module.funding-information-page.funding-info-form.first-name' | translate }}"
+            ></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Second Name (Optional)"></ion-input>
+            <ion-input
+              id="second-name"
+              class="white-input"
+              type="text"
+              formControlName="secondName"
+              placeholder="{{ 'signup-module.funding-information-page.funding-info-form.second-name' | translate }}"
+            ></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Paternal Last Name (Optional)"></ion-input>
+            <ion-input
+              id="paternal-last-name"
+              class="white-input"
+              type="text"
+              formControlName="paternalLastName"
+              placeholder="{{ 'signup-module.funding-information-page.funding-info-form.paternal-last-name' | translate }}"
+            ></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Maternal Last Name (Optional)"></ion-input>
+            <ion-input
+              id="maternal-last-name"
+              class="white-input"
+              type="text"
+              formControlName="maternalLastName"
+              placeholder="{{ 'signup-module.funding-information-page.funding-info-form.maternal-last-name' | translate }}"
+            ></ion-input>
           </ion-item>
-          <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Date of Birth"></ion-input>
-            <ion-icon name="chevron-down"></ion-icon>
-          </ion-item>
+          <div class="datetime-input">
+            <ion-item lines="none">
+              <ion-datetime
+                [ngClass]="
+              fundingInformationForm.controls.dateOfBirth.invalid  ? 'error-input' : 'white-input'
+            "
+                displayFormat="{{ 'signup-module.funding-information-page.funding-info-form.date-of-birth-display-format' | translate }}"
+                type="text"
+                [max]="maxDate"
+                formControlName="dateOfBirth"
+                placeholder="{{ 'signup-module.funding-information-page.funding-info-form.date-of-birth' | translate }}"
+              ></ion-datetime>
+
+              <ion-icon name="chevron-down"></ion-icon>
+            </ion-item>
+          </div>
         </ion-list>
       </form>
     </div>
@@ -56,8 +99,11 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" [routerLink]="['/signup/account-selection']">
-      {{ 'signup-module.signup-address-page.button-text' | translate }}
-    </ion-button>
+    <ion-button
+      class="white-button"
+      expand="block"
+      (click)="next()"
+      [disabled]="isSelfFund === true ? false : fundingInformationForm.invalid"
+    ></ion-button>
   </ion-toolbar>
 </ion-footer>

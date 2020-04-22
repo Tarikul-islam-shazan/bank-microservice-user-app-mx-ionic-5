@@ -393,6 +393,21 @@
         "username-tip-modal-details": "Por motivos de seguridad, se recomienda que tu nombre de usuario no sea tu correo electrónico ni tu nombre completo, y no debe contener caracteres o dígitos repetidos o consecutivos."
       }
     },
+    "funding-information-page": {
+      "page-title": "Who will be providing the funding?",
+      "step-text": "Step 3 of 3",
+      "fund-provider-selector-title": "Are you providing the funds for this account or is someone else?",
+      "fund-provider-selector-option-one": "Yes, I am.",
+      "fund-provider-selector-option-two": "No, someone else.",
+      "funding-info-form": {
+        "first-name": "First Name",
+        "second-name": "Second Name (Optional)",
+        "paternal-last-name": "Paternal Last Name (Optional)",
+        "maternal-last-name": "Maternal Last Name (Optional)",
+        "date-of-birth-display-format": "MM / DD / YYYY",
+        "date-of-birth": "Date of Birth"
+      }
+    },
     "questions": {
       "header-text": "Preguntas de seguridad",
       "instruction-text": "Si alguna vez olvida su contraseña, deberá responder estas preguntas para demostrar quién es usted. ¡Solo otra forma de mantener segura su cuenta!",

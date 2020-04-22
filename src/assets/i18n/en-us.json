@@ -315,6 +315,21 @@
         "username-tip-modal-details": "For security, it's recommended that your username isn't your email or your full name,and shouldn't contain repeating or consecutive characters or digits."
       }
     },
+    "funding-information-page": {
+      "page-title": "Who will be providing the funding?",
+      "step-text": "Step 3 of 3",
+      "fund-provider-selector-title": "Are you providing the funds for this account or is someone else?",
+      "fund-provider-selector-option-one": "Yes, I am.",
+      "fund-provider-selector-option-two": "No, someone else.",
+      "funding-info-form": {
+        "first-name": "First Name",
+        "second-name": "Second Name (Optional)",
+        "paternal-last-name": "Paternal Last Name (Optional)",
+        "maternal-last-name": "Maternal Last Name (Optional)",
+        "date-of-birth-display-format": "MM / DD / YYYY",
+        "date-of-birth": "Date of Birth"
+      }
+    },
     "signup-address-page": {
       "page-title": "Where do you live?",
       "button-text": "Next",
