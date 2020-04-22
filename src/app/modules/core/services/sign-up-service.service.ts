@@ -23,6 +23,7 @@ import {
   IMemberApplication,
   IdentityQuestion,
   IdentityAnswer,
+  IAddressInfo,
   IAccountLevel
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
@@ -314,6 +315,42 @@ export class SignUpService {
       );
   }
 
+
+  /**
+   *
+   *
+   * @param {number} postalCode
+   * @returns {Observable<Partial<IAddressInfo>>}
+   * @memberof SignUpService
+   */
+  getStateCityMunicipality(postalCode: number): Observable<Partial<IAddressInfo[]>> {
+    return this.http.get<Partial<IAddressInfo[]>>(
+      `${this.baseUrl}/bank/onboarding/${postalCode}/state-city-municipality`,
+      {
+        headers: this.headerService.getBankIdentifierHeader()
+      }
+    );
+  }
+
+  /**
+   *
+   *
+   * @param {IAddressInfo} addressInfo
+   * @returns {Observable<IMember>}
+   * @memberof SignUpService
+   */
+  submitAddressInfo(addressInfo: IAddressInfo): Observable<IMember> {
+    return this.http
+      .post<IMember>(this.baseUrl + '/bank/onboarding/apply/address-info', addressInfo, {
+        headers: this.headerService.getMemberICustomerIdHeader()
+      })
+      .pipe(
+        tap((res: IMember) => {
+          this.member = res;
+        })
+      );
+  }
+  
   selectAccountLevel(accountLevel: string): Observable<IAccountLevel> {
     return this.http.post<IAccountLevel>(
       `${this.baseUrl}/bank/onboarding/apply/account-level`,

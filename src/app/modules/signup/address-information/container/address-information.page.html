@@ -1,0 +1,183 @@
+<ion-header class="white-header ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="content-wrapper">
+    <div class="step-counter">
+      <step-counter [step]="'signup-module.signup-address-information-page.step-text'" [stepNo]="3"></step-counter>
+    </div>
+    <div class="header-title">{{ 'signup-module.signup-address-information-page.page-title' | translate }}</div>
+    <form [formGroup]="addressForm" novalidate>
+      <div class="dropdown-input" (click)="openOptionsModal('addressTypeField','addressType', facade.addressTypeList)">
+        <ion-input
+          (ionFocus)="isInputFieldSkip('addressTypeField')"
+          [ngClass]="
+            addressForm.controls.addressTypeField.invalid && skipErrorFields.addressTypeField ? 'error-input' : 'white-input'
+          "
+          readonly
+          id="addressTypeField"
+          formControlName="addressTypeField"
+          class="white-input"
+          type="text"
+          placeholder="{{ 'signup-module.signup-address-information-page.address-form.address-type' | translate }}"
+        ></ion-input>
+        <ion-icon name="chevron-down"></ion-icon>
+      </div>
+      <div
+        class="dropdown-input"
+        (click)="openOptionsModal('propertyTypeField','propertyType', facade.propertyTypeList)"
+      >
+        <ion-input
+          (ionFocus)="isInputFieldSkip('propertyTypeField')"
+          [ngClass]="
+            addressForm.controls.propertyTypeField.invalid && skipErrorFields.propertyTypeField ? 'error-input' : 'white-input'
+          "
+          readonly
+          id="propertyTypeField"
+          formControlName="propertyTypeField"
+          class="white-input"
+          type="text"
+          placeholder="{{ 'signup-module.signup-address-information-page.address-form.property-type' | translate }}"
+        ></ion-input>
+        <ion-icon name="chevron-down"></ion-icon>
+      </div>
+      <ion-input
+        (ionFocus)="isInputFieldSkip('street')"
+        [ngClass]="
+            addressForm.controls.street.invalid && skipErrorFields.street ? 'error-input' : 'white-input'
+          "
+        id="street"
+        formControlName="street"
+        class="white-input"
+        type="text"
+        maxlength="40"
+        placeholder="{{ 'signup-module.signup-address-information-page.address-form.street-name' | translate }}"
+      ></ion-input>
+
+      <ion-input
+        (ionFocus)="isInputFieldSkip('outdoorNumber')"
+        [ngClass]="
+            addressForm.controls.outdoorNumber.invalid && skipErrorFields.outdoorNumber ? 'error-input' : 'white-input'
+          "
+        id="outdoorNumber"
+        formControlName="outdoorNumber"
+        class="white-input"
+        type="tel"
+        inputmode="numeric"
+        [appMaskInput]="onlyNumber"
+        placeholder="{{ 'signup-module.signup-address-information-page.address-form.outdoor-number' | translate }}"
+      ></ion-input>
+
+      <ion-input
+        (ionFocus)="isInputFieldSkip('interiorNumber')"
+        [ngClass]="
+            addressForm.controls.interiorNumber.invalid && skipErrorFields.interiorNumber ? 'error-input' : 'white-input'
+          "
+        id="interiorNumber"
+        formControlName="interiorNumber"
+        class="white-input"
+        type="tel"
+        inputmode="numeric"
+        [appMaskInput]="onlyNumber"
+        placeholder="{{ 'signup-module.signup-address-information-page.address-form.interior-number' | translate }}"
+      ></ion-input>
+
+      <ion-input
+        (ionChange)="getPostalCodeInfo($event.target.value)"
+        (ionFocus)="isInputFieldSkip('postCode')"
+        [ngClass]="
+            addressForm.controls.postCode.invalid && skipErrorFields.postCode ? 'error-input' : 'white-input'
+          "
+        id="postCode"
+        formControlName="postCode"
+        class="white-input"
+        type="tel"
+        inputmode="numeric"
+        [appMaskInput]="postalCodeNumber"
+        placeholder="{{ 'signup-module.signup-address-information-page.address-form.post-code' | translate }}"
+      ></ion-input>
+
+      <ion-input
+        (ionFocus)="isInputFieldSkip('stateField')"
+        [ngClass]="
+            addressForm.controls.stateField.invalid && skipErrorFields.stateField ? 'error-input' : 'background-input'
+          "
+        readonly
+        id="stateField"
+        formControlName="stateField"
+        class="background-input"
+        type="text"
+        placeholder="{{ 'signup-module.signup-address-information-page.address-form.state' | translate }}"
+      ></ion-input>
+
+      <ion-input
+        (ionFocus)="isInputFieldSkip('municipalityField')"
+        [ngClass]="
+            addressForm.controls.municipalityField.invalid && skipErrorFields.municipalityField ? 'error-input' : 'background-input'
+          "
+        readonly
+        id="municipalityField"
+        formControlName="municipalityField"
+        class="background-input"
+        type="text"
+        placeholder="{{ 'signup-module.signup-address-information-page.address-form.municipality' | translate }}"
+      ></ion-input>
+
+      <ion-input
+        (ionFocus)="isInputFieldSkip('cityField')"
+        [ngClass]="
+            addressForm.controls.cityField.invalid && skipErrorFields.cityField ? 'error-input' : 'background-input'
+          "
+        readOnly
+        id="cityField"
+        formControlName="cityField"
+        class="background-input"
+        type="text"
+        placeholder="{{ 'signup-module.signup-address-information-page.address-form.city' | translate }}"
+      ></ion-input>
+
+      <div class="dropdown-input" (click)="openSuburbModal('suburbField','suburb', postalCodeData)">
+        <ion-input
+          (ionFocus)="isInputFieldSkip('suburbField')"
+          [ngClass]="
+            addressForm.controls.suburbField.invalid && skipErrorFields.suburbField ? 'error-input' : 'white-input'
+          "
+          readonly
+          id="suburbField"
+          formControlName="suburbField"
+          class="white-input"
+          type="text"
+          placeholder="{{ 'signup-module.signup-address-information-page.address-form.suburb' | translate }}"
+        ></ion-input>
+        <ion-icon name="chevron-down"></ion-icon>
+      </div>
+      <div class="datetime-input">
+        <ion-item lines="none">
+          <ion-datetime
+            (ionFocus)="isInputFieldSkip('dateOfResidence')"
+            [ngClass]="
+            addressForm.controls.dateOfResidence.invalid && skipErrorFields.dateOfResidence ? 'error-input' : 'white-input'
+          "
+            id="dateOfResidence"
+            placeholder="{{ 'signup-module.signup-address-information-page.address-form.dateOfResidence' | translate }}"
+            formControlName="dateOfResidence"
+            displayFormat="{{ 'signup-module.signup-address-information-page.address-form.dateFormate' | translate }}"
+          ></ion-datetime>
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-item>
+      </div>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="white-button" [disabled]="addressForm.invalid" expand="block" (click)="next()">
+      {{ 'signup-module.signup-address-information-page.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

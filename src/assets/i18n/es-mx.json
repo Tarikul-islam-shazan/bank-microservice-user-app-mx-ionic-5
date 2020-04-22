@@ -327,6 +327,25 @@
       "armed-forces-related-dependent-radio-btn": "Sí, soy dependiente.",
       "armed-forces-related-neither-radio-btn": "No, no soy ni uno ni otro."
     },
+    "signup-address-information-page": {
+      "page-title": "Where do you live?",
+      "button-text": "Next",
+      "step-text": "Step 3 of 3",
+      "address-form": {
+        "address-type": "Address Type",
+        "property-type": "Property Type",
+        "street-name": "Street Name",
+        "outdoor-number": "Outdoor Number",
+        "interior-number": "Interior Number",
+        "post-code": "Post Code",
+        "city": "City",
+        "state": "State",
+        "municipality": "Municipality",
+        "suburb": "Suburb",
+        "dateOfResidence": "Date @ Residence",
+        "dateFormate": "DD/MM/YYYY"
+      }
+    },
     "confirm-identity-page": {
       "page-title": "confirme su identidad",
       "page-subtitle": "Elige tu documento de identidad",
@@ -874,6 +893,8 @@
     "code-610": "Thank you for applying for Meed Banking Club. Based on the information provided we are unable to complete your application. For questions on the application process please call Meed Banking Club at 1(833)-213-6333. Ref ID Authentication.",
     "code-611": "Thank you for applying for Meed Banking Club. Based on the information provided we are unable to complete your application. For questions on the application process please call Meed Banking Club at 1(833)-213-6333. Ref ID Authentication.",
     "code-612": "Tu solicitud se denegó.",
+    "code-616": "Post code does not exist",
+    "code-617": "The Customer Id provided does not exist.",
     "code-701": "Unable to find the customer",
     "code-702": "Error desconocido",
     "code-703": "Email Address already exist",

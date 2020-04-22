@@ -1,4 +1,4 @@
-import { IAccount } from './account';
+import { IAccount, AccountLevel } from './account';
 
 import { IStaticData } from './static-data';
 
@@ -11,14 +11,18 @@ export interface IRegisteredMember extends IMember {
 export interface IMember {
   _id?: any;
   email?: string;
-  inviter?: IMember['_id'] | string;
+  priorEmails?: [string];
+  inviter?: IMember['_id'] | string | null;
   inviterCode?: string;
+  inviterEmail?: string;
+  corporateTncAccepted?: boolean;
   nickname?: string;
   applicationStatus?: ApplicationStatus;
   applicationProgress?: ApplicationProgress;
   accountStatus?: MemberAccountStatus;
-  memberType?: string;
-  bank?: string;
+  accountLevel?: AccountLevel;
+  memberType?: MemberType;
+  bank?: string | any;
   country?: string;
   username?: string;
   memberStatusHistory?: [string];
@@ -64,6 +68,11 @@ export enum MemberAccountStatus {
   Opened = 'account-opened',
   Closed = 'account-closed',
   InProgress = 'account-in-progress'
+}
+
+export enum MemberType {
+  Individual = 'individual',
+  Corporate = 'corporate'
 }
 
 export interface ICustomer {

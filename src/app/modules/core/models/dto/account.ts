@@ -127,3 +127,8 @@ export interface ITransactionQueries {
   amountFrom?: number;
   amountTo?: number;
 }
+
+export enum AccountLevel {
+  Full = 'Full',
+  Express = 'Express'
+}
