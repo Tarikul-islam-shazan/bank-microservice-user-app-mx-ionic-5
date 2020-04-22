@@ -11,6 +11,8 @@ import { LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { LogglyLoggerService } from '@app/core/services/loggly-logger.service';
 import { MemberService } from './member.service';
 import { Router } from '@angular/router';
+import { LogoutReason, LogoutService } from '@app/core/services/logout.service';
+
 /**
  * * Issue: GMA-4366
  * * Issue Details: MMP-773 MMP 2.2: Password Reset
@@ -31,7 +33,8 @@ export class ErrorService {
     private logglyLoggerService: LogglyLoggerService,
     private memberService: MemberService,
     private modalService: ModalService,
-    private router: Router
+    private router: Router,
+    private logoutService: LogoutService
   ) {}
 
   /**
@@ -112,6 +115,11 @@ export class ErrorService {
           const modalComponentProps = this.getUnavailableCountryModalComp(code);
           this.modalService.openInfoModalComponent(modalComponentProps);
           break;
+        case ErrorCode.SessionTimeout:
+        case ErrorCode.AuthenticationTokenMissing:
+        case ErrorCode.AuthenticationTokenInvalidOrExpired:
+          await this.logoutUser(code);
+          break;
         case ErrorCode.InvalidInviteeEmail:
           const componentProps = this.invalidInviteeEmailInfoModalComponentProps(code);
           this.modalService.openInfoModalComponent(componentProps);
@@ -121,6 +129,34 @@ export class ErrorService {
           this.modalService.showInfoErrorModal(errorResponse);
           break;
       }
+    }
+  }
+
+  /**
+   * Issue:  GMA-4904
+   * Details: Redirect user to login page for error codes 303,1501,1502 as logout.
+   * Date: April 16, 2020
+   * Developer: Md.kasuar <md.kausar@brainstation23.com>
+   * @param {ErrorCode} code
+   * @returns {Promise<void>}
+   * @memberof ErrorService
+   */
+  async logoutUser(code: ErrorCode): Promise<void> {
+    let logoutReason: LogoutReason;
+    switch (code) {
+      case ErrorCode.SessionTimeout:
+        logoutReason = LogoutReason.AuthSessionTimeout;
+        break;
+      case ErrorCode.AuthenticationTokenMissing:
+        logoutReason = LogoutReason.AuthTokenMissing;
+        break;
+      case ErrorCode.AuthenticationTokenInvalidOrExpired:
+        logoutReason = LogoutReason.AuthTokenInValidOrExpired;
+        break;
+    }
+    if (logoutReason) {
+      this.logoutService.logoutReason = logoutReason;
+      await this.router.navigateByUrl('login-user', { replaceUrl: true });
     }
   }
 

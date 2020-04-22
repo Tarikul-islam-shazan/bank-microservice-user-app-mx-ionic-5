@@ -19,6 +19,7 @@ export interface UIError {
 
 // converted the existing error code to enum
 export enum ErrorCode {
+  SessionTimeout = '303',
   LockedAccount = '401',
   OTPrequired = '403',
   SamePassword = '404',
@@ -47,6 +48,8 @@ export enum ErrorCode {
   UsernameOrPasswordIncorrect = '1203',
   LanguageUnsupported = '1204',
   InvalidInviterData = '1205',
+  AuthenticationTokenMissing = '1501',
+  AuthenticationTokenInvalidOrExpired = '1502',
   UnableJumioData = '2001',
   FailedJumioVerification = '2002',
   PendingJumioVerification = '2003',
