@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { SignUpService, StaticDataService, StaticDataCategory, StaticDataSubCategory } from '@app/core';
+import { SignUpService, StaticDataService, StaticDataCategory, StaticDataSubCategory, IMember } from '@app/core';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { IBeneficiaryInfo } from '@app/core/models/dto/signup';
 import { DropdownOption } from '@app/signup/models/signup';
@@ -42,7 +42,7 @@ export class BeneficiaryFacade {
    * @memberof BeneficiaryFacade
    */
   submit(beneficiary: Partial<IBeneficiaryInfo>) {
-    this.signUpService.submitBeneficiaryApplication(beneficiary).subscribe(resp => {
+    this.signUpService.submitBeneficiaryApplication(beneficiary).subscribe((resp: IMember) => {
       // this.analytics.logEvent(AnalyticsEventTypes.IdDocumentSubmitted);
       this.router.navigateByUrl('/signup/account-selection');
     });
