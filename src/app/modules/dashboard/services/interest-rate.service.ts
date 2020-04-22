@@ -3,7 +3,7 @@ import { environment } from '@env/environment';
 import { HttpClient } from '@angular/common/http';
 import { HeaderService } from '@app/core/services/header-service.service';
 import { Observable } from 'rxjs';
-
+import { map } from 'rxjs/operators';
 @Injectable()
 export class InterestRateService {
   interestRateUrl = environment.serviceUrl + '/bank/accounts';
@@ -17,8 +17,10 @@ export class InterestRateService {
    * @memberof InterestRateService
    */
   getInterestRate(accountId: string): Observable<number> {
-    return this.http.get<number>(`${this.interestRateUrl}/${accountId}/interest-rate`, {
-      headers: this.headerService.getUserNameHeader()
-    });
+    return this.http
+      .get<{ amount: number }>(`${this.interestRateUrl}/${accountId}/interest-rate`, {
+        headers: this.headerService.getUserNameHeader()
+      })
+      .pipe(map(res => res.amount));
   }
 }

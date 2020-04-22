@@ -20,7 +20,6 @@ export class LineOfCreditFacade {
   ) {
     this.initialize();
   }
-  interestRate$: Observable<number>;
   lineOfCreditAccount$: Observable<Partial<IAccount>> = this.lineOfCreditState.lineOfCreditAccount$;
 
   pendingTransactions$: Observable<ITransaction[]> = this.lineOfCreditState.pendingTransactions$;
@@ -103,28 +102,12 @@ export class LineOfCreditFacade {
   }
 
   /**
-   * @method return interestRate$ obserable
-   * @author Utpaul<Utpal.Sarker@brainstation23.com>
-   * Ticket: GMA-4873
-   * Issue: LOC interest rate set by calling http request
-   * @readonly
-   * @type {Observable<number>}
-   * @memberof LineOfCreditFacade
-   */
-  get interestRate(): Observable<number> {
-    if (!this.interestRate$) {
-      this.interestRate$ = this.interestRateService.getInterestRate(this.locAccount.accountId).pipe(shareReplay(1));
-    }
-    return this.interestRate$;
-  }
-
-  /**
    * showing modal of a LOC clicking question option
    *
    * @memberof LineOfCreditFacade
    */
   async showModal() {
-    this.interestRate.subscribe(async (interestRate: number) => {
+    this.interestRateService.getInterestRate(this.locAccount.accountId).subscribe(async (interestRate: number) => {
       const componentProps: IMeedModalContent = {
         contents: [
           {
@@ -143,7 +126,6 @@ export class LineOfCreditFacade {
       await this.modalService.openInfoModalComponent({ componentProps });
     });
   }
-
   makePayment() {
     this.analytics.logEvent(AnalyticsEventTypes.TransferStarted, { source: 'loc-payment' });
   }
