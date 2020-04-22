@@ -39,7 +39,7 @@
     </div>
     <div class="offer-result">
       <offer-card
-        (OfferClick)="goToofferPage($event)"
+        (OfferClick)="goToOfferPage($event)"
         *ngFor="let offer of searchOffersFacade.searchedOffers"
         [offer]="offer"
       ></offer-card>

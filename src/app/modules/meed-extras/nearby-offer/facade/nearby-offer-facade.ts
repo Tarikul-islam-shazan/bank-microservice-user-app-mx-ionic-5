@@ -6,6 +6,9 @@ import { Offer } from '@app/core';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
+import { map } from 'rxjs/operators';
+import { AlphabiticalSortService } from '@app/meed-extras/services';
+import { Iindex } from '@app/meed-extras/models/meed-extra';
 
 @Injectable()
 export class NearbyOfferFacade {
@@ -15,27 +18,34 @@ export class NearbyOfferFacade {
     private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder,
     private router: Router,
-    private analytics: AnalyticsService
+    private analytics: AnalyticsService,
+    private alphabiticalSortService: AlphabiticalSortService
   ) {}
 
-  findOffers(zipCode: number = null, lat: number = null, long: number = null): Observable<Offer[]> {
+  findOffers(zipCode: number = null, lat: number = null, long: number = null): Observable<[[Iindex | Offer]]> {
     let params = {};
     if (zipCode !== null) {
       params = {
         zipcode: zipCode,
         shop_type: 'instore',
-        requires_activation: 't'
+        requires_activation: 't',
+        per_page: '10000'
       };
     } else {
       params = {
         lat,
-        long
+        long,
+        per_page: '10000'
       };
     }
     this.analytics.logEvent(AnalyticsEventTypes.NearbyZipSearchInitiated, { zipCode });
-    return this.meedExtraService.searchOffer(params);
+    return this.meedExtraService.searchOffer(params).pipe(
+      map((offers: Offer[]) => {
+        return this.alphabiticalSortService.sortOfferList(offers);
+      })
+    );
   }
-  async findLocalOffer(): Promise<Observable<Offer[]>> {
+  async findLocalOffer(): Promise<Observable<[[Iindex | Offer]]>> {
     const coords = await this.findCurrentLocation();
     await this.findAddress(coords.latitude, coords.longitude);
     return Promise.resolve(this.findOffers(null, coords.latitude, coords.longitude));

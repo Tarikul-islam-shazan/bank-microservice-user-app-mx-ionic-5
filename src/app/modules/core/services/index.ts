@@ -16,7 +16,6 @@ import { AccountService } from './account.service';
 import { CardService } from './card.service';
 import { AppUpgradeService } from './app-upgrade.service';
 import { UrbanAirshipService } from './urban-airship.service';
-import { DepositService } from './deposit.service';
 import { StatementsService } from './statements.service';
 import { P2pService } from './p2p.service';
 import { LogoutService } from './logout.service';
@@ -39,7 +38,6 @@ export const SERVICE_PROVIDERS: any[] = [
   CardService,
   AppUpgradeService,
   UrbanAirshipService,
-  DepositService,
   StatementsService,
   P2pService,
   LogoutService
@@ -64,7 +62,6 @@ export * from './loggly-logger.service';
 export * from './card.service';
 export * from './app-upgrade.service';
 export * from './urban-airship.service';
-export * from './deposit.service';
 export * from './statements.service';
 export * from './member.service';
 export * from './p2p.service';

@@ -1,0 +1,9 @@
+<ion-content>
+  <div class="content-wrapper">
+    <div class="header-close-button" (click)="dismiss()"></div>
+
+    <div class="option-item ion-activatable" *ngFor="let option of options" (click)="selectedItem(option)">
+      <p>{{ option.suburbName }}</p>
+    </div>
+  </div>
+</ion-content>

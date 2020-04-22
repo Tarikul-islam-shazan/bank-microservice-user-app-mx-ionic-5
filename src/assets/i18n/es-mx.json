@@ -327,6 +327,25 @@
       "armed-forces-related-dependent-radio-btn": "Sí, soy dependiente.",
       "armed-forces-related-neither-radio-btn": "No, no soy ni uno ni otro."
     },
+    "signup-address-information-page": {
+      "page-title": "Where do you live?",
+      "button-text": "Next",
+      "step-text": "Step 3 of 3",
+      "address-form": {
+        "address-type": "Address Type",
+        "property-type": "Property Type",
+        "street-name": "Street Name",
+        "outdoor-number": "Outdoor Number",
+        "interior-number": "Interior Number",
+        "post-code": "Post Code",
+        "city": "City",
+        "state": "State",
+        "municipality": "Municipality",
+        "suburb": "Suburb",
+        "dateOfResidence": "Date @ Residence",
+        "dateFormate": "DD/MM/YYYY"
+      }
+    },
     "confirm-identity-page": {
       "page-title": "confirme su identidad",
       "page-subtitle": "Elige tu documento de identidad",
@@ -836,7 +855,7 @@
     },
     "filter-component": {
       "reset-btn-text": "RESET",
-      "search-by-text": "Buscar",
+      "search-by-text": "Buscar Por",
       "search-btn-text": "Buscar"
     },
     "extra-intro-component": {
@@ -889,6 +908,8 @@
     "code-610": "Thank you for applying for Meed Banking Club. Based on the information provided we are unable to complete your application. For questions on the application process please call Meed Banking Club at 1(833)-213-6333. Ref ID Authentication.",
     "code-611": "Thank you for applying for Meed Banking Club. Based on the information provided we are unable to complete your application. For questions on the application process please call Meed Banking Club at 1(833)-213-6333. Ref ID Authentication.",
     "code-612": "Tu solicitud se denegó.",
+    "code-616": "Post code does not exist",
+    "code-617": "The Customer Id provided does not exist.",
     "code-701": "Unable to find the customer",
     "code-702": "Error desconocido",
     "code-703": "Email Address already exist",
@@ -902,6 +923,7 @@
     "code-807": "Immediate Transfers cannot be modified",
     "code-901": "The invitee is already a member",
     "code-902": "Failed to send invitation",
+    "code-903": "Invalid invitee email",
     "code-1100": "This type of email is not allowed",
     "code-1101": "Invalid email address",
     "code-1102": "New verification code is required",
@@ -944,7 +966,6 @@
       "menu": {
         "direct-deposit": "Depósito Directo",
         "transfer-from-other-banks": "Transferencia de otros bancos",
-        "mobile-check-deposit": "Depósito móvil de cheques",
         "credit-debit-card": "Tarjeta de crédito/débito",
         "send-money": "Enviar dinero",
         "request-money": "Solicitar dinero",
@@ -1577,7 +1598,7 @@
   "invite-card-component": {
     "header": "Meed es mejor juntos",
     "sub-header": "Disfruta de beneficios adicionales cuando recibas a amigos y familiares que se unan al Club.",
-    "invite-btn": "Invitar a amigos"
+    "invite-btn": "Invitar a un amigo"
   },
   "biometric-authentication-service": {
     "permission-request": {
@@ -1585,24 +1606,8 @@
       "description": "Meed use face ID or finger print for biometric authentication"
     }
   },
-  "mobile-check-deposit": {
-    "header-title": "Depósito móvil de cheques",
-    "amount-label": "Importe del cheque",
-    "scan-check-lebel": "Escanea el cheque",
-    "front-scan-check-lebel": "ANVERSO",
-    "back-scan-check-lebel": "REVERSO",
-    "note-label": "Nota",
-    "note-input-placeholder": "Añadir una nota",
-    "submit-button-text": "Depositar cheque",
-    "permission-info-modal": {
-      "title": "Habilita la cámara y el almacenamiento",
-      "details": "Por favor, habilita la cámara y el almacenamiento desde la configuración.",
-      "setting-button-text": "Configuración",
-      "cancel-button-text": "Cancelar"
-    }
-  },
   "meed-cover-page": {
-    "header-title": "Meed Cover",
+    "header-title": "MeedCover",
     "main-page": {
       "meed-text": "Meed",
       "cover-text": "Cover",

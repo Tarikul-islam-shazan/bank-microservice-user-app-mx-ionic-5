@@ -223,6 +223,24 @@ export interface ISignUpDirectDepositAccounts {
   registrationFeeRequest?: RegistrationFeeRequest;
 }
 
+export interface IAddressInfo {
+  addressType: string;
+  propertyType: string;
+  street: string;
+  outdoorNumber: string;
+  interiorNumber: string;
+  postCode: string;
+  state: string;
+  stateName?: string;
+  municipality: string;
+  municipalityName?: string;
+  city: string;
+  cityName?: string;
+  suburb: string;
+  suburbName?: string;
+  dateOfResidence: string;
+}
+
 export interface IAccountLevel {
   _id: any;
   email: string;

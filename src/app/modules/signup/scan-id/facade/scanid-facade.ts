@@ -80,12 +80,15 @@ export class ScanIDFacade {
 
   /**
    * Details: log logger and analytics event
-   * Issues: GMA-4766 - Signup: jumio response log into logger UI
-   * Date: March 27, 2020
+   * Issues:
+   * GMA-4766 - Signup: jumio response log into logger UI,
+   * MM2-180: Need to send inner object as stringify for loggly record.
+   * Date: April 21, 2020
    * Developer: Utpaul <Utpal.Sarkar@brainstation23.com>
    * @memberof ScanIDFacade
    */
   loggerEvent(context: UIInfo) {
+    context.message = context.message ? JSON.stringify(context.message) : {};
     this.analytics.logEvent(context.name, context.message);
     this.logglyLogger.logUI(context).subscribe();
   }

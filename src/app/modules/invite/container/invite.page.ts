@@ -10,6 +10,14 @@ import { InviteFacade } from './../facade';
 export class InvitePage {
   constructor(private router: Router, public facade: InviteFacade) {}
 
+  ionViewWillEnter() {
+    this.facade.initialize();
+  }
+
+  ionViewDidLeave() {
+    this.facade.invitations = [];
+  }
+
   onInviteNewFriend() {
     this.router.navigate(['/dashboard/invite/invite-new-member']);
   }

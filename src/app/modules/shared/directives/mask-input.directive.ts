@@ -17,7 +17,8 @@ export enum InputFormatType {
   WORDS = 'WORDS',
   ONLY_ONE_WORD = 'ONLY_ONE_WORD',
   PHONE_MASK = 'PHONE_MASK',
-  EMAIL_VERIFICATION = 'EMAIL_VERIFICATION'
+  EMAIL_VERIFICATION = 'EMAIL_VERIFICATION',
+  ONLY_NUMBER = 'ONLY_NUMBER'
 }
 @Directive({
   selector: '[appMaskInput]'
@@ -41,6 +42,9 @@ export class MaskInputDirective {
         break;
       case InputFormatType.EMAIL_VERIFICATION:
         this.inputField.value = this.emailVerificationMask(this.inputField.value);
+        break;
+      case InputFormatType.ONLY_NUMBER:
+        this.inputField.value = this.onlyNumber(this.inputField.value, this.inputItem.maxLength);
         break;
     }
   }
@@ -149,6 +153,19 @@ export class MaskInputDirective {
 
   emailVerificationMask(word): string {
     word = word.replace(REG_EX_PATTERNS.ONLY_NUMBER, '');
+    return word;
+  }
+
+  onlyNumber(word, inputMaxLength = null): string {
+    word = word.replace(REG_EX_PATTERNS.ONLY_NUMBER, '');
+    if (inputMaxLength !== null) {
+      const value = word.toString().substr(0, inputMaxLength); // discard input string upto limit
+      if (value.length <= inputMaxLength) {
+        word = value;
+      } else {
+        word = value.substr(0, inputMaxLength);
+      }
+    }
     return word;
   }
 }

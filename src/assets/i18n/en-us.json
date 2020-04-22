@@ -357,6 +357,25 @@
       "armed-forces-related-dependent-radio-btn": "Yes, I am a dependent.",
       "armed-forces-related-neither-radio-btn": "No, I am neither."
     },
+    "signup-address-information-page": {
+      "page-title": "Where do you live?",
+      "button-text": "Next",
+      "step-text": "Step 3 of 3",
+      "address-form": {
+        "address-type": "Address Type",
+        "property-type": "Property Type",
+        "street-name": "Street Name",
+        "outdoor-number": "Outdoor Number",
+        "interior-number": "Interior Number",
+        "post-code": "Post Code",
+        "city": "City",
+        "state": "State",
+        "municipality": "Municipality",
+        "suburb": "Suburb",
+        "dateOfResidence": "Date @ Residence",
+        "dateFormate": "DD/MM/YYYY"
+      }
+    },
     "confirm-identity-page": {
       "page-title": "Confirm your identity",
       "page-subtitle": "Choose your identity document",
@@ -802,7 +821,7 @@
   "meed-extra-module": {
     "extra-page": {
       "header-title": "Meed Extras",
-      "featured-offer-title": "Featured Offer",
+      "featured-offer-title": "Featured Offers",
       "categories-title": "Categories",
       "nearby-text": "See Nearby Offers",
       "all-offer-text": "See All Offers"
@@ -833,7 +852,7 @@
       "offer-details-text": "Offer details"
     },
     "nearby-offer-page": {
-      "header-title": "Nearby Offer",
+      "header-title": "Nearby Offers",
       "location-text": "Your Location",
       "zip-code-placeholder": "ZIP Code",
       "search-btn": "Search the nearest location"
@@ -843,7 +862,7 @@
     },
     "filter-component": {
       "reset-btn-text": "RESET",
-      "search-by-text": "Search",
+      "search-by-text": "Search By",
       "search-btn-text": "Search"
     },
     "extra-intro-component": {
@@ -896,6 +915,8 @@
     "code-610": "Thank you for applying for Meed Banking Club. Based on the information provided we are unable to complete your application. For questions on the application process please call Meed Banking Club at 1(833)-213-6333. Ref ID Authentication.",
     "code-611": "Thank you for applying for Meed Banking Club. Based on the information provided we are unable to complete your application. For questions on the application process please call Meed Banking Club at 1(833)-213-6333. Ref ID Authentication.",
     "code-612": "Your application has been denied.",
+    "code-616": "Post code does not exist",
+    "code-617": "The Customer Id provided does not exist.",
     "code-701": "Unable to find the customer",
     "code-702": "unknown",
     "code-703": "Email Address already exist",
@@ -909,6 +930,7 @@
     "code-807": "Immediate Transfers cannot be modified",
     "code-901": "The invitee is already a member",
     "code-902": "Failed to send invitation",
+    "code-903": "Invalid invitee email",
     "code-1100": "This type of email is not allowed",
     "code-1101": "Invalid email address",
     "code-1102": "New verification code is required",
@@ -951,7 +973,6 @@
       "menu": {
         "direct-deposit": "Direct Deposit",
         "transfer-from-other-banks": "Transfer From Other Banks",
-        "mobile-check-deposit": "Mobile Check Deposit",
         "credit-debit-card": "Credit / Debit Card",
         "send-money": "Send Money",
         "request-money": "Request Money",
@@ -1572,7 +1593,7 @@
   "invite-card-component": {
     "header": "Meed is better together",
     "sub-header": "Enjoy extra earnings when you welcome friends and family who join the Club.",
-    "invite-btn": "Invite friends"
+    "invite-btn": "Invite a friend"
   },
   "biometric-authentication-service": {
     "permission-request": {
@@ -1580,24 +1601,8 @@
       "description": "Meed use face ID or finger print for biometric authentication"
     }
   },
-  "mobile-check-deposit": {
-    "header-title": "Mobile Check Deposit",
-    "amount-label": "Check amount",
-    "scan-check-lebel": "Scan the check",
-    "front-scan-check-lebel": "FRONT",
-    "back-scan-check-lebel": "BACK",
-    "note-label": "Note",
-    "note-input-placeholder": "Add a note",
-    "submit-button-text": "Deposit Check",
-    "permission-info-modal": {
-      "title": "Enable Camera and Storage",
-      "details": "Please enable Camera and Storage from the settings.",
-      "setting-button-text": "Setting",
-      "cancel-button-text": "Cancel"
-    }
-  },
   "meed-cover-page": {
-    "header-title": "Meed Cover",
+    "header-title": "MeedCover",
     "main-page": {
       "meed-text": "Meed",
       "cover-text": "Cover",

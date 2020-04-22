@@ -24,7 +24,8 @@ import {
   IdentityQuestion,
   IdentityAnswer,
   IGeneralInfo,
-  IAccountLevel
+  IAccountLevel,
+  IAddressInfo
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
 import { Logger } from './logger.service';
@@ -322,6 +323,42 @@ export class SignUpService {
       headers: this.headerService.getMemberICustomerIdHeader()
     });
   }
+
+  /**
+   *
+   *
+   * @param {number} postalCode
+   * @returns {Observable<Partial<IAddressInfo>>}
+   * @memberof SignUpService
+   */
+  getStateCityMunicipality(postalCode: number): Observable<Partial<IAddressInfo[]>> {
+    return this.http.get<Partial<IAddressInfo[]>>(
+      `${this.baseUrl}/bank/onboarding/${postalCode}/state-city-municipality`,
+      {
+        headers: this.headerService.getBankIdentifierHeader()
+      }
+    );
+  }
+
+  /**
+   *
+   *
+   * @param {IAddressInfo} addressInfo
+   * @returns {Observable<IMember>}
+   * @memberof SignUpService
+   */
+  submitAddressInfo(addressInfo: IAddressInfo): Observable<IMember> {
+    return this.http
+      .post<IMember>(this.baseUrl + '/bank/onboarding/apply/address-info', addressInfo, {
+        headers: this.headerService.getMemberICustomerIdHeader()
+      })
+      .pipe(
+        tap((res: IMember) => {
+          this.member = res;
+        })
+      );
+  }
+
   selectAccountLevel(accountLevel: string): Observable<IAccountLevel> {
     return this.http.post<IAccountLevel>(
       `${this.baseUrl}/bank/onboarding/apply/account-level`,
