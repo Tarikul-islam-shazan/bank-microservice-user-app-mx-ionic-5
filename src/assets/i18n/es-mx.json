@@ -466,7 +466,8 @@
         "parental-name": "Parental name",
         "maternal-last-name": "Maternal name (optional)",
         "dob": "Date of birth",
-        "relationship": "Relationship"
+        "relationship": "Relationship",
+        "date-of-birth-display-format": "MM / DD / YYYY"
       },
       "beneficiary-modal": {
         "title": "Beneficiary Info",
