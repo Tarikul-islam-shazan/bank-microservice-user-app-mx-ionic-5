@@ -3,7 +3,7 @@ import { environment } from '@env/environment';
 import { HttpClient } from '@angular/common/http';
 import { MemberService } from '@app/core/services/member.service';
 import { IMember } from '@app/core/models/dto/member';
-import { StaticDataCategory, StaticDataSubCategory, IStaticData, IDropdownOption } from '@app/core/models/static-data';
+import { StaticDataCategory, IStaticData, IDropdownOption } from '@app/core/models/static-data';
 import { SettingsService } from '@app/core/services/settings.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -22,14 +22,11 @@ export class StaticDataService {
     return this.memberService.getCachedMember();
   }
 
-  get(
-    category: StaticDataCategory,
-    subCategory: StaticDataSubCategory[]
-  ): Observable<{ [key: string]: IDropdownOption[] }> {
+  get(category: StaticDataCategory[]): Observable<{ [key: string]: IDropdownOption[] }> {
     const bank = this.member.bank;
     return this.http
       .get<any[]>(`${this.baseUrl}/static-data`, {
-        params: { bank, category, subCategory: subCategory.join(',') }
+        params: { bank, category: category.join(','), subCategory: this.language }
       })
       .pipe(
         map((response: IStaticData[]) => {
@@ -38,24 +35,26 @@ export class StaticDataService {
       );
   }
 
-  mappingResponse(staticdatas: IStaticData[]): { [key: string]: IDropdownOption[] } {
-    const finalData = {};
-    staticdatas.forEach(staticData => {
-      const subCategory = staticData.subCategory;
-      finalData[subCategory] = this.mappingData(staticData.data);
+  mappingResponse(staticDataResponse: IStaticData[]): { [key: string]: IDropdownOption[] } {
+    const mappingResult: { [key: string]: IDropdownOption[] } = {};
+    staticDataResponse.forEach(staticData => {
+      const category = staticData.category;
+      mappingResult[category] = this.mappingData(staticData.data);
     });
-    return finalData;
+    return mappingResult;
   }
-  mappingData(staticData: { code: string; value: any }[]): IDropdownOption[] {
+
+  mappingData(staticData: { code: string; value: string }[]): IDropdownOption[] {
     const staticDataformat: IDropdownOption[] = [];
     staticData.forEach(data => {
       staticDataformat.push({
         value: data.code,
-        text: data.value[this.language]
+        text: data.value
       });
     });
     return staticDataformat;
   }
+
   get language(): string {
     return this.settingsService.getCurrentLocale().locale;
   }

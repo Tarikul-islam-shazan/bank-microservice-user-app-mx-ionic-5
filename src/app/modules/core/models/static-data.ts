@@ -1,24 +1,26 @@
 export enum StaticDataCategory {
-  SignupOption = 'SignupOption'
-}
-export enum StaticDataSubCategory {
-  AddressType = 'AddressType',
-  PropertyType = 'PropertyType',
-  Relationship = 'Relationship',
-  Country = 'Country',
-  Nationality = 'Nationality',
-  Gender = 'Gender',
-  MaritalStatus = 'MaritalStatus',
-  HighestLevelOfEducation = 'HighestLevelOfEducation',
-  Profession = 'Profession',
-  Occupation = 'Occupation',
-  GovtPosition = 'GovtPosition'
+  AddressType = 'addressType',
+  PlaceOfBirthForeign = 'placeOfBirthForeign',
+  PlaceOfBirthMexico = 'placeOfBirthMexico',
+  Country = 'country',
+  Gender = 'gender',
+  GovtPosition = 'govtPosition',
+  MaritalStatus = 'maritalStatus',
+  Nationality = 'nationality',
+  Occupation = 'occupation',
+  Profession = 'profession',
+  PropertyType = 'propertyType',
+  Relationship = 'relationship',
+  HighestLevelOfEducation = 'highestLevelOfEducation'
 }
 export interface IStaticData {
   category: StaticDataCategory;
-  subCategory: StaticDataSubCategory;
-  bank?: string;
-  data: any;
+  subCategory: string;
+  bank: string;
+  data: {
+    code: string;
+    value: string;
+  }[];
 }
 export interface IDropdownOption {
   text: string;
