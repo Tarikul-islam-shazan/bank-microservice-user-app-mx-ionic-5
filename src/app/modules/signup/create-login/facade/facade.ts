@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { SignUpService, Logger } from '@app/core';
+import { SignUpService } from '@app/core';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 
 /**
