@@ -243,7 +243,7 @@
         "last-name": "Apellido",
         "prefix": "Prefijo (Opcional)",
         "date-of-birth": "Fecha de nacimiento",
-        "date-of-birth-display-format": "MM / DD / YYYY",
+        "date-of-birth-display-format": "DD / MM / YYYY",
         "social-security": "N.º de seguridad social #",
         "occupation": "Ocupación",
         "source-of-income": "Fuente de ingresos",
@@ -457,6 +457,23 @@
         "mobile-number": "Mobile Number"
       },
       "permission-text": "By entering your telephone number and clicking \"Next\", you are giving us permission to contact you about this application"
+    },
+    "signup-beneficiary-page": {
+      "page-title": "Beneficiary Information",
+      "beneficiary-form": {
+        "first-name": "First name",
+        "second-name": "Second name (optional)",
+        "parental-name": "Parental name",
+        "maternal-last-name": "Maternal name (optional)",
+        "dob": "Date of birth",
+        "relationship": "Relationship",
+        "date-of-birth-display-format": "MM / DD / YYYY"
+      },
+      "beneficiary-modal": {
+        "title": "Beneficiary Info",
+        "text": "Your Beneficiary is who would receive your Meed account funds in the unfortunate event of your passing."
+      },
+      "button-text-processing-done": "Next"
     }
   },
   "deposit": {
@@ -910,6 +927,10 @@
     "code-612": "Tu solicitud se denegó.",
     "code-616": "Post code does not exist",
     "code-617": "The Customer Id provided does not exist.",
+    "code-623": "nsufficient Data",
+    "code-624": "Client already Exists",
+    "code-625": "Id Meed has aleady been assigned to another client.",
+    "code-626": "Meed cust ID does not exist",
     "code-701": "Unable to find the customer",
     "code-702": "Error desconocido",
     "code-703": "Email Address already exist",
