@@ -40,6 +40,3 @@ export enum TabPage {
   GoalTab = 'tab-goal',
   HistoryTab = 'tab-history'
 }
-export interface IInterestRate {
-  amount: number;
-}

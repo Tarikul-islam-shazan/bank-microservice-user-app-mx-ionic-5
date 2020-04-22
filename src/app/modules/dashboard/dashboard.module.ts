@@ -10,7 +10,7 @@ import { HOME_FACADE_SERVICE } from './home/facade';
 import { HomePage } from './home/container';
 import { SavingsGoalPage } from './savings/savings-goal/container/savings-goal.page';
 import { SAVING_GOAL_FACADE_SERVICE } from './savings/savings-goal/facade';
-import { MODULES_SERVICE } from './services';
+import { DASHBOARD_SHARED_SERVICES } from './services';
 import { LineOfCreditPage } from './line-of-credit/container';
 import { TransactionDetailsPage } from './transaction-details/container';
 import { TRANSACTION_DETAILS_FACADE_SERVICE } from '@app/dashboard/transaction-details/facade';
@@ -28,7 +28,7 @@ export const SHARED_PAGE_COMPONENTS: any[] = [
   imports: [SharedModule, DashboardRoutingModule, RoundProgressModule],
   declarations: [SHARED_DASHBOARD_COMPONENTS, SHARED_PAGE_COMPONENTS],
   providers: [
-    ...MODULES_SERVICE,
+    ...DASHBOARD_SHARED_SERVICES,
     ...HOME_FACADE_SERVICE,
     ...SAV_FACADE_SERVICE,
     ...SAVING_GOAL_FACADE_SERVICE,

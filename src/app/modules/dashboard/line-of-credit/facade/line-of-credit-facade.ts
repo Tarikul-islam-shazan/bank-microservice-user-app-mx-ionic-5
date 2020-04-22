@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AccountType, IAccount, ITransaction, ITransactionQueries } from '@app/core';
-import { AccountTransaction, IAccountOverview, IInterestRate } from '@app/dashboard/models';
+import { AccountTransaction, IAccountOverview } from '@app/dashboard/models';
 import { AccountService } from '@app/core/services/account.service';
 import { LineOfCreditState } from './line-of-credit-state';
 import { Observable } from 'rxjs';
@@ -20,7 +20,7 @@ export class LineOfCreditFacade {
   ) {
     this.initialize();
   }
-  interestRate$: Observable<IInterestRate>;
+  interestRate$: Observable<number>;
   lineOfCreditAccount$: Observable<Partial<IAccount>> = this.lineOfCreditState.lineOfCreditAccount$;
 
   pendingTransactions$: Observable<ITransaction[]> = this.lineOfCreditState.pendingTransactions$;
@@ -108,10 +108,10 @@ export class LineOfCreditFacade {
    * Ticket: GMA-4873
    * Issue: LOC interest rate set by calling http request
    * @readonly
-   * @type {Observable<IInterestRate>}
+   * @type {Observable<number>}
    * @memberof LineOfCreditFacade
    */
-  get interestRate(): Observable<IInterestRate> {
+  get interestRate(): Observable<number> {
     if (!this.interestRate$) {
       this.interestRate$ = this.interestRateService.getInterestRate(this.locAccount.accountId).pipe(shareReplay(1));
     }
@@ -124,7 +124,7 @@ export class LineOfCreditFacade {
    * @memberof LineOfCreditFacade
    */
   async showModal() {
-    this.interestRate.subscribe(async (interestRate: IInterestRate) => {
+    this.interestRate.subscribe(async (interestRate: number) => {
       const componentProps: IMeedModalContent = {
         contents: [
           {
@@ -136,7 +136,7 @@ export class LineOfCreditFacade {
               'info-modal-module.line-of-credit-page.details.content4',
               'info-modal-module.line-of-credit-page.details.content5'
             ],
-            values: { interestRate: interestRate.amount.toString() }
+            values: { interestRate: interestRate.toString() }
           }
         ]
       };

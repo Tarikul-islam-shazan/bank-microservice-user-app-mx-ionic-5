@@ -3,7 +3,6 @@ import { environment } from '@env/environment';
 import { HttpClient } from '@angular/common/http';
 import { HeaderService } from '@app/core/services/header-service.service';
 import { Observable } from 'rxjs';
-import { IInterestRate } from '@app/dashboard/models';
 
 @Injectable()
 export class InterestRateService {
@@ -14,11 +13,11 @@ export class InterestRateService {
    * @method getInterestRate return interest rate of a account
    *
    * @param {string} accountId
-   * @returns {Observable<IInterestRate>}
+   * @returns {Observable<number>}
    * @memberof InterestRateService
    */
-  getInterestRate(accountId: string): Observable<IInterestRate> {
-    return this.http.get<IInterestRate>(`${this.interestRateUrl}/${accountId}/interest-rate`, {
+  getInterestRate(accountId: string): Observable<number> {
+    return this.http.get<number>(`${this.interestRateUrl}/${accountId}/interest-rate`, {
       headers: this.headerService.getUserNameHeader()
     });
   }
