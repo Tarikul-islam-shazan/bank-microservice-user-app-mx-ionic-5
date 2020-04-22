@@ -49,7 +49,7 @@ export enum ErrorCode {
   LanguageUnsupported = '1204',
   InvalidInviterData = '1205',
   AuthenticationTokenMissing = '1501',
-  AuthenticationTokenInvalidOrExpire = '1502',
+  AuthenticationTokenInvalidOrExpired = '1502',
   UnableJumioData = '2001',
   FailedJumioVerification = '2002',
   PendingJumioVerification = '2003',

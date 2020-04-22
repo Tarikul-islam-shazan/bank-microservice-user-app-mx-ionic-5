@@ -117,7 +117,7 @@ export class ErrorService {
           break;
         case ErrorCode.SessionTimeout:
         case ErrorCode.AuthenticationTokenMissing:
-        case ErrorCode.AuthenticationTokenInvalidOrExpire:
+        case ErrorCode.AuthenticationTokenInvalidOrExpired:
           await this.logoutUser(code);
           break;
         case ErrorCode.InvalidInviteeEmail:
@@ -150,7 +150,7 @@ export class ErrorService {
       case ErrorCode.AuthenticationTokenMissing:
         logoutReason = LogoutReason.AuthTokenMissing;
         break;
-      case ErrorCode.AuthenticationTokenInvalidOrExpire:
+      case ErrorCode.AuthenticationTokenInvalidOrExpired:
         logoutReason = LogoutReason.AuthTokenInValidOrExpired;
         break;
     }
