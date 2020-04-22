@@ -47,7 +47,7 @@ export class GeneralInformationPage implements OnInit {
 
   applyGeneralInformation() {
     const generalInfo = this.generalForm.value as IGeneralInfo;
-    generalInfo.dateOfBirth = moment(generalInfo.dateOfBirth).format('MM/DD/YYYY');
+    generalInfo.dateOfBirth = moment(generalInfo.dateOfBirth).format('MM-DD-YYYY');
     generalInfo.mobileNumber = generalInfo.mobileNumber.toString();
     if (this.generalForm.valid) {
       this.facade.applyGeneralInformation(generalInfo);
