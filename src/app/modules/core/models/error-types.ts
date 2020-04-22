@@ -36,6 +36,7 @@ export enum ErrorCode {
   IdentityVerificationFailed = '612',
   InviteeMemeber = '901',
   FaildInvitation = '902',
+  InvalidInviteeEmail = '903',
   InvalidEmailAddress = '1100',
   InvalidEmailAddressAtVerificationCode = '1101',
   NewVerificationCodeRequired = '1102',

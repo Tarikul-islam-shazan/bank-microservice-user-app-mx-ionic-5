@@ -97,7 +97,6 @@ export enum AnalyticsEventTypes {
   LanguageChanged = 'language_changed',
   LoginOptionClicked = 'login_option_clicked',
   MenuItemSelected = 'menu_item_selected',
-  MobileCheckDeposited = 'check_deposited',
   ChangeMeedEmailStatus = 'meed_email_status_changed',
   ChangeMeedPushNotificationStatus = 'meed_push_notification_status_changed',
   ChangeBankEmailStatus = 'bank_email_status_changed',

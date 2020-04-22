@@ -120,6 +120,10 @@ export class ErrorService {
         case ErrorCode.AuthenticationTokenInvalidOrExpire:
           await this.logoutUser(code);
           break;
+        case ErrorCode.InvalidInviteeEmail:
+          const componentProps = this.invalidInviteeEmailInfoModalComponentProps(code);
+          this.modalService.openInfoModalComponent(componentProps);
+          break;
         default:
           // default modal for all error handler except any custom case
           this.modalService.showInfoErrorModal(errorResponse);
@@ -361,5 +365,29 @@ export class ErrorService {
     };
 
     return modalComponentContent;
+  }
+
+  private invalidInviteeEmailInfoModalComponentProps(code: string): IMeedModalComponentProps {
+    const componentProps: IMeedModalComponentProps = {
+      componentProps: {
+        contents: [
+          {
+            title: 'error-message-module.error-title',
+            details: [`error-message-module.code-${code}`]
+          }
+        ],
+        actionButtons: [
+          {
+            text: 'error-message-module.dismiss-button',
+            cssClass: 'white-button',
+            handler: () => {
+              this.modalService.close();
+            }
+          }
+        ]
+      }
+    };
+
+    return componentProps;
   }
 }
