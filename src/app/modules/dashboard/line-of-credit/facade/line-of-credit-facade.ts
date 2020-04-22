@@ -4,7 +4,7 @@ import { AccountTransaction, IAccountOverview } from '@app/dashboard/models';
 import { AccountService } from '@app/core/services/account.service';
 import { LineOfCreditState } from './line-of-credit-state';
 import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { ModalService, IMeedModalContent } from '@app/shared/services/modal.service';
 import { InterestRateService } from '@app/dashboard/services/interest-rate.service';
