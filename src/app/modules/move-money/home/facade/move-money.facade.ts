@@ -50,14 +50,6 @@ export class MoveMoneyFacade {
             }
           },
           {
-            iconClass: 'img-mobile-check-deposit',
-            itemName: 'move-money-module.home-page.menu.mobile-check-deposit',
-            appSuppress: 'MobileCheckDeposit',
-            onClick: () => {
-              this.router.navigate(['/move-money/mobile-check-deposit']);
-            }
-          },
-          {
             iconClass: 'img-credit-debit-card',
             itemName: 'move-money-module.home-page.menu.credit-debit-card',
             appSuppress: 'CreditOrDebitCards',

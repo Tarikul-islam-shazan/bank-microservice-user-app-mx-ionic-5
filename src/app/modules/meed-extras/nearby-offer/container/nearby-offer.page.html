@@ -10,6 +10,14 @@
   </ion-toolbar>
 </ion-header>
 
+<div class="alphabet-list">
+  <ul>
+    <li *ngFor="let alphabet of alphabets" (click)="scrollTo(alphabet)">
+      {{ alphabet }}
+    </li>
+  </ul>
+</div>
+
 <ion-content>
   <div class="nearby-wrapper">
     <div class="location-text">
@@ -40,7 +48,15 @@
     </div>
 
     <div class="offer-result">
-      <offer-card (OfferClick)="setOffer($event)" *ngFor="let offer of offers$ | async" [offer]="offer"></offer-card>
+      <div class="alphabetic-list-wrapper">
+        <div class="alphabetic-offer-list">
+          <div *ngFor="let subOfferList of offers$ | async" id="{{ subOfferList[0].index }}">
+            <div *ngFor="let offer of subOfferList">
+              <offer-card *ngIf="!offer.index" (OfferClick)="setOffer($event)" [offer]="offer"> </offer-card>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </ion-content>

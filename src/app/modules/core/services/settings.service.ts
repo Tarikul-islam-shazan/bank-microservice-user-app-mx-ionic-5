@@ -13,6 +13,7 @@ import { StorageService } from './storage.service';
 import { StorageKey } from '@app/core/models/storage';
 import { Logger } from './logger.service';
 import { AnalyticsService, AnalyticsUserProperties } from '@app/analytics';
+import { getLocaleCurrencySymbol } from '@angular/common';
 const logger = new Logger('SettingsService');
 import * as moment from 'moment';
 
@@ -169,6 +170,19 @@ export class SettingsService {
    */
   getSettings(): AppSettings {
     return this.settings;
+  }
+
+  /**
+   * Details: This function return currency symbol of a selected language
+   * return like $ for US
+   * Developer: Utpal<Utpal.Sarker@brainstation23.com>
+   * Issue-Ticket: GMA-4839
+   * @readonly
+   * @type {string}
+   * @memberof SettingsService
+   */
+  get getCurrencySymbol(): string {
+    return getLocaleCurrencySymbol(this.settings.systemSettings.selectedLocale.locale);
   }
 
   /**

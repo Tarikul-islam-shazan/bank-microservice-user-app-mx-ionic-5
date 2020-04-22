@@ -46,8 +46,8 @@ export class InviteNewMemberFacade {
    * @returns null { void }
    */
 
-  createContactBadge(event: any): void {
-    if (REG_EX_PATTERNS.WHITE_SPACE.test(event.target.value) && REG_EX_PATTERNS.EMAIL.test(this.email.trim())) {
+  createContactBadge(inputEmail: string): void {
+    if (REG_EX_PATTERNS.WHITE_SPACE.test(inputEmail) && this.isValidEmail()) {
       const find = this.inviteService.inviteeContacts.find(contact => contact.email === this.email.trim());
       if (find === undefined) {
         this.inviteService.inviteeContacts.push({ email: this.email.trim() });
@@ -122,7 +122,7 @@ export class InviteNewMemberFacade {
   /**
    * This method will check invitee email is valid or not
    *
-   * @param email { string }
+   * @param null
    * @returns true/false { boolean }
    */
   isValidEmail(): boolean {

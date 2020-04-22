@@ -46,8 +46,6 @@
     "@ng-idle/keepalive": "^8.0.0-beta.4",
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
-    "MiSnapCordovaPlugin": "git+https://github.com/meed-fintech/mitek-android.git#misnap-v411-with-androidx",
-    "MiSnapPlugin": "git+https://github.com/meed-fintech/mitek-ios.git#misnap-v4.3.2",
     "angular-svg-round-progressbar": "^3.0.1",
     "autoprefixer": "^9.7.3",
     "browserslist": "^4.8.3",
@@ -163,10 +161,6 @@
       },
       "urbanairship-cordova": {},
       "call-number": {},
-      "cordova-plugin-misnap": {},
-      "com.miteksystems.mpnplugin": {
-        "CAMERA_USAGE_DESCRIPTION": "This app needs camera access"
-      },
       "cordova-plugin-firebasex": {
         "FIREBASE_ANALYTICS_COLLECTION_ENABLED": "true",
         "FIREBASE_PERFORMANCE_COLLECTION_ENABLED": "true",

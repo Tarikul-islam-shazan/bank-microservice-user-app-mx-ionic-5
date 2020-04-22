@@ -26,12 +26,6 @@ const routes: Routes = [
     loadChildren: () => import('@app/deposit/deposit.module').then(m => m.DepositModule)
   },
   {
-    path: 'mobile-check-deposit',
-    data: { title: PAGES.MOBILE_CHECK_DEPOSIT.NAME },
-    loadChildren: () =>
-      import('@app/move-money/mobile-check-deposit/mobile-check-deposit.module').then(m => m.MobileCheckDepositModule)
-  },
-  {
     path: 'credit-debit-card',
     data: { title: PAGES.MOVE_BETWEEN_ACCOUNTS.NAME },
     loadChildren: () => import('./credit-debit-card/credit-debit-card.module').then(m => m.CreditDebitCardPageModule)
