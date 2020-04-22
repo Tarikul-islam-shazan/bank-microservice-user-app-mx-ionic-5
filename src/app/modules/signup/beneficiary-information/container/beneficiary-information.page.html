@@ -2,10 +2,7 @@
   <div class="content-wrapper">
     <div class="beneficiary-header">
       <div class="step-counter">
-        <step-counter
-          [step]="'signup-module.signup-beneficiary-page.step'"
-          [stepNo]="'signup-module.signup-beneficiary-page.count'"
-        ></step-counter>
+        <step-counter [step]="'signup-module.signup-beneficiary-page.step-text'" [stepNo]="3"></step-counter>
       </div>
       <div (click)="openBeneficiaryModal()">
         <img src="assets/svg/question-mark.svg" />
@@ -15,10 +12,10 @@
       {{ 'signup-module.signup-beneficiary-page.page-title' | translate }}
     </div>
 
-    <div class="content-block">
+    <div class="content-wrapper">
       <form [formGroup]="beneficiaryForm" novalidate>
-        <ion-list lines="none" class="input-list">
-          <div class="clearfix">
+        <ion-list lines="none">
+          <ion-item>
             <ion-input
               [ngClass]="
               beneficiaryForm.controls.firstName.invalid && skipErrorFields.firstName ? 'error-input' : 'white-input'
@@ -32,8 +29,8 @@
               [appMaskInput]="onlyOneWordInput"
               appInputMaxLength="{{maxLength}}"
             ></ion-input>
-          </div>
-          <div class="clearfix">
+          </ion-item>
+          <ion-item>
             <ion-input
               [ngClass]="
               beneficiaryForm.controls.secondName.invalid && skipErrorFields.secondName ? 'error-input' : 'white-input'
@@ -47,8 +44,8 @@
               [appMaskInput]="onlyOneWordInput"
               appInputMaxLength="{{maxLength}}"
             ></ion-input>
-          </div>
-          <div class="clearfix">
+          </ion-item>
+          <ion-item>
             <ion-input
               [ngClass]="
               beneficiaryForm.controls.parentalName.invalid && skipErrorFields.parentalName ? 'error-input' : 'white-input'
@@ -62,8 +59,8 @@
               [appMaskInput]="onlyOneWordInput"
               appInputMaxLength="{{maxLength}}"
             ></ion-input>
-          </div>
-          <div class="clearfix">
+          </ion-item>
+          <ion-item>
             <ion-input
               [ngClass]="
               beneficiaryForm.controls.maternalLastName.invalid ? 'error-input' : 'white-input'
@@ -77,35 +74,30 @@
               [appMaskInput]="onlyOneWordInput"
               appInputMaxLength="{{maxLength}}"
             ></ion-input>
-          </div>
-          <div class="clearfix">
-            <div class="datetime-input">
-              <ion-item lines="none">
-                <ion-datetime
-                  [ngClass]="beneficiaryForm.controls.dateOfBirth.invalid && skipErrorFields.dateOfBirth ? 'error-input' : 'white-input'"
-                  (ionFocus)="isInputFieldSkip('dateOfBirth')"
-                  id="date-of-birth"
-                  displayFormat="{{ 'signup-module.signup-personal.personal-form.date-of-birth-display-format' | translate }}"
-                  placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.dob' | translate }}"
-                  formControlName="dateOfBirth"
-                ></ion-datetime>
-                <ion-icon name="chevron-down" slot="end"></ion-icon>
-              </ion-item>
-            </div>
-          </div>
-          <div class="clearfix ">
-            <div class="dropdown-input" (click)="openOptionsModal('relationship', this.facade.relationshipData)">
-              <ion-input
-                [ngClass]="beneficiaryForm.controls.relationship.invalid && skipErrorFields.relationship ? 'error-input' : 'white-input'"
-                readonly
-                class="white-input"
-                id="relationship"
-                type="text"
-                formControlName="relationship"
-                placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.relationship' | translate }}"
-              ></ion-input>
-              <ion-icon name="chevron-down"></ion-icon>
-            </div>
+          </ion-item>
+          <ion-item class="date-input">
+            <ion-datetime
+              [ngClass]="beneficiaryForm.controls.dateOfBirth.invalid && skipErrorFields.dateOfBirth ? 'error-input' : 'white-input'"
+              (ionFocus)="isInputFieldSkip('dateOfBirth')"
+              id="date-of-birth"
+              displayFormat="{{ 'signup-module.signup-personal.personal-form.date-of-birth-display-format' | translate }}"
+              placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.dob' | translate }}"
+              formControlName="dateOfBirth"
+            ></ion-datetime>
+            <ion-icon name="chevron-down"></ion-icon>
+          </ion-item>
+
+          <div class="dropdown-input" (click)="openOptionsModal('relationship', this.facade.relationshipData)">
+            <ion-input
+              [ngClass]="beneficiaryForm.controls.relationship.invalid && skipErrorFields.relationship ? 'error-input' : 'white-input'"
+              readonly
+              class="white-input"
+              id="relationship"
+              type="text"
+              formControlName="relationship"
+              placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.relationship' | translate }}"
+            ></ion-input>
+            <ion-icon name="chevron-down"></ion-icon>
           </div>
         </ion-list>
       </form>

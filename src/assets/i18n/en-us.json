@@ -467,7 +467,7 @@
     },
     "signup-beneficiary-page": {
       "page-title": "Beneficiary Information",
-      "step": "Step 3 of 3",
+      "step-text": "Step 3 of 3",
       "count": "3",
       "beneficiary-form": {
         "first-name": "First name",
@@ -476,6 +476,10 @@
         "maternal-last-name": "Maternal name (optional)",
         "dob": "Date of birth",
         "relationship": "Relationship"
+      },
+      "beneficiary-modal": {
+        "title": "Beneficiary Info",
+        "text": "Your Beneficiary is who would receive your Meed account funds in the unfortunate event of your passing."
       },
       "button-text-processing-done": "Next"
     }

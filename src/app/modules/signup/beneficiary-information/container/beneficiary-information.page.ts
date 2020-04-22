@@ -123,8 +123,8 @@ export class BeneficiaryInformationPage implements OnInit {
     const componentProps: IMeedModalContent = {
       contents: [
         {
-          title: 'To be decided',
-          details: ['To be decided', 'To be decided']
+          title: 'signup-module.signup-beneficiary-page.beneficiary-modal.title',
+          details: ['signup-module.signup-beneficiary-page.beneficiary-modal.text']
         }
       ]
     };
