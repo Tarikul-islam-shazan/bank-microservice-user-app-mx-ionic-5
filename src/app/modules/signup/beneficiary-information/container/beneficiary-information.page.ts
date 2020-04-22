@@ -1,3 +1,10 @@
+/**
+ * Issue: MM2-26
+ * Details:  Beneficiary Information - Screen
+ * Date: April 22, 2020
+ * Developer: Raihan <raihanuzzaman@bs-23.net>
+ */
+
 import * as moment from 'moment';
 import { Component, OnInit } from '@angular/core';
 import { BeneficiaryFacade } from '../facade/facade';
@@ -11,7 +18,6 @@ import { DropdownModalComponent } from '@app/shared/components';
 import { IBeneficiaryInfo } from '@app/core/models/dto/signup';
 import { IMeedModalContent } from '@app/shared/models/modal';
 import { ModalService } from '@app/shared';
-import { async } from '@angular/core/testing';
 @Component({
   selector: 'mbc-beneficiary-information',
   templateUrl: './beneficiary-information.page.html',
@@ -41,14 +47,20 @@ export class BeneficiaryInformationPage implements OnInit {
   }
 
   ngOnInit() {
-    // this name will be changed
-    this.analyticsService.setCurrentScreenName(PAGES.SIGNUP_PERSONAL.NAME);
+    // setting up the beneficiary form
+    this.analyticsService.setCurrentScreenName(PAGES.SIGNUP_BENEFICIARY.NAME);
     this.initBeneficiaryForm();
 
-    // this might be changed also since dropdown data is coming from backed
+    // fetching the static data from the api and setting up for the ui
     this.facade.fetchRelationshipData();
   }
 
+  /**
+   * setting up thebeneficiary form and validation
+   *
+   * @private
+   * @memberof BeneficiaryInformationPage
+   */
   private initBeneficiaryForm(): void {
     this.beneficiaryForm = this.formBuilder.group({
       firstName: ['', [Validators.required, Validators.maxLength(26)]],
