@@ -5,7 +5,7 @@
  * Developer: Rahadur Rahman <rahadur.rahman@brainstation23.com>
  */
 import { Injectable } from '@angular/core';
-import { InviteService } from './../services/invite.service';
+import { InviteService } from '../services/invite.service';
 import { Observable } from 'rxjs';
 import { Invitation } from '../models/invite';
 
