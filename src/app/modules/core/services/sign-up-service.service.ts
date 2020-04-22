@@ -36,7 +36,6 @@ import { HeaderService } from './header-service.service';
 import { MemberService } from './member.service';
 import { SettingsService } from './settings.service';
 import { UserSettings } from '../models/app-settings';
-import { IPayStandTransactionInfo } from '@app/deposit/paystand/models';
 
 const logger = new Logger('SignUpService');
 
@@ -47,7 +46,6 @@ export class SignUpService {
   private baseUrl = environment.serviceUrl;
   private baseUrlOnboarding = environment.serviceUrl + '/meed/onboarding/';
   signUpDirectDepositAccounts: ISignUpDirectDepositAccounts = {};
-  private _payStandTransactionInfo: IPayStandTransactionInfo;
   private _memberApplication: IMemberApplication = {};
   private _idendityQuestions: IdentityQuestion[];
   // this property dictates the flow of direct deposit, as it is shared between signup and inside the app
@@ -61,14 +59,6 @@ export class SignUpService {
 
   registerEmail(aMember: IMember): Observable<IMember> {
     return this.http.post<IMember>(this.baseUrlOnboarding, aMember);
-  }
-
-  get payStandTransactionInfo(): IPayStandTransactionInfo {
-    return this._payStandTransactionInfo;
-  }
-
-  set payStandTransactionInfo(payStandTransactionInfo: IPayStandTransactionInfo) {
-    this._payStandTransactionInfo = payStandTransactionInfo;
   }
 
   get member(): IMember {

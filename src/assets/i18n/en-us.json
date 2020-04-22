@@ -532,11 +532,6 @@
       "eTransfer-subtitle": "Coming soon",
       "button-text": "Move On"
     },
-    "paystand-page": {
-      "echeck-title": "eCheck from other bank",
-      "credit-title": "Credit / Debit Card",
-      "disclaimer-text": "Funds will be available to the customer in the following timeframes: eCheck – 2 business days and Debit/Credit Card – 2 business days."
-    },
     "deposit-echeck-page": {
       "header-title": "eCheck from other bank",
       "button-text": "Continue",

@@ -49,7 +49,6 @@ export enum AnalyticsEventTypes {
   Login = 'login',
   RouteNavigation = 'route_navigation',
   JumioScan = 'jumio_scan',
-  PayStandCompleted = 'paystand_succeeded',
   LoginCompleted = 'login_completed',
   EmailSubmitted = 'email_submitted',
   CompressedSubmitted = 'nickname_inviter_country_submitted',
