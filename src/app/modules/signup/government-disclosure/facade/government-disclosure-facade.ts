@@ -1,6 +1,6 @@
 /**
  * Facade: Government Disclosure Facade
- * Module: InviteNewMember
+ * Module: Signup
  * Details: This facade is responsible to call functionality from Signup Service.
  * Date: April 23, 2020
  * Developer: Rahadur Rahman <rahadur.rahman@brainstation23.com>
