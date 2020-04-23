@@ -23,7 +23,7 @@ export class SignUpPersonalFacade {
 
   goToNext(memberApp: IMemberApplication) {
     Object.assign(this.signUpService.memberApplication, memberApp);
-    this.analytics.logEvent(AnalyticsEventTypes.GeneralInfoSubmitted);
+    // this.analytics.logEvent(AnalyticsEventTypes.GeneralInfoSubmitted);
     this.router.navigate(['/signup/address']);
   }
 }

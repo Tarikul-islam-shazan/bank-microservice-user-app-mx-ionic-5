@@ -41,7 +41,7 @@ export class BeneficiaryFacade {
    */
   submit(beneficiary: Partial<IBeneficiaryInfo>) {
     this.signUpService.submitBeneficiaryApplication(beneficiary).subscribe((resp: IMember) => {
-      // this.analytics.logEvent(AnalyticsEventTypes.IdDocumentSubmitted);
+      this.analytics.logEvent(AnalyticsEventTypes.SignupBeneficiaryInfoCompleted);
       this.router.navigateByUrl('/signup/account-selection');
     });
   }

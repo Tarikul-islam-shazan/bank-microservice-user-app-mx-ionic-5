@@ -61,7 +61,7 @@ export class AddressInformationFacade {
    */
   goToNext(addressInfoData: IAddressInfo) {
     this.signUpService.submitAddressInfo(addressInfoData).subscribe(data => {
-      this.analytics.logEvent(AnalyticsEventTypes.AddressInfoSubmitted);
+      this.analytics.logEvent(AnalyticsEventTypes.SignupAddressInfoCompleted);
       this.router.navigate(['/signup/beneficiary-information']);
     });
   }

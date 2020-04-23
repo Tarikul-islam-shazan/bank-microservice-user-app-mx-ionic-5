@@ -20,7 +20,7 @@ export class GeneralInformationFacade {
 
   applyGeneralInformation(generalInformation: IGeneralInfo) {
     this.signUpService.applyGeneralInformation(generalInformation).subscribe(resp => {
-      this.analytics.logEvent(AnalyticsEventTypes.GeneralInfoSubmitted);
+      this.analytics.logEvent(AnalyticsEventTypes.SignupGeneralInfoCompleted);
       this.router.navigateByUrl('/signup/address-information');
     });
   }
