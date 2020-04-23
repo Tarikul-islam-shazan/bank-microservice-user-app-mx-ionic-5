@@ -13,7 +13,7 @@
     <div class="header-title">{{ 'signup-module.funding-information-page.page-title' | translate }}</div>
     <div class="content-block">
       <ion-list lines="none">
-        <ion-radio-group name="auto" value="yes" (ionChange)="checkSelfFund($event)">
+        <ion-radio-group name="auto" [value]="selfFund" (ionChange)="checkSelfFund($event)">
           <ion-list-header>
             <ion-label
               >{{ 'signup-module.funding-information-page.fund-provider-selector-title' | translate }}</ion-label
@@ -23,13 +23,13 @@
             <ion-label
               >{{ 'signup-module.funding-information-page.fund-provider-selector-option-one' | translate }}</ion-label
             >
-            <ion-radio mode="md" slot="start" value="yes"></ion-radio>
+            <ion-radio mode="md" slot="start" [value]="selfFund"></ion-radio>
           </ion-item>
           <ion-item>
             <ion-label
               >{{ 'signup-module.funding-information-page.fund-provider-selector-option-two' | translate }}</ion-label
             >
-            <ion-radio mode="md" slot="start" value="no"></ion-radio>
+            <ion-radio mode="md" slot="start" [value]="!selfFund"></ion-radio>
           </ion-item>
         </ion-radio-group>
       </ion-list>
@@ -39,9 +39,7 @@
         <ion-list lines="none">
           <ion-item>
             <ion-input
-              [ngClass]="
-          fundingInformationForm.controls.firstName.invalid  ? 'error-input' : 'white-input'
-        "
+              [ngClass]="fundingInformationForm.controls.firstName.invalid && (fundingInformationForm.controls.firstName.dirty || fundingInformationForm.controls.firstName.touched) ? 'error-input' : 'white-input'"
               id="first-name"
               type="text"
               formControlName="firstName"
@@ -60,7 +58,7 @@
           <ion-item>
             <ion-input
               id="paternal-last-name"
-              class="white-input"
+              [ngClass]="fundingInformationForm.controls.paternalLastName.invalid && (fundingInformationForm.controls.paternalLastName.dirty || fundingInformationForm.controls.paternalLastName.touched) ? 'error-input' : 'white-input'"
               type="text"
               formControlName="paternalLastName"
               placeholder="{{ 'signup-module.funding-information-page.funding-info-form.paternal-last-name' | translate }}"
@@ -78,16 +76,13 @@
           <div class="datetime-input">
             <ion-item lines="none">
               <ion-datetime
-                [ngClass]="
-              fundingInformationForm.controls.dateOfBirth.invalid  ? 'error-input' : 'white-input'
-            "
+                [ngClass]="fundingInformationForm.controls.dateOfBirth.invalid && (fundingInformationForm.controls.dateOfBirth.dirty || fundingInformationForm.controls.dateOfBirth.touched) ? 'error-input' : 'white-input'"
                 displayFormat="{{ 'signup-module.funding-information-page.funding-info-form.date-of-birth-display-format' | translate }}"
                 type="text"
                 [max]="maxDate"
                 formControlName="dateOfBirth"
                 placeholder="{{ 'signup-module.funding-information-page.funding-info-form.date-of-birth' | translate }}"
               ></ion-datetime>
-
               <ion-icon name="chevron-down"></ion-icon>
             </ion-item>
           </div>
@@ -104,6 +99,8 @@
       expand="block"
       (click)="next()"
       [disabled]="isSelfFund === true ? false : fundingInformationForm.invalid"
-    ></ion-button>
+    >
+      {{ 'signup-module.funding-information-page.button-text' | translate }}
+    </ion-button>
   </ion-toolbar>
 </ion-footer>

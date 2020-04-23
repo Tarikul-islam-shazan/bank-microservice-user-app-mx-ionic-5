@@ -324,11 +324,12 @@
       "funding-info-form": {
         "first-name": "First Name",
         "second-name": "Second Name (Optional)",
-        "paternal-last-name": "Paternal Last Name (Optional)",
+        "paternal-last-name": "Paternal Last Name",
         "maternal-last-name": "Maternal Last Name (Optional)",
         "date-of-birth-display-format": "MM / DD / YYYY",
         "date-of-birth": "Date of Birth"
-      }
+      },
+      "button-text": "Next"
     },
     "signup-address-page": {
       "page-title": "Where do you live?",

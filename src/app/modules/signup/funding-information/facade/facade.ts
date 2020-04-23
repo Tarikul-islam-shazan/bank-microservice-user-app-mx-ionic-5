@@ -17,11 +17,8 @@ export class FundingInformationFacade {
   constructor(private signupService: SignUpService, private router: Router, private analytics: AnalyticsService) {}
 
   goToNext(fundInfo: IFundInfo) {
-    this.signupService.fundingInformation(fundInfo).subscribe(
-      res => {
-        this.router.navigate(['/signup/account-selection']);
-      },
-      err => {}
-    );
+    this.signupService.fundingInformation(fundInfo).subscribe(res => {
+      this.router.navigate(['/signup/account-selection']);
+    });
   }
 }

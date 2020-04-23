@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, Validators } from '@angular/forms';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { FundingInformationFacade } from '../facade';
 import * as moment from 'moment';
 import { IFundInfo, IProviderInfo } from '../model/fundinfo';
@@ -11,12 +11,11 @@ import { Router } from '@angular/router';
   styleUrls: ['./funding-information.page.scss']
 })
 export class FundingInformationPage implements OnInit {
-  fundingInformationForm: any;
+  fundingInformationForm: FormGroup;
   maxDate: string;
   fundInfo: IFundInfo;
   providerInformation: IProviderInfo;
-  selfFund = 'yes';
-  notSelfFund = 'no';
+  selfFund = true;
   isSelfFund: boolean;
 
   constructor(private formBuilder: FormBuilder, private router: Router, public facade: FundingInformationFacade) {
@@ -38,10 +37,10 @@ export class FundingInformationPage implements OnInit {
 
   initFundingInformationForm(): void {
     this.fundingInformationForm = this.formBuilder.group({
-      firstName: [null, [Validators.required, Validators.maxLength(26)]],
-      secondName: [null, [Validators.maxLength(26)]],
-      paternalLastName: [null, [Validators.maxLength(26)]],
-      maternalLastName: [null, [Validators.maxLength(26)]],
+      firstName: ['', [Validators.required, Validators.maxLength(26)]],
+      secondName: ['', [Validators.maxLength(26)]],
+      paternalLastName: ['', [Validators.required, Validators.maxLength(26)]],
+      maternalLastName: ['', [Validators.maxLength(26)]],
       dateOfBirth: ['', [Validators.required]]
     });
   }
@@ -55,7 +54,7 @@ export class FundingInformationPage implements OnInit {
    * Developer: Tarikul <tarikul@brainstation23.com>
    */
   checkSelfFund(event) {
-    if (event.detail.value === this.notSelfFund) {
+    if (event.detail.value === !this.selfFund) {
       this.isSelfFund = false;
       this.initFundingInformationForm();
     }

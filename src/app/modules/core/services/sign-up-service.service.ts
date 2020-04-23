@@ -202,8 +202,8 @@ export class SignUpService {
       );
   }
 
-  fundingInformation(fundInfo: IFundInfo): Observable<any> {
-    return this.http.post(this.baseUrl + '/bank/onboarding/apply/fund-provider', fundInfo, {
+  fundingInformation(fundInfo: IFundInfo): Observable<IMember> {
+    return this.http.post<IMember>(this.baseUrl + '/bank/onboarding/apply/fund-provider', fundInfo, {
       headers: this.headerService.getMemberIdCustomerIdHeader()
     });
   }
