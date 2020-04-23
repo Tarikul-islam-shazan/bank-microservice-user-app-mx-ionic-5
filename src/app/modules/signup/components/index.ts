@@ -4,8 +4,7 @@ import { StepCounterComponent } from './step-counter/step-counter';
 export const SHARED_COMPONENTS: any[] = [
   StepCounterComponent,
   AccountApprovedModalComponent,
-  AccountDenyModalComponent,
-  SuburbModalComponent
+  AccountDenyModalComponent
 ];
 export * from './step-counter/step-counter';
 
@@ -14,7 +13,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { AccountApprovedModalComponent } from './account-approved-modal';
 import { AccountDenyModalComponent } from './account-deny-modal';
-import { SuburbModalComponent } from './suburb-modal';
 const SHARED_MODULES: any[] = [CommonModule, FormsModule, ReactiveFormsModule, TranslateModule];
 @NgModule({
   entryComponents: [SHARED_COMPONENTS],

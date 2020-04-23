@@ -21,7 +21,7 @@ export class GeneralInformationFacade {
   applyGeneralInformation(generalInformation: IGeneralInfo) {
     this.signUpService.applyGeneralInformation(generalInformation).subscribe(resp => {
       this.analytics.logEvent(AnalyticsEventTypes.GeneralInfoSubmitted);
-      this.router.navigateByUrl('/signup/living-information');
+      this.router.navigateByUrl('/signup/address-information');
     });
   }
 

@@ -10,8 +10,7 @@ import { DropdownOption } from '@app/signup/models/signup';
 import { ModalController } from '@ionic/angular';
 import { DropdownModalComponent, IinputOption, InputFormatType } from '@app/shared';
 import { AddressInformationFacade } from '../facade';
-import { IAddressInfo } from '@app/core';
-import { SuburbModalComponent } from '@app/signup/components/suburb-modal';
+import { IAddressInfo, IDropdownOption } from '@app/core';
 const moment = require('moment');
 /**
  *
@@ -30,6 +29,7 @@ export class AddressInformationPage implements OnInit {
   skipErrorFields: any;
   onlyNumber: IinputOption;
   postalCodeNumber: IinputOption;
+  suburbFieldData: IDropdownOption[] = [];
   public postalCodeData: Partial<IAddressInfo[]> = [];
   constructor(
     private formBuilder: FormBuilder,
@@ -127,30 +127,6 @@ export class AddressInformationPage implements OnInit {
   /**
    *
    *
-   * @param {string} formControlName
-   * @param {string} formControlValue
-   * @param {IAddressInfo[]} options
-   * @returns {Promise<any>}
-   * @memberof AddressInformationPage
-   */
-  async openSuburbModal(formControlName: string, formControlValue: string, options: IAddressInfo[]): Promise<any> {
-    this.isInputFieldSkip(formControlName);
-    try {
-      const modal = await this.modalCtrl.create({
-        component: SuburbModalComponent,
-        componentProps: { data: options }
-      });
-      await modal.present();
-      const { data } = await modal.onWillDismiss();
-      this.addressForm.controls[formControlName].patchValue(data.suburbName);
-      this[formControlName] = data ? data : null;
-      this.addressForm.controls[formControlValue].patchValue(data.suburbName);
-    } catch (error) {}
-  }
-
-  /**
-   *
-   *
    * @param {*} postalCode
    * @memberof AddressInformationPage
    */
@@ -158,6 +134,7 @@ export class AddressInformationPage implements OnInit {
     if (postalCode.toString().length === 5) {
       this.facade.getPostalCodeInfo(postalCode).subscribe((data: Partial<IAddressInfo[]>) => {
         this.postalCodeData = data;
+        this.suburbFieldData = this.mappingData(data);
         this.addressForm.controls.stateField.patchValue(data[0].stateName);
         this.addressForm.controls.state.patchValue(data[0].state);
         this.addressForm.controls.municipalityField.patchValue(data[0].municipalityName);
@@ -166,6 +143,24 @@ export class AddressInformationPage implements OnInit {
         this.addressForm.controls.city.patchValue(data[0].city);
       });
     }
+  }
+
+  /**
+   *
+   *
+   * @param {Partial<IAddressInfo[]>} postalCodeData
+   * @returns {IDropdownOption[]}
+   * @memberof AddressInformationPage
+   */
+  mappingData(postalCodeData: Partial<IAddressInfo[]>): IDropdownOption[] {
+    const suburbFieldDropDownData: IDropdownOption[] = [];
+    postalCodeData.forEach(data => {
+      suburbFieldDropDownData.push({
+        value: data.suburbName,
+        text: data.suburbName
+      });
+    });
+    return suburbFieldDropDownData;
   }
 
   /**
