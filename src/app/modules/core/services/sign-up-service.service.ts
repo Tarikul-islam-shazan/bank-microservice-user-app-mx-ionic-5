@@ -370,7 +370,9 @@ export class SignUpService {
     );
   }
 
-  sendGovernmentDiscloser(govtDisclosureApplication: IGovtDisclosureApplication): Observable<IGovtDisclosureResponse> {
+  submitGovernmentDiscloserApplication(
+    govtDisclosureApplication: IGovtDisclosureApplication
+  ): Observable<IGovtDisclosureResponse> {
     return this.http.post<IGovtDisclosureResponse>(
       `${this.baseUrl}/bank/onboarding/apply/account-level`,
       govtDisclosureApplication,
