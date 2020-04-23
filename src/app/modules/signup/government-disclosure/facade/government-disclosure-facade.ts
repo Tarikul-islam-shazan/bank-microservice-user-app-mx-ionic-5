@@ -183,7 +183,7 @@ export class GovernmentDisclosureFacade {
   onClickNext(): void {
     this.initializeRequestData();
     this.signupService
-      .submitGovernmentDiscloserApplication(this.govtDisclosureApplication)
+      .submitGovernmentDisclosureApplication(this.govtDisclosureApplication)
       .subscribe((response: IGovtDisclosureResponse) => {
         if (response) {
           this.router.navigate(['/signup/verification']);

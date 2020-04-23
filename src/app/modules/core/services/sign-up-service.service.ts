@@ -370,7 +370,7 @@ export class SignUpService {
     );
   }
 
-  submitGovernmentDiscloserApplication(
+  submitGovernmentDisclosureApplication(
     govtDisclosureApplication: IGovtDisclosureApplication
   ): Observable<IGovtDisclosureResponse> {
     return this.http.post<IGovtDisclosureResponse>(
