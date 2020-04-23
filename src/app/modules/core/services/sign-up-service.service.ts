@@ -374,7 +374,7 @@ export class SignUpService {
     govtDisclosureApplication: IGovtDisclosureApplication
   ): Observable<IGovtDisclosureResponse> {
     return this.http.post<IGovtDisclosureResponse>(
-      `${this.baseUrl}/bank/onboarding/apply/account-level`,
+      `${this.baseUrl}/bank/onboarding/apply/gov-disclosure`,
       govtDisclosureApplication,
       { headers: this.headerService.getMemberICustomerIdHeader() }
     );
