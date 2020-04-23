@@ -75,18 +75,19 @@
               appInputMaxLength="{{maxLength}}"
             ></ion-input>
           </ion-item>
-          <ion-item class="date-input">
-            <ion-datetime
-              [ngClass]="beneficiaryForm.controls.dateOfBirth.invalid && skipErrorFields.dateOfBirth ? 'error-input' : 'white-input'"
-              (ionFocus)="isInputFieldSkip('dateOfBirth')"
-              id="date-of-birth"
-              displayFormat="{{ 'signup-module.ssignup-beneficiary-page.date-of-birth-display-format' | translate }}"
-              placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.dob' | translate }}"
-              formControlName="dateOfBirth"
-            ></ion-datetime>
-            <ion-icon name="chevron-down"></ion-icon>
-          </ion-item>
-
+          <div class="datetime-input">
+            <ion-item lines="none">
+              <ion-datetime
+                (ionFocus)="isInputFieldSkip('dateOfResidence')"
+                [ngClass]="beneficiaryForm.controls.dateOfBirth.invalid && skipErrorFields.dateOfBirth ? 'error-input' : 'white-input'"
+                id="dateOfResidence"
+                placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.dob' | translate }}"
+                formControlName="dateOfBirth"
+                displayFormat="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.date-of-birth-display-format' | translate }}"
+              ></ion-datetime>
+              <ion-icon name="chevron-down"></ion-icon>
+            </ion-item>
+          </div>
           <div class="dropdown-input" (click)="openOptionsModal('relationship', this.facade.relationshipData)">
             <ion-input
               [ngClass]="beneficiaryForm.controls.relationship.invalid && skipErrorFields.relationship ? 'error-input' : 'white-input'"
