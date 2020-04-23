@@ -1498,7 +1498,7 @@
         "content1": "Tu línea de crédito (LDC) comienza automáticamente cuando tu cuenta corriente está vacía.",
         "content2": "A través de tu LDC puedes pedir prestado el 75 % de lo que tengas en tu cuenta de ahorros.",
         "content3": "Si tienes 100 USD en tu cuenta de ahorros, tu LDC es de 75 USD.",
-        "content4": "La tasa de interés de tu línea de crédito es actualmente: {{apr}} % de tasa de porcentaje anual (APR)",
+        "content4": "La tasa de interés de tu línea de crédito es actualmente: {{interestRate}}% de tasa de porcentaje anual (APR)",
         "content5": "Para más información, consulta 'Asistente Virtual' en 'Ponte en contacto con nosotros' en el menú 'Más'."
       }
     },

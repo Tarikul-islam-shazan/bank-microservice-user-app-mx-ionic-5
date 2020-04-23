@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-import { AccountType, ITransactionQueries } from '@app/core';
-import { ModalService, IMeedModalContent } from '@app/shared';
 import { LineOfCreditFacade, LOC_FACADE_SERVICE } from '../facade';
+import { ITransactionQueries } from '@app/core/models/dto/account';
 
 @Component({
   selector: 'app-loc-transactions',
@@ -11,33 +10,7 @@ import { LineOfCreditFacade, LOC_FACADE_SERVICE } from '../facade';
 })
 export class LineOfCreditPage {
   public searchAccordion = false;
-  constructor(public lineOfCreditFacade: LineOfCreditFacade, private modalService: ModalService) {}
-
-  /**
-   * @description Show the LOC Modal on tapping the question mark
-   * @async
-   * @param {*} accountType
-   * @memberof LineOfCreditPage
-   */
-  async showModal(accountType) {
-    if (accountType === AccountType.LOC) {
-      const componentProps: IMeedModalContent = {
-        contents: [
-          {
-            title: 'info-modal-module.line-of-credit-page.title',
-            details: [
-              'info-modal-module.line-of-credit-page.details.content1',
-              'info-modal-module.line-of-credit-page.details.content2',
-              'info-modal-module.line-of-credit-page.details.content3',
-              'info-modal-module.line-of-credit-page.details.content4',
-              'info-modal-module.line-of-credit-page.details.content5'
-            ]
-          }
-        ]
-      };
-      await this.modalService.openInfoModalComponent({ componentProps });
-    }
-  }
+  constructor(public lineOfCreditFacade: LineOfCreditFacade) {}
 
   /**
    * @description To show or hide the Advanced search component

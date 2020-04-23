@@ -1,7 +1,7 @@
 <ion-header class="ion-no-border">
   <account-transaction-header
     title="{{ 'dashboard-module.loc-transaction-page.title-text' | translate }}"
-    (showModal)="showModal($event)"
+    (showModal)="lineOfCreditFacade.showModal()"
     iconName="help-circle-outline"
     [accountInfo]="(lineOfCreditFacade.lineOfCreditAccount$ | async)"
   >
