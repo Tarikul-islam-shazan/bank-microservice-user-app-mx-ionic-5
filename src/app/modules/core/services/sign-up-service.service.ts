@@ -26,7 +26,9 @@ import {
   IGeneralInfo,
   IAccountLevel,
   IAddressInfo,
-  IBeneficiaryInfo
+  IBeneficiaryInfo,
+  IGovtDisclosureApplication,
+  IGovtDisclosureResponse
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
 import { Logger } from './logger.service';
@@ -365,6 +367,14 @@ export class SignUpService {
       {
         headers: this.headerService.getUserNameMemberICustomerIdHeader()
       }
+    );
+  }
+
+  sendGovernmentDiscloser(govtDisclosureApplication: IGovtDisclosureApplication): Observable<IGovtDisclosureResponse> {
+    return this.http.post<IGovtDisclosureResponse>(
+      `${this.baseUrl}/bank/onboarding/apply/account-level`,
+      govtDisclosureApplication,
+      { headers: this.headerService.getMemberICustomerIdHeader() }
     );
   }
 }
