@@ -48,8 +48,7 @@ export class InviteNewMemberFacade {
 
   createContactBadge(inputEmail: string): void {
     if (REG_EX_PATTERNS.WHITE_SPACE.test(inputEmail) && this.isValidEmail()) {
-      const find = this.inviteService.inviteeContacts.find(contact => contact.email === this.email.trim());
-      if (find === undefined) {
+      if (!this.emailAlreadyEntered()) {
         this.inviteService.inviteeContacts.push({ email: this.email.trim() });
         this.email = '';
       }
@@ -74,8 +73,10 @@ export class InviteNewMemberFacade {
    * @returns { null }
    */
   onContinueClick(): void {
-    if (this.isValidEmail()) {
+    if (this.isValidEmail() && !this.emailAlreadyEntered()) {
       this.inviteService.inviteeContacts.push({ email: this.email.trim() });
+      this.email = '';
+    } else {
       this.email = '';
     }
 
@@ -117,6 +118,7 @@ export class InviteNewMemberFacade {
    */
   async onClickBack(): Promise<void> {
     this.inviteService.inviteeContacts = [];
+    this.email = '';
   }
 
   /**
@@ -130,6 +132,22 @@ export class InviteNewMemberFacade {
       return true;
     } else {
       return false;
+    }
+  }
+
+  /**
+   * This method will check is an invitee email already entered
+   * for invitation.
+   *
+   * @param null
+   * @returns true/false { boolean }
+   */
+  private emailAlreadyEntered(): boolean {
+    const find = this.inviteService.inviteeContacts.find(contact => contact.email === this.email.trim());
+    if (find === undefined) {
+      return false;
+    } else {
+      return true;
     }
   }
 }
