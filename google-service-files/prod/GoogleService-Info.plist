@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>1010705522908-pq2k0hkacjlls0n1jmkfcfjrehbhep9k.apps.googleusercontent.com</string>
+	<string>479603772557-9kbjukfor5pkb2a1ivf8bipijfdcloug.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.1010705522908-pq2k0hkacjlls0n1jmkfcfjrehbhep9k</string>
+	<string>com.googleusercontent.apps.479603772557-9kbjukfor5pkb2a1ivf8bipijfdcloug</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAZZw0LSjaLmc0UkohbneTa3ubjGHeCCFI</string>
+	<string>AIzaSyDCZV8F158LsJmM7FFiix0ISTHki1J14GE</string>
 	<key>GCM_SENDER_ID</key>
-	<string>1010705522908</string>
+	<string>479603772557</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.prod.meedbankingclub</string>
+	<string>com.mx.meedbankingclub</string>
 	<key>PROJECT_ID</key>
-	<string>meedbankingclub-qa</string>
+	<string>mx-meedbankingclub</string>
 	<key>STORAGE_BUCKET</key>
-	<string>meedbankingclub-qa.appspot.com</string>
+	<string>mx-meedbankingclub.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:1010705522908:ios:980744b65f7ca079771419</string>
+	<string>1:479603772557:ios:8c280a74fce67706c8e6c4</string>
 	<key>DATABASE_URL</key>
-	<string>https://meedbankingclub-qa.firebaseio.com</string>
+	<string>https://mx-meedbankingclub.firebaseio.com</string>
 </dict>
 </plist>

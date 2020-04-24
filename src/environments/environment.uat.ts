@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  label: 'development',
-  deployment: 'development',
-  serviceUrl: 'http://localhost:6064/api/v1.0.0',
+  label: 'UAT',
+  deployment: 'uat',
+  serviceUrl: 'https://services-mxqa.meedbankingclub.com/api/v1.0.0',
   loadingControllerOptions: {
     message: 'Please wait...'
   },
@@ -14,7 +14,7 @@ export const environment = {
     apiToken: 'e3facdd9-292d-42da-80fd-6c356d9c8161',
     apiSecret: 'mhYjhzEd49svDm2Sh0T5nHWxM52tqigS',
     dataCenter: 'US', // Datacenter can either be US or EU
-    callbackUrl: 'https://meedv2-tfqa.meedbankingclub.com/api/v1.0.0/jumio-verification',
+    callbackUrl: 'https://services-mxqa.meedbankingclub.com/api/v1.0.0/jumio-verification',
     customerIssuingCountry: 'USA', // ISO 3166-1 alpha-3 country code
     documentTypes: ['DRIVER_LICENSE', 'PASSPORT', 'IDENTITY_CARD'], // ['DRIVER_LICENSE', 'PASSPORT', 'IDENTITY_CARD', 'VISA'],
     iframeOrigin: 'https://meed.netverify.com'
@@ -26,11 +26,11 @@ export const environment = {
     projectId: 'mx-meedbankingclub',
     storageBucket: 'mx-meedbankingclub.appspot.com',
     messagingSenderId: '479603772557',
-    appId: '1:479603772557:web:3a670bbd46053c3ac8e6c4',
-    measurementId: 'G-3Z41MK45WG'
+    appId: '1:479603772557:web:2ddc84bea24348cac8e6c4',
+    measurementId: 'G-7JJ2SR7N11'
   },
   appIdleness: {
-    idelnessTimeout: 2, // sets an idle timeout of 2 seconds
+    idelnessTimeout: 2, // sets an idle timeout of 3 seconds
     timeoutPeriod: 540, // After 540 seconds (9 mins) of inactivity, the user will be considered timed out.
     keepAlivePingInterval: 15 // sets the ping interval to 15 seconds
   },
@@ -60,7 +60,7 @@ export const environment = {
     usedRemote: false,
     remoteUrl: 'https://s3.amazonaws.com/meedbankingclub-mobile/i18n'
   },
-  appBundleIdentifier: 'com.mx.qa.meedbankingclub'
+  appBundleIdentifier: 'com.mx.uat.meedbankingclub.com'
 };
 
 /*
