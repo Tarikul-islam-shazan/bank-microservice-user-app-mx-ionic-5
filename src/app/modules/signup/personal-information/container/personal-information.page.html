@@ -10,49 +10,156 @@
     <div class="step-counter">
       <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
     </div>
-    <div class="header-title">Personal Information</div>
-    <form>
+    <div class="header-title">{{'signup-module.signup-personal-information.header-text'|translate}}</div>
+    <form [formGroup]="personalInformationForm" novalidate>
       <ion-list lines="none">
-        <ion-item>
-          <ion-input class="white-input" type="text" placeholder="Country of Birth"></ion-input>
+        <div class="dropdown-input" (click)="openOptionsModal('countryOfBirth', facade.countryOptions)">
+          <ion-input
+            (ionFocus)="isInputFieldSkip('countryOfBirth')"
+            [ngClass]="getValidationCssClass('countryOfBirth')"
+            type="text"
+            id="country-of-birth"
+            formControlName="countryOfBirth"
+            readonly
+            placeholder="{{'signup-module.signup-personal-information.country-of-birth-placeholder'|translate}}"
+          >
+          </ion-input>
           <ion-icon name="chevron-down"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-input class="white-input" type="text" placeholder="Nationality"></ion-input>
+        </div>
+        <div
+          *ngIf="facade.isCountryOfBirthMexico(seletedCountryOfBirthCode)"
+          class="dropdown-input"
+          (click)="openOptionsModal('placeOfBirth', facade.placeOfBirthOptions)"
+        >
+          <ion-input
+            (ionFocus)="isInputFieldSkip('placeOfBirth')"
+            [ngClass]="getValidationCssClass('placeOfBirth')"
+            type="text"
+            id="place-of-birth-mexico"
+            formControlName="placeOfBirth"
+            readonly
+            placeholder="{{'signup-module.signup-personal-information.place-of-birth-placeholder'|translate}}"
+          >
+          </ion-input>
           <ion-icon name="chevron-down"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-input class="white-input" type="text" placeholder="Place of Birth"></ion-input>
+        </div>
+        <ion-input
+          *ngIf="!facade.isCountryOfBirthMexico(seletedCountryOfBirthCode)"
+          (ionFocus)="isInputFieldSkip('placeOfBirth')"
+          [ngClass]="getValidationCssClass('placeOfBirth')"
+          type="text"
+          id="place-of-birth-others"
+          formControlName="placeOfBirth"
+          placeholder="{{'signup-module.signup-personal-information.fm-number-placeholder'|translate}}"
+        >
+        </ion-input>
+        <div class="dropdown-input" (click)="openOptionsModal('nationality', facade.nationalityOptions)">
+          <ion-input
+            (ionFocus)="isInputFieldSkip('nationality')"
+            [ngClass]="getValidationCssClass('nationality')"
+            type="text"
+            id="nationality"
+            formControlName="nationality"
+            readonly
+            placeholder="{{'signup-module.signup-personal-information.nationality-placeholder'|translate}}"
+          >
+          </ion-input>
           <ion-icon name="chevron-down"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-input class="white-input" type="text" placeholder="Sex"></ion-input>
+        </div>
+        <div class="dropdown-input" (click)="openOptionsModal('sex', facade.sexOptions)">
+          <ion-input
+            (ionFocus)="isInputFieldSkip('sex')"
+            [ngClass]="getValidationCssClass('sex')"
+            type="text"
+            id="sex"
+            formControlName="sex"
+            readonly
+            placeholder="{{'signup-module.signup-personal-information.sex-placeholder'|translate}}"
+          >
+          </ion-input>
           <ion-icon name="chevron-down"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-input class="white-input" type="text" placeholder="Marital Status"></ion-input>
+        </div>
+        <div class="dropdown-input" (click)="openOptionsModal('maritalStatus', facade.maritalStatusOptions)">
+          <ion-input
+            (ionFocus)="isInputFieldSkip('maritalStatus')"
+            [ngClass]="getValidationCssClass('maritalStatus')"
+            type="text"
+            id="marital-status"
+            formControlName="maritalStatus"
+            readonly
+            placeholder="{{'signup-module.signup-personal-information.marital-status-placeholder'|translate}}"
+          >
+          </ion-input>
           <ion-icon name="chevron-down"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-input class="white-input" type="text" placeholder="Highest Level of Education"></ion-input>
+        </div>
+        <div
+          class="dropdown-input"
+          (click)="openOptionsModal('highestLevelOfEducation', facade.highestLevelOfEducationOptions)"
+        >
+          <ion-input
+            (ionFocus)="isInputFieldSkip('highestLevelOfEducation')"
+            [ngClass]="getValidationCssClass('highestLevelOfEducation')"
+            type="text"
+            id="highest-level-of-education"
+            formControlName="highestLevelOfEducation"
+            readonly
+            placeholder="{{'signup-module.signup-personal-information.education-level-placeholder'|translate}}"
+          >
+          </ion-input>
           <ion-icon name="chevron-down"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-input class="white-input" type="text" placeholder="Profession"></ion-input>
+        </div>
+        <div class="dropdown-input" (click)="openOptionsModal('profession', facade.professionOptions)">
+          <ion-input
+            (ionFocus)="isInputFieldSkip('profession')"
+            [ngClass]="getValidationCssClass('profession')"
+            type="text"
+            id="profession"
+            formControlName="profession"
+            readonly
+            placeholder="{{'signup-module.signup-personal-information.profession-placeholder'|translate}}"
+          >
+          </ion-input>
           <ion-icon name="chevron-down"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-input class="white-input" type="text" placeholder="Occupation"></ion-input>
+        </div>
+
+        <div class="dropdown-input" (click)="openOptionsModal('occupation', facade.occupationOptions)">
+          <ion-input
+            (ionFocus)="isInputFieldSkip('occupation')"
+            [ngClass]="getValidationCssClass('occupation')"
+            type="text"
+            id="occupation"
+            formControlName="occupation"
+            readonly
+            placeholder="{{'signup-module.signup-personal-information.occupation-placeholder'|translate}}"
+          ></ion-input>
           <ion-icon name="chevron-down"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-input class="white-input" type="text" placeholder="Economic Activity"></ion-input>
+        </div>
+        <div class="dropdown-input" (click)="openOptionsModal('economicActivity', facade.economicActivityOptions)">
+          <ion-input
+            (ionFocus)="isInputFieldSkip('economicActivity')"
+            [ngClass]="getValidationCssClass('economicActivity')"
+            type="text"
+            id="economic-activity"
+            formControlName="economicActivity"
+            readonly
+            placeholder="{{'signup-module.signup-personal-information.economic-activity-placeholder'|translate}}"
+          >
+          </ion-input>
           <ion-icon name="chevron-down"></ion-icon>
-        </ion-item>
-        <ion-item>
-          <ion-input class="white-input" type="text" placeholder="Banxico Activity"></ion-input>
+        </div>
+        <div class="dropdown-input" (click)="openOptionsModal('banxicoActivity', facade.banxicoActivityOptions)">
+          <ion-input
+            (ionFocus)="isInputFieldSkip('banxicoActivity')"
+            [ngClass]="getValidationCssClass('banxicoActivity')"
+            type="text"
+            id="banxico-activity"
+            formControlName="banxicoActivity"
+            readonly
+            placeholder="{{'signup-module.signup-personal-information.banxico-activity-placeholder'|translate}}"
+          >
+          </ion-input>
           <ion-icon name="chevron-down"></ion-icon>
-        </ion-item>
+        </div>
       </ion-list>
     </form>
   </div>
@@ -60,8 +167,14 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" [routerLink]="['/signup/funding-information']">
-      {{ 'signup-module.signup-address-page.button-text' | translate }}
+    <ion-button
+      id="btn-submit-signup-personal-information"
+      class="white-button"
+      expand="block"
+      [disabled]="personalInformationForm.invalid"
+      (click)="submitPersonalInfomation()"
+    >
+      {{ 'signup-module.signup-personal-information.submit-button-text' | translate }}
     </ion-button>
   </ion-toolbar>
 </ion-footer>

@@ -55,6 +55,14 @@ export const PAGES: Page = {
     NAME: 'Signup Beneficiary Information',
     ROUTE_PATH: '/signup/beneficiary-information'
   },
+  SIGNUP_PERSONAL_INFORMATION: {
+    NAME: 'Signup Personal Information',
+    ROUTE_PATH: '/signup/personal-information'
+  },
+  SIGNUP_FUNDING_INFORMATION: {
+    NAME: 'Signup Funding Information',
+    ROUTE_PATH: '/signup/funding-information'
+  },
   SIGNUP_ADDRESS: {
     NAME: 'signup-address',
     ROUTE_PATH: '/signup/address'

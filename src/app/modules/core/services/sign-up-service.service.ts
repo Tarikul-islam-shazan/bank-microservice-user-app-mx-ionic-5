@@ -26,7 +26,8 @@ import {
   IGeneralInfo,
   IAccountLevel,
   IAddressInfo,
-  IBeneficiaryInfo
+  IBeneficiaryInfo,
+  IPersonalInfo
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
 import { Logger } from './logger.service';
@@ -366,5 +367,10 @@ export class SignUpService {
         headers: this.headerService.getUserNameMemberICustomerIdHeader()
       }
     );
+  }
+  submitPersonaInfo(personalInfo: IPersonalInfo): Observable<IMember> {
+    return this.http.post<IMember>(`${this.baseUrl}/bank/onboarding/apply/personal-info`, personalInfo, {
+      headers: this.headerService.getMemberICustomerIdHeader()
+    });
   }
 }

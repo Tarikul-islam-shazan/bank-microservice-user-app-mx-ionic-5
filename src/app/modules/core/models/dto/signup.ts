@@ -268,3 +268,15 @@ export interface IBeneficiaryInfo {
   maternalLastName?: string;
   relationship: string;
 }
+export interface IPersonalInfo {
+  countryOfBirth: string;
+  nationality: string;
+  placeOfBirth: string;
+  sex: string;
+  maritalStatus: string;
+  highestLevelOfEducation: string;
+  profession: string;
+  occupation: string;
+  economicActivity: string;
+  banxicoActivity: string;
+}
