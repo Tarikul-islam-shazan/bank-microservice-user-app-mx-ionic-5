@@ -7,18 +7,64 @@
  */
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { SignUpService, Logger } from '@app/core';
-import { AnalyticsService } from '@app/analytics';
+import { SignUpService } from '@app/core';
 import { IFundInfo } from '../model/fundinfo';
+import * as moment from 'moment';
 
-const log = new Logger('FundingInformationFacade');
 @Injectable()
 export class FundingInformationFacade {
-  constructor(private signupService: SignUpService, private router: Router, private analytics: AnalyticsService) {}
+  fundInfo: IFundInfo;
 
-  goToNext(fundInfo: IFundInfo) {
-    this.signupService.fundingInformation(fundInfo).subscribe(res => {
+  constructor(private signupService: SignUpService, private router: Router) {
+    this.initializefundInformation();
+  }
+
+  /**
+   * @method fundInformationSubmit Initialization funding information form
+   *
+   * @memberof FundingInformationFacade
+   * Issue: MM2-44
+   * Details:  Funding Information: Proccess form value. Get result and redirect to appropriate page.
+   * Date: April 24,2020
+   * Developer: Tarikul <tarikul@brainstation23.com>
+   */
+
+  fundInformationSubmit(fundInformation: IFundInfo) {
+    this.fundInfo = fundInformation;
+    if (this.fundInfo.fundMyself) {
+      delete this.fundInfo.providerInfo;
+    } else {
+      this.fundInfo.providerInfo.dateOfBirth = moment(this.fundInfo.providerInfo.dateOfBirth).format('DD-MM-YYYY');
+    }
+    this.signupService.fundingInformationSubmission(this.fundInfo).subscribe(res => {
       this.router.navigate(['/signup/account-selection']);
     });
+  }
+
+  get fundInformation() {
+    return this.fundInfo;
+  }
+
+  /**
+   * @method initializefundInformation Initialization funding information object
+   *
+   * @memberof FundingInformationFacade
+   * Issue: MM2-44
+   * Details:  Funding Information: Intialization of funding info model object.
+   * Date: April 24,2020
+   * Developer: Tarikul <tarikul@brainstation23.com>
+   */
+
+  initializefundInformation() {
+    this.fundInfo = {
+      fundMyself: true,
+      providerInfo: {
+        firstName: '',
+        secondName: '',
+        paternalLastName: '',
+        maternalLastName: '',
+        dateOfBirth: ''
+      }
+    };
   }
 }
