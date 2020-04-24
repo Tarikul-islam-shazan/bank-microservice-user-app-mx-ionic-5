@@ -243,7 +243,7 @@
         "last-name": "Apellido",
         "prefix": "Prefijo (Opcional)",
         "date-of-birth": "Fecha de nacimiento",
-        "date-of-birth-display-format": "MM / DD / YYYY",
+        "date-of-birth-display-format": "DD / MM / YYYY",
         "social-security": "N.º de seguridad social #",
         "occupation": "Ocupación",
         "source-of-income": "Fuente de ingresos",
@@ -457,6 +457,23 @@
         "mobile-number": "Mobile Number"
       },
       "permission-text": "By entering your telephone number and clicking \"Next\", you are giving us permission to contact you about this application"
+    },
+    "signup-beneficiary-page": {
+      "page-title": "Beneficiary Information",
+      "beneficiary-form": {
+        "first-name": "First name",
+        "second-name": "Second name (optional)",
+        "parental-name": "Parental name",
+        "maternal-last-name": "Maternal name (optional)",
+        "dob": "Date of birth",
+        "relationship": "Relationship",
+        "date-of-birth-display-format": "MM / DD / YYYY"
+      },
+      "beneficiary-modal": {
+        "title": "Beneficiary Info",
+        "text": "Your Beneficiary is who would receive your Meed account funds in the unfortunate event of your passing."
+      },
+      "button-text-processing-done": "Next"
     }
   },
   "deposit": {
@@ -505,11 +522,6 @@
       "eTransfer-title": "Transferencia electrónica desde otro banco",
       "eTransfer-subtitle": "¡Próximamente será posible",
       "button-text": "Transferir el"
-    },
-    "paystand-page": {
-      "echeck-title": "eCheck de otro banco",
-      "credit-title": "Tarjeta de crédito / débito",
-      "disclaimer-text": "Los fondos estarán disponibles para el cliente en los siguientes plazos: 2 días hábiles para eCheck y para tarjeta de débito/crédito."
     },
     "deposit-echeck-page": {
       "header-title": "eCheck de otro banco",
@@ -824,7 +836,7 @@
       "search-offer-placeholder": "Search Offer",
       "type-text": "Type",
       "category-text": "Category",
-      "result-text": "Result"
+      "result-text": "Results"
     },
     "all-deals-page": {
       "header-title": "Todas las ofertas",
@@ -910,6 +922,10 @@
     "code-612": "Tu solicitud se denegó.",
     "code-616": "Post code does not exist",
     "code-617": "The Customer Id provided does not exist.",
+    "code-623": "nsufficient Data",
+    "code-624": "Client already Exists",
+    "code-625": "Id Meed has aleady been assigned to another client.",
+    "code-626": "Meed cust ID does not exist",
     "code-701": "Unable to find the customer",
     "code-702": "Error desconocido",
     "code-703": "Email Address already exist",
@@ -1482,7 +1498,7 @@
         "content1": "Tu línea de crédito (LDC) comienza automáticamente cuando tu cuenta corriente está vacía.",
         "content2": "A través de tu LDC puedes pedir prestado el 75 % de lo que tengas en tu cuenta de ahorros.",
         "content3": "Si tienes 100 USD en tu cuenta de ahorros, tu LDC es de 75 USD.",
-        "content4": "La tasa de interés de tu línea de crédito es actualmente: {{apr}} % de tasa de porcentaje anual (APR)",
+        "content4": "La tasa de interés de tu línea de crédito es actualmente: {{interestRate}}% de tasa de porcentaje anual (APR)",
         "content5": "Para más información, consulta 'Asistente Virtual' en 'Ponte en contacto con nosotros' en el menú 'Más'."
       }
     },

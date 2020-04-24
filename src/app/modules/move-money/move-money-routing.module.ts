@@ -16,19 +16,8 @@ const routes: Routes = [
       import('@app/move-money/internal-transfer/internal-transfer.module').then(m => m.InternalTransferModule)
   },
   {
-    path: 'transfer-from-other-bank',
-    data: { title: PAGES.TRANSFER_FROM_OTHER_BANK.NAME },
-    loadChildren: () =>
-      import('./transfer-from-other-bank/transfer-from-other-bank.module').then(m => m.TransferFromOtherBankPageModule)
-  },
-  {
     path: 'deposit',
     loadChildren: () => import('@app/deposit/deposit.module').then(m => m.DepositModule)
-  },
-  {
-    path: 'credit-debit-card',
-    data: { title: PAGES.MOVE_BETWEEN_ACCOUNTS.NAME },
-    loadChildren: () => import('./credit-debit-card/credit-debit-card.module').then(m => m.CreditDebitCardPageModule)
   },
   {
     path: 'pay-bills',

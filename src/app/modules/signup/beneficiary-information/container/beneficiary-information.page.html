@@ -1,40 +1,105 @@
-<ion-header class="white-header ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button icon="arrow-back"></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
-<ion-content>
+<ion-content class="safe-area-content">
   <div class="content-wrapper">
-    <div class="step-counter">
-      <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
+    <div class="beneficiary-header">
+      <div class="step-counter">
+        <step-counter [step]="'signup-module.signup-beneficiary-page.step-text'" [stepNo]="3"></step-counter>
+      </div>
+      <div (click)="openBeneficiaryModal()">
+        <img src="assets/svg/question-mark.svg" />
+      </div>
     </div>
-    <div class="header-title">Beneficiary Information</div>
+    <div class="header-title">
+      {{ 'signup-module.signup-beneficiary-page.page-title' | translate }}
+    </div>
 
-    <div class="content-block">
-      <form>
+    <div class="content-wrapper">
+      <form [formGroup]="beneficiaryForm" novalidate>
         <ion-list lines="none">
           <ion-item>
-            <ion-input class="white-input" type="text" placeholder="First Name"></ion-input>
+            <ion-input
+              [ngClass]="
+              beneficiaryForm.controls.firstName.invalid && skipErrorFields.firstName ? 'error-input' : 'white-input'
+            "
+              (ionFocus)="isInputFieldSkip('firstName')"
+              class="white-input ion-text-capitalize"
+              id="first-name"
+              type="text"
+              formControlName="firstName"
+              placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.first-name' | translate }}"
+              [appMaskInput]="onlyOneWordInput"
+              appInputMaxLength="{{maxLength}}"
+            ></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Second Name (Optional)"></ion-input>
+            <ion-input
+              [ngClass]="
+              beneficiaryForm.controls.secondName.invalid && skipErrorFields.secondName ? 'error-input' : 'white-input'
+            "
+              (ionFocus)="isInputFieldSkip('secondName')"
+              class="white-input ion-text-capitalize"
+              id="second-name"
+              type="text"
+              formControlName="secondName"
+              placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.second-name' | translate }}"
+              [appMaskInput]="onlyOneWordInput"
+              appInputMaxLength="{{maxLength}}"
+            ></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Paternal Last Name"></ion-input>
+            <ion-input
+              [ngClass]="
+              beneficiaryForm.controls.parentalName.invalid && skipErrorFields.parentalName ? 'error-input' : 'white-input'
+            "
+              (ionFocus)="isInputFieldSkip('parentalName')"
+              class="white-input ion-text-capitalize"
+              id="parental-name"
+              type="text"
+              formControlName="parentalName"
+              placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.parental-name' | translate }}"
+              [appMaskInput]="onlyOneWordInput"
+              appInputMaxLength="{{maxLength}}"
+            ></ion-input>
           </ion-item>
           <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Maternal Last Name (Optional)"></ion-input>
+            <ion-input
+              [ngClass]="
+              beneficiaryForm.controls.maternalLastName.invalid ? 'error-input' : 'white-input'
+            "
+              (ionFocus)="isInputFieldSkip('maternalLastName')"
+              class="white-input ion-text-capitalize"
+              id="maternal-name"
+              type="text"
+              formControlName="maternalLastName"
+              placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.maternal-last-name' | translate }}"
+              [appMaskInput]="onlyOneWordInput"
+              appInputMaxLength="{{maxLength}}"
+            ></ion-input>
           </ion-item>
-          <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Date of Birth"></ion-input>
+          <div class="datetime-input">
+            <ion-item lines="none">
+              <ion-datetime
+                (ionFocus)="isInputFieldSkip('dateOfResidence')"
+                [ngClass]="beneficiaryForm.controls.dateOfBirth.invalid && skipErrorFields.dateOfBirth ? 'error-input' : 'white-input'"
+                id="dateOfResidence"
+                placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.dob' | translate }}"
+                formControlName="dateOfBirth"
+                displayFormat="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.date-of-birth-display-format' | translate }}"
+              ></ion-datetime>
+              <ion-icon name="chevron-down"></ion-icon>
+            </ion-item>
+          </div>
+          <div class="dropdown-input" (click)="openOptionsModal('relationship', this.facade.relationshipData)">
+            <ion-input
+              [ngClass]="beneficiaryForm.controls.relationship.invalid && skipErrorFields.relationship ? 'error-input' : 'white-input'"
+              readonly
+              class="white-input"
+              id="relationship"
+              type="text"
+              formControlName="relationship"
+              placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.relationship' | translate }}"
+            ></ion-input>
             <ion-icon name="chevron-down"></ion-icon>
-          </ion-item>
-          <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Relationship"></ion-input>
-            <ion-icon name="chevron-down"></ion-icon>
-          </ion-item>
+          </div>
         </ion-list>
       </form>
     </div>
@@ -43,8 +108,8 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" [routerLink]="['/signup/account-selection']">
-      {{ 'signup-module.signup-address-page.button-text' | translate }}
+    <ion-button class="white-button" expand="block" (click)="next()" [disabled]="beneficiaryForm.invalid">
+      {{ 'signup-module.signup-beneficiary-page.button-text-processing-done' | translate }}
     </ion-button>
   </ion-toolbar>
 </ion-footer>

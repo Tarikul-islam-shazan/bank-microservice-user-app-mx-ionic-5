@@ -6,17 +6,20 @@ import { LineOfCreditState } from './line-of-credit-state';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
+import { ModalService, IMeedModalContent } from '@app/shared/services/modal.service';
+import { InterestRateService } from '@app/dashboard/services/interest-rate.service';
 
 @Injectable()
 export class LineOfCreditFacade {
   constructor(
     private accountService: AccountService,
     private lineOfCreditState: LineOfCreditState,
-    private analytics: AnalyticsService
+    private analytics: AnalyticsService,
+    private modalService: ModalService,
+    private interestRateService: InterestRateService
   ) {
     this.initialize();
   }
-
   lineOfCreditAccount$: Observable<Partial<IAccount>> = this.lineOfCreditState.lineOfCreditAccount$;
 
   pendingTransactions$: Observable<ITransaction[]> = this.lineOfCreditState.pendingTransactions$;
@@ -85,6 +88,44 @@ export class LineOfCreditFacade {
     this.lineOfCreditState.setShowHideState(!this.lineOfCreditState.getShowHideValue());
   }
 
+  /**
+   * @method locAccount return accout of LOC
+   *
+   * @readonly
+   * @type {IAccount}
+   * @memberof LineOfCreditFacade
+   */
+  get locAccount(): IAccount {
+    return this.accountService
+      .getCachedAccountSummary()
+      .find((account: IAccount) => account.accountType === AccountType.LOC);
+  }
+
+  /**
+   * showing modal of a LOC clicking question option
+   *
+   * @memberof LineOfCreditFacade
+   */
+  async showModal() {
+    this.interestRateService.getInterestRate(this.locAccount.accountId).subscribe(async (interestRate: number) => {
+      const componentProps: IMeedModalContent = {
+        contents: [
+          {
+            title: 'info-modal-module.line-of-credit-page.title',
+            details: [
+              'info-modal-module.line-of-credit-page.details.content1',
+              'info-modal-module.line-of-credit-page.details.content2',
+              'info-modal-module.line-of-credit-page.details.content3',
+              'info-modal-module.line-of-credit-page.details.content4',
+              'info-modal-module.line-of-credit-page.details.content5'
+            ],
+            values: { interestRate: interestRate.toString() }
+          }
+        ]
+      };
+      await this.modalService.openInfoModalComponent({ componentProps });
+    });
+  }
   makePayment() {
     this.analytics.logEvent(AnalyticsEventTypes.TransferStarted, { source: 'loc-payment' });
   }

@@ -47,6 +47,10 @@ export const PAGES: Page = {
     NAME: 'signup-general-info',
     ROUTE_PATH: '/signup/personal'
   },
+  SIGNUP_BENEFICIARY: {
+    NAME: 'signup-beneficiary-information',
+    ROUTE_PATH: '/signup/beneficiary-information'
+  },
   SIGNUP_ADDRESS: {
     NAME: 'signup-address',
     ROUTE_PATH: '/signup/address'
@@ -82,10 +86,6 @@ export const PAGES: Page = {
   DIRECT_DEPOSIT_START: {
     NAME: 'signup-direct-deposit-start',
     ROUTE_PATH: 'deposit/direct-deposit-start'
-  },
-  DIRECT_DEPOSIT_PAYSTAND: {
-    NAME: 'signup-direct-deposit-paystand',
-    ROUTE_PATH: 'deposit/paystand'
   },
   SIGNUP_SCANID: {
     NAME: 'signup-scan-id-instructions',

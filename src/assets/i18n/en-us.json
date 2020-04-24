@@ -246,7 +246,7 @@
         "date-of-birth": "Date of birth",
         "social-security": "Social Security #",
         "occupation": "Occupation",
-        "date-of-birth-display-format": "MM / DD / YYYY",
+        "date-of-birth-display-format": "DD / MM / YYYY",
         "source-of-income": "Source of income",
         "monthly-income": "Monthly Income $ (Optional)",
         "monthly-withdrawl": "Monthly withdrawl",
@@ -464,6 +464,25 @@
         "mobile-number": "Mobile Number"
       },
       "permission-text": "By entering your telephone number and clicking \"Next\", you are giving us permission to contact you about this application"
+    },
+    "signup-beneficiary-page": {
+      "page-title": "Beneficiary Information",
+      "step-text": "Step 3 of 3",
+      "count": "3",
+      "beneficiary-form": {
+        "first-name": "First name",
+        "second-name": "Second name (optional)",
+        "parental-name": "Parental name",
+        "maternal-last-name": "Maternal name (optional)",
+        "dob": "Date of birth",
+        "relationship": "Relationship",
+        "date-of-birth-display-format": "MM / DD / YYYY"
+      },
+      "beneficiary-modal": {
+        "title": "Beneficiary Info",
+        "text": "Your Beneficiary is who would receive your Meed account funds in the unfortunate event of your passing."
+      },
+      "button-text-processing-done": "Next"
     }
   },
   "deposit": {
@@ -512,11 +531,6 @@
       "eTransfer-title": "eTransfer from other bank",
       "eTransfer-subtitle": "Coming soon",
       "button-text": "Move On"
-    },
-    "paystand-page": {
-      "echeck-title": "eCheck from other bank",
-      "credit-title": "Credit / Debit Card",
-      "disclaimer-text": "Funds will be available to the customer in the following timeframes: eCheck – 2 business days and Debit/Credit Card – 2 business days."
     },
     "deposit-echeck-page": {
       "header-title": "eCheck from other bank",
@@ -831,7 +845,7 @@
       "search-offer-placeholder": "Search Offer",
       "type-text": "Type",
       "category-text": "Category",
-      "result-text": "Result"
+      "result-text": "Results"
     },
     "all-deals-page": {
       "header-title": "All Offers",
@@ -917,6 +931,10 @@
     "code-612": "Your application has been denied.",
     "code-616": "Post code does not exist",
     "code-617": "The Customer Id provided does not exist.",
+    "code-623": "nsufficient Data",
+    "code-624": "Client already Exists",
+    "code-625": "Id Meed has aleady been assigned to another client.",
+    "code-626": "Meed cust ID does not exist",
     "code-701": "Unable to find the customer",
     "code-702": "unknown",
     "code-703": "Email Address already exist",
@@ -1477,7 +1495,7 @@
         "content1": "Your Line of Credit (LOC) automatically kicks in when your Checking account is empty.",
         "content2": "Through your LOC you can borrow 75% of whatever you have in your Savings account.",
         "content3": "If you’ve $100 in Savings, your LOC is $75.",
-        "content4": "The interest rate on your Line of Credit is currently:  15.49% APR",
+        "content4": "The interest rate on your Line of Credit is currently: {{interestRate}}% APR",
         "content5": "For more info, see ‘Virtual Assistant’ under ‘Contact Us’ in the More menu."
       }
     },

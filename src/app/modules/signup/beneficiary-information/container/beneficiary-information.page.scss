@@ -1,34 +1,9 @@
-.content-block {
-  margin-bottom: 10px;
-  .title {
-    font-family: 'Averta W05 Bold5204651';
-    font-size: 16px;
-    padding: 10px 0;
-  }
+.content-wrapper {
+  margin-top: 27px; /* margin-top adding */
+}
 
-  ion-list-header {
-    --color: #606477;
-    text-transform: none;
-    font-family: 'Averta W05 Bold5204651';
-    font-size: 14px;
-    padding-left: 0;
-  }
-
-  ion-item {
-    ion-label {
-      font-family: 'Averta W05 Regular';
-      font-size: 1.4rem;
-    }
-    --padding-bottom: 0px;
-    --padding-end: 0px;
-    --padding-start: 0px;
-    --padding-top: 0px;
-    --inner-padding-end: 0px;
-    ion-icon {
-      font-size: 20px;
-      position: absolute;
-      right: 15px;
-      top: 20px;
-    }
-  }
+.beneficiary-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }

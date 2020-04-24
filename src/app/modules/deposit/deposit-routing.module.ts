@@ -32,21 +32,6 @@ const routes: Routes = [
     loadChildren: () => import('./money/money.module').then(m => m.MoneyPageModule)
   },
   {
-    path: 'paystand',
-    data: { title: PAGES.DIRECT_DEPOSIT_PAYSTAND.NAME },
-    loadChildren: () => import('./paystand/paystand.module').then(m => m.PaystandPageModule)
-  },
-  {
-    path: 'e-check',
-    data: { title: PAGES.DEPOSIT_ECHECK.NAME },
-    loadChildren: () => import('./e-check/e-check.module').then(m => m.ECheckPageModule)
-  },
-  {
-    path: 'deposit-thank-you',
-    data: { title: PAGES.DEPOSIT_THANK_YOU.NAME },
-    loadChildren: () => import('./deposit-thank-you/deposit-thank-you.module').then(m => m.DepositThankYouPageModule)
-  },
-  {
     path: 'direct-deposit-setup',
     data: { title: PAGES.DIRECT_DEPOSIT_SETUP.NAME },
     loadChildren: () =>

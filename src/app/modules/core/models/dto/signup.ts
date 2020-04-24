@@ -259,3 +259,12 @@ export interface IAccountLevel {
   customerId: string;
   accountLevel: string;
 }
+// interface for beneficiary
+export interface IBeneficiaryInfo {
+  firstName: string;
+  secondName?: string;
+  dateOfBirth: string;
+  paternalLastName: string;
+  maternalLastName?: string;
+  relationship: string;
+}
