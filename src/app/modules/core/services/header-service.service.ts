@@ -52,9 +52,9 @@ export class HeaderService {
 
   getMemberIdCustomerIdHeader(): HttpHeaders {
     return new HttpHeaders({
-      'meedbankingclub-bank-identifier': 'invex', // this.settingService.getSettings().userSettings.bankIdentifier,
-      'meedbankingclub-memberid': '5da5ae14ac5040209c8580d6', // this.member._id,
-      'meedbankingclub-customerid': '00000000013' // this.member.customerId
+      'meedbankingclub-bank-identifier': this.settingService.getSettings().userSettings.bankIdentifier,
+      'meedbankingclub-memberid': this.member._id,
+      'meedbankingclub-customerid': this.member.customerId
     });
   }
 
