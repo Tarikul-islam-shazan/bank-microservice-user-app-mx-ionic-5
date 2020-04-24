@@ -34,15 +34,12 @@ export class FundingInformationPage implements OnInit {
 
   initFundingInformationForm(): void {
     this.fundingInformationForm = this.formBuilder.group({
-      fundMyself: [this.facade.fundInformation.fundMyself, [Validators.required]],
-      firstName: [this.facade.fundInformation.providerInfo.firstName, [Validators.required, Validators.maxLength(26)]],
-      secondName: [this.facade.fundInformation.providerInfo.secondName, [Validators.maxLength(26)]],
-      paternalLastName: [
-        this.facade.fundInformation.providerInfo.paternalLastName,
-        [Validators.required, Validators.maxLength(26)]
-      ],
-      maternalLastName: [this.facade.fundInformation.providerInfo.maternalLastName, [Validators.maxLength(26)]],
-      dateOfBirth: [this.facade.fundInformation.providerInfo.dateOfBirth, [Validators.required]]
+      fundMyself: [true, [Validators.required]],
+      firstName: ['', [Validators.required, Validators.maxLength(26)]],
+      secondName: ['', [Validators.maxLength(26)]],
+      paternalLastName: ['', [Validators.required, Validators.maxLength(26)]],
+      maternalLastName: ['', [Validators.maxLength(26)]],
+      dateOfBirth: ['', [Validators.required]]
     });
   }
 

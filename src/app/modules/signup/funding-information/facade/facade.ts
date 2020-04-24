@@ -29,7 +29,7 @@ export class FundingInformationFacade {
    * Developer: Tarikul <tarikul@brainstation23.com>
    */
 
-  fundInformationSubmit(fundInformation: IFundInfo) {
+  fundInformationSubmit(fundInformation) {
     this.fundInfo = fundInformation;
     if (this.fundInfo.fundMyself) {
       delete this.fundInfo.providerInfo;
