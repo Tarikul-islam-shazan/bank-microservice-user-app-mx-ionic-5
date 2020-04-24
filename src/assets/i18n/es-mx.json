@@ -404,7 +404,7 @@
         "second-name": "Second Name (Optional)",
         "paternal-last-name": "Paternal Last Name",
         "maternal-last-name": "Maternal Last Name (Optional)",
-        "date-of-birth-display-format": "MM / DD / YYYY",
+        "date-of-birth-display-format": "DD / MM / YYYY",
         "date-of-birth": "Date of Birth"
       },
       "button-text": "Next"
