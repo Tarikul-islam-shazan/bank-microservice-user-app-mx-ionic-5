@@ -11,7 +11,7 @@ export const environment = {
     apiSecret: 'mhYjhzEd49svDm2Sh0T5nHWxM52tqigS',
     dataCenter: 'US', // Datacenter can either be US or EU
     callbackUrl: 'https://services-mxqa.meedbankingclub.com/api/v1.0.0/jumio-verification',
-    customerIssuingCountry: 'USA', // ISO 3166-1 alpha-3 country code
+    customerIssuingCountry: 'MEX', // ISO 3166-1 alpha-3 country code
     documentTypes: ['DRIVER_LICENSE', 'PASSPORT', 'IDENTITY_CARD'], // ['DRIVER_LICENSE', 'PASSPORT', 'IDENTITY_CARD', 'VISA'],
     iframeOrigin: 'https://meed.netverify.com'
   },

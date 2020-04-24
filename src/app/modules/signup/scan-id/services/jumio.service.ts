@@ -36,11 +36,11 @@ export class JumioService {
     private settingsService: SettingsService
   ) {
     /**
-     * dynamically bank identifier add
+     * dynamically bank identifier and member id
      */
     this.callBackUrl = `${environment.jumio.callbackUrl}/${
       this.settingsService.getSettings().userSettings.bankIdentifier
-    }`;
+    }/${this.signupService.member._id}`;
   }
 
   /**
