@@ -20,14 +20,14 @@ export const environment = {
     iframeOrigin: 'https://meed.netverify.com'
   },
   firebaseConfig: {
-    apiKey: 'AIzaSyBrogRURZ8KlCKF154gROjJexEqQ7RoMQE',
-    authDomain: 'meedbankingclub-qa.firebaseapp.com',
-    databaseURL: 'https://meedbankingclub-qa.firebaseio.com',
-    projectId: 'meedbankingclub-qa',
-    storageBucket: 'meedbankingclub-qa.appspot.com',
-    messagingSenderId: '1010705522908',
-    appId: '1:1010705522908:web:8253afc216f152c2771419',
-    measurementId: 'G-CTR6V66YRB'
+    apiKey: 'AIzaSyBFb01kPxsqlygl4RujWtTrwGfH5wjrqBc',
+    authDomain: 'mx-meedbankingclub.firebaseapp.com',
+    databaseURL: 'https://mx-meedbankingclub.firebaseio.com',
+    projectId: 'mx-meedbankingclub',
+    storageBucket: 'mx-meedbankingclub.appspot.com',
+    messagingSenderId: '479603772557',
+    appId: '1:479603772557:web:3a670bbd46053c3ac8e6c4',
+    measurementId: 'G-3Z41MK45WG'
   },
   appIdleness: {
     idelnessTimeout: 2, // sets an idle timeout of 2 seconds
@@ -59,7 +59,8 @@ export const environment = {
   translateLoader: {
     usedRemote: false,
     remoteUrl: 'https://s3.amazonaws.com/meedbankingclub-mobile/i18n'
-  }
+  },
+  appBundleIdentifier: 'com.mx.qa.meedbankingclub'
 };
 
 /*
