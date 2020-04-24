@@ -72,6 +72,7 @@ export const SIGNUP_ROUTES: Routes = [
   },
   {
     path: 'general-information',
+    data: { title: PAGES.SIGNUP_GENERAL_INFORMATION },
     loadChildren: () =>
       import('./general-information/general-information.module').then(m => m.GeneralInformationPageModule)
   },
@@ -87,13 +88,15 @@ export const SIGNUP_ROUTES: Routes = [
       import('./personal-information/personal-information.module').then(m => m.PersonalInformationPageModule)
   },
   {
-    path: 'account-selection',
-    loadChildren: () => import('./account-selection/account-selection.module').then(m => m.AccountSelectionPageModule)
-  },
-  {
     path: 'beneficiary-information',
+    data: { title: PAGES.SIGNUP_BENEFICIARY.NAME },
     loadChildren: () =>
       import('./beneficiary-information/beneficiary-information.module').then(m => m.BeneficiaryInformationPageModule)
+  },
+  {
+    path: 'account-selection',
+    data: { title: PAGES.SIGNUP_ACCOUNT_SELECTION.NAME },
+    loadChildren: () => import('./account-selection/account-selection.module').then(m => m.AccountSelectionPageModule)
   },
   {
     path: 'identity-confirmation',

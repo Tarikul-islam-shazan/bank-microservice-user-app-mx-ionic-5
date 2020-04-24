@@ -36,7 +36,7 @@ export class SignupAddressFacade {
 
   goToNext(memberApp: IMemberApplication) {
     Object.assign(this.signUpService.memberApplication, memberApp);
-    this.analytics.logEvent(AnalyticsEventTypes.AddressInfoSubmitted);
+    // this.analytics.logEvent(AnalyticsEventTypes.AddressInfoSubmitted);
     this.router.navigate(['/signup/confirm-identity']);
   }
 }

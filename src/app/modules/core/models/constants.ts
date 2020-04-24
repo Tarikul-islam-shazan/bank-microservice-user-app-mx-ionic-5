@@ -47,8 +47,12 @@ export const PAGES: Page = {
     NAME: 'signup-general-info',
     ROUTE_PATH: '/signup/personal'
   },
+  SIGNUP_GENERAL_INFORMATION: {
+    NAME: 'Signup General Information',
+    ROUTE_PATH: '/signup/general-information'
+  },
   SIGNUP_BENEFICIARY: {
-    NAME: 'signup-beneficiary-information',
+    NAME: 'Signup Beneficiary Information',
     ROUTE_PATH: '/signup/beneficiary-information'
   },
   SIGNUP_ADDRESS: {
@@ -56,8 +60,12 @@ export const PAGES: Page = {
     ROUTE_PATH: '/signup/address'
   },
   SIGNUP_ADDRESS_INFORMATION: {
-    NAME: 'signup-address-information',
+    NAME: 'Signup Address Information',
     ROUTE_PATH: '/signup/address-information'
+  },
+  SIGNUP_ACCOUNT_SELECTION: {
+    NAME: 'Signup Select Account Level',
+    ROUTE_PATH: '/signup/account-selection'
   },
   SIGNUP_QUESTIONS: {
     NAME: 'signup-security-questions',

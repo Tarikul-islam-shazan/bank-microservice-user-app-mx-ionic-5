@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { ModalService, IMeedModalContent } from '@app/shared';
 import { SignUpService, IAccountLevel } from '@app/core';
+import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 
 enum AccountLevel {
   Full = 'Full',
@@ -12,7 +13,12 @@ enum AccountLevel {
 export class AccountSelectionFacade {
   accountLevel = AccountLevel.Full;
 
-  constructor(private router: Router, private modalService: ModalService, private signupService: SignUpService) {}
+  constructor(
+    private router: Router,
+    private modalService: ModalService,
+    private signupService: SignUpService,
+    private analytics: AnalyticsService
+  ) {}
 
   get level(): typeof AccountLevel {
     return AccountLevel;
@@ -59,6 +65,7 @@ export class AccountSelectionFacade {
    */
   onClickNext(): void {
     this.signupService.selectAccountLevel(this.accountLevel).subscribe((response: IAccountLevel) => {
+      this.analytics.logEvent(AnalyticsEventTypes.SignupAccountLevelSelected, { accountLevel: response.accountLevel });
       switch (response.accountLevel) {
         case AccountLevel.Full:
           this.router.navigate(['/signup/personal-information']);
