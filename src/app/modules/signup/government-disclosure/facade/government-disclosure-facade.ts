@@ -7,7 +7,7 @@
  */
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { ModalService } from '@app/shared/services/modal.service';
+import { ModalService, IMeedModalContent } from '@app/shared/services/modal.service';
 import { DropdownOption } from '@app/signup/models/signup';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { StaticDataService, StaticDataCategory } from '@app/core/services/static-data.service';
@@ -55,18 +55,22 @@ export class GovernmentDisclosureFacade {
    * @returns null { void }
    */
   openPositionSelectionModal(whosePosition: string): void {
-    this.modalService.openModal(DropdownModalComponent, { data: this.govtPositions }, res => {
-      const { data } = res;
-      if (data) {
-        if (whosePosition === 'me') {
-          this.holdGovtPositionForm.controls.position.setValue(data.text);
-          this.myGovPosition = data.value;
-        } else if (whosePosition === 'relative') {
-          this.relativeGovtPositionForm.controls.position.setValue(data.text);
-          this.relativeGovPosition = data.value;
+    const componentProps: IMeedModalContent = {
+      data: this.govtPositions,
+      onDidDismiss: (res: any) => {
+        const { data } = res;
+        if (data) {
+          if (whosePosition === 'me') {
+            this.holdGovtPositionForm.controls.position.setValue(data.text);
+            this.myGovPosition = data.value;
+          } else if (whosePosition === 'relative') {
+            this.relativeGovtPositionForm.controls.position.setValue(data.text);
+            this.relativeGovPosition = data.value;
+          }
         }
       }
-    });
+    };
+    this.modalService.openModal(DropdownModalComponent, componentProps);
   }
 
   /**
@@ -77,13 +81,17 @@ export class GovernmentDisclosureFacade {
    * @returns null { void }
    */
   openParticipationSelectionModal(): void {
-    this.modalService.openModal(DropdownModalComponent, { data: this.participation }, res => {
-      const { data } = res;
-      if (data) {
-        this.relativeGovtPositionForm.controls.participation.setValue(data.text);
-        this.relativeParticipation = data.value;
+    const componentProps: IMeedModalContent = {
+      data: this.participation,
+      onDidDismiss: (res: any) => {
+        const { data } = res;
+        if (data) {
+          this.relativeGovtPositionForm.controls.participation.setValue(data.text);
+          this.relativeParticipation = data.value;
+        }
       }
-    });
+    };
+    this.modalService.openModal(DropdownModalComponent, componentProps);
   }
 
   /**
