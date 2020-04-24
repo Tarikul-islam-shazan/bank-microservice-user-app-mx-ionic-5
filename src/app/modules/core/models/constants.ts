@@ -52,7 +52,7 @@ export const PAGES: Page = {
     ROUTE_PATH: '/signup/beneficiary-information'
   },
   SIGNUP_GOVERNMENT_DISCLOSURE: {
-    NAME: 'signup-government-disclosure',
+    NAME: 'Signup Government Disclosure',
     ROUTE_PATH: '/signup/government-disclosure'
   },
   SIGNUP_ADDRESS: {

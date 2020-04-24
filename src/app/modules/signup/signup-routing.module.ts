@@ -107,6 +107,7 @@ export const SIGNUP_ROUTES: Routes = [
   },
   {
     path: 'government-disclosure',
+    data: { title: PAGES.SIGNUP_GOVERNMENT_DISCLOSURE.NAME },
     loadChildren: () =>
       import('./government-disclosure/government-disclosure.module').then(m => m.GovernmentDisclosurePageModule)
   }

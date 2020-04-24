@@ -15,6 +15,7 @@ import { DropdownModalComponent } from '@app/shared';
 import { IGovtDisclosureApplication, IGovtDisclosureResponse } from '@app/core/models/dto';
 import { SignUpService } from '@app/core';
 import { REG_EX_PATTERNS } from '@app/core/models';
+import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 
 @Injectable()
 export class GovernmentDisclosureFacade {
@@ -41,7 +42,8 @@ export class GovernmentDisclosureFacade {
     private staticDataService: StaticDataService,
     private modalService: ModalService,
     private formBuilder: FormBuilder,
-    private signupService: SignUpService
+    private signupService: SignUpService,
+    private analytics: AnalyticsService
   ) {
     this.initializeForms();
     this.initializeDropdownData();
@@ -193,10 +195,16 @@ export class GovernmentDisclosureFacade {
     this.signupService
       .submitGovernmentDisclosureApplication(this.govtDisclosureApplication)
       .subscribe((response: IGovtDisclosureResponse) => {
-        if (response) {
-          this.router.navigate(['/signup/verification']);
-          this.govtDisclosureApplication = {};
+        if (this.holdGovtPosition) {
+          this.analytics.logEvent(AnalyticsEventTypes.GovernmentDisclosureCompleted, {
+            governmentService: 'yes',
+            ...this.govtDisclosureApplication.positionInfo
+          });
+        } else {
+          this.analytics.logEvent(AnalyticsEventTypes.GovernmentDisclosureCompleted, { governmentService: 'no' });
         }
+        this.router.navigate(['/signup/verification']);
+        this.govtDisclosureApplication = {};
       });
   }
 
