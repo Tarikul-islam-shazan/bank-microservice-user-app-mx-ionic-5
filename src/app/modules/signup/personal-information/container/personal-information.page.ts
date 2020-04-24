@@ -30,7 +30,6 @@ export class PersonalInformationPage implements OnInit {
     this.facade.getStaticData();
     this.seletedCountryOfBirthCode = this.facade.mexicoCountryCode;
     this.initPersonalInformationForm();
-    this.facade.setScreenNameToAnalytics();
   }
   private initPersonalInformationForm(): void {
     this.personalInformationForm = this.formBuilder.group({

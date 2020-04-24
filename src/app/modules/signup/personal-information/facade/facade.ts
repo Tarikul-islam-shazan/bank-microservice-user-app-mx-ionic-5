@@ -137,14 +137,4 @@ export class SignUpPersonalInfoFacade {
       this.router.navigateByUrl(PAGES.SIGNUP_FUNDING_INFORMATION.ROUTE_PATH);
     });
   }
-
-  /**
-   *
-   * @summary A function to set Analitics of SIGNUP_PERSONAL_INFORMATION
-   *
-   * @memberof SignUpPersonalInfoFacade
-   */
-  setScreenNameToAnalytics(): void {
-    this.analytics.setCurrentScreenName(PAGES.SIGNUP_PERSONAL_INFORMATION.NAME);
-  }
 }

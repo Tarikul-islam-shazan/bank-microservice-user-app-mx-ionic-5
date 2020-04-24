@@ -84,6 +84,7 @@ export const SIGNUP_ROUTES: Routes = [
   },
   {
     path: 'personal-information',
+    data: { title: PAGES.SIGNUP_PERSONAL_INFORMATION.NAME },
     loadChildren: () =>
       import('./personal-information/personal-information.module').then(m => m.PersonalInformationPageModule)
   },
