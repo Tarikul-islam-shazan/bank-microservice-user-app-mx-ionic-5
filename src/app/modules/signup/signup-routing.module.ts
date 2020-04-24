@@ -72,7 +72,7 @@ export const SIGNUP_ROUTES: Routes = [
   },
   {
     path: 'general-information',
-    data: { title: PAGES.SIGNUP_GENERAL_INFORMATION },
+    data: { title: PAGES.SIGNUP_GENERAL_INFORMATION.NAME },
     loadChildren: () =>
       import('./general-information/general-information.module').then(m => m.GeneralInformationPageModule)
   },
