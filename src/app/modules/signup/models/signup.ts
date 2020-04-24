@@ -16,3 +16,8 @@ export enum AddressRadioButtonOption {
   Member = 'member',
   Dependent = 'dependent'
 }
+
+export enum ScanIdenittyPictureType {
+  Utility = 'utility',
+  Selfie = 'selfie'
+}
