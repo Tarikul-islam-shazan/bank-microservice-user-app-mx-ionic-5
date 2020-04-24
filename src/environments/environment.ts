@@ -11,11 +11,11 @@ export const environment = {
     message: 'Please wait...'
   },
   jumio: {
-    apiToken: 'e3facdd9-292d-42da-80fd-6c356d9c8161',
-    apiSecret: 'mhYjhzEd49svDm2Sh0T5nHWxM52tqigS',
+    apiToken: '10ccb140-096a-4cf2-b7a9-a8bb46ca0c44',
+    apiSecret: 'iVcILnNS85u2d9l1naocBb7Td4SDqs8L',
     dataCenter: 'US', // Datacenter can either be US or EU
-    callbackUrl: 'https://meedv2-tfqa.meedbankingclub.com/api/v1.0.0/jumio-verification',
-    customerIssuingCountry: 'USA', // ISO 3166-1 alpha-3 country code
+    callbackUrl: 'https://services-mxqa.meedbankingclub.com/api/v1.0.0/jumio-verification',
+    customerIssuingCountry: 'MEX', // ISO 3166-1 alpha-3 country code
     documentTypes: ['DRIVER_LICENSE', 'PASSPORT', 'IDENTITY_CARD'], // ['DRIVER_LICENSE', 'PASSPORT', 'IDENTITY_CARD', 'VISA'],
     iframeOrigin: 'https://meed.netverify.com'
   },
