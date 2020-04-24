@@ -86,19 +86,17 @@ export class PersonalInformationPage implements OnInit {
    */
   async openOptionsModal(formControlName: string, options: IDropdownOption[]): Promise<any> {
     this.isInputFieldSkip(formControlName);
-    try {
-      const modal = await this.modalCtrl.create({
-        component: DropdownModalComponent,
-        componentProps: { data: options }
-      });
-      await modal.present();
-      const { data } = await modal.onWillDismiss();
-      if (data) {
-        this.personalInformationForm.controls[formControlName].patchValue(data.text);
-        this.facade.updatePersonalInformation({ [formControlName]: data.value });
-        this.updateValueAsDependencyDropdownAndValue(formControlName, data.value);
-      }
-    } catch (error) {}
+    const modal = await this.modalCtrl.create({
+      component: DropdownModalComponent,
+      componentProps: { data: options }
+    });
+    await modal.present();
+    const { data } = await modal.onWillDismiss();
+    if (data) {
+      this.personalInformationForm.controls[formControlName].patchValue(data.text);
+      this.facade.updatePersonalInformation({ [formControlName]: data.value });
+      this.updateValueAsDependencyDropdownAndValue(formControlName, data.value);
+    }
   }
 
   /**
