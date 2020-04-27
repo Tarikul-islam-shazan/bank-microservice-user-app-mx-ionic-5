@@ -7,7 +7,6 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ModalController } from '@ionic/angular';
 import { SignUpPersonalInfoFacade, PersonalInfoFormControls } from '@app/signup/personal-information/facade';
 import { IDropdownOption } from '@app/core/models/static-data';
 @Component({
@@ -19,11 +18,7 @@ export class PersonalInformationPage implements OnInit {
   personalInformationForm: FormGroup;
   seletedCountryOfBirthCode: string;
   skipErrorFields: Record<string, string | boolean>;
-  constructor(
-    private formBuilder: FormBuilder,
-    private modalCtrl: ModalController,
-    public facade: SignUpPersonalInfoFacade
-  ) {}
+  constructor(private formBuilder: FormBuilder, public facade: SignUpPersonalInfoFacade) {}
 
   ngOnInit() {
     this.facade.getStaticData();
