@@ -166,11 +166,7 @@ export class GovernmentDisclosureFacade {
     } else if (this.holdGovtPosition) {
       if (this.holdGovtPositionForm.valid) {
         if (this.relativeHoldGovtPosition) {
-          if (this.relativeGovtPositionForm.valid) {
-            return true;
-          } else {
-            return false;
-          }
+          return this.relativeGovtPositionForm.valid ? true : false;
         } else {
           return true;
         }
