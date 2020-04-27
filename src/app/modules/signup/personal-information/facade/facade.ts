@@ -8,13 +8,15 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
-import { PAGES } from '@app/core/models/constants';
 import { StaticDataService } from '@app/core/services/static-data.service';
 import { IPersonalInfo } from '@app/core/models/dto/signup';
-import { SignUpService } from '@app/core';
+import { SignUpService } from '@app/core/services/sign-up-service.service';
 import { IDropdownOption, StaticDataCategory } from '@app/core/models/static-data';
+import { ModalService, DropdownModalComponent } from '@app/shared';
+import { MemberService } from '@app/core';
 @Injectable()
 export class SignUpPersonalInfoFacade {
+  // Country of Birth = 484 for Mexico,
   readonly mexicoCountryCode: string = '484';
   private _personalInformaion: IPersonalInfo;
   countryOptions: IDropdownOption[];
@@ -32,7 +34,9 @@ export class SignUpPersonalInfoFacade {
     private router: Router,
     private analytics: AnalyticsService,
     private staticDataService: StaticDataService,
-    private signupService: SignUpService
+    private signupService: SignUpService,
+    private modalService: ModalService,
+    private memberService: MemberService
   ) {}
 
   /**
@@ -134,7 +138,39 @@ export class SignUpPersonalInfoFacade {
   savePersonalInfomation(): void {
     this.signupService.submitPersonaInfo(this._personalInformaion).subscribe(res => {
       this.analytics.logEvent(AnalyticsEventTypes.SignupPersonalInfoCompleted);
-      this.router.navigateByUrl(PAGES.SIGNUP_FUNDING_INFORMATION.ROUTE_PATH);
+      this.router.navigateByUrl('/signup/funding-information');
+    });
+  }
+
+  /**
+   *
+   * @summary A function opne dropdown modal with a callback
+   * @param {string} personalInfoKey
+   * @param {IDropdownOption[]} options
+   * @param {(data) => void} callback
+   * @memberof SignUpPersonalInfoFacade
+   */
+  openDropdownOptionsModal(personalInfoKey: string, options: IDropdownOption[], callback: (data) => void): void {
+    this.modalService.openModal(
+      DropdownModalComponent,
+      {
+        data: options
+      },
+      (resp: any) => {
+        const { data } = resp;
+        if (data) {
+          this.updatePersonalInformation({ [personalInfoKey]: data.value });
+          callback(data);
+        }
+      }
+    );
+  }
+
+  setDumyMember() {
+    this.memberService.setMember({
+      bank: '5e99b6dc8702aa4d8e50a11d',
+      _id: '5e9dbe668cc2015fdf257d06',
+      customerId: '00000000168'
     });
   }
 }

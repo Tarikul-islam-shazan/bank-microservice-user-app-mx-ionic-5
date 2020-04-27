@@ -7,9 +7,8 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { DropdownModalComponent } from '@app/shared/components/dropdown-modal/dropdown-modal.component';
 import { ModalController } from '@ionic/angular';
-import { SignUpPersonalInfoFacade } from '../facade';
+import { SignUpPersonalInfoFacade, PersonalInfoFormControls } from '@app/signup/personal-information/facade';
 import { IDropdownOption } from '@app/core/models/static-data';
 @Component({
   selector: 'mbc-personal-information',
@@ -27,6 +26,7 @@ export class PersonalInformationPage implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.facade.setDumyMember();
     this.facade.getStaticData();
     this.seletedCountryOfBirthCode = this.facade.mexicoCountryCode;
     this.initPersonalInformationForm();
@@ -84,19 +84,13 @@ export class PersonalInformationPage implements OnInit {
    * @returns {Promise<any>}
    * @memberof PersonalInformationPage
    */
-  async openOptionsModal(formControlName: string, options: IDropdownOption[]): Promise<any> {
+  async openOptionsModal(formControlName: string, options: IDropdownOption[]): Promise<void> {
     this.isInputFieldSkip(formControlName);
-    const modal = await this.modalCtrl.create({
-      component: DropdownModalComponent,
-      componentProps: { data: options }
-    });
-    await modal.present();
-    const { data } = await modal.onWillDismiss();
-    if (data) {
+
+    this.facade.openDropdownOptionsModal(formControlName, options, data => {
       this.personalInformationForm.controls[formControlName].patchValue(data.text);
-      this.facade.updatePersonalInformation({ [formControlName]: data.value });
       this.updateValueAsDependencyDropdownAndValue(formControlName, data.value);
-    }
+    });
   }
 
   /**
@@ -108,13 +102,13 @@ export class PersonalInformationPage implements OnInit {
    */
   updateValueAsDependencyDropdownAndValue(formControlName: string, value: string): void {
     switch (formControlName) {
-      case 'countryOfBirth':
+      case PersonalInfoFormControls.CountryOfBirth:
         this.seletedCountryOfBirthCode = value;
         const updateInfoForCountryOfBirth = { placeOfBirth: '' };
         this.personalInformationForm.patchValue(updateInfoForCountryOfBirth);
         this.facade.updatePersonalInformation(updateInfoForCountryOfBirth);
         break;
-      case 'occupation':
+      case PersonalInfoFormControls.Occupation:
         const updateInfoForOccupation = {
           economicActivity: '',
           banxicoActivity: ''
@@ -125,7 +119,7 @@ export class PersonalInformationPage implements OnInit {
         this.personalInformationForm.patchValue(updateInfoForOccupation);
         this.facade.updatePersonalInformation(updateInfoForOccupation);
         break;
-      case 'economicActivity':
+      case PersonalInfoFormControls.EconomicActivity:
         const updateInfoForEconomicActivity = {
           banxicoActivity: ''
         };
