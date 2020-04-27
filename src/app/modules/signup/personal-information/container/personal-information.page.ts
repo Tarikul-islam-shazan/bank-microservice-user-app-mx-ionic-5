@@ -26,7 +26,6 @@ export class PersonalInformationPage implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.facade.setDumyMember();
     this.facade.getStaticData();
     this.seletedCountryOfBirthCode = this.facade.mexicoCountryCode;
     this.initPersonalInformationForm();

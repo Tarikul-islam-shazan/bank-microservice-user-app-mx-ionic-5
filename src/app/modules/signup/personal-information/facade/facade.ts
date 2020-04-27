@@ -13,11 +13,9 @@ import { IPersonalInfo } from '@app/core/models/dto/signup';
 import { SignUpService } from '@app/core/services/sign-up-service.service';
 import { IDropdownOption, StaticDataCategory } from '@app/core/models/static-data';
 import { ModalService, DropdownModalComponent } from '@app/shared';
-import { MemberService } from '@app/core';
 @Injectable()
 export class SignUpPersonalInfoFacade {
-  // Country of Birth = 484 for Mexico,
-  readonly mexicoCountryCode: string = '484';
+  readonly mexicoCountryCode: string = '484'; // Country of Birth = 484 for Mexico,
   private _personalInformaion: IPersonalInfo;
   countryOptions: IDropdownOption[];
   placeOfBirthMexico: IDropdownOption[];
@@ -35,8 +33,7 @@ export class SignUpPersonalInfoFacade {
     private analytics: AnalyticsService,
     private staticDataService: StaticDataService,
     private signupService: SignUpService,
-    private modalService: ModalService,
-    private memberService: MemberService
+    private modalService: ModalService
   ) {}
 
   /**
@@ -96,7 +93,9 @@ export class SignUpPersonalInfoFacade {
    */
   updateEconomicActivityOptions(occupationValue: string): void {
     if (occupationValue) {
-      const occapations: any = this.occupationOptions.find(occupation => occupation.value === occupationValue);
+      const occapations: IDropdownOption & { [key: string]: any } = this.occupationOptions.find(
+        occupation => occupation.value === occupationValue
+      );
       this.economicActivityOptions = occapations && occapations.activities ? occapations.activities : [];
     } else {
       this.economicActivityOptions = [];
@@ -111,7 +110,7 @@ export class SignUpPersonalInfoFacade {
    */
   updateBanxicoActivityOptions(economicActivityValue: string): void {
     if (economicActivityValue) {
-      const economicActivities: any = this.economicActivityOptions.find(
+      const economicActivities: IDropdownOption & { [key: string]: any } = this.economicActivityOptions.find(
         economicActivity => economicActivity.value === economicActivityValue
       );
       this.banxicoActivityOptions = economicActivities && economicActivities.banxico ? economicActivities.banxico : [];
@@ -164,13 +163,5 @@ export class SignUpPersonalInfoFacade {
         }
       }
     );
-  }
-
-  setDumyMember() {
-    this.memberService.setMember({
-      bank: '5e99b6dc8702aa4d8e50a11d',
-      _id: '5e9dbe668cc2015fdf257d06',
-      customerId: '00000000168'
-    });
   }
 }
