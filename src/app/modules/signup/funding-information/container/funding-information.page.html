@@ -98,7 +98,7 @@
       class="white-button"
       expand="block"
       (click)="fundInformationFormSubmit()"
-      [disabled]="fundingInformationForm.value.fundMyself === true ? false : fundingInformationForm.invalid"
+      [disabled]="!fundingInformationForm.value.fundMyself && fundingInformationForm.invalid"
     >
       {{ 'signup-module.funding-information-page.button-text' | translate }}
     </ion-button>

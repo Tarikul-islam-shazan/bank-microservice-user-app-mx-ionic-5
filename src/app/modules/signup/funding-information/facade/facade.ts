@@ -15,9 +15,7 @@ import * as moment from 'moment';
 export class FundingInformationFacade {
   fundInfo: IFundInfo;
 
-  constructor(private signupService: SignUpService, private router: Router) {
-    this.initializefundInformation();
-  }
+  constructor(private signupService: SignUpService, private router: Router) {}
 
   /**
    * @method fundInformationSubmit Initialization funding information form
@@ -43,28 +41,5 @@ export class FundingInformationFacade {
 
   get fundInformation() {
     return this.fundInfo;
-  }
-
-  /**
-   * @method initializefundInformation Initialization funding information object
-   *
-   * @memberof FundingInformationFacade
-   * Issue: MM2-44
-   * Details:  Funding Information: Intialization of funding info model object.
-   * Date: April 24,2020
-   * Developer: Tarikul <tarikul@brainstation23.com>
-   */
-
-  initializefundInformation() {
-    this.fundInfo = {
-      fundMyself: true,
-      providerInfo: {
-        firstName: '',
-        secondName: '',
-        paternalLastName: '',
-        maternalLastName: '',
-        dateOfBirth: ''
-      }
-    };
   }
 }
