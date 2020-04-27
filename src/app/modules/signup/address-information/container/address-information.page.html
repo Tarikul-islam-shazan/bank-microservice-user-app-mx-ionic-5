@@ -140,7 +140,7 @@
         placeholder="{{ 'signup-module.signup-address-information-page.address-form.city' | translate }}"
       ></ion-input>
 
-      <div class="dropdown-input" (click)="openSuburbModal('suburbField','suburb', postalCodeData)">
+      <div class="dropdown-input" (click)="openOptionsModal('suburbField','suburb', suburbFieldData)">
         <ion-input
           (ionFocus)="isInputFieldSkip('suburbField')"
           [ngClass]="

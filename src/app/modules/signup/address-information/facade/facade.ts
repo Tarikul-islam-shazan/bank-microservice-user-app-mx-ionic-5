@@ -7,12 +7,7 @@
 
 import { Injectable } from '@angular/core';
 import { SignUpService, IAddressInfo } from '@app/core';
-import {
-  StaticDataService,
-  StaticDataCategory,
-  StaticDataSubCategory,
-  IDropdownOption
-} from '@app/core/services/static-data.service';
+import { StaticDataService, StaticDataCategory, IDropdownOption } from '@app/core/services/static-data.service';
 import { Router } from '@angular/router';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { Observable } from 'rxjs';
@@ -41,12 +36,10 @@ export class AddressInformationFacade {
    * @memberof AddressInformationFacade
    */
   getStaticData(): void {
-    this.staticDataService
-      .get(StaticDataCategory.SignupOption, [StaticDataSubCategory.AddressType, StaticDataSubCategory.PropertyType])
-      .subscribe(data => {
-        this.addressTypeList = data.AddressType;
-        this.propertyTypeList = data.PropertyType;
-      });
+    this.staticDataService.get([StaticDataCategory.AddressType, StaticDataCategory.PropertyType]).subscribe(data => {
+      this.addressTypeList = data[StaticDataCategory.AddressType];
+      this.propertyTypeList = data[StaticDataCategory.PropertyType];
+    });
   }
 
   /**
@@ -68,7 +61,7 @@ export class AddressInformationFacade {
    */
   goToNext(addressInfoData: IAddressInfo) {
     this.signUpService.submitAddressInfo(addressInfoData).subscribe(data => {
-      this.analytics.logEvent(AnalyticsEventTypes.AddressInfoSubmitted);
+      this.analytics.logEvent(AnalyticsEventTypes.SignupAddressInfoCompleted);
       this.router.navigate(['/signup/beneficiary-information']);
     });
   }

@@ -47,10 +47,23 @@ export class StaticDataService {
   mappingData(staticData: { code: string; value: string }[]): IDropdownOption[] {
     const staticDataformat: IDropdownOption[] = [];
     staticData.forEach(data => {
-      staticDataformat.push({
-        value: data.code,
-        text: data.value
-      });
+      const { code: value, value: text, ...rest } = data;
+      if (Object.keys(rest).length !== 0) {
+        const subData = { ...rest };
+        // we do not know what's the sub data object key but key will be string
+        const subDataKey = (Object.keys(subData) as unknown) as string;
+        const subDataMapping = this.mappingData(subData[subDataKey]);
+        staticDataformat.push({
+          value,
+          text,
+          [subDataKey]: subDataMapping
+        });
+      } else {
+        staticDataformat.push({
+          value,
+          text
+        });
+      }
     });
     return staticDataformat;
   }

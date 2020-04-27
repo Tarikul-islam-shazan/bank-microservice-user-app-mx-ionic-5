@@ -1,17 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { SignUpService, Logger } from '@app/core';
-import jsSHA from 'jssha';
+import { SignUpService } from '@app/core';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 
-const log = new Logger('SignupEmailFacade');
+/**
+ * * Issue: MM2-217
+ * * Issue Details: Create Login Password hashing removed.
+ * * Developer Feedback: Issue Fixed
+ * Date: April 22, 2020
+ * Developer: Zahidul Islam <zahidul@bs-23.net>
+ */
 @Injectable()
 export class SignupCreateLoginFacade {
   constructor(private signupService: SignUpService, private router: Router, private analytics: AnalyticsService) {}
 
   createLogin(formValue: { username$: string; password$: string }) {
-    formValue.password$ = this.generateHashPassword(formValue.password$);
     this.signupService.createLogin(formValue).subscribe(
       member => {
         this.analytics.logEvent(AnalyticsEventTypes.LoginCreated, { username: formValue.username$ });
@@ -19,10 +23,5 @@ export class SignupCreateLoginFacade {
       },
       err => {}
     );
-  }
-  generateHashPassword(password: string): string {
-    const shaObj = new jsSHA('SHA-256', 'TEXT');
-    shaObj.update(password);
-    return shaObj.getHash('HEX');
   }
 }
