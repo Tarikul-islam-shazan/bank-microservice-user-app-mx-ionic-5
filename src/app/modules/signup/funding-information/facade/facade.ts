@@ -34,7 +34,7 @@ export class FundingInformationFacade {
     if (this.fundInfo.fundMyself) {
       delete this.fundInfo.providerInfo;
     } else {
-      this.fundInfo.providerInfo.dateOfBirth = moment(this.fundInfo.providerInfo.dateOfBirth).format('DD-MM-YYYY');
+      this.fundInfo.providerInfo.dateOfBirth = moment(this.fundInfo.providerInfo.dateOfBirth).format('MM-DD-YYYY');
     }
     this.signupService.fundingInformationSubmission(this.fundInfo).subscribe(res => {
       this.router.navigate(['/signup/account-selection']);
