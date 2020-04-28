@@ -36,6 +36,7 @@ import { HeaderService } from './header-service.service';
 import { MemberService } from './member.service';
 import { SettingsService } from './settings.service';
 import { UserSettings } from '../models/app-settings';
+import { IFundInfo } from '@app/signup/funding-information/model/fundinfo';
 
 const logger = new Logger('SignUpService');
 
@@ -199,6 +200,12 @@ export class SignUpService {
           this.member = _member;
         })
       );
+  }
+
+  fundingInformationSubmission(fundInfo: IFundInfo): Observable<IMember> {
+    return this.http.post<IMember>(this.baseUrl + '/bank/onboarding/apply/fund-provider', fundInfo, {
+      headers: this.headerService.getMemberIdCustomerIdHeader()
+    });
   }
 
   getCountryState(countryId: string): Observable<IStates[]> {
