@@ -54,9 +54,9 @@ export class FundingInformationPage implements OnInit {
    */
 
   fundInformationFormSubmit(): void {
+    const { fundMyself } = this.fundingInformationForm.value;
     const providerInfo = this.fundingInformationForm.value;
     delete providerInfo.fundMyself;
-    const { fundMyself } = this.fundingInformationForm.value;
     this.facade.fundInformationSubmit({ fundMyself, providerInfo });
   }
 }

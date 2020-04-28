@@ -38,8 +38,4 @@ export class FundingInformationFacade {
       this.router.navigate(['/signup/account-selection']);
     });
   }
-
-  get fundInformation() {
-    return this.fundInfo;
-  }
 }
