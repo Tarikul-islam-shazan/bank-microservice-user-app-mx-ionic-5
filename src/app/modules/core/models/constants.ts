@@ -55,6 +55,10 @@ export const PAGES: Page = {
     NAME: 'Signup Beneficiary Information',
     ROUTE_PATH: '/signup/beneficiary-information'
   },
+  SIGNUP_PERSONAL_INFORMATION: {
+    NAME: 'Signup Personal Information',
+    ROUTE_PATH: '/signup/personal-information'
+  },
   SIGNUP_GOVERNMENT_DISCLOSURE: {
     NAME: 'Signup Government Disclosure',
     ROUTE_PATH: '/signup/government-disclosure'

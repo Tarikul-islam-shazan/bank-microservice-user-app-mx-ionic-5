@@ -27,6 +27,7 @@ import {
   IAccountLevel,
   IAddressInfo,
   IBeneficiaryInfo,
+  IPersonalInfo,
   IGovtDisclosureApplication,
   IGovtDisclosureResponse
 } from '../models';
@@ -375,6 +376,11 @@ export class SignUpService {
         headers: this.headerService.getUserNameMemberICustomerIdHeader()
       }
     );
+  }
+  submitPersonaInfo(personalInfo: IPersonalInfo): Observable<IMember> {
+    return this.http.post<IMember>(`${this.baseUrl}/bank/onboarding/apply/personal-info`, personalInfo, {
+      headers: this.headerService.getMemberICustomerIdHeader()
+    });
   }
 
   submitGovernmentDisclosureApplication(

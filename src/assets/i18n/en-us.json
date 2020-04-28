@@ -260,6 +260,21 @@
         }
       }
     },
+    "signup-personal-information": {
+      "header-text": "Personal Information",
+      "country-of-birth-placeholder": "Country of Birth",
+      "place-of-birth-placeholder": "Place of Birth",
+      "fm-number-placeholder": "FM Number",
+      "nationality-placeholder": "Nationality",
+      "sex-placeholder": "Sex",
+      "marital-status-placeholder": "Marital Status",
+      "education-level-placeholder": "Highest Level of Education",
+      "occupation-placeholder": "Occupation",
+      "profession-placeholder": "Profession",
+      "economic-activity-placeholder": "Economic Activity",
+      "banxico-activity-placeholder": "Banxico Activity",
+      "submit-button-text": "Next"
+    },
     "government-disclosure": {
       "page-title": "Government Disclosure",
       "hold-govt-position": {

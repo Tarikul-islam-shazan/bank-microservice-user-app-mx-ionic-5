@@ -259,6 +259,21 @@
         }
       }
     },
+    "signup-personal-information": {
+      "header-text": "Personal Information",
+      "country-of-birth-placeholder": "Pais de Nacimiento",
+      "place-of-birth-placeholder": "Lugar de Nacimiento",
+      "fm-number-placeholder": "FM Number",
+      "nationality-placeholder": "Nacionalidad",
+      "sex-placeholder": "Sexo",
+      "marital-status-placeholder": "Estado Civil",
+      "education-level-placeholder": "Nivel Maximo de Estudios",
+      "occupation-placeholder": "Ocupación",
+      "profession-placeholder": "Profesion",
+      "economic-activity-placeholder": "Actividad Economica",
+      "banxico-activity-placeholder": "Actividad Banxico",
+      "submit-button-text": "Siguiente"
+    },
     "government-disclosure": {
       "page-title": "Government Disclosure",
       "hold-govt-position": {

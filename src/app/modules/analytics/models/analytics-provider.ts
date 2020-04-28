@@ -67,6 +67,7 @@ export enum AnalyticsEventTypes {
   SignupAddressInfoCompleted = 'signup_address_info_completed',
   SignupBeneficiaryInfoCompleted = 'signup_beneficiary_info_completed',
   SignupAccountLevelSelected = 'signup_account_level_selected',
+  SignupPersonalInfoCompleted = 'signup_personal_info_completed',
   IdDocumentSubmitted = 'Id_document_submitted',
   TermsAndConditionsAgreed = 'terms_and_conditions_agreed',
   ApplicationStatusDetermined = 'application_status_determined',
