@@ -49,7 +49,7 @@ export class SignUpPersonalInfoFacade {
         StaticDataCategory.PlaceOfBirthForeign,
         StaticDataCategory.Nationality,
         StaticDataCategory.Gender,
-        StaticDataCategory.Relationship,
+        StaticDataCategory.MaritalStatus,
         StaticDataCategory.HighestLevelOfEducation,
         StaticDataCategory.Profession,
         StaticDataCategory.Occupation
@@ -58,7 +58,7 @@ export class SignUpPersonalInfoFacade {
         this.countryOptions = data[StaticDataCategory.Country];
         this.placeOfBirthOptions = data[StaticDataCategory.PlaceOfBirthMexico];
         this.nationalityOptions = data[StaticDataCategory.Nationality];
-        this.maritalStatusOptions = data[StaticDataCategory.Relationship];
+        this.maritalStatusOptions = data[StaticDataCategory.MaritalStatus];
         this.sexOptions = data[StaticDataCategory.Gender];
         this.highestLevelOfEducationOptions = data[StaticDataCategory.HighestLevelOfEducation];
         this.professionOptions = data[StaticDataCategory.Profession];
