@@ -80,7 +80,6 @@ export class PersonalInformationPage implements OnInit {
    */
   async openOptionsModal(formControlName: string, options: IDropdownOption[]): Promise<void> {
     this.isInputFieldSkip(formControlName);
-
     this.facade.openDropdownOptionsModal(formControlName, options, data => {
       this.personalInformationForm.controls[formControlName].patchValue(data.text);
       this.updateValueAsDependencyDropdownAndValue(formControlName, data.value);
@@ -133,7 +132,8 @@ export class PersonalInformationPage implements OnInit {
   submitPersonalInfomation() {
     if (!this.facade.isCountryOfBirthMexico(this.seletedCountryOfBirthCode)) {
       const { placeOfBirth } = this.personalInformationForm.value;
-      this.facade.updatePersonalInformation({ placeOfBirth });
+      // if country of birth is not Mexico then fmNumber will be place of birth value and Place of Birth will be empty
+      this.facade.updatePersonalInformation({ fmNumber: placeOfBirth, placeOfBirth: '' });
     }
     this.facade.savePersonalInfomation();
   }
