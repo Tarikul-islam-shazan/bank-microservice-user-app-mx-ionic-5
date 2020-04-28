@@ -141,6 +141,8 @@ export class AddressInformationPage implements OnInit {
         this.addressForm.controls.municipality.patchValue(data[0].municipality);
         this.addressForm.controls.cityField.patchValue(data[0].cityName);
         this.addressForm.controls.city.patchValue(data[0].city);
+        this.addressForm.controls.suburbField.patchValue('');
+        this.addressForm.controls.suburb.patchValue('');
       });
     }
   }

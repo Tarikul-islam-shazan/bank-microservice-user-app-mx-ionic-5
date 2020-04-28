@@ -367,7 +367,7 @@
         "state": "State",
         "municipality": "Municipality",
         "suburb": "Suburb",
-        "dateOfResidence": "Date @ Residence",
+        "dateOfResidence": "Date of Residence",
         "dateFormate": "DD/MM/YYYY"
       }
     },
