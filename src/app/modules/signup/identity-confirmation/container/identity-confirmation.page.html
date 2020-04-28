@@ -13,9 +13,9 @@
           <ion-input
             readonly
             class="white-input"
-            id="utilityType"
+            id="utilityDocument"
             type="text"
-            formControlName="utilityType"
+            formControlName="utilityDocument"
             placeholder="{{ 'signup-module.identity-confirmation-page.dropdown-placeholder' | translate }}"
           ></ion-input>
           <ion-icon name="chevron-down"></ion-icon>
@@ -31,52 +31,16 @@
               class="preview"
               [src]="facade.utilityBillImage"
               *ngIf="facade.utilityBillImage"
-              (click)="takePhoto(documentImageType.Utility)"
+              (click)="takePhoto()"
             />
           </div>
-          <ion-input
-            #utilityPictureInput
-            [hidden]="true"
-            type="file"
-            accept="image/*"
-            (ionChange)="uploadImage(documentImageType.Utility)"
-          ></ion-input>
-          <div class="scan-button" *ngIf="!facade.utilityBillImage" (click)="takePhoto(documentImageType.Utility)">
+          <ion-input #utilityPictureInput [hidden]="true" type="file" accept="image/*" (ionChange)="uploadImage()">
+          </ion-input>
+          <div class="scan-button" *ngIf="!facade.utilityBillImage" (click)="takePhoto()">
             <div class="button-image">
               <img src="assets/img/camera.png" />
             </div>
             <div class="button-text">{{'signup-module.identity-confirmation-page.utility-scan-text' | translate}}</div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="content-block">
-      <div class="description">
-        {{ 'signup-module.identity-confirmation-page.picture-text' | translate }}
-      </div>
-      <div class="scan-wrapper">
-        <div class="scan-button-wrapper">
-          <div class="clearfix scanned-image-sec">
-            <ion-icon name="checkmark-circle" class="tick-icon" *ngIf="facade.selfieImage"></ion-icon>
-            <img
-              class="preview"
-              [src]="facade.selfieImage"
-              *ngIf="facade.selfieImage"
-              (click)="takePhoto(documentImageType.Selfie)"
-            />
-          </div>
-          <ion-input
-            #selfieInput
-            [hidden]="true"
-            type="file"
-            accept="image/*"
-            (ionChange)="uploadImage(documentImageType.Selfie)"
-          ></ion-input>
-          <div class="scan-button" *ngIf="!facade.selfieImage" (click)="takePhoto(documentImageType.Selfie)">
-            <div class="button-image">
-              <img src="assets/img/camera.png" />
-            </div>
-            <div class="button-text">{{'signup-module.identity-confirmation-page.selfie-scan-text' | translate}}</div>
           </div>
         </div>
       </div>

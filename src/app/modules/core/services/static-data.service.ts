@@ -5,7 +5,7 @@ import { MemberService } from '@app/core/services/member.service';
 import { IMember } from '@app/core/models/dto/member';
 import { StaticDataCategory, IStaticData, IDropdownOption } from '@app/core/models/static-data';
 import { SettingsService } from '@app/core/services/settings.service';
-import { map } from 'rxjs/operators';
+import { map, filter } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'

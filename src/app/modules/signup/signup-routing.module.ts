@@ -100,11 +100,6 @@ export const SIGNUP_ROUTES: Routes = [
     loadChildren: () => import('./account-selection/account-selection.module').then(m => m.AccountSelectionPageModule)
   },
   {
-    path: 'identity-confirmation',
-    loadChildren: () =>
-      import('./identity-confirmation/identity-confirmation.module').then(m => m.IdentityConfirmationPageModule)
-  },
-  {
     path: 'funding-information',
     loadChildren: () =>
       import('./funding-information/funding-information.module').then(m => m.FundingInformationPageModule)
@@ -114,6 +109,12 @@ export const SIGNUP_ROUTES: Routes = [
     data: { title: PAGES.SIGNUP_GOVERNMENT_DISCLOSURE.NAME },
     loadChildren: () =>
       import('./government-disclosure/government-disclosure.module').then(m => m.GovernmentDisclosurePageModule)
+  },
+  {
+    path: 'identity-confirmation',
+    data: { title: PAGES.SIGNUP_IDENTITY_CONFIRMATION.NAME },
+    loadChildren: () =>
+      import('./identity-confirmation/identity-confirmation.module').then(m => m.IdentityConfirmationPageModule)
   }
 ];
 

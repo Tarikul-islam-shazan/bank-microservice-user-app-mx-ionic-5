@@ -1,7 +1,10 @@
-import { AppPlatform } from '@app/core';
+import { AppPlatform, SignUpService, StaticDataCategory, StaticDataService } from '@app/core';
 import { DropdownModalComponent, IMeedModalContent, ModalService } from '@app/shared';
-import { DropdownOption, ScanIdenittyPictureType } from '@app/signup/models/signup';
+import { DropdownOption } from '@app/signup/models/signup';
 import { Injectable } from '@angular/core';
+import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { Router } from '@angular/router';
 import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
@@ -16,6 +19,9 @@ export class IdentityConfirmationFacade {
   constructor(
     private modalService: ModalService,
     private platformService: AppPlatform,
+    private router: Router,
+    private signupService: SignUpService,
+    private staticDataService: StaticDataService,
     private translateService: TranslateService
   ) {}
 
@@ -25,23 +31,10 @@ export class IdentityConfirmationFacade {
    * @returns {DropdownOption[]}
    * @memberOf IdentityConfirmationFacade
    */
-  getUtilityOptions(): DropdownOption[] {
-    const utilityOptions: DropdownOption[] = [
-      {
-        text: 'Electricity Service Bill',
-        value: 'Electricity Service Bill'
-      },
-      {
-        text: 'Water Service Bill',
-        value: 'Water Service Bill'
-      },
-      {
-        text: 'Phone Service Bill',
-        value: 'Phone Service Bill'
-      }
-    ];
-
-    return utilityOptions;
+  getUtilityOptions(): Observable<DropdownOption[]> {
+    return this.staticDataService
+      .get([StaticDataCategory.UtilityDocument])
+      .pipe(map(response => response.utilityDocument));
   }
 
   /**
@@ -114,12 +107,11 @@ export class IdentityConfirmationFacade {
   /**
    * @summary captures photo
    *
-   * @param {ScanIdenittyPictureType} type
    * @param {HTMLInputElement} uploadInputElement
    * @returns {Promise<void>}
    * @memberOf IdentityConfirmationFacade
    */
-  async takePhoto(type: ScanIdenittyPictureType, uploadInputElement: HTMLInputElement): Promise<void> {
+  async takePhoto(uploadInputElement: HTMLInputElement): Promise<void> {
     if (this.platformService.isCordova()) {
       const cameraPermission = await this.platformService.requestCameraPermission();
       if (cameraPermission) {
@@ -128,14 +120,14 @@ export class IdentityConfirmationFacade {
           if (storagePermission) {
             const imageData = await this.platformService.captureImage();
             const base64Image = 'data:image/jpeg;base64,' + imageData;
-            this.initImageData(type, base64Image, imageData);
+            this.initImageData(base64Image, imageData);
           } else {
             this.permissionInfoModal();
           }
         } else {
           const imageData = await this.platformService.captureImage();
           const base64Image = 'data:image/jpeg;base64,' + imageData;
-          this.initImageData(type, base64Image, imageData);
+          this.initImageData(base64Image, imageData);
         }
       } else {
         // Show Permission Info Modal
@@ -149,29 +141,19 @@ export class IdentityConfirmationFacade {
   /**
    * @summary uploads image
    *
-   * @param {ScanIdenittyPictureType} type
    * @param {HTMLInputElement} uploadInputElement
    * @returns {void}
    * @memberOf IdentityConfirmationFacade
    */
-  uploadImage(type: ScanIdenittyPictureType, uploadInputElement: HTMLInputElement): void {
+  uploadImage(uploadInputElement: HTMLInputElement): void {
     const file = uploadInputElement.files[0],
       reader = new FileReader();
 
     reader.onloadend = () => {
       const imageData = (reader.result as string).replace(/^data:.+;base64,/, '');
       const base64Image = 'data:image/jpg;base64,' + imageData;
-      switch (type) {
-        case ScanIdenittyPictureType.Utility:
-          this.utilityBillImage = base64Image;
-          this.scannedUtilityBillImage = this.platformService.base64toBlob(imageData, 'image/png');
-          break;
-
-        case ScanIdenittyPictureType.Selfie:
-          this.selfieImage = base64Image;
-          this.scannedSelfieImage = this.platformService.base64toBlob(imageData, 'image/png');
-          break;
-      }
+      this.utilityBillImage = base64Image;
+      this.scannedUtilityBillImage = this.platformService.base64toBlob(imageData, 'image/png');
     };
     reader.readAsDataURL(file);
   }
@@ -180,24 +162,14 @@ export class IdentityConfirmationFacade {
    * @summary After capturing the image, save those images on variables
    *
    * @private
-   * @param {ScanIdenittyPictureType} type
    * @param {string} base64Image
    * @param {string} imageData
    * @returns {void}
    * @memberOf IdentityConfirmationPage
    */
-  private initImageData(type: ScanIdenittyPictureType, base64Image: string, imageData: string): void {
-    switch (type) {
-      case ScanIdenittyPictureType.Utility:
-        this.utilityBillImage = base64Image;
-        this.scannedUtilityBillImage = this.platformService.base64toBlob(imageData, 'image/png');
-        break;
-
-      case ScanIdenittyPictureType.Selfie:
-        this.selfieImage = base64Image;
-        this.scannedSelfieImage = this.platformService.base64toBlob(imageData, 'image/png');
-        break;
-    }
+  private initImageData(base64Image: string, imageData: string): void {
+    this.utilityBillImage = base64Image;
+    this.scannedUtilityBillImage = this.platformService.base64toBlob(imageData, 'image/png');
   }
 
   /**
@@ -207,14 +179,22 @@ export class IdentityConfirmationFacade {
    * @returns {FormData} The param object for sending to api
    * @memberOf IdentityConfirmationPage
    */
-  getFormData(utilityType: string): FormData {
+  private getFormData(): FormData {
     const formData = new FormData();
-    formData.append('utilityType', utilityType);
-    formData.append('utilityImage', this.scannedUtilityBillImage, 'utility.png');
-    formData.append('selfieImage', this.scannedSelfieImage, 'selfie.png');
+    formData.append('utilityDocument', this.selectedUtility.value);
+    formData.append('utilityImage', this.scannedUtilityBillImage, 'utilityImage.png');
 
     return formData;
   }
 
-  //   continue(utilityType: string): void {}
+  /**
+   * @summary continues signup process by sending form data
+   *
+   * @returns {void}
+   * @memberOf IdentityConfirmationFacade
+   */
+  continue(): void {
+    const formData = this.getFormData();
+    this.signupService.confirmIdentity(formData).subscribe(() => this.router.navigate(['/signup/terms-conditions']));
+  }
 }

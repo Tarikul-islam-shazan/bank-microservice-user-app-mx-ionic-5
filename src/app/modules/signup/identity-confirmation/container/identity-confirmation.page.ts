@@ -1,8 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { DropdownOption, ScanIdenittyPictureType } from '@app/signup/models/signup';
+import { DropdownOption } from '@app/signup/models/signup';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IdentityConfirmationFacade } from '../facade/identity-confirmation.facade';
 import { IonInput } from '@ionic/angular';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'identity-confirmation',
@@ -13,15 +14,10 @@ export class IdentityConfirmationPage implements OnInit {
   identityConfirmationForm: FormGroup;
   utitlityOptions: DropdownOption[];
 
-  documentImageType = ScanIdenittyPictureType;
-
-  @ViewChild('selfieInput', { static: false }) selfieInput: IonInput;
   @ViewChild('utilityPictureInput', { static: false }) utilityPictureInput: IonInput;
 
   get isSubmitButtonDisabled(): boolean {
-    return (
-      this.identityConfirmationForm.invalid || !this.facade.scannedSelfieImage || !this.facade.scannedUtilityBillImage
-    );
+    return this.identityConfirmationForm.invalid || !this.facade.scannedUtilityBillImage;
   }
 
   constructor(private formBuilder: FormBuilder, public facade: IdentityConfirmationFacade) {}
@@ -39,7 +35,9 @@ export class IdentityConfirmationPage implements OnInit {
    * @memberOf IdentityConfirmationPage
    */
   private setUtilityOptions(): void {
-    this.utitlityOptions = this.facade.getUtilityOptions();
+    this.facade.getUtilityOptions().subscribe(utilityDocument => {
+      this.utitlityOptions = utilityDocument;
+    });
   }
 
   /**
@@ -51,7 +49,7 @@ export class IdentityConfirmationPage implements OnInit {
    */
   private initIdentityConfirmation(): void {
     this.identityConfirmationForm = this.formBuilder.group({
-      utilityType: [null, Validators.required]
+      utilityDocument: [null, Validators.required]
     });
   }
 
@@ -63,50 +61,31 @@ export class IdentityConfirmationPage implements OnInit {
    */
   openModal(): void {
     this.facade.openUtilityModal(this.utitlityOptions, (selectedUtility: DropdownOption) => {
-      this.identityConfirmationForm.controls.utilityType.patchValue(selectedUtility.text);
+      this.identityConfirmationForm.controls.utilityDocument.patchValue(selectedUtility.text);
     });
   }
 
   /**
    * @sumamry takes photo
    *
-   * @param {ScanIdenittyPictureType} type
    * @returns {Promise<void>}
    * @memberOf IdentityConfirmationPage
    */
-  async takePhoto(type: ScanIdenittyPictureType): Promise<void> {
-    let imageUploadElement: HTMLInputElement;
+  async takePhoto(): Promise<void> {
+    const imageUploadElement = await this.utilityPictureInput.getInputElement();
 
-    switch (type) {
-      case ScanIdenittyPictureType.Utility:
-        imageUploadElement = await this.utilityPictureInput.getInputElement();
-        break;
-      case ScanIdenittyPictureType.Selfie:
-        imageUploadElement = await this.selfieInput.getInputElement();
-        break;
-    }
-    this.facade.takePhoto(type, imageUploadElement);
+    this.facade.takePhoto(imageUploadElement);
   }
 
   /**
    * @summary uploads image
    *
-   * @param {ScanIdenittyPictureType} type
    * @returns {Promise<void>}
    * @memberOf IdentityConfirmationPage
    */
-  async uploadImage(type: ScanIdenittyPictureType): Promise<void> {
-    let imageUploadElement: HTMLInputElement;
-
-    switch (type) {
-      case ScanIdenittyPictureType.Utility:
-        imageUploadElement = await this.utilityPictureInput.getInputElement();
-        break;
-      case ScanIdenittyPictureType.Selfie:
-        imageUploadElement = await this.selfieInput.getInputElement();
-        break;
-    }
-    this.facade.uploadImage(type, imageUploadElement);
+  async uploadImage(): Promise<void> {
+    const imageUploadElement = await this.utilityPictureInput.getInputElement();
+    this.facade.uploadImage(imageUploadElement);
   }
 
   /**
@@ -117,12 +96,7 @@ export class IdentityConfirmationPage implements OnInit {
    */
   continue(): void {
     if (!this.isSubmitButtonDisabled) {
-      const { utilityType } = this.identityConfirmationForm.value;
-      const formData = this.facade.getFormData(utilityType);
-
-      console.warn(formData);
-
-      // this.facade.continue(utilityType);
+      this.facade.continue();
     }
   }
 }

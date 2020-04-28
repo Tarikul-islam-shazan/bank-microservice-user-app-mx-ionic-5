@@ -29,7 +29,8 @@ import {
   IBeneficiaryInfo,
   IPersonalInfo,
   IGovtDisclosureApplication,
-  IGovtDisclosureResponse
+  IGovtDisclosureResponse,
+  IConfirmIdentityInfo
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
 import { Logger } from './logger.service';
@@ -390,6 +391,16 @@ export class SignUpService {
       `${this.baseUrl}/bank/onboarding/apply/gov-disclosure`,
       govtDisclosureApplication,
       { headers: this.headerService.getMemberICustomerIdHeader() }
+    );
+  }
+
+  confirmIdentity(identityInfo: any) {
+    return this.http.post<IConfirmIdentityInfo>(
+      this.baseUrl + '/bank/onboarding/apply/identity-confirmation',
+      identityInfo,
+      {
+        headers: this.headerService.getMemberICustomerIdHeader()
+      }
     );
   }
 }

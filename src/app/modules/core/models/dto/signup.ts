@@ -320,3 +320,7 @@ export interface IGovtDisclosureResponse {
   customerId: string;
   accountLevel: string;
 }
+export interface IConfirmIdentityInfo {
+  utilityDocument: string;
+  utilityImage: Blob;
+}
