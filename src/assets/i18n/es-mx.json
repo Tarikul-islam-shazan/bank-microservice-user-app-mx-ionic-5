@@ -259,6 +259,31 @@
         }
       }
     },
+    "government-disclosure": {
+      "page-title": "Government Disclosure",
+      "hold-govt-position": {
+        "list-header": "Do you hold a position in the government?",
+        "yes-radio-button": "Yes, I do",
+        "no-radio-button": "No, I don't",
+        "content-title": "Your Government Information",
+        "position-placeholder": "Position",
+        "association-placeholder": "Association"
+      },
+      "relative-hold-govt-position": {
+        "list-header": "Do you have a relative who holds a position in the government?",
+        "yes-radio-button": "Yes, I do",
+        "no-radio-button": "No, I don't",
+        "content-title": "Your Relative Information",
+        "first-name-placeholder": "First Name",
+        "second-name-placeholder": "Second Name (Optional)",
+        "paternal-last-name": "Paternal Last Name",
+        "maternal-last-name": "Maternal Last Name (Optional)",
+        "position-placeholder": "Position",
+        "home-address-placeholder": "Home Address",
+        "phone-placeholder": "Phone",
+        "participation-placeholder": "Participation %"
+      }
+    },
     "inviter-page": {
       "page-title": "Invitar miembros",
       "header-text": "¡Hazlos felices!",
