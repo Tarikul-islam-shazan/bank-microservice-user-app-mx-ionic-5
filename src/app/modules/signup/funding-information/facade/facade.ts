@@ -35,7 +35,7 @@ export class FundingInformationFacade {
       this.fundInfo.providerInfo.dateOfBirth = moment(this.fundInfo.providerInfo.dateOfBirth).format('MM-DD-YYYY');
     }
     this.signupService.fundingInformationSubmission(this.fundInfo).subscribe(res => {
-      this.router.navigate(['/signup/account-selection']);
+      this.router.navigate(['/signup/government-disclosure']);
     });
   }
 }
