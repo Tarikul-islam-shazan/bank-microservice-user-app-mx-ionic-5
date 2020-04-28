@@ -27,7 +27,9 @@ import {
   IAccountLevel,
   IAddressInfo,
   IBeneficiaryInfo,
-  IPersonalInfo
+  IPersonalInfo,
+  IGovtDisclosureApplication,
+  IGovtDisclosureResponse
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
 import { Logger } from './logger.service';
@@ -37,6 +39,7 @@ import { HeaderService } from './header-service.service';
 import { MemberService } from './member.service';
 import { SettingsService } from './settings.service';
 import { UserSettings } from '../models/app-settings';
+import { IFundInfo } from '@app/signup/funding-information/model/fundinfo';
 
 const logger = new Logger('SignUpService');
 
@@ -200,6 +203,12 @@ export class SignUpService {
           this.member = _member;
         })
       );
+  }
+
+  fundingInformationSubmission(fundInfo: IFundInfo): Observable<IMember> {
+    return this.http.post<IMember>(this.baseUrl + '/bank/onboarding/apply/fund-provider', fundInfo, {
+      headers: this.headerService.getMemberIdCustomerIdHeader()
+    });
   }
 
   getCountryState(countryId: string): Observable<IStates[]> {
@@ -372,5 +381,15 @@ export class SignUpService {
     return this.http.post<IMember>(`${this.baseUrl}/bank/onboarding/apply/personal-info`, personalInfo, {
       headers: this.headerService.getMemberICustomerIdHeader()
     });
+  }
+
+  submitGovernmentDisclosureApplication(
+    govtDisclosureApplication: IGovtDisclosureApplication
+  ): Observable<IGovtDisclosureResponse> {
+    return this.http.post<IGovtDisclosureResponse>(
+      `${this.baseUrl}/bank/onboarding/apply/gov-disclosure`,
+      govtDisclosureApplication,
+      { headers: this.headerService.getMemberICustomerIdHeader() }
+    );
   }
 }

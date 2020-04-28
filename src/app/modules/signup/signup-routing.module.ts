@@ -72,7 +72,7 @@ export const SIGNUP_ROUTES: Routes = [
   },
   {
     path: 'general-information',
-    data: { title: PAGES.SIGNUP_GENERAL_INFORMATION },
+    data: { title: PAGES.SIGNUP_GENERAL_INFORMATION.NAME },
     loadChildren: () =>
       import('./general-information/general-information.module').then(m => m.GeneralInformationPageModule)
   },
@@ -111,6 +111,7 @@ export const SIGNUP_ROUTES: Routes = [
   },
   {
     path: 'government-disclosure',
+    data: { title: PAGES.SIGNUP_GOVERNMENT_DISCLOSURE.NAME },
     loadChildren: () =>
       import('./government-disclosure/government-disclosure.module').then(m => m.GovernmentDisclosurePageModule)
   }

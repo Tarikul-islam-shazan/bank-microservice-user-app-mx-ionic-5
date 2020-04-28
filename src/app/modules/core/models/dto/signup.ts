@@ -280,3 +280,43 @@ export interface IPersonalInfo {
   economicActivity: string;
   banxicoActivity: string;
 }
+export interface IGovtPositionInfo {
+  position: string;
+  association: string;
+}
+export interface IRelativeGovtPositionInfo {
+  firstName: string;
+  secondName?: string;
+  paternalLastName: string;
+  maternalLastName?: string;
+  position: string;
+  homeAddress: string;
+  phone: string;
+  participation: string;
+}
+
+export interface IGovtDisclosureApplication {
+  holdGovPosition?: boolean;
+  positionInfo?: IGovtPositionInfo;
+  relativeHoldGovPosition?: boolean;
+  relativeInfo?: IRelativeGovtPositionInfo;
+}
+
+export interface IGovtDisclosureResponse {
+  _id: string;
+  email: string;
+  username: string;
+  nickname: string;
+  applicationStatus: string;
+  applicationProgress: string;
+  accountStatus: string;
+  country: string;
+  language: string;
+  inviter: string;
+  bank: string;
+  identifier: string;
+  createdDate: string;
+  updatedDate: string;
+  customerId: string;
+  accountLevel: string;
+}

@@ -10,87 +10,194 @@
     <div class="step-counter">
       <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
     </div>
-    <div class="header-title">Government Disclosure</div>
+    <div class="header-title">{{ 'signup-module.government-disclosure.page-title' | translate }}</div>
     <div class="content-block">
       <ion-list lines="none">
-        <ion-radio-group name="auto" value="no">
+        <ion-radio-group name="holdGovPosition" [(ngModel)]="facade.holdGovtPosition">
           <ion-list-header>
-            <ion-label>Do you hold a position in the government?</ion-label>
+            <ion-label
+              >{{ 'signup-module.government-disclosure.hold-govt-position.list-header' | translate }}</ion-label
+            >
           </ion-list-header>
-          <ion-item>
-            <ion-label>Yes, I do</ion-label>
-            <ion-radio mode="md" slot="start" value="yes"></ion-radio>
+
+          <ion-item lines="full">
+            <ion-label>
+              {{ 'signup-module.government-disclosure.hold-govt-position.yes-radio-button' | translate }}
+            </ion-label>
+            <ion-radio mode="md" slot="start" [value]="true"></ion-radio>
           </ion-item>
-          <ion-item>
-            <ion-label>No, I don't</ion-label>
-            <ion-radio mode="md" slot="start" value="no"></ion-radio>
+          <ion-item lines="none">
+            <ion-label>
+              {{ 'signup-module.government-disclosure.hold-govt-position.no-radio-button' | translate }}
+            </ion-label>
+            <ion-radio mode="md" slot="start" [value]="false"></ion-radio>
           </ion-item>
         </ion-radio-group>
       </ion-list>
     </div>
-    <div class="content-block">
-      <div class="title">Your Government Information</div>
-      <ion-item lines="none">
-        <ion-input class="white-input" type="text" placeholder="Position"></ion-input>
-        <ion-icon name="chevron-down"></ion-icon>
-      </ion-item>
-      <ion-item lines="none">
-        <ion-input class="white-input" type="text" placeholder="Association"></ion-input>
-      </ion-item>
-      <ion-list lines="none">
-        <ion-radio-group name="auto" value="no">
-          <ion-list-header>
-            <ion-label>Do you have a relative who holds a position in the government?</ion-label>
-          </ion-list-header>
-          <ion-item>
-            <ion-label>Yes, I do</ion-label>
-            <ion-radio mode="md" slot="start" value="yes"></ion-radio>
-          </ion-item>
-          <ion-item>
-            <ion-label>No, I don't</ion-label>
-            <ion-radio mode="md" slot="start" value="no"></ion-radio>
-          </ion-item>
-        </ion-radio-group>
-      </ion-list>
-    </div>
-    <div class="content-block">
-      <div class="title">Your Relative Information</div>
-      <form>
-        <ion-list lines="none">
-          <ion-item>
-            <ion-input class="white-input" type="text" placeholder="First Name"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Second Name (Optional)"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Paternal Last Name (Optional)"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Maternal Last Name (Optional)"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Position"></ion-input>
-            <ion-icon name="chevron-down"></ion-icon>
-          </ion-item>
-          <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Home Address"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Phone"></ion-input>
-          </ion-item>
-          <ion-item>
-            <ion-input class="white-input" type="text" placeholder="Participation %"></ion-input>
-          </ion-item>
-        </ion-list>
+    <div class="content-block" *ngIf="facade.holdGovtPosition">
+      <div class="title">{{ 'signup-module.government-disclosure.hold-govt-position.content-title' | translate }}</div>
+      <form [formGroup]="facade.holdGovtPositionForm">
+        <ion-item lines="none" (click)="facade.openPositionSelectionModal('me')">
+          <ion-input
+            (ionFocus)="facade.isMyInputFieldSkip('position')"
+            formControlName="position"
+            [ngClass]="facade.holdGovtPositionForm.controls.position.invalid && facade.skipErrorMyFields.position ? 'error-input' : 'white-input'"
+            class="white-input"
+            type="text"
+            readonly
+            placeholder="{{ 'signup-module.government-disclosure.hold-govt-position.position-placeholder' | translate }}"
+          ></ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </ion-item>
+
+        <ion-item lines="none">
+          <ion-input
+            (ionFocus)="facade.isMyInputFieldSkip('association')"
+            formControlName="association"
+            [ngClass]="facade.holdGovtPositionForm.controls.association.invalid && facade.skipErrorMyFields.association ? 'error-input' : 'white-input'"
+            class="white-input"
+            type="text"
+            placeholder="{{ 'signup-module.government-disclosure.hold-govt-position.association-placeholder' | translate }}"
+          ></ion-input>
+        </ion-item>
       </form>
+
+      <ion-list lines="none">
+        <ion-radio-group name="relativeHoldGovPosition" [(ngModel)]="facade.relativeHoldGovtPosition">
+          <ion-list-header>
+            <ion-label
+              >{{ 'signup-module.government-disclosure.relative-hold-govt-position.list-header' | translate
+              }}</ion-label
+            >
+          </ion-list-header>
+          <ion-item lines="full">
+            <ion-label
+              >{{ 'signup-module.government-disclosure.relative-hold-govt-position.yes-radio-button' | translate
+              }}</ion-label
+            >
+            <ion-radio mode="md" slot="start" [value]="true"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label
+              >{{ 'signup-module.government-disclosure.relative-hold-govt-position.no-radio-button' | translate
+              }}</ion-label
+            >
+            <ion-radio mode="md" slot="start" [value]="false"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+
+      <div class="content-block" *ngIf="facade.relativeHoldGovtPosition">
+        <div class="title">
+          {{ 'signup-module.government-disclosure.relative-hold-govt-position.content-title' | translate }}
+        </div>
+        <form [formGroup]="facade.relativeGovtPositionForm">
+          <ion-list lines="none">
+            <ion-item>
+              <ion-input
+                formControlName="firstName"
+                (ionChange)="facade.removeSpace('firstName')"
+                (ionFocus)="facade.isRelativeInputFieldSkip('firstName')"
+                [ngClass]="facade.relativeGovtPositionForm.controls.firstName.invalid && facade.skipErrorRelativeFields.firstName ? 'error-input' : 'white-input'"
+                class="white-input"
+                type="text"
+                placeholder="{{ 'signup-module.government-disclosure.relative-hold-govt-position.first-name-placeholder' | translate }}"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                formControlName="secondName"
+                (ionChange)="facade.removeSpace('secondName')"
+                (ionFocus)="facade.isRelativeInputFieldSkip('secondName')"
+                [ngClass]="facade.relativeGovtPositionForm.controls.secondName.invalid && facade.skipErrorRelativeFields.secondName ? 'error-input' : 'white-input'"
+                class="white-input"
+                type="text"
+                placeholder="{{ 'signup-module.government-disclosure.relative-hold-govt-position.second-name-placeholder' | translate }}"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                formControlName="paternalLastName"
+                (ionChange)="facade.removeSpace('paternalLastName')"
+                (ionFocus)="facade.isRelativeInputFieldSkip('paternalLastName')"
+                [ngClass]="facade.relativeGovtPositionForm.controls.paternalLastName.invalid && facade.skipErrorRelativeFields.paternalLastName ? 'error-input' : 'white-input'"
+                class="white-input"
+                type="text"
+                placeholder="{{ 'signup-module.government-disclosure.relative-hold-govt-position.paternal-last-name' | translate }}"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                formControlName="maternalLastName"
+                (ionChange)="facade.removeSpace('maternalLastName')"
+                (ionFocus)="facade.isRelativeInputFieldSkip('maternalLastName')"
+                [ngClass]="facade.relativeGovtPositionForm.controls.maternalLastName.invalid && facade.skipErrorRelativeFields.maternalLastName ? 'error-input' : 'white-input'"
+                class="white-input"
+                type="text"
+                placeholder="{{ 'signup-module.government-disclosure.relative-hold-govt-position.maternal-last-name' | translate }}"
+              ></ion-input>
+            </ion-item>
+            <ion-item (click)="facade.openPositionSelectionModal('relative')">
+              <ion-input
+                formControlName="position"
+                (ionFocus)="facade.isRelativeInputFieldSkip('position')"
+                [ngClass]="facade.relativeGovtPositionForm.controls.position.invalid && facade.skipErrorRelativeFields.position ? 'error-input' : 'white-input'"
+                class="white-input"
+                type="text"
+                readonly
+                placeholder="{{ 'signup-module.government-disclosure.relative-hold-govt-position.position-placeholder' | translate }}"
+              ></ion-input>
+              <ion-icon name="chevron-down"></ion-icon>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                formControlName="homeAddress"
+                (ionFocus)="facade.isRelativeInputFieldSkip('homeAddress')"
+                [ngClass]="facade.relativeGovtPositionForm.controls.homeAddress.invalid && facade.skipErrorRelativeFields.homeAddress ? 'error-input' : 'white-input'"
+                class="white-input"
+                type="text"
+                placeholder="{{ 'signup-module.government-disclosure.relative-hold-govt-position.home-address-placeholder' | translate }}"
+              ></ion-input>
+            </ion-item>
+            <ion-item>
+              <ion-input
+                formControlName="phone"
+                (ionFocus)="facade.isRelativeInputFieldSkip('phone')"
+                [ngClass]="facade.relativeGovtPositionForm.controls.phone.invalid && facade.skipErrorRelativeFields.phone ? 'error-input' : 'white-input'"
+                class="white-input"
+                type="tel"
+                inputmode="numeric"
+                placeholder="{{ 'signup-module.government-disclosure.relative-hold-govt-position.phone-placeholder' | translate }}"
+              ></ion-input>
+            </ion-item>
+            <ion-item (click)="facade.openParticipationSelectionModal()">
+              <ion-input
+                formControlName="participation"
+                (ionFocus)="facade.isRelativeInputFieldSkip('participation')"
+                [ngClass]="facade.relativeGovtPositionForm.controls.participation.invalid && facade.skipErrorRelativeFields.participation ? 'error-input' : 'white-input'"
+                class="white-input"
+                type="text"
+                readonly
+                placeholder="{{ 'signup-module.government-disclosure.relative-hold-govt-position.participation-placeholder' | translate }}"
+              ></ion-input>
+              <ion-icon name="chevron-down"></ion-icon>
+            </ion-item>
+          </ion-list>
+        </form>
+      </div>
     </div>
   </div>
 </ion-content>
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" [routerLink]="['/signup/verification']">
+    <ion-button
+      class="white-button"
+      expand="block"
+      [disabled]="!facade.enableNextButton()"
+      (click)="facade.onClickNext()"
+    >
       {{ 'signup-module.signup-address-page.button-text' | translate }}
     </ion-button>
   </ion-toolbar>

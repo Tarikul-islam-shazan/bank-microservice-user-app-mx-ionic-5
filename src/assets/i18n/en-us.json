@@ -275,6 +275,31 @@
       "banxico-activity-placeholder": "Banxico Activity",
       "submit-button-text": "Next"
     },
+    "government-disclosure": {
+      "page-title": "Government Disclosure",
+      "hold-govt-position": {
+        "list-header": "Do you hold a position in the government?",
+        "yes-radio-button": "Yes, I do",
+        "no-radio-button": "No, I don't",
+        "content-title": "Your Government Information",
+        "position-placeholder": "Position",
+        "association-placeholder": "Association "
+      },
+      "relative-hold-govt-position": {
+        "list-header": "Do you have a relative who holds a position in the government?",
+        "yes-radio-button": "Yes, I do",
+        "no-radio-button": "No, I don't",
+        "content-title": "Your Relative Information",
+        "first-name-placeholder": "First Name",
+        "second-name-placeholder": "Second Name (Optional)",
+        "paternal-last-name": "Paternal Last Name",
+        "maternal-last-name": "Maternal Last Name (Optional)",
+        "position-placeholder": "Position",
+        "home-address-placeholder": "Home Address",
+        "phone-placeholder": "Phone",
+        "participation-placeholder": "Participation %"
+      }
+    },
     "inviter-page": {
       "page-title": "Invite Members",
       "header-text": "Make them happy!",
@@ -329,6 +354,22 @@
         "username-tip-modal-title": "Username Tips",
         "username-tip-modal-details": "For security, it's recommended that your username isn't your email or your full name,and shouldn't contain repeating or consecutive characters or digits."
       }
+    },
+    "funding-information-page": {
+      "page-title": "Who will be providing the funding?",
+      "step-text": "Step 3 of 3",
+      "fund-provider-selector-title": "Are you providing the funds for this account or is someone else?",
+      "fund-provider-selector-option-one": "Yes, I am.",
+      "fund-provider-selector-option-two": "No, someone else.",
+      "funding-info-form": {
+        "first-name": "First Name",
+        "second-name": "Second Name (Optional)",
+        "paternal-last-name": "Paternal Last Name",
+        "maternal-last-name": "Maternal Last Name (Optional)",
+        "date-of-birth-display-format": "DD / MM / YYYY",
+        "date-of-birth": "Date of Birth"
+      },
+      "button-text": "Next"
     },
     "signup-address-page": {
       "page-title": "Where do you live?",
@@ -387,7 +428,7 @@
         "state": "State",
         "municipality": "Municipality",
         "suburb": "Suburb",
-        "dateOfResidence": "Date @ Residence",
+        "dateOfResidence": "Date of Residence",
         "dateFormate": "DD/MM/YYYY"
       }
     },

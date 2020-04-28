@@ -11,23 +11,23 @@ export const environment = {
     message: 'Please wait...'
   },
   jumio: {
-    apiToken: 'e3facdd9-292d-42da-80fd-6c356d9c8161',
-    apiSecret: 'mhYjhzEd49svDm2Sh0T5nHWxM52tqigS',
+    apiToken: '10ccb140-096a-4cf2-b7a9-a8bb46ca0c44',
+    apiSecret: 'iVcILnNS85u2d9l1naocBb7Td4SDqs8L',
     dataCenter: 'US', // Datacenter can either be US or EU
-    callbackUrl: 'https://meedv2-tfqa.meedbankingclub.com/api/v1.0.0/jumio-verification',
-    customerIssuingCountry: 'USA', // ISO 3166-1 alpha-3 country code
+    callbackUrl: 'https://services-mxqa.meedbankingclub.com/api/v1.0.0/jumio-verification',
+    customerIssuingCountry: 'MEX', // ISO 3166-1 alpha-3 country code
     documentTypes: ['DRIVER_LICENSE', 'PASSPORT', 'IDENTITY_CARD'], // ['DRIVER_LICENSE', 'PASSPORT', 'IDENTITY_CARD', 'VISA'],
     iframeOrigin: 'https://meed.netverify.com'
   },
   firebaseConfig: {
-    apiKey: 'AIzaSyBrogRURZ8KlCKF154gROjJexEqQ7RoMQE',
-    authDomain: 'meedbankingclub-qa.firebaseapp.com',
-    databaseURL: 'https://meedbankingclub-qa.firebaseio.com',
-    projectId: 'meedbankingclub-qa',
-    storageBucket: 'meedbankingclub-qa.appspot.com',
-    messagingSenderId: '1010705522908',
-    appId: '1:1010705522908:web:8253afc216f152c2771419',
-    measurementId: 'G-CTR6V66YRB'
+    apiKey: 'AIzaSyBFb01kPxsqlygl4RujWtTrwGfH5wjrqBc',
+    authDomain: 'mx-meedbankingclub.firebaseapp.com',
+    databaseURL: 'https://mx-meedbankingclub.firebaseio.com',
+    projectId: 'mx-meedbankingclub',
+    storageBucket: 'mx-meedbankingclub.appspot.com',
+    messagingSenderId: '479603772557',
+    appId: '1:479603772557:web:3a670bbd46053c3ac8e6c4',
+    measurementId: 'G-3Z41MK45WG'
   },
   appIdleness: {
     idelnessTimeout: 2, // sets an idle timeout of 2 seconds
@@ -59,7 +59,8 @@ export const environment = {
   translateLoader: {
     usedRemote: false,
     remoteUrl: 'https://s3.amazonaws.com/meedbankingclub-mobile/i18n'
-  }
+  },
+  appBundleIdentifier: 'com.mx.qa.meedbankingclub'
 };
 
 /*
