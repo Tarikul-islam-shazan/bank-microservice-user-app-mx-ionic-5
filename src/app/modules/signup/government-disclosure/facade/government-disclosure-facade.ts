@@ -199,7 +199,7 @@ export class GovernmentDisclosureFacade {
         } else {
           this.analytics.logEvent(AnalyticsEventTypes.GovernmentDisclosureCompleted, { governmentService: 'no' });
         }
-        this.router.navigate(['/signup/verification']);
+        this.router.navigate(['/signup/identity-confirmation']);
         this.govtDisclosureApplication = {};
       });
   }
