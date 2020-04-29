@@ -4,9 +4,11 @@ import { IdentityConfirmationPageRoutingModule } from './identity-confirmation-r
 import { IdentityConfirmationPage } from './container/identity-confirmation.page';
 import { SignupComponentsModule } from '../components';
 import { SharedModule } from '@app/shared';
+import { IdentityConfirmationFacade } from './facade/identity-confirmation.facade';
 
 @NgModule({
   imports: [SharedModule, SignupComponentsModule, IdentityConfirmationPageRoutingModule],
-  declarations: [IdentityConfirmationPage]
+  declarations: [IdentityConfirmationPage],
+  providers: [IdentityConfirmationFacade]
 })
 export class IdentityConfirmationPageModule {}

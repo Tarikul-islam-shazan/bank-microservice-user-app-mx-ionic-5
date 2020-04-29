@@ -446,6 +446,13 @@
       "identification-type-military-id": "Military Card",
       "server-error": "Server error, Please try again."
     },
+    "identity-confirmation-page": {
+      "page-title": "Identity Confirmation",
+      "step-text": "Step 3 of 3",
+      "verify-text": "To verify your address, please take an image of a utility bill from the last 3 months. Select from valid bill types below:",
+      "dropdown-placeholder": "Valid Utility",
+      "utility-scan-text": "Scan Utility Bill"
+    },
     "country-of-residence": {
       "header-text": "Where are you joining us from?",
       "usa-btn-text": "USA",

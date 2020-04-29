@@ -11,7 +11,8 @@ export enum StaticDataCategory {
   Profession = 'profession',
   PropertyType = 'propertyType',
   Relationship = 'relationship',
-  HighestLevelOfEducation = 'highestLevelOfEducation'
+  HighestLevelOfEducation = 'highestLevelOfEducation',
+  UtilityDocument = 'utilityDocument'
 }
 export interface IStaticData {
   category: StaticDataCategory;

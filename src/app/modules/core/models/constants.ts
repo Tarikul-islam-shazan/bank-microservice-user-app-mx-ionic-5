@@ -87,6 +87,10 @@ export const PAGES: Page = {
     NAME: 'signup-terms-and-conditions',
     ROUTE_PATH: '/signup/terms-conditions'
   },
+  SIGNUP_IDENTITY_CONFIRMATION: {
+    NAME: 'signup-identity-confirmation',
+    ROUTE_PATH: '/signup/identity-confirmation'
+  },
   DIRECT_DEPOSIT: {
     NAME: 'signup-direct-deposit-entry',
     ROUTE_PATH: 'deposit/direct-deposit'

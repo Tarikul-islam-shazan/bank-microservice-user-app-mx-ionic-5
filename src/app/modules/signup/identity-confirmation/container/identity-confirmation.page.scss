@@ -16,10 +16,26 @@
     margin-bottom: 15px;
   }
   .scan-button-wrapper {
-    width: 100%;
     display: flex;
     justify-content: center;
     padding: 10px 0;
+    position: relative;
+
+    .scanned-image-sec {
+      position: relative;
+
+      img.preview {
+        height: 120px;
+        width: 160px;
+      }
+      .tick-icon {
+        position: absolute;
+        top: -5px;
+        right: -5px;
+        color: #0cda91;
+      }
+    }
+
     .scan-button {
       height: 120px;
       width: 160px;
