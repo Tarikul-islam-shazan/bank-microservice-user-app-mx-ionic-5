@@ -48,7 +48,6 @@ export class BeneficiaryInformationPage implements OnInit {
 
   ngOnInit() {
     // setting up the beneficiary form
-    this.analyticsService.setCurrentScreenName(PAGES.SIGNUP_BENEFICIARY.NAME);
     this.initBeneficiaryForm();
 
     // fetching the static data from the api and setting up for the ui
