@@ -53,18 +53,25 @@ export class IdentityConfirmationFacade {
    *
    * @param {DropdownOption[]} options
    * @param {(selectedUtility: DropdownOption) => void} callback
-   * @returns {void}
+   * @returns {Promise<void>}
    * @memberOf IdentityConfirmationFacade
    */
-  openUtilityModal(options: DropdownOption[], callback: (selectedUtility: DropdownOption) => void): void {
-    this.modalService.openModal(DropdownModalComponent, { data: options }, (response: any) => {
-      const { data } = response;
-      if (data) {
-        this.selectedUtility = data;
-        this.selectedUtility.text = this.getTranlatedValueByKey(this.selectedUtility.text);
-        callback(this.selectedUtility);
+  async openUtilityModal(
+    options: DropdownOption[],
+    callback: (selectedUtility: DropdownOption) => void
+  ): Promise<void> {
+    const componentProps: IMeedModalContent = {
+      data: options,
+      onDidDismiss: response => {
+        const { data } = response;
+        if (data) {
+          this.selectedUtility = data;
+          this.selectedUtility.text = this.getTranlatedValueByKey(this.selectedUtility.text);
+          callback(this.selectedUtility);
+        }
       }
-    });
+    };
+    await this.modalService.openModal(DropdownModalComponent, componentProps);
   }
 
   /**
