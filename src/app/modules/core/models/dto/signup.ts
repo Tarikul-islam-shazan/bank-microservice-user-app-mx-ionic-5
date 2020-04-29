@@ -271,7 +271,7 @@ export interface IBeneficiaryInfo {
 export interface IPersonalInfo {
   countryOfBirth: string;
   nationality: string;
-  placeOfBirth: string;
+  placeOfBirth?: string;
   sex: string;
   maritalStatus: string;
   highestLevelOfEducation: string;
@@ -279,6 +279,7 @@ export interface IPersonalInfo {
   occupation: string;
   economicActivity: string;
   banxicoActivity: string;
+  fmNumber?: string;
 }
 export interface IGovtPositionInfo {
   position: string;
