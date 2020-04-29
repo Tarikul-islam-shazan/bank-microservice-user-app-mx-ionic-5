@@ -11,7 +11,7 @@ import { ModalService, IMeedModalContent } from '@app/shared/services/modal.serv
 import { DropdownOption } from '@app/signup/models/signup';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { StaticDataService, StaticDataCategory } from '@app/core/services/static-data.service';
-import { DropdownModalComponent } from '@app/shared';
+import { DropdownModalComponent, IinputOption, InputFormatType } from '@app/shared';
 import { IGovtDisclosureApplication, IGovtDisclosureResponse } from '@app/core/models/dto';
 import { SignUpService } from '@app/core';
 import { REG_EX_PATTERNS } from '@app/core/models';
@@ -19,6 +19,7 @@ import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 
 @Injectable()
 export class GovernmentDisclosureFacade {
+  onlyNumber: IinputOption;
   holdGovtPosition: boolean;
   relativeHoldGovtPosition = false;
 
@@ -45,6 +46,10 @@ export class GovernmentDisclosureFacade {
     private signupService: SignUpService,
     private analytics: AnalyticsService
   ) {
+    this.onlyNumber = {
+      type: InputFormatType.ONLY_NUMBER,
+      maxLength: 20
+    };
     this.initializeForms();
     this.initializeDropdownData();
   }
