@@ -24,9 +24,14 @@ form {
         --padding-end: 0px !important;
       }
       ion-icon {
+        font-size: 1.6rem;
+        height: 60px !important;
         position: absolute;
-        right: 15px;
-        top: 15px;
+        right: 18px;
+        top: 0px;
+        display: flex !important;
+        align-items: center !important;
+        color: #070a18 !important;
       }
     }
     ion-item {
