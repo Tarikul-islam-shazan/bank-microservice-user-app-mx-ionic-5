@@ -245,8 +245,8 @@ export class GovernmentDisclosureFacade {
    * @returns null { void }
    */
   private initializeDropdownData(): void {
-    this.staticDataService.get([StaticDataCategory.GovtPosition]).subscribe(res => {
-      this.govtPositions = res.govtPosition;
+    this.staticDataService.get(StaticDataCategory.GovtDisclosure).subscribe(staticData => {
+      this.govtPositions = staticData[StaticData.GovtPosition];
     });
 
     this.participation = [];

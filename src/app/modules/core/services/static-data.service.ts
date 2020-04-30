@@ -3,9 +3,9 @@ import { environment } from '@env/environment';
 import { HttpClient } from '@angular/common/http';
 import { MemberService } from '@app/core/services/member.service';
 import { IMember } from '@app/core/models/dto/member';
-import { StaticDataCategory, IStaticData, IDropdownOption } from '@app/core/models/static-data';
+import { StaticDataCategory, IStaticData, IDropdownOption, StaticDataProperties } from '@app/core/models/static-data';
 import { SettingsService } from '@app/core/services/settings.service';
-import { map, filter } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
@@ -22,29 +22,48 @@ export class StaticDataService {
     return this.memberService.getCachedMember();
   }
 
-  get(category: StaticDataCategory[]): Observable<{ [key: string]: IDropdownOption[] }> {
+  get(category: StaticDataCategory): Observable<{ [key: string]: IDropdownOption[] }> {
     const bank = this.member.bank;
     return this.http
       .get<any[]>(`${this.baseUrl}/static-data`, {
-        params: { bank, category: category.join(','), subCategory: this.language }
+        params: { bank, category, subCategory: this.language }
       })
       .pipe(
-        map((response: IStaticData[]) => {
-          return this.mappingResponse(response);
+        map((staticData: IStaticData[]) => {
+          const [first] = staticData;
+          const { data: staticDataProperties } = first;
+          return this.mappingResponse(staticDataProperties);
         })
       );
   }
 
-  mappingResponse(staticDataResponse: IStaticData[]): { [key: string]: IDropdownOption[] } {
+  /**
+   * process mapping from staticdata properties to IDropdownOption properties
+   * @param {{
+   *     [key: string]: StaticDataProperties[];
+   *   }} staticDataProperties
+   * @returns {{ [key: string]: IDropdownOption[] }}
+   * @memberof StaticDataService
+   */
+  mappingResponse(staticDataProperties: {
+    [key: string]: StaticDataProperties[];
+  }): { [key: string]: IDropdownOption[] } {
     const mappingResult: { [key: string]: IDropdownOption[] } = {};
-    staticDataResponse.forEach(staticData => {
-      const category = staticData.category;
-      mappingResult[category] = this.mappingData(staticData.data);
-    });
+    for (const property in staticDataProperties) {
+      if (staticDataProperties.hasOwnProperty(property)) {
+        mappingResult[property] = this.mappingData(staticDataProperties[property]);
+      }
+    }
     return mappingResult;
   }
 
-  mappingData(staticData: { code: string; value: string }[]): IDropdownOption[] {
+  /**
+   * mapping static data code value to dropdown text, value and sub-category dropdown
+   * @param {StaticDataProperties[]} staticData
+   * @returns {IDropdownOption[]}
+   * @memberof StaticDataService
+   */
+  mappingData(staticData: StaticDataProperties[]): IDropdownOption[] {
     const staticDataformat: IDropdownOption[] = [];
     staticData.forEach(data => {
       const { code: value, value: text, ...rest } = data;

@@ -1,4 +1,4 @@
-import { AppPlatform, SignUpService, StaticDataCategory, StaticDataService } from '@app/core';
+import { AppPlatform, SignUpService, StaticDataCategory, StaticDataService, StaticData } from '@app/core';
 import { DropdownModalComponent, IMeedModalContent, ModalService } from '@app/shared';
 import { DropdownOption } from '@app/signup/models/signup';
 import { Injectable } from '@angular/core';
@@ -33,8 +33,8 @@ export class IdentityConfirmationFacade {
    */
   getUtilityOptions(): Observable<DropdownOption[]> {
     return this.staticDataService
-      .get([StaticDataCategory.UtilityDocument])
-      .pipe(map(response => response.utilityDocument));
+      .get(StaticDataCategory.IdentityConfirmation)
+      .pipe(map(staticData => staticData[StaticData.UtilityDocument]));
   }
 
   /**

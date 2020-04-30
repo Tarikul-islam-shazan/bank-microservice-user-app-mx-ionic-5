@@ -1,7 +1,15 @@
 export enum StaticDataCategory {
+  AddressInformation = 'addressInformation',
+  BeneficiaryInformation = 'beneficiaryInformation',
+  PersonalInformation = 'personalInformation',
+  GovtDisclosure = 'govtDisclosure',
+  IdentityConfirmation = 'identityConfirmation'
+}
+
+export enum StaticData {
   AddressType = 'addressType',
-  PlaceOfBirthForeign = 'placeOfBirthForeign',
-  PlaceOfBirthMexico = 'placeOfBirthMexico',
+  PropertyType = 'propertyType',
+  PlaceOfBirth = 'placeOfBirth',
   Country = 'country',
   Gender = 'gender',
   GovtPosition = 'govtPosition',
@@ -9,20 +17,26 @@ export enum StaticDataCategory {
   Nationality = 'nationality',
   Occupation = 'occupation',
   Profession = 'profession',
-  PropertyType = 'propertyType',
   Relationship = 'relationship',
   HighestLevelOfEducation = 'highestLevelOfEducation',
   UtilityDocument = 'utilityDocument'
 }
+
+export interface StaticDataProperties {
+  code: string;
+  value: string;
+  [key: string]: any;
+}
+
 export interface IStaticData {
   category: StaticDataCategory;
   subCategory: string;
   bank: string;
   data: {
-    code: string;
-    value: string;
-  }[];
+    [key: string]: StaticDataProperties[];
+  };
 }
+
 export interface IDropdownOption {
   text: string;
   subText?: string;
