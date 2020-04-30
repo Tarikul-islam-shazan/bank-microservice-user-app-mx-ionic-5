@@ -7,7 +7,12 @@
 
 import { Injectable } from '@angular/core';
 import { SignUpService, IAddressInfo } from '@app/core';
-import { StaticDataService, StaticDataCategory, IDropdownOption } from '@app/core/services/static-data.service';
+import {
+  StaticDataService,
+  StaticDataCategory,
+  StaticData,
+  IDropdownOption
+} from '@app/core/services/static-data.service';
 import { Router } from '@angular/router';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { Observable } from 'rxjs';
@@ -36,9 +41,9 @@ export class AddressInformationFacade {
    * @memberof AddressInformationFacade
    */
   getStaticData(): void {
-    this.staticDataService.get([StaticDataCategory.AddressType, StaticDataCategory.PropertyType]).subscribe(data => {
-      this.addressTypeList = data[StaticDataCategory.AddressType];
-      this.propertyTypeList = data[StaticDataCategory.PropertyType];
+    this.staticDataService.get(StaticDataCategory.AddressInformation).subscribe(staticData => {
+      this.addressTypeList = staticData[StaticData.AddressType];
+      this.propertyTypeList = staticData[StaticData.PropertyType];
     });
   }
 

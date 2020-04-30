@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { ModalService, IMeedModalContent } from '@app/shared/services/modal.service';
 import { DropdownOption } from '@app/signup/models/signup';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { StaticDataService, StaticDataCategory } from '@app/core/services/static-data.service';
+import { StaticDataService, StaticDataCategory, StaticData } from '@app/core/services/static-data.service';
 import { DropdownModalComponent } from '@app/shared';
 import { IGovtDisclosureApplication, IGovtDisclosureResponse } from '@app/core/models/dto';
 import { SignUpService } from '@app/core';
@@ -240,8 +240,8 @@ export class GovernmentDisclosureFacade {
    * @returns null { void }
    */
   private initializeDropdownData(): void {
-    this.staticDataService.get([StaticDataCategory.GovtPosition]).subscribe(res => {
-      this.govtPositions = res.govtPosition;
+    this.staticDataService.get(StaticDataCategory.GovtDisclosure).subscribe(staticData => {
+      this.govtPositions = staticData[StaticData.GovtPosition];
     });
 
     this.participation = [];

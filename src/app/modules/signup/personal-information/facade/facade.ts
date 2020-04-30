@@ -11,7 +11,7 @@ import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { StaticDataService } from '@app/core/services/static-data.service';
 import { IPersonalInfo } from '@app/core/models/dto/signup';
 import { SignUpService } from '@app/core/services/sign-up-service.service';
-import { IDropdownOption, StaticDataCategory } from '@app/core/models/static-data';
+import { IDropdownOption, StaticDataCategory, StaticData } from '@app/core/models/static-data';
 import { ModalService, DropdownModalComponent } from '@app/shared';
 @Injectable()
 export class SignUpPersonalInfoFacade {
@@ -42,28 +42,16 @@ export class SignUpPersonalInfoFacade {
    * @memberof SignUpPersonalInfoFacade
    */
   getStaticData(): void {
-    this.staticDataService
-      .get([
-        StaticDataCategory.Country,
-        StaticDataCategory.PlaceOfBirthMexico,
-        StaticDataCategory.PlaceOfBirthForeign,
-        StaticDataCategory.Nationality,
-        StaticDataCategory.Gender,
-        StaticDataCategory.MaritalStatus,
-        StaticDataCategory.HighestLevelOfEducation,
-        StaticDataCategory.Profession,
-        StaticDataCategory.Occupation
-      ])
-      .subscribe(data => {
-        this.countryOptions = data[StaticDataCategory.Country];
-        this.placeOfBirthOptions = data[StaticDataCategory.PlaceOfBirthMexico];
-        this.nationalityOptions = data[StaticDataCategory.Nationality];
-        this.maritalStatusOptions = data[StaticDataCategory.MaritalStatus];
-        this.sexOptions = data[StaticDataCategory.Gender];
-        this.highestLevelOfEducationOptions = data[StaticDataCategory.HighestLevelOfEducation];
-        this.professionOptions = data[StaticDataCategory.Profession];
-        this.occupationOptions = data[StaticDataCategory.Occupation];
-      });
+    this.staticDataService.get(StaticDataCategory.PersonalInformation).subscribe(staticData => {
+      this.countryOptions = staticData[StaticData.Country];
+      this.placeOfBirthOptions = staticData[StaticData.PlaceOfBirthMexico];
+      this.nationalityOptions = staticData[StaticData.Nationality];
+      this.maritalStatusOptions = staticData[StaticData.MaritalStatus];
+      this.sexOptions = staticData[StaticData.Gender];
+      this.highestLevelOfEducationOptions = staticData[StaticData.HighestLevelOfEducation];
+      this.professionOptions = staticData[StaticData.Profession];
+      this.occupationOptions = staticData[StaticData.Occupation];
+    });
   }
 
   /**
