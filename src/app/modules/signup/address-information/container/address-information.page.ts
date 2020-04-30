@@ -134,32 +134,34 @@ export class AddressInformationPage implements OnInit {
     if (postalCode.toString().length === 5) {
       this.facade.getPostalCodeInfo(postalCode).subscribe(
         (data: Partial<IAddressInfo[]>) => {
-          this.postalCodeData = data;
-          this.suburbFieldData = this.mappingData(data);
-          this.addressForm.controls.stateField.patchValue(data[0].stateName);
-          this.addressForm.controls.state.patchValue(data[0].state);
-          this.addressForm.controls.municipalityField.patchValue(data[0].municipalityName);
-          this.addressForm.controls.municipality.patchValue(data[0].municipality);
-          this.addressForm.controls.cityField.patchValue(data[0].cityName);
-          this.addressForm.controls.city.patchValue(data[0].city);
-          this.addressForm.controls.suburbField.patchValue(null);
-          this.addressForm.controls.suburb.patchValue(null);
+          this.setPostalCodeInfo(true, data);
         },
         err => {
-          this.postalCodeData = null;
-          this.suburbFieldData = this.mappingData([]);
-          this.addressForm.controls.postCode.patchValue(null);
-          this.addressForm.controls.stateField.patchValue(null);
-          this.addressForm.controls.state.patchValue(null);
-          this.addressForm.controls.municipalityField.patchValue(null);
-          this.addressForm.controls.municipality.patchValue(null);
-          this.addressForm.controls.cityField.patchValue(null);
-          this.addressForm.controls.city.patchValue(null);
-          this.addressForm.controls.suburbField.patchValue(null);
-          this.addressForm.controls.suburb.patchValue(null);
+          this.setPostalCodeInfo(false);
         }
       );
     }
+  }
+
+  /**
+   *
+   *
+   * @param {boolean} isDataAvailable
+   * @param {Partial<IAddressInfo[]>} [data]
+   * @memberof AddressInformationPage
+   */
+  setPostalCodeInfo(isDataAvailable: boolean, data?: Partial<IAddressInfo[]>): void {
+    this.postalCodeData = isDataAvailable ? data : null;
+    this.suburbFieldData = this.mappingData(isDataAvailable ? data : []);
+    this.addressForm.controls.postCode.patchValue(isDataAvailable ? this.addressForm.controls.postCode.value : null);
+    this.addressForm.controls.stateField.patchValue(isDataAvailable ? data[0].stateName : null);
+    this.addressForm.controls.state.patchValue(isDataAvailable ? data[0].state : null);
+    this.addressForm.controls.municipalityField.patchValue(isDataAvailable ? data[0].municipalityName : null);
+    this.addressForm.controls.municipality.patchValue(isDataAvailable ? data[0].municipality : null);
+    this.addressForm.controls.cityField.patchValue(isDataAvailable ? data[0].cityName : null);
+    this.addressForm.controls.city.patchValue(isDataAvailable ? data[0].city : null);
+    this.addressForm.controls.suburbField.patchValue(null);
+    this.addressForm.controls.suburb.patchValue(null);
   }
 
   /**
