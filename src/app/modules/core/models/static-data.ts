@@ -10,7 +10,7 @@ export enum StaticData {
   AddressType = 'addressType',
   PropertyType = 'propertyType',
   PlaceOfBirthForeign = 'placeOfBirthForeign',
-  PlaceOfBirthMexico = 'placeOfBirthMexico',
+  PlaceOfBirth = 'placeOfBirth',
   Country = 'country',
   Gender = 'gender',
   GovtPosition = 'govtPosition',
