@@ -101,6 +101,7 @@ export const SIGNUP_ROUTES: Routes = [
   },
   {
     path: 'funding-information',
+    data: { title: PAGES.SIGNUP_FUNDING_INFORMATION.NAME },
     loadChildren: () =>
       import('./funding-information/funding-information.module').then(m => m.FundingInformationPageModule)
   },

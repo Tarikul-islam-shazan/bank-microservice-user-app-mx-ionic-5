@@ -61,6 +61,7 @@ export enum AnalyticsEventTypes {
   IdVerificationCompleted = 'id_verification_completed',
   IdVerificationFailed = 'id_verification_failed',
   GeneralInfoSubmitted = 'general_info_submitted',
+  FundingProviderSelect = 'signup_who_will_fund_selected',
   GovernmentDisclosureCompleted = 'signup_government_disclosure_completed',
   AddressInfoSubmitted = 'address_info_submitted',
   SignupGeneralInfoCompleted = 'signup_general_info_completed',
