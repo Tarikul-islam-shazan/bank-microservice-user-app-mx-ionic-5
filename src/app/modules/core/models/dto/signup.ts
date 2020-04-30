@@ -270,7 +270,6 @@ export interface IBeneficiaryInfo {
 }
 export interface IPersonalInfo {
   countryOfBirth: string;
-  nationality: string;
   placeOfBirth?: string;
   sex: string;
   maritalStatus: string;

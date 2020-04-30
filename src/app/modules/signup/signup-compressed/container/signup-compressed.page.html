@@ -6,7 +6,7 @@
         <span class="white-meed-logo"></span>
       </div>
       <h1 class="title">{{ 'signup-module.signup-compressed-page.title' | translate }}</h1>
-      <form [formGroup]="signupNicknameForm" novalidate>
+      <form [formGroup]="signupCompressedForm" novalidate>
         <div class="ion-margin-bottom">
           <div class="right-content-input">
             <ion-input
@@ -85,12 +85,7 @@
 
 <ion-footer>
   <ion-toolbar class="ion-no-border">
-    <ion-button
-      class="blue-outline-button"
-      expand="block"
-      [disabled]="signupNicknameForm.invalid"
-      (click)="continueSignup()"
-    >
+    <ion-button class="blue-outline-button" expand="block" [disabled]="isContinueDisabled()" (click)="continueSignup()">
       {{ 'signup-module.signup-compressed-page.button-text' | translate }}
     </ion-button>
   </ion-toolbar>

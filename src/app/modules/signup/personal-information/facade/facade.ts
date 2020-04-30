@@ -22,9 +22,7 @@ export class SignUpPersonalInfoFacade {
   readonly mexicoCountryCode: string = '484'; // Country of Birth = 484 for Mexico,
   private _personalInformaion: IPersonalInfo;
   countryOptions: IDropdownOption[];
-  placeOfBirthMexico: IDropdownOption[];
   placeOfBirthOptions: IDropdownOption[];
-  nationalityOptions: IDropdownOption[];
   sexOptions: IDropdownOption[];
   maritalStatusOptions: IDropdownOption[];
   highestLevelOfEducationOptions: IDropdownOption[];

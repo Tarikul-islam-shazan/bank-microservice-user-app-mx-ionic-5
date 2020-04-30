@@ -1,36 +1,32 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { REG_EX_PATTERNS, SignupValidators } from '@app/core';
 import { SignupCompressedFacade } from '../facade';
-import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-signup-compressed',
   templateUrl: './signup-compressed.page.html',
   styleUrls: ['./signup-compressed.page.scss']
 })
-export class SignupCompressedPage implements OnDestroy, OnInit {
-  signupNicknameForm: FormGroup;
-  nickNameMaxLength = 15;
-
+export class SignupCompressedPage implements OnInit {
   isInviterEmailReadOnly = false;
-
-  singUpFromSubscription: Subscription;
+  nickNameMaxLength = 15;
+  signupCompressedForm: FormGroup;
 
   /**
    * Details: Getter function - It will return remaining character length of nickname
    *
-   * @memberof ChangeNicknamePage
+   * @memberof SignupCompressedPage
    */
   get nickNameCharacterCount(): number {
-    const value = this.signupNicknameForm.controls.nickname.value.length;
+    const value = this.signupCompressedForm.controls.nickname.value.length;
     return this.nickNameMaxLength - (value <= this.nickNameMaxLength && value >= 0 ? value : 0);
   }
 
   constructor(private facade: SignupCompressedFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
-    this.initSignupNicknameForm();
+    this.initSignupCompressedForm();
     this.facade.getCountries();
   }
 
@@ -39,10 +35,10 @@ export class SignupCompressedPage implements OnDestroy, OnInit {
    *
    * @private
    * @returns {void}
-   * @memberOf SignupNicknamePage
+   * @memberOf SignupCompressedPage
    */
-  private initSignupNicknameForm(): void {
-    this.signupNicknameForm = this.formBuilder.group(
+  private initSignupCompressedForm(): void {
+    this.signupCompressedForm = this.formBuilder.group(
       {
         country: ['', Validators.required],
         inviterEmailOrCode: [''],
@@ -63,7 +59,7 @@ export class SignupCompressedPage implements OnDestroy, OnInit {
    * @summary opens inviter info modal
    *
    * @returns {void}
-   * @memberOf SignupNicknamePage
+   * @memberOf SignupCompressedPage
    */
   inviterEmailClick(): void {
     if (this.isInviterEmailReadOnly === true) {
@@ -75,7 +71,7 @@ export class SignupCompressedPage implements OnDestroy, OnInit {
    * @summary change checkbox value
    *
    * @returns {void}
-   * @memberOf SignupNicknamePage
+   * @memberOf SignupCompressedPage
    */
   changeCheckboxValue(): void {
     this.isInviterEmailReadOnly = !this.isInviterEmailReadOnly;
@@ -85,16 +81,15 @@ export class SignupCompressedPage implements OnDestroy, OnInit {
    * @summary opens country modal
    *
    * @returns {void}
-   * @memberOf SignupNicknamePage
+   * @memberOf SignupCompressedPage
    */
   openCountryModal(): void {
     this.facade.openCountryModal(() => {
       const { countryName, countryAbv } = this.facade.selectedCountry;
       if (countryAbv === null) {
         this.facade.openUnavailableCountryModal();
-      } else {
-        this.signupNicknameForm.controls.country.patchValue(countryName);
       }
+      this.signupCompressedForm.controls.country.patchValue(countryName);
     });
   }
 
@@ -102,17 +97,21 @@ export class SignupCompressedPage implements OnDestroy, OnInit {
    * @summary assign form values
    *
    * @returns {void}
-   * @memberOf SignupNicknamePage
+   * @memberOf SignupCompressedPage
    */
   continueSignup(): void {
-    if (this.signupNicknameForm.valid) {
-      this.facade.assignFormValues(this.signupNicknameForm.value);
+    if (this.signupCompressedForm.valid) {
+      this.facade.assignFormValues(this.signupCompressedForm.value);
     }
   }
 
-  ngOnDestroy(): void {
-    if (this.singUpFromSubscription) {
-      this.singUpFromSubscription.unsubscribe();
-    }
+  /**
+   * @summary checks if continue button should be disabled or enabled
+   *
+   * @returns {boolean}
+   * @memberOf SignupCompressedPage
+   */
+  isContinueDisabled(): boolean {
+    return this.signupCompressedForm.invalid || this.signupCompressedForm.controls.country.value === 'Others';
   }
 }
