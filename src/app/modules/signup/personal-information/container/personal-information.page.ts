@@ -9,7 +9,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SignUpPersonalInfoFacade, PersonalInfoFormControls } from '@app/signup/personal-information/facade';
 import { IDropdownOption } from '@app/core/models/static-data';
-import { MemberService } from '@app/core';
 @Component({
   selector: 'mbc-personal-information',
   templateUrl: './personal-information.page.html',
@@ -30,7 +29,6 @@ export class PersonalInformationPage implements OnInit {
     this.personalInformationForm = this.formBuilder.group({
       countryOfBirth: ['', Validators.required],
       placeOfBirth: ['', Validators.required],
-      nationality: ['', Validators.required],
       sex: ['', Validators.required],
       maritalStatus: ['', Validators.required],
       highestLevelOfEducation: ['', Validators.required],

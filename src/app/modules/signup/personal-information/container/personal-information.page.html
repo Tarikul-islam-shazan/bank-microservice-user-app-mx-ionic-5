@@ -49,19 +49,6 @@
           placeholder="{{'signup-module.signup-personal-information.fm-number-placeholder'|translate}}"
         >
         </ion-input>
-        <div class="dropdown-input" (click)="openOptionsModal('nationality', facade.nationalityOptions)">
-          <ion-input
-            (ionFocus)="isInputFieldSkip('nationality')"
-            [ngClass]="getValidationCssClass('nationality')"
-            type="text"
-            id="nationality"
-            formControlName="nationality"
-            readonly
-            placeholder="{{'signup-module.signup-personal-information.nationality-placeholder'|translate}}"
-          >
-          </ion-input>
-          <ion-icon name="chevron-down"></ion-icon>
-        </div>
         <div class="dropdown-input" (click)="openOptionsModal('sex', facade.sexOptions)">
           <ion-input
             (ionFocus)="isInputFieldSkip('sex')"
