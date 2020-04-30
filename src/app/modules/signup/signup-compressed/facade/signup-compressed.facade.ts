@@ -1,9 +1,8 @@
 import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 import { CountryModalComponent } from '../components/country-modal';
 import { ICountry, IMember, Logger, REG_EX_PATTERNS, SignUpService } from '@app/core';
-import { IMeedModalComponentProps, ModalService } from '@app/shared';
+import { IMeedModalComponentProps, ModalService, IMeedModalContent } from '@app/shared';
 import { Injectable } from '@angular/core';
-import { orderBy } from 'lodash';
 import { Router } from '@angular/router';
 
 const logger = new Logger('SignupCompressedFacade');
@@ -39,23 +38,22 @@ export class SignupCompressedFacade {
    * @summary opens country modal
    *
    * @param {() => void} callback
-   * @returns {void}
+   * @returns {Promise<void>}
    * @memberOf SignupCompressedFacade
    */
-  openCountryModal(callback: () => void): void {
-    this.modalService.openModal(
-      CountryModalComponent,
-      {
-        data: this.countries,
-        fullScreen: false
-      },
-      (resp: any) => {
-        if (resp.data) {
-          this.selectedCountry = resp.data;
+  async openCountryModal(callback: () => void): Promise<void> {
+    const componentProps: IMeedModalContent = {
+      data: this.countries,
+      fullScreen: false,
+      onDidDismiss: response => {
+        const { data } = response;
+        if (data) {
+          this.selectedCountry = data;
           callback();
         }
       }
-    );
+    };
+    await this.modalService.openModal(CountryModalComponent, componentProps);
   }
 
   /**
@@ -66,8 +64,7 @@ export class SignupCompressedFacade {
    */
   getCountries(): void {
     this.signupService.getCountries().subscribe(resp => {
-      const countries: ICountry[] = resp.filter(country => country.countryAbv === 'MX' || country.countryAbv === 'USA');
-      this.countries = orderBy(countries, ['countryName'], ['desc']);
+      this.countries = resp;
       this.countries.push({
         _id: null,
         countryAbv: null,
