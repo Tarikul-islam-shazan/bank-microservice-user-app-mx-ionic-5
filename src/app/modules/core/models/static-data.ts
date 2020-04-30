@@ -9,7 +9,6 @@ export enum StaticDataCategory {
 export enum StaticData {
   AddressType = 'addressType',
   PropertyType = 'propertyType',
-  PlaceOfBirthForeign = 'placeOfBirthForeign',
   PlaceOfBirth = 'placeOfBirth',
   Country = 'country',
   Gender = 'gender',
