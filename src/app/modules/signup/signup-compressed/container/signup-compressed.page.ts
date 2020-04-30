@@ -105,7 +105,13 @@ export class SignupCompressedPage implements OnInit {
     }
   }
 
-  continueButtonShouldBeDisabled() {
+  /**
+   * @summary checks if continue button should be disabled or enabled
+   *
+   * @returns {boolean}
+   * @memberOf SignupCompressedPage
+   */
+  isContinueDisabled(): boolean {
     return this.signupCompressedForm.invalid || this.signupCompressedForm.controls.country.value === 'Others';
   }
 }

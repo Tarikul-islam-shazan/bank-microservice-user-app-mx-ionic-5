@@ -85,12 +85,7 @@
 
 <ion-footer>
   <ion-toolbar class="ion-no-border">
-    <ion-button
-      class="blue-outline-button"
-      expand="block"
-      [disabled]="continueButtonShouldBeDisabled()"
-      (click)="continueSignup()"
-    >
+    <ion-button class="blue-outline-button" expand="block" [disabled]="isContinueDisabled()" (click)="continueSignup()">
       {{ 'signup-module.signup-compressed-page.button-text' | translate }}
     </ion-button>
   </ion-toolbar>
