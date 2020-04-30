@@ -18,9 +18,7 @@ export class SignUpPersonalInfoFacade {
   readonly mexicoCountryCode: string = '484'; // Country of Birth = 484 for Mexico,
   private _personalInformaion: IPersonalInfo;
   countryOptions: IDropdownOption[];
-  placeOfBirthMexico: IDropdownOption[];
   placeOfBirthOptions: IDropdownOption[];
-  nationalityOptions: IDropdownOption[];
   sexOptions: IDropdownOption[];
   maritalStatusOptions: IDropdownOption[];
   highestLevelOfEducationOptions: IDropdownOption[];
@@ -46,8 +44,6 @@ export class SignUpPersonalInfoFacade {
       .get([
         StaticDataCategory.Country,
         StaticDataCategory.PlaceOfBirthMexico,
-        StaticDataCategory.PlaceOfBirthForeign,
-        StaticDataCategory.Nationality,
         StaticDataCategory.Gender,
         StaticDataCategory.MaritalStatus,
         StaticDataCategory.HighestLevelOfEducation,
@@ -57,7 +53,6 @@ export class SignUpPersonalInfoFacade {
       .subscribe(data => {
         this.countryOptions = data[StaticDataCategory.Country];
         this.placeOfBirthOptions = data[StaticDataCategory.PlaceOfBirthMexico];
-        this.nationalityOptions = data[StaticDataCategory.Nationality];
         this.maritalStatusOptions = data[StaticDataCategory.MaritalStatus];
         this.sexOptions = data[StaticDataCategory.Gender];
         this.highestLevelOfEducationOptions = data[StaticDataCategory.HighestLevelOfEducation];
