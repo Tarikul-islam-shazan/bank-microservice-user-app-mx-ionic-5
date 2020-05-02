@@ -47,7 +47,6 @@ export class SignUpPersonalInfoFacade {
     this.staticDataService.get(StaticDataCategory.PersonalInformation).subscribe(staticData => {
       this.countryOptions = staticData[StaticData.Country];
       this.placeOfBirthOptions = staticData[StaticData.PlaceOfBirth];
-      this.nationalityOptions = staticData[StaticData.Nationality];
       this.maritalStatusOptions = staticData[StaticData.MaritalStatus];
       this.sexOptions = staticData[StaticData.Gender];
       this.highestLevelOfEducationOptions = staticData[StaticData.HighestLevelOfEducation];
