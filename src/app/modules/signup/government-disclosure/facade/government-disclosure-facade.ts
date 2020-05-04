@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
 import { ModalService, IMeedModalContent } from '@app/shared/services/modal.service';
 import { DropdownOption } from '@app/signup/models/signup';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { StaticDataService, StaticDataCategory } from '@app/core/services/static-data.service';
+import { StaticDataService, StaticDataCategory, StaticData } from '@app/core/services/static-data.service';
 import { DropdownModalComponent, IinputOption, InputFormatType } from '@app/shared';
 import { IGovtDisclosureApplication, IGovtDisclosureResponse } from '@app/core/models/dto';
 import { SignUpService } from '@app/core';
