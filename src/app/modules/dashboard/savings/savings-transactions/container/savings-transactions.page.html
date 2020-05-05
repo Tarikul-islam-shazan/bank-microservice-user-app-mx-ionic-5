@@ -68,7 +68,8 @@
                   <div class="item-content">
                     <div class="item-title">{{item.name}}</div>
                     <div class="item-subtitle">
-                      {{item.targetAmount}} {{ 'dashboard-module.ssa-transaction-page.per-month-text' | translate }}
+                      {{item.targetAmount | negToPos}} {{ 'dashboard-module.ssa-transaction-page.per-month-text' |
+                      translate }}
                     </div>
                   </div>
                   <div class="img-arrow-right"></div>
