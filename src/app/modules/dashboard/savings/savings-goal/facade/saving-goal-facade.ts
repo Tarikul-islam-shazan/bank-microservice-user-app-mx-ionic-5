@@ -36,8 +36,21 @@ export class SavingGoalFacade {
       this.savingsGoalState.savingsGoal.yearOfSaving--;
     }
     this.savingsGoalState.savingsGoal.endDate = moment()
-      .add(this.getYear(), 'years')
+      .add(this.getYearOfSaving(), 'years')
       .toDate();
+  }
+
+  /**
+   * This function return year of saving value
+   * Issue: MR2-227
+   * Details: Saving goal send wrong endDate to server
+   * Developer: Utpaul<Utpal.Sarker@brainstation23.com>
+   * Date: April 28, 2020
+   * @returns {number}
+   * @memberof SavingGoalFacade
+   */
+  getYearOfSaving(): number {
+    return this.savingsGoalState.savingsGoal.yearOfSaving;
   }
 
   getYear(): number {
