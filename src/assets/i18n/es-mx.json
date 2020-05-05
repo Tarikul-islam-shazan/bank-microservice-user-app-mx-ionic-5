@@ -217,7 +217,7 @@
       "modals": {
         "inviter-found-own-modal-title": "Desmarca “Nos encontraste por tu cuenta” antes de ingresar un correo electrónico o código de la persona que te invitó.",
         "inviter-found-own-modal-button": "Aceptar",
-        "country-choose-modal-text": "Choose Country",
+        "country-choose-modal-text": "Elegir país",
         "country-unavailable-modal-title": "Todavía no estamos ahí",
         "country-unavailable-modal-description": "Lamentablemente, solo tenemos actividades en EE. UU. en este momento. Síguenos en las redes sociales para ser el primero en enterarte de nuestros planes comerciales"
       }
@@ -354,7 +354,7 @@
           "work-phone-number-error": "Por favor, introduce un número de teléfono laboral válido.",
           "armed-forces-first-name-error": "Por favor, introduce un nombre válido.",
           "armed-forces-last-name-error": "Por favor, introduce un apellido válido.",
-          "date-error": "Please select valid date.",
+          "date-error": "Por favor, selecciona una fecha válida.",
           "ssn-error": "Introduce un número de SSN válido."
         }
       },
@@ -617,13 +617,13 @@
       "continue-button": "Continuar",
       "choose-contact-modal": {
         "search-input-placeholder": "Search friends",
-        "add-friends-button": "Add friends"
+        "add-friends-button": "Añade amigos"
       },
       "permission-setting-modal": {
         "title": "Enable Contacts",
         "details": "Please enable Contacts from the settings.",
-        "setting-button-text": "Setting",
-        "cancel-button-text": "Cancel"
+        "setting-button-text": "Configuración",
+        "cancel-button-text": "Cancelar"
       }
     },
     "invite-new-member-verify": {
@@ -895,11 +895,11 @@
       "all-offer-text": "Ver todas las ofertas"
     },
     "offer-search": {
-      "header-title": "Search Deals",
-      "search-offer-placeholder": "Search Offer",
-      "type-text": "Type",
+      "header-title": "Buscar ofertas",
+      "search-offer-placeholder": "Buscar ofertas",
+      "type-text": "Tipo",
       "category-text": "Category",
-      "result-text": "Results"
+      "result-text": "Resultados"
     },
     "all-deals-page": {
       "header-title": "Todas las ofertas",
@@ -1268,12 +1268,12 @@
           "no-button-text": "No"
         },
         "errors": {
-          "min-amount-limit-text": "Minimum amount should not be less than $1.00 USD.",
-          "max-amount-limit-text": "The amount you entered exceeds the limit of $1,000.00 per payment. Please enter an amount less than that."
+          "min-amount-limit-text": "La cantidad mínima no debe ser inferior a $1.00 USD.",
+          "max-amount-limit-text": "La cantidad que introdujiste supera el límite de 1,000.00 USD por pago. Por favor, introduce una cantidad menor que esa."
         },
         "modal": {
-          "title": "You've scheduled {{paymentAmount}} to {{payeeName}}",
-          "content": "Occuring {{paymentFrequency}} {{paymentPreposition}} {{paymentExecutionDate}}",
+          "title": "Has programado {{paymentAmount}} para {{payeeName}}",
+          "content": "Occurring {{paymentFrequency}} {{paymentPreposition}} {{paymentExecutionDate}}",
           "payment-edit-success-text": "Pago editado correctamente?",
           "payment-delete-text": "¿Estás seguro de que quieres eliminar este pago?"
         }
@@ -1385,7 +1385,7 @@
       },
       "confirm": {
         "page-title": "Confirmar detalles",
-        "amount-title": "Requesting From Each",
+        "amount-title": "Solicitando a cada uno",
         "request-title": "Enviar solicitud a",
         "note-title": "Nota",
         "request-money-button": "Solicitar dinero",
@@ -1649,9 +1649,9 @@
       "jumio-camera-permission-error-message": "Para que podamos ayudarte con la solicitud, se te pedirá que tomes una foto de una de tus ID de la lista que aparece a continuación, seguida de una imagen de ti mismo."
     },
     "coming-soon-feature": {
-      "title": "Coming Soon!",
-      "details": "We’re working hard to bring you this and other useful ways to manage your money. Please check back with us later!",
-      "okay-button-text": "Okay"
+      "title": "¡Próximamente será posible!",
+      "details": "Estamos trabajando duro para ofrecerte esta y otras formas útiles de gestionar tu dinero. ¡Por favor, regresa más adelante!",
+      "okay-button-text": "Correcto"
     }
   },
   "meed-share-page": {
