@@ -16,62 +16,20 @@
         </ion-button>
       </div>
       <div *ngIf="isInput" class="code-input">
-        <div class="otp-wrapper">
-          <ion-input
-            (ionChange)="autoOtpFill()"
-            (keyup)="otpCodeChanged(1)"
-            #f1
-            type="tel"
-            [(ngModel)]="otp1"
-            placeholder="&bull;"
-            maxlength="1"
-            [ngClass]="{'code-error' : codeError}"
-          ></ion-input>
-          <ion-input
-            (keyup)="otpCodeChanged(2)"
-            #f2
-            type="tel"
-            [(ngModel)]="otp2"
-            placeholder="&bull;"
-            maxlength="1"
-            [ngClass]="{'code-error' : codeError}"
-          ></ion-input>
-          <ion-input
-            (keyup)="otpCodeChanged(3)"
-            #f3
-            type="tel"
-            [(ngModel)]="otp3"
-            placeholder="&bull;"
-            maxlength="1"
-            [ngClass]="{'code-error' : codeError}"
-          ></ion-input>
-          <ion-input
-            (keyup)="otpCodeChanged(4)"
-            #f4
-            type="tel"
-            [(ngModel)]="otp4"
-            placeholder="&bull;"
-            maxlength="1"
-            [ngClass]="{'code-error' : codeError}"
-          ></ion-input>
-          <ion-input
-            (keyup)="otpCodeChanged(5)"
-            #f5
-            type="tel"
-            [(ngModel)]="otp5"
-            placeholder="&bull;"
-            maxlength="1"
-            [ngClass]="{'code-error' : codeError}"
-          ></ion-input>
-          <ion-input
-            (keyup)="otpCodeChanged(6)"
-            #f6
-            type="tel"
-            [(ngModel)]="otp6"
-            placeholder="&bull;"
-            maxlength="1"
-            [ngClass]="{'code-error' : codeError}"
-          ></ion-input>
+        <div class="code-grid" #content>
+          <ion-item>
+            <ion-input
+              class="otp-input"
+              [ngClass]="{'verification-code-error': codeError}"
+              #hiddenInput
+              type="tel"
+              maxlength="6"
+              [(ngModel)]="verificationCode"
+              (ngModelChange)="trackVerificationCodeChange()"
+              [appMaskInput]="emailVerification"
+              value="verificationCode"
+            ></ion-input>
+          </ion-item>
         </div>
         <div class="info-text">
           {{'otp-modal-verification.info-text' | translate}}

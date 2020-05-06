@@ -46,6 +46,19 @@ ion-input.background-input {
   }
 }
 
+.otp-input {
+  input {
+    font-size: 32px !important;
+    border: none !important;
+    font-weight: 600 !important;
+    line-height: 24px !important;
+    text-align: center !important;
+    font-family: 'Averta W05 ExtraBold' !important;
+    height: 80px !important;
+    letter-spacing: 10px !important;
+  }
+}
+
 .verification-code-error {
   input {
     color: #fe4c55 !important;
