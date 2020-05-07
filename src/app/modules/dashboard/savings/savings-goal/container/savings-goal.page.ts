@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { SavingGoalFacade } from '../facade';
 @Component({
-  selector: 'mbc-saving-goal',
+  selector: 'saving-goal',
   templateUrl: './savings-goal.page.html',
   styleUrls: ['./savings-goal.page.scss']
 })
