@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Category, Offer, OfferDetails } from './../../core/models';
 import { Logger } from './../../core/services/logger.service';
 import { Observable } from 'rxjs/internal/Observable';
@@ -62,9 +62,20 @@ export class MeedExtraService {
     });
   }
 
+  /**
+   * This @method searchOffer return offers
+   * Issue: MM2-237
+   * Details: typing interrupted by "Please wait" pop up.
+   * Here we add skip-loader extra header to it for skipping loading
+   * which actually skip LoaderInterceptor loading
+   * @param {*} [apiParms={}]
+   * @returns {Observable<Offer[]>}
+   * @memberof MeedExtraService
+   */
   searchOffer(apiParms: any = {}): Observable<Offer[]> {
+    const headers: HttpHeaders = this.headerService.getUserCustomerIdHeader().set('skip-loader', '');
     return this.http.get<Offer[]>(this.baseUrlAffinity, {
-      headers: this.headerService.getUserCustomerIdHeader(),
+      headers,
       params: { ...apiParms }
     });
   }
