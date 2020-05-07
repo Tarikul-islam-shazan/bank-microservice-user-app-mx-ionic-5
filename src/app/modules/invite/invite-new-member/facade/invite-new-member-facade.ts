@@ -143,6 +143,6 @@ export class InviteNewMemberFacade {
    * @returns true/false { boolean }
    */
   private emailAlreadyEntered(): boolean {
-    return this.inviteService.inviteeContacts.find(contact => contact.email === this.email.trim()) ? false : true;
+    return this.inviteService.inviteeContacts.find(contact => contact.email === this.email.trim()) ? true : false;
   }
 }
