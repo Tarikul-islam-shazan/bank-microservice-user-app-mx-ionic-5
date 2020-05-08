@@ -537,6 +537,49 @@
         "text": "Your Beneficiary is who would receive your Meed account funds in the unfortunate event of your passing."
       },
       "button-text-processing-done": "Next"
+    },
+    "account-funding-page": {
+      "header-title": "Account Funding",
+      "content-info": "Welcome back!!! if you've already made your initial deposit, we must be within that pesky wait period...otherwise...",
+      "page-title": "Choose how to move money",
+      "spei-title": "SPEI transfer from other bank",
+      "spei-subtitle": "Interior Number",
+      "oxox-title": "OXOX Money Deposit",
+      "oxox-subtitle": "Interior Number",
+      "button-text": "Next",
+      "logout-button-text": "Log Out",
+      "spei-modal": {
+        "title": "SPEI transfer from other bank",
+        "details": {
+          "content1": "SPEI is a transfer initiated at one bank to deposit funds into another bank",
+          "content2": "It’s real simple to do.  Just head to your current bank and request to deposit SPEI to your new Meed account."
+        }
+      },
+      "oxox-modal": {
+        "title": "OXOX Money Deposit",
+        "details": {
+          "content1": "OXOX Money Deposit can be made by depositing cash at an OXOX store into your bank account",
+          "content2": "It’s real simple to do.  Just head to an OXOX store and request to deposit money to your new Meed account."
+        }
+      }
+    },
+    "funding-option-page": {
+      "spei-option": {
+        "title": "SPEI transfer from other bank",
+        "subtitle1": "Just head to your current bank and request to deposit SPEI to your new Meed account.",
+        "lable1": "Meed Account clabe",
+        "label2": "Meed Bank Name",
+        "subtitle2": "Your deposit will only take moments to reach your account. You can start to set up direct deposit or Login below."
+      },
+      "oxox-option": {
+        "title": "OXOX Money Deposit",
+        "subtitle1": "Just head to your closest OXOX location and request to deposit SPEI to your Meed account.",
+        "lable1": "Meed Card Number",
+        "label2": "OXOX Reference Number",
+        "subtitle2": "It can take up to 24 hours for your OXOX deposit to make it to your account. You can start the direct deposit process with your employer or"
+      },
+      "direct-deposit-button-text": "Set up Direct Deposit",
+      "logout-button-text": "Log Out"
     }
   },
   "deposit": {

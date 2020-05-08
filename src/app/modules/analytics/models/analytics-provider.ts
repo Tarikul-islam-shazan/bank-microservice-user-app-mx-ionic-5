@@ -71,6 +71,7 @@ export enum AnalyticsEventTypes {
   SignupPersonalInfoCompleted = 'signup_personal_info_completed',
   IdDocumentSubmitted = 'Id_document_submitted',
   TermsAndConditionsAgreed = 'terms_and_conditions_agreed',
+  AccountFundTypeSelected = 'account_fund_type_selected',
   ApplicationStatusDetermined = 'application_status_determined',
   DepositMethodSelected = 'deposit_method_selected',
   FundingAmountsSelected = 'funding_amounts_selected',

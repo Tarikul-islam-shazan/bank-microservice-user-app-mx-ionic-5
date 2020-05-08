@@ -22,6 +22,7 @@ export interface IMember {
   accountStatus?: MemberAccountStatus;
   accountLevel?: AccountLevel;
   memberType?: MemberType;
+  depositType?: DepositType;
   bank?: string | any;
   country?: string;
   username?: string;
@@ -30,6 +31,11 @@ export interface IMember {
   language?: string;
   createdDate?: string;
   updatedDate?: string;
+}
+
+export enum DepositType {
+  SPEI = 'spei',
+  OXXO = 'oxxo'
 }
 
 /**
