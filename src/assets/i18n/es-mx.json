@@ -21,7 +21,7 @@
       "signup-button-text": "Sign up",
       "help-button-text": "Ayuda",
       "help-modal-message": "Contáctate con el servicio de atención al cliente.",
-      "help-modal-call-no": "Llama al +1-833-213-6333",
+      "help-modal-call-no": "Llama al +5540004030",
       "help-modal-cancle-btn-text": "Cancelar",
       "meed-reward-earnMore": "¡Gana aún más! ",
       "meed-reward-tryAndEarnedCashBack": "Prueba MeedRewards™ y gana hasta un 5 % de devolución en efectivo",
@@ -1587,15 +1587,6 @@
       },
       "actionButtons": {
         "yes-button": "Sí"
-      }
-    },
-    "login-page": {
-      "details": {
-        "content1": "Contáctate con el servicio de atención al cliente."
-      },
-      "actionButtons": {
-        "button1": "Llama al +1-833-213-6333",
-        "button2": "Cancelar"
       }
     },
     "card-page": {

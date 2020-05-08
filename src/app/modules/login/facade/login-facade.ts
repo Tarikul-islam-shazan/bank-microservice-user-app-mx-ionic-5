@@ -4,7 +4,6 @@ import { SignUpService, IAccount, CardService } from '@app/core';
 import { Router } from '@angular/router';
 import { LoginService } from '@app/core/services/login.service';
 import { LogoutService } from '@app/core/services/logout.service';
-import jsSHA from 'jssha';
 import { AccountService } from '@app/core/services/account.service';
 import { MemberService } from '@app/core/services/member.service';
 import { IRegisteredMember, IMember, ApplicationProgress, ApplicationStatus } from '@app/core/models/dto/member';
@@ -39,14 +38,10 @@ export class LoginFacade {
    * @summary authenticates username password
    *
    * @param {LoginForm} creds
-   * @param {boolean} [biometricLogin=false]
    * @returns {Promise<void>}
    * @memberOf LoginFacade
    */
-  async authenticate(creds: LoginForm, biometricLogin: boolean = false): Promise<void> {
-    if (!biometricLogin) {
-      creds.password = await this.hashPassword(creds.password);
-    }
+  async authenticate(creds: LoginForm): Promise<void> {
     creds.username = creds.username.toLowerCase();
     this.auth.login(creds).subscribe((data: IRegisteredMember) => {
       this.analyticsService.logEvent(AnalyticsEventTypes.LoginOptionClicked, {
@@ -59,19 +54,6 @@ export class LoginFacade {
       this.memberService.setMember(member);
       this.checkApplicationStatus(member, accountSummary);
     });
-  }
-
-  /**
-   * @summary hashes password
-   *
-   * @param {string} password
-   * @returns {string}
-   * @memberOf LoginFacade
-   */
-  hashPassword(password: string): string {
-    const shaObj = new jsSHA('SHA-256', 'TEXT');
-    shaObj.update(password);
-    return shaObj.getHash('HEX');
   }
   /**
    * Plaform wise text showing in checkbox
@@ -223,7 +205,37 @@ export class LoginFacade {
    */
   changeRouteByApplicationProgress(member: IMember): void {
     switch (member.applicationProgress) {
+      case ApplicationProgress.CredentialsCreated:
+        this.navigateToRoute('/signup/scanid');
+        break;
+      case ApplicationProgress.GeneralInfoCompleted:
+        this.navigateToRoute('/signup/address-information');
+        break;
+      case ApplicationProgress.AddressInfoCompleted:
+        this.navigateToRoute('/signup/beneficiary-information');
+        break;
+      case ApplicationProgress.BeneficiaryInfoCompleted:
+        this.navigateToRoute('/signup/account-selection');
+        break;
+      case ApplicationProgress.AccountLevelSelected:
+        this.navigateToRoute('/signup/personal-information');
+        break;
+      case ApplicationProgress.PersonalInfoCompleted:
+        this.navigateToRoute('/signup/funding-information');
+        break;
+      case ApplicationProgress.FundSourceInfoCompleted:
+        this.navigateToRoute('/signup/government-disclosure');
+        break;
+      case ApplicationProgress.GovDisclosureCompleted:
+        this.navigateToRoute('/signup/identity-confirmation');
+        break;
+      case ApplicationProgress.IdentityConfirmationCompleted:
+        this.navigateToRoute('/signup/terms-conditions');
+        break;
       case ApplicationProgress.TermsAndConditionAccepted:
+        this.navigateToRoute('/signup/account-funding');
+        break;
+      case ApplicationProgress.AccountFunded:
         this.navigateToRoute('/signup/deposit/direct-deposit-start');
         break;
       case ApplicationProgress.IdentityQuestionsViewed:
@@ -239,10 +251,6 @@ export class LoginFacade {
       case ApplicationProgress.ProductOnboarded:
         this.navigateToRoute('/signup/terms-conditions');
         break;
-      case ApplicationProgress.CredentialsCreated:
-        this.navigateToRoute('/signup/scanid');
-        break;
-
       default:
         this.navigateToRoute('/login-user');
         break;
@@ -260,7 +268,7 @@ export class LoginFacade {
     const credentialsResponse: LoginRequest = await this.biometricAuthenticationService.authenticateBiometric();
     if (credentialsResponse) {
       credentials = { ...credentials, ...credentialsResponse };
-      this.authenticate(credentials, true);
+      this.authenticate(credentials);
     }
   }
 
@@ -327,7 +335,6 @@ export class LoginFacade {
         ]
       }
     };
-
     await this.modalService.openInfoModalComponent(modalComponentContent);
   }
 }
