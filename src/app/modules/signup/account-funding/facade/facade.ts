@@ -40,14 +40,14 @@ export class AccountFunding {
     };
     await this.modalService.openInfoModalComponent({ componentProps });
   }
-  async openOXOXModal() {
+  async openOXXOModal() {
     const componentProps: IMeedModalContent = {
       contents: [
         {
-          title: 'signup-module.account-funding-page.oxox-modal.title',
+          title: 'signup-module.account-funding-page.oxxo-modal.title',
           details: [
-            'signup-module.account-funding-page.oxox-modal.details.content1',
-            'signup-module.account-funding-page.oxox-modal.details.content2'
+            'signup-module.account-funding-page.oxxo-modal.details.content1',
+            'signup-module.account-funding-page.oxxo-modal.details.content2'
           ]
         }
       ]
