@@ -6,8 +6,8 @@ export interface IStaticData {
 }
 
 export enum StaticDataCategories {
-  SuppressFeature = 'SuppressFeature',
-  Contacts = 'Contacts'
+  SuppressFeature = 'suppressFeature',
+  Contacts = 'contacts'
 }
 
 export interface IStates {
