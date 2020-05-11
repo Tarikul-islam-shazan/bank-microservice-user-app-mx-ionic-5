@@ -59,7 +59,7 @@
 <ion-footer class="ion-no-border">
   <ion-toolbar>
     <ion-button
-      *ngIf="facade.member?.applicationProgress === facade.applicationProgress.DirectDeposit"
+      *ngIf="facade.member?.applicationProgress !== facade.applicationProgress.DirectDeposit"
       class="white-button"
       expand="block"
       (click)="facade.goToDirectDeposit()"
