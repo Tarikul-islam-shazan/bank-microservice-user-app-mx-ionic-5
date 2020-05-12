@@ -70,4 +70,15 @@
       }
     }
   }
+
+  ion-item {
+    display: flex;
+    align-items: center;
+    min-height: 80px;
+    border-bottom: 1px solid #ebedf2;
+    ion-label {
+      --color: #435cdc;
+      z-index: 999999;
+    }
+  }
 }
