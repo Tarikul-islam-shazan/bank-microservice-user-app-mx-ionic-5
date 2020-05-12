@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { SignUpService, DepositType, IMember, MemberService, ApplicationProgress } from '@app/core';
+import { SignUpService, FundingType, IMember, MemberService, ApplicationProgress } from '@app/core';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { ModalService, IMeedModalContent } from '@app/shared';
 @Injectable()
 export class AccountFunding {
-  depositType = DepositType.SPEI;
+  fundingType = FundingType.SPEI;
   constructor(
     private router: Router,
     private signupService: SignUpService,
@@ -14,8 +14,8 @@ export class AccountFunding {
     private modalService: ModalService
   ) {}
 
-  get type(): typeof DepositType {
-    return DepositType;
+  get type(): typeof FundingType {
+    return FundingType;
   }
 
   get member(): IMember {
@@ -24,6 +24,17 @@ export class AccountFunding {
 
   get applicationProgress(): typeof ApplicationProgress {
     return ApplicationProgress;
+  }
+
+  get isLoginActive(): boolean {
+    if (
+      (this.member && this.member.applicationProgress === this.applicationProgress.AccountFunded) ||
+      (this.member && this.member.applicationProgress === this.applicationProgress.DirectDeposit)
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   async openSPEIModal() {
@@ -56,9 +67,9 @@ export class AccountFunding {
   }
 
   goToNext() {
-    this.signupService.getDeposistInfo(this.depositType).subscribe(data => {
-      this.signupService.accountFundType = this.depositType;
-      this.analytics.logEvent(AnalyticsEventTypes.AccountFundTypeSelected, { accountFundType: this.depositType });
+    this.signupService.getDeposistInfo(this.fundingType).subscribe(data => {
+      this.signupService.accountFundType = this.fundingType;
+      this.analytics.logEvent(AnalyticsEventTypes.AccountFunded, { accountFundType: this.fundingType });
       this.router.navigate(['/signup/account-funding/funding-option']);
     });
   }

@@ -38,16 +38,10 @@
           {{ 'signup-module.funding-option-page.oxxo-option.subtitle1' | translate }}
         </div>
         <div class="info-paragraph1">
-          {{ 'signup-module.funding-option-page.oxxo-option.lable1' | translate }}
-        </div>
-        <div class="info-value">
-          {{facade.accountFundInfo.cardNumber}}
-        </div>
-        <div class="info-paragraph1">
           {{ 'signup-module.funding-option-page.oxxo-option.label2' | translate }}
         </div>
         <div class="info-value">
-          {{facade.accountFundInfo.oxxoNumber}}
+          {{facade.accountFundInfo.cardNumber}}
         </div>
         <div class="info-paragraph2">
           {{ 'signup-module.funding-option-page.oxxo-option.subtitle2' | translate }}
@@ -59,19 +53,14 @@
 <ion-footer class="ion-no-border">
   <ion-toolbar>
     <ion-button
-      *ngIf="facade.member?.applicationProgress !== facade.applicationProgress.DirectDeposit"
+      *ngIf="facade.isDirectDepositActive"
       class="white-button"
       expand="block"
       (click)="facade.goToDirectDeposit()"
     >
       {{ 'signup-module.funding-option-page.direct-deposit-button-text' | translate }}
     </ion-button>
-    <ion-button
-      *ngIf="facade.member?.applicationProgress === facade.applicationProgress.AccountFunded || facade.member?.applicationProgress === facade.applicationProgress.DirectDeposit"
-      class="grey-outline-button"
-      expand="block"
-      (click)="facade.goToLogin()"
-    >
+    <ion-button *ngIf="facade.isLoginActive" class="grey-outline-button" expand="block" (click)="facade.goToLogin()">
       {{ 'signup-module.funding-option-page.logout-button-text' | translate }}
     </ion-button>
   </ion-toolbar>

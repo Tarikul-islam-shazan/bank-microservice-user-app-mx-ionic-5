@@ -14,7 +14,7 @@
     </div>
     <div class="content-title">{{ 'signup-module.account-funding-page.page-title' | translate }}</div>
     <ion-list lines="none">
-      <ion-radio-group [(ngModel)]="facade.depositType">
+      <ion-radio-group [(ngModel)]="facade.fundingType">
         <ion-item>
           <ion-radio slot="start" [value]="facade.type.SPEI" mode="md"></ion-radio>
           <div class="radio-content">
@@ -44,12 +44,7 @@
     <ion-button (click)="facade.goToNext()" class="white-button" expand="block">
       {{ 'signup-module.account-funding-page.button-text' | translate }}
     </ion-button>
-    <ion-button
-      *ngIf="facade.member?.applicationProgress === facade.applicationProgress.AccountFunded || facade.member?.applicationProgress === facade.applicationProgress.DirectDeposit"
-      (click)="facade.goToLogin()"
-      class="grey-outline-button"
-      expand="block"
-    >
+    <ion-button *ngIf="facade.isLoginActive" (click)="facade.goToLogin()" class="grey-outline-button" expand="block">
       {{ 'signup-module.account-funding-page.logout-button-text' | translate }}
     </ion-button>
   </ion-toolbar>

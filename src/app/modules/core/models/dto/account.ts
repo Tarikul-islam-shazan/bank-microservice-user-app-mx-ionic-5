@@ -133,7 +133,7 @@ export enum AccountLevel {
   Express = 'Express'
 }
 
-export interface IDepositInfo {
+export interface IFundingInfo {
   accountNumber: string;
   interbankClabe: string;
   bankCode: string;

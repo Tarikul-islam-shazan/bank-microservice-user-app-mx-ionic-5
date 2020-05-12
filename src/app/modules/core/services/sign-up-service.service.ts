@@ -31,8 +31,8 @@ import {
   IGovtDisclosureApplication,
   IGovtDisclosureResponse,
   IConfirmIdentityInfo,
-  DepositType,
-  IDepositInfo
+  FundingType,
+  IFundingInfo
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
 import { Logger } from './logger.service';
@@ -55,8 +55,8 @@ export class SignUpService {
   signUpDirectDepositAccounts: ISignUpDirectDepositAccounts = {};
   private _memberApplication: IMemberApplication = {};
   private _idendityQuestions: IdentityQuestion[];
-  private _depositInfo: IDepositInfo;
-  private _accountFundType: DepositType;
+  private _fundingInfo: IFundingInfo;
+  private _accountFundType: FundingType;
   // this property dictates the flow of direct deposit, as it is shared between signup and inside the app
   dynamicDirectDepositFlowToLogin = true;
   constructor(
@@ -102,19 +102,19 @@ export class SignUpService {
     return this._idendityQuestions;
   }
 
-  set depositInfo(depositInfo: IDepositInfo) {
-    this._depositInfo = depositInfo;
+  set fundingInfo(fundingInfo: IFundingInfo) {
+    this._fundingInfo = fundingInfo;
   }
 
-  get depositInfo(): IDepositInfo {
-    return this._depositInfo;
+  get fundingInfo(): IFundingInfo {
+    return this._fundingInfo;
   }
 
-  set accountFundType(fundType: DepositType) {
+  set accountFundType(fundType: FundingType) {
     this._accountFundType = fundType;
   }
 
-  get accountFundType(): DepositType {
+  get accountFundType(): FundingType {
     return this._accountFundType;
   }
 
@@ -424,14 +424,14 @@ export class SignUpService {
     );
   }
 
-  getDeposistInfo(depositType: DepositType): Observable<IDepositInfo> {
+  getDeposistInfo(fundingType: FundingType): Observable<IFundingInfo> {
     return this.http
-      .get<IDepositInfo>(`${this.baseUrl}/bank/onboarding/apply/deposit-info?depositType=${depositType}`, {
+      .get<IFundingInfo>(`${this.baseUrl}/bank/onboarding/apply/funding-info?fundingType=${fundingType}`, {
         headers: this.headerService.getMemberICustomerIdHeader()
       })
       .pipe(
-        tap((res: IDepositInfo) => {
-          this.depositInfo = res;
+        tap((res: IFundingInfo) => {
+          this.fundingInfo = res;
         })
       );
   }
