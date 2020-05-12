@@ -4,7 +4,7 @@
 
 <ion-content>
   <div class="content-wrapper">
-    <div *ngIf="this.facade.accountFundType === this.facade.type.SPEI">
+    <div *ngIf="this.facade.isSPEISelected">
       <div class="info-content">
         <div class="info-title">
           {{ 'signup-module.funding-option-page.spei-option.title' | translate }}
@@ -29,7 +29,7 @@
         </div>
       </div>
     </div>
-    <div *ngIf="this.facade.accountFundType === this.facade.type.OXXO">
+    <div *ngIf="this.facade.isOXXOSelected">
       <div class="info-content">
         <div class="info-title">
           {{ 'signup-module.funding-option-page.oxxo-option.title' | translate }}

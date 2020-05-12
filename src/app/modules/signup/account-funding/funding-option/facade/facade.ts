@@ -44,6 +44,14 @@ export class FundingOption {
     }
   }
 
+  get isSPEISelected(): boolean {
+    return this.accountFundType === this.type.SPEI;
+  }
+
+  get isOXXOSelected(): boolean {
+    return this.accountFundType === this.type.OXXO;
+  }
+
   goToDirectDeposit() {
     this.router.navigate(['/signup/deposit/direct-deposit']);
   }

@@ -6,10 +6,7 @@
 
 <ion-content>
   <div class="content-wrapper">
-    <div
-      *ngIf="facade.member?.applicationProgress === facade.applicationProgress.AccountFunded || facade.member?.applicationProgress === facade.applicationProgress.DirectDeposit"
-      class="content-info"
-    >
+    <div *ngIf="facade.isLoginActive" class="content-info">
       {{ 'signup-module.account-funding-page.content-info' | translate }}
     </div>
     <div class="content-title">{{ 'signup-module.account-funding-page.page-title' | translate }}</div>
