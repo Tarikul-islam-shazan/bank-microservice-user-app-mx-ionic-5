@@ -1,6 +1,11 @@
+enum OtpResponseType {
+  invalid = '704',
+  tooManyAttempts = '705'
+}
+
 import { Component, ViewChild } from '@angular/core';
 import { IonContent, ModalController, IonInput } from '@ionic/angular';
-import { OtpVerificationModalFacade, OtpResponseType } from '../facade';
+import { OtpVerificationModalFacade } from '@app/shared/components/otp-verification-modal/facade/otp-verification-modal.facade';
 import { REG_EX_PATTERNS } from '@app/core/models/patterns';
 import { IinputOption, InputFormatType } from '@app/shared/directives/mask-input.directive';
 @Component({
