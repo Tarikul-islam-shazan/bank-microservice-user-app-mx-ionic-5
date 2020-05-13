@@ -54,7 +54,7 @@ export class SignUpTermsConditionFacade {
     });
     modal.present();
     await modal.onDidDismiss();
-    this.router.navigate(['/signup/deposit/direct-deposit-start']);
+    this.router.navigate(['/signup/account-funding']);
   }
   async openDenyModal() {
     const modal = await this.modalCtrl.create({
