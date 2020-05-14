@@ -106,7 +106,6 @@ export class LoginFacade {
    */
   checkApplicationStatus(member: IMember, accountSummary: IAccount[]) {
     switch (member.applicationStatus) {
-      case ApplicationStatus.OnHold:
       case ApplicationStatus.Denied:
         this.openDenyModal(member.applicationStatus);
         break;
@@ -146,14 +145,6 @@ export class LoginFacade {
    */
   openDenyModal(applicationStatus: ApplicationStatus): void {
     switch (applicationStatus) {
-      case ApplicationStatus.OnHold:
-        this.modalService.openInfoModalComponent(
-          this.accountHoldAndDeniedModal(
-            'login-module.create-login-page.status-on-hold.title',
-            'login-module.create-login-page.status-on-hold.content'
-          )
-        );
-        break;
       case ApplicationStatus.Denied:
         this.modalService.openInfoModalComponent(
           this.accountHoldAndDeniedModal(
