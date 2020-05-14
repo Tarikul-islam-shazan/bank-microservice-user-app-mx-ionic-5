@@ -32,13 +32,10 @@ export class AdvancedSearchComponent implements OnInit {
    */
   initiateForm() {
     this.transactionForm = this.formBuilder.group({
-      keywords: [null],
       amountFrom: [null],
       amountTo: [null],
       dateFrom: [null],
-      dateTo: [null],
-      includeDebits: true,
-      includeCredits: true
+      dateTo: [null]
     });
     this.transactionQueries = {};
   }
@@ -56,9 +53,6 @@ export class AdvancedSearchComponent implements OnInit {
    * @memberof AdvancedSearchComponent
    */
   submitSearch() {
-    if (this.transactionForm.controls.keywords.value) {
-      this.transactionQueries.keywords = this.transactionForm.controls.keywords.value;
-    }
     if (
       this.transactionForm.controls.amountFrom.value &&
       this.transactionForm.controls.amountFrom.value !== '0' &&
@@ -81,8 +75,6 @@ export class AdvancedSearchComponent implements OnInit {
     if (this.transactionForm.controls.dateTo.value) {
       this.transactionQueries.dateTo = moment(this.transactionForm.controls.dateTo.value).format('MM/DD/YYYY 00:00:00');
     }
-    this.transactionQueries.includeDebits = this.transactionForm.controls.includeDebits.value;
-    this.transactionQueries.includeCredits = this.transactionForm.controls.includeCredits.value;
     this.search.emit(this.transactionQueries);
   }
 }

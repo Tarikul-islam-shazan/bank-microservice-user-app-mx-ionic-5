@@ -158,12 +158,9 @@
       "savings-text": "Savings"
     },
     "advanced-search": {
-      "keyword-text": "Keyword",
       "amount-range-text": "Amount Range",
       "date-text": "Date",
       "to-text": "to",
-      "debit-text": "Debit",
-      "credit-text": "Credit",
       "clear-text": "Clear",
       "search-text": "Search",
       "date-display-format": "MMM DD, YYYY"
