@@ -28,5 +28,6 @@ export const REG_EX_PATTERNS = {
   ALLOW_ONLY_NUMBERS_AND_DOT: /[^0-9.]/g,
   NOT_ALLOW_COMMA: /(^,*)/g,
   MONEY_WITH_COMMA: /^(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,3})(\d{0,3})*/,
-  SSN_NO: /[^0-9]/g
+  SSN_NO: /[^0-9]/g,
+  OTP_VALIDATION: /^-?([0-9]\d*)?$/
 };

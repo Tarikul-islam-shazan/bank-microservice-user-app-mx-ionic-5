@@ -7,7 +7,7 @@
 import { Directive, HostListener, Input } from '@angular/core';
 import { IonInput } from '@ionic/angular';
 import { REG_EX_PATTERNS } from '@app/core/models/patterns';
-import { SettingsService } from '@app/core';
+import { SettingsService } from '@app/core/services/settings.service';
 export interface IinputOption {
   type: InputFormatType;
   maxLength?: number;

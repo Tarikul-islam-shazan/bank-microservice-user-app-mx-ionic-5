@@ -91,12 +91,7 @@ export interface TncResponse {
 
 export interface TncDocument {
   title: string;
-  documents: Document[];
-}
-
-interface Document {
-  title: string;
-  pdf: string;
+  code: string;
 }
 
 export interface AccountId {

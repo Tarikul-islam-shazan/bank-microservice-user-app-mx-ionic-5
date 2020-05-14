@@ -81,10 +81,12 @@ export class LoginService {
 
   setCardsData(loginRespose: HttpResponse<IRegisteredMember>) {
     const { configurationData } = loginRespose.body as IRegisteredMember;
-    const { data: contactSupport } = configurationData.find(
+    const contactSupport = configurationData.find(
       configurationObject => configurationObject.category === StaticDataCategories.Contacts
     );
-    const contactSupportData = contactSupport as ContactSupport;
-    this.cardService.supportNumber = contactSupportData.phone;
+    if (contactSupport) {
+      const contactSupportData = contactSupport.data as ContactSupport;
+      this.cardService.supportNumber = contactSupportData.phone;
+    }
   }
 }

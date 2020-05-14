@@ -21,7 +21,7 @@
       "signup-button-text": "Sign up",
       "help-button-text": "Help",
       "help-modal-message": "Please contact Customer Service.",
-      "help-modal-call-no": "Call 1-833-213-6333",
+      "help-modal-call-no": "Call +5540004030",
       "help-modal-cancle-btn-text": "Cancel",
       "meed-reward-earnMore": "Earn even more!",
       "meed-reward-tryAndEarnedCashBack": "Try MeedRewards™ and earn up to 5% cash back.",
@@ -939,7 +939,7 @@
   },
   "meed-extra-module": {
     "extra-page": {
-      "header-title": "Meed Extras",
+      "header-title": "MeedExtras",
       "featured-offer-title": "Featured Offers",
       "categories-title": "Categories",
       "nearby-text": "See Nearby Offers",
@@ -1626,15 +1626,6 @@
         "content2": "<b>Funds on Hold</b> reflect the security amount for money borrowed on the Line of Credit, which is then adjusted to ensure your borrowings won’t exceed 75% of your Savings balance.  Also here are any pending transactions not fully cleared and released by the bank.  Funds on Hold will move to Available when pending transactions are released or when the Line of Credit balance is reduced or paid in full.",
         "content3": "The <b>Interest Rate</b> on your Savings is currently: 1.25% APY, {{interestRate}}% YTD",
         "content4": "<b>Boost your savings</b> further by maximizing your cash back from MeedExtras, MeedTravel and MeedShare – they pay directly into your savings account."
-      }
-    },
-    "login-page": {
-      "details": {
-        "content1": "Please contact Customer Service."
-      },
-      "actionButtons": {
-        "button1": "Call 1-833-213-6333",
-        "button2": "Cancel"
       }
     },
     "card-page": {
