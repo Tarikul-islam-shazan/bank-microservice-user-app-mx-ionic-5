@@ -30,7 +30,8 @@ import {
   IPersonalInfo,
   IGovtDisclosureApplication,
   IGovtDisclosureResponse,
-  IConfirmIdentityInfo
+  IConfirmIdentityInfo,
+  TncDocument
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
 import { Logger } from './logger.service';
@@ -41,6 +42,7 @@ import { MemberService } from './member.service';
 import { SettingsService } from './settings.service';
 import { UserSettings } from '../models/app-settings';
 import { IFundInfo } from '@app/signup/funding-information/model/fundinfo';
+import { take } from 'rxjs/operators';
 
 const logger = new Logger('SignUpService');
 
@@ -233,33 +235,28 @@ export class SignUpService {
       );
   }
 
-  getTermsConditions(): Observable<TncResponse> {
-    return this.http.get<TncResponse>(this.baseUrl + '/bank/onboarding/terms-and-conditions', {
-      headers: this.headerService.getUserNameMemberIdHeader() // backend changed the parameter from customer id to member id
+  getTermsConditions(): Observable<TncDocument[]> {
+    return this.http.get<TncDocument[]>(this.baseUrl + '/bank/onboarding/terms-and-conditions', {
+      headers: this.headerService.getMemberIdHeader() // backend changed the parameter from customer id to member id
     });
   }
 
-  acceptTermsCondition(processID: string, corporateTnCAccepted: boolean): Observable<ProductOnboardedResponse> {
+  getTermsConditionBase64String(code: string): Observable<{ code: string; document: string }> {
     return this.http
-      .post<ProductOnboardedResponse>(
-        this.baseUrl + '/bank/onboarding/terms-and-conditions',
-        {
-          isTermsAccepted: true,
-          corporateTncAccepted: corporateTnCAccepted,
-          processId: processID
-        },
-        { headers: this.headerService.getUserNameMemberICustomerIdHeader() }
-      )
-      .pipe(
-        tap((resp: ProductOnboardedResponse) => {
-          const account = resp.accounts.filter(accountId => {
-            return accountId.accountType === AccountType.DDA;
-          })[0];
-          this.signUpDirectDepositAccounts.accounts = resp.accounts;
-          this.signUpDirectDepositAccounts.bankAccountNumber = account.accountNumber;
-          this.signUpDirectDepositAccounts.routingNumber = account.routingNumber;
-        })
-      );
+      .get<{ code: string; document: string }>(this.baseUrl + `/bank/onboarding/terms-and-conditions/${code}`, {
+        headers: this.headerService.getMemberIdHeader() // backend changed the parameter from customer id to member id
+      })
+      .pipe(take(1));
+  }
+
+  acceptTermsCondition(): Observable<ProductOnboardedResponse> {
+    return this.http.post<ProductOnboardedResponse>(
+      this.baseUrl + '/bank/onboarding/terms-and-conditions',
+      {},
+      {
+        headers: this.headerService.getMemberIdCustomerIdHeader()
+      }
+    );
   }
 
   /**
