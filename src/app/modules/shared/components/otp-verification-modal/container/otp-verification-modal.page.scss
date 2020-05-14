@@ -39,7 +39,7 @@ ion-toolbar {
 
   .code-grid {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     margin-bottom: 2vh;
     margin-left: 9vw;
@@ -110,10 +110,20 @@ ion-toolbar {
     padding: 0px 9vw 3.5vh 9vw;
     margin-top: 2vh !important;
     font-family: 'Averta W05 Regular' !important;
-    // position: fixed;
-    // bottom: 0px;
   }
 
+  .verification-code-error {
+    animation: shake 0.1s cubic-bezier(0.36, 0.07, 0.19, 0.97) both infinite;
+    transform: translate3d(0, 0, 0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+    color: #fe4c55;
+    filter: blur(3px);
+    text-shadow: 0 0 2px #000;
+    input {
+      color: #fe4c55 !important;
+    }
+  }
   .resend-code-wrapper {
     display: flex;
     flex-direction: column;
@@ -128,7 +138,7 @@ ion-toolbar {
       text-align: center;
     }
     .resend-btn {
-      width: 225px;
+      width: 250px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -156,24 +166,4 @@ ion-toolbar {
 
 .footer-ios ion-toolbar:first-child {
   --border-width: 0 !important;
-}
-.otp-wrapper {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 2vh;
-  margin-left: 9vw;
-  margin-right: 9vw;
-  margin-top: 10vh;
-  ion-input {
-    font-size: 3.2rem;
-    font-weight: 600;
-    line-height: 24px;
-    text-align: center;
-    font-family: 'Averta W05 ExtraBold' !important;
-    caret-color: transparent;
-    --placeholder-color: #eaecf7;
-    --placeholder-opacity: 1;
-    --placeholder-font-weight: bolder;
-  }
 }
