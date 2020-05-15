@@ -158,12 +158,9 @@
       "savings-text": "Ahorros"
     },
     "advanced-search": {
-      "keyword-text": "Palabras clave",
       "amount-range-text": "Intervalo de importe",
       "date-text": "Fecha",
       "to-text": "Hasta",
-      "debit-text": "Débito",
-      "credit-text": "Crédito",
       "clear-text": "Borrar",
       "search-text": "Buscar",
       "date-display-format": "MMM DD, YYYY"

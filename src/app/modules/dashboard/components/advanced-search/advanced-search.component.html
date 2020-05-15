@@ -1,11 +1,5 @@
 <div>
   <form [formGroup]="transactionForm">
-    <ion-label id="keywords-label" class="item-title"
-      >{{ 'dashboard-module.advanced-search.keyword-text' | translate }}
-    </ion-label>
-    <ion-item lines="none">
-      <ion-input id="search-merchant-name" class="white-input" formControlName="keywords"></ion-input>
-    </ion-item>
     <ion-label class="item-title">{{ 'dashboard-module.advanced-search.amount-range-text' | translate }} </ion-label>
     <ion-row>
       <ion-col size="5">
@@ -67,24 +61,6 @@
             </ion-datetime>
           </ion-item>
         </div>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="6">
-        <ion-item lines="none">
-          <ion-checkbox mode="md" id="debit-card-checked" formControlName="includeDebits"> </ion-checkbox>
-          <ion-label class="checkbox-label">
-            {{ 'dashboard-module.advanced-search.debit-text' | translate }}
-          </ion-label>
-        </ion-item>
-      </ion-col>
-      <ion-col size="5" offset="1">
-        <ion-item lines="none">
-          <ion-checkbox mode="md" id="checkbox-credit-card" formControlName="includeCredits"> </ion-checkbox>
-          <ion-label id="label-checkbox-credit-card" class="checkbox-label">
-            {{ 'dashboard-module.advanced-search.credit-text' | translate }}
-          </ion-label>
-        </ion-item>
       </ion-col>
     </ion-row>
   </form>
