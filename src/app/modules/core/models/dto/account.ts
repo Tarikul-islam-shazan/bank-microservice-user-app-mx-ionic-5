@@ -129,3 +129,12 @@ export enum AccountLevel {
   Full = 'Full',
   Express = 'Express'
 }
+
+export interface IFundingInfo {
+  accountNumber: string;
+  interbankClabe: string;
+  bankCode: string;
+  bankName: string;
+  cardNumber: string;
+  oxxoNumber: string;
+}

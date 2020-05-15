@@ -1,0 +1,67 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar> </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div *ngIf="this.facade.isSPEISelected">
+      <div class="info-content">
+        <div class="info-title">
+          {{ 'signup-module.funding-option-page.spei-option.title' | translate }}
+        </div>
+        <div class="info-paragraph">
+          {{ 'signup-module.funding-option-page.spei-option.subtitle1' | translate }}
+        </div>
+        <div class="info-paragraph1">
+          {{ 'signup-module.funding-option-page.spei-option.lable1' | translate }}
+        </div>
+        <div class="info-value">
+          {{facade.accountFundInfo.interbankClabe}}
+        </div>
+        <div class="info-paragraph1">
+          {{ 'signup-module.funding-option-page.spei-option.label2' | translate }}
+        </div>
+        <div class="info-value">
+          {{facade.accountFundInfo.bankName}}
+        </div>
+        <div class="info-paragraph2">
+          {{ 'signup-module.funding-option-page.spei-option.subtitle2' | translate }}
+        </div>
+      </div>
+    </div>
+    <div *ngIf="this.facade.isOXXOSelected">
+      <div class="info-content">
+        <div class="info-title">
+          {{ 'signup-module.funding-option-page.oxxo-option.title' | translate }}
+        </div>
+        <div class="info-paragraph">
+          {{ 'signup-module.funding-option-page.oxxo-option.subtitle1' | translate }}
+        </div>
+        <div class="info-paragraph1">
+          {{ 'signup-module.funding-option-page.oxxo-option.label2' | translate }}
+        </div>
+        <div class="info-value">
+          {{facade.accountFundInfo.cardNumber}}
+        </div>
+        <div class="info-paragraph2">
+          {{ 'signup-module.funding-option-page.oxxo-option.subtitle2' | translate }}
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      *ngIf="facade.isDirectDepositActive"
+      class="white-button"
+      expand="block"
+      (click)="facade.goToDirectDeposit()"
+    >
+      {{ 'signup-module.funding-option-page.direct-deposit-button-text' | translate }}
+    </ion-button>
+    <ion-button *ngIf="facade.isLoginActive" class="grey-outline-button" expand="block" (click)="facade.goToLogin()">
+      {{ 'signup-module.funding-option-page.logout-button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

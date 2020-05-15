@@ -116,6 +116,11 @@ export const SIGNUP_ROUTES: Routes = [
     data: { title: PAGES.SIGNUP_IDENTITY_CONFIRMATION.NAME },
     loadChildren: () =>
       import('./identity-confirmation/identity-confirmation.module').then(m => m.IdentityConfirmationPageModule)
+  },
+  {
+    path: 'account-funding',
+    data: { title: PAGES.SIGNUP_ACCOUNT_FUNDING.NAME },
+    loadChildren: () => import('./account-funding/account-funding.module').then(m => m.AccountFundingModule)
   }
 ];
 

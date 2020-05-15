@@ -31,6 +31,8 @@ import {
   IGovtDisclosureApplication,
   IGovtDisclosureResponse,
   IConfirmIdentityInfo,
+  FundingType,
+  IFundingInfo,
   TncDocument
 } from '../models';
 import { Observable } from 'rxjs/internal/Observable';
@@ -55,6 +57,8 @@ export class SignUpService {
   signUpDirectDepositAccounts: ISignUpDirectDepositAccounts = {};
   private _memberApplication: IMemberApplication = {};
   private _idendityQuestions: IdentityQuestion[];
+  private _fundingInfo: IFundingInfo;
+  private _accountFundType: FundingType;
   // this property dictates the flow of direct deposit, as it is shared between signup and inside the app
   dynamicDirectDepositFlowToLogin = true;
   constructor(
@@ -98,6 +102,22 @@ export class SignUpService {
    */
   get identityQuestions(): IdentityQuestion[] {
     return this._idendityQuestions;
+  }
+
+  set fundingInfo(fundingInfo: IFundingInfo) {
+    this._fundingInfo = fundingInfo;
+  }
+
+  get fundingInfo(): IFundingInfo {
+    return this._fundingInfo;
+  }
+
+  set accountFundType(fundType: FundingType) {
+    this._accountFundType = fundType;
+  }
+
+  get accountFundType(): FundingType {
+    return this._accountFundType;
   }
 
   assignCompressed(aMember: IMember): Observable<IMember> {
@@ -399,5 +419,17 @@ export class SignUpService {
         headers: this.headerService.getMemberICustomerIdHeader()
       }
     );
+  }
+
+  getDeposistInfo(fundingType: FundingType): Observable<IFundingInfo> {
+    return this.http
+      .get<IFundingInfo>(`${this.baseUrl}/bank/onboarding/apply/funding-info?fundingType=${fundingType}`, {
+        headers: this.headerService.getMemberICustomerIdHeader()
+      })
+      .pipe(
+        tap((res: IFundingInfo) => {
+          this.fundingInfo = res;
+        })
+      );
   }
 }

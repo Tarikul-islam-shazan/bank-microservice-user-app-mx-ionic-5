@@ -95,6 +95,14 @@ export const PAGES: Page = {
     NAME: 'signup-identity-confirmation',
     ROUTE_PATH: '/signup/identity-confirmation'
   },
+  SIGNUP_ACCOUNT_FUNDING: {
+    NAME: 'Signup Account Funding',
+    ROUTE_PATH: '/signup/account-funding'
+  },
+  SIGNUP_ACCOUNT_FUNDING_OPTION: {
+    NAME: 'Signup Account Funding Option',
+    ROUTE_PATH: '/signup/account-funding/funding-option'
+  },
   DIRECT_DEPOSIT: {
     NAME: 'signup-direct-deposit-entry',
     ROUTE_PATH: 'deposit/direct-deposit'

@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ 'signup-module.account-funding-page.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div *ngIf="facade.isLoginActive" class="content-info">
+      {{ 'signup-module.account-funding-page.content-info' | translate }}
+    </div>
+    <div class="content-title">{{ 'signup-module.account-funding-page.page-title' | translate }}</div>
+    <ion-list lines="none">
+      <ion-radio-group [(ngModel)]="facade.fundingType">
+        <ion-item>
+          <ion-radio slot="start" [value]="facade.type.SPEI" mode="md"></ion-radio>
+          <div class="radio-content">
+            <div class="radio-title">{{ 'signup-module.account-funding-page.spei-title' | translate }}</div>
+            <div class="radio-subtitle">{{ 'signup-module.account-funding-page.spei-subtitle' | translate }}</div>
+          </div>
+          <div class="ques-mark" slot="end" (click)="facade.openSPEIModal()">
+            <img src="assets/svg/question-mark.svg" />
+          </div>
+        </ion-item>
+        <ion-item>
+          <ion-radio slot="start" [value]="facade.type.OXXO" mode="md"></ion-radio>
+          <div class="radio-content">
+            <div class="radio-title">{{ 'signup-module.account-funding-page.oxxo-title' | translate }}</div>
+            <div class="radio-subtitle">{{ 'signup-module.account-funding-page.oxxo-subtitle' | translate }}</div>
+          </div>
+          <div class="ques-mark" slot="end" (click)="facade.openOXXOModal()">
+            <img src="assets/svg/question-mark.svg" />
+          </div>
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button (click)="facade.goToNext()" class="white-button" expand="block">
+      {{ 'signup-module.account-funding-page.button-text' | translate }}
+    </ion-button>
+    <ion-button *ngIf="facade.isLoginActive" (click)="facade.goToLogin()" class="grey-outline-button" expand="block">
+      {{ 'signup-module.account-funding-page.logout-button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
