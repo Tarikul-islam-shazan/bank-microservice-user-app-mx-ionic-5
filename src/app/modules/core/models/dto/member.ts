@@ -71,16 +71,16 @@ export enum ApplicationProgress {
 }
 
 export enum ApplicationStatus {
-  Started = 'application-started',
-  Completed = 'application-completed',
-  OnHold = 'application-onhold',
-  Denied = 'application-denied'
+  Started = 'started',
+  Completed = 'completed',
+  Denied = 'denied'
 }
 
 export enum MemberAccountStatus {
-  Opened = 'account-opened',
-  Closed = 'account-closed',
-  InProgress = 'account-in-progress'
+  Opened = 'opened',
+  Inactive = 'inactive',
+  Closed = 'closed',
+  Pending = 'pending'
 }
 
 export enum MemberType {
