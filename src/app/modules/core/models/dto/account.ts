@@ -42,12 +42,9 @@ export enum AccountType {
 }
 
 export enum BankAccountStatus {
-  Active = 'Active',
-  Frozen = 'Frozen',
-  CreditsOnly = 'CreditsOnly',
-  Inactive = 'Inactive',
-  Dormant = 'Dormant',
-  ChargeOff = 'ChargeOff'
+  Active = 'ACTIVE',
+  Inactive = 'INACTIVE',
+  NotFunded = 'NOT-FUNDED'
 }
 
 export enum AccountLock {

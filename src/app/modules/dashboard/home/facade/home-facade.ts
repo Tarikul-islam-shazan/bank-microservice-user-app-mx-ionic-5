@@ -55,7 +55,6 @@ export class HomeFacade {
     this.analytics.logEvent(AnalyticsEventTypes.MenuItemSelected, { menu: 'main', option: 'Home' });
     this.member = this.memberService.getCachedMember();
     this.accountSummaryReadDecider();
-    this.openAccountStatusModal();
   }
 
   getAccountSummary(): IAccount[] {
@@ -64,40 +63,6 @@ export class HomeFacade {
 
   getCallNumber(): string {
     return this.cardService.supportNumber;
-  }
-  /**
-   * Ticket: GMA-3937
-   * Details: For Credits only meed account modal not showing properly in iPhone 6s. And also its create that modal
-   * @property (accountService.isComingFromLogin) set and get in account service from login as well as home facade also
-   * Date: February 17, 2020
-   * Developer: Utpaul <Utpal.Sarker@brainstation23.com>
-   */
-  async openAccountStatusModal(): Promise<void> {
-    const accounts = this.getAccountSummary();
-    const checkingAccount = accounts.find((account: IAccount) => account.accountType === AccountType.DDA);
-    if (checkingAccount.status === BankAccountStatus.CreditsOnly) {
-      const componentProps: IMeedModalContent = {
-        contents: [
-          {
-            details: ['info-modal-module.home-page.details.credits-only-message'],
-            values: { callNumber: this.getCallNumber() }
-          }
-        ],
-        actionButtons: [
-          {
-            text: 'info-modal-module.home-page.actionButtons.yes-button',
-            cssClass: 'white-button',
-            handler: () => {
-              this.modalService.close();
-            }
-          }
-        ],
-        onDidDismiss: () => {
-          this.goToLoginPage();
-        }
-      };
-      await this.modalService.openInfoModalComponent({ componentProps });
-    }
   }
 
   getReward(): number {

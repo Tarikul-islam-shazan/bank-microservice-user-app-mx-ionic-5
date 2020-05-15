@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ModalController } from '@ionic/angular';
 import { HomeFacade } from '../facade/home-facade';
 import { IAccount } from '@app/core/models/dto/account';
 @Component({
@@ -8,7 +7,7 @@ import { IAccount } from '@app/core/models/dto/account';
   styleUrls: ['./home.page.scss']
 })
 export class HomePage implements OnInit {
-  constructor(private modalCtrl: ModalController, public homeFacade: HomeFacade) {}
+  constructor(public homeFacade: HomeFacade) {}
 
   ngOnInit() {}
 
