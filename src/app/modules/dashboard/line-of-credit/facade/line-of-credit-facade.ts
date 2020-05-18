@@ -64,10 +64,12 @@ export class LineOfCreditFacade {
   }
 
   setTransactionsSummary(accountId: string) {
-    this.accountService.getTransactions(accountId).subscribe((transactions: AccountTransaction) => {
-      this.lineOfCreditState.setPendingTransactionsState(transactions.pendingTransactions);
-      this.lineOfCreditState.setPostedTransactionsState(transactions.postedTransactions);
-    });
+    this.accountService
+      .getTransactions(accountId, { accountType: AccountType.LOC })
+      .subscribe((transactions: AccountTransaction) => {
+        this.lineOfCreditState.setPendingTransactionsState(transactions.pendingTransactions);
+        this.lineOfCreditState.setPostedTransactionsState(transactions.postedTransactions);
+      });
   }
 
   /**
@@ -76,6 +78,7 @@ export class LineOfCreditFacade {
    * Developer: M G Muntaqeem <muntaqeem@bs-23.net>
    */
   setSearchedTransactionsSummary(transactionQueries: ITransactionQueries) {
+    transactionQueries = { ...transactionQueries, ...{ accountType: AccountType.LOC } };
     const accounts = this.accountService.getCachedAccountSummary();
     const { accountId } = accounts.find((account: IAccount) => account.accountType === AccountType.LOC) as IAccount;
     this.accountService.getTransactions(accountId, transactionQueries).subscribe((transactions: AccountTransaction) => {

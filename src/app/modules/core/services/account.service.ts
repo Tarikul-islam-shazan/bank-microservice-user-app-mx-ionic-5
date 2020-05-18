@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IAccount, ISweepState, ITransactionQueries } from '../models/dto/account';
+import { IAccount, ISweepState, ITransactionQueries, AccountType } from '../models/dto/account';
 import { Observable } from 'rxjs/internal/Observable';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '@env/environment';
@@ -37,13 +37,10 @@ export class AccountService {
 
   public fetchAccountSummary(): Observable<IAccount[]> {
     return this.http
-      .get<IAccountSummary>(this.accountsUrl, {
-        headers: this.headerService.getUserNameHeader()
+      .get<IAccount[]>(this.accountsUrl, {
+        headers: this.headerService.getUserNameCustomerIdHeader()
       })
       .pipe(
-        map((account: IAccountSummary) => {
-          return account.accounts;
-        }),
         tap((accounts: IAccount[]) => {
           this.setAccountSummary(accounts);
         })

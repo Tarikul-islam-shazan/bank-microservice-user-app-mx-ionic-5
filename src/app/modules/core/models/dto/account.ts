@@ -33,6 +33,8 @@ export interface IAccount {
   isHold?: boolean;
   interestEarned?: number;
   creditLimitExceeded?: boolean;
+  minimumPaymentDue?: number;
+  paymentDueDate?: string;
 }
 
 export enum AccountType {
@@ -116,11 +118,9 @@ export interface ISweepState {
   state: SweepState;
 }
 export interface ITransactionQueries {
+  accountType?: AccountType;
   dateFrom?: string;
   dateTo?: string;
-  keywords?: string;
-  includeCredits?: boolean;
-  includeDebits?: boolean;
   amountFrom?: number;
   amountTo?: number;
 }
