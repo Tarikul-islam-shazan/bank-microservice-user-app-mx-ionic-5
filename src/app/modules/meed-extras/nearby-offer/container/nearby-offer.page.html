@@ -25,7 +25,9 @@
     </div>
     <div class="my-location-text">
       <p>
-        1011 Elkgrove Ave., Venice, Los Angeles
+        {{ this.nearbyOfferFacade.address.postalCode }} {{ this.nearbyOfferFacade.address.thoroughfare }} {{
+        this.nearbyOfferFacade.address.locality ? this.nearbyOfferFacade.address.locality :
+        this.nearbyOfferFacade.address.administrativeArea }}
       </p>
     </div>
     <div class="zip-code-search-wrapper">
@@ -47,7 +49,25 @@
       </form>
     </div>
 
-    <div class="offer-result">
+    <div
+      *ngIf="!this.nearbyOfferFacade.locationAllowed && this.nearbyOfferFacade.isMobileDevice()"
+      class="gps-allow-wrapper"
+    >
+      <div class="glob-icon">
+        <p>🌎</p>
+      </div>
+      <div class="gps-header">
+        <p>{{ 'meed-extra-module.nearby-offer-page.gps-header' | translate }}</p>
+      </div>
+      <div class="gps-sub-header">
+        <p>{{ 'meed-extra-module.nearby-offer-page.gps-subheader' | translate }}</p>
+      </div>
+      <ion-button class="white-button" expand="block" (click)="this.nearbyOfferFacade.openLocationAuthorization()">
+        {{ 'meed-extra-module.nearby-offer-page.gps-button' | translate }}
+      </ion-button>
+    </div>
+
+    <div class="offer-result" *ngIf="this.nearbyOfferFacade.locationAllowed">
       <div class="alphabetic-list-wrapper">
         <div class="alphabetic-offer-list">
           <div *ngFor="let subOfferList of offers$ | async" id="{{ subOfferList[0].index }}">

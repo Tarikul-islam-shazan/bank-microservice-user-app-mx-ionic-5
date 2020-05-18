@@ -5,6 +5,7 @@ import { Diagnostic } from '@ionic-native/diagnostic/ngx';
 import { Logger } from '@app/core/services/logger.service';
 import { OpenNativeSettings } from '@ionic-native/open-native-settings/ngx';
 import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Device } from '@ionic-native/device/ngx';
 
 const log = new Logger('Platform');
 
@@ -23,7 +24,8 @@ export class AppPlatform {
     private platform: Platform,
     private diagnostic: Diagnostic,
     private nativeSettings: OpenNativeSettings,
-    private camera: Camera
+    private camera: Camera,
+    private device: Device
   ) {}
   isCordova(): boolean {
     return this.platform.is('cordova');
@@ -81,6 +83,13 @@ export class AppPlatform {
             return Promise.resolve(true);
           case this.diagnostic.permissionStatus.DENIED_ONCE:
             log.info('Permission denied');
+            return await this.requestLocationPermission();
+          case 'authorized_when_in_use':
+            // since iOS 13, Apple has updated their location permission setting
+            // and authorized_when_in_use is the newest addition. Moreover, the plugin is not updated
+            // yet in their github repo that's why it is hardcoded here. However, the issues has
+            // already been created to address this problem.
+            log.info('authorized_when_in_use');
             return await this.requestLocationPermission();
           case this.diagnostic.permissionStatus.DENIED_ALWAYS:
             log.info('Permission permanently denied');
@@ -249,5 +258,24 @@ export class AppPlatform {
       byteArrays[sliceIndex] = new Uint8Array(bytes);
     }
     return new Blob(byteArrays, { type: contentType });
+  }
+
+  /**
+   * Gets device OS version: iOS 13, 12
+   */
+  get deviceOSVersion(): string {
+    return this.device.version;
+  }
+  /**
+   * Gets device model: Nexus One, iPhone 5,1
+   */
+  get deviceModel(): string {
+    return this.device.model;
+  }
+  /**
+   * Gets device manufacturer: Apple, Xiaomi
+   */
+  get deviceManufacturer(): string {
+    return this.device.manufacturer;
   }
 }

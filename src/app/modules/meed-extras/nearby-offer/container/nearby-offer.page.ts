@@ -51,10 +51,15 @@ export class NearbyOfferPage implements OnInit {
     this.zipOfferForm = this.formBuilder.group({
       zipCode: ['', Validators.compose([Validators.required, Validators.maxLength(5)])]
     });
+    this.nearbyOfferFacade.checkLocationResume();
   }
 
   async ionViewWillEnter() {
     this.offers$ = await this.nearbyOfferFacade.findLocalOffer();
+  }
+
+  ionViewWillLeave() {
+    this.nearbyOfferFacade.willLeave();
   }
 
   findOffers(zipCode: number) {
