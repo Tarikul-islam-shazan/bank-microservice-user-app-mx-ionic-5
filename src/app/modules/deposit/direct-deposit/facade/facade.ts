@@ -26,12 +26,12 @@ export class DirectDepositFacade {
 
   getDepositFund(_businessName: string): DepositFund {
     let depositFund: DepositFund;
-    const isFromSignUp = this.signupService.signUpDirectDepositAccounts.memberApplication ? true : false;
+    const isFromSignUp = this.signupService.fundingInfo ? true : false;
     if (isFromSignUp) {
       depositFund = {
         email: this.signupService.member.email,
-        accountNumber: this.signupService.signUpDirectDepositAccounts.bankAccountNumber,
-        bankRoutingNumber: this.signupService.signUpDirectDepositAccounts.routingNumber,
+        accountNumber: this.signupService.fundingInfo.accountNumber,
+        bankRoutingNumber: this.signupService.fundingInfo.interbankClabe,
         businessName: _businessName
       };
     } else {
@@ -39,7 +39,7 @@ export class DirectDepositFacade {
         return ac.accountType === AccountType.DDA;
       })[0];
       depositFund = {
-        email: this.memberService.getCachedMember().email,
+        email: this.memberService.member.email,
         accountNumber: account.accountNumber,
         bankRoutingNumber: account.routingNumber,
         businessName: _businessName

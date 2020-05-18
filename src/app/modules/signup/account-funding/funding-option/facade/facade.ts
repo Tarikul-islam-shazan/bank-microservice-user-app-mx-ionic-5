@@ -53,7 +53,7 @@ export class FundingOption {
   }
 
   goToDirectDeposit() {
-    this.router.navigate(['/signup/deposit/direct-deposit']);
+    this.router.navigate(['/signup/deposit/direct-deposit-info']);
   }
 
   goToLogin() {
