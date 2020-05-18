@@ -47,6 +47,49 @@
   }
 }
 
+.gps-allow-wrapper {
+  border-radius: 12px;
+  background-color: rgba(244, 246, 253, 0.75);
+  padding: 30px;
+  margin-top: 40px;
+
+  .glob-icon {
+    color: #070a18;
+    font-family: 'Apple Color Emoji';
+    font-size: 28px;
+    letter-spacing: 0.26px;
+    line-height: 16px;
+    text-align: center;
+  }
+
+  .gps-header {
+    color: #070a18;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    letter-spacing: -0.15px;
+    line-height: 16px;
+    text-align: center;
+  }
+
+  .gps-sub-header {
+    color: #8c90a3;
+    font-family: 'Averta W05 Regular';
+    font-size: 16px;
+    letter-spacing: -0.15px;
+    line-height: 16px;
+    text-align: center;
+  }
+
+  .allow-location-btn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    align-content: center;
+    margin-top: 30px;
+    text-transform: nonel;
+  }
+}
+
 .alphabetic-list-wrapper {
   position: relative;
   width: 100%;

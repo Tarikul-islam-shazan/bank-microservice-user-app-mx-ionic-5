@@ -53,3 +53,10 @@ export interface CategoriesOfferParams {
   page: string;
   per_page: string;
 }
+
+export interface Address {
+  postalCode?: string;
+  thoroughfare?: string;
+  locality?: string;
+  administrativeArea?: string;
+}
