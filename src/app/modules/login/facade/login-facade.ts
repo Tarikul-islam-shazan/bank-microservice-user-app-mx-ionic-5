@@ -227,7 +227,10 @@ export class LoginFacade {
         this.navigateToRoute('/signup/account-funding');
         break;
       case ApplicationProgress.AccountFunded:
-        this.navigateToRoute('/signup/deposit/direct-deposit-start');
+        this.navigateToRoute('/signup/account-funding');
+        break;
+      case ApplicationProgress.DirectDeposit:
+        this.navigateToRoute('/signup/account-funding');
         break;
       case ApplicationProgress.IdentityQuestionsViewed:
         this.navigateToRoute('/signup/identity-verification');
