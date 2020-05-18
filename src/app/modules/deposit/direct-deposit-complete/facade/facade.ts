@@ -22,7 +22,7 @@ export class DirectDepositCompleteFacaed {
    * @memberof DirectDepositCompleteFacaed
    */
   exploreApp() {
-    const directDepositFlow = this.signUpService.dynamicDirectDepositFlowToLogin;
+    const directDepositFlow = this.signUpService.fundingInfo;
     if (directDepositFlow) {
       this.router.navigate(['/login-user']);
     } else {
