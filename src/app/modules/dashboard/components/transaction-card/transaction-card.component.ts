@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ITransaction } from '@app/core';
 
 @Component({
@@ -6,14 +6,10 @@ import { ITransaction } from '@app/core';
   templateUrl: './transaction-card.component.html',
   styleUrls: ['./transaction-card.component.scss']
 })
-export class TransactionCardComponent implements OnInit {
+export class TransactionCardComponent {
   @Input() transactions: ITransaction[];
   @Input() notFound: string;
-  @Output() selectedTransaction? = new EventEmitter<ITransaction>();
-
-  constructor() {}
-
-  ngOnInit() {}
+  @Output() selectedTransaction = new EventEmitter<ITransaction>();
 
   selectTransaction(transaction: ITransaction) {
     this.selectedTransaction.emit(transaction);

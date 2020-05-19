@@ -8,13 +8,13 @@
 </ion-header>
 
 <ion-content class="content-wrapper">
-  <ng-container *ngIf="(transactionDetailsFacade.transaction) as transaction">
+  <ng-container *ngIf="(transactionDetailsFacade.transaction | async) as transaction">
     <account-balance
       title="{{ 'dashboard-module.transaction-details.amount-text' | translate }}"
       [amount]="transaction?.amount"
       balanceColor="#435cdc"
     >
     </account-balance>
-    <mbc-transaction-details-content [transaction]="transaction"> </mbc-transaction-details-content>
+    <transaction-details-content [transaction]="transaction"> </transaction-details-content>
   </ng-container>
 </ion-content>
