@@ -5,7 +5,7 @@
  * Date: March 06, 2020
  */
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
-import { ITransactionQueries } from '@app/core';
+import { ITransactionQueries, AccountType } from '@app/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import * as moment from 'moment';
 
@@ -53,19 +53,20 @@ export class AdvancedSearchComponent implements OnInit {
    * @memberof AdvancedSearchComponent
    */
   submitSearch() {
+    this.transactionQueries.accountType = AccountType.DDA;
     if (
       this.transactionForm.controls.amountFrom.value &&
       this.transactionForm.controls.amountFrom.value !== '0' &&
       this.transactionForm.controls.amountFrom.value !== '$0.00'
     ) {
-      this.transactionQueries.amountFrom = parseFloat(this.transactionForm.controls.amountFrom.value.split('$')[1]);
+      this.transactionQueries.amountFrom = Number(this.transactionForm.controls.amountFrom.value.replace(/[$,]/g, ''));
     }
     if (
       this.transactionForm.controls.amountTo.value &&
       this.transactionForm.controls.amountTo.value !== '0' &&
       this.transactionForm.controls.amountTo.value !== '$0.00'
     ) {
-      this.transactionQueries.amountTo = parseFloat(this.transactionForm.controls.amountTo.value.split('$')[1]);
+      this.transactionQueries.amountTo = Number(this.transactionForm.controls.amountTo.value.replace(/[$,]/g, ''));
     }
     if (this.transactionForm.controls.dateFrom.value) {
       this.transactionQueries.dateFrom = moment(this.transactionForm.controls.dateFrom.value).format(
@@ -75,6 +76,7 @@ export class AdvancedSearchComponent implements OnInit {
     if (this.transactionForm.controls.dateTo.value) {
       this.transactionQueries.dateTo = moment(this.transactionForm.controls.dateTo.value).format('MM/DD/YYYY 00:00:00');
     }
+
     this.search.emit(this.transactionQueries);
   }
 }

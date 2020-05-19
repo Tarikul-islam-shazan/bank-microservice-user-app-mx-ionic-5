@@ -1,13 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, HostListener } from '@angular/core';
 import { TransactionDetailsFacade } from '../facade/transaction-details-facade';
 
 @Component({
-  selector: 'mbc-transaction-details',
+  selector: 'transaction-details',
   templateUrl: './transaction-details.page.html',
   styleUrls: ['./transaction-details.page.scss']
 })
-export class TransactionDetailsPage implements OnInit {
+export class TransactionDetailsPage implements OnDestroy {
   constructor(public transactionDetailsFacade: TransactionDetailsFacade) {}
 
-  ngOnInit() {}
+  @HostListener('window:beforeunload')
+  ngOnDestroy() {
+    this.transactionDetailsFacade.unsetTransaction();
+  }
 }

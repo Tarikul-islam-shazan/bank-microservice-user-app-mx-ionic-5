@@ -66,10 +66,12 @@ export class CheckingFacade {
   }
 
   getTransactions(accountId: string) {
-    this.accountService.getTransactions(accountId).subscribe((transactions: AccountTransaction) => {
-      this.checkingState.setPendingTransactionsState(transactions.pendingTransactions);
-      this.checkingState.setPostedTransactionsState(transactions.postedTransactions);
-    });
+    this.accountService
+      .getTransactions(accountId, { accountType: AccountType.DDA })
+      .subscribe((transactions: AccountTransaction) => {
+        this.checkingState.setPendingTransactionsState(transactions.pendingTransactions);
+        this.checkingState.setPostedTransactionsState(transactions.postedTransactions);
+      });
   }
 
   /**
@@ -81,8 +83,7 @@ export class CheckingFacade {
     const accounts = this.accountService.getCachedAccountSummary();
     const { accountId } = accounts.find((account: IAccount) => account.accountType === AccountType.DDA) as IAccount;
     this.accountService.getTransactions(accountId, transactionQueries).subscribe((transactions: AccountTransaction) => {
-      this.checkingState.setPendingTransactionsState(transactions.pendingTransactions);
-      this.checkingState.setPostedTransactionsState(transactions.postedTransactions);
+      this.checkingState.setPostedTransactionsState((transactions as unknown) as ITransaction[]);
     });
   }
 
@@ -90,8 +91,9 @@ export class CheckingFacade {
     this.checkingState.setShowHideState(!this.checkingState.getShowHideValue());
   }
 
-  selectedTransaction(transaction: ITransaction) {
-    this.transactionDetailsService.setTransaction(transaction);
-    this.router.navigate(['/home/transaction-details']);
+  async selectedTransaction(transaction: ITransaction): Promise<void> {
+    await this.transactionDetailsService.setTransaction(transaction).then(() => {
+      this.router.navigate(['/home/transaction-details']);
+    });
   }
 }

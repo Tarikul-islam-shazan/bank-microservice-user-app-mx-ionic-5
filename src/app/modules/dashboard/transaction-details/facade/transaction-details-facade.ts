@@ -9,5 +9,9 @@ export class TransactionDetailsFacade {
 
   account: IAccount = this.transactionDetailsService.getAccount();
 
-  transaction: ITransaction = this.transactionDetailsService.getTransaction();
+  transaction: Observable<ITransaction> = this.transactionDetailsService.getTransaction();
+
+  unsetTransaction(): void {
+    this.transactionDetailsService.unsetTransaction();
+  }
 }
