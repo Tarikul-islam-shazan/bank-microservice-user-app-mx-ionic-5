@@ -95,10 +95,12 @@ export class SavingTransactionsFacade {
   }
 
   setTransactions() {
-    this.accountService.getTransactions(this.savingAccount.accountId).subscribe((transactions: AccountTransaction) => {
-      this.transactions = transactions;
-      this.loadGoals();
-    });
+    this.accountService
+      .getTransactions(this.savingAccount.accountId, { accountType: AccountType.SSA })
+      .subscribe((transactions: AccountTransaction) => {
+        this.transactions = transactions;
+        this.loadGoals();
+      });
   }
 
   calculateTotalMonthlySaving() {
