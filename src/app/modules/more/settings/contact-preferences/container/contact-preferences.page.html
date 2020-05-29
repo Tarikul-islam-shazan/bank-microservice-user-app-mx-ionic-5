@@ -3,7 +3,7 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
     </ion-buttons>
-    <ion-title id="contactPreferenceHeaderTitle" text-center
+    <ion-title id="contact-preference-header-title" text-center
       >{{ 'more-module.contact-preference.header-title' | translate }}</ion-title
     >
   </ion-toolbar>
@@ -12,23 +12,23 @@
 <ion-content class="contact-preferences-page">
   <div class="meed-bank">
     <div class="meed-bank-title">
-      <p id="contactPreferenceBankTitle" class="contact-pref-title">
+      <p id="contact-preference-bank-title" class="contact-pref-title">
         {{ 'more-module.contact-preference.invex-bank-header' | translate }}
       </p>
     </div>
     <div class="contact-pref-message">
-      <p id="contactPreferenceBankSubtitle">
+      <p id="contact-preference-bank-subtitle">
         {{ 'more-module.contact-preference.invex-bank-sub-header' | translate }}
       </p>
     </div>
   </div>
   <ion-list lines="none">
     <ion-item class="meed-bank-options">
-      <ion-label id="email-label" class="meed-bank-options-email">
+      <ion-label id="contact-preference-bank-email-label" class="meed-bank-options-email">
         {{ 'more-module.contact-preference.email-text' | translate }}
       </ion-label>
       <ion-toggle
-        id="is-email"
+        id="contact-preference-bank-email-toggle"
         color="primary"
         [(ngModel)]="contactPreferencesFacade.isBankEmail"
         (click)="contactPreferencesFacade.changeBankEmailStatus()"
@@ -36,11 +36,11 @@
       </ion-toggle>
     </ion-item>
     <ion-item class="meed-bank-options">
-      <ion-label id="push-notification-label" class="meed-bank-options-email" padding-vertical>
+      <ion-label id="contact-preference-bank-push-label" class="meed-bank-options-email" padding-vertical>
         {{ 'more-module.contact-preference.push-text' | translate }}</ion-label
       >
       <ion-toggle
-        id="is-push-notify"
+        id="contact-preference-bank-push-toggle"
         color="primary"
         [(ngModel)]="contactPreferencesFacade.isBankPushNotify"
         (click)="contactPreferencesFacade.changeBankPushStatus()"
@@ -51,22 +51,22 @@
 
   <div class="meed-bank meed-pref">
     <div class="meed-bank-title">
-      <p id="contactPreferenceMeedTitle" class="contact-pref-title">
+      <p id="contact-preference-meed-title" class="contact-pref-title">
         {{ 'more-module.contact-preference.meed-header' | translate }}
       </p>
     </div>
     <div class="contact-pref-message">
-      <p id="contactPreferenceMeedSubtitle">{{ 'more-module.contact-preference.meed-sub-header' | translate }}</p>
+      <p id="contact-preference-meed-subtitle">{{ 'more-module.contact-preference.meed-sub-header' | translate }}</p>
     </div>
   </div>
 
   <ion-list lines="none">
     <ion-item class="meed-bank-options">
-      <ion-label id="email-label" class="meed-bank-options-email" padding-vertical>
+      <ion-label id="contact-preference-meed-email-label" class="meed-bank-options-email" padding-vertical>
         {{ 'more-module.contact-preference.email-text' | translate }}
       </ion-label>
       <ion-toggle
-        id="is-email"
+        id="contact-preference-meed-email-toggle"
         color="primary"
         [(ngModel)]="contactPreferencesFacade.isEmail"
         (click)="contactPreferencesFacade.changeMeedEmailStatus()"
@@ -74,11 +74,11 @@
       </ion-toggle>
     </ion-item>
     <ion-item class="meed-bank-options">
-      <ion-label id="push-notification-label" class="meed-bank-options-email" padding-vertical>
+      <ion-label id="contact-preference-meed-push-label" class="meed-bank-options-email" padding-vertical>
         {{ 'more-module.contact-preference.push-text' | translate }}</ion-label
       >
       <ion-toggle
-        id="is-push-notify"
+        id="contact-preference-meed-push-toggle"
         color="primary"
         [(ngModel)]="contactPreferencesFacade.isPushNotify"
         (click)="contactPreferencesFacade.changeMeedPushStatus()"

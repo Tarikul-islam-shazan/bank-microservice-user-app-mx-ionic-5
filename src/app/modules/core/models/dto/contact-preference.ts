@@ -1,10 +1,10 @@
 export interface ContactPreference {
-  status: string;
-  type: string;
+  status: Status;
+  type: ContactType;
   customerNumber: string;
-  phoneNumber: string;
-  email: string;
-  push: string;
+  phoneNumber: Status;
+  email: Status;
+  push: Status;
 }
 
 export enum IMeedPreferenceTag {

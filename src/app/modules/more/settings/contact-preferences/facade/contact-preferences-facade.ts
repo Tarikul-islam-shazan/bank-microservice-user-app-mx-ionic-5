@@ -67,9 +67,9 @@ export class ContactPreferencesFacade {
   }
 
   getContactPreferences(): void {
-    this.preferenceSettingsService.getContactPreference().subscribe((data: ContactPreference) => {
-      this.isBankEmail = data.email === Status.Active;
-      this.isBankPushNotify = data.push === Status.Active;
+    this.preferenceSettingsService.getContactPreference().subscribe((contactPreference: ContactPreference) => {
+      this.isBankEmail = contactPreference.email === Status.Active;
+      this.isBankPushNotify = contactPreference.push === Status.Active;
     });
   }
 

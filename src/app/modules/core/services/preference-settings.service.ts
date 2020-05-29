@@ -124,13 +124,13 @@ export class PreferenceSettingsService {
   /**
    *
    *
-   * @param {Partial<ContactPreference>} apiParms
+   * @param {Partial<ContactPreference>} contactPreference
    * @returns {Observable<Partial<ContactPreference>>}
    * @memberof PreferenceSettingsService
    */
-  updateContactPreference(apiParms: Partial<ContactPreference>): Observable<Partial<ContactPreference>> {
+  updateContactPreference(contactPreference: Partial<ContactPreference>): Observable<Partial<ContactPreference>> {
     return this.http.put<Partial<ContactPreference>>(
-      `${this.baseUrl}/customer/contact-preference?type=${apiParms.type}&&status=${apiParms.status}`,
+      `${this.baseUrl}/customer/contact-preference?type=${contactPreference.type}&&status=${contactPreference.status}`,
       {},
       { headers: this.headerService.getUserNameMemberICustomerIdHeader() }
     );
