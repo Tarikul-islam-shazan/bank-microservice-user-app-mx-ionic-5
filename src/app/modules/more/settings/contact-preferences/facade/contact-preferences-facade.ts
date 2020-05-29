@@ -6,7 +6,14 @@
  */
 
 import { Injectable } from '@angular/core';
-import { IUASNamedUserLookupResponse, ContactPreference, IMeedPreferenceTag, Status, ContactType } from '@app/core';
+import {
+  IUASNamedUserLookupResponse,
+  ContactPreference,
+  IMeedPreferenceTag,
+  Status,
+  ContactType,
+  ContactPreferenceRequest
+} from '@app/core';
 import { PreferenceSettingsService } from '@app/core/services/preference-settings.service';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 
@@ -75,7 +82,7 @@ export class ContactPreferencesFacade {
 
   // it change bank-user email status, it required otp.
   changeBankEmailStatus(): void {
-    const apiParms: Partial<ContactPreference> = {
+    const apiParms: ContactPreferenceRequest = {
       type: ContactType.Email,
       status: this.isBankEmail === true ? Status.Inactive : Status.Active
     };
@@ -86,7 +93,7 @@ export class ContactPreferencesFacade {
 
   // it change bank-user push status, it required otp.
   changeBankPushStatus(): void {
-    const apiParms: Partial<ContactPreference> = {
+    const apiParms: ContactPreferenceRequest = {
       type: ContactType.Push,
       status: this.isBankPushNotify === true ? Status.Inactive : Status.Active
     };

@@ -12,9 +12,14 @@ import { environment } from '@env/environment';
 import { Logger } from './logger.service';
 import { HeaderService } from './header-service.service';
 import { MemberService } from './member.service';
-import { IMember, IUASNamedUserLookupResponse, ContactPreference, IUASAddRemoveTag, IOtp } from '../models';
+import {
+  IMember,
+  IUASNamedUserLookupResponse,
+  ContactPreference,
+  IUASAddRemoveTag,
+  ContactPreferenceRequest
+} from '../models';
 import { shareReplay } from 'rxjs/operators';
-import { IOtpVerificationRequest, IHttpRequestMethod, OtpService } from './otp.service';
 
 const logger = new Logger('PreferenceService');
 
@@ -26,12 +31,7 @@ export class PreferenceSettingsService {
   private baseUrlPreferenceSettings = this.baseUrl + '/meed';
   namedUser$: Observable<IUASNamedUserLookupResponse>;
   contactPreferences$: Observable<ContactPreference>;
-  constructor(
-    private http: HttpClient,
-    private headerService: HeaderService,
-    private memberService: MemberService,
-    private otpService: OtpService
-  ) {}
+  constructor(private http: HttpClient, private headerService: HeaderService, private memberService: MemberService) {}
 
   /**
    * update application language
@@ -124,11 +124,11 @@ export class PreferenceSettingsService {
   /**
    *
    *
-   * @param {Partial<ContactPreference>} contactPreference
+   * @param {ContactPreferenceRequest}} contactPreference
    * @returns {Observable<Partial<ContactPreference>>}
    * @memberof PreferenceSettingsService
    */
-  updateContactPreference(contactPreference: Partial<ContactPreference>): Observable<Partial<ContactPreference>> {
+  updateContactPreference(contactPreference: ContactPreferenceRequest): Observable<Partial<ContactPreference>> {
     return this.http.put<Partial<ContactPreference>>(
       `${this.baseUrl}/customer/contact-preference?type=${contactPreference.type}&&status=${contactPreference.status}`,
       {},
