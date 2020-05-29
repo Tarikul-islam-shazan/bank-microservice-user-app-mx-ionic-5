@@ -3,19 +3,21 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
     </ion-buttons>
-    <ion-title text-center>{{ 'more-module.contact-preference.header-title' | translate }}</ion-title>
+    <ion-title id="contactPreferenceHeaderTitle" text-center
+      >{{ 'more-module.contact-preference.header-title' | translate }}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="contact-preferences-page">
   <div class="meed-bank">
     <div class="meed-bank-title">
-      <p class="contact-pref-title">
+      <p id="contactPreferenceBankTitle" class="contact-pref-title">
         {{ 'more-module.contact-preference.vast-bank-header' | translate }}
       </p>
     </div>
     <div class="contact-pref-message">
-      <p>
+      <p id="contactPreferenceBankSubtitle">
         {{ 'more-module.contact-preference.vast-bank-sub-header' | translate }}
       </p>
     </div>
@@ -49,12 +51,12 @@
 
   <div class="meed-bank meed-pref">
     <div class="meed-bank-title">
-      <p class="contact-pref-title">
+      <p id="contactPreferenceMeedTitle" class="contact-pref-title">
         {{ 'more-module.contact-preference.meed-header' | translate }}
       </p>
     </div>
     <div class="contact-pref-message">
-      <p>{{ 'more-module.contact-preference.meed-sub-header' | translate }}</p>
+      <p id="contactPreferenceMeedSubtitle">{{ 'more-module.contact-preference.meed-sub-header' | translate }}</p>
     </div>
   </div>
 

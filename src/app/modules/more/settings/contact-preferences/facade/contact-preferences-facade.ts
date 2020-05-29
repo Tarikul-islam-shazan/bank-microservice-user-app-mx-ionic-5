@@ -6,9 +6,8 @@
  */
 
 import { Injectable } from '@angular/core';
-import { IUASNamedUserLookupResponse, ContactPreference, IMeedPreferenceTag, IBankPreferenceTag } from '@app/core';
+import { IUASNamedUserLookupResponse, ContactPreference, IMeedPreferenceTag, Status, ContactType } from '@app/core';
 import { PreferenceSettingsService } from '@app/core/services/preference-settings.service';
-import { ModalService } from '@app/shared';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 
 @Injectable()
@@ -17,11 +16,7 @@ export class ContactPreferencesFacade {
   isEmail = false;
   isBankPushNotify = false;
   isBankEmail = false;
-  constructor(
-    private preferenceSettingsService: PreferenceSettingsService,
-    private modalService: ModalService,
-    private analytics: AnalyticsService
-  ) {
+  constructor(private preferenceSettingsService: PreferenceSettingsService, private analytics: AnalyticsService) {
     this.getNameduser();
     this.getContactPreferences();
   }
@@ -72,79 +67,33 @@ export class ContactPreferencesFacade {
   }
 
   getContactPreferences(): void {
-    this.preferenceSettingsService.getContactPreference().subscribe((data: ContactPreference[]) => {
-      for (const item of data) {
-        if (item.type === IBankPreferenceTag.BankEmail) {
-          this.isBankEmail = item.preferenceStatus;
-        }
-        if (item.type === IBankPreferenceTag.BankPush) {
-          this.isBankPushNotify = item.preferenceStatus;
-        }
-      }
+    this.preferenceSettingsService.getContactPreference().subscribe((data: ContactPreference) => {
+      this.isBankEmail = data.email === Status.Active;
+      this.isBankPushNotify = data.push === Status.Active;
     });
   }
 
   // it change bank-user email status, it required otp.
   changeBankEmailStatus(): void {
-    const apiParms: ContactPreference = {
-      preferenceStatus: !this.isBankEmail,
-      type: IBankPreferenceTag.BankEmail
+    const apiParms: Partial<ContactPreference> = {
+      type: ContactType.Email,
+      status: this.isBankEmail === true ? Status.Inactive : Status.Active
     };
-    this.preferenceSettingsService.updateContactPreference(apiParms).subscribe(
-      data => {},
-      err => {
-        if (err.status === 403) {
-          this.openOtpModal(IBankPreferenceTag.BankEmail);
-        }
-      }
-    );
+    this.preferenceSettingsService.updateContactPreference(apiParms).subscribe(data => {
+      this.analytics.logEvent(AnalyticsEventTypes.ChangeBankEmailStatus, { email_status: this.isBankEmail });
+    });
   }
 
   // it change bank-user push status, it required otp.
   changeBankPushStatus(): void {
-    const apiParms: ContactPreference = {
-      preferenceStatus: !this.isBankPushNotify,
-      type: IBankPreferenceTag.BankPush
+    const apiParms: Partial<ContactPreference> = {
+      type: ContactType.Push,
+      status: this.isBankPushNotify === true ? Status.Inactive : Status.Active
     };
-    this.preferenceSettingsService.updateContactPreference(apiParms).subscribe(
-      data => {},
-      err => {
-        if (err.status === 403) {
-          this.openOtpModal(IBankPreferenceTag.BankPush);
-        }
-      }
-    );
-  }
-
-  // openOtp Modal use for open otp modal.
-  /**
-   * Issue: GMA-4846
-   * Details:  Settings > Contact preference: After entering the
-   * correct OTP modal does not dismiss properly.
-   * Date: April 08, 2020
-   * Developer: Raihan <raihanuzzaman@bs-23.net>
-   */
-
-  openOtpModal(type: string): void {
-    this.modalService.openOtpModal(dismissResp => {
-      const { data } = dismissResp;
-      if (data) {
-        if (data.type === IBankPreferenceTag.BankEmail) {
-          this.isBankEmail = data.preferenceStatus;
-          this.analytics.logEvent(AnalyticsEventTypes.ChangeBankEmailStatus, { email_status: this.isBankEmail });
-        } else if (data.type === IBankPreferenceTag.BankPush) {
-          this.isBankPushNotify = data.preferenceStatus;
-          this.analytics.logEvent(AnalyticsEventTypes.ChangeBankPushNotificationStatus, {
-            push_notification_status: this.isBankPushNotify
-          });
-        }
-      } else {
-        if (type === IBankPreferenceTag.BankEmail) {
-          this.isBankEmail = !this.isBankEmail;
-        } else if (IBankPreferenceTag.BankPush) {
-          this.isBankPushNotify = !this.isBankPushNotify;
-        }
-      }
+    this.preferenceSettingsService.updateContactPreference(apiParms).subscribe(data => {
+      this.analytics.logEvent(AnalyticsEventTypes.ChangeBankPushNotificationStatus, {
+        push_notification_status: this.isBankPushNotify
+      });
     });
   }
 }
