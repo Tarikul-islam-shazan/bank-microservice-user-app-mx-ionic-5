@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { StatementsService, AccountService, AccountType, IMonthlyStatement, IStatement } from '@app/core';
+import { StatementsService, AccountService, AccountType, IStatement, IStatements } from '@app/core';
 import { PdfViewerService, IPDFContent } from '@app/core/services/pdf-viewer.service';
 @Injectable()
 export class StatementsFacade {
-  $statements: Observable<IStatement[]>;
+  $statements: Observable<IStatements[]>;
   constructor(
     private statementsService: StatementsService,
     private accountService: AccountService,
@@ -19,7 +19,7 @@ export class StatementsFacade {
     this.$statements = this.statementsService.getStatements(accountId);
   }
 
-  loadPdf(month: IMonthlyStatement, accountType: string): void {
+  loadPdf(month: IStatement, accountType: string): void {
     const accountData = this.accountService.getCachedAccountSummary();
     const { accountId } = accountData.find(account => account.accountType === accountType);
 
@@ -28,7 +28,8 @@ export class StatementsFacade {
       statementId: month.statementId
     };
     this.statementsService.loadMonthStatements(parms).subscribe(response => {
-      this.viewPdf(response.documents, accountType);
+      // this.viewPdf(response.pdf, accountType);
+      this.viewPdf('response.pdf', accountType);
     });
   }
 

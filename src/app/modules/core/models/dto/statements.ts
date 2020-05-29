@@ -1,11 +1,11 @@
-export interface IStatement {
+export interface IStatements {
   year: string;
-  statements: IMonthlyStatement[];
+  statements: IStatement[];
 }
 
-export interface IMonthlyStatement {
-  statementDate: string;
+export interface IStatement {
   statementId: string;
+  statementDate?: string;
   month: string;
 }
 
@@ -15,6 +15,6 @@ export interface IStatementDetailsReq {
 }
 
 export interface IStatementDetails {
-  documents: any;
-  type: string;
+  pdf: string;
+  xml?: string;
 }

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/internal/Observable';
 import { environment } from '@env/environment';
 import { Logger } from './logger.service';
 import { HeaderService } from './header-service.service';
-import { IStatement, IStatementDetails, IStatementDetailsReq } from '../models';
+import { IStatements, IStatementDetails, IStatementDetailsReq } from '../models';
 import { shareReplay, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import _ from 'lodash';
@@ -16,12 +16,12 @@ const logger = new Logger('StatementsService');
 export class StatementsService {
   private baseUrl = environment.serviceUrl;
   private baseUrlStatements = this.baseUrl + '/accounts';
-  statements$: Observable<IStatement[]>;
+  statements$: Observable<IStatements[]>;
   constructor(private http: HttpClient, private headerService: HeaderService) {}
 
-  loadStatements(accountId: string): Observable<IStatement[]> {
+  loadStatements(accountId: string): Observable<IStatements[]> {
     return this.http
-      .get<IStatement[]>(`${this.baseUrlStatements}/${accountId}/statements`, {
+      .get<IStatements[]>(`${this.baseUrlStatements}/${accountId}/statements`, {
         headers: this.headerService.getUserNameCustomerIdHeader()
       })
       .pipe(
@@ -43,7 +43,7 @@ export class StatementsService {
     );
   }
 
-  getStatements(accountId: string): Observable<IStatement[]> {
+  getStatements(accountId: string): Observable<IStatements[]> {
     if (!this.statements$) {
       this.statements$ = this.loadStatements(accountId).pipe(shareReplay(1));
     }
