@@ -822,8 +822,8 @@
     },
     "contact-preference": {
       "header-title": "Contact Preferences",
-      "vast-bank-header": "Meed Banking Powered by Vast Bank, N.A.",
-      "vast-bank-sub-header": "These notifications provide you with alerts for balance changes, fraud, transactions, one-time passwords, offers, and more.",
+      "invex-bank-header": "Meed Banking Powered by Invex Bank, N.A.",
+      "invex-bank-sub-header": "These notifications provide you with alerts for balance changes, fraud, transactions, one-time passwords, offers, and more.",
       "email-text": "Email",
       "push-text": "Push Notification",
       "meed-header": "Meed Banking Club",

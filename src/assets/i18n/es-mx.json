@@ -813,8 +813,8 @@
     },
     "contact-preference": {
       "header-title": "Preferencias de contacto",
-      "vast-bank-header": "Meed Banking utiliza la tecnología de Vast Bank, N.A.",
-      "vast-bank-sub-header": "Estas notificaciones te avisan de cambios en el saldo, fraude, transacciones, contraseñas únicas, ofertas y mucho más.",
+      "invex-bank-header": "Meed Banking utiliza la tecnología de Invex Bank, N.A.",
+      "invex-bank-sub-header": "Estas notificaciones te avisan de cambios en el saldo, fraude, transacciones, contraseñas únicas, ofertas y mucho más.",
       "email-text": "Correo electrónico",
       "push-text": "Notificación push",
       "meed-header": "Meed Banking Club",
