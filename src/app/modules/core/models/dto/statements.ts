@@ -1,14 +1,12 @@
 export interface IStatement {
   year: string;
-  months: IMonthlyStatement[];
+  statements: IMonthlyStatement[];
 }
 
 export interface IMonthlyStatement {
-  accountId: string;
-  label: string;
   statementDate: string;
   statementId: string;
-  year: string;
+  month: string;
 }
 
 export interface IStatementDetailsReq {

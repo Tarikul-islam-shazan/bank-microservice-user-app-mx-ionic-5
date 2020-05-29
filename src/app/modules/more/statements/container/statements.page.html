@@ -7,10 +7,14 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="statements-page override-ion-content-padding">
-  <div class="clearfix" *ngIf="(statementFacade?.$statements | async) as statements">
+  <div class="clearfix" *ngIf="(statementFacade?.$statements | async) as bankStatements">
     <!-- <p text-center *ngIf="noStatementMsg">No Statements available</p> -->
-    <ion-slides #slides [options]="{initialSlide: statements.length - 1,speed: 400}" (ionSlideWillChange)="doCheck()">
-      <ion-slide *ngFor="let year of statements; let j = index">
+    <ion-slides
+      #slides
+      [options]="{initialSlide: bankStatements.length - 1,speed: 400}"
+      (ionSlideWillChange)="doCheck()"
+    >
+      <ion-slide *ngFor="let year of bankStatements; let j = index">
         <div class="clearfix">
           <div class="yearWrapper">
             <div *ngIf="!isBeginning" (click)="slidePrevious()" class="year-arrow">
@@ -26,12 +30,12 @@
         </div>
         <div class="clearfix">
           <ion-list>
-            <ion-item *ngFor="let month of year.months; let i = index; last as isLast">
+            <ion-item *ngFor="let statement of year.statements; let i = index; last as isLast">
               <div class="clearfix" style="padding: 20px 0;">
-                <div class="clearfix month-wrapper" (click)="readpdf($event, month, 'DDA')">
+                <div class="clearfix month-wrapper" (click)="readpdf($event, statement, 'DDA')">
                   <div class="clearfix">
                     <img src="assets/svg/statements-list.svg" alt="statements-image" />
-                    <span class="year-section">{{ month.statementDate | date: 'MMM yyyy' }}</span>
+                    <span class="year-section">{{ statement.statementDate }}</span>
                   </div>
                   <div class=" icon-arrow">
                     <img id="button-view-{{ i }}" src="assets/svg/arrow.svg" alt="arrow" srcset="" />

@@ -27,15 +27,8 @@ export class StatementsService {
       .pipe(
         map(statements => {
           return _.chain(statements)
-            .map(statement => {
-              statement.year = moment(new Date(statement.statementDate), 'YYYY-MM-DD').format('YYYY');
-              statement.label = moment(new Date(statement.statementDate), 'YYYY-MM-DD').format('MM-YYYY');
-              return statement;
-            })
             .sortBy(statement => moment(statement.statementDate))
             .reverse()
-            .groupBy(statement => statement.year)
-            .map((value, key) => ({ year: key, months: value }))
             .value();
         })
       );
