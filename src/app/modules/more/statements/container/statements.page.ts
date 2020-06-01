@@ -33,6 +33,7 @@ export class StatementsPage implements OnInit {
   selectStatementYear(year: string): void {}
 
   readpdf(event: any, month: IStatement, acountType: string): void {
-    this.statementFacade.loadPdf(month, acountType);
+    // this.statementFacade.loadPdf(month, acountType);
+    this.statementFacade.openModal(month, acountType);
   }
 }

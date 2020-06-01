@@ -35,7 +35,9 @@
                 <div class="clearfix month-wrapper" (click)="readpdf($event, statement, 'DDA')">
                   <div class="clearfix">
                     <img src="assets/svg/statements-list.svg" alt="statements-image" />
-                    <span class="year-section">{{ statement.statementDate }}</span>
+                    <span class="year-section"
+                      >{{ 'more-module.statements-page.months.'+statement.month | translate}} {{year.year}}</span
+                    >
                   </div>
                   <div class=" icon-arrow">
                     <img id="button-view-{{ i }}" src="assets/svg/arrow.svg" alt="arrow" srcset="" />
