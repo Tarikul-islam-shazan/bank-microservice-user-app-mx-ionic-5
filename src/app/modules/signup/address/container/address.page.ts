@@ -91,15 +91,7 @@ export class AddressPage implements OnInit {
       workPhoneExtension: [''],
       isRelatedToArmedForces: [AddressRadioButtonOption.Neither, Validators.required]
     });
-    this.initJumioDataIntoForm();
     this.skipErrorFields = Object.assign({}, this.addressForm.value);
-  }
-
-  initJumioDataIntoForm() {
-    this.jumioScanData = this.facade.getJumioScanData();
-    this.addressForm.controls.addressLine1.patchValue(this.jumioScanData ? this.jumioScanData.addressLine : null);
-    this.addressForm.controls.city.patchValue(this.jumioScanData ? this.jumioScanData.city : null);
-    this.addressForm.controls.zipCode.patchValue(this.jumioScanData ? this.jumioScanData.postCode : null);
   }
 
   /**
@@ -116,7 +108,7 @@ export class AddressPage implements OnInit {
   updateAddressState(selectedCountryState?: IStates): void {
     if (!selectedCountryState) {
       this.selectedCountryState = this.countryStates.find(state => {
-        return state.stateAbv === this.jumioScanData.subdivision;
+        return state.stateAbv === '';
       });
     } else {
       this.selectedCountryState = selectedCountryState;
@@ -129,9 +121,6 @@ export class AddressPage implements OnInit {
   getCountryStates() {
     this.facade.getCountryState().subscribe(countryStates => {
       this.countryStates = countryStates;
-      if (this.jumioScanData.subdivision) {
-        this.updateAddressState();
-      }
     });
   }
 
