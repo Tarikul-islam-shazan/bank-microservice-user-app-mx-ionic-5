@@ -12,9 +12,14 @@ import { environment } from '@env/environment';
 import { Logger } from './logger.service';
 import { HeaderService } from './header-service.service';
 import { MemberService } from './member.service';
-import { IMember, IUASNamedUserLookupResponse, ContactPreference, IUASAddRemoveTag, IOtp } from '../models';
+import {
+  IMember,
+  IUASNamedUserLookupResponse,
+  ContactPreference,
+  IUASAddRemoveTag,
+  ContactPreferenceRequest
+} from '../models';
 import { shareReplay } from 'rxjs/operators';
-import { IOtpVerificationRequest, IHttpRequestMethod, OtpService } from './otp.service';
 
 const logger = new Logger('PreferenceService');
 
@@ -25,13 +30,8 @@ export class PreferenceSettingsService {
   private baseUrl = environment.serviceUrl;
   private baseUrlPreferenceSettings = this.baseUrl + '/meed';
   namedUser$: Observable<IUASNamedUserLookupResponse>;
-  contactPreferences$: Observable<ContactPreference[]>;
-  constructor(
-    private http: HttpClient,
-    private headerService: HeaderService,
-    private memberService: MemberService,
-    private otpService: OtpService
-  ) {}
+  contactPreferences$: Observable<ContactPreference>;
+  constructor(private http: HttpClient, private headerService: HeaderService, private memberService: MemberService) {}
 
   /**
    * update application language
@@ -78,8 +78,8 @@ export class PreferenceSettingsService {
    * @returns {Observable<ContactPreference[]>}
    * @memberof PreferenceSettingsService
    */
-  loadContactPreference(): Observable<ContactPreference[]> {
-    return this.http.get<ContactPreference[]>(`${this.baseUrl}/customer/contact-preference`, {
+  loadContactPreference(): Observable<ContactPreference> {
+    return this.http.get<ContactPreference>(`${this.baseUrl}/customer/contact-preference`, {
       headers: this.headerService.getUserNameMemberICustomerIdHeader()
     });
   }
@@ -89,7 +89,7 @@ export class PreferenceSettingsService {
    * @returns {Observable<ContactPreference[]>}
    * @memberof PreferenceSettingsService
    */
-  getContactPreference(): Observable<ContactPreference[]> {
+  getContactPreference(): Observable<ContactPreference> {
     if (!this.contactPreferences$) {
       this.contactPreferences$ = this.loadContactPreference().pipe(shareReplay(1));
     }
@@ -122,18 +122,17 @@ export class PreferenceSettingsService {
   }
 
   /**
-   * update contact preference
-   * @param {ContactPreference} apiParms
-   * @returns {Observable<ContactPreference>}
+   *
+   *
+   * @param {ContactPreferenceRequest}} contactPreference
+   * @returns {Observable<Partial<ContactPreference>>}
    * @memberof PreferenceSettingsService
    */
-  updateContactPreference(apiParms: ContactPreference): Observable<ContactPreference> {
-    const otpVerificationRequest: IOtpVerificationRequest = {
-      url: this.baseUrl + '/customer/contact-preference',
-      body: apiParms,
-      headers: this.headerService.getUserNameMemberICustomerIdHeader(),
-      requestMethod: IHttpRequestMethod.Put
-    };
-    return this.otpService.requestOtpCode(otpVerificationRequest);
+  updateContactPreference(contactPreference: ContactPreferenceRequest): Observable<Partial<ContactPreference>> {
+    return this.http.put<Partial<ContactPreference>>(
+      `${this.baseUrl}/customer/contact-preference?type=${contactPreference.type}&&status=${contactPreference.status}`,
+      {},
+      { headers: this.headerService.getUserNameMemberICustomerIdHeader() }
+    );
   }
 }

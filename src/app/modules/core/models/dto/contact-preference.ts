@@ -1,6 +1,13 @@
 export interface ContactPreference {
-  preferenceStatus: boolean; // property name changed to make the modal dismiss properly
-  type: string;
+  customerNumber: string;
+  phoneNumber: Status;
+  email: Status;
+  push: Status;
+}
+
+export interface ContactPreferenceRequest {
+  status: Status;
+  type: ContactType;
 }
 
 export enum IMeedPreferenceTag {
@@ -8,7 +15,12 @@ export enum IMeedPreferenceTag {
   MeedEmail = 'meed_email'
 }
 
-export enum IBankPreferenceTag {
-  BankEmail = 'email',
-  BankPush = 'push'
+export enum Status {
+  Active = '1',
+  Inactive = '0'
+}
+export enum ContactType {
+  PhoneNumber = '01',
+  Email = '02',
+  Push = '03'
 }
