@@ -69,7 +69,9 @@ export class AccountService {
    * @memberof AccountService
    */
   public fetchAccountSweepStatus(): Observable<ISweepState> {
-    return this.http.get<ISweepState>(`${environment.serviceUrl}/accounts/sweeps`, {
+    const accountId = this.accountSummary.find((account: IAccount) => account.accountType === AccountType.LOC)
+      .accountId;
+    return this.http.get<ISweepState>(`${environment.serviceUrl}/accounts/${accountId}/sweeps`, {
       headers: this.headerService.getUserNameHeader()
     });
   }
@@ -95,8 +97,10 @@ export class AccountService {
    * @memberof AccountService
    */
   updateAccountSweepStatus(apiParms: ISweepState): Observable<ISweepState> {
+    const accountId = this.accountSummary.find((account: IAccount) => account.accountType === AccountType.LOC)
+      .accountId;
     return this.http
-      .patch<ISweepState>(`${environment.serviceUrl}/accounts/sweeps`, apiParms, {
+      .patch<ISweepState>(`${environment.serviceUrl}/accounts/${accountId}/sweeps`, apiParms, {
         headers: this.headerService.getUserNameHeader()
       })
       .pipe(
