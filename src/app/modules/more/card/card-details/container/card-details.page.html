@@ -7,7 +7,7 @@
   </ion-toolbar>
 </ion-header>
 <ion-content class="card-details-page override-ion-content-padding">
-  <div class="clearfix" *ngIf="(cardDetailsFacade.cards$ | async)?.cards[0] as card">
+  <div class="clearfix" *ngIf="(cardDetailsFacade.cards$ | async) as card">
     <div class="img-container ion-text-center">
       <img id="card-management-img" class="card-management-img" [src]="cardImgSrc" height="320px" />
       <p class="card-number ion-text-center">{{ getCardNumber(card.cardNumber) }}</p>
