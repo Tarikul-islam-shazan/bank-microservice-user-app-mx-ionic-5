@@ -102,7 +102,6 @@
   <ion-toolbar>
     <ion-button
       *ngIf="!facade.fromScheduledTransfers || facade.modifiedScheduleTransfer"
-      [disabled]="facade.isAmountExceedAvailableBalance || facade.transfer.amount <= 0 || !facade.transfer?.amount"
       (click)="goToConfirm()"
       expand="block"
       class="white-button confirm-button"

@@ -3,19 +3,19 @@ export interface ITransfer {
   debtorAccount: string;
   creditorAccount: string;
   amount: number;
-  currency: string;
   notes: string;
   transferDate: string;
-  transferType?: TransferType;
-  previousTransferType?: TransferType;
+  transferType: TransferType;
   frequency: TransferFrequency;
 }
 
 export enum TransferFrequency {
-  Once = 'Once',
-  Weekly = 'Weekly',
-  Monthly = 'Monthly',
-  Yearly = 'Yearly'
+  Once = 'ONCE',
+  Daily = 'DAILY',
+  Weekly = 'WEEKLY',
+  BiWeekly = 'BIWEEKLY',
+  Monthly = 'MONTHLY',
+  Yearly = 'YEARLY'
 }
 
 export enum TransferType {

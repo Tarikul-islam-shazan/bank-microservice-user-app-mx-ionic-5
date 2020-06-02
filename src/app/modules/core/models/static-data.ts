@@ -3,7 +3,8 @@ export enum StaticDataCategory {
   BeneficiaryInformation = 'beneficiaryInformation',
   PersonalInformation = 'personalInformation',
   GovtDisclosure = 'govtDisclosure',
-  IdentityConfirmation = 'identityConfirmation'
+  IdentityConfirmation = 'identityConfirmation',
+  TransferFrequency = 'transferFrequency'
 }
 
 export enum StaticData {
@@ -19,7 +20,8 @@ export enum StaticData {
   Profession = 'profession',
   Relationship = 'relationship',
   HighestLevelOfEducation = 'highestLevelOfEducation',
-  UtilityDocument = 'utilityDocument'
+  UtilityDocument = 'utilityDocument',
+  TransferFrequency = 'transferFrequency'
 }
 
 export interface StaticDataProperties {

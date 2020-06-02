@@ -5,7 +5,7 @@
  * Developer: Sanitul <sanitul@bs-23.com>
  */
 import { Injectable } from '@angular/core';
-import { Logger, AccountService } from '@app/core/services';
+import { Logger, AccountService, InternalTransferService } from '@app/core/services';
 import { IAccount, AccountType } from '@app/core/models/dto/account';
 import { ITransfer, TransferFor } from '@app/move-money/internal-transfer/models';
 import { Router } from '@angular/router';
@@ -33,6 +33,7 @@ export class InternalTransferFacade {
     private accountService: AccountService,
     private translate: TranslateService,
     private modalService: ModalService,
+    private internalTransferService: InternalTransferService,
     private router: Router
   ) {}
 
@@ -41,6 +42,7 @@ export class InternalTransferFacade {
     this.accountService.fetchAccountSummary().subscribe(success => {
       this.accountSwitch(AccountType.DDA, AccountType.SSA);
     });
+    this.internalTransferService.loadTransferFrequency();
   }
 
   goToConfirm() {

@@ -3,9 +3,10 @@ import {
   ITransfer,
   ITransferSuccessModalObject,
   TransferFor,
-  TransferType
+  TransferType,
+  TransferFrequency
 } from '@app/move-money/internal-transfer/models';
-import { InternalTransferService, AccountService } from '@app/core/services';
+import { InternalTransferService, AccountService, IDropdownOption } from '@app/core/services';
 import { IAccount, AccountType } from '@app/core/models/dto/account';
 import { InternalTransferFacade } from '@app/move-money/internal-transfer/move-between-accounts/facade';
 import { Router } from '@angular/router';
@@ -21,7 +22,6 @@ export class ConfirmDetailsFacade {
   transfer: Partial<ITransfer>;
 
   constructor(
-    private transferFacade: InternalTransferFacade,
     private internalTransferService: InternalTransferService,
     private router: Router,
     private accountService: AccountService,
@@ -32,10 +32,18 @@ export class ConfirmDetailsFacade {
 
   // Submit internal transfer
   submitInternalTransfer() {
+    if (!this.transfer.frequency) {
+      this.transfer.frequency = this.internalTransferService.transferFrequency.filter(
+        (frequencyData: IDropdownOption) => {
+          return frequencyData.text === TransferFrequency.Once;
+        }
+      )[0].value as TransferFrequency;
+    }
     this.internalTransferService
       .submitInternalTransfer(this.transfer as ITransfer)
       .subscribe((transferResponse: ITransfer) => {
-        this.transferSuccess(transferResponse);
+        this.transfer.transferType = transferResponse.transferType;
+        this.transferSuccess(this.transfer as ITransfer);
       });
   }
 

@@ -28,13 +28,13 @@
           <span *ngIf="isScheduleTransfer()">
             {{
               'move-money-module.internal-transfer.transfer-success-modal.schedule-subtitle-text'
-                | translate: { frequency: transferModalData.frequency }
+                | translate: { frequency: transferFrequency(transferModalData.frequency) }
             }}
           </span>
           <span *ngIf="!isScheduleTransfer()">
             {{
               'move-money-module.internal-transfer.transfer-success-modal.occurring-subtitle-text'
-                | translate: { frequency: transferModalData.frequency }
+                | translate: { frequency: transferFrequency(transferModalData.frequency) }
             }}
           </span>
           {{ transferModalData.transferDate | date: 'MMM dd, yyyy' }}

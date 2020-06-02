@@ -1,4 +1,35 @@
-import { Directive, HostListener, Input } from '@angular/core';
+/**
+ * Directive: Input Decimal Mask directive
+ * Details: This directive formate moneny string
+ * Date: April 16, 2020
+ * Developer: Utpaul <Utpal.Sarker@brainstation23.com>
+ */
+/* Usage:
+ <ion-input
+  appInputDecimalMask
+  decModel="decimalValue"
+  type="tel"
+  formControlName="formControlName"
+ ></ion-input>
+
+ ONE WAY BINDING
+  <ion-input
+  appInputDecimalMask
+  [decModel]="decimalValue"
+  type="tel"
+  formControlName="formControlName"
+ ></ion-input>
+
+  TWO WAY BINDING
+  <ion-input
+  appInputDecimalMask
+  [(decModel)]="decimalValue"
+  type="tel"
+  formControlName="formControlName"
+ ></ion-input>
+ decimalValue will be 10, 10.00, 0.00, 0
+*/
+import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
 import { IonInput } from '@ionic/angular';
 import { SettingsService } from '@app/core/services/settings.service';
 import { REG_EX_PATTERNS } from '@app/core/models/patterns';
@@ -12,14 +43,15 @@ interface IInputMaskDecimal {
   selector: '[appInputDecimalMask]'
 })
 export class InputDecimalMaskDirective {
-  @Input() set decModel(val: string) {
+  @Input() set decModel(val: number) {
     if (val) {
-      this.inputRef.value = val;
-      this.setDecimalMask({ decModel: val });
+      this.inputRef.value = val.toString();
+      this.setDecimalMask({ decModel: val.toString() });
       this.initTemplateValue();
     }
   }
   decimalMask: IInputMaskDecimal;
+  @Output() decModelChange = new EventEmitter<number>();
   constructor(private inputRef: IonInput, private settingsService: SettingsService) {
     this.setDecimalMask({
       symbol: this.settingsService.getCurrencySymbol,
@@ -67,7 +99,8 @@ export class InputDecimalMaskDirective {
   onlyNumbersString(inputString: string): string {
     return inputString.replace(REG_EX_PATTERNS.ALLOW_ONLY_NUMBERS, '');
   }
-  @HostListener('ionFocus', ['$event']) onfocus() {
+  @HostListener('ionFocus', ['$event']) onfocus(e) {
+    e.preventDefault();
     if (!this.inputRef.value) {
       this.inputRef.value = '0';
     }
@@ -75,10 +108,12 @@ export class InputDecimalMaskDirective {
   @HostListener('ionBlur', ['$event']) onBlur() {
     if (parseFloat(this.onlyNumbersString(this.inputRef.value.toString())) === 0) {
       this.inputRef.value = '';
+      this.decModelChange.emit(null);
     }
   }
 
   @HostListener('ionChange', ['$event']) onIonChange(event): void {
+    event.preventDefault();
     const onChangeInputValue = event.target.value;
     if (onChangeInputValue) {
       if (onChangeInputValue.length <= this.decimalMask.maxDigit) {
@@ -86,11 +121,12 @@ export class InputDecimalMaskDirective {
         if (onlyNumbersString.length < this.decimalMask.noOfDecimalPoint + 2) {
           onlyNumbersString = '0' + onlyNumbersString;
         }
-
         if (onlyNumbersString[0] === '0' && onlyNumbersString.length > this.decimalMask.noOfDecimalPoint + 1) {
           onlyNumbersString = onlyNumbersString.substr(1);
         }
         this.inputRef.value = this.setDecimal(onlyNumbersString);
+        // GMA-4210 for two way binding
+        this.decModelChange.emit(Number(this.inputRef.value.replace(REG_EX_PATTERNS.ALLOW_ONLY_NUMBERS_AND_DOT, '')));
       } else {
         this.inputRef.value = this.inputRef.value.toString().slice(0, this.decimalMask.maxDigit);
       }

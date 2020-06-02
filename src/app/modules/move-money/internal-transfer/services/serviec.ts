@@ -1,19 +1,19 @@
 import { Injectable } from '@angular/core';
 import { TransferFrequency, ITransfer } from '@app/move-money/internal-transfer/models/index';
 import * as moment from 'moment';
+import { IDropdownOption, InternalTransferService } from '@app/core';
 
 @Injectable()
 export class CreateTransferService {
   private fromScheduledTransfers: boolean;
   private transfer: Partial<ITransfer>;
-  constructor() {
+  _transferFrequency: IDropdownOption[];
+  constructor(private internalTransferService: InternalTransferService) {
     this.initialize();
   }
   initialize(): void {
     this.transfer = {
-      frequency: TransferFrequency.Once,
-      transferDate: moment().toISOString(true),
-      currency: 'USD'
+      transferDate: moment().toISOString(true)
     };
     this.fromScheduledTransfers = false;
   }
@@ -36,5 +36,9 @@ export class CreateTransferService {
 
   resetTransferService(): void {
     this.initialize();
+  }
+
+  get transferFrequency(): IDropdownOption[] {
+    return this.internalTransferService.transferFrequency;
   }
 }
