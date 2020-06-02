@@ -14,7 +14,7 @@ import { AnalyticsService, AnalyticsUserProperties, AnalyticsEventTypes } from '
 import { AppPlatform } from '@app/core/util/app-platform';
 import { ModalService, IMeedModalComponentProps } from '@app/shared';
 import { CallNumber } from '@ionic-native/call-number/ngx';
-import { StaticDataCategory, StaticData, StaticDataService } from '@app/core/services/static-data.service';
+import { StaticDataService } from '@app/core/services/static-data.service';
 import { TranslateService } from '@ngx-translate/core';
 @Injectable()
 export class LoginFacade {
