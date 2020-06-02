@@ -1,6 +1,6 @@
 import { LoginForm, LoginRequest } from '../models/login';
 import { Injectable } from '@angular/core';
-import { SignUpService, IAccount, REG_EX_PATTERNS } from '@app/core';
+import { SignUpService, IAccount } from '@app/core';
 import { Router } from '@angular/router';
 import { LoginService } from '@app/core/services/login.service';
 import { LogoutService } from '@app/core/services/logout.service';
@@ -95,13 +95,13 @@ export class LoginFacade {
   /**
    *
    * @summary Updating contact number into setting service as bankidentifier
-   * @param {string} conatct
+   * @param {string} contactNumber
    * @memberof LoginFacade
    */
-  setBankContactNumber(conatct: string): void {
+  setBankContactNumber(contactNumber: string): void {
     const userSettings = this.settingsService.getSettings().userSettings;
     const { contacts } = userSettings;
-    const newContacts = { ...contacts, ...{ [this.bankIdentifier]: conatct } };
+    const newContacts = { ...contacts, ...{ [this.bankIdentifier]: contactNumber } };
     userSettings.contacts = newContacts;
     this.settingsService.setUserSettings(userSettings);
   }
