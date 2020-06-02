@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { CardService, ICard, ICardParams, CardStatus } from '@app/core';
 import { Observable } from 'rxjs';
-import { NavController } from '@ionic/angular';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { switchMap, tap } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class CardStatusFacade {
   cards$: Observable<ICard>;
-  constructor(private cardService: CardService, private navCtl: NavController, private analytics: AnalyticsService) {
+  constructor(private cardService: CardService, private router: Router, private analytics: AnalyticsService) {
     this.getCardDetails();
   }
 
@@ -56,6 +56,6 @@ export class CardStatusFacade {
           return this.changeCardActiveStatus(apiData);
         })
       )
-      .subscribe(() => this.navCtl.pop());
+      .subscribe(() => this.router.navigate(['/more/card']));
   }
 }
