@@ -3,7 +3,14 @@ import { environment } from '@env/environment';
 import { HttpClient } from '@angular/common/http';
 import { MemberService } from '@app/core/services/member.service';
 import { IMember } from '@app/core/models/dto/member';
-import { StaticDataCategory, IStaticData, IDropdownOption, StaticDataProperties } from '@app/core/models/static-data';
+import {
+  StaticDataCategory,
+  IStaticData,
+  IDropdownOption,
+  StaticDataProperties,
+  StaticData,
+  ISupportSaticData
+} from '@app/core/models/static-data';
 import { SettingsService } from '@app/core/services/settings.service';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -89,6 +96,21 @@ export class StaticDataService {
 
   get language(): string {
     return this.settingsService.getCurrentLocale().locale;
+  }
+
+  getBankSupportNumber(): Observable<string> {
+    const bank = this.member.bank;
+    return this.http
+      .get<any>(`${this.baseUrl}/static-data`, {
+        params: { bank, category: StaticDataCategory.Conatcts, subCategory: StaticData.Support }
+      })
+      .pipe(
+        map((staticData: ISupportSaticData[]) => {
+          const staticSupportData: ISupportSaticData = staticData.find(data => data.subCategory === StaticData.Support);
+          const supportNumber = staticSupportData ? staticSupportData.data.phone : '';
+          return supportNumber;
+        })
+      );
   }
 }
 

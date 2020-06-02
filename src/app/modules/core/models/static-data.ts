@@ -3,7 +3,8 @@ export enum StaticDataCategory {
   BeneficiaryInformation = 'beneficiaryInformation',
   PersonalInformation = 'personalInformation',
   GovtDisclosure = 'govtDisclosure',
-  IdentityConfirmation = 'identityConfirmation'
+  IdentityConfirmation = 'identityConfirmation',
+  Conatcts = 'contacts'
 }
 
 export enum StaticData {
@@ -19,7 +20,8 @@ export enum StaticData {
   Profession = 'profession',
   Relationship = 'relationship',
   HighestLevelOfEducation = 'highestLevelOfEducation',
-  UtilityDocument = 'utilityDocument'
+  UtilityDocument = 'utilityDocument',
+  Support = 'support'
 }
 
 export interface StaticDataProperties {
@@ -37,6 +39,14 @@ export interface IStaticData {
   };
 }
 
+export interface ISupportSaticData {
+  category: StaticDataCategory;
+  subCategory: string;
+  bank: string;
+  data: {
+    [key: string]: string;
+  };
+}
 export interface IDropdownOption {
   text: string;
   subText?: string;

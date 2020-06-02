@@ -69,7 +69,20 @@ export class SignUpService {
   ) {}
 
   registerEmail(aMember: IMember): Observable<IMember> {
-    return this.http.post<IMember>(this.baseUrlOnboarding, aMember);
+    return this.http
+      .post<IMember>(this.baseUrlOnboarding, aMember, {
+        observe: 'response'
+      })
+      .pipe(
+        tap((tapResponse: HttpResponse<IMember>) => {
+          const bankIdentifier = tapResponse.headers.get('MeedBankingClub-Bank-Identifier');
+          const userSettings: UserSettings = { bankIdentifier };
+          this.settingService.setUserSettings(userSettings);
+        }),
+        map((mapResponse: HttpResponse<IMember>) => {
+          return mapResponse.body as IMember;
+        })
+      );
   }
 
   get member(): IMember {

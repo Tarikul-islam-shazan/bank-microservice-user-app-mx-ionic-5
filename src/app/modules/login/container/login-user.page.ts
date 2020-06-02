@@ -80,6 +80,7 @@ export class LoginUserPage implements OnInit {
     if (isLoggedOut && this.loginFacade.useBiometric) {
       this.loginFacade.requestBiometricAuthentication(this.loginForm.value);
     }
+    this.loginFacade.getBankConatactNumber();
   }
 
   /**

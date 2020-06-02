@@ -52,6 +52,10 @@ export interface UserSettings {
   billPayProvider?: string;
   disabledSignUp?: boolean;
   meedExtraInfoNotShow?: boolean;
+  contacts?: BankContacts;
+}
+export interface BankContacts {
+  [key: string]: string;
 }
 
 export interface AppSettings {

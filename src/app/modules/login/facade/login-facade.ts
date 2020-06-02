@@ -1,6 +1,6 @@
 import { LoginForm, LoginRequest } from '../models/login';
 import { Injectable } from '@angular/core';
-import { SignUpService, IAccount, CardService } from '@app/core';
+import { SignUpService, IAccount, REG_EX_PATTERNS } from '@app/core';
 import { Router } from '@angular/router';
 import { LoginService } from '@app/core/services/login.service';
 import { LogoutService } from '@app/core/services/logout.service';
@@ -14,7 +14,8 @@ import { AnalyticsService, AnalyticsUserProperties, AnalyticsEventTypes } from '
 import { AppPlatform } from '@app/core/util/app-platform';
 import { ModalService, IMeedModalComponentProps } from '@app/shared';
 import { CallNumber } from '@ionic-native/call-number/ngx';
-
+import { StaticDataCategory, StaticData, StaticDataService } from '@app/core/services/static-data.service';
+import { TranslateService } from '@ngx-translate/core';
 @Injectable()
 export class LoginFacade {
   constructor(
@@ -31,7 +32,8 @@ export class LoginFacade {
     private appPlatform: AppPlatform,
     private modalService: ModalService,
     private callService: CallNumber,
-    private cardService: CardService
+    private staticDataService: StaticDataService,
+    private translateService: TranslateService
   ) {}
 
   /**
@@ -73,10 +75,6 @@ export class LoginFacade {
     return this.appPlatform.isCordova();
   }
 
-  get supportNumber() {
-    return this.cardService.supportNumber;
-  }
-
   get username(): string {
     return this.settingsService.getSettings().userSettings.username;
   }
@@ -85,7 +83,30 @@ export class LoginFacade {
     return this.settingsService.getSettings().userSettings.useBiometric;
   }
 
+  get bankIdentifier(): string {
+    return this.settingsService.getSettings().userSettings.bankIdentifier;
+  }
+
+  get bankContactNumber(): string {
+    const conatcts = this.settingsService.getSettings().userSettings.contacts;
+    return conatcts && this.bankIdentifier ? conatcts[this.bankIdentifier] : '';
+  }
+
   /**
+   *
+   * @summary Updating contact number into setting service as bankidentifier
+   * @param {string} conatct
+   * @memberof LoginFacade
+   */
+  setBankContactNumber(conatct: string): void {
+    const userSettings = this.settingsService.getSettings().userSettings;
+    const { contacts } = userSettings;
+    const newContacts = { ...contacts, ...{ [this.bankIdentifier]: conatct } };
+    userSettings.contacts = newContacts;
+    this.settingsService.setUserSettings(userSettings);
+  }
+
+  /*
    * @summary navigates to given route
    *
    * @param {string} routeToNavigate
@@ -302,6 +323,11 @@ export class LoginFacade {
    * @memberof LoginFacade
    */
   async openHelpModal(): Promise<void> {
+    let contactNumber = this.bankContactNumber;
+    const callNumberText = this.translateService.instant('login-module.create-login-page.help-modal-call-no', {
+      contactNumber
+    });
+
     const modalComponentContent: IMeedModalComponentProps = {
       componentProps: {
         contents: [
@@ -311,13 +337,16 @@ export class LoginFacade {
         ],
         actionButtons: [
           {
-            text: 'login-module.create-login-page.help-modal-call-no',
+            text: callNumberText,
             cssClass: 'white-button',
             handler: () => {
-              if (this.appPlatform.isIos || this.appPlatform.isAndroid) {
-                this.callService.callNumber(this.supportNumber, true);
-              } else {
-                window.open(this.supportNumber, '_system');
+              contactNumber = contactNumber.replace(/\s/g, '');
+              if (contactNumber) {
+                if (this.appPlatform.isIos || this.appPlatform.isAndroid) {
+                  this.callService.callNumber(contactNumber, true);
+                } else {
+                  window.open(contactNumber, '_system');
+                }
               }
             }
           },
@@ -330,5 +359,22 @@ export class LoginFacade {
       }
     };
     await this.modalService.openInfoModalComponent(modalComponentContent);
+  }
+  get member(): IMember {
+    return this.memberService.getCachedMember();
+  }
+
+  /**
+   * Issue:MM3-300;
+   * Getting contact form backend if bankidentifier is new that has no contact
+   * number into usersettings
+   * @memberof LoginFacade
+   */
+  getBankConatactNumber(): void {
+    if (this.member && !this.bankContactNumber) {
+      this.staticDataService.getBankSupportNumber().subscribe(contactNumber => {
+        this.setBankContactNumber(contactNumber);
+      });
+    }
   }
 }
