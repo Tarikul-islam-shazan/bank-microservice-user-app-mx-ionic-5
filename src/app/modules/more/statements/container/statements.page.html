@@ -32,7 +32,7 @@
           <ion-list>
             <ion-item *ngFor="let statement of year.statements; let i = index; last as isLast">
               <div class="clearfix" style="padding: 20px 0;">
-                <div class="clearfix month-wrapper" (click)="readpdf($event, statement, 'DDA')">
+                <div class="clearfix month-wrapper" (click)="openModal($event, statement, 'DDA')">
                   <div class="clearfix">
                     <img src="assets/svg/statements-list.svg" alt="statements-image" />
                     <span class="year-section"

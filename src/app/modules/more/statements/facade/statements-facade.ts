@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { StatementsService, AccountService, AccountType, IStatement, IStatements } from '@app/core';
 import { PdfViewerService, IPDFContent } from '@app/core/services/pdf-viewer.service';
 import { ModalService, IMeedModalContent } from '@app/shared';
+import { DownloadService, IXMLContent } from '@app/core/services/download.service';
 @Injectable()
 export class StatementsFacade {
   $statements: Observable<IStatements[]>;
@@ -10,7 +11,8 @@ export class StatementsFacade {
     private statementsService: StatementsService,
     private accountService: AccountService,
     private pdfViewerService: PdfViewerService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private downloadService: DownloadService
   ) {
     this.loadStatements();
   }
@@ -31,8 +33,6 @@ export class StatementsFacade {
     };
     this.statementsService.loadMonthStatements(parms).subscribe(response => {
       this.viewPdf(response.pdf, accountType);
-      // this.viewPdf(this.pdf, accountType);
-      // this.viewPdf('response.pdf', accountType);
     });
   }
 
@@ -97,14 +97,10 @@ export class StatementsFacade {
 
   downloadXml(base64data: string, accountType: string) {
     const xmlTitle = accountType + ' statement';
-    const xmlData: IPDFContent = {
+    const xmlData: IXMLContent = {
       base64DataOrUrl: base64data,
-      pdfTitle: xmlTitle
+      xmlTitle
     };
-    // const xmlData: IPDFContent = {
-    //   base64DataOrUrl: this.xml,
-    //   pdfTitle: xmlTitle
-    // };
-    this.pdfViewerService.openPDFFromUrl(xmlData);
+    this.downloadService.downloadFromUrl(xmlData);
   }
 }
