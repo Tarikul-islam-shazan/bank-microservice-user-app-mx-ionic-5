@@ -532,10 +532,10 @@
       "step-text": "Step 3 of 3",
       "count": "3",
       "beneficiary-form": {
-        "first-name": "First name",
-        "second-name": "Second name (optional)",
-        "parental-name": "Parental name",
-        "maternal-last-name": "Maternal name (optional)",
+        "first-name": "First Name",
+        "second-name": "Second Name (optional)",
+        "parental-name": "Parental Last Name",
+        "maternal-last-name": "Maternal Last Name (optional)",
         "dob": "Date of birth",
         "relationship": "Relationship",
         "date-of-birth-display-format": "DD / MM / YYYY"

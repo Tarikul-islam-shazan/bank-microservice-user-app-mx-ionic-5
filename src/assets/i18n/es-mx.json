@@ -523,10 +523,10 @@
     "signup-beneficiary-page": {
       "page-title": "Beneficiary Information",
       "beneficiary-form": {
-        "first-name": "First name",
-        "second-name": "Second name (optional)",
-        "parental-name": "Parental name",
-        "maternal-last-name": "Maternal name (optional)",
+        "first-name": "First Name",
+        "second-name": "Second Name (optional)",
+        "parental-name": "Parental Last Name",
+        "maternal-last-name": "Maternal Last Name (optional)",
         "dob": "Date of birth",
         "relationship": "Relationship",
         "date-of-birth-display-format": "DD / MM / YYYY"
