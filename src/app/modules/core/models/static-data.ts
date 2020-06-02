@@ -39,7 +39,7 @@ export interface IStaticData {
   };
 }
 
-export interface ISupportSaticData {
+export interface ISupportStaticData {
   category: StaticDataCategory;
   subCategory: string;
   bank: string;

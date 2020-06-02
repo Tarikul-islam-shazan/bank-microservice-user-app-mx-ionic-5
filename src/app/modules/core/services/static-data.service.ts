@@ -9,7 +9,7 @@ import {
   IDropdownOption,
   StaticDataProperties,
   StaticData,
-  ISupportSaticData
+  ISupportStaticData
 } from '@app/core/models/static-data';
 import { SettingsService } from '@app/core/services/settings.service';
 import { map } from 'rxjs/operators';
@@ -105,8 +105,10 @@ export class StaticDataService {
         params: { bank, category: StaticDataCategory.Conatcts, subCategory: StaticData.Support }
       })
       .pipe(
-        map((staticData: ISupportSaticData[]) => {
-          const staticSupportData: ISupportSaticData = staticData.find(data => data.subCategory === StaticData.Support);
+        map((staticData: ISupportStaticData[]) => {
+          const staticSupportData: ISupportStaticData = staticData.find(
+            data => data.subCategory === StaticData.Support
+          );
           const supportNumber = staticSupportData ? staticSupportData.data.phone : '';
           return supportNumber;
         })
