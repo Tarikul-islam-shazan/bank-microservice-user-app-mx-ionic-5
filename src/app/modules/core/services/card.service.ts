@@ -16,12 +16,12 @@ export class CardService {
   private baseUrl = environment.serviceUrl;
   private baseUrlCards = this.baseUrl + '/cards';
   private _supportNumber: string;
-  cards$: Observable<ICard[]>;
+  cards$: Observable<ICard>;
   constructor(private http: HttpClient, private headerService: HeaderService, private memberService: MemberService) {}
 
-  loadCardInfo(): Observable<ICard[]> {
-    return this.http.get<ICard[]>(`${this.baseUrlCards}/${this.memberService.member.customerId}`, {
-      headers: this.headerService.getUserNameHeader()
+  loadCardInfo(): Observable<ICard> {
+    return this.http.get<ICard>(`${this.baseUrlCards}`, {
+      headers: this.headerService.getUserNameCustomerIdHeader()
     });
   }
 
@@ -35,7 +35,7 @@ export class CardService {
     );
   }
 
-  get cardDetails(): Observable<ICard[]> {
+  get cardDetails(): Observable<ICard> {
     if (!this.cards$) {
       this.cards$ = this.loadCardInfo().pipe(shareReplay(1));
     }
