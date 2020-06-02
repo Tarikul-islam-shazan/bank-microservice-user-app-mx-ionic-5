@@ -75,7 +75,7 @@ export class SignUpService {
       })
       .pipe(
         tap((tapResponse: HttpResponse<IMember>) => {
-          const bankIdentifier = tapResponse.headers.get('MeedBankingClub-Bank-Identifier');
+          const bankIdentifier = tapResponse.headers.get('meedbankingclub-bank-identifier');
           const userSettings: UserSettings = { bankIdentifier };
           this.settingService.setUserSettings(userSettings);
         }),
@@ -142,7 +142,7 @@ export class SignUpService {
       })
       .pipe(
         tap((tapResponse: HttpResponse<IMember>) => {
-          const bankIdentifier = tapResponse.headers.get('MeedBankingClub-Bank-Identifier');
+          const bankIdentifier = tapResponse.headers.get('meedbankingclub-bank-identifier');
           this.member = tapResponse.body as IMember;
           const userSettings: UserSettings = { bankIdentifier, username: this.member.username };
           this.settingService.setUserSettings(userSettings);
@@ -203,7 +203,7 @@ export class SignUpService {
       )
       .pipe(
         tap((tapResponse: HttpResponse<IMember>) => {
-          const _bankIdentifier = tapResponse.headers.get('MeedBankingClub-Bank-Identifier');
+          const _bankIdentifier = tapResponse.headers.get('meedbankingclub-bank-identifier');
           this.member = tapResponse.body as IMember;
           const userSettings: UserSettings = { bankIdentifier: _bankIdentifier, username: this.member.username };
           this.settingService.setUserSettings(userSettings);
