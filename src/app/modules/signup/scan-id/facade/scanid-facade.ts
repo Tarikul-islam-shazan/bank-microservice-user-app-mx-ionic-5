@@ -21,7 +21,7 @@ import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 import { take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { IMeedModalContent, ModalService } from '@app/shared/services/modal.service';
-import { Platform } from '@ionic/angular';
+import { AppPlatform } from '@app/core';
 
 const log = new Logger('ScanIDFacade');
 @Injectable()
@@ -36,7 +36,7 @@ export class ScanIDFacade {
     private analytics: AnalyticsService,
     private ngZone: NgZone,
     private logglyLogger: LogglyLoggerService,
-    private platform: Platform
+    private appPlatform: AppPlatform
   ) {}
 
   /**
@@ -141,11 +141,11 @@ export class ScanIDFacade {
 
     let dateOfBirth = jumioDocumentData.dob.toString();
     let expiryDate = jumioDocumentData.expiryDate.toString();
-    if (this.platform.is('ios')) {
+    if (this.appPlatform.isIos()) {
       dateOfBirth = dateOfBirth ? moment(dateOfBirth.toString().split('T')[0]).format('YYYY-MM-DD') : '';
       expiryDate = expiryDate ? moment(expiryDate.toString().split('T')[0]).format('YYYY-MM-DD') : '';
     }
-    if (this.platform.is('android')) {
+    if (this.appPlatform.isAndroid()) {
       dateOfBirth = dateOfBirth
         ? moment(dateOfBirth)
             .utc()
