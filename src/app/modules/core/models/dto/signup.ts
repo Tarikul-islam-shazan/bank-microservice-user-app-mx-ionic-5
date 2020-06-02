@@ -17,20 +17,15 @@ export interface IScannedIdData {
   reference?: string;
   extractionMethod?: string;
   firstName?: string;
-  lastName?: string;
+  secondName?: string;
+  paternalLastName?: string;
   dateOfBirth?: string;
   gender?: string;
-  addressLine?: string;
-  postCode?: string;
-  subdivision?: string;
   country?: string;
   identificationType?: IdentityType;
   idNumber?: string;
-  issuer?: string;
-  issuingDate?: string;
   expiryDate?: string;
   issuingCountry?: string;
-  city?: string;
 }
 
 export interface IMemberApplication {

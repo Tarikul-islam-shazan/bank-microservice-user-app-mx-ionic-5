@@ -21,6 +21,7 @@ import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 import { take } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { IMeedModalContent, ModalService } from '@app/shared/services/modal.service';
+import { AppPlatform } from '@app/core';
 
 const log = new Logger('ScanIDFacade');
 @Injectable()
@@ -34,7 +35,8 @@ export class ScanIDFacade {
     private modalService: ModalService,
     private analytics: AnalyticsService,
     private ngZone: NgZone,
-    private logglyLogger: LogglyLoggerService
+    private logglyLogger: LogglyLoggerService,
+    private appPlatform: AppPlatform
   ) {}
 
   /**
@@ -136,29 +138,55 @@ export class ScanIDFacade {
         identificationType = IdentityType.DrivingLicence;
         break;
     }
+
+    let dateOfBirth = jumioDocumentData.dob.toString();
+    let expiryDate = jumioDocumentData.expiryDate.toString();
+    if (this.appPlatform.isIos()) {
+      dateOfBirth = dateOfBirth ? moment(dateOfBirth.toString().split('T')[0]).format('YYYY-MM-DD') : '';
+      expiryDate = expiryDate ? moment(expiryDate.toString().split('T')[0]).format('YYYY-MM-DD') : '';
+    }
+    if (this.appPlatform.isAndroid()) {
+      dateOfBirth = dateOfBirth
+        ? moment(dateOfBirth)
+            .utc()
+            .format('YYYY-MM-DD')
+        : '';
+      expiryDate = expiryDate
+        ? moment(expiryDate)
+            .utc()
+            .format('YYYY-MM-DD')
+        : '';
+    }
+
     const jumioScannedIdData: IScannedIdData = {
       reference: jumioDocumentData.scanReference,
       extractionMethod: jumioDocumentData.extractionMethod ? jumioDocumentData.extractionMethod : '',
-      firstName: jumioDocumentData.firstName ? jumioDocumentData.firstName.trim() : '',
-      lastName: jumioDocumentData.lastName ? jumioDocumentData.lastName : '',
-      dateOfBirth: jumioDocumentData.dob
-        ? moment(jumioDocumentData.dob.toString().split('T')[0]).format('YYYY-MM-DD')
+      firstName: jumioDocumentData.firstName
+        ? jumioDocumentData.firstName
+            .trim()
+            .toString()
+            .split(' ')[0]
         : '',
+      secondName: jumioDocumentData.firstName
+        ? jumioDocumentData.firstName
+            .trim()
+            .toString()
+            .replace(
+              jumioDocumentData.firstName
+                .trim()
+                .toString()
+                .split(' ')[0],
+              ''
+            )
+        : '',
+      paternalLastName: jumioDocumentData.lastName ? jumioDocumentData.lastName.trim() : '',
       gender: jumioDocumentData.gender ? jumioDocumentData.gender.toLowerCase() : '',
-      addressLine: jumioDocumentData.addressLine ? jumioDocumentData.addressLine : '',
-      postCode: jumioDocumentData.postCode ? jumioDocumentData.postCode : '',
-      subdivision: jumioDocumentData.subdivision ? jumioDocumentData.subdivision : '',
       country: jumioDocumentData.selectedCountry ? jumioDocumentData.selectedCountry : '',
       identificationType,
       idNumber: jumioDocumentData.idNumber ? jumioDocumentData.idNumber : '',
       issuingCountry: jumioDocumentData.issuingCountry ? jumioDocumentData.issuingCountry : '',
-      issuingDate: jumioDocumentData.issuingDate
-        ? moment(jumioDocumentData.issuingDate.toString().split('T')[0]).format('YYYY-MM-DD')
-        : moment().format('YYYY-MM-DD'),
-      expiryDate: jumioDocumentData.expiryDate
-        ? moment(jumioDocumentData.expiryDate.toString().split('T')[0]).format('YYYY-MM-DD')
-        : moment().format('YYYY-MM-DD'),
-      city: jumioDocumentData.city ? jumioDocumentData.city : ''
+      dateOfBirth,
+      expiryDate
     };
     this.jumioApiService.scannedIdData = jumioScannedIdData;
   }

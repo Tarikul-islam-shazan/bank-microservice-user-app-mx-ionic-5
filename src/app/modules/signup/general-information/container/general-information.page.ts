@@ -35,13 +35,16 @@ export class GeneralInformationPage implements OnInit {
       curp: ['', [Validators.required, Validators.minLength(18), Validators.maxLength(18)]],
       mobileNumber: ['', [Validators.required, Validators.pattern('\\d{10}')]]
     });
+    this.initJumioDataIntoForm();
   }
 
   initJumioDataIntoForm() {
-    const { firstName, dateOfBirth } = this.facade.getJumioScannedIdData();
+    const jumioData = this.facade.getJumioScannedIdData();
     this.generalForm.patchValue({
-      firstName: firstName ? firstName : '',
-      dateOfBirth: dateOfBirth ? dateOfBirth : ''
+      firstName: jumioData.firstName ? jumioData.firstName : '',
+      secondName: jumioData.secondName ? jumioData.secondName : '',
+      paternalLastName: jumioData.paternalLastName ? jumioData.paternalLastName : '',
+      dateOfBirth: jumioData.dateOfBirth ? jumioData.dateOfBirth : ''
     });
   }
 
