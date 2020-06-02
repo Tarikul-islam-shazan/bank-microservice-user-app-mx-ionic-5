@@ -11,13 +11,12 @@
     </div>
     <div class="button-container" *ngIf="actionButtons?.length > 0">
       <ion-button
-        translate
         (click)="actionButton.handler($event)"
         *ngFor="let actionButton of actionButtons"
         class="{{ actionButton.cssClass }}"
         [disabled]="actionButton.disabled ? actionButton.disabled : false"
         expand="block"
-        >{{ actionButton.text }}
+        >{{ actionButton.text | translate: actionButton.params }}
       </ion-button>
     </div>
   </div>

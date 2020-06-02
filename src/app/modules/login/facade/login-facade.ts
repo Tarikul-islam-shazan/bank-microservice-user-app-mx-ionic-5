@@ -15,7 +15,6 @@ import { AppPlatform } from '@app/core/util/app-platform';
 import { ModalService, IMeedModalComponentProps } from '@app/shared';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { StaticDataService } from '@app/core/services/static-data.service';
-import { TranslateService } from '@ngx-translate/core';
 @Injectable()
 export class LoginFacade {
   constructor(
@@ -32,8 +31,7 @@ export class LoginFacade {
     private appPlatform: AppPlatform,
     private modalService: ModalService,
     private callService: CallNumber,
-    private staticDataService: StaticDataService,
-    private translateService: TranslateService
+    private staticDataService: StaticDataService
   ) {}
 
   /**
@@ -324,10 +322,6 @@ export class LoginFacade {
    */
   async openHelpModal(): Promise<void> {
     let contactNumber = this.bankContactNumber;
-    const callNumberText = this.translateService.instant('login-module.create-login-page.help-modal-call-no', {
-      contactNumber
-    });
-
     const modalComponentContent: IMeedModalComponentProps = {
       componentProps: {
         contents: [
@@ -337,7 +331,8 @@ export class LoginFacade {
         ],
         actionButtons: [
           {
-            text: callNumberText,
+            text: 'login-module.create-login-page.help-modal-call-no',
+            params: { contactNumber },
             cssClass: 'white-button',
             handler: () => {
               contactNumber = contactNumber.replace(/\s/g, '');
