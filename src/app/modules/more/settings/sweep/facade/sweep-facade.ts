@@ -8,7 +8,7 @@
 import { Injectable } from '@angular/core';
 import { ModalService, IMeedModalContent } from '@app/shared';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
-import { AccountService, ISweepState, SweepState } from '@app/core';
+import { AccountService, ISweepState, SweepState, AccountType } from '@app/core';
 import { Router } from '@angular/router';
 
 @Injectable()
@@ -44,8 +44,9 @@ export class SweepFacade {
    * @memberof SweepFacade
    */
   changeSweepStatus(): void {
+    const accountId = this.accountService.getAccountSummary(AccountType.LOC).accountId;
     const apiParms: ISweepState = { state: this.sweepStatus ? SweepState.Activate : SweepState.Deactivate };
-    this.accountService.updateAccountSweepStatus(apiParms).subscribe(data => {
+    this.accountService.updateAccountSweepStatus(accountId, apiParms).subscribe(data => {
       this.analytics.logEvent(AnalyticsEventTypes.SweepStatusUpdated, data);
 
       const componentProps: IMeedModalContent = {
