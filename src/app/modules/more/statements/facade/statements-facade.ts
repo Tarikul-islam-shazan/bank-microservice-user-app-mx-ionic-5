@@ -95,12 +95,14 @@ export class StatementsFacade {
     });
   }
 
-  downloadXml(base64data: string, accountType: string) {
+  downloadXml(xml: string, accountType: string) {
     const xmlTitle = accountType + ' statement';
+    const xmlTobase64data = 'data:text/xml;base64,' + xml;
     const xmlData: IXMLContent = {
-      base64DataOrUrl: base64data,
+      base64DataOrUrl: xmlTobase64data,
       xmlTitle
     };
+
     this.downloadService.downloadFromUrl(xmlData);
   }
 }
