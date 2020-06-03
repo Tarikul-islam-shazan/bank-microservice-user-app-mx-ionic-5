@@ -20,7 +20,7 @@
             <div *ngIf="!isBeginning" (click)="slidePrevious()" class="year-arrow">
               <ion-icon name="chevron-back"></ion-icon>
             </div>
-            <div class="year-wrapper" text-center (click)="selectStatementYear(year); yearSelection = j">
+            <div class="year-wrapper" text-center>
               <b>{{ year.year | slice: -4 }}</b>
             </div>
             <div *ngIf="!isEnd" (click)="slideNext()" class="year-arrow">

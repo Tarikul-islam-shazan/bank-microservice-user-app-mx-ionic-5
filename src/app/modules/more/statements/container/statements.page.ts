@@ -30,10 +30,15 @@ export class StatementsPage implements OnInit {
     this.isEnd = await this.slides.isEnd();
   }
 
-  selectStatementYear(year: string): void {}
-
+  /**
+   * Opens up the modal which will allow a user to view pdf or downlaod xml file
+   *
+   * @param {*} event
+   * @param {IStatement} month
+   * @param {string} acountType
+   * @memberof StatementsPage
+   */
   openModal(event: any, month: IStatement, acountType: string): void {
-    // this.statementFacade.loadPdf(month, acountType);
     this.statementFacade.openModal(month, acountType);
   }
 }
