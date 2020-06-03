@@ -25,6 +25,7 @@ export interface IContent {
 
 export interface IButton {
   text: string;
+  params?: { [key: string]: string | number };
   cssClass: string;
   disabled?: boolean;
   handler: ($event) => void;

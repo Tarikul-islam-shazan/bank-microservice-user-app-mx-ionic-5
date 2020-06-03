@@ -21,7 +21,7 @@
       "signup-button-text": "Sign up",
       "help-button-text": "Help",
       "help-modal-message": "Please contact Customer Service.",
-      "help-modal-call-no": "Call +5540004030",
+      "help-modal-call-no": "Call {{contactNumber}}",
       "help-modal-cancle-btn-text": "Cancel",
       "meed-reward-earnMore": "Earn even more!",
       "meed-reward-tryAndEarnedCashBack": "Try MeedRewards™ and earn up to 5% cash back.",
