@@ -4,7 +4,7 @@ import * as moment from 'moment';
 import { IDropdownOption, InternalTransferService } from '@app/core';
 
 @Injectable()
-export class CreateTransferService {
+export class TransferService {
   private fromScheduledTransfers: boolean;
   private transfer: Partial<ITransfer>;
   _transferFrequency: IDropdownOption[];

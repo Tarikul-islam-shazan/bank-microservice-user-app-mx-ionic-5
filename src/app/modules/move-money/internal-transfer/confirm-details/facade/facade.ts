@@ -9,7 +9,7 @@ import { InternalTransferService, AccountService, IDropdownOption } from '@app/c
 import { IAccount, AccountType } from '@app/core/models/dto/account';
 import { Router } from '@angular/router';
 import { TransferSuccessModalComponent } from '@app/move-money/internal-transfer/components/transfer-success-modal';
-import { CreateTransferService } from '@app/move-money/internal-transfer/services';
+import { TransferService } from '@app/move-money/internal-transfer/services';
 import { TranslateService } from '@ngx-translate/core';
 import { ModalService, IMeedModalContent } from '@app/shared/services/modal.service';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
@@ -24,7 +24,7 @@ export class ConfirmDetailsFacade {
     private internalTransferService: InternalTransferService,
     private router: Router,
     private accountService: AccountService,
-    private createTransferService: CreateTransferService,
+    private transferService: TransferService,
     private translate: TranslateService,
     private modalService: ModalService,
     private analytics: AnalyticsService
@@ -91,7 +91,7 @@ export class ConfirmDetailsFacade {
 
   // initialize the confirm page data, get the transfer ready for final submission
   initialize() {
-    this.transfer = this.createTransferService.getTransfer();
+    this.transfer = this.transferService.getTransfer();
     const accounts = this.accountService.getCachedAccountSummary() as IAccount[];
     this.fromAccount = accounts.find((account: IAccount) => account.accountId === this.transfer.debtorAccount);
     this.toAccount = accounts.find((account: IAccount) => account.accountId === this.transfer.creditorAccount);
@@ -99,7 +99,7 @@ export class ConfirmDetailsFacade {
 
   // If transfer done we reset the transfer service object
   resetTransfer() {
-    this.createTransferService.resetTransferService();
+    this.transferService.resetTransferService();
   }
 
   backToEditScheduledModify() {
@@ -139,6 +139,6 @@ export class ConfirmDetailsFacade {
   }
 
   get fromScheduledTransfers(): boolean {
-    return this.createTransferService.isFromScheduledTransfers();
+    return this.transferService.isFromScheduledTransfers();
   }
 }

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ITransfer, TransferFrequency } from '@app/move-money/internal-transfer/models';
-import { CreateTransferService } from '@app/move-money/internal-transfer/services/service';
+import { TransferService } from '@app/move-money/internal-transfer/services/service';
 import { IDropdownOption } from '@app/core';
 @Component({
   selector: 'schedule-type-modal',
@@ -13,10 +13,10 @@ export class ScheduleTypeModalComponent {
   isFromScheduledTransfers: boolean;
   transfer: Partial<ITransfer>;
   transferFrequencyList: IDropdownOption[];
-  constructor(private modalCtrl: ModalController, public createTransferService: CreateTransferService) {
-    this.transfer = this.createTransferService.getTransfer();
-    this.isFromScheduledTransfers = createTransferService.isFromScheduledTransfers();
-    this.transferFrequencyList = createTransferService.transferFrequency;
+  constructor(private modalCtrl: ModalController, public transferService: TransferService) {
+    this.transfer = this.transferService.getTransfer();
+    this.isFromScheduledTransfers = transferService.isFromScheduledTransfers();
+    this.transferFrequencyList = transferService.transferFrequency;
     if (!this.transfer.frequency) {
       this.transfer.frequency = this.transferFrequencyList.find((frequencyData: IDropdownOption) => {
         return frequencyData.value === TransferFrequency.Once;

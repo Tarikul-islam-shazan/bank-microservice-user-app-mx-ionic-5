@@ -12,7 +12,7 @@ import { FACADE_SERVICE as INTERNAL_SERVICE_FACADE } from './move-between-accoun
 import { FACADE_SERVICE as CONFIRM_DETAILS_FACADE } from './confirm-details/';
 import { FACADE_SERVICE as SCHEDULE_TRANSFER_FACADE } from './scheduled-transfers/';
 import { FACADE_SERVICE as CANCEL_TRANSFER } from './cancel-transfer';
-import { CreateTransferService } from '@app/move-money/internal-transfer/services';
+import { TransferService } from '@app/move-money/internal-transfer/services';
 import { PAGES } from '@app/core/models/constants';
 
 export const PAGE_CONTAINERS: any[] = [
@@ -25,7 +25,7 @@ export const ALL_FACADES: any[] = [
   ...INTERNAL_SERVICE_FACADE,
   ...CONFIRM_DETAILS_FACADE,
   ...SCHEDULE_TRANSFER_FACADE,
-  CreateTransferService,
+  TransferService,
   ...CANCEL_TRANSFER
 ];
 const routes: Routes = [
