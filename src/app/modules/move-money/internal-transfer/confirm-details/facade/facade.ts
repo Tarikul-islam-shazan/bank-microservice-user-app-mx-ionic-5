@@ -12,6 +12,7 @@ import { TransferSuccessModalComponent } from '@app/move-money/internal-transfer
 import { CreateTransferService } from '@app/move-money/internal-transfer/services';
 import { TranslateService } from '@ngx-translate/core';
 import { ModalService, IMeedModalContent } from '@app/shared/services/modal.service';
+import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 
 @Injectable()
 export class ConfirmDetailsFacade {
@@ -25,7 +26,8 @@ export class ConfirmDetailsFacade {
     private accountService: AccountService,
     private createTransferService: CreateTransferService,
     private translate: TranslateService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private analytics: AnalyticsService
   ) {}
 
   // Submit internal transfer
@@ -40,8 +42,8 @@ export class ConfirmDetailsFacade {
     this.internalTransferService
       .submitInternalTransfer(this.transfer as ITransfer)
       .subscribe((transferResponse: ITransfer) => {
-        this.transfer.transferType = transferResponse.transferType;
-        this.transferSuccess(this.transfer as ITransfer);
+        this.analytics.logEvent(AnalyticsEventTypes.InternalTransferSubmitted);
+        this.transferSuccess(transferResponse);
       });
   }
 
@@ -50,6 +52,7 @@ export class ConfirmDetailsFacade {
     this.internalTransferService
       .modifyInternalTransfer(this.transfer as ITransfer)
       .subscribe((transferResponse: ITransfer) => {
+        this.analytics.logEvent(AnalyticsEventTypes.ScheduleTransferModifyed);
         this.transferSuccess(transferResponse);
       });
   }

@@ -118,8 +118,10 @@ export enum AnalyticsEventTypes {
   BillPaymentUpdated = 'bill_payment_updated',
   BillPaymentDeleted = 'bill_payment_deleted',
   EmailVerificationCodeFailed = 'email_verification_code_failed',
-  ScheduleTransferDeleted = 'schedule_transfer_deleted',
-  PasswordChanged = 'password_changed'
+  PasswordChanged = 'password_changed',
+  InternalTransferSubmitted = 'internal_transfer_submitted',
+  ScheduleTransferModifyed = 'internal_transfer_modifyed',
+  ScheduleTransferDeleted = 'schedule_transfer_deleted'
 }
 export interface AnalyticsNavigationParameters {
   from: string;
