@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import { Logger } from '@app/core/services';
 import { InternalTransferService } from '@app/core/services/internal-transfer.service';
 import { Router } from '@angular/router';
-import { ITransfer } from '@app/move-money/internal-transfer/models';
-import { ConfirmDetailsFacade } from '@app/move-money/internal-transfer/confirm-details/facade';
-import { CreateTransferService } from '@app/move-money/internal-transfer/services';
+import { ITransfer, TransferFrequency } from '@app/move-money/internal-transfer/models';
+import { TransferService } from '@app/move-money/internal-transfer/services';
 import { AccountService } from '@app/core/services/account.service';
 import { IAccount, AccountType } from '@app/core/models/dto/account';
 import { TranslateService } from '@ngx-translate/core';
@@ -15,8 +14,7 @@ export class ScheduledTransferFacade {
   constructor(
     private internalTransferService: InternalTransferService,
     private router: Router,
-    private confirmDetailsFacadeService: ConfirmDetailsFacade,
-    private createTransferService: CreateTransferService,
+    private transferService: TransferService,
     private accountService: AccountService,
     private translate: TranslateService
   ) {}
@@ -49,14 +47,12 @@ export class ScheduledTransferFacade {
   }
   // Go-to modify schedule transfer screen, we re-use the internal transfer component.
   gotoConformDetails(scheduledTransfer: ITransfer): void {
-    const previousTransferType = scheduledTransfer.transferType;
-    delete scheduledTransfer.transferType;
-    const transfer = {
-      ...scheduledTransfer,
-      previousTransferType
-    } as ITransfer;
-    this.createTransferService.setTransfer(transfer);
-    this.createTransferService.setFromScheduledTransfers(true);
+    this.transferService.setTransfer(scheduledTransfer);
+    this.transferService.setFromScheduledTransfers(true);
     this.router.navigate(['move-money/internal-transfer']);
+  }
+
+  get transferFrequency(): typeof TransferFrequency {
+    return TransferFrequency;
   }
 }

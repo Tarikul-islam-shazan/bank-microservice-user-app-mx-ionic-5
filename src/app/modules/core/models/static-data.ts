@@ -4,6 +4,7 @@ export enum StaticDataCategory {
   PersonalInformation = 'personalInformation',
   GovtDisclosure = 'govtDisclosure',
   IdentityConfirmation = 'identityConfirmation',
+  TransferFrequency = 'transferFrequency',
   Conatcts = 'contacts'
 }
 
@@ -21,6 +22,7 @@ export enum StaticData {
   Relationship = 'relationship',
   HighestLevelOfEducation = 'highestLevelOfEducation',
   UtilityDocument = 'utilityDocument',
+  TransferFrequency = 'transferFrequency',
   Support = 'support'
 }
 

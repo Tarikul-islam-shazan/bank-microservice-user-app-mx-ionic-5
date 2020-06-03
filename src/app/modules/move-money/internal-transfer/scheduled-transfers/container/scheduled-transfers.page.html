@@ -41,13 +41,14 @@
             scheduledTransferFacade.getAccountType(transaction.creditorAccount) }}
           </h3>
           <p class="details">
-            <span *ngIf="transaction.frequency === 'Once'"
+            <span *ngIf="transaction.frequency === scheduledTransferFacade.transferFrequency.Once"
               >{{'move-money-module.internal-transfer.scheduled-transfers.scheduled-on' | translate}} {{
               transaction.transferDate | date: 'MMMM dd' }}</span
             >
-            <span *ngIf="transaction.frequency != 'Once'">
-              {{ transaction.frequency }} {{'move-money-module.internal-transfer.scheduled-transfers.frequency-on' |
-              translate}} {{ transaction.transferDate | date: 'MMMM dd'}}</span
+            <span *ngIf="transaction.frequency != scheduledTransferFacade.transferFrequency.Once">
+              {{'move-money-module.internal-transfer.transfer-frequency.'+transaction.frequency | translate }}
+              {{'move-money-module.internal-transfer.scheduled-transfers.frequency-on' | translate}} {{
+              transaction.transferDate | date: 'MMMM dd'}}</span
             >
           </p>
         </ion-label>

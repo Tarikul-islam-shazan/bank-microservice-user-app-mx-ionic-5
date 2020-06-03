@@ -5,11 +5,11 @@
  * Developer: Sanitul <sanitul@bs-23.com>
  */
 import { Injectable } from '@angular/core';
-import { Logger, AccountService } from '@app/core/services';
+import { Logger, AccountService, InternalTransferService } from '@app/core/services';
 import { IAccount, AccountType } from '@app/core/models/dto/account';
 import { ITransfer, TransferFor } from '@app/move-money/internal-transfer/models';
 import { Router } from '@angular/router';
-import { CreateTransferService } from '@app/move-money/internal-transfer/services';
+import { TransferService } from '@app/move-money/internal-transfer/services';
 import { ActionSheetController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { ModalService } from '@app/shared/services/modal.service';
@@ -28,19 +28,21 @@ export class InternalTransferFacade {
   modifiedScheduleTransfer = false;
 
   constructor(
-    private createTransferService: CreateTransferService,
+    private transferService: TransferService,
     private actionSheetCtrl: ActionSheetController,
     private accountService: AccountService,
     private translate: TranslateService,
     private modalService: ModalService,
+    private internalTransferService: InternalTransferService,
     private router: Router
   ) {}
 
   initialize() {
-    this.transfer = this.createTransferService.getTransfer();
+    this.transfer = this.transferService.getTransfer();
     this.accountService.fetchAccountSummary().subscribe(success => {
       this.accountSwitch(AccountType.DDA, AccountType.SSA);
     });
+    this.internalTransferService.loadTransferFrequency();
   }
 
   goToConfirm() {
@@ -213,13 +215,13 @@ export class InternalTransferFacade {
       debtorAccount: this.fromAccount.accountId,
       creditorAccount: this.toAccount.accountId
     };
-    this.createTransferService.setTransfer(this.transfer);
+    this.transferService.setTransfer(this.transfer);
   }
 
   // Get to know is from schedule transfer, we are re-using the same component for both
   // move between account or scheduled transfer modify
   get fromScheduledTransfers(): boolean {
-    return this.createTransferService.isFromScheduledTransfers();
+    return this.transferService.isFromScheduledTransfers();
   }
 
   // If user want to edit a schduled transfer
@@ -229,6 +231,6 @@ export class InternalTransferFacade {
   // Reset transfer object when page/ componet destroy
   resetTransferService() {
     this.modifiedScheduleTransfer = false;
-    this.createTransferService.resetTransferService();
+    this.transferService.resetTransferService();
   }
 }

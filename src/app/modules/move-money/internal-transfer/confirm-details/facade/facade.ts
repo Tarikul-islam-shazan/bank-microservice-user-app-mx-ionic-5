@@ -3,16 +3,16 @@ import {
   ITransfer,
   ITransferSuccessModalObject,
   TransferFor,
-  TransferType
+  TransferFrequency
 } from '@app/move-money/internal-transfer/models';
-import { InternalTransferService, AccountService } from '@app/core/services';
+import { InternalTransferService, AccountService, IDropdownOption } from '@app/core/services';
 import { IAccount, AccountType } from '@app/core/models/dto/account';
-import { InternalTransferFacade } from '@app/move-money/internal-transfer/move-between-accounts/facade';
 import { Router } from '@angular/router';
 import { TransferSuccessModalComponent } from '@app/move-money/internal-transfer/components/transfer-success-modal';
-import { CreateTransferService } from '@app/move-money/internal-transfer/services';
+import { TransferService } from '@app/move-money/internal-transfer/services';
 import { TranslateService } from '@ngx-translate/core';
 import { ModalService, IMeedModalContent } from '@app/shared/services/modal.service';
+import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 
 @Injectable()
 export class ConfirmDetailsFacade {
@@ -21,20 +21,28 @@ export class ConfirmDetailsFacade {
   transfer: Partial<ITransfer>;
 
   constructor(
-    private transferFacade: InternalTransferFacade,
     private internalTransferService: InternalTransferService,
     private router: Router,
     private accountService: AccountService,
-    private createTransferService: CreateTransferService,
+    private transferService: TransferService,
     private translate: TranslateService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private analytics: AnalyticsService
   ) {}
 
   // Submit internal transfer
   submitInternalTransfer() {
+    if (!this.transfer.frequency) {
+      this.transfer.frequency = this.internalTransferService.transferFrequency.find(
+        (frequencyData: IDropdownOption) => {
+          return frequencyData.value === TransferFrequency.Once;
+        }
+      ).value as TransferFrequency;
+    }
     this.internalTransferService
       .submitInternalTransfer(this.transfer as ITransfer)
       .subscribe((transferResponse: ITransfer) => {
+        this.analytics.logEvent(AnalyticsEventTypes.InternalTransferSubmitted);
         this.transferSuccess(transferResponse);
       });
   }
@@ -44,6 +52,7 @@ export class ConfirmDetailsFacade {
     this.internalTransferService
       .modifyInternalTransfer(this.transfer as ITransfer)
       .subscribe((transferResponse: ITransfer) => {
+        this.analytics.logEvent(AnalyticsEventTypes.ScheduleTransferModifyed);
         this.transferSuccess(transferResponse);
       });
   }
@@ -82,7 +91,7 @@ export class ConfirmDetailsFacade {
 
   // initialize the confirm page data, get the transfer ready for final submission
   initialize() {
-    this.transfer = this.createTransferService.getTransfer();
+    this.transfer = this.transferService.getTransfer();
     const accounts = this.accountService.getCachedAccountSummary() as IAccount[];
     this.fromAccount = accounts.find((account: IAccount) => account.accountId === this.transfer.debtorAccount);
     this.toAccount = accounts.find((account: IAccount) => account.accountId === this.transfer.creditorAccount);
@@ -90,7 +99,7 @@ export class ConfirmDetailsFacade {
 
   // If transfer done we reset the transfer service object
   resetTransfer() {
-    this.createTransferService.resetTransferService();
+    this.transferService.resetTransferService();
   }
 
   backToEditScheduledModify() {
@@ -130,6 +139,6 @@ export class ConfirmDetailsFacade {
   }
 
   get fromScheduledTransfers(): boolean {
-    return this.createTransferService.isFromScheduledTransfers();
+    return this.transferService.isFromScheduledTransfers();
   }
 }

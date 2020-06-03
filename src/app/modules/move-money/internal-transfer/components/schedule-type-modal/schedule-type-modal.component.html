@@ -17,31 +17,9 @@
         }}</ion-label>
       </ion-list-header>
 
-      <ion-item lines="full">
-        <ion-label>{{
-          'move-money-module.internal-transfer.schedule-type-modal.transfer-frequency.once' | translate
-        }}</ion-label>
-        <ion-radio slot="start" value="Once" checked></ion-radio>
-      </ion-item>
-
-      <ion-item lines="full">
-        <ion-label>{{
-          'move-money-module.internal-transfer.schedule-type-modal.transfer-frequency.weekly' | translate
-        }}</ion-label>
-        <ion-radio slot="start" value="Weekly"></ion-radio>
-      </ion-item>
-
-      <ion-item lines="full">
-        <ion-label>{{
-          'move-money-module.internal-transfer.schedule-type-modal.transfer-frequency.monthly' | translate
-        }}</ion-label>
-        <ion-radio slot="start" value="Monthly"></ion-radio>
-      </ion-item>
-      <ion-item lines="full">
-        <ion-label>{{
-          'move-money-module.internal-transfer.schedule-type-modal.transfer-frequency.yearly' | translate
-        }}</ion-label>
-        <ion-radio slot="start" value="Yearly"></ion-radio>
+      <ion-item lines="full" *ngFor="let transferFrequency of transferFrequencyList">
+        <ion-label>{{ transferFrequency.text }}</ion-label>
+        <ion-radio slot="start" value="{{ transferFrequency.value }}"></ion-radio>
       </ion-item>
     </ion-radio-group>
   </ion-list>
@@ -54,13 +32,14 @@
     <ion-item lines="none">
       <div class="img-calendar"></div>
       <ion-datetime
+        [disabled]="isFromScheduledTransfers"
         min="{{ minimumCalendarDate }}"
         [(ngModel)]="transfer.transferDate"
         displayFormat="{{
           'move-money-module.internal-transfer.schedule-type-modal.schedule-date-display-format' | translate
         }}"
       ></ion-datetime>
-      <div class="edit-text" slot="end">
+      <div *ngIf="!isFromScheduledTransfers" class="edit-text" slot="end">
         {{ 'move-money-module.internal-transfer.schedule-type-modal.schedule-date-edit-button' | translate }}
       </div>
     </ion-item>
