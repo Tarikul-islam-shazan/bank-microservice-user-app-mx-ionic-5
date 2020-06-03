@@ -1,3 +1,3 @@
-import { CreateTransferService } from './serviec';
+import { CreateTransferService } from './service';
 export const INTERNAL_TRANSFER_SERVICES: any[] = [CreateTransferService];
-export * from './serviec';
+export * from './service';

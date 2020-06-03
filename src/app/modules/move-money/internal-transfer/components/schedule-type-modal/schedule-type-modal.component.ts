@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { ITransfer, TransferFrequency } from '@app/move-money/internal-transfer/models';
-import { CreateTransferService } from '@app/move-money/internal-transfer/services/serviec';
+import { CreateTransferService } from '@app/move-money/internal-transfer/services/service';
 import { IDropdownOption } from '@app/core';
 @Component({
   selector: 'schedule-type-modal',
