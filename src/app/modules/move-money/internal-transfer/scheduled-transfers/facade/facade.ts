@@ -47,8 +47,7 @@ export class ScheduledTransferFacade {
   }
   // Go-to modify schedule transfer screen, we re-use the internal transfer component.
   gotoConformDetails(scheduledTransfer: ITransfer): void {
-    const transfer = scheduledTransfer;
-    this.createTransferService.setTransfer(transfer);
+    this.createTransferService.setTransfer(scheduledTransfer);
     this.createTransferService.setFromScheduledTransfers(true);
     this.router.navigate(['move-money/internal-transfer']);
   }

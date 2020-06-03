@@ -18,9 +18,9 @@ export class ScheduleTypeModalComponent {
     this.isFromScheduledTransfers = createTransferService.isFromScheduledTransfers();
     this.transferFrequencyList = createTransferService.transferFrequency;
     if (!this.transfer.frequency) {
-      this.transfer.frequency = this.transferFrequencyList.filter((frequencyData: IDropdownOption) => {
+      this.transfer.frequency = this.transferFrequencyList.find((frequencyData: IDropdownOption) => {
         return frequencyData.value === TransferFrequency.Once;
-      })[0].value as TransferFrequency;
+      }).value as TransferFrequency;
     }
   }
   async dismiss(option?: any): Promise<any> {

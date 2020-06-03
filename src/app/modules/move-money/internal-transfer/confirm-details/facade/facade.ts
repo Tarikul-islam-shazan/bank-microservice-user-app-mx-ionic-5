@@ -33,11 +33,11 @@ export class ConfirmDetailsFacade {
   // Submit internal transfer
   submitInternalTransfer() {
     if (!this.transfer.frequency) {
-      this.transfer.frequency = this.internalTransferService.transferFrequency.filter(
+      this.transfer.frequency = this.internalTransferService.transferFrequency.find(
         (frequencyData: IDropdownOption) => {
           return frequencyData.value === TransferFrequency.Once;
         }
-      )[0].value as TransferFrequency;
+      ).value as TransferFrequency;
     }
     this.internalTransferService
       .submitInternalTransfer(this.transfer as ITransfer)
