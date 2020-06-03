@@ -3,8 +3,6 @@ import { ModalController } from '@ionic/angular';
 import { ITransferSuccessModalObject, TransferType } from '@app/move-money/internal-transfer/models';
 import { AccountType } from '@app/core/models/dto/account';
 import { TranslateService } from '@ngx-translate/core';
-import { CreateTransferService } from '../../services';
-import { IDropdownOption } from '@app/core';
 @Component({
   selector: 'mbc-transfer-success-modal',
   templateUrl: './transfer-success-modal.component.html',
@@ -13,11 +11,7 @@ import { IDropdownOption } from '@app/core';
 export class TransferSuccessModalComponent {
   @Input() data: ITransferSuccessModalObject;
 
-  constructor(
-    private modalCtrl: ModalController,
-    private translate: TranslateService,
-    public createTransferService: CreateTransferService
-  ) {}
+  constructor(private modalCtrl: ModalController, private translate: TranslateService) {}
 
   async dismiss(option?: any): Promise<any> {
     return await this.modalCtrl.dismiss(option);
@@ -35,12 +29,6 @@ export class TransferSuccessModalComponent {
       return false;
     }
     return true;
-  }
-
-  transferFrequency(frequncy: string): string {
-    return this.createTransferService.transferFrequency.filter((frequencyData: IDropdownOption) => {
-      return frequencyData.value === frequncy;
-    })[0].text;
   }
 
   // From transfer success we get account Type as DDA, SSA or LOC, so here we translate the account type.

@@ -10,12 +10,12 @@ export interface ITransfer {
 }
 
 export enum TransferFrequency {
-  Once = 'ONCE',
-  Daily = 'DAILY',
-  Weekly = 'WEEKLY',
-  BiWeekly = 'BIWEEKLY',
-  Monthly = 'MONTHLY',
-  Yearly = 'YEARLY'
+  Once = 'U',
+  Daily = 'D',
+  Weekly = 'S',
+  BiWeekly = 'Q',
+  Monthly = 'M',
+  Yearly = 'A'
 }
 
 export enum TransferType {

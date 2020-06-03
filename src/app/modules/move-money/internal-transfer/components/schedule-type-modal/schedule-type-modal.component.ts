@@ -10,15 +10,16 @@ import { IDropdownOption } from '@app/core';
 })
 export class ScheduleTypeModalComponent {
   minimumCalendarDate = new Date().toISOString();
-
+  isFromScheduledTransfers: boolean;
   transfer: Partial<ITransfer>;
   transferFrequencyList: IDropdownOption[];
   constructor(private modalCtrl: ModalController, public createTransferService: CreateTransferService) {
     this.transfer = this.createTransferService.getTransfer();
+    this.isFromScheduledTransfers = createTransferService.isFromScheduledTransfers();
     this.transferFrequencyList = createTransferService.transferFrequency;
     if (!this.transfer.frequency) {
       this.transfer.frequency = this.transferFrequencyList.filter((frequencyData: IDropdownOption) => {
-        return frequencyData.text === TransferFrequency.Once;
+        return frequencyData.value === TransferFrequency.Once;
       })[0].value as TransferFrequency;
     }
   }

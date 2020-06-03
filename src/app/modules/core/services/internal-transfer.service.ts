@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from '@env/environment';
 import { Observable } from 'rxjs/internal/Observable';
-import { SettingsService } from '@app/core/services/settings.service';
 import { ITransfer } from '@app/move-money/internal-transfer/models';
 import { IDropdownOption, StaticDataCategory, StaticData } from '../models/static-data';
 import { StaticDataService } from './static-data.service';
-import { shareReplay, tap } from 'rxjs/operators';
+import { shareReplay } from 'rxjs/operators';
+import { HeaderService } from './header-service.service';
 @Injectable({
   providedIn: 'root'
 })
@@ -15,15 +15,11 @@ export class InternalTransferService {
   _transferFrequency: IDropdownOption[];
 
   private baseUrl = environment.serviceUrl;
-  private httpHeader = new HttpHeaders({
-    'MeedBankingClub-Bank-Identifier': this.settingsService.getSettings().userSettings.bankIdentifier,
-    'MeedBankingClub-Username': this.settingsService.getSettings().userSettings.username
-  });
 
   constructor(
     private http: HttpClient,
-    private settingsService: SettingsService,
-    private staticDataService: StaticDataService
+    private staticDataService: StaticDataService,
+    private headerService: HeaderService
   ) {}
 
   get transferFrequency(): IDropdownOption[] {
@@ -36,18 +32,20 @@ export class InternalTransferService {
 
   submitInternalTransfer(requestBody: ITransfer): Observable<ITransfer> {
     return this.http.post<ITransfer>(`${this.baseUrl}/bank/internal-transfer`, requestBody, {
-      headers: this.httpHeader
+      headers: this.headerService.getUserNameHeader()
     });
   }
 
   modifyInternalTransfer(requestBody: ITransfer): Observable<ITransfer> {
     return this.http.patch<ITransfer>(`${this.baseUrl}/bank/internal-transfer`, requestBody, {
-      headers: this.httpHeader
+      headers: this.headerService.getUserNameHeader()
     });
   }
 
   getInternalTransfers(): Observable<ITransfer[]> {
-    return this.http.get<ITransfer[]>(`${this.baseUrl}/bank/internal-transfer`, { headers: this.httpHeader });
+    return this.http.get<ITransfer[]>(`${this.baseUrl}/bank/internal-transfer`, {
+      headers: this.headerService.getMemberICustomerIdHeader()
+    });
   }
 
   /**
@@ -59,7 +57,7 @@ export class InternalTransferService {
    */
   deleteInternalTransfer(requestBody: Partial<ITransfer> | HttpParams): Observable<{ status: boolean }> {
     return this.http.delete<{ status: boolean }>(`${this.baseUrl}/bank/internal-transfer`, {
-      headers: this.httpHeader,
+      headers: this.headerService.getUserNameHeader(),
       params: requestBody as HttpParams
     });
   }

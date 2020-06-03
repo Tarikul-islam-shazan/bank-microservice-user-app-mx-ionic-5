@@ -1119,6 +1119,14 @@
       "button-text": "Continue"
     },
     "internal-transfer": {
+      "transfer-frequency": {
+        "U": "Once",
+        "D": "Daily",
+        "S": "Weekly",
+        "Q": "BiWeekly",
+        "M": "Monthly",
+        "A": "Yearly"
+      },
       "move-between-accounts": {
         "header-title": "Move Between Accounts",
         "transfer-to": "TO",
@@ -1164,8 +1172,10 @@
         "transfer-recurring": "scheduled",
         "transfer-from": "from",
         "transfer-to": "to",
-        "schedule-subtitle-text": "Recurring {{frequency}} from ",
-        "occurring-subtitle-text": "Occurring {{frequency}} on ",
+        "schedule-subtitle-text": "Recurring ",
+        "schedule-subtitle-text-2": "from ",
+        "occurring-subtitle-text": "Occurring ",
+        "occurring-subtitle-text-2": "on ",
         "reference-text": "Ref #",
         "done-button": "Done",
         "checking-text": "Checking",

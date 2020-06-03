@@ -27,13 +27,11 @@ export class CancelTransferFacade {
 
   // Delete a Scheduled  transfer
   deleteInternalTransfer() {
-    const { transferId, previousTransferType } = this.transfer;
-    this.internalTransferService
-      .deleteInternalTransfer({ transferId, transferType: previousTransferType })
-      .subscribe(() => {
-        this.analytics.logEvent(AnalyticsEventTypes.ScheduleTransferDeleted);
-        this.deleteSuccess(this.transfer);
-      });
+    const { transferId, transferType, debtorAccount } = this.transfer;
+    this.internalTransferService.deleteInternalTransfer({ transferId, transferType, debtorAccount }).subscribe(() => {
+      this.analytics.logEvent(AnalyticsEventTypes.ScheduleTransferDeleted);
+      this.deleteSuccess(this.transfer);
+    });
   }
 
   // Delete internal transfer success, show the success modal.

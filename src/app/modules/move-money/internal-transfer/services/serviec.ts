@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { TransferFrequency, ITransfer } from '@app/move-money/internal-transfer/models/index';
+import { ITransfer } from '@app/move-money/internal-transfer/models/index';
 import * as moment from 'moment';
 import { IDropdownOption, InternalTransferService } from '@app/core';
 

@@ -32,13 +32,14 @@
     <ion-item lines="none">
       <div class="img-calendar"></div>
       <ion-datetime
+        [disabled]="isFromScheduledTransfers"
         min="{{ minimumCalendarDate }}"
         [(ngModel)]="transfer.transferDate"
         displayFormat="{{
           'move-money-module.internal-transfer.schedule-type-modal.schedule-date-display-format' | translate
         }}"
       ></ion-datetime>
-      <div class="edit-text" slot="end">
+      <div *ngIf="!isFromScheduledTransfers" class="edit-text" slot="end">
         {{ 'move-money-module.internal-transfer.schedule-type-modal.schedule-date-edit-button' | translate }}
       </div>
     </ion-item>

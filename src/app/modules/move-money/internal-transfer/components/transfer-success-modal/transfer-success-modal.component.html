@@ -26,20 +26,18 @@
       <div class="subtitle-block">
         <div class="subtitle-text">
           <span *ngIf="isScheduleTransfer()">
-            {{
-              'move-money-module.internal-transfer.transfer-success-modal.schedule-subtitle-text'
-                | translate: { frequency: transferFrequency(transferModalData.frequency) }
-            }}
+            {{ 'move-money-module.internal-transfer.transfer-success-modal.schedule-subtitle-text' | translate }}
+            {{ 'move-money-module.internal-transfer.transfer-frequency.' + transferModalData.frequency | translate }}
+            {{ 'move-money-module.internal-transfer.transfer-success-modal.schedule-subtitle-text-2' | translate }}
           </span>
           <span *ngIf="!isScheduleTransfer()">
-            {{
-              'move-money-module.internal-transfer.transfer-success-modal.occurring-subtitle-text'
-                | translate: { frequency: transferFrequency(transferModalData.frequency) }
-            }}
+            {{ 'move-money-module.internal-transfer.transfer-success-modal.occurring-subtitle-text' | translate }}
+            {{ 'move-money-module.internal-transfer.transfer-frequency.' + transferModalData.frequency | translate }}
+            {{ 'move-money-module.internal-transfer.transfer-success-modal.occurring-subtitle-text-2' | translate }}
           </span>
           {{ transferModalData.transferDate | date: 'MMM dd, yyyy' }}
         </div>
-        <div class="subtitle-ref">
+        <div class="subtitle-ref" *ngIf="transferModalData.transferId">
           {{ 'move-money-module.internal-transfer.transfer-success-modal.reference-text' | translate }}
           {{ transferModalData.transferId }}
         </div>
