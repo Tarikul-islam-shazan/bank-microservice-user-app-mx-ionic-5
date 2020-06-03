@@ -36,6 +36,22 @@ export class StatementsFacade {
     });
   }
 
+  /**
+   * Issue: MM2-159
+   * Details:  Statements: View list
+   * Date: June 03, 2020
+   * Developer: Raihan <raihanuzzaman@bs-23.net>
+   */
+
+  /**
+   * This method shows the modal which contains the view or download options
+   * for the statements
+   *
+   * @param {IStatement} month
+   * @param {string} acountType
+   * @returns {Promise<void>}
+   * @memberof StatementsFacade
+   */
   async openModal(month: IStatement, acountType: string): Promise<void> {
     const componentProps: IMeedModalContent = {
       contents: [
@@ -82,6 +98,13 @@ export class StatementsFacade {
     this.pdfViewerService.openPDFFromBase64Data(pdfData);
   }
 
+  /**
+   * this method initiates the fetching of xml file from the backend
+   *
+   * @param {IStatement} month
+   * @param {string} accountType
+   * @memberof StatementsFacade
+   */
   initiateXml(month: IStatement, accountType: string): void {
     const accountData = this.accountService.getCachedAccountSummary();
     const { accountId } = accountData.find(account => account.accountType === accountType);
@@ -95,6 +118,14 @@ export class StatementsFacade {
     });
   }
 
+  /**
+   * converts the string xml file to base64 and creates an object
+   * before calling the download service
+   *
+   * @param {string} xml
+   * @param {string} accountType
+   * @memberof StatementsFacade
+   */
   downloadXml(xml: string, accountType: string) {
     const xmlTitle = accountType + ' statement';
     const xmlTobase64data = 'data:text/xml;base64,' + xml;

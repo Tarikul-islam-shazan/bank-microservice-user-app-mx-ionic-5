@@ -19,6 +19,20 @@ export class DownloadService {
     public toastController: ToastController
   ) {}
 
+  /**
+   * Issue: MM2-159
+   * Details:  Statements: View list
+   * Date: June 03, 2020
+   * Developer: Raihan <raihanuzzaman@bs-23.net>
+   */
+
+  /**
+   * This method selects which downloading process is appropriate for
+   * the device platform
+   *
+   * @param {IXMLContent} XMLContent
+   * @memberof DownloadService
+   */
   async downloadFromUrl(XMLContent: IXMLContent) {
     if (this.appPlatform.isCordova()) {
       const writeDirectory = this.appPlatform.isIos()
@@ -51,6 +65,14 @@ export class DownloadService {
     });
   }
 
+  /**
+   * This actually starts the downloading process for iOS and android
+   *
+   * @private
+   * @param {IXMLProps} XMLProps
+   * @returns {Promise<boolean>}
+   * @memberof DownloadService
+   */
   private downloadFile(XMLProps: IXMLProps): Promise<boolean> {
     const fileTransfer: FileTransferObject = this.transfer.create();
     return fileTransfer.download(XMLProps.base64DataOrUrl, XMLProps.writeDirectory + XMLProps.fileName).then(
@@ -64,6 +86,13 @@ export class DownloadService {
     );
   }
 
+  /**
+   * Starts the downloading process for the web
+   *
+   * @private
+   * @param {IXMLProps} XMLProps
+   * @memberof DownloadService
+   */
   private async downloadFileOnWeb(XMLProps: IXMLProps) {
     const fileName = XMLProps.xmlTitle.replace(/ /g, '_') + '.xml';
     const element = document.createElement('a');
@@ -72,6 +101,15 @@ export class DownloadService {
     element.click();
   }
 
+  /**
+   * This method is exclusive to iOS as it has a a differnt file system
+   * Opens up the file once the file gets downloaded and allows the users
+   * to share that file between different applications
+   *
+   * @private
+   * @param {*} baseDirectory
+   * @memberof DownloadService
+   */
   private openFileOnIOS(baseDirectory): void {
     this.fileOpener
       .open(baseDirectory.toURL(), 'application/xml')
