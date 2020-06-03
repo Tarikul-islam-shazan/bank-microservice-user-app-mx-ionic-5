@@ -23,7 +23,7 @@
   </div>
 </ion-content>
 
-<ion-footer class="ion-no-border" *ngIf="(cardStatusFacade.cards$ | async)?.cards[0] as card">
+<ion-footer class="ion-no-border" *ngIf="(cardStatusFacade.cards$ | async) as card">
   <ion-toolbar>
     <ion-button class="white-button" expand="block" (click)="updateCardStatus(card.cardId,card.isCardActive)">
       <ng-template [ngIf]="card.isCardActive" [ngIfElse]="unfreezeCard">

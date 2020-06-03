@@ -19,11 +19,22 @@ export class AccountService {
   sweepStatus$: Observable<ISweepState>;
   constructor(private http: HttpClient, private headerService: HeaderService) {}
 
-  public setAccountSummary(accountSummary: IAccount[]) {
+  public setAccountSummary(accountSummary: IAccount[]): void {
     this.accountSummary = accountSummary;
   }
 
-  public setReward(reward: number) {
+  /**
+   *
+   * @description This Method will send AccountSummary based on AccountType
+   * @param {AccountType} accountType
+   * @returns { IAccount }
+   * @memberof AccountService
+   */
+  public getAccountSummary(accountType: AccountType): IAccount {
+    return this.accountSummary.find((account: IAccount) => account.accountType === accountType);
+  }
+
+  public setReward(reward: number): void {
     this.reward = reward;
   }
 
@@ -68,8 +79,8 @@ export class AccountService {
    * @returns {Observable<ISweepState>}
    * @memberof AccountService
    */
-  public fetchAccountSweepStatus(): Observable<ISweepState> {
-    return this.http.get<ISweepState>(`${environment.serviceUrl}/accounts/sweeps`, {
+  public fetchAccountSweepStatus(accountId: string): Observable<ISweepState> {
+    return this.http.get<ISweepState>(`${environment.serviceUrl}/accounts/${accountId}/sweeps`, {
       headers: this.headerService.getUserNameHeader()
     });
   }
@@ -82,7 +93,8 @@ export class AccountService {
    */
   getAccountSweepStatus(): Observable<ISweepState> {
     if (!this.sweepStatus$) {
-      this.sweepStatus$ = this.fetchAccountSweepStatus().pipe(shareReplay(1));
+      const { accountId } = this.getAccountSummary(AccountType.LOC);
+      this.sweepStatus$ = this.fetchAccountSweepStatus(accountId).pipe(shareReplay(1));
     }
     return this.sweepStatus$;
   }
@@ -94,9 +106,9 @@ export class AccountService {
    * @returns {Observable<ISweepState>}
    * @memberof AccountService
    */
-  updateAccountSweepStatus(apiParms: ISweepState): Observable<ISweepState> {
+  updateAccountSweepStatus(accountId: string, apiParms: ISweepState): Observable<ISweepState> {
     return this.http
-      .patch<ISweepState>(`${environment.serviceUrl}/accounts/sweeps`, apiParms, {
+      .patch<ISweepState>(`${environment.serviceUrl}/accounts/${accountId}/sweeps`, apiParms, {
         headers: this.headerService.getUserNameHeader()
       })
       .pipe(

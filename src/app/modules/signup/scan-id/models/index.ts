@@ -2,8 +2,6 @@ export interface IJumioSuccessResponse {
   selectedCountry?: string;
   selectedDocumentType?: DocumentType;
   idNumber?: string;
-  personalNumber?: string;
-  issuingDate?: Date;
   expiryDate?: Date;
   issuingCountry?: string;
   lastName?: string;
@@ -11,10 +9,6 @@ export interface IJumioSuccessResponse {
   dob?: Date;
   gender?: string;
   originatingCountry?: string;
-  addressLine?: string;
-  city?: string;
-  subdivision?: string;
-  postCode?: string;
   scanReference: string;
   extractionMethod?: string;
   status: JumioResponseType;

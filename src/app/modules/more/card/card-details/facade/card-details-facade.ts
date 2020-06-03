@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class CardDetailsFacade {
-  cards$: Observable<ICard[]>;
+  cards$: Observable<ICard>;
   constructor(private cardService: CardService) {
     this.getCardDetails();
   }

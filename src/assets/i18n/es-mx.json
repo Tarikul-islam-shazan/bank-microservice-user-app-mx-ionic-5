@@ -21,7 +21,7 @@
       "signup-button-text": "Sign up",
       "help-button-text": "Ayuda",
       "help-modal-message": "Contáctate con el servicio de atención al cliente.",
-      "help-modal-call-no": "Llama al +5540004030",
+      "help-modal-call-no": "Llama al {{contactNumber}}",
       "help-modal-cancle-btn-text": "Cancelar",
       "meed-reward-earnMore": "¡Gana aún más! ",
       "meed-reward-tryAndEarnedCashBack": "Prueba MeedRewards™ y gana hasta un 5 % de devolución en efectivo",
@@ -523,10 +523,10 @@
     "signup-beneficiary-page": {
       "page-title": "Beneficiary Information",
       "beneficiary-form": {
-        "first-name": "First name",
-        "second-name": "Second name (optional)",
-        "parental-name": "Parental name",
-        "maternal-last-name": "Maternal name (optional)",
+        "first-name": "First Name",
+        "second-name": "Second Name (optional)",
+        "parental-name": "Parental Last Name",
+        "maternal-last-name": "Maternal Last Name (optional)",
         "dob": "Date of birth",
         "relationship": "Relationship",
         "date-of-birth-display-format": "DD / MM / YYYY"
@@ -757,7 +757,27 @@
       "btn-text": "Llamar ahora"
     },
     "statements-page": {
-      "header-title": "Estados de cuenta"
+      "header-title": "Estados de cuenta",
+      "months": {
+        "01": "January",
+        "02": "February",
+        "03": "March",
+        "04": "April",
+        "05": "May",
+        "06": "June",
+        "07": "July",
+        "08": "August",
+        "09": "September",
+        "10": "October",
+        "11": "November",
+        "12": "December"
+      },
+      "modal": {
+        "title": "Choose one of the following actions",
+        "pdf-button": "View PDF",
+        "xml-button": "Download XML",
+        "cancle-button": "Cancle"
+      }
     },
     "virtual-assistant": {
       "header-title": "Ayuda",

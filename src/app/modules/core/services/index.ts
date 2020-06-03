@@ -20,6 +20,7 @@ import { StatementsService } from './statements.service';
 import { P2pService } from './p2p.service';
 import { LogoutService } from './logout.service';
 import { StaticDataService } from './static-data.service';
+import { DownloadService } from './download.service';
 export const SERVICE_PROVIDERS: any[] = [
   SignUpService,
   LoadingService,
@@ -42,7 +43,8 @@ export const SERVICE_PROVIDERS: any[] = [
   StatementsService,
   P2pService,
   LogoutService,
-  StaticDataService
+  StaticDataService,
+  DownloadService
 ];
 
 export * from './notification.service';
@@ -69,3 +71,4 @@ export * from './member.service';
 export * from './p2p.service';
 export * from './logout.service';
 export * from './static-data.service';
+export * from './download.service';

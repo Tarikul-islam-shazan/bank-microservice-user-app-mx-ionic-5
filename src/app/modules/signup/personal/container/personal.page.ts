@@ -82,14 +82,14 @@ export class PersonalPage implements OnInit {
    * @memberof PersonalPage
    */
   initJumioDataIntoForm() {
-    const { firstName, lastName, dateOfBirth } = this.facade.getJumioScanData();
-    const [first, ...rest] = firstName.split(' ');
-    this.personalForm.patchValue({
-      firstName: first ? first : null,
-      middleName: rest ? rest.join(' ') : null,
-      lastName: lastName ? lastName : null,
-      dateOfBirth: dateOfBirth ? dateOfBirth : ''
-    });
+    // const { firstName, lastName, dateOfBirth } = this.facade.getJumioScanData();
+    // const [first, ...rest] = firstName.split(' ');
+    // this.personalForm.patchValue({
+    //   firstName: first ? first : null,
+    //   middleName: rest ? rest.join(' ') : null,
+    //   lastName: lastName ? lastName : null,
+    //   dateOfBirth: dateOfBirth ? dateOfBirth : ''
+    // });
   }
 
   /**
