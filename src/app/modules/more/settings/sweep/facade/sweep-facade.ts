@@ -44,7 +44,7 @@ export class SweepFacade {
    * @memberof SweepFacade
    */
   changeSweepStatus(): void {
-    const accountId = this.accountService.getAccountSummary(AccountType.LOC).accountId;
+    const { accountId } = this.accountService.getAccountSummary(AccountType.LOC);
     const apiParms: ISweepState = { state: this.sweepStatus ? SweepState.Activate : SweepState.Deactivate };
     this.accountService.updateAccountSweepStatus(accountId, apiParms).subscribe(data => {
       this.analytics.logEvent(AnalyticsEventTypes.SweepStatusUpdated, data);

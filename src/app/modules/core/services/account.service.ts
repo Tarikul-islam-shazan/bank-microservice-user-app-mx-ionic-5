@@ -93,7 +93,7 @@ export class AccountService {
    */
   getAccountSweepStatus(): Observable<ISweepState> {
     if (!this.sweepStatus$) {
-      const accountId = this.getAccountSummary(AccountType.LOC).accountId;
+      const { accountId } = this.getAccountSummary(AccountType.LOC);
       this.sweepStatus$ = this.fetchAccountSweepStatus(accountId).pipe(shareReplay(1));
     }
     return this.sweepStatus$;
