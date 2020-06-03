@@ -766,7 +766,27 @@
       "btn-text": "Call Now"
     },
     "statements-page": {
-      "header-title": "Statements"
+      "header-title": "Statements",
+      "months": {
+        "01": "January",
+        "02": "February",
+        "03": "March",
+        "04": "April",
+        "05": "May",
+        "06": "June",
+        "07": "July",
+        "08": "August",
+        "09": "September",
+        "10": "October",
+        "11": "November",
+        "12": "December"
+      },
+      "modal": {
+        "title": "Choose one of the following actions",
+        "pdf-button": "View PDF",
+        "xml-button": "Download XML",
+        "cancle-button": "Cancle"
+      }
     },
     "virtual-assistant": {
       "header-title": "Assistance",

@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { IMonthlyStatement } from '@app/core';
+import { IStatement } from '@app/core';
 import { IonSlides } from '@ionic/angular';
 import { StatementsFacade } from '../facade';
 
@@ -32,7 +32,8 @@ export class StatementsPage implements OnInit {
 
   selectStatementYear(year: string): void {}
 
-  readpdf(event: any, month: IMonthlyStatement, acountType: string): void {
-    this.statementFacade.loadPdf(month, acountType);
+  openModal(event: any, month: IStatement, acountType: string): void {
+    // this.statementFacade.loadPdf(month, acountType);
+    this.statementFacade.openModal(month, acountType);
   }
 }
