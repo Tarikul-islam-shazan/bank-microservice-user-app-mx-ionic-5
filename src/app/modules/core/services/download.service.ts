@@ -5,6 +5,7 @@ import { FileOpener } from '@ionic-native/file-opener/ngx';
 import { ErrorService } from '@app/core/services/error.service';
 import { FileTransfer, FileTransferObject } from '@ionic-native/file-transfer/ngx';
 import { ToastController } from '@ionic/angular';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +17,8 @@ export class DownloadService {
     private fileOpener: FileOpener,
     private errorService: ErrorService,
     private transfer: FileTransfer,
-    public toastController: ToastController
+    public toastController: ToastController,
+    private translate: TranslateService
   ) {}
 
   /**
@@ -37,7 +39,7 @@ export class DownloadService {
     if (this.appPlatform.isCordova()) {
       const writeDirectory = this.appPlatform.isIos()
         ? this.file.documentsDirectory
-        : this.file.externalRootDirectory + '/Download';
+        : this.file.externalApplicationStorageDirectory;
       const fileName = XMLContent.xmlTitle.replace(/ /g, '_') + '.xml';
       if (this.appPlatform.isIos()) {
         this.downloadXML({ ...XMLContent, fileName, writeDirectory });
@@ -56,13 +58,15 @@ export class DownloadService {
   }
 
   private async downloadXML(XMLProps: IXMLProps) {
-    await this.downloadFile(XMLProps).then(async baseDirectory => {
-      if (this.appPlatform.isIos()) {
-        this.openFileOnIOS(baseDirectory);
-      } else if (this.appPlatform.isAndroid()) {
-        await this.openFileOnAndroid();
-      }
-    });
+    await this.downloadFile(XMLProps)
+      .then(async baseDirectory => {
+        if (this.appPlatform.isIos()) {
+          this.openFileOnIOS(baseDirectory);
+        } else if (this.appPlatform.isAndroid()) {
+          await this.openFileOnAndroid();
+        }
+      })
+      .catch(e => {});
   }
 
   /**
@@ -119,7 +123,7 @@ export class DownloadService {
 
   private async openFileOnAndroid() {
     const toast = await this.toastController.create({
-      message: 'Your file has been downloaded, please check the downlaod folder',
+      message: this.translate.instant('more-module.statements-page.toast-message'),
       duration: 2000
     });
     toast.present();

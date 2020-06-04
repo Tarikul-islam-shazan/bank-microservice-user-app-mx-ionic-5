@@ -786,7 +786,8 @@
         "pdf-button": "View PDF",
         "xml-button": "Download XML",
         "cancle-button": "Cancel"
-      }
+      },
+      "toast-message": "Your file has been downloaded, please check the app directory folder."
     },
     "virtual-assistant": {
       "header-title": "Assistance",
