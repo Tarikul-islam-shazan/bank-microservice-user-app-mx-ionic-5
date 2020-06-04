@@ -35,7 +35,7 @@ export class LoginUserPage implements OnInit {
   private initLoginForm(): void {
     this.loginForm = this.formBuilder.group({
       username: [
-        this.loginFacade.username,
+        '',
         [
           Validators.required,
           Validators.minLength(8),
@@ -55,9 +55,10 @@ export class LoginUserPage implements OnInit {
           SignupValidators.oneNumber
         ]
       ],
-      rememberUsername: [this.loginFacade.username ? true : false],
-      rememberBiometric: [this.loginFacade.useBiometric ? true : false]
+      rememberUsername: [false],
+      rememberBiometric: [false]
     });
+    this.updateLoginFormValue();
   }
 
   ionViewWillEnter() {
@@ -65,17 +66,24 @@ export class LoginUserPage implements OnInit {
     this.isSignUpAvailable = !this.loginFacade.checkSignUpFeatureAvailableForUser();
   }
 
+  /**
+   * Ticket:MM2-334
+   * Details: Login Screen : Save username checkbox is non-functional
+   * Date: June 04, 2020
+   * Developer: Kausar <md.kausar@brainstation23.com>
+   * @summary A function to update value of login form as required
+   * @memberof LoginUserPage
+   */
+  updateLoginFormValue(): void {
+    const rememberUsername = this.loginFacade.rememberUsername;
+    const password = null;
+    const username = rememberUsername ? this.loginFacade.username : '';
+    const rememberBiometric = this.loginFacade.useBiometric ? true : false;
+    this.loginForm.patchValue({ rememberUsername, username, password, rememberBiometric });
+  }
+
   async ionViewDidEnter() {
-    /**
-     * Issue: GMA-4481: Login screen: When users select "Save username" checkbox it saves both the username and password.
-     * Date: March 05, 2020
-     * Developer: M G Muntaqeem <muntaqeem@bs-23.net>
-     * When the user logs out, the password remains because the form is not reinitialized, that's why update the value to null
-     */
-    this.loginForm.controls.password.patchValue(null);
-    // sets the status of biometric in the from control
-    const biometric = this.loginFacade.useBiometric ? true : false;
-    this.loginForm.controls.rememberBiometric.setValue(biometric);
+    this.updateLoginFormValue();
     const isLoggedOut = await this.loginFacade.isLoggedOut();
     if (isLoggedOut && this.loginFacade.useBiometric) {
       this.loginFacade.requestBiometricAuthentication(this.loginForm.value);
