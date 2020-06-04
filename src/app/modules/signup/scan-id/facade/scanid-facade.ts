@@ -139,8 +139,8 @@ export class ScanIDFacade {
         break;
     }
 
-    let dateOfBirth = jumioDocumentData.dob.toString();
-    let expiryDate = jumioDocumentData.expiryDate.toString();
+    let dateOfBirth = jumioDocumentData.dob ? jumioDocumentData.dob.toString() : null;
+    let expiryDate = jumioDocumentData.expiryDate ? jumioDocumentData.expiryDate.toString() : null;
     if (this.appPlatform.isIos()) {
       dateOfBirth = dateOfBirth ? moment(dateOfBirth.toString().split('T')[0]).format('YYYY-MM-DD') : '';
       expiryDate = expiryDate ? moment(expiryDate.toString().split('T')[0]).format('YYYY-MM-DD') : '';
