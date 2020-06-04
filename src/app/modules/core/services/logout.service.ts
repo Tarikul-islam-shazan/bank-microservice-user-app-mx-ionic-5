@@ -52,6 +52,7 @@ export class LogoutService {
       case LogoutReason.AuthTokenMissing:
       case LogoutReason.AuthTokenInValidOrExpired:
       case LogoutReason.AuthSessionTimeout:
+        this._logoutReason = null;
         return await this.successModal();
     }
   }
