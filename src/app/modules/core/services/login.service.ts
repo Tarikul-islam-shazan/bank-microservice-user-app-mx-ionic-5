@@ -58,17 +58,20 @@ export class LoginService {
       configurationObject => configurationObject.category === StaticDataCategories.SuppressFeature
     );
     const menus = menuList as Menu[];
-    const { password, username }: LoginRequest = userFormData;
-
-    const meedExtraInfoNotShow = this.settingsService.getSettings().userSettings.meedExtraInfoNotShow
-      ? this.settingsService.getSettings().userSettings.meedExtraInfoNotShow
+    const { password, username, rememberUsername } = userFormData;
+    const exitingUserSettings = this.settingsService.getSettings().userSettings;
+    const meedExtraInfoNotShow = exitingUserSettings.meedExtraInfoNotShow
+      ? exitingUserSettings.meedExtraInfoNotShow
       : false;
+    const contacts = exitingUserSettings.contacts;
     const userSettings: UserSettings = {
       disabledSignUp: true, // after successful login signup would be disabled
       bankIdentifier,
       username,
       billPayProvider,
-      meedExtraInfoNotShow
+      meedExtraInfoNotShow,
+      rememberUsername,
+      contacts
     };
     const systemSettings: SystemSettings = { menus };
     this.settingsService.setUserSettings(userSettings);

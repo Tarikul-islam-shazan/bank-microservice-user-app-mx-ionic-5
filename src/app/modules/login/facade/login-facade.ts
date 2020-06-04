@@ -76,6 +76,10 @@ export class LoginFacade {
   get username(): string {
     return this.settingsService.getSettings().userSettings.username;
   }
+  get rememberUsername(): boolean {
+    const userSettings = this.settingsService.getSettings().userSettings;
+    return userSettings.rememberUsername ? userSettings.rememberUsername : false;
+  }
 
   get useBiometric(): boolean {
     return this.settingsService.getSettings().userSettings.useBiometric;
