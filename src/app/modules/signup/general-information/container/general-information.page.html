@@ -49,7 +49,10 @@
             placeholder="{{ 'signup-module.general-info-page.generalForm.maternal-last-name' | translate }}"
           ></ion-input>
         </ion-item>
-        <ion-item class="date-input">
+        <ion-item
+          class="date-input"
+          [ngClass]="generalForm.controls.dateOfBirth.invalid && (generalForm.controls.dateOfBirth.touched || generalForm.controls.curp.touched || generalForm.controls.mobileNumber.touched) ? 'date-error-input' : ''"
+        >
           <ion-label *ngIf="!generalForm.controls.dateOfBirth.value"
             >{{ 'signup-module.general-info-page.generalForm.date-of-birth' | translate }}</ion-label
           >

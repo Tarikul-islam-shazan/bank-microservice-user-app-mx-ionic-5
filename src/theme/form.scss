@@ -1,6 +1,7 @@
 form {
   ion-list {
-    ion-item.date-input {
+    ion-item.date-input,
+    ion-item.date-error-input {
       width: 100% !important;
       height: 60px !important;
       border: 2px solid var(--input-white-border-color) !important;
@@ -33,6 +34,9 @@ form {
         align-items: center !important;
         color: #070a18 !important;
       }
+    }
+    ion-item.date-error-input {
+      border: 2px solid #fe4c55 !important;
     }
     ion-item {
       --highlight-height: 0px;
