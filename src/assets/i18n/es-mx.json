@@ -73,7 +73,7 @@
       "available-text": "Disponible",
       "minimum-payment-due-text": "Pago mínimo adeudado",
       "payment-due-date-text": "Fecha de vencimiento del pago",
-      "payment-due-date-format": "MMM d",
+      "payment-due-date-format": "MMM d, y",
       "no-payment-due-date-text": "Sin fecha de vencimiento de pago",
       "make-payment-text": " Realizar pago",
       "hide-text": "Ocultar",
