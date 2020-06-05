@@ -7,10 +7,14 @@ import { IDropdownOption, StaticDataCategory, StaticData } from '../models/stati
 import { StaticDataService } from './static-data.service';
 import { shareReplay } from 'rxjs/operators';
 import { HeaderService } from './header-service.service';
+import { AccountType } from '@app/core/models/dto/account';
+
 @Injectable({
   providedIn: 'root'
 })
 export class InternalTransferService {
+  private _toAccountType: AccountType;
+  private _formAccoutType: AccountType;
   staticData$: Observable<{ [key: string]: IDropdownOption[] }>;
   _transferFrequency: IDropdownOption[];
 
@@ -25,9 +29,22 @@ export class InternalTransferService {
   get transferFrequency(): IDropdownOption[] {
     return this._transferFrequency;
   }
-
   set transferFrequency(transferFrequency: IDropdownOption[]) {
     this._transferFrequency = transferFrequency;
+  }
+
+  get toAccountType(): AccountType {
+    return this._toAccountType;
+  }
+  set toAccountType(accountType: AccountType) {
+    this._toAccountType = accountType;
+  }
+
+  get formAccountType(): AccountType {
+    return this._formAccoutType;
+  }
+  set formAccountType(accountType: AccountType) {
+    this._formAccoutType = accountType;
   }
 
   submitInternalTransfer(requestBody: ITransfer): Observable<ITransfer> {

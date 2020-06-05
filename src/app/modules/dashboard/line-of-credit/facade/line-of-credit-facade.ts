@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AccountType, IAccount, ITransaction, ITransactionQueries } from '@app/core';
+import { AccountType, IAccount, ITransaction, ITransactionQueries, InternalTransferService } from '@app/core';
 import { AccountTransaction, IAccountOverview } from '@app/dashboard/models';
 import { AccountService } from '@app/core/services/account.service';
 import { LineOfCreditState } from './line-of-credit-state';
@@ -8,7 +8,7 @@ import { map } from 'rxjs/operators';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { ModalService, IMeedModalContent } from '@app/shared/services/modal.service';
 import { InterestRateService } from '@app/dashboard/services/interest-rate.service';
-
+import { Router } from '@angular/router';
 @Injectable()
 export class LineOfCreditFacade {
   constructor(
@@ -16,7 +16,9 @@ export class LineOfCreditFacade {
     private lineOfCreditState: LineOfCreditState,
     private analytics: AnalyticsService,
     private modalService: ModalService,
-    private interestRateService: InterestRateService
+    private interestRateService: InterestRateService,
+    public router: Router,
+    public internalTransferService: InternalTransferService
   ) {
     this.initialize();
   }
@@ -62,7 +64,6 @@ export class LineOfCreditFacade {
     this.lineOfCreditState.setLineOfCreditAccountState(locAccount);
     this.setTransactionsSummary(locAccount.accountId);
   }
-
   setTransactionsSummary(accountId: string) {
     this.accountService
       .getTransactions(accountId, { accountType: AccountType.LOC })
@@ -131,5 +132,9 @@ export class LineOfCreditFacade {
   }
   makePayment() {
     this.analytics.logEvent(AnalyticsEventTypes.TransferStarted, { source: 'loc-payment' });
+    // Setting Account transfer form and to Acccount Type For Make Payment
+    this.internalTransferService.formAccountType = AccountType.DDA;
+    this.internalTransferService.toAccountType = AccountType.LOC;
+    this.router.navigate(['move-money/internal-transfer']);
   }
 }

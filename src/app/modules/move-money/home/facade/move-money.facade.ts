@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IMember, MemberService, ErrorService } from '@app/core';
+import { IMember, MemberService, ErrorService, InternalTransferService } from '@app/core';
 import { MemberAccountStatus } from '@app/core/models/dto/member';
 import { AccountService } from '@app/core/services/account.service';
 import { IAccount, AccountType } from '@app/core/models/dto/account';
@@ -15,7 +15,8 @@ export class MoveMoneyFacade {
     private accountService: AccountService,
     private modalService: ModalService,
     private router: Router,
-    private errorService: ErrorService
+    private errorService: ErrorService,
+    private internalTransferService: InternalTransferService
   ) {
     this.initMoveMoneyList();
   }
@@ -91,6 +92,9 @@ export class MoveMoneyFacade {
             itemName: 'move-money-module.home-page.menu.move-between-accounts',
             appSuppress: 'MoveBetweenAccounts',
             onClick: () => {
+              // Setting Account transfer form and to Acccount Type
+              this.internalTransferService.formAccountType = AccountType.DDA;
+              this.internalTransferService.toAccountType = AccountType.SSA;
               this.router.navigate(['/move-money/internal-transfer']);
             }
           },
