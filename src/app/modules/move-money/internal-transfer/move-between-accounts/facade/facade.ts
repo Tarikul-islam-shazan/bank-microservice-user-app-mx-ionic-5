@@ -40,7 +40,7 @@ export class InternalTransferFacade {
   initialize() {
     this.transfer = this.transferService.getTransfer();
     this.accountService.fetchAccountSummary().subscribe(success => {
-      this.accountSwitch(AccountType.DDA, AccountType.SSA);
+      this.accountSwitch(this.internalTransferService.formAccountType, this.internalTransferService.toAccountType);
     });
     this.internalTransferService.loadTransferFrequency();
   }

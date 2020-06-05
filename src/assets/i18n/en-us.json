@@ -73,7 +73,7 @@
       "available-text": "Available",
       "minimum-payment-due-text": "Minimum Payment Due",
       "payment-due-date-text": "Payment Due Date",
-      "payment-due-date-format": "MMM d",
+      "payment-due-date-format": "MMM dd, y",
       "no-payment-due-date-text": "No Payment Due Date",
       "make-payment-text": " Make Payment",
       "hide-text": "HIDE",

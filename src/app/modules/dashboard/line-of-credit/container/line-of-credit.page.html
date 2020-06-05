@@ -26,30 +26,32 @@
             {{ 'dashboard-module.loc-transaction-page.minimum-payment-due-text' | translate }}
           </div>
           <div class="right-content">
-            {{ (lineOfCreditFacade.lineOfCreditAccount$ | async).minimumDue | negToPos }}
+            {{ (lineOfCreditFacade.lineOfCreditAccount$ | async).minimumPaymentDue | negToPos }}
           </div>
         </div>
         <div
           class="payment-due-date-content"
-          *ngIf="(lineOfCreditFacade.lineOfCreditAccount$ | async).minimumPaymentDue>0;noPaymentDueDate"
+          *ngIf="(lineOfCreditFacade.lineOfCreditAccount$ | async).minimumPaymentDue>0;else noPaymentDueDate"
         >
           <div class="title">
             {{ 'dashboard-module.loc-transaction-page.payment-due-date-text' | translate }}
           </div>
           <div class="right-content">
-            {{ (lineOfCreditFacade.lineOfCreditAccount$ | async).paymentDueDate
-            |date:'dashboard-module.loc-transaction-page.payment-due-date-format'|translate }}
+            {{ (lineOfCreditFacade.lineOfCreditAccount$ |
+            async).paymentDueDate|date:('dashboard-module.loc-transaction-page.payment-due-date-format'|translate) }}
           </div>
         </div>
-        <div #noPaymentDueDate class="no-payment-due-date-content">
-          <div class="title">
-            {{ 'dashboard-module.loc-transaction-page.no-payment-due-date-text' | translate }}
+        <ng-template #noPaymentDueDate>
+          <div class="no-payment-due-date-content">
+            <div class="title">
+              {{ 'dashboard-module.loc-transaction-page.no-payment-due-date-text' | translate }}
+            </div>
           </div>
-        </div>
+        </ng-template>
       </div>
     </div>
 
-    <ion-button expand="full" class="grey-outline-button">
+    <ion-button expand="full" class="grey-outline-button" (click)="lineOfCreditFacade.makePayment()">
       {{ 'dashboard-module.loc-transaction-page.make-payment-text' | translate }}
     </ion-button>
 
