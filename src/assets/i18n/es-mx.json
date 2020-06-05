@@ -776,9 +776,9 @@
         "title": "Choose one of the following actions",
         "pdf-button": "View PDF",
         "xml-button": "Download XML",
-        "cancle-button": "Cancelar"
+        "cancel-button": "Cancelar"
       },
-      "toast-message": "Your file has been downloaded, please check the app directory folder."
+      "successful-file-download-toast": "Your file has been downloaded, please check the app directory folder."
     },
     "virtual-assistant": {
       "header-title": "Ayuda",
