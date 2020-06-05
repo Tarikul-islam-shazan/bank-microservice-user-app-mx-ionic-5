@@ -23,6 +23,9 @@ interface IUpgradeResponse {
 interface IQueryRequest {
   currentVersion: string;
   platform: string;
+  deviceOSVersion: string;
+  deviceModel: string;
+  deviceManufacturer: string;
 }
 
 @Injectable({
@@ -61,10 +64,13 @@ export class AppUpgradeService {
       return EMPTY;
     };
   }
-  checkUpgrade(): Promise<void> {
+  async checkUpgrade(): Promise<void> {
     const queryParameter: IQueryRequest = {
       currentVersion: semanticVersioning.appVersion,
-      platform: this.appPlatform.currentPlatform()
+      platform: this.appPlatform.currentPlatform(),
+      deviceOSVersion: this.appPlatform.deviceOSVersion,
+      deviceModel: this.appPlatform.deviceModel,
+      deviceManufacturer: this.appPlatform.deviceManufacturer
     };
     return this.http
       .get<IUpgradeResponse>(`${this.baseUrl}/app-version/upgrade`, {
