@@ -77,7 +77,7 @@ export class StatementsFacade {
           }
         },
         {
-          text: 'more-module.statements-page.modal.cancle-button',
+          text: 'more-module.statements-page.modal.cancel-button',
           cssClass: 'grey-outline-button',
           handler: async () => {
             await this.modalService.close();

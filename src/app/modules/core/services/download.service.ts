@@ -123,7 +123,7 @@ export class DownloadService {
 
   private async openFileOnAndroid() {
     const toast = await this.toastController.create({
-      message: this.translate.instant('more-module.statements-page.toast-message'),
+      message: this.translate.instant('more-module.statements-page.successful-file-download-toast'),
       duration: 2000
     });
     toast.present();
