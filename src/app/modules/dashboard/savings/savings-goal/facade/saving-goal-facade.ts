@@ -7,6 +7,8 @@ import { SavingGoalService, SavingsGoalState } from '@app/dashboard/services/sav
 import { ISavingsGoal } from '@app/dashboard/models';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { omit } from 'lodash';
+import { IMeedModalContent, ModalService } from '@app/shared';
+import { Router } from '@angular/router';
 @Injectable()
 export class SavingGoalFacade {
   savingsGoalState: Partial<SavingsGoalState>;
@@ -14,8 +16,9 @@ export class SavingGoalFacade {
   constructor(
     private savingGoalService: SavingGoalService,
     private accountService: AccountService,
-    private navCtrl: NavController,
-    private analytics: AnalyticsService
+    private analytics: AnalyticsService,
+    private readonly modalService: ModalService,
+    private readonly router: Router
   ) {}
 
   initialize() {
@@ -97,17 +100,72 @@ export class SavingGoalFacade {
     );
   }
 
-  deleteSavingGoal() {
-    this.savingGoalService
-      .deleteSavingGoal(this.savingsGoalState.savingsGoal._id)
-      .subscribe((response: ISavingsGoal) => {
-        this.analytics.logEvent(AnalyticsEventTypes.SavingsGoalDeleted);
-        this.goBackSavingPage();
-      });
+  /**
+   * @summary generates component props for openInfoModalComponent component.
+   *
+   * @private
+   * @returns {IMeedModalContent}
+   * @memberOf SavingGoalFacade
+   */
+  private generateDeleteConfirmationComponentProp(): IMeedModalContent {
+    const componentProps: IMeedModalContent = {
+      contents: [
+        {
+          title: '',
+          details: ['dashboard-module.savings-goal.modal.delete-goal-title']
+        }
+      ],
+      actionButtons: [
+        {
+          text: 'dashboard-module.savings-goal.modal.yes-button',
+          cssClass: 'white-button',
+          handler: () => {
+            this.savingGoalService.deleteSavingGoal(this.savingsGoalState.savingsGoal._id).subscribe(() => {
+              this.analytics.logEvent(AnalyticsEventTypes.SavingsGoalDeleted);
+              this.modalService.close();
+              this.goBackSavingPage();
+            });
+          }
+        },
+        {
+          text: 'dashboard-module.savings-goal.modal.no-button',
+          cssClass: 'grey-outline-button',
+          handler: () => {
+            this.modalService.close();
+          }
+        }
+      ]
+    };
+
+    return componentProps;
+  }
+
+  /**
+   * @sumamry opens openInfoModalComponent modal.
+   * deletes the goal if Yes chosen or
+   * closes modal if No chosen.
+   *
+   * @private
+   * @returns {void}
+   * @memberOf SavingGoalFacade
+   */
+  private openGoalDeleteModal(): void {
+    const componentProps = this.generateDeleteConfirmationComponentProp();
+    this.modalService.openInfoModalComponent({ componentProps });
+  }
+
+  /**
+   * @summary deletes goal
+   *
+   * @returns {void}
+   * @memberOf SavingGoalFacade
+   */
+  deleteSavingGoal(): void {
+    this.openGoalDeleteModal();
   }
 
   goBackSavingPage() {
-    this.navCtrl.pop();
+    this.router.navigate(['/home/savings-transactions']);
   }
 
   calculatePNR(): number {
