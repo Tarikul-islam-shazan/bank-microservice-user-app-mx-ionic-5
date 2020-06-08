@@ -140,7 +140,12 @@
       "by-year-text": "Por año",
       "create-savings-goal-text": "Crear objetivo de ahorro",
       "update-goal-text": "Actualizar meta",
-      "delete-goal-text": "Eliminar meta"
+      "delete-goal-text": "Eliminar meta",
+      "modal": {
+        "delete-goal-title": "¿Estás segura de que quieres eliminar?",
+        "yes-button": "Sí",
+        "no-button": "No"
+      }
     },
     "transaction-details": {
       "title-text": "Detalles de la transacción",

@@ -140,7 +140,12 @@
       "by-year-text": "By year",
       "create-savings-goal-text": "Create savings goal",
       "update-goal-text": "Update goal",
-      "delete-goal-text": "Delete goal"
+      "delete-goal-text": "Delete goal",
+      "modal": {
+        "delete-goal-title": "Are you sure you want to delete?",
+        "yes-button": "Yes",
+        "no-button": "No"
+      }
     },
     "transaction-details": {
       "title-text": "Transaction Details",
