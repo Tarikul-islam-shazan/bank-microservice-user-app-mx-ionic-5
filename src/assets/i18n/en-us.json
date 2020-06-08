@@ -134,6 +134,7 @@
       "edit-header-text": "Edit Savings Goal",
       "goal-name-text": "Goal Name",
       "monthly-amount-text": "Monthly Amount",
+      "amount-placeholder-text": "$0.00",
       "monthly-mininmum-target-text": "Monthly Target must be greather than 10",
       "years-of-savings-text": "Years of Saving",
       "projected-value-text": "Projected value",

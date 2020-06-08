@@ -104,7 +104,7 @@ export class SavingGoalFacade {
     let rate = this.savingGoalService.getSavingRate();
     let projectedAmount = 0;
     if (!this.savingsGoalState.savingsGoal.targetAmount) {
-      this.savingsGoalState.savingsGoal.targetAmount = 100;
+      this.savingsGoalState.savingsGoal.targetAmount = 0.0;
     }
     const noOfMonth = 12;
     rate = rate / 100 ? rate / 100 : 0;

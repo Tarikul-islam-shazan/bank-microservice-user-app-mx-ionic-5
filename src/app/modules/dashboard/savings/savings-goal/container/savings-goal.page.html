@@ -38,6 +38,7 @@
                   type="tel"
                   [(decModel)]="savingGoalFacade.savingsGoalState.savingsGoal.targetAmount"
                   (ionChange)="savingGoalFacade.updateAmount(0)"
+                  placeholder="{{'dashboard-module.savings-goal.amount-placeholder-text' | translate}}"
                 ></ion-input>
                 <div *ngIf="savingGoalFacade.savingsGoalState.savingsGoal.targetAmount < 10" class="error" fixed>
                   {{ 'dashboard-module.savings-goal.monthly-mininmum-target-text' | translate }}

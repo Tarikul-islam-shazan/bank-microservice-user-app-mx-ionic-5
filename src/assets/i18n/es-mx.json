@@ -134,6 +134,7 @@
       "edit-header-text": "Editar objetivo de ahorro",
       "goal-name-text": "Nombre de la meta",
       "monthly-amount-text": "Monto mensual",
+      "amount-placeholder-text": "$0.00",
       "monthly-mininmum-target-text": "El objetivo mensual debe ser mayor que 10",
       "years-of-savings-text": "Años de ahorro",
       "projected-value-text": "Valor proyectado",
