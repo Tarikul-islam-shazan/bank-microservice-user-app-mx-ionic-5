@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
-import { NavController } from '@ionic/angular';
 import { AccountService } from '@app/core/services/account.service';
 import { IAccount, AccountType } from '@app/core/models/dto/account';
 import { SavingGoalService, SavingsGoalState } from '@app/dashboard/services/saving-goal.service';
