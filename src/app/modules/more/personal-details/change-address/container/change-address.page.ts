@@ -29,7 +29,7 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
   suburbFieldData: IDropdownOption[] = [];
 
   constructor(
-    private facade: ChangeAddressFacade,
+    public facade: ChangeAddressFacade,
     private formBuilder: FormBuilder,
     private modalCtrl: ModalController
   ) {}
