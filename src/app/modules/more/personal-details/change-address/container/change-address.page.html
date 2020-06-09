@@ -10,14 +10,16 @@
     <form [formGroup]="changeAddressForm" novalidate>
       <ion-list lines="none" class="input-list">
         <div class="dropdown-input-wrapper">
-          <div class="label-text">Address type</div>
+          <div class="label-text">{{'more-module.personal-details.change-address-modal.address-type' | translate}}</div>
           <div class="dropdown-input" (click)="openStateModal()">
             <ion-input readonly class="white-input" type="text" formControlName="state"></ion-input>
             <ion-icon name="chevron-down"></ion-icon>
           </div>
         </div>
         <div class="dropdown-input-wrapper">
-          <div class="label-text">Property type</div>
+          <div class="label-text">
+            {{'more-module.personal-details.change-address-modal.property-type' | translate}}
+          </div>
           <div class="dropdown-input" (click)="openStateModal()">
             <ion-input readonly class="white-input" type="text" formControlName="state"></ion-input>
             <ion-icon name="chevron-down"></ion-icon>
@@ -25,46 +27,65 @@
         </div>
         <ion-item>
           <ion-label position="stacked"
-            >{{'more-module.personal-details.change-address-modal.address-text' | translate}}
-          </ion-label>
+            >{{'more-module.personal-details.change-address-modal.street-name' | translate}}</ion-label
+          >
           <ion-input type="text" class="white-input" formControlName="address"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label position="stacked"
-            >{{'more-module.personal-details.change-address-modal.city-text' | translate}}
-          </ion-label>
+            >{{'more-module.personal-details.change-address-modal.outdoor-number' | translate}}</ion-label
+          >
           <ion-input type="text" class="white-input" formControlName="city"></ion-input>
         </ion-item>
+        <ion-item>
+          <ion-label position="stacked">
+            {{'more-module.personal-details.change-address-modal.interior-number' | translate}}</ion-label
+          >
+          <ion-input appFormateZipCode type="tel" class="white-input" formControlName="zipCode"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">
+            {{'more-module.personal-details.change-address-modal.post-code' | translate}}</ion-label
+          >
+          <ion-input appFormateZipCode type="tel" class="white-input" formControlName="zipCode"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">
+            {{'more-module.personal-details.change-address-modal.state' | translate}}</ion-label
+          >
+          <ion-input appFormateZipCode type="tel" class="white-input" formControlName="zipCode"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">
+            {{'more-module.personal-details.change-address-modal.municipality' | translate}}</ion-label
+          >
+          <ion-input appFormateZipCode type="tel" class="white-input" formControlName="zipCode"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">
+            {{'more-module.personal-details.change-address-modal.city' | translate}}</ion-label
+          >
+          <ion-input appFormateZipCode type="tel" class="white-input" formControlName="zipCode"></ion-input>
+        </ion-item>
         <div class="dropdown-input-wrapper">
-          <div class="label-text">{{'more-module.personal-details.change-address-modal.state-text' | translate}}</div>
+          <div class="label-text">{{'more-module.personal-details.change-address-modal.suburb' | translate}}</div>
           <div class="dropdown-input" (click)="openStateModal()">
             <ion-input readonly class="white-input" type="text" formControlName="state"></ion-input>
             <ion-icon name="chevron-down"></ion-icon>
           </div>
         </div>
-        <ion-item>
-          <ion-label position="stacked">
-            {{'more-module.personal-details.change-address-modal.zip-code-text' | translate}}</ion-label
+        <div>
+          <ion-label class="label-text">
+            {{'more-module.personal-details.change-address-modal.date-of-residence' | translate}}</ion-label
           >
-          <ion-input appFormateZipCode type="tel" class="white-input" formControlName="zipCode"></ion-input>
-        </ion-item>
-        <div
-          class="clearfix"
-          *ngIf="changeAddressForm.controls.zipCode.dirty && changeAddressForm.controls.zipCode.invalid"
-        >
-          <ng-template
-            [ngIf]="changeAddressForm.controls.zipCode.errors?.zipCodeValidation"
-            [ngIfElse]="payeeZipCodeInvalidError"
-          >
-            <div class="error-msg">
-              {{'more-module.personal-details.change-address-modal.errors.zip-code-character-text' | translate}}
-            </div>
-          </ng-template>
-          <ng-template #payeeZipCodeInvalidError>
-            <div class="error-msg">
-              {{'more-module.personal-details.change-address-modal.errors.zip-code-required-text' | translate}}
-            </div>
-          </ng-template>
+          <ion-item class="date-input">
+            <ion-datetime
+              class="white-input"
+              id="dateOfResidence"
+              displayFormat="{{ 'signup-module.signup-address-information-page.address-form.dateFormate' | translate }}"
+            ></ion-datetime>
+            <ion-icon name="chevron-down"></ion-icon>
+          </ion-item>
         </div>
       </ion-list>
     </form>
