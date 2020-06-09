@@ -28,6 +28,20 @@
             <ion-icon name="chevron-down"></ion-icon>
           </div>
         </div>
+        <div class="dropdown-input-wrapper">
+          <div class="label-text">Address type</div>
+          <div class="dropdown-input" (click)="openStateModal()">
+            <ion-input readonly class="white-input" type="text" formControlName="state"></ion-input>
+            <ion-icon name="chevron-down"></ion-icon>
+          </div>
+        </div>
+        <div class="dropdown-input-wrapper">
+          <div class="label-text">Property type</div>
+          <div class="dropdown-input" (click)="openStateModal()">
+            <ion-input readonly class="white-input" type="text" formControlName="state"></ion-input>
+            <ion-icon name="chevron-down"></ion-icon>
+          </div>
+        </div>
         <ion-item>
           <ion-label position="stacked">
             {{'more-module.personal-details.change-address-modal.zip-code-text' | translate}}</ion-label
