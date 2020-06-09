@@ -1,9 +1,6 @@
-<!-- text-center like attribute shift to class and also using our global input -->
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
-    </ion-buttons>
+    <div slot="start" class="modal-close-button" (click)="savingGoalFacade.closeModal()"></div>
     <ion-title translate
       >{{ savingGoalFacade.savingsGoalState.isNew ? 'dashboard-module.savings-goal.new-header-text':
       'dashboard-module.savings-goal.edit-header-text'}}</ion-title

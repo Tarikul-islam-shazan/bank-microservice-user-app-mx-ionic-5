@@ -3,6 +3,7 @@
   ion-item {
     --highlight-color-focused: #ffffff !important;
   }
+
   .custom-ion-item {
     margin-top: 40px;
     .field-title {
@@ -75,5 +76,15 @@
         line-height: 18px;
       }
     }
+  }
+}
+
+.modal-close-button {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+  &:after {
+    content: url('/assets/svg/arrow-left-white.svg');
   }
 }

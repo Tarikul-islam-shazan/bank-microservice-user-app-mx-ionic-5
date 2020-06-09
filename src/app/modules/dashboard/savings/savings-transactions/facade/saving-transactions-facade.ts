@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 import { SavingGoalService } from '@app/dashboard/services/saving-goal.service';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { ModalService, IMeedModalContent } from '@app/shared/services/modal.service';
+import { SavingsGoalPage } from '../../savings-goal/container';
 const log = new Logger('SavingTransactionsFacade');
 export interface ISavingAccount extends IAccount {
   fundsOnHold: number;
@@ -78,9 +79,28 @@ export class SavingTransactionsFacade {
     ];
   }
 
+  /**
+   * @summary gets modal content for goal modals
+   *
+   * @private
+   * @returns {IMeedModalContent}
+   * @memberOf SavingTransactionsFacade
+   */
+  private getModalContent(): IMeedModalContent {
+    const modalContent: IMeedModalContent = {
+      onDidDismiss: dataChanged => {
+        if (!!dataChanged.data) {
+          this.loadGoals();
+        }
+      }
+    };
+
+    return modalContent;
+  }
+
   modifyGoal(goal: ISavingsGoal) {
     this.savingGoalService.initializeSavingGoal(goal);
-    this.router.navigate(['/home/saving-goal']);
+    this.modalService.openModal(SavingsGoalPage, this.getModalContent());
   }
 
   goToSelectedPage() {
@@ -90,7 +110,7 @@ export class SavingTransactionsFacade {
     } else if (this.selectedTab === TabPage.GoalTab) {
       this.analytics.logEvent(AnalyticsEventTypes.SavingsGoalStarted);
       this.savingGoalService.initializeSavingGoal();
-      this.router.navigate(['/home/saving-goal']);
+      this.modalService.openModal(SavingsGoalPage, this.getModalContent());
     }
   }
 

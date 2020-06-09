@@ -66,7 +66,7 @@ export class SavingGoalFacade {
         'goal-amount': this.savingsGoalState.savingsGoal.targetAmount,
         'goal-years': this.savingsGoalState.savingsGoal.yearOfSaving
       });
-      this.goBackSavingPage();
+      this.closeModal(true);
     });
   }
 
@@ -76,7 +76,7 @@ export class SavingGoalFacade {
         'goal-amount': this.savingsGoalState.savingsGoal.targetAmount,
         'goal-years': this.savingsGoalState.savingsGoal.yearOfSaving
       });
-      this.goBackSavingPage();
+      this.closeModal(true);
     });
   }
 
@@ -108,10 +108,10 @@ export class SavingGoalFacade {
           text: 'dashboard-module.savings-goal.modal.yes-button',
           cssClass: 'white-button',
           handler: () => {
+            this.closeModal();
             this.savingGoalService.deleteSavingGoal(this.savingsGoalState.savingsGoal._id).subscribe(() => {
               this.analytics.logEvent(AnalyticsEventTypes.SavingsGoalDeleted);
-              this.modalService.close();
-              this.goBackSavingPage();
+              this.closeModal(true);
             });
           }
         },
@@ -119,7 +119,7 @@ export class SavingGoalFacade {
           text: 'dashboard-module.savings-goal.modal.no-button',
           cssClass: 'grey-outline-button',
           handler: () => {
-            this.modalService.close();
+            this.closeModal();
           }
         }
       ]
@@ -152,8 +152,14 @@ export class SavingGoalFacade {
     this.openGoalDeleteModal();
   }
 
-  goBackSavingPage() {
-    this.router.navigate(['/home/savings-transactions']);
+  /**
+   * @summary closes modal
+   *
+   * @returns {void}
+   * @memberOf SavingGoalFacade
+   */
+  closeModal(dataChanged: boolean = false): void {
+    this.modalService.close(dataChanged);
   }
 
   calculatePNR(): number {
