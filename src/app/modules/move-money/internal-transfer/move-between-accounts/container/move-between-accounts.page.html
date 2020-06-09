@@ -57,9 +57,23 @@
       <div class="block-title">
         {{'move-money-module.internal-transfer.move-between-accounts.amount-title' | translate}}
       </div>
+      <div *ngIf="facade.isShowLocPaymentSelectionOption">
+        <div class="option-button" (click)="selectLocPaymentOption(facade.locPaymentOption.Minimum);">
+          {{'move-money-module.internal-transfer.move-between-accounts.minimum-payment-text' | translate}}
+          ({{facade.toAccount.minimumPaymentDue | negToPos}})
+        </div>
+        <div class="option-button" (click)="selectLocPaymentOption(facade.locPaymentOption.Full)">
+          {{'move-money-module.internal-transfer.move-between-accounts.full-payment-text' | translate}}
+          ({{facade.toAccount.balanceOwed | negToPos}})
+        </div>
+        <div class="option-button" (click)="selectLocPaymentOption(facade.locPaymentOption.Custom)">
+          {{'move-money-module.internal-transfer.move-between-accounts.custom-payment-text' | translate}}
+        </div>
+      </div>
       <ion-input
         [disabled]="facade.fromScheduledTransfers && !facade.modifiedScheduleTransfer"
         appInputDecimalMask
+        #amountInputId
         type="tel"
         [(decModel)]="facade.transfer.amount"
         placeholder="{{'move-money-module.internal-transfer.move-between-accounts.amount-placeholder-text' | translate}}"
@@ -67,6 +81,9 @@
       ></ion-input>
       <div *ngIf="facade.isAmountExceedAvailableBalance" class="amount-error">
         {{'move-money-module.internal-transfer.move-between-accounts.amount-error-text' | translate}}
+      </div>
+      <div *ngIf="facade.isAmountExceedLocFullPayment()" class="amount-error">
+        {{'move-money-module.internal-transfer.move-between-accounts.amount-requested-exceeds-text' | translate}}
       </div>
     </div>
 
@@ -102,7 +119,7 @@
   <ion-toolbar>
     <ion-button
       *ngIf="!facade.fromScheduledTransfers || facade.modifiedScheduleTransfer"
-      [disabled]="facade.isAmountExceedAvailableBalance || facade.transfer.amount <= 0 || !facade.transfer?.amount"
+      [disabled]="facade.isAmountExceedAvailableBalance || !facade.transfer?.amount || facade.transfer.amount <= 0 || facade.isAmountExceedLocFullPayment()"
       (click)="goToConfirm()"
       expand="block"
       class="white-button confirm-button"

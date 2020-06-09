@@ -86,7 +86,6 @@
 
   .moved-amount-block {
     ion-input {
-      font-weight: bold;
       font-size: 30px;
       letter-spacing: 0.2px;
       line-height: 30px;
@@ -98,9 +97,27 @@
       --padding-bottom: 0;
       --padding-start: 0;
       --padding-end: 0;
+      font-family: 'Averta W05 Bold5204651';
       input {
         padding: 0;
       }
+    }
+    .block-title {
+      margin-bottom: 20px;
+    }
+    .option-button {
+      padding: 5px;
+      display: inline-block;
+      border: 2px solid rgba(67, 92, 220, 0.25);
+      border-radius: 8px;
+      color: #435cdc;
+      font-family: 'Averta W05 Bold5204651';
+      font-size: 12px;
+      line-height: 20px;
+      margin-bottom: 10px;
+      margin-right: 10px;
+      letter-spacing: 0;
+      text-align: center;
     }
   }
   .schedule-block {

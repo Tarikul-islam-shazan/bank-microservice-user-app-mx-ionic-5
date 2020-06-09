@@ -1155,6 +1155,7 @@
         "amount-title": "Cantidad a transferir",
         "amount-placeholder-text": "$0.00",
         "amount-error-text": "El importe solicitado supera el saldo disponible.",
+        "amount-requested-exceeds-text": "El importe solicitado supera el pago completo",
         "schedule-title": "Programar",
         "schedule-edit-button": "EDITAR",
         "note-title": "Nota",
@@ -1163,6 +1164,9 @@
         "checking-text": "Comprobando",
         "savings-text": "Ahorros",
         "line-of-credit-text": "Línea de crédito",
+        "minimum-payment-text": "Pago mínimo",
+        "full-payment-text": "Pago completo",
+        "custom-payment-text": "Importe personalizado",
         "action-sheet": {
           "transfer-from-header": "TRANSFERENCIA DESDE",
           "transfer-to-header": "TRANSFERENCIA A",
