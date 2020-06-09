@@ -61,12 +61,31 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @memberof ChangeAddressPage
    */
   private initChangeAddressForm(): void {
-    const { address, city, stateName, zipCode } = this.customer;
+    // const { address, city, stateName, zipCode } = this.customer;
+    // this.changeAddressForm = this.formBuilder.group({
+    //   address: [address, Validators.required],
+    //   city: [city, Validators.required],
+    //   state: [stateName, Validators.required],
+    //   zipCode: [zipCode, CommonValidators.zipCodeValidation]
+    // });
     this.changeAddressForm = this.formBuilder.group({
-      address: [address, Validators.required],
-      city: [city, Validators.required],
-      state: [stateName, Validators.required],
-      zipCode: [zipCode, CommonValidators.zipCodeValidation]
+      addressTypeField: [null, Validators.required],
+      addressType: [null, Validators.required],
+      propertyTypeField: [null, Validators.required],
+      propertyType: [null, Validators.required],
+      street: [null, [Validators.required, Validators.maxLength(40)]],
+      outdoorNumber: [null, [Validators.required, Validators.maxLength(10)]],
+      interiorNumber: [null, [Validators.required, Validators.maxLength(10)]],
+      postCode: [null, [Validators.required, Validators.maxLength(5)]],
+      stateField: [null, Validators.required],
+      state: [null, Validators.required],
+      municipalityField: [null, Validators.required],
+      municipality: [null, Validators.required],
+      cityField: [null, Validators.required],
+      city: [null, Validators.required],
+      suburbField: [null, Validators.required],
+      suburb: [null, Validators.required],
+      dateOfResidence: [null, Validators.required]
     });
   }
 
@@ -99,14 +118,6 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
   private patchStateName(stateName: string): void {
     this.changeAddressForm.controls.state.patchValue(stateName);
   }
-
-  /**
-   * @summary gets country states
-   *
-   * @private
-   * @returns {void}
-   * @memberOf ChangeAddressPage
-   */
 
   /**
    * @summary checks if form values have been changed or not
