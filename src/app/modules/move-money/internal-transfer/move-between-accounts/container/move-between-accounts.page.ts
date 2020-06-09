@@ -51,9 +51,7 @@ export class MoveBetweenAccountsPage implements OnInit, OnDestroy {
   selectLocPaymentOption(paymentOption: LocPaymentOption): void {
     this.facade.setLocPaymentTransferAmount(paymentOption);
     setTimeout(() => {
-      if (this.amountInputElement.ionFocus) {
-        this.amountInputElement.setFocus();
-      }
+      this.amountInputElement.setFocus();
     }, 100);
   }
 }

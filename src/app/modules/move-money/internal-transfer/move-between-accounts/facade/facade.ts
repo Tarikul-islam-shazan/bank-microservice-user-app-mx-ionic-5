@@ -38,11 +38,11 @@ export class InternalTransferFacade {
 
   initialize(): void {
     this.transfer = this.transferService.getTransfer();
-    // Setting fromAccount Account and toAccount Account Type ;
+    // Setting fromAccount and toAccount  Type ;
     if (this.internalTransferService.formAccountType && this.internalTransferService.toAccountType) {
       this.accountSwitch(this.internalTransferService.formAccountType, this.internalTransferService.toAccountType);
     } else {
-      // Default fromAccount Account and toAccount Type;
+      // Default fromAccount and toAccount Type;
       this.accountSwitch(AccountType.DDA, AccountType.SSA);
     }
     this.accountService.fetchAccountSummary().subscribe(success => {});
@@ -238,7 +238,7 @@ export class InternalTransferFacade {
   // Reset transfer object when page/ componet destroy
   resetTransferService(): void {
     this.modifiedScheduleTransfer = false;
-    // Resetting default fromAccount Account and toAccount Type;
+    // Resetting default fromAccount and toAccount Type;
     this.internalTransferService.formAccountType = AccountType.DDA;
     this.internalTransferService.toAccountType = AccountType.SSA;
     this.transferService.resetTransferService();
