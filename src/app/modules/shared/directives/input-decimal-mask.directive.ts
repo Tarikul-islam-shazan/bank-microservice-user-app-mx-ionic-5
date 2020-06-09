@@ -108,7 +108,7 @@ export class InputDecimalMaskDirective {
   @HostListener('ionBlur', ['$event']) onBlur() {
     if (parseFloat(this.onlyNumbersString(this.inputRef.value.toString())) === 0) {
       this.inputRef.value = '';
-      this.decModelChange.emit(null);
+      this.decModelChange.emit(0);
     }
   }
 
