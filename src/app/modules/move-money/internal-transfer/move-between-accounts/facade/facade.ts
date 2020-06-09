@@ -7,7 +7,7 @@
 import { Injectable } from '@angular/core';
 import { Logger, AccountService, InternalTransferService } from '@app/core/services';
 import { IAccount, AccountType } from '@app/core/models/dto/account';
-import { ITransfer, TransferFor } from '@app/move-money/internal-transfer/models';
+import { ITransfer, TransferFor, LocPaymentOption } from '@app/move-money/internal-transfer/models';
 import { Router } from '@angular/router';
 import { TransferService } from '@app/move-money/internal-transfer/services';
 import { ActionSheetController } from '@ionic/angular';
@@ -21,12 +21,11 @@ export class InternalTransferFacade {
   fromAccount: IAccount;
   toAccount: IAccount;
   transfer: Partial<ITransfer>;
-
   isAmountExceedAvailableBalance = false;
-
+  isLocPaymentOptionSelected = false;
   // If user want to modify the schedule transfer, we enable edit action in inputs fields
   modifiedScheduleTransfer = false;
-
+  locPaymentOption: typeof LocPaymentOption = LocPaymentOption;
   constructor(
     private transferService: TransferService,
     private actionSheetCtrl: ActionSheetController,
@@ -37,11 +36,16 @@ export class InternalTransferFacade {
     private router: Router
   ) {}
 
-  initialize() {
+  initialize(): void {
     this.transfer = this.transferService.getTransfer();
-    this.accountService.fetchAccountSummary().subscribe(success => {
+    // Setting fromAccount Account and toAccount Account Type ;
+    if (this.internalTransferService.formAccountType && this.internalTransferService.toAccountType) {
       this.accountSwitch(this.internalTransferService.formAccountType, this.internalTransferService.toAccountType);
-    });
+    } else {
+      // Default fromAccount Account and toAccount Account Type;
+      this.accountSwitch(AccountType.DDA, AccountType.SSA);
+    }
+    this.accountService.fetchAccountSummary().subscribe(success => {});
     this.internalTransferService.loadTransferFrequency();
   }
 
@@ -54,7 +58,7 @@ export class InternalTransferFacade {
   }
 
   // On amount input change we check the validation for available balance check
-  onInputAmountChange() {
+  onInputAmountChange(): void {
     if (this.fromAccount) {
       if (this.transfer.amount > this.fromAccount.availableBalance) {
         this.isAmountExceedAvailableBalance = true;
@@ -210,11 +214,14 @@ export class InternalTransferFacade {
     const accounts = this.accountService.getCachedAccountSummary() as IAccount[];
     this.fromAccount = accounts.find((account: IAccount) => account.accountType === fromAccount);
     this.toAccount = accounts.find((account: IAccount) => account.accountType === toAccount);
+    this.isLocPaymentOptionSelected = false;
+    this.transfer.amount = 0;
     this.transfer = {
       ...this.transfer,
       debtorAccount: this.fromAccount.accountId,
       creditorAccount: this.toAccount.accountId
     };
+
     this.transferService.setTransfer(this.transfer);
   }
 
@@ -232,5 +239,56 @@ export class InternalTransferFacade {
   resetTransferService() {
     this.modifiedScheduleTransfer = false;
     this.transferService.resetTransferService();
+  }
+
+  /**
+   * Ticket:MM2-359
+   * Date: June 09, 2020
+   * Developer: Kausar <md.kausar@brainstation23.com>
+   * @summary A function that set transfer amount as LocPaymentOption
+   * @param {LocPaymentOption} paymentOption
+   * @memberof InternalTransferFacade
+   */
+  setLocPaymentTransferAmount(paymentOption: LocPaymentOption): void {
+    switch (paymentOption) {
+      case LocPaymentOption.Minimum:
+        this.transfer.amount = Number(parseFloat(String(this.toAccount.minimumPaymentDue)).toFixed(2));
+        break;
+      case LocPaymentOption.Full:
+        this.transfer.amount = Number(parseFloat(String(this.toAccount.balanceOwed)).toFixed(2));
+        break;
+      case LocPaymentOption.Custom:
+        this.transfer.amount = 0;
+        break;
+    }
+    this.isLocPaymentOptionSelected = true;
+  }
+  /**
+   * Ticket:MM2-359
+   * Date: June 09, 2020
+   * Developer: Kausar <md.kausar@brainstation23.com>
+   * @summary A fuction to check is ExceedLocFullPayment;
+   * @returns {boolean}
+   * @memberof InternalTransferFacade
+   */
+  isAmountExceedLocFullPayment(): boolean {
+    return (
+      this.toAccount &&
+      this.toAccount.accountType === AccountType.LOC &&
+      Number(this.transfer.amount) > this.toAccount.balanceOwed
+    );
+  }
+
+  /**
+   * Ticket:MM2-359
+   * Date: June 09, 2020
+   * Developer: Kausar <md.kausar@brainstation23.com>
+   * @summary A getter to check  AccountType is LOC & PaymentOptionSelected is clicked onec
+   * @readonly
+   * @type {boolean}
+   * @memberof InternalTransferFacade
+   */
+  get isShowLocPaymentSelectionOption(): boolean {
+    return this.toAccount.accountType === AccountType.LOC && !this.isLocPaymentOptionSelected;
   }
 }

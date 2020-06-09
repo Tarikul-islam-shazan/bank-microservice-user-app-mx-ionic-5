@@ -1164,6 +1164,7 @@
         "amount-title": "Amount To Be Moved",
         "amount-placeholder-text": "$0.00",
         "amount-error-text": "There are insufficient funds available to make the requested transfer.",
+        "amount-requested-exceeds-text": "Amount requested exceeds full payment",
         "schedule-title": "Schedule",
         "schedule-edit-button": "EDIT",
         "note-title": "Note",
@@ -1172,6 +1173,9 @@
         "checking-text": "Checking",
         "savings-text": "Savings",
         "line-of-credit-text": "Line Of Credit",
+        "minimum-payment-text": "Minimum Payment",
+        "full-payment-text": "Full Payment",
+        "custom-payment-text": "Custom Payment",
         "action-sheet": {
           "transfer-from-header": "TRANSFER FROM",
           "transfer-to-header": "TRANSFER TO",
