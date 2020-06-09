@@ -42,45 +42,18 @@ export class ChangeEmailFacade {
   }
 
   /**
-   * @summary updtes email
-   *
-   * @param {ICustomer} customer
-   * @returns {Observable<ICustomer>}
-   * @memberOf ChangeEmailFacade
-   */
-  requestOTPCode(customer: ICustomer): Observable<ICustomer> {
-    return this.customerService.updateEmail(customer);
-  }
-
-  /**
-   * @summary updates email on success
-   *
-   * @returns {void}
-   * @memberOf ChangeEmailPage
-   */
-  openOTPModal(): void {
-    this.modalService.openOtpModal((dismissResp: any) => {
-      const { data } = dismissResp;
-      if (data) {
-        Object.assign(this.customer, data);
-        Object.assign(this.memberService.member, data);
-        this.dismissModal();
-      }
-    });
-  }
-
-  /**
-   * @summary opens OTP modal
-   *
+   * Ticket:MM2-141
+   * Date: June 09, 2020
+   * Developer: Kausar <md.kausar@brainstation23.com>
+   * @summary A function to call updateEmail of Customer service
    * @param {string} email
    * @returns {void}
    * @memberOf ChangeEmailFacade
    */
   save(email: string): void {
-    this.requestOTPCode({ email }).subscribe(noop, err => {
-      if (err.status === 403) {
-        this.openOTPModal();
-      }
+    this.customerService.updateEmail(email).subscribe(_customer => {
+      this.personalDetailsState.updateCustomer({ ...this.customer, ..._customer });
+      this.dismissModal();
     });
   }
 }
