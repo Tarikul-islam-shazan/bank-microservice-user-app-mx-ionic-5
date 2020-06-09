@@ -1,7 +1,13 @@
 import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
-import { CountryStateModalComponent, ModalService } from '@app/shared';
+import { ModalService } from '@app/shared';
 import { CustomerService } from '@app/core/services/customer-service.service';
 import { ICustomer, IStates } from '@app/core';
+import {
+  StaticDataService,
+  StaticDataCategory,
+  StaticData,
+  IDropdownOption
+} from '@app/core/services/static-data.service';
 import { Injectable } from '@angular/core';
 import { MemberService } from '@app/core/services/member.service';
 import { Observable, noop, Subscription } from 'rxjs';
@@ -11,15 +17,17 @@ import { PersonalDetailsState } from '@app/more/personal-details/facade/personal
 @Injectable()
 export class ChangeAddressFacade {
   customer: ICustomer = {};
-  countryStates: IStates[];
   selectedCountryState: IStates;
+  public addressTypeList: IDropdownOption[] = [];
+  public propertyTypeList: IDropdownOption[] = [];
 
   constructor(
     private analyticsService: AnalyticsService,
     private customerService: CustomerService,
     private memberService: MemberService,
     private modalService: ModalService,
-    private personalDetailsState: PersonalDetailsState
+    private personalDetailsState: PersonalDetailsState,
+    private staticDataService: StaticDataService
   ) {
     this.getCustomer();
   }
@@ -37,6 +45,13 @@ export class ChangeAddressFacade {
     });
   }
 
+  getStaticData(): void {
+    this.staticDataService.get(StaticDataCategory.AddressInformation).subscribe(staticData => {
+      this.addressTypeList = staticData[StaticData.AddressType];
+      this.propertyTypeList = staticData[StaticData.PropertyType];
+    });
+  }
+
   /**
    * @summary gets country states from customer service.
    *
@@ -48,22 +63,6 @@ export class ChangeAddressFacade {
   }
 
   /**
-   * @summary gets states
-   *
-   * @param {(stateName: string) => void} callback
-   * @returns {void}
-   * @memberOf AddPayeeAddressPage
-   */
-  getCountryStates(callback: (stateName: string) => void): void {
-    this.getCountryState().subscribe((countryStates: IStates[]) => {
-      this.countryStates = countryStates;
-      this.selectedCountryState = countryStates.filter(state => this.customer.state === state.stateAbv)[0];
-      this.removeSelectedState();
-      callback(this.selectedCountryState.stateName);
-    });
-  }
-
-  /**
    * @summary sends OTP
    *
    * @param {ICustomer} customer
@@ -72,45 +71,6 @@ export class ChangeAddressFacade {
    */
   sendOTP(customer: ICustomer): Observable<ICustomer> {
     return this.customerService.updateAddress(customer);
-  }
-
-  /**
-   * @summary removes selected state form country states.
-   *
-   * @private
-   * @returns {void}
-   * @memberOf AddPayeeAddressPage
-   */
-  private removeSelectedState(): void {
-    this.countryStates = this.countryStates.filter(state => state.stateAbv !== this.selectedCountryState.stateAbv);
-  }
-
-  /**
-   * @sumamry opens state modal.
-   *
-   * @param {(stateName: string) => void} callback
-   * @returns {void}
-   * @memberOf ChangeAddressFacade
-   */
-  openStateModal(callback: (stateName: string) => void): void {
-    if (this.selectedCountryState) {
-      this.countryStates.unshift(this.selectedCountryState);
-    }
-
-    this.modalService.openModal(
-      CountryStateModalComponent,
-      {
-        data: this.countryStates
-      },
-      (resp: any) => {
-        const { data } = resp;
-        if (data) {
-          this.selectedCountryState = data;
-          this.removeSelectedState();
-          callback(this.selectedCountryState.stateName);
-        }
-      }
-    );
   }
 
   /**

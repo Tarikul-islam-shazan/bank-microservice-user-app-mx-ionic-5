@@ -6,12 +6,14 @@
  *
  */
 import { ChangeAddressFacade } from '../facade';
-import { CommonValidators, ICustomer } from '@app/core';
+import { CommonValidators, ICustomer, IDropdownOption, IAddressInfo } from '@app/core';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { isEqual } from 'lodash';
 import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { DropdownModalComponent } from '@app/shared';
+import { DropdownOption } from '@app/signup/models/signup';
 
 @Component({
   selector: 'change-address',
@@ -24,6 +26,7 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
   customer: ICustomer = {};
   isFormValueChanged = false;
   initialFormValue: ICustomer = {};
+  suburbFieldData: IDropdownOption[] = [];
 
   constructor(
     private facade: ChangeAddressFacade,
@@ -33,8 +36,8 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
 
   ngOnInit() {
     this.getCustomer();
+    this.facade.getStaticData();
     this.initChangeAddressForm();
-    this.getCountryStates();
     this.checkIfFormValueChanged();
   }
 
@@ -68,6 +71,24 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
   }
 
   /**
+   *
+   *
+   * @param {Partial<IAddressInfo[]>} postalCodeData
+   * @returns {IDropdownOption[]}
+   * @memberof AddressInformationPage
+   */
+  mappingData(postalCodeData: Partial<IAddressInfo[]>): IDropdownOption[] {
+    const suburbFieldDropDownData: IDropdownOption[] = [];
+    postalCodeData.forEach(data => {
+      suburbFieldDropDownData.push({
+        value: data.suburbName,
+        text: data.suburbName
+      });
+    });
+    return suburbFieldDropDownData;
+  }
+
+  /**
    * @summary patches selected state name
    *
    * @private
@@ -86,13 +107,6 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @returns {void}
    * @memberOf ChangeAddressPage
    */
-  private getCountryStates(): void {
-    this.facade.getCountryStates((stateName: string) => {
-      this.patchStateName(stateName);
-      this.initialFormValue = this.changeAddressForm.value;
-      this.changeAddressForm.setErrors({ formValueNotChanged: true });
-    });
-  }
 
   /**
    * @summary checks if form values have been changed or not
@@ -107,18 +121,6 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
         this.isFormValueChanged = !isEqual(this.initialFormValue, changedFormValue);
       }
     );
-  }
-
-  /**
-   * @summary opens state modal
-   *
-   * @returns {void}
-   * @memberOf ChangeAddressPage
-   */
-  openStateModal(): void {
-    this.facade.openStateModal((stateName: string) => {
-      this.patchStateName(stateName);
-    });
   }
 
   /**
@@ -139,6 +141,20 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    */
   save(): void {
     this.facade.save(this.changeAddressForm.value);
+  }
+
+  async openOptionsModal(formControlName: string, formControlValue: string, options: DropdownOption[]): Promise<any> {
+    try {
+      const modal = await this.modalCtrl.create({
+        component: DropdownModalComponent,
+        componentProps: { data: options }
+      });
+      await modal.present();
+      const { data } = await modal.onWillDismiss();
+      this.changeAddressForm.controls[formControlName].patchValue(data.text);
+      this[formControlName] = data ? data : null;
+      this.changeAddressForm.controls[formControlValue].patchValue(data.value);
+    } catch (error) {}
   }
 
   ngOnDestroy() {
