@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
-import { NavController } from '@ionic/angular';
 import { AccountService } from '@app/core/services/account.service';
 import { IAccount, AccountType } from '@app/core/models/dto/account';
 import { SavingGoalService, SavingsGoalState } from '@app/dashboard/services/saving-goal.service';
 import { ISavingsGoal } from '@app/dashboard/models';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
+import { omit } from 'lodash';
 import { IMeedModalContent, ModalService } from '@app/shared';
 import { Router } from '@angular/router';
 @Injectable()
@@ -70,8 +70,19 @@ export class SavingGoalFacade {
     });
   }
 
-  editSavingGoal() {
-    this.savingGoalService.updateSavingGoal(this.savingsGoalState.savingsGoal).subscribe((response: ISavingsGoal) => {
+  /**
+   * @summary edits saving goal
+   *
+   * @returns {void}
+   * @memberOf SavingGoalFacade
+   */
+  editSavingGoal(): void {
+    const savingsGoal = JSON.parse(
+      JSON.stringify(
+        omit(this.savingsGoalState.savingsGoal, ['startDate', 'endDate', 'createdDate', 'updatedDate', '__v'])
+      )
+    );
+    this.savingGoalService.updateSavingGoal(savingsGoal).subscribe((_: ISavingsGoal) => {
       this.analytics.logEvent(AnalyticsEventTypes.SavingsGoalUpdated, {
         'goal-amount': this.savingsGoalState.savingsGoal.targetAmount,
         'goal-years': this.savingsGoalState.savingsGoal.yearOfSaving
