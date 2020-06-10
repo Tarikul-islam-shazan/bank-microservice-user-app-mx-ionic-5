@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { isEqual } from 'lodash';
 import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { DropdownModalComponent } from '@app/shared';
+import { DropdownModalComponent, IinputOption } from '@app/shared';
 import { DropdownOption } from '@app/signup/models/signup';
 
 @Component({
@@ -27,6 +27,9 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
   isFormValueChanged = false;
   initialFormValue: ICustomer = {};
   suburbFieldData: IDropdownOption[] = [];
+  onlyNumber: IinputOption;
+  postalCodeNumber: IinputOption;
+  public postalCodeData: Partial<IAddressInfo[]> = [];
 
   constructor(
     public facade: ChangeAddressFacade,
@@ -105,6 +108,48 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
       });
     });
     return suburbFieldDropDownData;
+  }
+
+  /**
+   *
+   *
+   * @param {*} postalCode
+   * @memberof AddressInformationPage
+   */
+  getPostalCodeInfo(postalCode): void {
+    if (postalCode.toString().length === 5) {
+      this.facade.getPostalCodeInfo(postalCode).subscribe(
+        (data: Partial<IAddressInfo[]>) => {
+          this.setPostalCodeInfo(true, data);
+        },
+        err => {
+          this.setPostalCodeInfo(false);
+        }
+      );
+    }
+  }
+
+  /**
+   *
+   *
+   * @param {boolean} isDataAvailable
+   * @param {Partial<IAddressInfo[]>} [data]
+   * @memberof AddressInformationPage
+   */
+  setPostalCodeInfo(isDataAvailable: boolean, data?: Partial<IAddressInfo[]>): void {
+    this.postalCodeData = isDataAvailable ? data : null;
+    this.suburbFieldData = this.mappingData(isDataAvailable ? data : []);
+    this.changeAddressForm.controls.postCode.patchValue(
+      isDataAvailable ? this.changeAddressForm.controls.postCode.value : null
+    );
+    this.changeAddressForm.controls.stateField.patchValue(isDataAvailable ? data[0].stateName : null);
+    this.changeAddressForm.controls.state.patchValue(isDataAvailable ? data[0].state : null);
+    this.changeAddressForm.controls.municipalityField.patchValue(isDataAvailable ? data[0].municipalityName : null);
+    this.changeAddressForm.controls.municipality.patchValue(isDataAvailable ? data[0].municipality : null);
+    this.changeAddressForm.controls.cityField.patchValue(isDataAvailable ? data[0].cityName : null);
+    this.changeAddressForm.controls.city.patchValue(isDataAvailable ? data[0].city : null);
+    this.changeAddressForm.controls.suburbField.patchValue(null);
+    this.changeAddressForm.controls.suburb.patchValue(null);
   }
 
   /**

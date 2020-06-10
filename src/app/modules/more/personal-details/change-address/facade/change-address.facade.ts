@@ -1,7 +1,7 @@
 import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 import { ModalService } from '@app/shared';
 import { CustomerService } from '@app/core/services/customer-service.service';
-import { ICustomer, IStates } from '@app/core';
+import { ICustomer, IStates, SignUpService, IAddressInfo } from '@app/core';
 import {
   StaticDataService,
   StaticDataCategory,
@@ -27,7 +27,8 @@ export class ChangeAddressFacade {
     private memberService: MemberService,
     private modalService: ModalService,
     private personalDetailsState: PersonalDetailsState,
-    private staticDataService: StaticDataService
+    private staticDataService: StaticDataService,
+    private signUpService: SignUpService
   ) {
     this.getCustomer();
   }
@@ -106,5 +107,16 @@ export class ChangeAddressFacade {
         this.openOTPModal();
       }
     });
+  }
+
+  /**
+   *
+   *
+   * @param {*} postalCode
+   * @returns {Observable<Partial<IAddressInfo[]>>}
+   * @memberof AddressInformationFacade
+   */
+  getPostalCodeInfo(postalCode): Observable<Partial<IAddressInfo[]>> {
+    return this.signUpService.getStateCityMunicipality(postalCode);
   }
 }
