@@ -32,7 +32,7 @@ export class CreateLoginPage implements OnInit {
         [
           Validators.required,
           Validators.minLength(8),
-          Validators.maxLength(30),
+          Validators.maxLength(20),
           SignupValidators.allowedUsernameCharacters
         ]
       ],
