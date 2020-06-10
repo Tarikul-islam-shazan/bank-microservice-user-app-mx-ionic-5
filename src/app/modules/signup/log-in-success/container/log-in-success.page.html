@@ -52,10 +52,14 @@
         <div id="loginInSuccessFooterDescription" class="footer-description">
           <p>{{ 'signup-module.log-in-success-page.next-step-info' | translate }}</p>
         </div>
-        <ion-button id="loginInSuccessBtn" class="blue-button" expand="block" (click)="continue()">
-          {{ 'signup-module.log-in-success-page.btn-text' | translate }}
-        </ion-button>
       </ion-col>
     </ion-row>
   </div>
 </ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button id="loginInSuccessBtn" class="blue-button" expand="block" (click)="continue()">
+      {{ 'signup-module.log-in-success-page.btn-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
