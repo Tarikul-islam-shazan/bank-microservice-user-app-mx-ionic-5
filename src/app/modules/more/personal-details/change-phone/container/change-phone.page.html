@@ -13,14 +13,7 @@
           <ion-label position="stacked">
             {{'more-module.personal-details.change-phone-no-modal.phone-no-text' | translate}}</ion-label
           >
-          <ion-input type="tel" class="white-input" formControlName="mobilePhone" [maxlength]="phoneNumberLength">
-          </ion-input>
-        </ion-item>
-        <ion-item>
-          <ion-label position="stacked">
-            {{'more-module.personal-details.change-phone-no-modal.work-phone-no-text' | translate}}</ion-label
-          >
-          <ion-input type="tel" class="white-input" formControlName="workPhone" [maxlength]="phoneNumberLength">
+          <ion-input type="tel" class="white-input" formControlName="mobilePhone" [maxlength]="phoneNumberMaxLength">
           </ion-input>
         </ion-item>
       </ion-list>
