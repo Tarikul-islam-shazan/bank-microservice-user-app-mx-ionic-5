@@ -12,7 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { isEqual } from 'lodash';
 import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-import { DropdownModalComponent, IinputOption } from '@app/shared';
+import { DropdownModalComponent, IinputOption, InputFormatType } from '@app/shared';
 import { DropdownOption } from '@app/signup/models/signup';
 
 @Component({
@@ -35,7 +35,16 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
     public facade: ChangeAddressFacade,
     private formBuilder: FormBuilder,
     private modalCtrl: ModalController
-  ) {}
+  ) {
+    this.onlyNumber = {
+      type: InputFormatType.ONLY_NUMBER,
+      maxLength: 10
+    };
+    this.postalCodeNumber = {
+      type: InputFormatType.ONLY_NUMBER,
+      maxLength: 5
+    };
+  }
 
   ngOnInit() {
     this.getCustomer();
@@ -150,18 +159,6 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
     this.changeAddressForm.controls.city.patchValue(isDataAvailable ? data[0].city : null);
     this.changeAddressForm.controls.suburbField.patchValue(null);
     this.changeAddressForm.controls.suburb.patchValue(null);
-  }
-
-  /**
-   * @summary patches selected state name
-   *
-   * @private
-   * @param {string} stateName
-   * @returns {void}
-   * @memberOf ChangeAddressPage
-   */
-  private patchStateName(stateName: string): void {
-    this.changeAddressForm.controls.state.patchValue(stateName);
   }
 
   /**
