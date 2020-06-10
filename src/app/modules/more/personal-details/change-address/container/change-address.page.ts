@@ -6,8 +6,8 @@
  *
  */
 import { ChangeAddressFacade } from '../facade';
-import { CommonValidators, ICustomer, IDropdownOption, IAddressInfo } from '@app/core';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { CommonValidators, ICustomer, IDropdownOption, IAddressInfo, IAddress, StaticData } from '@app/core';
+import { Component, OnDestroy, OnInit, AfterContentInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { isEqual } from 'lodash';
 import { ModalController } from '@ionic/angular';
@@ -23,13 +23,15 @@ import { DropdownOption } from '@app/signup/models/signup';
 export class ChangeAddressPage implements OnDestroy, OnInit {
   changeAddressForm: FormGroup;
   changeAddressFormSubscription: Subscription;
-  customer: ICustomer = {};
+  address: IAddress = {};
   isFormValueChanged = false;
   initialFormValue: ICustomer = {};
   suburbFieldData: IDropdownOption[] = [];
   onlyNumber: IinputOption;
   postalCodeNumber: IinputOption;
   public postalCodeData: Partial<IAddressInfo[]> = [];
+  public addressTypeList: IDropdownOption[] = [];
+  public propertyTypeList: IDropdownOption[] = [];
 
   constructor(
     public facade: ChangeAddressFacade,
@@ -46,9 +48,12 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
     };
   }
 
+  ionViewWillEnter() {
+    this.facade.getStaticData();
+  }
+
   ngOnInit() {
     this.getCustomer();
-    this.facade.getStaticData();
     this.initChangeAddressForm();
     this.checkIfFormValueChanged();
   }
@@ -61,7 +66,7 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @memberOf ChangeAddressPage
    */
   private getCustomer(): void {
-    this.customer = this.facade.customer;
+    this.address = this.facade.customer.address;
   }
 
   /**
@@ -73,32 +78,42 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @memberof ChangeAddressPage
    */
   private initChangeAddressForm(): void {
-    // const { address, city, stateName, zipCode } = this.customer;
-    // this.changeAddressForm = this.formBuilder.group({
-    //   address: [address, Validators.required],
-    //   city: [city, Validators.required],
-    //   state: [stateName, Validators.required],
-    //   zipCode: [zipCode, CommonValidators.zipCodeValidation]
-    // });
+    const {
+      addressType,
+      propertyType,
+      street,
+      outdoorNumber,
+      interiorNumber,
+      postCode,
+      state,
+      municipality,
+      city,
+      suburb,
+      dateOfResidence
+    } = this.address;
+
     this.changeAddressForm = this.formBuilder.group({
       addressTypeField: [null, Validators.required],
-      addressType: [null, Validators.required],
+      addressType: [addressType, Validators.required],
       propertyTypeField: [null, Validators.required],
-      propertyType: [null, Validators.required],
-      street: [null, [Validators.required, Validators.maxLength(40)]],
-      outdoorNumber: [null, [Validators.required, Validators.maxLength(10)]],
-      interiorNumber: [null, [Validators.required, Validators.maxLength(10)]],
-      postCode: [null, [Validators.required, Validators.maxLength(5)]],
+      propertyType: [propertyType, Validators.required],
+      street: [street, [Validators.required, Validators.maxLength(40)]],
+      outdoorNumber: [outdoorNumber, [Validators.required, Validators.maxLength(10)]],
+      interiorNumber: [interiorNumber, [Validators.required, Validators.maxLength(10)]],
+      postCode: [postCode, [Validators.required, Validators.maxLength(5)]],
       stateField: [null, Validators.required],
-      state: [null, Validators.required],
+      state: [state, Validators.required],
       municipalityField: [null, Validators.required],
-      municipality: [null, Validators.required],
+      municipality: [municipality, Validators.required],
       cityField: [null, Validators.required],
-      city: [null, Validators.required],
-      suburbField: [null, Validators.required],
-      suburb: [null, Validators.required],
-      dateOfResidence: [null, Validators.required]
+      city: [city, Validators.required],
+      suburbField: [suburb, Validators.required],
+      suburb: [suburb, Validators.required],
+      dateOfResidence: [dateOfResidence, Validators.required]
     });
+    const suburbValueExist = suburb ? true : false;
+    this.getPostalCodeInfo(postCode, suburbValueExist);
+    this.filterAddressType(addressType, propertyType);
   }
 
   /**
@@ -125,11 +140,11 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @param {*} postalCode
    * @memberof AddressInformationPage
    */
-  getPostalCodeInfo(postalCode): void {
+  getPostalCodeInfo(postalCode, suburbValueExist: boolean): void {
     if (postalCode.toString().length === 5) {
       this.facade.getPostalCodeInfo(postalCode).subscribe(
         (data: Partial<IAddressInfo[]>) => {
-          this.setPostalCodeInfo(true, data);
+          this.setPostalCodeInfo(true, data, suburbValueExist);
         },
         err => {
           this.setPostalCodeInfo(false);
@@ -145,7 +160,7 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @param {Partial<IAddressInfo[]>} [data]
    * @memberof AddressInformationPage
    */
-  setPostalCodeInfo(isDataAvailable: boolean, data?: Partial<IAddressInfo[]>): void {
+  setPostalCodeInfo(isDataAvailable: boolean, data?: Partial<IAddressInfo[]>, suburbValueExist?: boolean): void {
     this.postalCodeData = isDataAvailable ? data : null;
     this.suburbFieldData = this.mappingData(isDataAvailable ? data : []);
     this.changeAddressForm.controls.postCode.patchValue(
@@ -157,8 +172,8 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
     this.changeAddressForm.controls.municipality.patchValue(isDataAvailable ? data[0].municipality : null);
     this.changeAddressForm.controls.cityField.patchValue(isDataAvailable ? data[0].cityName : null);
     this.changeAddressForm.controls.city.patchValue(isDataAvailable ? data[0].city : null);
-    this.changeAddressForm.controls.suburbField.patchValue(null);
-    this.changeAddressForm.controls.suburb.patchValue(null);
+    // this.changeAddressForm.controls.suburbField.patchValue(null);
+    // this.changeAddressForm.controls.suburb.patchValue(null);
   }
 
   /**
@@ -214,5 +229,21 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
     if (this.changeAddressFormSubscription) {
       this.changeAddressFormSubscription.unsubscribe();
     }
+  }
+  filterAddressType(addressType: string, propertyType: string) {
+    this.facade.getStaticData().subscribe(staticData => {
+      this.addressTypeList = staticData[StaticData.AddressType];
+      this.propertyTypeList = staticData[StaticData.PropertyType];
+      const address = this.addressTypeList.find(data => {
+        return data.value === addressType;
+      });
+
+      const property = this.propertyTypeList.find(data => {
+        return (data.value = propertyType);
+      });
+
+      this.changeAddressForm.controls.addressTypeField.patchValue(address.text);
+      this.changeAddressForm.controls.propertyTypeField.patchValue(property.text);
+    });
   }
 }

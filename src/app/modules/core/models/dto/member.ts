@@ -103,7 +103,7 @@ export interface ICustomer {
   lastName?: string;
   email?: string;
   dateOfBirth?: string;
-  address?: string;
+  address?: IAddress;
   city?: string;
   state?: string;
   country?: string;
@@ -177,4 +177,18 @@ export interface IGeneralInfo {
   curp: string;
   mobileNumber: string;
   email: string;
+}
+
+export interface IAddress {
+  addressType?: string;
+  propertyType?: string;
+  street?: string;
+  outdoorNumber?: string;
+  interiorNumber?: string;
+  postCode?: string;
+  state?: string;
+  municipality?: string;
+  city?: string;
+  suburb?: string;
+  dateOfResidence?: string;
 }
