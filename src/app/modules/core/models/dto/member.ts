@@ -95,15 +95,20 @@ export enum MemberType {
 }
 
 export interface ICustomer {
-  salutation?: string;
+  customerId?: string;
   firstName?: string;
-  middleName?: string;
+  secondName?: string;
+  dateOfBirth?: string;
+  paternalLastName?: string;
+  maternalLastName?: string;
   nickname?: string;
+  curp?: string;
+  email?: string;
+  salutation?: string;
+  middleName?: string;
   oldName?: string;
   lastName?: string;
-  email?: string;
-  dateOfBirth?: string;
-  address?: string;
+  address?: IAddress[];
   city?: string;
   state?: string;
   country?: string;
@@ -115,6 +120,20 @@ export interface ICustomer {
   otpToken?: number;
   reason?: string;
   requiredDocument?: string;
+}
+
+export interface IAddress {
+  addressType: string;
+  propertyType: string;
+  street: string;
+  outdoorNumber: string;
+  interiorNumber: string;
+  postCode: string;
+  state: string;
+  municipality: string;
+  city: string;
+  suburb: string;
+  dateOfResidence: string;
 }
 
 export interface IOtp {

@@ -885,7 +885,11 @@
     "personal-details": {
       "header-title": "Detalles personales",
       "btn-edit": "Editar",
-      "full-name": "Pago  Nombre",
+      "full-name": "Nombre",
+      "first-name": "First Name",
+      "second-name": "Second Name",
+      "paternal-last-name": "Paternal Last Name",
+      "maternal-last-name": "Maternal Last Name",
       "name-or-nickname": "Nombre o apodo",
       "street-address": "DIRECCIÓN",
       "email": "Correo electrónico",

@@ -894,7 +894,11 @@
     "personal-details": {
       "header-title": "Personal Details",
       "btn-edit": "Edit",
-      "full-name": "Full Name",
+      "full-name": "Name",
+      "first-name": "First Name",
+      "second-name": "Second Name",
+      "paternal-last-name": "Paternal Last Name",
+      "maternal-last-name": "Maternal Last Name",
       "name-or-nickname": "Name or Nickname",
       "street-address": "Street Address",
       "email": "Email",

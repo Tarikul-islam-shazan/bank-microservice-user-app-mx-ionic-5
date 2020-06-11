@@ -16,11 +16,15 @@
         </ion-label>
         <ion-item class="ion-no-padding" lines="none">
           <ion-label class="details-info">
-            {{customer.firstName}} {{customer.middleName}} {{customer.lastName}}
+            {{ 'more-module.personal-details.first-name' | translate }}: {{customer.firstName?customer.firstName:''}}
+            <br />
+            {{ 'more-module.personal-details.second-name' | translate }}: {{customer.secondName?customer.secondName:''}}
+            <br />
+            {{ 'more-module.personal-details.paternal-last-name' | translate }}:
+            {{customer.maternalLastName?customer.maternalLastName:''}} <br />
+            {{ 'more-module.personal-details.maternal-last-name' | translate }}:
+            {{customer.paternalLastName?customer.paternalLastName:''}}
           </ion-label>
-          <ion-button fill="clear" slot="end" class="ion-text-uppercase" strong="true" (click)="openModal('name')">
-            {{'more-module.personal-details.btn-edit' | translate}}
-          </ion-button>
         </ion-item>
       </div>
     </ion-item>
@@ -48,8 +52,10 @@
         >
         <ion-item class="ion-no-padding" lines="none">
           <ion-label class="details-info">
-            <div class="street-address">{{customer.address}}</div>
-            <div class="street-address">{{ customer.city }}, {{ customer.state }} {{ customer.zipCode }}</div>
+            <div class="street-address" *ngIf="customer.address">{{customer.address[0].street}}</div>
+            <div class="street-address" *ngIf="customer.address">
+              {{ customer.address[0].city }}, {{ customer.address[0].state }} {{ customer.address[0].postCode }}
+            </div>
           </ion-label>
           <ion-button
             fill="clear"
