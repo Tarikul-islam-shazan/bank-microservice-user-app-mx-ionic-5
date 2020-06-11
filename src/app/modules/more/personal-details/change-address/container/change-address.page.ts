@@ -66,7 +66,7 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @memberOf ChangeAddressPage
    */
   private getCustomer(): void {
-    this.address = this.facade.customer.address[0];
+    this.address = this.facade.customer.addresses[0];
   }
 
   /**
@@ -244,14 +244,14 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
     this.facade.getStaticData().subscribe(staticData => {
       this.addressTypeList = staticData[StaticData.AddressType];
       this.propertyTypeList = staticData[StaticData.PropertyType];
-      const address = this.addressTypeList.find(data => {
+      const addressList = JSON.parse(JSON.stringify(this.addressTypeList));
+      const propertyList = JSON.parse(JSON.stringify(this.propertyTypeList));
+      const address = addressList.find(data => {
         return data.text === addressType;
       });
-
-      const property = this.propertyTypeList.find(data => {
+      const property = propertyList.find(data => {
         return (data.text = propertyType);
       });
-
       this.changeAddressForm.controls.addressTypeField.patchValue(address.text);
       this.changeAddressForm.controls.addressType.patchValue(address.value);
       this.changeAddressForm.controls.propertyTypeField.patchValue(property.text);
