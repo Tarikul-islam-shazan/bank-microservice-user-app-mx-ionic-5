@@ -929,15 +929,19 @@
       },
       "change-address-modal": {
         "header-title": "Change street address",
-        "address-text": "Address line",
-        "city-text": "City",
-        "state-text": "State",
-        "zip-code-text": "Zip Code",
-        "button-text": "Save",
-        "errors": {
-          "zip-code-required-text": "Zip code is required.",
-          "zip-code-character-text": "Zip code must be 5 or 10 characters"
-        }
+        "address-type": "Address Type",
+        "property-type": "Property Type",
+        "street-name": "Street Name",
+        "outdoor-number": "Outdoor Number",
+        "interior-number": "Interior Number",
+        "post-code": "Post Code",
+        "state": "State",
+        "municipality": "Municipality",
+        "city": "City",
+        "suburb": "Suburb",
+        "date-of-residence": "Date of Residence",
+        "dateFormate": "DD/MM/YYYY",
+        "button-text": "Save"
       },
       "change-email-address-modal": {
         "header-title": "Change email",

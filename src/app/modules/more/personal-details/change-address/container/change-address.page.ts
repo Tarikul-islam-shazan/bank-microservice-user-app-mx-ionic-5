@@ -6,13 +6,15 @@
  *
  */
 import { ChangeAddressFacade } from '../facade';
-import { CommonValidators, ICustomer } from '@app/core';
+import { ICustomer, IDropdownOption, IAddressInfo, IAddress, StaticData } from '@app/core';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { isEqual } from 'lodash';
 import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
-
+import { DropdownModalComponent, IinputOption, InputFormatType } from '@app/shared';
+import { DropdownOption } from '@app/signup/models/signup';
+const moment = require('moment');
 @Component({
   selector: 'change-address',
   templateUrl: './change-address.page.html',
@@ -21,20 +23,38 @@ import { Subscription } from 'rxjs';
 export class ChangeAddressPage implements OnDestroy, OnInit {
   changeAddressForm: FormGroup;
   changeAddressFormSubscription: Subscription;
-  customer: ICustomer = {};
+  address: IAddress = {};
   isFormValueChanged = false;
   initialFormValue: ICustomer = {};
+  suburbFieldData: IDropdownOption[] = [];
+  onlyNumber: IinputOption;
+  postalCodeNumber: IinputOption;
+  public postalCodeData: Partial<IAddressInfo[]> = [];
+  public addressTypeList: IDropdownOption[] = [];
+  public propertyTypeList: IDropdownOption[] = [];
 
   constructor(
-    private facade: ChangeAddressFacade,
+    public facade: ChangeAddressFacade,
     private formBuilder: FormBuilder,
     private modalCtrl: ModalController
-  ) {}
+  ) {
+    this.onlyNumber = {
+      type: InputFormatType.ONLY_NUMBER,
+      maxLength: 10
+    };
+    this.postalCodeNumber = {
+      type: InputFormatType.ONLY_NUMBER,
+      maxLength: 5
+    };
+  }
+
+  ionViewWillEnter() {
+    this.facade.getStaticData();
+  }
 
   ngOnInit() {
     this.getCustomer();
     this.initChangeAddressForm();
-    this.getCountryStates();
     this.checkIfFormValueChanged();
   }
 
@@ -46,7 +66,7 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @memberOf ChangeAddressPage
    */
   private getCustomer(): void {
-    this.customer = this.facade.customer;
+    this.address = this.facade.customer.addresses[0];
   }
 
   /**
@@ -58,40 +78,102 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @memberof ChangeAddressPage
    */
   private initChangeAddressForm(): void {
-    const { address, city, stateName, zipCode } = this.customer;
+    const {
+      addressType,
+      propertyType,
+      street,
+      outdoorNumber,
+      interiorNumber,
+      postCode,
+      state,
+      municipality,
+      city,
+      suburb,
+      dateOfResidence
+    } = this.address;
+
     this.changeAddressForm = this.formBuilder.group({
-      address: [address, Validators.required],
+      addressTypeField: [null, Validators.required],
+      addressType: [null, Validators.required],
+      propertyTypeField: [null, Validators.required],
+      propertyType: [null, Validators.required],
+      street: [street, [Validators.required, Validators.maxLength(40)]],
+      outdoorNumber: [outdoorNumber, [Validators.required, Validators.maxLength(10)]],
+      interiorNumber: [interiorNumber, [Validators.required, Validators.maxLength(10)]],
+      postCode: [postCode, [Validators.required, Validators.maxLength(5)]],
+      stateField: [null, Validators.required],
+      state: [state, Validators.required],
+      municipalityField: [null, Validators.required],
+      municipality: [municipality, Validators.required],
+      cityField: [null, Validators.required],
       city: [city, Validators.required],
-      state: [stateName, Validators.required],
-      zipCode: [zipCode, CommonValidators.zipCodeValidation]
+      suburbField: [suburb, Validators.required],
+      suburb: [suburb, Validators.required],
+      dateOfResidence: [dateOfResidence, Validators.required]
     });
+    const suburbValueExist = suburb ? true : false;
+    this.getPostalCodeInfo(postCode, suburbValueExist);
+    this.filterAddressType(addressType, propertyType);
   }
 
   /**
-   * @summary patches selected state name
    *
-   * @private
-   * @param {string} stateName
-   * @returns {void}
-   * @memberOf ChangeAddressPage
+   *
+   * @param {Partial<IAddressInfo[]>} postalCodeData
+   * @returns {IDropdownOption[]}
+   * @memberof AddressInformationPage
    */
-  private patchStateName(stateName: string): void {
-    this.changeAddressForm.controls.state.patchValue(stateName);
+  mappingData(postalCodeData: Partial<IAddressInfo[]>): IDropdownOption[] {
+    const suburbFieldDropDownData: IDropdownOption[] = [];
+    postalCodeData.forEach(data => {
+      suburbFieldDropDownData.push({
+        value: data.suburbName,
+        text: data.suburbName
+      });
+    });
+    return suburbFieldDropDownData;
   }
 
   /**
-   * @summary gets country states
    *
-   * @private
-   * @returns {void}
-   * @memberOf ChangeAddressPage
+   *
+   * @param {*} postalCode
+   * @memberof AddressInformationPage
    */
-  private getCountryStates(): void {
-    this.facade.getCountryStates((stateName: string) => {
-      this.patchStateName(stateName);
-      this.initialFormValue = this.changeAddressForm.value;
-      this.changeAddressForm.setErrors({ formValueNotChanged: true });
-    });
+  getPostalCodeInfo(postalCode, suburbValueExist: boolean): void {
+    if (postalCode.toString().length === 5) {
+      this.facade.getPostalCodeInfo(postalCode).subscribe(
+        (data: Partial<IAddressInfo[]>) => {
+          this.setPostalCodeInfo(true, data, suburbValueExist);
+        },
+        err => {
+          this.setPostalCodeInfo(false);
+        }
+      );
+    }
+  }
+
+  /**
+   *
+   *
+   * @param {boolean} isDataAvailable
+   * @param {Partial<IAddressInfo[]>} [data]
+   * @memberof AddressInformationPage
+   */
+  setPostalCodeInfo(isDataAvailable: boolean, data?: Partial<IAddressInfo[]>, suburbValueExist?: boolean): void {
+    this.postalCodeData = isDataAvailable ? data : null;
+    this.suburbFieldData = this.mappingData(isDataAvailable ? data : []);
+    this.changeAddressForm.controls.postCode.patchValue(
+      isDataAvailable ? this.changeAddressForm.controls.postCode.value : null
+    );
+    this.changeAddressForm.controls.stateField.patchValue(isDataAvailable ? data[0].stateName : null);
+    this.changeAddressForm.controls.state.patchValue(isDataAvailable ? data[0].state : null);
+    this.changeAddressForm.controls.municipalityField.patchValue(isDataAvailable ? data[0].municipalityName : null);
+    this.changeAddressForm.controls.municipality.patchValue(isDataAvailable ? data[0].municipality : null);
+    this.changeAddressForm.controls.cityField.patchValue(isDataAvailable ? data[0].cityName : null);
+    this.changeAddressForm.controls.city.patchValue(isDataAvailable ? data[0].city : null);
+    this.changeAddressForm.controls.suburbField.patchValue(suburbValueExist ? data[0].suburbName : null);
+    this.changeAddressForm.controls.suburb.patchValue(suburbValueExist ? data[0].suburbName : null);
   }
 
   /**
@@ -107,18 +189,6 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
         this.isFormValueChanged = !isEqual(this.initialFormValue, changedFormValue);
       }
     );
-  }
-
-  /**
-   * @summary opens state modal
-   *
-   * @returns {void}
-   * @memberOf ChangeAddressPage
-   */
-  openStateModal(): void {
-    this.facade.openStateModal((stateName: string) => {
-      this.patchStateName(stateName);
-    });
   }
 
   /**
@@ -138,12 +208,54 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @memberOf ChangeAddressPage
    */
   save(): void {
+    const addressInfoData = this.changeAddressForm.value;
+    delete addressInfoData.addressTypeField;
+    delete addressInfoData.propertyTypeField;
+    delete addressInfoData.stateField;
+    delete addressInfoData.cityField;
+    delete addressInfoData.municipalityField;
+    delete addressInfoData.suburbField;
+    addressInfoData.dateOfResidence = addressInfoData.dateOfResidence
+      ? moment(addressInfoData.dateOfResidence.split('T')[0]).format('MM-DD-YYYY')
+      : '';
     this.facade.save(this.changeAddressForm.value);
+  }
+
+  async openOptionsModal(formControlName: string, formControlValue: string, options: DropdownOption[]): Promise<any> {
+    try {
+      const modal = await this.modalCtrl.create({
+        component: DropdownModalComponent,
+        componentProps: { data: options }
+      });
+      await modal.present();
+      const { data } = await modal.onWillDismiss();
+      this.changeAddressForm.controls[formControlName].patchValue(data.text);
+      this[formControlName] = data ? data : null;
+      this.changeAddressForm.controls[formControlValue].patchValue(data.value);
+    } catch (error) {}
   }
 
   ngOnDestroy() {
     if (this.changeAddressFormSubscription) {
       this.changeAddressFormSubscription.unsubscribe();
     }
+  }
+  filterAddressType(addressType: string, propertyType: string) {
+    this.facade.getStaticData().subscribe(staticData => {
+      this.addressTypeList = staticData[StaticData.AddressType];
+      this.propertyTypeList = staticData[StaticData.PropertyType];
+      const addressList = JSON.parse(JSON.stringify(this.addressTypeList));
+      const propertyList = JSON.parse(JSON.stringify(this.propertyTypeList));
+      const address = addressList.find(data => {
+        return data.text === addressType;
+      });
+      const property = propertyList.find(data => {
+        return (data.text = propertyType);
+      });
+      this.changeAddressForm.controls.addressTypeField.patchValue(address.text);
+      this.changeAddressForm.controls.addressType.patchValue(address.value);
+      this.changeAddressForm.controls.propertyTypeField.patchValue(property.text);
+      this.changeAddressForm.controls.propertyType.patchValue(property.value);
+    });
   }
 }
