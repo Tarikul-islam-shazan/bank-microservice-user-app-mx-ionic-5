@@ -58,9 +58,9 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @memberof ChangeAddressPage
    */
   private initChangeAddressForm(): void {
-    const { address, city, stateName, zipCode } = this.customer;
+    const { addresses, city, stateName, zipCode } = this.customer;
     this.changeAddressForm = this.formBuilder.group({
-      address: [address, Validators.required],
+      address: [addresses, Validators.required],
       city: [city, Validators.required],
       state: [stateName, Validators.required],
       zipCode: [zipCode, CommonValidators.zipCodeValidation]
