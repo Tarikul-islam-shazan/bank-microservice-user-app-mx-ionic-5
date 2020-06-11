@@ -59,10 +59,13 @@ export class ChangeAddressFacade {
    * @memberOf ChangeAddressFacade
    */
   save(formValue: IAddress): void {
-    const address: IAddress[] = [formValue];
-    this.customerService.updateAddress(address).subscribe((response: any) => {
-      const { data } = response;
-      Object.assign(this.customer, data);
+    const customer: Partial<ICustomer> = {};
+    const addressArrar: IAddress[] = [formValue];
+    customer.address = addressArrar;
+    this.customerService.updateAddress(customer).subscribe((response: any) => {
+      const data = response.address;
+      this.customer.address = data;
+      // Object.assign(this.customer, data);
       Object.assign(this.memberService.member, data);
       this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
       setTimeout(() => {
