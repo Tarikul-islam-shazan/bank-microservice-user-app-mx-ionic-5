@@ -52,9 +52,9 @@
         >
         <ion-item class="ion-no-padding" lines="none">
           <ion-label class="details-info">
-            <div class="street-address" *ngIf="customer.address">{{customer.address[0].street}}</div>
-            <div class="street-address" *ngIf="customer.address">
-              {{ customer.address[0].city }}, {{ customer.address[0].state }} {{ customer.address[0].postCode }}
+            <div class="street-address" *ngIf="customer.addresses">{{customer.addresses[0].street}}</div>
+            <div class="street-address" *ngIf="customer.addresses">
+              {{ customer.addresses[0].city }}, {{ customer.addresses[0].state }} {{ customer.addresses[0].postCode }}
             </div>
           </ion-label>
           <ion-button

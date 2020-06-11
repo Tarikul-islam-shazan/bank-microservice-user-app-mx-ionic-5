@@ -108,7 +108,7 @@ export interface ICustomer {
   middleName?: string;
   oldName?: string;
   lastName?: string;
-  address?: IAddress[];
+  addresses?: IAddress[];
   city?: string;
   state?: string;
   country?: string;
