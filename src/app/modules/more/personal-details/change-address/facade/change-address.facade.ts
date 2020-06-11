@@ -72,9 +72,6 @@ export class ChangeAddressFacade {
         this.modalService.close();
       }, 500);
     });
-    // this.signUpService.submitAddressInfo(customer.address).subscribe(data => {
-    //   this.analyticsService.logEvent(AnalyticsEventTypes.SignupAddressInfoCompleted);
-    // });
   }
 
   /**
