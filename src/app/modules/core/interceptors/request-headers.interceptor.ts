@@ -25,19 +25,7 @@ export class RequestHeadersInterceptor implements HttpInterceptor {
    */
   requestHeaders(): { [headerName: string]: string | string[] } {
     // Default headers
-    const headers = {
-      'meedbankingclub-app-version': semanticVersioning.appVersion,
-      'meedbankingclub-device-platform': this.appPlatform.currentPlatform()
-    };
-
-    // If the platform is cordova then extend default headers with defaults device info
-    if (this.appPlatform.isCordova()) {
-      Object.assign(headers, {
-        'meedbankingclub-device-os-version': this.appPlatform.deviceOSVersion,
-        'meedbankingclub-device-model': this.appPlatform.deviceModel,
-        'meedbankingclub-device-manufacturer': this.appPlatform.deviceManufacturer
-      });
-    }
+    const headers = {} as { [headerName: string]: string | string[] };
 
     // If bank identifier available then add this to default headers
     if (this.settingsService.getSettings().userSettings.bankIdentifier) {
