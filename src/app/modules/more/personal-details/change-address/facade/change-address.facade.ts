@@ -1,7 +1,7 @@
-import { AnalyticsService } from '@app/analytics';
+import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { ModalService } from '@app/shared';
 import { CustomerService } from '@app/core/services/customer-service.service';
-import { ICustomer, IStates, SignUpService, IAddressInfo } from '@app/core';
+import { ICustomer, IStates, SignUpService, IAddressInfo, IAddress } from '@app/core';
 import { StaticDataService, StaticDataCategory, IDropdownOption } from '@app/core/services/static-data.service';
 import { Injectable } from '@angular/core';
 import { MemberService } from '@app/core/services/member.service';
@@ -18,7 +18,8 @@ export class ChangeAddressFacade {
     private memberService: MemberService,
     private personalDetailsState: PersonalDetailsState,
     private staticDataService: StaticDataService,
-    private signUpService: SignUpService
+    private signUpService: SignUpService,
+    private modalService: ModalService
   ) {
     this.getCustomer();
   }
@@ -50,35 +51,6 @@ export class ChangeAddressFacade {
     return this.customerService.getCountryState(this.memberService.member.country);
   }
 
-  // /**
-  //  * @summary sends OTP
-  //  *
-  //  * @param {ICustomer} customer
-  //  * @returns {Observable<ICustomer>}
-  //  * @memberOf ChangeAddressFacade
-  //  */
-  // sendOTP(customer: ICustomer): Observable<ICustomer> {
-  //   return this.customerService.updateAddress(customer);
-  // }
-
-  // /**
-  //  * @summary updates member data
-  //  *
-  //  * @returns {void}
-  //  * @memberOf ChangeAddressFacade
-  //  */
-  // openOTPModal(): void {
-  //   this.modalService.openModal(OtpVerificationModalPage, {}, (response: any) => {
-  //     const { data } = response;
-  //     if (data) {
-  //       Object.assign(this.customer, data);
-  //       Object.assign(this.memberService.member, data);
-  //       this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
-  //       this.modalService.close();
-  //     }
-  //   });
-  // }
-
   /**
    * @summary opens OTP modal
    *
@@ -86,15 +58,20 @@ export class ChangeAddressFacade {
    * @returns {void}
    * @memberOf ChangeAddressFacade
    */
-  save(formValue: ICustomer): void {
-    const customer: ICustomer = formValue;
-    customer.state = this.selectedCountryState.stateAbv;
-    // this.sendOTP(customer).subscribe(noop, (err: any) => {
-    //   if (err.status === 403) {
-    //     this.openOTPModal();
-    //   }
+  save(formValue: IAddress): void {
+    const address: IAddress[] = [formValue];
+    this.customerService.updateAddress(address).subscribe((response: any) => {
+      const { data } = response;
+      Object.assign(this.customer, data);
+      Object.assign(this.memberService.member, data);
+      this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
+      setTimeout(() => {
+        this.modalService.close();
+      }, 500);
+    });
+    // this.signUpService.submitAddressInfo(customer.address).subscribe(data => {
+    //   this.analyticsService.logEvent(AnalyticsEventTypes.SignupAddressInfoCompleted);
     // });
-    this.customerService.updateAddress(customer).subscribe();
   }
 
   /**

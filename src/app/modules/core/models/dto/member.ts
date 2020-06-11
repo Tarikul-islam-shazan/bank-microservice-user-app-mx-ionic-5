@@ -103,7 +103,7 @@ export interface ICustomer {
   lastName?: string;
   email?: string;
   dateOfBirth?: string;
-  address?: IAddress;
+  address?: IAddress[];
   city?: string;
   state?: string;
   country?: string;

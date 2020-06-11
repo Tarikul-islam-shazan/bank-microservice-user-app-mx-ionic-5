@@ -940,6 +940,7 @@
         "city": "City",
         "suburb": "Suburb",
         "date-of-residence": "Date of Residence",
+        "dateFormate": "DD/MM/YYYY",
         "button-text": "Save"
       },
       "change-email-address-modal": {

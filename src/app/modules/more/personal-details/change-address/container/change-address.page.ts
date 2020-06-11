@@ -6,15 +6,15 @@
  *
  */
 import { ChangeAddressFacade } from '../facade';
-import { CommonValidators, ICustomer, IDropdownOption, IAddressInfo, IAddress, StaticData } from '@app/core';
-import { Component, OnDestroy, OnInit, AfterContentInit } from '@angular/core';
+import { ICustomer, IDropdownOption, IAddressInfo, IAddress, StaticData } from '@app/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { isEqual } from 'lodash';
 import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { DropdownModalComponent, IinputOption, InputFormatType } from '@app/shared';
 import { DropdownOption } from '@app/signup/models/signup';
-
+const moment = require('moment');
 @Component({
   selector: 'change-address',
   templateUrl: './change-address.page.html',
@@ -66,7 +66,7 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @memberOf ChangeAddressPage
    */
   private getCustomer(): void {
-    this.address = this.facade.customer.address;
+    this.address = this.facade.customer.address[0];
   }
 
   /**
@@ -94,9 +94,9 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
 
     this.changeAddressForm = this.formBuilder.group({
       addressTypeField: [null, Validators.required],
-      addressType: [addressType, Validators.required],
+      addressType: [null, Validators.required],
       propertyTypeField: [null, Validators.required],
-      propertyType: [propertyType, Validators.required],
+      propertyType: [null, Validators.required],
       street: [street, [Validators.required, Validators.maxLength(40)]],
       outdoorNumber: [outdoorNumber, [Validators.required, Validators.maxLength(10)]],
       interiorNumber: [interiorNumber, [Validators.required, Validators.maxLength(10)]],
@@ -172,8 +172,8 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
     this.changeAddressForm.controls.municipality.patchValue(isDataAvailable ? data[0].municipality : null);
     this.changeAddressForm.controls.cityField.patchValue(isDataAvailable ? data[0].cityName : null);
     this.changeAddressForm.controls.city.patchValue(isDataAvailable ? data[0].city : null);
-    // this.changeAddressForm.controls.suburbField.patchValue(null);
-    // this.changeAddressForm.controls.suburb.patchValue(null);
+    this.changeAddressForm.controls.suburbField.patchValue(suburbValueExist ? data[0].suburbName : null);
+    this.changeAddressForm.controls.suburb.patchValue(suburbValueExist ? data[0].suburbName : null);
   }
 
   /**
@@ -208,6 +208,16 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @memberOf ChangeAddressPage
    */
   save(): void {
+    const addressInfoData = this.changeAddressForm.value;
+    delete addressInfoData.addressTypeField;
+    delete addressInfoData.propertyTypeField;
+    delete addressInfoData.stateField;
+    delete addressInfoData.cityField;
+    delete addressInfoData.municipalityField;
+    delete addressInfoData.suburbField;
+    addressInfoData.dateOfResidence = addressInfoData.dateOfResidence
+      ? moment(addressInfoData.dateOfResidence.split('T')[0]).format('MM-DD-YYYY')
+      : '';
     this.facade.save(this.changeAddressForm.value);
   }
 
@@ -235,15 +245,17 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
       this.addressTypeList = staticData[StaticData.AddressType];
       this.propertyTypeList = staticData[StaticData.PropertyType];
       const address = this.addressTypeList.find(data => {
-        return data.value === addressType;
+        return data.text === addressType;
       });
 
       const property = this.propertyTypeList.find(data => {
-        return (data.value = propertyType);
+        return (data.text = propertyType);
       });
 
       this.changeAddressForm.controls.addressTypeField.patchValue(address.text);
+      this.changeAddressForm.controls.addressType.patchValue(address.value);
       this.changeAddressForm.controls.propertyTypeField.patchValue(property.text);
+      this.changeAddressForm.controls.propertyType.patchValue(property.value);
     });
   }
 }

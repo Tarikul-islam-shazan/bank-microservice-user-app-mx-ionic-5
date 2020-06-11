@@ -75,7 +75,7 @@
             {{'more-module.personal-details.change-address-modal.post-code' | translate}}</ion-label
           >
           <ion-input
-            (ionChange)="getPostalCodeInfo($event.target.value)"
+            (ionChange)="getPostalCodeInfo($event.target.value, false)"
             id="postCode"
             formControlName="postCode"
             class="white-input"
@@ -142,7 +142,7 @@
               class="white-input"
               id="dateOfResidence"
               formControlName="dateOfResidence"
-              displayFormat="{{ 'signup-module.signup-address-information-page.address-form.dateFormate' | translate }}"
+              displayFormat="{{ 'more-module.personal-details.change-address-modal.dateFormate' | translate }}"
             ></ion-datetime>
             <ion-icon name="chevron-down"></ion-icon>
           </ion-item>

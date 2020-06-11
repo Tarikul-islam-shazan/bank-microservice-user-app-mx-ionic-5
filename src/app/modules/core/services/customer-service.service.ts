@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ICustomer, IStates, IOtp, IDocumentRequestData } from '../models';
+import { ICustomer, IStates, IOtp, IDocumentRequestData, IAddress } from '../models';
 import { environment } from '@env/environment';
 import { HttpClient } from '@angular/common/http';
 import { HeaderService } from './header-service.service';
@@ -63,10 +63,10 @@ export class CustomerService {
     );
   }
 
-  updateAddress(customer: ICustomer): Observable<ICustomer> {
+  updateAddress(address: IAddress[]): Observable<ICustomer> {
     const otpVerificationRequest: IOtpVerificationRequest = {
       url: this.baseUrl + '/customer',
-      body: customer,
+      body: address,
       headers: this.headerService.getUserNameMemberICustomerIdHeader(),
       requestMethod: IHttpRequestMethod.Put
     };
