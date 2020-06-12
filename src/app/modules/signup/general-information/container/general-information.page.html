@@ -61,6 +61,7 @@
             displayFormat="{{ 'signup-module.general-info-page.generalForm.date-of-birth-display-format' | translate }}"
             pickerFormat="{{ 'signup-module.general-info-page.generalForm.date-of-birth-display-format' | translate }}"
             [max]="facade.maxDate"
+            (ionChange)="addCurpValidators()"
           ></ion-datetime>
           <ion-icon name="chevron-down"></ion-icon>
         </ion-item>
@@ -97,10 +98,10 @@
 <ion-footer>
   <ion-toolbar>
     <ion-button
+      [disabled]="generalForm.invalid"
       class="white-button"
       expand="block"
       (click)="applyGeneralInformation()"
-      [disabled]="generalForm.invalid"
     >
       {{ 'signup-module.general-info-page.next-button-text' | translate }}
     </ion-button>
