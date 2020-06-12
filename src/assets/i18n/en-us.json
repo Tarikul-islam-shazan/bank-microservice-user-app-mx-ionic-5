@@ -754,8 +754,9 @@
     "card-lost-page": {
       "header-title": "Lost / Stolen",
       "header-text": "Report lost or stolen Meed card",
-      "stolen-text-1": "If your Meed card is ever lost or stolen, assistance is only a phone call away. Call us immediately and a Bank representative will review your account for any unauthorized transacations.",
+      "stolen-text-1": "If your Meed card is ever lost or stolen, assistance is only a phone call away. Call us immediately and a Bank representative will review your account for any unauthorized transactions.",
       "stolen-text-2": "Please note that, when you report your debit card as lost or stolen, we will immediately deactivate your card and send a new card with a new number for your protection.",
+      "header-text-2": "To report a lost or stolen card, call",
       "btn-text": "Call Now"
     },
     "card-replace-page": {
