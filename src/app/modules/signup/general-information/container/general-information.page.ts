@@ -27,17 +27,23 @@ export class GeneralInformationPage implements OnInit {
 
   initGeneralInfoForm() {
     this.generalForm = this.formBuilder.group({
-      firstName: ['', [Validators.required, Validators.maxLength(26), Validators.pattern('^[A-Za-z]+$')]],
-      secondName: ['', [Validators.maxLength(26), Validators.pattern('^[A-Za-z]+$')]],
-      paternalLastName: ['', [Validators.required, Validators.maxLength(26), Validators.pattern('^[A-Za-z]+$')]],
-      maternalLastName: ['', [Validators.maxLength(26), Validators.pattern('^[A-Za-z]+$')]],
+      firstName: [
+        '',
+        [Validators.required, Validators.maxLength(this.nameMaxLength), Validators.pattern('^[A-Za-z]+$')]
+      ],
+      secondName: ['', [Validators.maxLength(this.nameMaxLength), Validators.pattern('^[A-Za-z]+$')]],
+      paternalLastName: [
+        '',
+        [Validators.required, Validators.maxLength(this.nameMaxLength), Validators.pattern('^[A-Za-z]+$')]
+      ],
+      maternalLastName: ['', [Validators.maxLength(this.nameMaxLength), Validators.pattern('^[A-Za-z]+$')]],
       dateOfBirth: ['', [Validators.required]],
       curp: [
         '',
         [
           Validators.required,
-          Validators.minLength(18),
-          Validators.maxLength(18),
+          Validators.minLength(this.curpMaxLength),
+          Validators.maxLength(this.curpMaxLength),
           Validators.pattern('[A-Z]{4}\\d{6}[HM]{1}[A-Z]{5}[A-Z0-9]{1}\\d{1}')
         ]
       ],
@@ -46,24 +52,17 @@ export class GeneralInformationPage implements OnInit {
     this.initJumioDataIntoForm();
   }
 
-  addCurpValidators() {
+  validateCurp() {
     const year = new Date(this.generalForm.controls.dateOfBirth.value).getFullYear();
     this.generalForm.controls.curp.clearValidators();
-    if (year >= 2000) {
-      this.generalForm.controls.curp.setValidators([
-        Validators.required,
-        Validators.minLength(18),
-        Validators.maxLength(18),
-        Validators.pattern('[A-Z]{4}\\d{6}[HM]{1}[A-Z]{5}[A-Z]{1}\\d{1}')
-      ]);
-    } else {
-      this.generalForm.controls.curp.setValidators([
-        Validators.required,
-        Validators.minLength(18),
-        Validators.maxLength(18),
-        Validators.pattern('[A-Z]{4}\\d{6}[HM]{1}[A-Z]{5}[0-9]{1}\\d{1}')
-      ]);
-    }
+    const curpValidatorExpression =
+      year >= 2000 ? '[A-Z]{4}\\d{6}[HM]{1}[A-Z]{5}[A-Z]{1}\\d{1}' : '[A-Z]{4}\\d{6}[HM]{1}[A-Z]{5}[0-9]{1}\\d{1}';
+    this.generalForm.controls.curp.setValidators([
+      Validators.required,
+      Validators.minLength(this.curpMaxLength),
+      Validators.maxLength(this.curpMaxLength),
+      Validators.pattern(curpValidatorExpression)
+    ]);
     if (this.generalForm.controls.curp.value) {
       this.generalForm.controls.curp.patchValue(this.generalForm.controls.curp.value);
     }
