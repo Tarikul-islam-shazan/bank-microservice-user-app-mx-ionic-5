@@ -42,30 +42,14 @@ export class ChangePhoneFacade {
   }
 
   /**
-   * @summary sends OTP
+   * @summary Update member phone
    *
    * @param {ICustomer} customer
    * @returns {Observable<ICustomer>}
    * @memberOf ChangePhoneFacade
    */
-  sendOTP(customer: ICustomer): Observable<ICustomer> {
+  updatePhone(customer: ICustomer): Observable<ICustomer> {
     return this.customerService.updatePhone(customer);
-  }
-
-  /**
-   * * Open OTP modal With new OTP service
-   * @memberof ChangePhonePage
-   * @function openOtpModal
-   */
-  openOtpModal(): void {
-    this.modalService.openOtpModal((dismissResp: any) => {
-      const { data } = dismissResp;
-      if (data) {
-        Object.assign(this.customer, data);
-        Object.assign(this.memberService.member, data);
-        this.dismissModal();
-      }
-    });
   }
 
   /**
@@ -76,10 +60,10 @@ export class ChangePhoneFacade {
    * @memberOf ChangePhoneFacade
    */
   save(formValue: ICustomer): void {
-    this.sendOTP(formValue).subscribe(noop, (err: any) => {
-      if (err.status === 403) {
-        this.openOtpModal();
-      }
+    this.updatePhone(formValue).subscribe((customer: ICustomer) => {
+      Object.assign(this.customer, customer);
+      Object.assign(this.memberService.member, customer);
+      this.dismissModal();
     });
   }
 }
