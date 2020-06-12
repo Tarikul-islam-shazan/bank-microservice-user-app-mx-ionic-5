@@ -27,10 +27,9 @@ import { AnalyticsModule, AnalyticsConfig } from '@app/analytics/analytics.modul
 import {
   LoggingInterceptor,
   LoaderInterceptor,
-  AppVersionInterceptor,
   ErrorInterceptor,
   TokenInterceptor,
-  CorrelationIdInterceptor
+  RequestHeadersInterceptor
 } from '@app/core/interceptors';
 // import SettingsService, AppUpgradeService services to load from APP_INITIALIZER
 import { SettingsService } from '@app/core/services/settings.service';
@@ -78,8 +77,7 @@ const analyticsConfig: AnalyticsConfig = {
     { provide: HTTP_INTERCEPTORS, useClass: LoggingInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: TokenInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: AppVersionInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: CorrelationIdInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: RequestHeadersInterceptor, multi: true },
     // we always want this to be last...
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
     // use this for anything not related to HTTP Errors

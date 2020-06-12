@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import * as moment from 'moment';
-import { NavController } from '@ionic/angular';
 import { AccountService } from '@app/core/services/account.service';
 import { IAccount, AccountType } from '@app/core/models/dto/account';
 import { SavingGoalService, SavingsGoalState } from '@app/dashboard/services/saving-goal.service';
 import { ISavingsGoal } from '@app/dashboard/models';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
+import { omit } from 'lodash';
 import { IMeedModalContent, ModalService } from '@app/shared';
 import { Router } from '@angular/router';
 @Injectable()
@@ -66,17 +66,28 @@ export class SavingGoalFacade {
         'goal-amount': this.savingsGoalState.savingsGoal.targetAmount,
         'goal-years': this.savingsGoalState.savingsGoal.yearOfSaving
       });
-      this.goBackSavingPage();
+      this.closeModal(true);
     });
   }
 
-  editSavingGoal() {
-    this.savingGoalService.updateSavingGoal(this.savingsGoalState.savingsGoal).subscribe((response: ISavingsGoal) => {
+  /**
+   * @summary edits saving goal
+   *
+   * @returns {void}
+   * @memberOf SavingGoalFacade
+   */
+  editSavingGoal(): void {
+    const savingsGoal = JSON.parse(
+      JSON.stringify(
+        omit(this.savingsGoalState.savingsGoal, ['startDate', 'endDate', 'createdDate', 'updatedDate', '__v'])
+      )
+    );
+    this.savingGoalService.updateSavingGoal(savingsGoal).subscribe((_: ISavingsGoal) => {
       this.analytics.logEvent(AnalyticsEventTypes.SavingsGoalUpdated, {
         'goal-amount': this.savingsGoalState.savingsGoal.targetAmount,
         'goal-years': this.savingsGoalState.savingsGoal.yearOfSaving
       });
-      this.goBackSavingPage();
+      this.closeModal(true);
     });
   }
 
@@ -108,10 +119,10 @@ export class SavingGoalFacade {
           text: 'dashboard-module.savings-goal.modal.yes-button',
           cssClass: 'white-button',
           handler: () => {
+            this.closeModal();
             this.savingGoalService.deleteSavingGoal(this.savingsGoalState.savingsGoal._id).subscribe(() => {
               this.analytics.logEvent(AnalyticsEventTypes.SavingsGoalDeleted);
-              this.modalService.close();
-              this.goBackSavingPage();
+              this.closeModal(true);
             });
           }
         },
@@ -119,7 +130,7 @@ export class SavingGoalFacade {
           text: 'dashboard-module.savings-goal.modal.no-button',
           cssClass: 'grey-outline-button',
           handler: () => {
-            this.modalService.close();
+            this.closeModal();
           }
         }
       ]
@@ -152,8 +163,14 @@ export class SavingGoalFacade {
     this.openGoalDeleteModal();
   }
 
-  goBackSavingPage() {
-    this.router.navigate(['/home/savings-transactions']);
+  /**
+   * @summary closes modal
+   *
+   * @returns {void}
+   * @memberOf SavingGoalFacade
+   */
+  closeModal(dataChanged: boolean = false): void {
+    this.modalService.close(dataChanged);
   }
 
   calculatePNR(): number {
@@ -162,7 +179,7 @@ export class SavingGoalFacade {
     let rate = this.savingGoalService.getSavingRate();
     let projectedAmount = 0;
     if (!this.savingsGoalState.savingsGoal.targetAmount) {
-      this.savingsGoalState.savingsGoal.targetAmount = 100;
+      this.savingsGoalState.savingsGoal.targetAmount = 0.0;
     }
     const noOfMonth = 12;
     rate = rate / 100 ? rate / 100 : 0;

@@ -924,15 +924,19 @@
       },
       "change-address-modal": {
         "header-title": "Cambiar dirección de la calle",
-        "address-text": "Línea de dirección",
-        "city-text": "Ciudad",
-        "state-text": "Estado",
-        "zip-code-text": "Código postal",
-        "button-text": "Guardar",
-        "errors": {
-          "zip-code-required-text": "Zip code is required.",
-          "zip-code-character-text": "Zip code must be 5 or 10 characters"
-        }
+        "address-type": "Address Type",
+        "property-type": "Property Type",
+        "street-name": "Street Name",
+        "outdoor-number": "Outdoor Number",
+        "interior-number": "Interior Number",
+        "post-code": "Post Code",
+        "state": "State",
+        "municipality": "Municipality",
+        "city": "City",
+        "suburb": "Suburb",
+        "date-of-residence": "Date of Residence",
+        "dateFormate": "DD/MM/YYYY",
+        "button-text": "Save"
       },
       "change-email-address-modal": {
         "header-title": "Cambiar correo electrónico",
@@ -1159,6 +1163,7 @@
         "amount-title": "Cantidad a transferir",
         "amount-placeholder-text": "$0.00",
         "amount-error-text": "El importe solicitado supera el saldo disponible.",
+        "amount-requested-exceeds-text": "El importe solicitado supera el pago completo",
         "schedule-title": "Programar",
         "schedule-edit-button": "EDITAR",
         "note-title": "Nota",
@@ -1167,6 +1172,9 @@
         "checking-text": "Comprobando",
         "savings-text": "Ahorros",
         "line-of-credit-text": "Línea de crédito",
+        "minimum-payment-text": "Pago mínimo",
+        "full-payment-text": "Pago completo",
+        "custom-payment-text": "Importe personalizado",
         "action-sheet": {
           "transfer-from-header": "TRANSFERENCIA DESDE",
           "transfer-to-header": "TRANSFERENCIA A",

@@ -40,14 +40,18 @@ export class CustomerService {
       );
   }
 
-  updateEmail(customer: ICustomer): Observable<ICustomer> {
-    const otpVerificationRequest: IOtpVerificationRequest = {
-      url: this.baseUrl + '/customer',
-      body: customer,
-      headers: this.headerService.getUserNameMemberICustomerIdHeader(),
-      requestMethod: IHttpRequestMethod.Put
-    };
-    return this.otpService.requestOtpCode(otpVerificationRequest);
+  updateEmail(email: string): Observable<ICustomer> {
+    return this.http
+      .put<ICustomer>(
+        this.baseUrl + '/customer',
+        { email },
+        { headers: this.headerService.getUserNameMemberICustomerIdHeader() }
+      )
+      .pipe(
+        tap(_customer => {
+          Object.assign(this.memberService.member, _customer);
+        })
+      );
   }
 
   getCountryState(countryId: string): Observable<IStates[]> {

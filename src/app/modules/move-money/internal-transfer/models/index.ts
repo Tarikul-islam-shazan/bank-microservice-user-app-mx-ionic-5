@@ -37,3 +37,8 @@ export interface IScheduleTypeModalObject {
   frequency: TransferFrequency;
   transferDate: string;
 }
+export enum LocPaymentOption {
+  Minimum = 'minimum',
+  Full = 'full',
+  Custom = 'custom'
+}

@@ -122,20 +122,6 @@ export interface ICustomer {
   requiredDocument?: string;
 }
 
-export interface IAddress {
-  addressType: string;
-  propertyType: string;
-  street: string;
-  outdoorNumber: string;
-  interiorNumber: string;
-  postCode: string;
-  state: string;
-  municipality: string;
-  city: string;
-  suburb: string;
-  dateOfResidence: string;
-}
-
 export interface IOtp {
   otpId?: string;
   otpToken?: string;
@@ -196,4 +182,18 @@ export interface IGeneralInfo {
   curp: string;
   mobileNumber: string;
   email: string;
+}
+
+export interface IAddress {
+  addressType?: string;
+  propertyType?: string;
+  street?: string;
+  outdoorNumber?: string;
+  interiorNumber?: string;
+  postCode?: string;
+  state?: string;
+  municipality?: string;
+  city?: string;
+  suburb?: string;
+  dateOfResidence?: string;
 }

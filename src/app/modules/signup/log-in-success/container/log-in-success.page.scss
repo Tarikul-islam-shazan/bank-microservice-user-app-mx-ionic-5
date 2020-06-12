@@ -75,6 +75,12 @@ ion-content {
     line-height: 24px;
     text-align: center;
     margin-top: 82px;
-    margin-bottom: 80px;
+    margin-bottom: 40px;
+  }
+}
+
+ion-footer {
+  ion-toolbar {
+    --background: #2f47bd !important;
   }
 }

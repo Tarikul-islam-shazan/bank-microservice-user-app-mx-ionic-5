@@ -25,7 +25,8 @@ export class ChangePhonePage implements OnDestroy, OnInit {
   changePhoneForm: FormGroup;
   changePhoneFormSubscription: Subscription;
   isFormValueChanged = false;
-  phoneNumberLength = 12;
+  phoneNumberMinLength = 9;
+  phoneNumberMaxLength = 20;
 
   constructor(private facade: ChangePhoneFacade, private formBuilder: FormBuilder) {}
 
@@ -42,19 +43,15 @@ export class ChangePhonePage implements OnDestroy, OnInit {
    * @memberOf ChangePhonePage
    */
   private initChangePhoneForm(): void {
-    const { mobilePhone, workPhone = '' } = this.facade.customer;
+    const { mobilePhone } = this.facade.customer;
     this.changePhoneForm = this.formBuilder.group({
       mobilePhone: [
         mobilePhone,
         [
           Validators.required,
-          Validators.minLength(this.phoneNumberLength),
-          Validators.maxLength(this.phoneNumberLength)
+          Validators.minLength(this.phoneNumberMinLength),
+          Validators.maxLength(this.phoneNumberMaxLength)
         ]
-      ],
-      workPhone: [
-        workPhone,
-        [Validators.minLength(this.phoneNumberLength), Validators.maxLength(this.phoneNumberLength)]
       ]
     });
   }
@@ -67,9 +64,9 @@ export class ChangePhonePage implements OnDestroy, OnInit {
    * @memberOf ChangePhonePage
    */
   private checkIfFormValueChanged(): void {
-    const { mobilePhone, workPhone = '' } = this.facade.customer;
+    const { mobilePhone = '' } = this.facade.customer;
     this.changePhoneFormSubscription = this.changePhoneForm.valueChanges.subscribe((changedFormValue: FormData) => {
-      this.isFormValueChanged = !isEqual({ mobilePhone, workPhone }, changedFormValue);
+      this.isFormValueChanged = !isEqual({ mobilePhone }, changedFormValue);
     });
   }
 
