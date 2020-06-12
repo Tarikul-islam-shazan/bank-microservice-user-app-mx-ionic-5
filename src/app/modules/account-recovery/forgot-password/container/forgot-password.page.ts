@@ -10,10 +10,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ForgotPasswordFacade } from '../facade';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SignupValidators, ITemporaryPasswordRequest } from '@app/core';
-import { Router } from '@angular/router';
 import { IonContent } from '@ionic/angular';
 import * as moment from 'moment';
-import { IMeedModalContent, ModalService, SuccessModalPage } from '@app/shared';
 
 @Component({
   selector: 'mbc-forgot-password',
@@ -26,12 +24,7 @@ export class ForgotPasswordPage implements OnInit {
   usernameForm: FormGroup;
   quesForm: FormGroup;
 
-  constructor(
-    public facade: ForgotPasswordFacade,
-    private formBuilder: FormBuilder,
-    private router: Router,
-    private modalService: ModalService
-  ) {}
+  constructor(public facade: ForgotPasswordFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.initForm();
@@ -73,7 +66,7 @@ export class ForgotPasswordPage implements OnInit {
     };
 
     this.facade.requestTemporaryPassword(answer).subscribe(() => {
-      this.openSuccessModal();
+      this.facade.openSuccessModal();
     });
   }
 
@@ -88,29 +81,5 @@ export class ForgotPasswordPage implements OnInit {
     setTimeout(() => {
       this.content.scrollToBottom();
     }, 500);
-  }
-
-  private openSuccessModal(): void {
-    const componentProps: IMeedModalContent = {
-      contents: [
-        {
-          title: 'login-module.forgot-password-page.success-modal.temporary-password-email'
-        }
-      ],
-      actionButtons: [
-        {
-          text: 'login-module.forgot-password-page.success-modal.continue-button',
-          cssClass: 'white-button',
-          handler: async () => {
-            this.modalService.close();
-          }
-        }
-      ],
-      onDidDismiss: async () => {
-        this.router.navigate(['/account-recovery/recover-password']);
-      }
-    };
-
-    this.modalService.openModal(SuccessModalPage, componentProps);
   }
 }
