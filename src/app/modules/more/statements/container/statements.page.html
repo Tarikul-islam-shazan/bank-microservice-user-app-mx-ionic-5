@@ -8,11 +8,11 @@
 </ion-header>
 <ion-content class="statements-page override-ion-content-padding">
   <div class="clearfix" *ngIf="(statementFacade?.$statements | async) as bankStatements">
-    <!-- <p text-center *ngIf="noStatementMsg">No Statements available</p> -->
     <ion-slides
       #slides
       [options]="{initialSlide: bankStatements.length - 1,speed: 400}"
       (ionSlideWillChange)="doCheck()"
+      *ngIf="bankStatements.length > 0; else noStatementsAvailable"
     >
       <ion-slide *ngFor="let year of bankStatements; let j = index">
         <div class="clearfix">
@@ -49,5 +49,10 @@
         </div>
       </ion-slide>
     </ion-slides>
+    <ng-template #noStatementsAvailable>
+      <p class="no-statements-text ion-text-center">
+        {{ 'more-module.statements-page.no-statements-available-text' | translate }}
+      </p>
+    </ng-template>
   </div>
 </ion-content>

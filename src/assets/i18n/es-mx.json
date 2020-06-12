@@ -764,6 +764,7 @@
     },
     "statements-page": {
       "header-title": "Estados de cuenta",
+      "no-statements-available-text": "No hay estados de cuenta disponibles",
       "months": {
         "01": "January",
         "02": "February",
