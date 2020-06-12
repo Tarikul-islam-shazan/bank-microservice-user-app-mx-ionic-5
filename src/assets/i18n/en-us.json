@@ -772,6 +772,7 @@
     },
     "statements-page": {
       "header-title": "Statements",
+      "no-statements-available-text": "No Statements available",
       "months": {
         "01": "January",
         "02": "February",
