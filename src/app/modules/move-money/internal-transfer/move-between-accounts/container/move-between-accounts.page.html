@@ -71,11 +71,7 @@
         </div>
       </div>
       <div
-        *ngIf="
-							(facade.toAccount.accountType !== 'LOC') ||
-							(facade.toAccount.accountType === 'LOC' &&
-								!facade.isAmoutInputFieldHidden)
-						"
+        *ngIf="(facade.toAccount.accountType !== 'LOC') ||(facade.toAccount.accountType === 'LOC' &&!facade.isAmoutInputFieldHidden)"
       >
         <ion-input
           [disabled]="facade.fromScheduledTransfers && !facade.modifiedScheduleTransfer"
