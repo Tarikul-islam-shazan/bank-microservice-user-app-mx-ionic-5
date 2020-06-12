@@ -1,3 +1,14 @@
-ion-label {
-  opacity: 1 !important;
+.change-email-page {
+  ion-label {
+    opacity: 1 !important;
+  }
+
+  .change-email-error-msg {
+    color: red;
+    font-family: 'Averta W05 Regular';
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 16px;
+    margin-bottom: 10px;
+  }
 }
