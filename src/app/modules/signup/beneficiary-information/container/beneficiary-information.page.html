@@ -29,7 +29,7 @@
               type="text"
               formControlName="firstName"
               placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.first-name' | translate }}"
-              [appMaskInput]="onlyOneWordInput"
+              [appMaskInput]="wordsInput"
               appInputMaxLength="{{maxLength}}"
             ></ion-input>
           </ion-item>
@@ -44,7 +44,7 @@
               type="text"
               formControlName="secondName"
               placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.second-name' | translate }}"
-              [appMaskInput]="onlyOneWordInput"
+              [appMaskInput]="wordsInput"
               appInputMaxLength="{{maxLength}}"
             ></ion-input>
           </ion-item>
@@ -59,7 +59,7 @@
               type="text"
               formControlName="parentalName"
               placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.parental-name' | translate }}"
-              [appMaskInput]="onlyOneWordInput"
+              [appMaskInput]="wordsInput"
               appInputMaxLength="{{maxLength}}"
             ></ion-input>
           </ion-item>
@@ -74,7 +74,7 @@
               type="text"
               formControlName="maternalLastName"
               placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.maternal-last-name' | translate }}"
-              [appMaskInput]="onlyOneWordInput"
+              [appMaskInput]="wordsInput"
               appInputMaxLength="{{maxLength}}"
             ></ion-input>
           </ion-item>
