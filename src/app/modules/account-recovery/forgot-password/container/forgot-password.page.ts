@@ -62,7 +62,6 @@ export class ForgotPasswordPage implements OnInit {
   }
 
   continueForgotPassword() {
-    //this.facade.requestTemporalPassword(this.usernameForm.value.username);
     this.facade.isUsernameAssigned = true;
   }
 

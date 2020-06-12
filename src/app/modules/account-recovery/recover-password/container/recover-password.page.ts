@@ -74,8 +74,6 @@ export class RecoverPasswordPage implements OnInit {
       temporaryPassword: this.changePasswordForm.value.tempPassword,
       newPassword: this.changePasswordForm.value.repeatPassword
     };
-    console.log(recoverPasswordParams);
-
     this.facade.recoverPassword(recoverPasswordParams);
   }
 }
