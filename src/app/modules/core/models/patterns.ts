@@ -15,7 +15,7 @@ export const REG_EX_PATTERNS = {
   WHITE_SPACE: /\s/g,
   INVITER_CODE: /[aA-zZ0-9]{6}/,
   INVITER_EMAIL: /^\w+@\w+\.\w{2,3}$/,
-  INVITER_EMAIL_OR_CODE: /^(?:[aA-zZ0-9]{6}|\w+@\w+\.\w{2,3})$/,
+  INVITER_EMAIL_OR_CODE: /[aA-zZ0-9]{6}|^[^@]+@[^@]+\.[^@\.]{2,}$/,
   ALPHA_NUMERIC_WITH_SPACE: /^[a-z\d\s]+$/i,
   US_ZIP_CODE: /^\d{5}$|^\d{5}-\d{4}$/,
   ALPHABETICAL: /[^a-zA-Z ]/g, // ALPHABETICAL input pattern
