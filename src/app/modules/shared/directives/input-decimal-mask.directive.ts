@@ -29,7 +29,7 @@
  ></ion-input>
  decimalValue will be 10, 10.00, 0.00, 0
 */
-import { Directive, EventEmitter, HostListener, Input, Output } from '@angular/core';
+import { Directive, EventEmitter, HostListener, Input, Output, SimpleChanges, OnChanges } from '@angular/core';
 import { IonInput } from '@ionic/angular';
 import { SettingsService } from '@app/core/services/settings.service';
 import { REG_EX_PATTERNS } from '@app/core/models/patterns';
@@ -42,7 +42,7 @@ interface IInputMaskDecimal {
 @Directive({
   selector: '[appInputDecimalMask]'
 })
-export class InputDecimalMaskDirective {
+export class InputDecimalMaskDirective implements OnChanges {
   @Input() set decModel(val: number) {
     if (val) {
       this.inputRef.value = val.toString();
@@ -109,6 +109,13 @@ export class InputDecimalMaskDirective {
     if (parseFloat(this.onlyNumbersString(this.inputRef.value.toString())) === 0) {
       this.inputRef.value = '';
       this.decModelChange.emit(0);
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes.decModel.currentValue === 0) {
+      this.inputRef.value = '';
+      this.decModelChange.emit(changes.decModel.currentValue);
     }
   }
 

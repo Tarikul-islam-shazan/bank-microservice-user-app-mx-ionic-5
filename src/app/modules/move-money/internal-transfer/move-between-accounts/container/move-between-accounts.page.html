@@ -70,20 +70,24 @@
           {{'move-money-module.internal-transfer.move-between-accounts.custom-payment-text' | translate}}
         </div>
       </div>
-      <ion-input
-        [disabled]="facade.fromScheduledTransfers && !facade.modifiedScheduleTransfer"
-        appInputDecimalMask
-        #amountInputId
-        type="tel"
-        [(decModel)]="facade.transfer.amount"
-        placeholder="{{'move-money-module.internal-transfer.move-between-accounts.amount-placeholder-text' | translate}}"
-        (ionChange)="facade.onInputAmountChange()"
-      ></ion-input>
-      <div *ngIf="facade.isAmountExceedAvailableBalance" class="amount-error">
-        {{'move-money-module.internal-transfer.move-between-accounts.amount-error-text' | translate}}
-      </div>
-      <div *ngIf="facade.isAmountExceedLocFullPayment()" class="amount-error">
-        {{'move-money-module.internal-transfer.move-between-accounts.amount-requested-exceeds-text' | translate}}
+      <div
+        *ngIf="(facade.toAccount.accountType !== 'LOC') ||(facade.toAccount.accountType === 'LOC' &&!facade.isAmoutInputFieldHidden)"
+      >
+        <ion-input
+          [disabled]="facade.fromScheduledTransfers && !facade.modifiedScheduleTransfer"
+          appInputDecimalMask
+          #amountInputId
+          type="tel"
+          [(decModel)]="facade.transfer.amount"
+          placeholder="{{'move-money-module.internal-transfer.move-between-accounts.amount-placeholder-text' | translate}}"
+          (ionChange)="facade.onInputAmountChange()"
+        ></ion-input>
+        <div *ngIf="facade.isAmountExceedAvailableBalance" class="amount-error">
+          {{'move-money-module.internal-transfer.move-between-accounts.amount-error-text' | translate}}
+        </div>
+        <div *ngIf="facade.isAmountExceedLocFullPayment()" class="amount-error">
+          {{'move-money-module.internal-transfer.move-between-accounts.amount-requested-exceeds-text' | translate}}
+        </div>
       </div>
     </div>
 
