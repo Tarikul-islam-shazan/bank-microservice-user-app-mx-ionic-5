@@ -1,8 +1,8 @@
 import { CustomerService } from '@app/core/services/customer-service.service';
-import { ICustomer, MemberService } from '@app/core';
+import { ICustomer } from '@app/core';
 import { Injectable } from '@angular/core';
 import { ModalService } from '@app/shared';
-import { noop, Observable, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { PersonalDetailsState } from '@app/more/personal-details/facade/personal-details.state';
 
 @Injectable()
@@ -11,7 +11,6 @@ export class ChangePhoneFacade {
 
   constructor(
     private customerService: CustomerService,
-    private memberService: MemberService,
     private modalService: ModalService,
     private personalDetailsState: PersonalDetailsState
   ) {
@@ -62,7 +61,6 @@ export class ChangePhoneFacade {
   save(formValue: ICustomer): void {
     this.updatePhone(formValue).subscribe((customer: ICustomer) => {
       Object.assign(this.customer, customer);
-      Object.assign(this.memberService.member, customer);
       this.dismissModal();
     });
   }
