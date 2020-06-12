@@ -25,7 +25,7 @@ export class InternalTransferFacade {
   isLocPaymentOptionSelected = false;
   // If user want to modify the schedule transfer, we enable edit action in inputs fields
   modifiedScheduleTransfer = false;
-  isAmoutInputFieldHidden = true;
+  isAmoutInputFieldHidden;
   locPaymentOption: typeof LocPaymentOption = LocPaymentOption;
   constructor(
     private transferService: TransferService,
@@ -38,6 +38,7 @@ export class InternalTransferFacade {
   ) {}
 
   initialize(): void {
+    this.isAmoutInputFieldHidden = true;
     this.transfer = this.transferService.getTransfer();
     // Setting fromAccount and toAccount  Type ;
     if (this.internalTransferService.formAccountType && this.internalTransferService.toAccountType) {
@@ -217,9 +218,7 @@ export class InternalTransferFacade {
     this.fromAccount = accounts.find((account: IAccount) => account.accountType === fromAccount);
     this.toAccount = accounts.find((account: IAccount) => account.accountType === toAccount);
     this.isLocPaymentOptionSelected = false;
-    if (this.fromScheduledTransfers) {
-      this.transfer.amount = this.transfer.amount;
-    } else {
+    if (!this.fromScheduledTransfers) {
       this.transfer.amount = 0;
     }
     this.transfer = {
