@@ -55,12 +55,12 @@ export class SignupEmailFacade {
       case ApplicationProgress.BankIdentified:
         return '/signup/verification';
       default:
-        this.redirectToLoginPage();
+        this.updateUserSettings();
         return '/login-user';
     }
   }
 
-  redirectToLoginPage() {
+  updateUserSettings() {
     const userSettings: UserSettings = this.settingsService.getSettings().userSettings;
     userSettings.disabledSignUp = true;
     this.settingsService.setUserSettings(userSettings);
