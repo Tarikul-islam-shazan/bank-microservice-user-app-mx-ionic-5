@@ -1,8 +1,8 @@
 import { CustomerService } from '@app/core/services/customer-service.service';
-import { ICustomer, MemberService } from '@app/core';
+import { ICustomer } from '@app/core';
 import { Injectable } from '@angular/core';
 import { ModalService } from '@app/shared';
-import { noop, Observable, Subscription } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { PersonalDetailsState } from '@app/more/personal-details/facade/personal-details.state';
 
 @Injectable()
@@ -11,7 +11,6 @@ export class ChangePhoneFacade {
 
   constructor(
     private customerService: CustomerService,
-    private memberService: MemberService,
     private modalService: ModalService,
     private personalDetailsState: PersonalDetailsState
   ) {
@@ -42,44 +41,27 @@ export class ChangePhoneFacade {
   }
 
   /**
-   * @summary sends OTP
+   * @summary Update member phone
    *
    * @param {ICustomer} customer
    * @returns {Observable<ICustomer>}
    * @memberOf ChangePhoneFacade
    */
-  sendOTP(customer: ICustomer): Observable<ICustomer> {
+  updatePhone(customer: ICustomer): Observable<ICustomer> {
     return this.customerService.updatePhone(customer);
   }
 
   /**
-   * * Open OTP modal With new OTP service
-   * @memberof ChangePhonePage
-   * @function openOtpModal
-   */
-  openOtpModal(): void {
-    this.modalService.openOtpModal((dismissResp: any) => {
-      const { data } = dismissResp;
-      if (data) {
-        Object.assign(this.customer, data);
-        Object.assign(this.memberService.member, data);
-        this.dismissModal();
-      }
-    });
-  }
-
-  /**
-   * @sumamry opens OTP modal
+   * @sumamry save updated phone number
    *
    * @param {ICustomer} formValue
    * @returns {void}
    * @memberOf ChangePhoneFacade
    */
   save(formValue: ICustomer): void {
-    this.sendOTP(formValue).subscribe(noop, (err: any) => {
-      if (err.status === 403) {
-        this.openOtpModal();
-      }
+    this.updatePhone(formValue).subscribe((customer: ICustomer) => {
+      Object.assign(this.customer, customer);
+      this.dismissModal();
     });
   }
 }
