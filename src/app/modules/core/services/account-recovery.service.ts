@@ -1,7 +1,13 @@
 import { environment } from '@env/environment';
 import { HeaderService } from './header-service.service';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { IChallengeAnswers, IChallengeQuestions } from '../models/dto';
+import {
+  IChallengeAnswers,
+  IChallengeQuestions,
+  ITemporaryPasswordRequest,
+  ITemporaryPassword,
+  IRecoverPassword
+} from '../models/dto';
 import { IHttpRequestMethod, IOtpVerificationRequest, OtpService } from './otp.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -76,5 +82,28 @@ export class AccountRecoveryService {
    */
   forgotUsername(email: string): Observable<IChallengeAnswers> {
     return this.http.post<IChallengeAnswers>(this.baseUrl + '/credentials/forgot-username', { email });
+  }
+
+  requestTemporaryPassword(answer: ITemporaryPasswordRequest): Observable<ITemporaryPassword> {
+    this.username = answer.username;
+    const headers: HttpHeaders = this.headerService.getBankIdentifierHeader();
+    return this.http.post<ITemporaryPassword>(this.baseUrl + '/credentials/forgot-password', answer, { headers });
+  }
+
+  /**
+   * @summary Recover password.
+   *
+   * @param {IRecoverPassword} recoverPasswordParams
+   * @returns {Observable<IRecoverPassword>}
+   * @memberof AccountRecoveryService
+   */
+  recoverPassword(recoverPasswordParams: IRecoverPassword): Observable<IRecoverPassword> {
+    recoverPasswordParams.username = this.username;
+    const headers: HttpHeaders = this.headerService.getBankIdentifierHeader();
+    return this.http.post<IRecoverPassword>(
+      this.baseUrl + '/credentials/forgot-password/reset',
+      recoverPasswordParams,
+      { headers }
+    );
   }
 }

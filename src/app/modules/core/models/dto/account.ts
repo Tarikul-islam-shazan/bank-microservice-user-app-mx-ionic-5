@@ -109,6 +109,21 @@ export interface IChallengeAnswers {
   answers: IQuestionAndAnswer[];
 }
 
+export interface ITemporaryPasswordRequest {
+  username: string;
+  debitCardNumber: number;
+  dateOfBirth: string;
+}
+export interface ITemporaryPassword {
+  temporaryPassword: string;
+}
+
+export interface IRecoverPassword {
+  username: string;
+  temporaryPassword: string;
+  newPassword: string;
+}
+
 export enum SweepState {
   Activate = 'activate',
   Deactivate = 'deactivate'
