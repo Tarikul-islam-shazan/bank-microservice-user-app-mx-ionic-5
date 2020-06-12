@@ -95,14 +95,19 @@ export enum MemberType {
 }
 
 export interface ICustomer {
-  salutation?: string;
+  customerId?: string;
   firstName?: string;
-  middleName?: string;
+  secondName?: string;
+  dateOfBirth?: string;
+  paternalLastName?: string;
+  maternalLastName?: string;
   nickname?: string;
+  curp?: string;
+  email?: string;
+  salutation?: string;
+  middleName?: string;
   oldName?: string;
   lastName?: string;
-  email?: string;
-  dateOfBirth?: string;
   addresses?: IAddress[];
   city?: string;
   state?: string;
