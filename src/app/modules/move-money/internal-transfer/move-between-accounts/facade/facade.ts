@@ -215,7 +215,7 @@ export class InternalTransferFacade {
     this.fromAccount = accounts.find((account: IAccount) => account.accountType === fromAccount);
     this.toAccount = accounts.find((account: IAccount) => account.accountType === toAccount);
     this.isLocPaymentOptionSelected = false;
-    this.transfer.amount = 0;
+    this.transfer.amount = this.transfer.amount ? this.transfer.amount : 0;
     this.transfer = {
       ...this.transfer,
       debtorAccount: this.fromAccount.accountId,
