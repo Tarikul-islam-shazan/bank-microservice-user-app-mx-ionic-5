@@ -1,17 +1,15 @@
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { SignUpService, Logger, ApplicationProgress, ErrorService, SettingsService } from '@app/core';
+import { SignUpService, ApplicationProgress, SettingsService } from '@app/core';
 import { UrbanAirshipService } from '@app/core/services/urban-airship.service';
-import { ModalService } from '@app/shared';
-import { NavController } from '@ionic/angular';
 import { UserSettings } from '@app/core/models/app-settings';
 
-/**
- * * Issue: GMA-4443
- * * Issue Details: For Partially signed up user the modal redirecting to login page not closing after user is taken to the login screen
- * * Developer Feedback: Previous comprops dismiss function deprecated. modal service close function solve this issue
- * Date: February 18, 2020
+/*
+ * Issue: MM2-366
+ * Issue Details: Remove complete bank application message for users who completed signup
+ * Developer Feedback: Issue solved
+ * Date: June 12, 2020
  * Developer: Zahidul Islam <zahidul@bs-23.net>
  */
 @Injectable()
@@ -21,9 +19,7 @@ export class SignupEmailFacade {
     private router: Router,
     private analytics: AnalyticsService,
     private urbanAirshipService: UrbanAirshipService,
-    private settingsService: SettingsService,
-    private modalService: ModalService,
-    private navCtrl: NavController
+    private settingsService: SettingsService
   ) {}
 
   async registerEmail(email: string) {
@@ -35,7 +31,8 @@ export class SignupEmailFacade {
         this.signupService.member = data;
         this.analytics.setUserId(data._id);
         this.analytics.logEvent(AnalyticsEventTypes.EmailSubmitted, { email });
-        this.router.navigate([this.memberSignupProgressRoute(data.applicationProgress)]);
+        const route = this.memberSignupProgressRoute(data.applicationProgress);
+        this.router.navigate([route]);
       });
   }
 
@@ -58,34 +55,14 @@ export class SignupEmailFacade {
       case ApplicationProgress.BankIdentified:
         return '/signup/verification';
       default:
-        this.redirectToLoginPage();
-        return '/signup/email';
+        this.updateUserSettings();
+        return '/login-user';
     }
   }
 
-  redirectToLoginPage() {
-    const componentProps = {
-      contents: [
-        {
-          title: 'signup-credentials-created.header-title',
-          details: ['signup-credentials-created.message']
-        }
-      ],
-      actionButtons: [
-        {
-          text: 'signup-credentials-created.login-button',
-          cssClass: 'white-button',
-          handler: () => {
-            const userSettings: UserSettings = this.settingsService.getSettings().userSettings;
-            userSettings.disabledSignUp = true;
-            this.settingsService.setUserSettings(userSettings);
-            this.modalService.close(); // new modal service modal close function added
-            this.router.navigate(['/login-user']); // route to login page
-          }
-        }
-      ]
-    };
-
-    this.modalService.openInfoModalComponent({ componentProps });
+  updateUserSettings() {
+    const userSettings: UserSettings = this.settingsService.getSettings().userSettings;
+    userSettings.disabledSignUp = true;
+    this.settingsService.setUserSettings(userSettings);
   }
 }
