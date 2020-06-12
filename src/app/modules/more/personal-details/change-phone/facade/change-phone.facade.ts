@@ -53,7 +53,7 @@ export class ChangePhoneFacade {
   }
 
   /**
-   * @sumamry opens OTP modal
+   * @sumamry save updated phone number
    *
    * @param {ICustomer} formValue
    * @returns {void}
