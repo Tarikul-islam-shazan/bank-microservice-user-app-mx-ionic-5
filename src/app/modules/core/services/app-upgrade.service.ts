@@ -21,6 +21,7 @@ interface IUpgradeResponse {
 }
 
 interface IQueryRequest {
+  appReleaseDate: string;
   currentVersion: string;
   platform: string;
   deviceOSVersion: string;
@@ -64,9 +65,11 @@ export class AppUpgradeService {
       return EMPTY;
     };
   }
+
   async checkUpgrade(): Promise<void> {
     const queryParameter: IQueryRequest = {
       currentVersion: semanticVersioning.appVersion,
+      appReleaseDate: semanticVersioning.releaseDate,
       platform: this.appPlatform.currentPlatform(),
       deviceOSVersion: this.appPlatform.deviceOSVersion,
       deviceModel: this.appPlatform.deviceModel,
