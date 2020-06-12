@@ -237,7 +237,7 @@
         "inviter-found-own-modal-button": "OK",
         "country-choose-modal-text": "Choose Country",
         "country-unavailable-modal-title": "We're not there yet",
-        "country-unavailable-modal-description": "Unfortunately we’re only live in the US at the moment. Follow us on social media to be the first to hear about our roll-out plans"
+        "country-unavailable-modal-description": "Unfortunately we’re only live in Mexico at the moment. Follow us on social media to be the first to hear about our roll-out plans"
       }
     },
     "signup-account-selection": {
@@ -476,7 +476,7 @@
       "usa-btn-text": "USA",
       "other-btn-text": "Other",
       "modal-title": "We’re not there yet",
-      "modal-description": "Unfortunately we’re only live in the US at the moment. Follow us on social media to be the first to hear about our roll-out plans"
+      "modal-description": "Unfortunately we’re only live in Mexico at the moment. Follow us on social media to be the first to hear about our roll-out plans"
     },
     "questions": {
       "header-text": "Security Questions",
@@ -1120,7 +1120,7 @@
     "code-1201": "Invalid request parameter",
     "code-1202": {
       "country-unavailable-modal-title": "We're not there yet",
-      "country-unavailable-modal-description": "Unfortunately we're only live in the US at the moment. Follow us on social media to be the first to hear about our roll-out plans",
+      "country-unavailable-modal-description": "Unfortunately we're only live in Mexico at the moment. Follow us on social media to be the first to hear about our roll-out plans",
       "country-unavailable-modal-button-text": "OK"
     },
     "code-1203": "Username or Password is not correct",
