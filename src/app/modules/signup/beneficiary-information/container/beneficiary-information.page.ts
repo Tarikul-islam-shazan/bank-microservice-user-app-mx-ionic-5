@@ -11,7 +11,6 @@ import { BeneficiaryFacade } from '../facade/facade';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IinputOption, InputFormatType } from '@app/shared/directives/mask-input.directive';
 import { AnalyticsService } from '@app/analytics/services/analytics.service';
-import { PAGES } from '@app/core/models/constants';
 import { DropdownOption } from '@app/signup/models/signup';
 import { ModalController } from '@ionic/angular';
 import { DropdownModalComponent } from '@app/shared/components';
@@ -27,9 +26,17 @@ export class BeneficiaryInformationPage implements OnInit {
   beneficiaryFormApplication: Partial<IBeneficiaryInfo> = {};
   beneficiaryForm: FormGroup;
   skipErrorFields: Record<string, string | boolean>;
-  onlyOneWordInput: IinputOption;
   wordsInput: IinputOption;
   maxLength = 26;
+
+  /**
+   * Issue:  MM2-375
+   * Details:  Currently, for beneficiary names, there is only max length 26 and
+   * no space validation work,
+   * Need to add validation Alphabetic/Letters only for all the names input field
+   * Date: June 12, 2020
+   * Developer: Raihan <raihanuzzaman@bs-23.net>
+   */
 
   constructor(
     public facade: BeneficiaryFacade,
@@ -38,9 +45,6 @@ export class BeneficiaryInformationPage implements OnInit {
     private modalCtrl: ModalController,
     private modalService: ModalService
   ) {
-    this.onlyOneWordInput = {
-      type: InputFormatType.ONLY_ONE_WORD
-    };
     this.wordsInput = {
       type: InputFormatType.WORDS
     };
