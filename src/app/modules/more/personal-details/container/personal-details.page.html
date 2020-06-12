@@ -16,14 +16,8 @@
         </ion-label>
         <ion-item class="ion-no-padding" lines="none">
           <ion-label class="details-info">
-            {{ 'more-module.personal-details.first-name' | translate }}: {{customer.firstName?customer.firstName:''}}
-            <br />
-            {{ 'more-module.personal-details.second-name' | translate }}: {{customer.secondName?customer.secondName:''}}
-            <br />
-            {{ 'more-module.personal-details.paternal-last-name' | translate }}:
-            {{customer.maternalLastName?customer.maternalLastName:''}} <br />
-            {{ 'more-module.personal-details.maternal-last-name' | translate }}:
-            {{customer.paternalLastName?customer.paternalLastName:''}}
+            {{customer.firstName?customer.firstName+' ':''}} {{customer.maternalLastName?customer.maternalLastName+'
+            ':''}} {{customer.paternalLastName?customer.paternalLastName+' ':''}}
           </ion-label>
         </ion-item>
       </div>
