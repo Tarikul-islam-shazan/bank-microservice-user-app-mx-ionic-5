@@ -5,16 +5,13 @@ export interface MeedErrorResponse {
 
 export interface UIError {
   name: string;
-  appId: string;
-  releaseDate: string;
   label: string;
   deployment: string;
   user: string;
   time: number;
-  id: string;
   url: string;
   message: string;
-  stack: any;
+  stackTrace: any;
 }
 
 // converted the existing error code to enum

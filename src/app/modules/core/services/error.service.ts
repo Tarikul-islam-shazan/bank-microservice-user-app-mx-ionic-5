@@ -1,6 +1,4 @@
 import * as moment from 'moment';
-import * as semanticVersioning from '@env/semantic-versioning.json';
-import * as StackTraceParser from 'stacktrace-parser';
 import { CrashalyticsService } from '@app/core/services/crashalytics.service';
 import { environment } from '@env/environment';
 import { ErrorCode, MeedErrorResponse, UIError } from '@app/core/models/error-types';
@@ -12,6 +10,7 @@ import { LogglyLoggerService } from '@app/core/services/loggly-logger.service';
 import { MemberService } from './member.service';
 import { Router } from '@angular/router';
 import { LogoutReason, LogoutService } from '@app/core/services/logout.service';
+import * as StackTrace from 'stacktrace-js';
 
 /**
  * * Issue: GMA-4366
@@ -166,37 +165,34 @@ export class ErrorService {
    * @param {Error} error
    * @memberof ErrorService
    */
-  public sendError(error: Error): void {
-    const errorToSend = this.addContextInfo(error);
+  public async sendError(error: Error) {
+    const errorToSend = await this.addContextInfo(error);
     this.crashalytics.logError(errorToSend); // send error log to crashalytics
     this.logglyLoggerService.logError(errorToSend).subscribe(); // send error log to our backend to track loggly
   }
 
-  addContextInfo(error: Error): UIError {
+  async addContextInfo(error: Error): Promise<UIError> {
+    let stackTrace = null;
+    if (!(error instanceof HttpErrorResponse)) {
+      stackTrace = await StackTrace.fromError(error);
+    }
     const name = error.name || null;
-    const appId = semanticVersioning.appVersion;
-    const releaseDate = semanticVersioning.releaseDate;
     const label = environment.label;
     const deployment = environment.deployment;
     const user = this.memberService.getCachedMember() ? this.memberService.getCachedMember().username : '';
     const time = new Date().getTime();
-    const id = `${appId}-${user}-${time}`;
     const location = this.locationStrategy;
     const url = location instanceof PathLocationStrategy ? location.path() : '';
     const message = error.message || error.toString();
-    const stack = error instanceof HttpErrorResponse ? null : StackTraceParser.parse(error.stack);
     const errorToSend: UIError = {
       name,
-      appId,
-      releaseDate,
       label,
       deployment,
       user,
       time,
-      id,
       url,
       message,
-      stack
+      stackTrace
     };
     return errorToSend;
   }
