@@ -1,59 +1,46 @@
 import { AccountRecoveryService } from '@app/core/services/account-recovery.service';
-import { IChallengeAnswers, IChallengeQuestions, SettingsService } from '@app/core';
+import { ITemporaryPassword, ITemporaryPasswordRequest } from '@app/core';
 import { Injectable } from '@angular/core';
-import { ModalService } from '@app/shared';
-import { noop, Observable } from 'rxjs';
-import { UserSettings } from '@app/core/models/app-settings';
+import { Observable } from 'rxjs';
+import { ModalService, IMeedModalContent } from '@app/shared/services/modal.service';
+import { SuccessModalPage } from '@app/shared/components/success-modal/container/success-modal.page';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class ForgotPasswordFacade {
-  private username: string;
   isSecurityQuesVisible = false;
-  challengeQues: IChallengeQuestions;
+  isUsernameAssigned = false;
   constructor(
     private accountRecoveryService: AccountRecoveryService,
     private modalService: ModalService,
-    private settingsService: SettingsService
+    private router: Router
   ) {}
 
-  /**
-   * @summary Request for OTP Code;
-   *
-   * @param {string} username
-   * @returns {void}
-   * @memberof ForgotPasswordFacade
-   */
-  requestOtpCode(username: string): void {
-    this.username = username;
-    this.accountRecoveryService.getChallengeQuestions(username).subscribe(noop, err => {
-      if (err.status === 403) {
-        const bankIdentifier = err.headers.get('MeedBankingClub-Bank-Identifier');
-        if (bankIdentifier) {
-          const userSettings: UserSettings = { bankIdentifier };
-          this.settingsService.setUserSettings(userSettings);
-        }
-        this.modalService.openOtpModal((dismissResp: any) => {
-          const { data } = dismissResp;
-          if (data) {
-            // set challenge question(Security Question)
-            this.challengeQues = data;
-            // Set Security Question visibility;
-            this.isSecurityQuesVisible = true;
-          }
-        });
-      }
-    });
+  requestTemporaryPassword(answer: ITemporaryPasswordRequest): Observable<ITemporaryPassword> {
+    return this.accountRecoveryService.requestTemporaryPassword(answer);
   }
 
-  /**
-   * @summary Validate Forgot Password Challenge Question
-   *
-   * @param {IChallengeAnswers} answer
-   * @returns {Observable<IChallengeAnswers>}
-   * @memberof ForgotPasswordFacade
-   */
+  openSuccessModal(): void {
+    const componentProps: IMeedModalContent = {
+      contents: [
+        {
+          title: 'login-module.forgot-password-page.success-modal.temporary-password-email'
+        }
+      ],
+      actionButtons: [
+        {
+          text: 'login-module.forgot-password-page.success-modal.continue-button',
+          cssClass: 'white-button',
+          handler: async () => {
+            this.modalService.close();
+          }
+        }
+      ],
+      onDidDismiss: async () => {
+        this.router.navigate(['/account-recovery/recover-password']);
+      }
+    };
 
-  validateChallengeQuestions(answer: IChallengeAnswers): Observable<IChallengeAnswers> {
-    return this.accountRecoveryService.validateChallengeQuestions(answer);
+    this.modalService.openModal(SuccessModalPage, componentProps);
   }
 }

@@ -9,9 +9,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { ForgotPasswordFacade } from '../facade';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { SignupValidators, IChallengeAnswers } from '@app/core';
-import { Router } from '@angular/router';
+import { SignupValidators, ITemporaryPasswordRequest } from '@app/core';
 import { IonContent } from '@ionic/angular';
+import * as moment from 'moment';
 
 @Component({
   selector: 'mbc-forgot-password',
@@ -23,7 +23,8 @@ export class ForgotPasswordPage implements OnInit {
 
   usernameForm: FormGroup;
   quesForm: FormGroup;
-  constructor(public facade: ForgotPasswordFacade, private formBuilder: FormBuilder, private router: Router) {}
+
+  constructor(public facade: ForgotPasswordFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.initForm();
@@ -31,6 +32,7 @@ export class ForgotPasswordPage implements OnInit {
 
   ionViewDidLeave() {
     this.facade.isSecurityQuesVisible = false;
+    this.facade.isUsernameAssigned = false;
   }
 
   initForm() {
@@ -47,41 +49,24 @@ export class ForgotPasswordPage implements OnInit {
     });
 
     this.quesForm = this.formBuilder.group({
-      answerOne: [null, Validators.required],
-      answerTwo: [null, Validators.required]
+      dateOfBirth: ['', Validators.required],
+      debitCardNumber: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(19)]]
     });
   }
 
   continueForgotPassword() {
-    this.facade.requestOtpCode(this.usernameForm.value.username);
+    this.facade.isUsernameAssigned = true;
   }
 
-  /**
-   * Issue:  GMA-4450
-   * Details:  Forgot Password: Implement calendar in Date of Birth field.
-   * Date: March 06, 2020
-   * Developer: Raihan <raihanuzzaman@bs-23.net>
-   */
   continueSecurityQuestion() {
-    let date = this.quesForm.value.answerOne;
-    date = date.split('T');
-    const answer: IChallengeAnswers = {
+    const answer: ITemporaryPasswordRequest = {
       username: this.usernameForm.value.username,
-      key: this.facade.challengeQues.key,
-      answers: [
-        {
-          id: this.facade.challengeQues.questions[0].id,
-          answer: date[0]
-        },
-        {
-          id: this.facade.challengeQues.questions[1].id,
-          answer: this.quesForm.value.answerTwo
-        }
-      ]
+      debitCardNumber: this.quesForm.value.debitCardNumber,
+      dateOfBirth: moment(this.quesForm.value.dateOfBirth).format('MM/DD/YYYY')
     };
 
-    this.facade.validateChallengeQuestions(answer).subscribe(() => {
-      this.router.navigate(['/account-recovery/change-password']);
+    this.facade.requestTemporaryPassword(answer).subscribe(() => {
+      this.facade.openSuccessModal();
     });
   }
 

@@ -39,13 +39,27 @@
     },
     "forgot-password-page": {
       "page-title": "Olvidé la contraseña",
-      "input-lable-userName": "Indica tu nombre de usuario",
+      "input-label-username": "Indica tu nombre de usuario",
       "security-question-title": "Responde a estas preguntas de seguridad para recuperar tu contraseña",
+      "security-question-dob": "What is your birth date?",
+      "security-question-rfs": "What is your RFC?",
       "form-input-placeholders": {
         "date": "MM / DD / YYYY",
-        "ssn": "123-45-6789"
+        "debit-card-number": "XXXXXXXXXX"
       },
-      "button-name": "Continuar"
+      "button-name": "Continue",
+      "success-modal": {
+        "temporary-password-email": "A temporary password has been emailed to the email address on your account.",
+        "continue-button": "Continue"
+      }
+    },
+    "recover-password": {
+      "page-title": "Change Password",
+      "title": "Choose a new password.",
+      "label-new-password": "New Password",
+      "label-repeat-password": "New Password",
+      "btn-change-password": "Change Password",
+      "label-new-temporary-password": "Temporary Password"
     },
     "change-password": {
       "page-title": "Cambiar contraseña",
