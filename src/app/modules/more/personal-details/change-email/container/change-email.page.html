@@ -5,7 +5,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="change-email-page">
   <div class="content-wrapper">
     <form [formGroup]="changeEmailForm" novalidate>
       <ion-list lines="none" class="input-list">
@@ -29,7 +29,7 @@
         </ion-item>
         <div
           *ngIf="changeEmailForm.controls.confirmEmail.dirty && changeEmailForm.controls.confirmEmail.errors?.mustMatch"
-          class="error-msg"
+          class="change-email-error-msg"
         >
           {{ 'more-module.personal-details.change-email-address-modal.errors.email-address-mismatch-text' | translate }}
         </div>
