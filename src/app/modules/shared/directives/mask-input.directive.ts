@@ -18,7 +18,8 @@ export enum InputFormatType {
   ONLY_ONE_WORD = 'ONLY_ONE_WORD',
   PHONE_MASK = 'PHONE_MASK',
   EMAIL_VERIFICATION = 'EMAIL_VERIFICATION',
-  ONLY_NUMBER = 'ONLY_NUMBER'
+  ONLY_NUMBER = 'ONLY_NUMBER',
+  ALPHA_NUMERIC = 'ALPHA_NUMERIC'
 }
 @Directive({
   selector: '[appMaskInput]'
@@ -45,6 +46,9 @@ export class MaskInputDirective {
         break;
       case InputFormatType.ONLY_NUMBER:
         this.inputField.value = this.onlyNumber(this.inputField.value, this.inputItem.maxLength);
+        break;
+      case InputFormatType.ALPHA_NUMERIC:
+        this.inputField.value = this.aplhaNumeric(this.inputField.value, this.inputItem.maxLength);
         break;
     }
   }
@@ -158,6 +162,19 @@ export class MaskInputDirective {
 
   onlyNumber(word, inputMaxLength = null): string {
     word = word.replace(REG_EX_PATTERNS.ONLY_NUMBER, '');
+    if (inputMaxLength !== null) {
+      const value = word.toString().substr(0, inputMaxLength); // discard input string upto limit
+      if (value.length <= inputMaxLength) {
+        word = value;
+      } else {
+        word = value.substr(0, inputMaxLength);
+      }
+    }
+    return word;
+  }
+
+  aplhaNumeric(word, inputMaxLength = null): string {
+    word = word.replace(REG_EX_PATTERNS.APLHA_NUMERIC, '');
     if (inputMaxLength !== null) {
       const value = word.toString().substr(0, inputMaxLength); // discard input string upto limit
       if (value.length <= inputMaxLength) {

@@ -27,7 +27,7 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
   isFormValueChanged = false;
   initialFormValue: ICustomer = {};
   suburbFieldData: IDropdownOption[] = [];
-  onlyNumber: IinputOption;
+  aplhaNumeric: IinputOption;
   postalCodeNumber: IinputOption;
   public postalCodeData: Partial<IAddressInfo[]> = [];
   public addressTypeList: IDropdownOption[] = [];
@@ -38,8 +38,8 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
     private formBuilder: FormBuilder,
     private modalCtrl: ModalController
   ) {
-    this.onlyNumber = {
-      type: InputFormatType.ONLY_NUMBER,
+    this.aplhaNumeric = {
+      type: InputFormatType.ALPHA_NUMERIC,
       maxLength: 10
     };
     this.postalCodeNumber = {
