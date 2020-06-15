@@ -27,7 +27,7 @@ const moment = require('moment');
 export class AddressInformationPage implements OnInit {
   addressForm: FormGroup;
   skipErrorFields: any;
-  onlyNumber: IinputOption;
+  aplhaNumeric: IinputOption;
   postalCodeNumber: IinputOption;
   suburbFieldData: IDropdownOption[] = [];
   public postalCodeData: Partial<IAddressInfo[]> = [];
@@ -36,13 +36,13 @@ export class AddressInformationPage implements OnInit {
     private modalCtrl: ModalController,
     public facade: AddressInformationFacade
   ) {
-    this.onlyNumber = {
-      type: InputFormatType.ONLY_NUMBER,
-      maxLength: 10
-    };
     this.postalCodeNumber = {
       type: InputFormatType.ONLY_NUMBER,
       maxLength: 5
+    };
+    this.aplhaNumeric = {
+      type: InputFormatType.ALPHA_NUMERIC,
+      maxLength: 10
     };
   }
 

@@ -68,9 +68,9 @@
             id="outdoorNumber"
             formControlName="outdoorNumber"
             class="white-input"
-            type="tel"
-            inputmode="numeric"
-            [appMaskInput]="onlyNumber"
+            type="text"
+            inputmode="text"
+            [appMaskInput]="aplhaNumeric"
             placeholder="{{ 'signup-module.signup-address-information-page.address-form.outdoor-number' | translate }}"
           ></ion-input>
         </ion-item>
@@ -83,9 +83,9 @@
             id="interiorNumber"
             formControlName="interiorNumber"
             class="white-input"
-            type="tel"
-            inputmode="numeric"
-            [appMaskInput]="onlyNumber"
+            type="text"
+            inputmode="text"
+            [appMaskInput]="aplhaNumeric"
             placeholder="{{ 'signup-module.signup-address-information-page.address-form.interior-number' | translate }}"
           ></ion-input>
         </ion-item>
