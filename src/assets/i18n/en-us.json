@@ -579,14 +579,14 @@
         "title": "SPEI transfer from other bank",
         "details": {
           "content1": "SPEI is a transfer initiated at one bank to deposit funds into another bank",
-          "content2": "It’s real simple to do.  Just head to your current bank and request to deposit SPEI to your new Meed account."
+          "content2": "It’s really simple to do.  Just head to your current bank and request to deposit SPEI to your new Meed account."
         }
       },
       "oxxo-modal": {
         "title": "OXXO Money Deposit",
         "details": {
           "content1": "OXXO Money Deposit can be made by depositing cash at an OXXO store into your bank account",
-          "content2": "It’s real simple to do.  Just head to an OXXO store and request to deposit money to your new Meed account."
+          "content2": "It’s really simple to do.  Just head to an OXXO store and request to deposit money to your new Meed account."
         }
       }
     },
