@@ -27,9 +27,9 @@ const routes: Routes = [
     loadChildren: () => import('./statements/statements.module').then(m => m.StatementsPageModule)
   },
   {
-    path: 'virtual-assistant',
-    data: { title: PAGES.VIRTUAL_ASSISTANT.NAME },
-    loadChildren: () => import('./virtual-assistant/virtual-assistant.module').then(m => m.VirtualAssistantPageModule)
+    path: 'contact-us',
+    data: { title: PAGES.CONTACT_US.NAME },
+    loadChildren: () => import('./contact-us/contact-us.module').then(m => m.ContactUsPageModule)
   },
   {
     path: 'atm-finder',

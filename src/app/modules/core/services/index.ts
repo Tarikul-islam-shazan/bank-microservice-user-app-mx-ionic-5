@@ -10,7 +10,6 @@ import { RouteListenerService } from './route-listener.service';
 import { IdlenessService } from './idleness.service';
 import { JumioApiService } from './jumio-api.service';
 import { ErrorService } from './error.service';
-import { VirtualAssistantApiService } from './virtual-assistant-api.service';
 import { InternalTransferService } from './internal-transfer.service';
 import { AccountService } from './account.service';
 import { CardService } from './card.service';
@@ -34,7 +33,6 @@ export const SERVICE_PROVIDERS: any[] = [
   IdlenessService,
   JumioApiService,
   ErrorService,
-  VirtualAssistantApiService,
   InternalTransferService,
   AccountService,
   CardService,
@@ -59,7 +57,6 @@ export * from './route-listener.service';
 export * from './idleness.service';
 export * from './jumio-api.service';
 export * from './error.service';
-export * from './virtual-assistant-api.service';
 export * from './internal-transfer.service';
 export * from './account.service';
 export * from './loggly-logger.service';

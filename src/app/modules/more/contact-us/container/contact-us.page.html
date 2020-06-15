@@ -1,0 +1,24 @@
+<ion-header meed class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back" color="light"></ion-back-button>
+    </ion-buttons>
+    <ion-title text-center>{{ 'more-module.contact-us-page.header-title' | translate }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="contact-us-container">
+  <ion-text class="header-text ion-text-center">
+    <h4>{{ 'more-module.contact-us-page.container-header' | translate }}</h4>
+  </ion-text>
+  <ion-text class="sub-text">
+    <p>{{ 'more-module.contact-us-page.container-subheader' | translate }}</p>
+    <p>{{ 'more-module.contact-us-page.call-text' | translate: {'callNumber': contactUsFacade.supportNumber} }}</p>
+  </ion-text>
+</ion-content>
+
+<ion-footer class="ion-no-border" *ngIf="contactUsFacade.isCordova()">
+  <ion-button class="white-button" expand="block" (click)="contactUsFacade.callANumber()">
+    {{ 'more-module.contact-us-page.call-button-text' | translate }}
+  </ion-button>
+</ion-footer>

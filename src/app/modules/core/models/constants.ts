@@ -171,9 +171,9 @@ export const PAGES: Page = {
     NAME: 'Invite Page',
     ROUTE_PATH: '/home/invite'
   },
-  VIRTUAL_ASSISTANT: {
-    NAME: 'Virtual Assistant page',
-    ROUTE_PATH: '/more/virtual-assistant'
+  CONTACT_US: {
+    NAME: 'Contact us page',
+    ROUTE_PATH: '/more/contact-us'
   },
   MORE: {
     NAME: 'more-menu',

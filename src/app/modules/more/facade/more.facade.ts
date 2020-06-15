@@ -290,7 +290,7 @@ export class MoreFacade {
         {
           iconClass: 'icon-chat',
           menuItemName: 'more-module.more-page.contact-us',
-          route: 'more/virtual-assistant',
+          route: 'more/contact-us',
           suppress: 'ContactUs',
           handler: (event: IMoreMenuOption) => {
             this.goTo(event.route);

@@ -801,18 +801,19 @@
       },
       "successful-file-download-toast": "Your file has been downloaded, please check the app directory folder."
     },
-    "virtual-assistant": {
-      "header-title": "Ayuda",
-      "live-chat": {
-        "loading-message": "Live chat initialize...",
-        "message-code-1": "El tiempo de espera esperado es de {{expectedWaitTime}} segundos. Por favor, espera mientras te conectamos con un agente.",
-        "message-code-6": "Enviaremos tu conversación a un experto en tu problema. Será procesada cuanto antes.",
-        "message-code-8": "Enviaremos tu conversación a un experto en tu problema. Será procesada cuanto antes.",
-        "message-code-10": "Ahora estás conectado a {{agentName}}.",
-        "message-code-13": "El agente dio por terminada la sesión de chat.",
-        "message-code-31": "El agente está temporalmente inaccesible. Espera por favor.",
-        "message-code-33": "El agente se reconectó.",
-        "message-code-35": "El chat fue dado por terminado por el agente en estado suspendido por falla de red."
+    "contact-us-page": {
+      "header-title": "Contact Us",
+      "container-header": "Get in Touch",
+      "container-subheader": "Get help and support, troubleshoot your service or get in touch with us.",
+      "call-text": "Please call {{callNumber}}",
+      "call-button-text": "Call Now",
+      "call-modal": {
+        "title": "Call",
+        "content": "Do you want to call {{callNumber}}?",
+        "actionButtons": {
+          "call-text": "Call",
+          "cancel-text": "Cancel"
+        }
       }
     },
     "change-name-required-documents": {
