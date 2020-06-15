@@ -19,7 +19,7 @@ export const REG_EX_PATTERNS = {
   ALPHA_NUMERIC_WITH_SPACE: /^[a-z\d\s]+$/i,
   US_ZIP_CODE: /^\d{5}$|^\d{5}-\d{4}$/,
   ALPHABETICAL: /[^a-zA-Z ]/g, // ALPHABETICAL input pattern
-  ALLOW_ONLY_ALPHABET: '^[A-Za-z]+$', // Allow only Alphabet characters A-Z or a-z
+  ALLOW_ONLY_ALPHABET: '^[A-Za-z]+$', // Allow only Alphabetical characters A-Z and a-z
   ONE_SPACE: /\s\s+/g, // one space only pattern
   ONLY_NUMBER: /\D/g, // only numbers,
   COMMA_OPERATOR: /,/g, // all comma in a string
