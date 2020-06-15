@@ -40,6 +40,8 @@
               type="text"
               formControlName="firstName"
               placeholder="{{ 'signup-module.funding-information-page.funding-info-form.first-name' | translate }}"
+              [appMaskInput]="onlyWords"
+              appInputTrimWhitespace
             ></ion-input>
           </ion-item>
           <ion-item>
@@ -49,6 +51,8 @@
               type="text"
               formControlName="secondName"
               placeholder="{{ 'signup-module.funding-information-page.funding-info-form.second-name' | translate }}"
+              [appMaskInput]="onlyWords"
+              appInputTrimWhitespace
             ></ion-input>
           </ion-item>
           <ion-item>
@@ -58,6 +62,8 @@
               type="text"
               formControlName="paternalLastName"
               placeholder="{{ 'signup-module.funding-information-page.funding-info-form.paternal-last-name' | translate }}"
+              [appMaskInput]="onlyWords"
+              appInputTrimWhitespace
             ></ion-input>
           </ion-item>
           <ion-item>
@@ -67,6 +73,8 @@
               type="text"
               formControlName="maternalLastName"
               placeholder="{{ 'signup-module.funding-information-page.funding-info-form.maternal-last-name' | translate }}"
+              [appMaskInput]="onlyWords"
+              appInputTrimWhitespace
             ></ion-input>
           </ion-item>
 

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { FundingInformationFacade } from '../facade';
 import * as moment from 'moment';
+import { IinputOption, InputFormatType } from '@app/shared';
 
 @Component({
   selector: 'mbc-funding-information',
@@ -11,8 +12,17 @@ import * as moment from 'moment';
 export class FundingInformationPage implements OnInit {
   fundingInformationForm: FormGroup;
   maxDate: string;
+  onlyWords: IinputOption;
+  onlyWord: IinputOption;
 
-  constructor(private formBuilder: FormBuilder, public facade: FundingInformationFacade) {}
+  constructor(private formBuilder: FormBuilder, public facade: FundingInformationFacade) {
+    this.onlyWords = {
+      type: InputFormatType.WORDS
+    };
+    this.onlyWord = {
+      type: InputFormatType.ONLY_ONE_WORD
+    };
+  }
 
   ngOnInit() {
     this.initFundingInformationForm();
