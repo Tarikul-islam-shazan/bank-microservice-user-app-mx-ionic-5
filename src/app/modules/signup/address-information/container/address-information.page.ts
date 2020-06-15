@@ -64,7 +64,7 @@ export class AddressInformationPage implements OnInit {
       propertyType: [null, Validators.required],
       street: [null, [Validators.required, Validators.maxLength(40)]],
       outdoorNumber: [null, [Validators.required, Validators.maxLength(10)]],
-      interiorNumber: [null, [Validators.required, Validators.maxLength(10)]],
+      interiorNumber: [null, [Validators.maxLength(10)]],
       postCode: [null, [Validators.required, Validators.maxLength(5)]],
       stateField: [null, Validators.required],
       state: [null, Validators.required],
