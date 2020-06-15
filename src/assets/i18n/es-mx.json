@@ -1047,6 +1047,8 @@
     "code-404": "La nueva contraseña no puede ser la misma que la anterior.",
     "code-403": "La respuesta es incorrecta.",
     "code-405": "Tu cuenta sea ha bloqueado debido a múltiples intentos fallidos de inicio de sesión. Llámanos al 1-833-213-6333",
+    "code-406": "Card number invalid or not related to the client",
+    "code-408": "Invalid date of birth",
     "code-410": "La información que has introducido no coincide con nuestros registros. ¡Vamos a arreglarlo! Llámanos al 833-213-6333.",
     "code-412": "La contraseña nueva no debe ser la misma que la contraseña actual",
     "code-413": "La contraseña que ingresaste no coincide con tu contraseña actual. Corrige la contraseña e inténtalo de nuevo.",
