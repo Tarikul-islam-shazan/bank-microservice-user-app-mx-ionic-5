@@ -31,6 +31,7 @@ export class FundingInformationPage {
 
   initFundingInformationForm(): void {
     this.fundingInformationForm = this.formBuilder.group({
+      fundMyself: [this.fundMyself, Validators.required],
       firstName: ['', [Validators.required, Validators.maxLength(26)]],
       secondName: ['', [Validators.maxLength(26)]],
       paternalLastName: ['', [Validators.required, Validators.maxLength(26)]],
@@ -49,12 +50,9 @@ export class FundingInformationPage {
    * Developer: Tarikul <tarikul@brainstation23.com>
    */
 
-  checkFundMyself(event: CustomEvent): void {
-    if (event.detail.value === 'true') {
-      this.fundMyself = true;
+  checkFundMyself(): void {
+    if (!this.fundMyself) {
       this.initFundingInformationForm();
-    } else {
-      this.fundMyself = false;
     }
   }
 
@@ -69,8 +67,15 @@ export class FundingInformationPage {
    */
 
   fundInformationFormSubmit(): void {
-    const fundMyself = this.fundMyself;
-    const providerInfo = this.fundingInformationForm.value;
-    this.facade.fundInformationSubmit({ fundMyself, providerInfo });
+    let fundInfo;
+    if (this.fundMyself) {
+      fundInfo = { fundMyself: this.fundMyself };
+    } else {
+      const formvalue = this.fundingInformationForm.value;
+      formvalue.dateOfBirth = moment(formvalue.dateOfBirth).format('MM-DD-YYYY');
+      delete formvalue.fundMyself;
+      fundInfo = { fundMyself: this.fundMyself, providerInfo: formvalue };
+    }
+    this.facade.fundInformationSubmit(fundInfo);
   }
 }
