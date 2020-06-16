@@ -15,6 +15,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { isEqual } from 'lodash';
 import { Subscription } from 'rxjs';
+import { IinputOption, InputFormatType } from '@app/shared';
 
 @Component({
   selector: 'change-phone',
@@ -22,11 +23,13 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./change-phone.page.scss']
 })
 export class ChangePhonePage implements OnDestroy, OnInit {
+  phoneNumber: IinputOption;
+
   changePhoneForm: FormGroup;
   changePhoneFormSubscription: Subscription;
   isFormValueChanged = false;
-  phoneNumberMinLength = 9;
-  phoneNumberMaxLength = 20;
+
+  phoneNumberLength = 10;
 
   constructor(private facade: ChangePhoneFacade, private formBuilder: FormBuilder) {}
 
@@ -43,14 +46,18 @@ export class ChangePhonePage implements OnDestroy, OnInit {
    * @memberOf ChangePhonePage
    */
   private initChangePhoneForm(): void {
+    this.phoneNumber = {
+      type: InputFormatType.ONLY_NUMBER,
+      maxLength: this.phoneNumberLength
+    };
     const { mobilePhone } = this.facade.customer;
     this.changePhoneForm = this.formBuilder.group({
       mobilePhone: [
         mobilePhone,
         [
           Validators.required,
-          Validators.minLength(this.phoneNumberMinLength),
-          Validators.maxLength(this.phoneNumberMaxLength)
+          Validators.minLength(this.phoneNumberLength),
+          Validators.maxLength(this.phoneNumberLength)
         ]
       ]
     });
