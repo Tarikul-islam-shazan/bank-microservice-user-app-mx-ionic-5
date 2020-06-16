@@ -313,8 +313,8 @@ export class SignUpService {
    * Date: March 11, 2020
    */
   fundDeposit(depositFund: DepositFund): Observable<any> {
-    return this.http.post(this.baseUrl + '/deposit/fund', depositFund, {
-      headers: this.headerService.getUserNameMemberIdHeader().append('disabled-cookies', 'true')
+    return this.http.post(this.baseUrl + '/deposit/direct', depositFund, {
+      headers: this.headerService.getMemberIdCustomerIdHeader().append('disabled-cookies', 'true')
     });
   }
 
