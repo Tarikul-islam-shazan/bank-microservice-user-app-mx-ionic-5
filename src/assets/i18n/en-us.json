@@ -864,7 +864,7 @@
     },
     "contact-preference": {
       "header-title": "Contact Preferences",
-      "invex-bank-header": "Meed Banking Powered by Invex Bank.",
+      "invex-bank-header": "Meed Banking Powered by Invex Bank",
       "invex-bank-sub-header": "These notifications provide you with alerts for balance changes, fraud, transactions, one-time passwords, offers, and more.",
       "email-text": "Email",
       "push-text": "Push Notification",
