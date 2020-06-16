@@ -8,10 +8,6 @@ const routes: Routes = [
     component: AccountRecoveryPage
   },
   {
-    path: 'change-password',
-    loadChildren: () => import('./change-password/change-password.module').then(m => m.ChangePasswordPageModule)
-  },
-  {
     path: 'forgot-password',
     loadChildren: () => import('./forgot-password/forgot-password.module').then(m => m.ForgotPasswordPageModule)
   },
