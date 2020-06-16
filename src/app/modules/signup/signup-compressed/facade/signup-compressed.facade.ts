@@ -136,7 +136,7 @@ export class SignupCompressedFacade {
     if (!inviterFoundOwn) {
       if (REG_EX_PATTERNS.INVITER_CODE.test(inviterEmailOrCode)) {
         member = Object.assign(member, { inviterCode: inviterEmailOrCode });
-      } else if (REG_EX_PATTERNS.INVITER_EMAIL.test(inviterEmailOrCode)) {
+      } else if (REG_EX_PATTERNS.EMAIL.test(inviterEmailOrCode)) {
         member = Object.assign(member, { inviterEmail: inviterEmailOrCode });
       }
     } else {

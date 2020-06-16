@@ -14,7 +14,6 @@ export const REG_EX_PATTERNS = {
   US_ZIP_CODE_WITH_TEN_DIGITS: /^(?=.*\d)(?=.*[1-9]).{10}$/,
   WHITE_SPACE: /\s/g,
   INVITER_CODE: /[aA-zZ0-9]{6}/,
-  INVITER_EMAIL: /^\w+@\w+\.\w{2,3}$/,
   INVITER_EMAIL_OR_CODE: /[aA-zZ0-9]{6}|^[^@]+@[^@]+\.[^@\.]{2,}$/,
   ALPHA_NUMERIC_WITH_SPACE: /^[a-z\d\s]+$/i,
   US_ZIP_CODE: /^\d{5}$|^\d{5}-\d{4}$/,
