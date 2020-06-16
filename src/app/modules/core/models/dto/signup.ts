@@ -218,7 +218,7 @@ export interface IAddressInfo {
   propertyType: string;
   street: string;
   outdoorNumber: string;
-  interiorNumber: string;
+  interiorNumber?: string;
   postCode: string;
   state: string;
   stateName?: string;
