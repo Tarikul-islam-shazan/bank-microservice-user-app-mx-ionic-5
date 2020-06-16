@@ -28,15 +28,9 @@ export class FundingInformationFacade {
    * Developer: Tarikul <tarikul@brainstation23.com>
    */
 
-  fundInformationSubmit(fundInformation) {
-    this.fundInfo = fundInformation;
-    if (this.fundInfo.fundMyself) {
-      delete this.fundInfo.providerInfo;
-    } else {
-      this.fundInfo.providerInfo.dateOfBirth = moment(this.fundInfo.providerInfo.dateOfBirth).format('MM-DD-YYYY');
-    }
-    this.signupService.fundingInformationSubmission(this.fundInfo).subscribe(res => {
-      this.analytics.logEvent(AnalyticsEventTypes.FundingProviderSelect, { fundMyself: this.fundInfo.fundMyself });
+  fundInformationSubmit(fundInformation: IFundInfo) {
+    this.signupService.fundingInformationSubmission(fundInformation).subscribe(res => {
+      this.analytics.logEvent(AnalyticsEventTypes.FundingProviderSelect, { fundMyself: fundInformation.fundMyself });
       this.router.navigate(['/signup/government-disclosure']);
     });
   }

@@ -7,31 +7,31 @@
       <step-counter [step]="'signup-module.funding-information-page.step-text'" [stepNo]="3"></step-counter>
     </div>
     <div class="header-title">{{ 'signup-module.funding-information-page.page-title' | translate }}</div>
-    <form [formGroup]="fundingInformationForm">
-      <div class="content-block">
-        <ion-list lines="none">
-          <ion-radio-group formControlName="fundMyself">
-            <ion-list-header>
-              <ion-label
-                >{{ 'signup-module.funding-information-page.fund-provider-selector-title' | translate }}</ion-label
-              >
-            </ion-list-header>
-            <ion-item>
-              <ion-label
-                >{{ 'signup-module.funding-information-page.fund-provider-selector-option-one' | translate }}</ion-label
-              >
-              <ion-radio mode="md" slot="start" [value]="true"></ion-radio>
-            </ion-item>
-            <ion-item>
-              <ion-label
-                >{{ 'signup-module.funding-information-page.fund-provider-selector-option-two' | translate }}</ion-label
-              >
-              <ion-radio mode="md" slot="start" [value]="false"></ion-radio>
-            </ion-item>
-          </ion-radio-group>
-        </ion-list>
-      </div>
-      <div class="content-block" *ngIf="!fundingInformationForm.value.fundMyself">
+    <div class="content-block">
+      <ion-list lines="none">
+        <ion-radio-group (ionChange)="checkFundMyself()" [(ngModel)]="fundMyself">
+          <ion-list-header>
+            <ion-label
+              >{{ 'signup-module.funding-information-page.fund-provider-selector-title' | translate }}</ion-label
+            >
+          </ion-list-header>
+          <ion-item>
+            <ion-label
+              >{{ 'signup-module.funding-information-page.fund-provider-selector-option-one' | translate }}</ion-label
+            >
+            <ion-radio mode="md" slot="start" [value]="true"></ion-radio>
+          </ion-item>
+          <ion-item>
+            <ion-label
+              >{{ 'signup-module.funding-information-page.fund-provider-selector-option-two' | translate }}</ion-label
+            >
+            <ion-radio mode="md" slot="start" [value]="false"></ion-radio>
+          </ion-item>
+        </ion-radio-group>
+      </ion-list>
+    </div>
+    <div class="content-block" *ngIf="!fundMyself">
+      <form [formGroup]="fundingInformationForm">
         <ion-list lines="none">
           <ion-item>
             <ion-input
@@ -90,8 +90,8 @@
             <ion-icon name="chevron-down"></ion-icon>
           </ion-item>
         </ion-list>
-      </div>
-    </form>
+      </form>
+    </div>
   </div>
 </ion-content>
 
@@ -101,7 +101,7 @@
       class="white-button"
       expand="block"
       (click)="fundInformationFormSubmit()"
-      [disabled]="!fundingInformationForm.value.fundMyself && fundingInformationForm.invalid"
+      [disabled]="!fundMyself && fundingInformationForm.invalid"
     >
       {{ 'signup-module.funding-information-page.button-text' | translate }}
     </ion-button>
