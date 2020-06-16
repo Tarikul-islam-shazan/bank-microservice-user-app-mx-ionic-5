@@ -1056,6 +1056,8 @@
     "code-404": "New password can not be the same as the old password.",
     "code-403": "Your answer is wrong",
     "code-405": "Your account has been locked due to multiple failed login attempts. Give us a call at 1-833-213-6333",
+    "code-406": "Card number invalid or not related to the client",
+    "code-408": "Invalid date of birth",
     "code-410": "The information you entered does not match our records. Let's get it fixed! Give us a call at 1-833-213-6333",
     "code-412": "New password should not be same as current password",
     "code-413": "The password you have entered does not match your current password. Please correct it and try again.",
