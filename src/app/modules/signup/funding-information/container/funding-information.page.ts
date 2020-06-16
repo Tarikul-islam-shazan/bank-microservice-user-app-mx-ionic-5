@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { FundingInformationFacade } from '../facade';
 import * as moment from 'moment';
@@ -8,15 +8,12 @@ import * as moment from 'moment';
   templateUrl: './funding-information.page.html',
   styleUrls: ['./funding-information.page.scss']
 })
-export class FundingInformationPage implements OnInit {
+export class FundingInformationPage {
   fundingInformationForm: FormGroup;
   maxDate: string;
+  fundMyself = true;
 
   constructor(private formBuilder: FormBuilder, public facade: FundingInformationFacade) {}
-
-  ngOnInit() {
-    this.initFundingInformationForm();
-  }
 
   get maximumDate() {
     return moment().format('YYYY-MM-DD');
@@ -34,13 +31,31 @@ export class FundingInformationPage implements OnInit {
 
   initFundingInformationForm(): void {
     this.fundingInformationForm = this.formBuilder.group({
-      fundMyself: [true, [Validators.required]],
       firstName: ['', [Validators.required, Validators.maxLength(26)]],
       secondName: ['', [Validators.maxLength(26)]],
       paternalLastName: ['', [Validators.required, Validators.maxLength(26)]],
       maternalLastName: ['', [Validators.maxLength(26)]],
       dateOfBirth: ['', [Validators.required]]
     });
+  }
+
+  /**
+   * @method checkFundMyself Form intilization and form visibility
+   *
+   * @memberof FundingInformationPage
+   * Issue: MM2-44
+   * Details:  This method will do form intilization and form visibility.
+   * Date: June 16,2020
+   * Developer: Tarikul <tarikul@brainstation23.com>
+   */
+
+  checkFundMyself(event: CustomEvent): void {
+    if (event.detail.value === 'true') {
+      this.fundMyself = true;
+      this.initFundingInformationForm();
+    } else {
+      this.fundMyself = false;
+    }
   }
 
   /**
@@ -54,9 +69,8 @@ export class FundingInformationPage implements OnInit {
    */
 
   fundInformationFormSubmit(): void {
-    const { fundMyself } = this.fundingInformationForm.value;
+    const fundMyself = this.fundMyself;
     const providerInfo = this.fundingInformationForm.value;
-    delete providerInfo.fundMyself;
     this.facade.fundInformationSubmit({ fundMyself, providerInfo });
   }
 }
