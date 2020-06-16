@@ -34,9 +34,6 @@ export const environment = {
     timeoutPeriod: 540, // After 540 seconds (9 mins) of inactivity, the user will be considered timed out.
     keepAlivePingInterval: 15 // sets the ping interval to 15 seconds
   },
-  virtualAssistance: {
-    websocketUrl: 'wss://cvusalivechatdemo.creativevirtual15.com/ChatServer/userConnection'
-  },
   urbanAirship: {
     appKey: '4Ww5Ycv-RBGVTSH2vrivWw',
     appSecret: '-AsJp_A-Rd6j0gZlZT6BoA',

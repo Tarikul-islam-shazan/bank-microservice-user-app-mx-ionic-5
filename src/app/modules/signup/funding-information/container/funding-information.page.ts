@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { FundingInformationFacade } from '../facade';
 import * as moment from 'moment';
+import { IinputOption, InputFormatType } from '@app/shared';
 
 @Component({
   selector: 'mbc-funding-information',
@@ -12,8 +13,17 @@ export class FundingInformationPage {
   fundingInformationForm: FormGroup;
   maxDate: string;
   fundMyself = true;
+  onlyWords: IinputOption;
+  onlyWord: IinputOption;
 
-  constructor(private formBuilder: FormBuilder, public facade: FundingInformationFacade) {}
+  constructor(private formBuilder: FormBuilder, public facade: FundingInformationFacade) {
+    this.onlyWords = {
+      type: InputFormatType.WORDS
+    };
+    this.onlyWord = {
+      type: InputFormatType.ONLY_ONE_WORD
+    };
+  }
 
   get maximumDate() {
     return moment().format('YYYY-MM-DD');

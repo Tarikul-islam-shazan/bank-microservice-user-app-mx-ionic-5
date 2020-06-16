@@ -20,11 +20,15 @@ import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 @Injectable()
 export class GovernmentDisclosureFacade {
   onlyNumber: IinputOption;
+  onlyWord: IinputOption;
+
   holdGovtPosition: boolean;
   relativeHoldGovtPosition = false;
 
   holdGovtPositionForm: FormGroup;
   relativeGovtPositionForm: FormGroup;
+
+  nameMaxLength = 26;
 
   skipErrorMyFields: Record<string, string | boolean>;
   skipErrorRelativeFields: Record<string, string | boolean>;
@@ -49,6 +53,10 @@ export class GovernmentDisclosureFacade {
     this.onlyNumber = {
       type: InputFormatType.ONLY_NUMBER,
       maxLength: 20
+    };
+    this.onlyWord = {
+      type: InputFormatType.WORDS,
+      maxLength: this.nameMaxLength
     };
     this.initializeForms();
     this.initializeDropdownData();
@@ -222,10 +230,30 @@ export class GovernmentDisclosureFacade {
     });
 
     this.relativeGovtPositionForm = this.formBuilder.group({
-      firstName: ['', [Validators.required, Validators.maxLength(26)]],
-      secondName: ['', [Validators.maxLength(26)]],
-      paternalLastName: ['', [Validators.required, Validators.maxLength(26)]],
-      maternalLastName: ['', [Validators.maxLength(26)]],
+      firstName: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(this.nameMaxLength),
+          Validators.pattern(REG_EX_PATTERNS.ALLOW_ONLY_ALPHABET)
+        ]
+      ],
+      secondName: [
+        '',
+        [Validators.maxLength(this.nameMaxLength), Validators.pattern(REG_EX_PATTERNS.ALLOW_ONLY_ALPHABET)]
+      ],
+      paternalLastName: [
+        '',
+        [
+          Validators.required,
+          Validators.maxLength(this.nameMaxLength),
+          Validators.pattern(REG_EX_PATTERNS.ALLOW_ONLY_ALPHABET)
+        ]
+      ],
+      maternalLastName: [
+        '',
+        [Validators.maxLength(this.nameMaxLength), Validators.pattern(REG_EX_PATTERNS.ALLOW_ONLY_ALPHABET)]
+      ],
       position: ['', [Validators.required]],
       homeAddress: ['', [Validators.required, Validators.maxLength(80)]],
       phone: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(20)]],

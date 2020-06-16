@@ -93,6 +93,7 @@
             <ion-item>
               <ion-input
                 formControlName="firstName"
+                [appMaskInput]="facade.onlyWord"
                 (ionChange)="facade.removeSpace('firstName')"
                 (ionFocus)="facade.isRelativeInputFieldSkip('firstName')"
                 [ngClass]="facade.relativeGovtPositionForm.controls.firstName.invalid && facade.skipErrorRelativeFields.firstName ? 'error-input' : 'white-input'"
@@ -104,6 +105,7 @@
             <ion-item>
               <ion-input
                 formControlName="secondName"
+                [appMaskInput]="facade.onlyWord"
                 (ionChange)="facade.removeSpace('secondName')"
                 (ionFocus)="facade.isRelativeInputFieldSkip('secondName')"
                 [ngClass]="facade.relativeGovtPositionForm.controls.secondName.invalid && facade.skipErrorRelativeFields.secondName ? 'error-input' : 'white-input'"
@@ -115,6 +117,7 @@
             <ion-item>
               <ion-input
                 formControlName="paternalLastName"
+                [appMaskInput]="facade.onlyWord"
                 (ionChange)="facade.removeSpace('paternalLastName')"
                 (ionFocus)="facade.isRelativeInputFieldSkip('paternalLastName')"
                 [ngClass]="facade.relativeGovtPositionForm.controls.paternalLastName.invalid && facade.skipErrorRelativeFields.paternalLastName ? 'error-input' : 'white-input'"
@@ -126,6 +129,7 @@
             <ion-item>
               <ion-input
                 formControlName="maternalLastName"
+                [appMaskInput]="facade.onlyWord"
                 (ionChange)="facade.removeSpace('maternalLastName')"
                 (ionFocus)="facade.isRelativeInputFieldSkip('maternalLastName')"
                 [ngClass]="facade.relativeGovtPositionForm.controls.maternalLastName.invalid && facade.skipErrorRelativeFields.maternalLastName ? 'error-input' : 'white-input'"

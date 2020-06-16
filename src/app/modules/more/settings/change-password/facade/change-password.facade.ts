@@ -5,7 +5,6 @@
  * Developer: Md.Kausar <md.kausar@brainstation23.com>
  * Include Ticket ID:GMA-4749
  */
-import jsSHA from 'jssha';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { ChangePasswordRequest } from '@app/more/models/more';
 import { IMeedModalContent, ModalService, SuccessModalPage } from '@app/shared';
@@ -31,24 +30,7 @@ export class ChangePasswordFacade {
    * @memberOf ChangePasswordFacade
    */
   changePassword(requestBody: ChangePasswordRequest): void {
-    requestBody.currentPassword = this.getHashPassword(requestBody.currentPassword);
-    requestBody.newPassword = this.getHashPassword(requestBody.newPassword);
-
     this.passwordService.changePassword(requestBody).subscribe(() => this.showChangePasswordSuccessModal());
-  }
-
-  /**
-   * @summary Hashing password using jsSHA;
-   *
-   * @param {string} password
-   * @returns {string}
-   * @memberOf ChangePasswordFacade
-   */
-  getHashPassword(password: string): string {
-    const shaObj = new jsSHA('SHA-256', 'TEXT');
-    shaObj.update(password);
-
-    return shaObj.getHash('HEX');
   }
 
   /**

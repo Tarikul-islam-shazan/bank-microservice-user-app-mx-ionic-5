@@ -440,7 +440,7 @@
         "property-type": "Property Type",
         "street-name": "Street Name",
         "outdoor-number": "Outdoor Number",
-        "interior-number": "Interior Number",
+        "interior-number": "Interior Number (Optional)",
         "post-code": "Post Code",
         "city": "City",
         "state": "State",
@@ -518,7 +518,7 @@
     "signup-approved-page": {
       "page-title": "Congratulations, you’ve been approved!",
       "page-subtitle": "And your encrypted data is safe and secure.  You can enjoy the benefits of membership with total confidence!",
-      "button-text": "Next Step",
+      "button-text": "Last Step",
       "footer-text": "One step to go - move money into your account."
     },
     "scan-id": {
@@ -579,14 +579,14 @@
         "title": "SPEI transfer from other bank",
         "details": {
           "content1": "SPEI is a transfer initiated at one bank to deposit funds into another bank",
-          "content2": "It’s real simple to do.  Just head to your current bank and request to deposit SPEI to your new Meed account."
+          "content2": "It’s really simple to do.  Just head to your current bank and request to deposit SPEI to your new Meed account."
         }
       },
       "oxxo-modal": {
         "title": "OXXO Money Deposit",
         "details": {
           "content1": "OXXO Money Deposit can be made by depositing cash at an OXXO store into your bank account",
-          "content2": "It’s real simple to do.  Just head to an OXXO store and request to deposit money to your new Meed account."
+          "content2": "It’s really simple to do.  Just head to an OXXO store and request to deposit money to your new Meed account."
         }
       }
     },
@@ -810,18 +810,19 @@
       },
       "successful-file-download-toast": "Your file has been downloaded, please check the app directory folder."
     },
-    "virtual-assistant": {
-      "header-title": "Assistance",
-      "live-chat": {
-        "loading-message": "Live chat initialize...",
-        "message-code-1": "Expected wait time is {{expectedWaitTime}} seconds. Please wait while we connect you with an agent.",
-        "message-code-6": "Your conversation will be forwarded to an expert in your problem. It will be processed as soon as possible.",
-        "message-code-8": "Your conversation will be forwarded to an expert in your problem. It will be processed as soon as possible.",
-        "message-code-10": "You are now connected to {{agentName}}.",
-        "message-code-13": "The chat session was ended by the agent.",
-        "message-code-31": "Agent temporarily unavailable. Please wait.",
-        "message-code-33": "Agent reconnected.",
-        "message-code-35": "Chat Ended By Agent in suspended state reason network Failure."
+    "contact-us-page": {
+      "header-title": "Contact Us",
+      "container-header": "Get in Touch",
+      "container-subheader": "Get help and support, troubleshoot your service or get in touch with us.",
+      "call-text": "Please call {{callNumber}}",
+      "call-button-text": "Call Now",
+      "call-modal": {
+        "title": "Call",
+        "content": "Do you want to call {{callNumber}}?",
+        "actionButtons": {
+          "call-text": "Call",
+          "cancel-text": "Cancel"
+        }
       }
     },
     "change-name-required-documents": {
@@ -864,7 +865,7 @@
     },
     "contact-preference": {
       "header-title": "Contact Preferences",
-      "invex-bank-header": "Meed Banking Powered by Invex Bank, N.A.",
+      "invex-bank-header": "Meed Banking Powered by Invex Bank",
       "invex-bank-sub-header": "These notifications provide you with alerts for balance changes, fraud, transactions, one-time passwords, offers, and more.",
       "email-text": "Email",
       "push-text": "Push Notification",
@@ -1056,6 +1057,8 @@
     "code-404": "New password can not be the same as the old password.",
     "code-403": "Your answer is wrong",
     "code-405": "Your account has been locked due to multiple failed login attempts. Give us a call at 1-833-213-6333",
+    "code-406": "Card number invalid or not related to the client",
+    "code-408": "Invalid date of birth",
     "code-410": "The information you entered does not match our records. Let's get it fixed! Give us a call at 1-833-213-6333",
     "code-412": "New password should not be same as current password",
     "code-413": "The password you have entered does not match your current password. Please correct it and try again.",
@@ -1096,6 +1099,8 @@
     "code-704": "The contact medium entered is NOT valid. I checked !!!",
     "code-705": "The status of the contact medium entered is NOT valid. I checked !!!",
     "code-706": "OTP is expired",
+    "code-707": "There is no information",
+    "code-708": "The client does NOT have a registered type of contact !!!",
     "code-800": "Transfer cannot be modified",
     "code-801": "Insufficient Data",
     "code-802": "Branch does not exist",

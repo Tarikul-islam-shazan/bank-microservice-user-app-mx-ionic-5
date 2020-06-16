@@ -12,6 +12,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { SignupValidators, ITemporaryPasswordRequest } from '@app/core';
 import { IonContent } from '@ionic/angular';
 import * as moment from 'moment';
+import { IinputOption, InputFormatType } from '@app/shared';
 
 @Component({
   selector: 'mbc-forgot-password',
@@ -21,6 +22,7 @@ import * as moment from 'moment';
 export class ForgotPasswordPage implements OnInit {
   @ViewChild(IonContent, { static: false }) content: IonContent;
 
+  cardNumberOnly: IinputOption;
   usernameForm: FormGroup;
   quesForm: FormGroup;
 
@@ -36,6 +38,10 @@ export class ForgotPasswordPage implements OnInit {
   }
 
   initForm() {
+    this.cardNumberOnly = {
+      type: InputFormatType.ONLY_NUMBER,
+      maxLength: 19
+    };
     this.usernameForm = this.formBuilder.group({
       username: [
         null,
