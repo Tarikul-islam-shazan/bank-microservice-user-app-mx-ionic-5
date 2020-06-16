@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { VirtualAssistantPage } from './virtual-assistant.page';
+import { ContactUsPage } from './contact-us.page';
 
-describe('VirtualAssistantPage', () => {
-  let component: VirtualAssistantPage;
-  let fixture: ComponentFixture<VirtualAssistantPage>;
+describe('ContactUsPage', () => {
+  let component: ContactUsPage;
+  let fixture: ComponentFixture<ContactUsPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [VirtualAssistantPage],
+      declarations: [ContactUsPage],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(VirtualAssistantPage);
+    fixture = TestBed.createComponent(ContactUsPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

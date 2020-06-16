@@ -1,0 +1,28 @@
+.contact-us-container {
+  .header-text {
+    color: #070a18;
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 0.16px;
+    line-height: 30px;
+    margin-top: 30px;
+  }
+  .sub-text {
+    p {
+      color: #606477;
+      font-family: 'Averta W05 Regular';
+      font-size: 16px;
+      line-height: 24px;
+    }
+  }
+}
+ion-footer {
+  padding: 20px !important;
+  text-transform: none !important;
+  background-color: #ffffff !important;
+
+  &::before {
+    background-image: none;
+  }
+}

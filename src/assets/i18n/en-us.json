@@ -810,18 +810,19 @@
       },
       "successful-file-download-toast": "Your file has been downloaded, please check the app directory folder."
     },
-    "virtual-assistant": {
-      "header-title": "Assistance",
-      "live-chat": {
-        "loading-message": "Live chat initialize...",
-        "message-code-1": "Expected wait time is {{expectedWaitTime}} seconds. Please wait while we connect you with an agent.",
-        "message-code-6": "Your conversation will be forwarded to an expert in your problem. It will be processed as soon as possible.",
-        "message-code-8": "Your conversation will be forwarded to an expert in your problem. It will be processed as soon as possible.",
-        "message-code-10": "You are now connected to {{agentName}}.",
-        "message-code-13": "The chat session was ended by the agent.",
-        "message-code-31": "Agent temporarily unavailable. Please wait.",
-        "message-code-33": "Agent reconnected.",
-        "message-code-35": "Chat Ended By Agent in suspended state reason network Failure."
+    "contact-us-page": {
+      "header-title": "Contact Us",
+      "container-header": "Get in Touch",
+      "container-subheader": "Get help and support, troubleshoot your service or get in touch with us.",
+      "call-text": "Please call {{callNumber}}",
+      "call-button-text": "Call Now",
+      "call-modal": {
+        "title": "Call",
+        "content": "Do you want to call {{callNumber}}?",
+        "actionButtons": {
+          "call-text": "Call",
+          "cancel-text": "Cancel"
+        }
       }
     },
     "change-name-required-documents": {
