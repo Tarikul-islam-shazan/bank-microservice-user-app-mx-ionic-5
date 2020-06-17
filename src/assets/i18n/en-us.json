@@ -1062,6 +1062,7 @@
     "code-410": "The information you entered does not match our records. Let's get it fixed! Give us a call at 1-833-213-6333",
     "code-412": "New password should not be same as current password",
     "code-413": "The password you have entered does not match your current password. Please correct it and try again.",
+    "code-415": "The email is assigned to more than one client",
     "code-602": "Username already exists",
     "code-603": "A member with this TIN number is already exists",
     "code-604": "Thank you for submitting your information for a Meed Banking Club account. We regret to inform you that we’re unable to accommodate your request at this time. The Social Security records associated with the information you provided are attributed to a person who is a minor. Please contact the IRS if this information is incorrect.",

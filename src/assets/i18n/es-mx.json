@@ -1053,6 +1053,7 @@
     "code-410": "La información que has introducido no coincide con nuestros registros. ¡Vamos a arreglarlo! Llámanos al 833-213-6333.",
     "code-412": "La contraseña nueva no debe ser la misma que la contraseña actual",
     "code-413": "La contraseña que ingresaste no coincide con tu contraseña actual. Corrige la contraseña e inténtalo de nuevo.",
+    "code-415": "The email is assigned to more than one client",
     "code-602": "Username already exists",
     "code-603": "A member with this TIN number is already exists",
     "code-604": "Gracias por enviar tu información para una cuenta en Meed Banking Club. Lamentamos informarte que no podemos procesar tu solicitud en este momento. Los registros de seguro social asociados con la información que proporcionaste están atribuidos a una persona menor de edad. Comunícate con el IRS si esta información es incorrecta",
