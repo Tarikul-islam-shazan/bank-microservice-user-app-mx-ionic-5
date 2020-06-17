@@ -920,7 +920,6 @@
       "street-address": "Street Address",
       "email": "Email",
       "phone": "Phone",
-      "add-work-phone": "Add work phone",
       "change-full-name-modal": {
         "header-title": "Change name",
         "first-name": "First Name",
