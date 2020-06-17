@@ -56,7 +56,7 @@ export class TranslateLoaderService implements TranslateLoader {
    */
   checkUpgrade(bankIdentifier: string, locale: string): Observable<Promise<boolean>> {
     return this.httpClient
-      .head<any>(`${this.loaderUrl}/${bankIdentifier}/${locale}.json`, {
+      .head<any>(`${this.loaderUrl}/${bankIdentifier}/${environment.deployment}/${locale}.json`, {
         observe: 'response'
       })
       .pipe(
@@ -68,7 +68,7 @@ export class TranslateLoaderService implements TranslateLoader {
           const islocalUpdate = await localUpdate;
           if (!islocalUpdate) {
             const fetchRemoteTranslationData = await this.httpClient
-              .get(`${this.loaderUrl}/${bankIdentifier}/${locale}.json`, {
+              .get(`${this.loaderUrl}/${bankIdentifier}/${environment.deployment}/${locale}.json`, {
                 observe: 'response'
               })
               .toPromise();

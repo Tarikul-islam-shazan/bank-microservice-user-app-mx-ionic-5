@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   label: 'development',
-  deployment: 'development',
+  deployment: 'dev',
   serviceUrl: 'http://localhost:6064/api/v1.0.0',
   loadingControllerOptions: {
     message: 'Please wait...'
