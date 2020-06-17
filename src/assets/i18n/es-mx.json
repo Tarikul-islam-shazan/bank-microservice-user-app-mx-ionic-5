@@ -612,7 +612,7 @@
       "info-text-2": "Nos dices el nombre de la empresa de tu empleador. Le enviaremos un formulario por correo electrónico con sus datos completos. Usted lo verifica y luego se lo entrega a su empleador. ¡Ellos harán el resto!",
       "info-text-3": "The month after your first direct deposit is made, you’ll receive $9.95 cash back in your Checking account.",
       "info-text-4": "And you’ll also earn a Share, entitling you to MeedShare cash back from the bank every month.",
-      "continue-btn-text": "Hacer continuación"
+      "continue-btn-text": "Continuar"
     },
     "direct-deposit-setup": {
       "info-title": "¿Quieres recibir el pago al instante?",
@@ -627,7 +627,7 @@
       "subtitle-text": "Ingrese el nombre de su empleador a continuación. Le enviaremos un formulario de depósito directo que puede enviar a su empleador.",
       "placeholder-text": "Nombre del empleador",
       "checkbox-text": "Acepto recibir por correo electrónico un formulario de depósito directo que incluye el nombre de mi empleador, mi número de cuenta bancaria y número de ruta.",
-      "btn-text": "Formulario de depósito directo por correo electrónico"
+      "btn-text": "Enviar Formulario A Mi Correo Electrónico"
     },
     "direct-deposit-complete": {
       "thank-you-text": "¡Gracias!",
