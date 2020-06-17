@@ -266,12 +266,7 @@ interface StaticObj {
 }
 
 interface StreetObj {
-  postCode?: string;
   stateName?: string;
-  state?: string;
   municipalityName?: string;
-  municipality?: string;
   cityName?: string;
-  city?: string;
-  suburbName?: string;
 }
