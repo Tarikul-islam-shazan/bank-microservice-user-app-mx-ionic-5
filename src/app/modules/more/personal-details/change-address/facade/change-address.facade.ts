@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
 import { MemberService } from '@app/core/services/member.service';
 import { Observable, Subscription } from 'rxjs';
 import { PersonalDetailsState } from '@app/more/personal-details/facade/personal-details.state';
-const moment = require('moment');
 @Injectable()
 export class ChangeAddressFacade {
   customer: ICustomer = {};
@@ -64,7 +63,7 @@ export class ChangeAddressFacade {
     customer.addresses = addressArrar;
     this.customerService.updateAddress(customer).subscribe((response: any) => {
       const data = response.addresses;
-      this.customer.addresses = JSON.parse(JSON.stringify(data));
+      this.customer.addresses = data;
       // Object.assign(this.customer, data);
       Object.assign(this.memberService.member, data);
       this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
