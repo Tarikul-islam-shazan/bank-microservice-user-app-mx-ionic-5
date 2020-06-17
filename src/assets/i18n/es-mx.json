@@ -911,7 +911,6 @@
       "street-address": "DIRECCIÓN",
       "email": "Correo electrónico",
       "phone": "teléfono",
-      "add-work-phone": "Añade un teléfono laboral",
       "change-full-name-modal": {
         "header-title": "Cambiar nombre",
         "first-name": "Nombre",
