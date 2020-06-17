@@ -55,7 +55,6 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
   ngOnInit() {
     this.getCustomer();
     this.initChangeAddressForm();
-    this.checkIfFormValueChanged();
   }
 
   /**
@@ -99,7 +98,7 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
       propertyType: [null, Validators.required],
       street: [street, [Validators.required, Validators.maxLength(40)]],
       outdoorNumber: [outdoorNumber, [Validators.required, Validators.maxLength(10)]],
-      interiorNumber: [interiorNumber, [Validators.required, Validators.maxLength(10)]],
+      interiorNumber: [interiorNumber, [Validators.maxLength(10)]],
       postCode: [postCode, [Validators.required, Validators.maxLength(5)]],
       stateField: [null, Validators.required],
       state: [state, Validators.required],
@@ -183,12 +182,11 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @returns {void}
    * @memberOf ChangeAddressPage
    */
-  private checkIfFormValueChanged(): void {
-    this.changeAddressFormSubscription = this.changeAddressForm.valueChanges.subscribe(
-      (changedFormValue: ICustomer) => {
-        this.isFormValueChanged = !isEqual(this.initialFormValue, changedFormValue);
-      }
-    );
+  checkIfFormValueChanged(): boolean {
+    this.changeAddressFormSubscription = this.changeAddressForm.valueChanges.subscribe((changedFormValue: IAddress) => {
+      this.isFormValueChanged = !isEqual(this.initialFormValue, changedFormValue);
+    });
+    return this.isFormValueChanged;
   }
 
   /**
@@ -256,6 +254,12 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
       this.changeAddressForm.controls.addressType.patchValue(address.value);
       this.changeAddressForm.controls.propertyTypeField.patchValue(property.text);
       this.changeAddressForm.controls.propertyType.patchValue(property.value);
+      const initialForm = this.changeAddressForm.valueChanges.subscribe((changedFormValue: IAddress) => {
+        if (this.changeAddressForm.valid) {
+          this.initialFormValue = changedFormValue;
+          initialForm.unsubscribe();
+        }
+      });
     });
   }
 }

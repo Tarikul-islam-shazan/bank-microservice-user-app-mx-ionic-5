@@ -157,7 +157,7 @@
     <ion-button
       class="white-button"
       expand="block"
-      [disabled]=" changeAddressForm.invalid || !isFormValueChanged"
+      [disabled]=" changeAddressForm.invalid || !checkIfFormValueChanged()"
       (click)="save()"
     >
       {{'more-module.personal-details.change-address-modal.button-text' | translate}}
