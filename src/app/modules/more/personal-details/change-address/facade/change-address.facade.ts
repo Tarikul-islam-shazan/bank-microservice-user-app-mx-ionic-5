@@ -36,8 +36,8 @@ export class ChangeAddressFacade {
     });
   }
 
-  getStaticData(): Observable<{ [key: string]: IDropdownOption[] }> {
-    return this.staticDataService.get(StaticDataCategory.AddressInformation);
+  getStaticData(): Promise<{ [key: string]: IDropdownOption[] }> {
+    return this.staticDataService.get(StaticDataCategory.AddressInformation).toPromise();
   }
 
   /**
@@ -80,7 +80,7 @@ export class ChangeAddressFacade {
    * @returns {Observable<Partial<IAddressInfo[]>>}
    * @memberof AddressInformationFacade
    */
-  getPostalCodeInfo(postalCode): Observable<Partial<IAddressInfo[]>> {
-    return this.signUpService.getStateCityMunicipality(postalCode);
+  getPostalCodeInfo(postalCode): Promise<Partial<IAddressInfo[]>> {
+    return this.signUpService.getStateCityMunicipality(postalCode).toPromise();
   }
 }
