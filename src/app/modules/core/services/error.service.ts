@@ -66,7 +66,7 @@ export class ErrorService {
       errorResponse = { code: ErrorCode.OTPrequired } as MeedErrorResponse;
     }
     if (errorResponse) {
-      const { code } = errorResponse as MeedErrorResponse;
+      const { code, message } = errorResponse as MeedErrorResponse;
       switch (code) {
         case ErrorCode.LockedAccount:
           // locked account modal for forgot password
@@ -83,26 +83,8 @@ export class ErrorService {
           // same password error modal show
           this.modalService.showInfoErrorModal(errorResponse, this.getChangePasswordInfoErrorCommponentProps());
           break;
-        case ErrorCode.CreditReportFailure:
-          this.modalService.openInfoModalComponent(this.getAdverseActionModalCompProps());
-          break;
-        case ErrorCode.NotEligible: // Minor
-        case ErrorCode.Deceased: // Deceased
-          this.modalService.openInfoModalComponent(
-            this.getAccountBlockModalComp(
-              'error-message-module.error-title-unfortunately',
-              `error-message-module.code-${code}`
-            )
-          );
-          break;
-        case ErrorCode.IdaTransactionFailed: // IdaTransactionFailed
-        case ErrorCode.NotEligibleForQuestion: // NotEligibleForQuestion
-        case ErrorCode.IdentityVerificationFailed: // IdentityVerificationFailed
-        // GMA-4689; Muntaqeem; The user should be redirected to the login screen after closing the "Aplication Denied" modal.
-        case ErrorCode.Denied: // Denied
-          this.modalService.openInfoModalComponent(
-            this.getAccountBlockModalComp('error-message-module.error-title', `error-message-module.code-${code}`)
-          );
+        case ErrorCode.TexPayerIdAlreadyAssigned:
+          this.modalService.openInfoModalComponent(this.texPayerIdAlreadyAssignedComponentProps(code, message));
           break;
         case ErrorCode.ServiceUnavilableOnCountry:
           /**
@@ -165,8 +147,8 @@ export class ErrorService {
    * @param {Error} error
    * @memberof ErrorService
    */
-  public async sendError(error: Error) {
-    const errorToSend = await this.addContextInfo(error);
+  public async sendError(errorCode: Error) {
+    const errorToSend = await this.addContextInfo(errorCode);
     this.crashalytics.logError(errorToSend); // send error log to crashalytics
     this.logglyLoggerService.logError(errorToSend).subscribe(); // send error log to our backend to track loggly
   }
@@ -248,93 +230,6 @@ export class ErrorService {
   }
 
   /**
-   * A function showing the CreditReportFailure modal when a user fails to signup for that.
-   *
-   * @returns {IMeedModalComponentProps}
-   * @memberof ErrorService
-   */
-  getAdverseActionModalCompProps(): IMeedModalComponentProps {
-    const noticeDate = moment().format('MM/DD/YYYY');
-    const modalComponentContent: IMeedModalComponentProps = {
-      componentProps: {
-        contents: [
-          {
-            title: 'error-message-module.code-609.modal-adverse-action-header',
-            details: [
-              'error-message-module.code-609.modal-adverse-action-notice-date-title',
-              'error-message-module.code-609.modal-adverse-action-message',
-              'error-message-module.code-609.modal-adverse-action-address-line1',
-              'error-message-module.code-609.modal-adverse-action-address-line2',
-              'error-message-module.code-609.modal-adverse-action-address-line3',
-              'error-message-module.code-609.modal-adverse-action-address-line4',
-              'error-message-module.code-609.modal-adverse-action-address-line5',
-              'error-message-module.code-609.modal-adverse-action-address-line6',
-              'error-message-module.code-609.modal-adverse-action-address-line7',
-              'error-message-module.code-609.modal-adverse-action-footer'
-            ],
-            values: {
-              noticeDate
-            }
-          }
-        ],
-        actionButtons: [
-          {
-            text: 'error-message-module.code-609.modal-adverse-action-button-title',
-            cssClass: 'white-button',
-            handler: () => {
-              this.router.navigate(['/login-user']);
-              this.modalService.close();
-            }
-          }
-        ],
-        // GMA-4694; Muntaqeem; When dismissing the modal using cross icon, user should redirect to login
-        onDidDismiss: () => {
-          this.router.navigate(['/login-user']);
-        },
-        fullScreen: true
-      }
-    };
-    return modalComponentContent;
-  }
-
-  /**
-   * A general function for showing the account lock modal depending on various cases and showing dynaming texts
-   * in the ui based on those cases
-   *
-   * @param {string} title
-   * @param {string} content
-   * @returns {IMeedModalComponentProps}
-   * @memberof ErrorService
-   */
-  getAccountBlockModalComp(title: string, content: string): IMeedModalComponentProps {
-    const modalComponentContent: IMeedModalComponentProps = {
-      componentProps: {
-        contents: [
-          {
-            title,
-            details: [content]
-          }
-        ],
-        actionButtons: [
-          {
-            text: 'error-message-module.code-609.modal-adverse-action-button-title',
-            cssClass: 'white-button',
-            handler: () => {
-              this.router.navigate(['/login-user']);
-              this.modalService.close();
-            }
-          }
-        ],
-        // GMA-4694; Muntaqeem; When dismissing the modal using cross icon, user should redirect to login
-        onDidDismiss: () => {
-          this.router.navigate(['/login-user']);
-        }
-      }
-    };
-    return modalComponentContent;
-  }
-
-  /**
    * @summary gets modal component props for unsupported country modal
    *
    * @private
@@ -363,13 +258,51 @@ export class ErrorService {
     return modalComponentContent;
   }
 
-  private invalidInviteeEmailInfoModalComponentProps(code: string): IMeedModalComponentProps {
+  private invalidInviteeEmailInfoModalComponentProps(errorCode: string): IMeedModalComponentProps {
     const componentProps: IMeedModalComponentProps = {
       componentProps: {
         contents: [
           {
             title: 'error-message-module.error-title',
-            details: [`error-message-module.code-${code}`]
+            details: [`error-message-module.code-${errorCode}`]
+          }
+        ],
+        actionButtons: [
+          {
+            text: 'error-message-module.dismiss-button',
+            cssClass: 'white-button',
+            handler: () => {
+              this.modalService.close();
+            }
+          }
+        ]
+      }
+    };
+
+    return componentProps;
+  }
+
+  /**
+   * @summary
+   * This method will show the error message like this
+   * "The customer with Tax Payer ID RECL9406024Z7 has been already assigned the Customer ID 00000000355"
+   *
+   * @param code { string }
+   * @param message { string }
+   * @returns componentProps { IMeedModalComponentProps }
+   */
+  private texPayerIdAlreadyAssignedComponentProps(errorCode: string, errorMessage: string): IMeedModalComponentProps {
+    const ids = errorMessage.match(/([A-Z+[0-9]+[A-Z]+[0-9]+)|\d+/g);
+    const componentProps: IMeedModalComponentProps = {
+      componentProps: {
+        contents: [
+          {
+            title: 'error-message-module.error-title',
+            details: [`error-message-module.code-${errorCode}`],
+            values: {
+              texPayerId: ids[0],
+              customerId: ids[1]
+            }
           }
         ],
         actionButtons: [
