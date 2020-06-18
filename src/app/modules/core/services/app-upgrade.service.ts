@@ -67,23 +67,25 @@ export class AppUpgradeService {
   }
 
   async checkUpgrade(): Promise<void> {
-    const queryParameter: IQueryRequest = {
-      currentVersion: semanticVersioning.appVersion,
-      appReleaseDate: semanticVersioning.releaseDate,
-      platform: this.appPlatform.currentPlatform(),
-      deviceOSVersion: this.appPlatform.deviceOSVersion,
-      deviceModel: this.appPlatform.deviceModel,
-      deviceManufacturer: this.appPlatform.deviceManufacturer
-    };
-    return this.http
-      .get<IUpgradeResponse>(`${this.baseUrl}/app-version/upgrade`, {
-        params: { ...queryParameter }
-      })
-      .toPromise()
-      .then((updateResponse: IUpgradeResponse) => {
-        this.updateResponse = updateResponse;
-        this.updateCheckSuccess();
-      });
+    this.appPlatform.ready().then(() => {
+      const queryParameter: IQueryRequest = {
+        currentVersion: semanticVersioning.appVersion,
+        appReleaseDate: semanticVersioning.releaseDate,
+        platform: this.appPlatform.currentPlatform(),
+        deviceOSVersion: this.appPlatform.deviceOSVersion,
+        deviceModel: this.appPlatform.deviceModel,
+        deviceManufacturer: this.appPlatform.deviceManufacturer
+      };
+      return this.http
+        .get<IUpgradeResponse>(`${this.baseUrl}/app-version/upgrade`, {
+          params: { ...queryParameter }
+        })
+        .toPromise()
+        .then((updateResponse: IUpgradeResponse) => {
+          this.updateResponse = updateResponse;
+          this.updateCheckSuccess();
+        });
+    });
   }
   updateCheckSuccess(): void {
     switch (this.updateResponse.updateStatus) {
