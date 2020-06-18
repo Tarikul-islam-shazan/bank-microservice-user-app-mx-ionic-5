@@ -944,7 +944,7 @@
         "property-type": "Property Type",
         "street-name": "Street Name",
         "outdoor-number": "Outdoor Number",
-        "interior-number": "Interior Number",
+        "interior-number": "Interior Number (optional)",
         "post-code": "Post Code",
         "state": "State",
         "municipality": "Municipality",
