@@ -1067,7 +1067,7 @@
     "code-609": "The length in the customerId is incorrect",
     "code-610": "The customer with Tax Payer ID {{texPayerId}} has been already assigned the Customer ID {{customerId}}",
     "code-611": "The Meed ID is a required value",
-    "code-613": "The MeedID has already been assigned to another customer",
+    "code-613": "The Meed ID has already been assigned to another customer",
     "code-616": "Post code does not exist",
     "code-617": "The Customer Id provided does not exist.",
     "code-618": "The Meed ID is not related to an existing customer.",

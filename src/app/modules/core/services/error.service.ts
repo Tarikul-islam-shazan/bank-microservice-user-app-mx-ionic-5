@@ -147,8 +147,8 @@ export class ErrorService {
    * @param {Error} error
    * @memberof ErrorService
    */
-  public async sendError(error: Error) {
-    const errorToSend = await this.addContextInfo(error);
+  public async sendError(errorCode: Error) {
+    const errorToSend = await this.addContextInfo(errorCode);
     this.crashalytics.logError(errorToSend); // send error log to crashalytics
     this.logglyLoggerService.logError(errorToSend).subscribe(); // send error log to our backend to track loggly
   }
@@ -258,13 +258,13 @@ export class ErrorService {
     return modalComponentContent;
   }
 
-  private invalidInviteeEmailInfoModalComponentProps(code: string): IMeedModalComponentProps {
+  private invalidInviteeEmailInfoModalComponentProps(errorCode: string): IMeedModalComponentProps {
     const componentProps: IMeedModalComponentProps = {
       componentProps: {
         contents: [
           {
             title: 'error-message-module.error-title',
-            details: [`error-message-module.code-${code}`]
+            details: [`error-message-module.code-${errorCode}`]
           }
         ],
         actionButtons: [
@@ -291,14 +291,14 @@ export class ErrorService {
    * @param message { string }
    * @returns componentProps { IMeedModalComponentProps }
    */
-  private texPayerIdAlreadyAssignedComponentProps(code: string, message: string): IMeedModalComponentProps {
-    const ids = message.match(/([A-Z+[0-9]+[A-Z]+[0-9]+)|\d+/g);
+  private texPayerIdAlreadyAssignedComponentProps(errorCode: string, errorMessage: string): IMeedModalComponentProps {
+    const ids = errorMessage.match(/([A-Z+[0-9]+[A-Z]+[0-9]+)|\d+/g);
     const componentProps: IMeedModalComponentProps = {
       componentProps: {
         contents: [
           {
             title: 'error-message-module.error-title',
-            details: [`error-message-module.code-${code}`],
+            details: [`error-message-module.code-${errorCode}`],
             values: {
               texPayerId: ids[0],
               customerId: ids[1]
