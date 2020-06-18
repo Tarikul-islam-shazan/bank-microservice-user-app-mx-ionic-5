@@ -55,7 +55,7 @@ export const environment = {
   },
   translateLoader: {
     usedRemote: false,
-    remoteUrl: 'https://s3.amazonaws.com/meedbankingclub-mobile/i18n'
+    remoteUrl: 'https://s3.amazonaws.com/meedbankingclub-mobile'
   },
   appBundleIdentifier: 'com.mx.uat.meedbankingclub.com'
 };
