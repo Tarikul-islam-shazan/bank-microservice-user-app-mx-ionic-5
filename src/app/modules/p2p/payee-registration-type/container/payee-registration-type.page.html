@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" mode="md">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{'p2p-module.registration-type-page.page-title' | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="send-money-wrapper">
+    <div class="title">{{'p2p-module.registration-type-page.send-money-to-title' | translate}}</div>
+    <ion-item class="ion-no-padding">
+      <ion-label class="ion-padding-top ion-padding-bottom">abstract@yahoo.com</ion-label>
+    </ion-item>
+  </div>
+  <div class="via-their-wrapper">
+    <div class="title">{{'p2p-module.registration-type-page.via-their-title' | translate}}</div>
+    <ion-list>
+      <ion-radio-group mode="md" name="type" [(ngModel)]="payeeType">
+        <ion-item class="ion-no-padding">
+          <ion-radio [value]="payeeTypes.Meed"></ion-radio>
+          <ion-label class="ion-padding"
+            >{{'p2p-module.registration-type-page.meed-account-title' | translate}}</ion-label
+          >
+        </ion-item>
+        <ion-item class="ion-no-padding">
+          <ion-radio [value]="payeeTypes.Invex"></ion-radio>
+          <ion-label class="ion-padding"
+            >{{'p2p-module.registration-type-page.invex-account-title' | translate}}</ion-label
+          >
+        </ion-item>
+        <ion-item class="ion-no-padding">
+          <ion-radio [value]="payeeTypes.Other"></ion-radio>
+          <ion-label class="ion-padding"
+            >{{'p2p-module.registration-type-page.bank-account-title' | translate}}</ion-label
+          >
+        </ion-item>
+      </ion-radio-group>
+    </ion-list>
+  </div>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="white-button" (click)="continue()">
+      {{'p2p-module.registration-type-page.continue-button-title' | translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
