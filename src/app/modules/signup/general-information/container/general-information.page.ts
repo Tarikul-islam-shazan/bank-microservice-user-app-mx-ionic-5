@@ -29,14 +29,14 @@ export class GeneralInformationPage implements OnInit {
     this.generalForm = this.formBuilder.group({
       firstName: [
         '',
-        [Validators.required, Validators.maxLength(this.nameMaxLength), Validators.pattern('^[A-Za-z]+$')]
+        [Validators.required, Validators.maxLength(this.nameMaxLength), Validators.pattern('[a-zA-Z ]*')]
       ],
-      secondName: ['', [Validators.maxLength(this.nameMaxLength), Validators.pattern('^[A-Za-z]+$')]],
+      secondName: ['', [Validators.maxLength(this.nameMaxLength), Validators.pattern('[a-zA-Z ]*')]],
       paternalLastName: [
         '',
-        [Validators.required, Validators.maxLength(this.nameMaxLength), Validators.pattern('^[A-Za-z]+$')]
+        [Validators.required, Validators.maxLength(this.nameMaxLength), Validators.pattern('[a-zA-Z ]*')]
       ],
-      maternalLastName: ['', [Validators.maxLength(this.nameMaxLength), Validators.pattern('^[A-Za-z]+$')]],
+      maternalLastName: ['', [Validators.maxLength(this.nameMaxLength), Validators.pattern('[a-zA-Z ]*')]],
       dateOfBirth: ['', [Validators.required]],
       curp: [
         '',

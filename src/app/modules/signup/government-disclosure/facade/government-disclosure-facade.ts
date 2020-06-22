@@ -154,19 +154,6 @@ export class GovernmentDisclosureFacade {
   }
 
   /**
-   * This method will remove space from fields value
-   *
-   * @param formControl { string }
-   * @returns null { void }
-   */
-  removeSpace(formControl: string): void {
-    const value = this.relativeGovtPositionForm.get(formControl).value;
-    if (REG_EX_PATTERNS.WHITE_SPACE.test(value)) {
-      this.relativeGovtPositionForm.get(formControl).setValue(value.trim());
-    }
-  }
-
-  /**
    * This method will enable or disabled Next button based on
    * Radio button selection and valid Form fields
    *
@@ -232,28 +219,14 @@ export class GovernmentDisclosureFacade {
     this.relativeGovtPositionForm = this.formBuilder.group({
       firstName: [
         '',
-        [
-          Validators.required,
-          Validators.maxLength(this.nameMaxLength),
-          Validators.pattern(REG_EX_PATTERNS.ALLOW_ONLY_ALPHABET)
-        ]
+        [Validators.required, Validators.maxLength(this.nameMaxLength), Validators.pattern('[a-zA-Z ]*')]
       ],
-      secondName: [
-        '',
-        [Validators.maxLength(this.nameMaxLength), Validators.pattern(REG_EX_PATTERNS.ALLOW_ONLY_ALPHABET)]
-      ],
+      secondName: ['', [Validators.maxLength(this.nameMaxLength), Validators.pattern('[a-zA-Z ]*')]],
       paternalLastName: [
         '',
-        [
-          Validators.required,
-          Validators.maxLength(this.nameMaxLength),
-          Validators.pattern(REG_EX_PATTERNS.ALLOW_ONLY_ALPHABET)
-        ]
+        [Validators.required, Validators.maxLength(this.nameMaxLength), Validators.pattern('[a-zA-Z ]*')]
       ],
-      maternalLastName: [
-        '',
-        [Validators.maxLength(this.nameMaxLength), Validators.pattern(REG_EX_PATTERNS.ALLOW_ONLY_ALPHABET)]
-      ],
+      maternalLastName: ['', [Validators.maxLength(this.nameMaxLength), Validators.pattern('[a-zA-Z ]*')]],
       position: ['', [Validators.required]],
       homeAddress: ['', [Validators.required, Validators.maxLength(80)]],
       phone: ['', [Validators.required, Validators.minLength(9), Validators.maxLength(20)]],
