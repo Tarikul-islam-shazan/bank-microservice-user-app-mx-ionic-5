@@ -35,10 +35,6 @@ export class SettingsService {
     private analyticsService: AnalyticsService
   ) {}
 
-  static factory(settingsService: SettingsService) {
-    return () => settingsService.loadDefault();
-  }
-
   /**
    * Gets the current locale being used for language in the app
    *
@@ -216,7 +212,7 @@ export class SettingsService {
     this.translate.use(`${loaderUrlPrefix}/${this.settings.systemSettings.selectedLocale.locale}`);
   }
 
-  async loadDefault(): Promise<any> {
+  async load(): Promise<any> {
     // first we check if the settings already exist.
     const tempSettings = (await this.storageService.getItem(StorageKey.APPSETTINGS)) as AppSettings;
 
