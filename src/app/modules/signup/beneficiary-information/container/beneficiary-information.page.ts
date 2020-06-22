@@ -66,10 +66,10 @@ export class BeneficiaryInformationPage implements OnInit {
    */
   private initBeneficiaryForm(): void {
     this.beneficiaryForm = this.formBuilder.group({
-      firstName: ['', [Validators.required, Validators.maxLength(26)]],
-      secondName: ['', Validators.maxLength(26)],
-      parentalName: ['', [Validators.required, Validators.maxLength(26)]],
-      maternalLastName: ['', Validators.maxLength(26)],
+      firstName: ['', [Validators.required, Validators.maxLength(26), Validators.pattern('[a-zA-Z ]*')]],
+      secondName: ['', [Validators.maxLength(26), Validators.pattern('[a-zA-Z ]*')]],
+      parentalName: ['', [Validators.required, Validators.maxLength(26), Validators.pattern('[a-zA-Z ]*')]],
+      maternalLastName: ['', [Validators.maxLength(26), Validators.pattern('[a-zA-Z ]*')]],
       dateOfBirth: ['', Validators.required],
       relationship: ['', Validators.required]
     });
