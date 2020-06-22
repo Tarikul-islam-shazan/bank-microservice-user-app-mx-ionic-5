@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
 import { MemberService } from '@app/core/services/member.service';
 import { Observable, Subscription } from 'rxjs';
 import { PersonalDetailsState } from '@app/more/personal-details/facade/personal-details.state';
-
 @Injectable()
 export class ChangeAddressFacade {
   customer: ICustomer = {};
@@ -37,8 +36,8 @@ export class ChangeAddressFacade {
     });
   }
 
-  getStaticData(): Observable<{ [key: string]: IDropdownOption[] }> {
-    return this.staticDataService.get(StaticDataCategory.AddressInformation);
+  getStaticData(): Promise<{ [key: string]: IDropdownOption[] }> {
+    return this.staticDataService.get(StaticDataCategory.AddressInformation).toPromise();
   }
 
   /**
@@ -81,7 +80,7 @@ export class ChangeAddressFacade {
    * @returns {Observable<Partial<IAddressInfo[]>>}
    * @memberof AddressInformationFacade
    */
-  getPostalCodeInfo(postalCode): Observable<Partial<IAddressInfo[]>> {
-    return this.signUpService.getStateCityMunicipality(postalCode);
+  getPostalCodeInfo(postalCode): Promise<Partial<IAddressInfo[]>> {
+    return this.signUpService.getStateCityMunicipality(postalCode).toPromise();
   }
 }

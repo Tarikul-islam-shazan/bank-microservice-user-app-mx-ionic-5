@@ -15,6 +15,15 @@ import { Subscription } from 'rxjs';
 import { DropdownModalComponent, IinputOption, InputFormatType } from '@app/shared';
 import { DropdownOption } from '@app/signup/models/signup';
 const moment = require('moment');
+
+interface StreetObj {
+  state?: string;
+  stateName?: string;
+  municipalityName?: string;
+  cityName?: string;
+  city?: string;
+  municipality?: string;
+}
 @Component({
   selector: 'change-address',
   templateUrl: './change-address.page.html',
@@ -32,6 +41,9 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
   public postalCodeData: Partial<IAddressInfo[]> = [];
   public addressTypeList: IDropdownOption[] = [];
   public propertyTypeList: IDropdownOption[] = [];
+  addressValue: Partial<IDropdownOption> = {};
+  propertyValue: Partial<IDropdownOption> = {};
+  streetValue: Partial<StreetObj> = {};
 
   constructor(
     public facade: ChangeAddressFacade,
@@ -55,7 +67,6 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
   ngOnInit() {
     this.getCustomer();
     this.initChangeAddressForm();
-    this.checkIfFormValueChanged();
   }
 
   /**
@@ -65,8 +76,16 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @returns {void}
    * @memberOf ChangeAddressPage
    */
-  private getCustomer(): void {
+  async getCustomer() {
     this.address = this.facade.customer.addresses[0];
+    const { addressType, propertyType, postCode } = this.address;
+    const staticData = await this.facade.getStaticData();
+    const postalData = await this.facade.getPostalCodeInfo(postCode);
+    this.streetValue = { ...postalData[0] };
+    this.filterAddressType(addressType, propertyType, staticData);
+    this.suburbFieldData = this.mappingData(postalData);
+    this.initChangeAddressForm();
+    this.initialFormValue = this.changeAddressForm.value;
   }
 
   /**
@@ -78,42 +97,27 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @memberof ChangeAddressPage
    */
   private initChangeAddressForm(): void {
-    const {
-      addressType,
-      propertyType,
-      street,
-      outdoorNumber,
-      interiorNumber,
-      postCode,
-      state,
-      municipality,
-      city,
-      suburb,
-      dateOfResidence
-    } = this.address;
+    const { street, outdoorNumber, interiorNumber, postCode, suburb, dateOfResidence } = this.address;
 
     this.changeAddressForm = this.formBuilder.group({
-      addressTypeField: [null, Validators.required],
-      addressType: [null, Validators.required],
-      propertyTypeField: [null, Validators.required],
-      propertyType: [null, Validators.required],
+      addressTypeField: [this.addressValue.text, Validators.required],
+      addressType: [this.addressValue.value, Validators.required],
+      propertyTypeField: [this.propertyValue.text, Validators.required],
+      propertyType: [this.propertyValue.value, Validators.required],
       street: [street, [Validators.required, Validators.maxLength(40)]],
       outdoorNumber: [outdoorNumber, [Validators.required, Validators.maxLength(10)]],
-      interiorNumber: [interiorNumber, [Validators.required, Validators.maxLength(10)]],
+      interiorNumber: [interiorNumber, Validators.maxLength(10)],
       postCode: [postCode, [Validators.required, Validators.maxLength(5)]],
-      stateField: [null, Validators.required],
-      state: [state, Validators.required],
-      municipalityField: [null, Validators.required],
-      municipality: [municipality, Validators.required],
-      cityField: [null, Validators.required],
-      city: [city, Validators.required],
+      stateField: [this.streetValue.stateName, Validators.required],
+      state: [this.streetValue.state, Validators.required],
+      municipalityField: [this.streetValue.municipalityName, Validators.required],
+      municipality: [this.streetValue.municipality, Validators.required],
+      cityField: [this.streetValue.cityName, Validators.required],
+      city: [this.streetValue.city, Validators.required],
       suburbField: [suburb, Validators.required],
       suburb: [suburb, Validators.required],
       dateOfResidence: [dateOfResidence, Validators.required]
     });
-    const suburbValueExist = suburb ? true : false;
-    this.getPostalCodeInfo(postCode, suburbValueExist);
-    this.filterAddressType(addressType, propertyType);
   }
 
   /**
@@ -140,16 +144,14 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @param {*} postalCode
    * @memberof AddressInformationPage
    */
-  getPostalCodeInfo(postalCode, suburbValueExist: boolean): void {
+  async getPostalCodeInfo(postalCode, suburbValueExist: boolean) {
     if (postalCode.toString().length === 5) {
-      this.facade.getPostalCodeInfo(postalCode).subscribe(
-        (data: Partial<IAddressInfo[]>) => {
-          this.setPostalCodeInfo(true, data, suburbValueExist);
-        },
-        err => {
-          this.setPostalCodeInfo(false);
-        }
-      );
+      try {
+        const postalData = await this.facade.getPostalCodeInfo(postalCode);
+        this.setPostalCodeInfo(true, postalData, suburbValueExist);
+      } catch (error) {
+        this.setPostalCodeInfo(false);
+      }
     }
   }
 
@@ -183,12 +185,11 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @returns {void}
    * @memberOf ChangeAddressPage
    */
-  private checkIfFormValueChanged(): void {
-    this.changeAddressFormSubscription = this.changeAddressForm.valueChanges.subscribe(
-      (changedFormValue: ICustomer) => {
-        this.isFormValueChanged = !isEqual(this.initialFormValue, changedFormValue);
-      }
-    );
+  checkIfFormValueChanged(): boolean {
+    this.changeAddressFormSubscription = this.changeAddressForm.valueChanges.subscribe((changedFormValue: IAddress) => {
+      this.isFormValueChanged = !isEqual(this.initialFormValue, changedFormValue);
+    });
+    return this.isFormValueChanged;
   }
 
   /**
@@ -240,22 +241,18 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
       this.changeAddressFormSubscription.unsubscribe();
     }
   }
-  filterAddressType(addressType: string, propertyType: string) {
-    this.facade.getStaticData().subscribe(staticData => {
-      this.addressTypeList = staticData[StaticData.AddressType];
-      this.propertyTypeList = staticData[StaticData.PropertyType];
-      const addressList = JSON.parse(JSON.stringify(this.addressTypeList));
-      const propertyList = JSON.parse(JSON.stringify(this.propertyTypeList));
-      const address = addressList.find(data => {
-        return data.text === addressType;
-      });
-      const property = propertyList.find(data => {
-        return (data.text = propertyType);
-      });
-      this.changeAddressForm.controls.addressTypeField.patchValue(address.text);
-      this.changeAddressForm.controls.addressType.patchValue(address.value);
-      this.changeAddressForm.controls.propertyTypeField.patchValue(property.text);
-      this.changeAddressForm.controls.propertyType.patchValue(property.value);
+  filterAddressType(addressType: string, propertyType: string, staticData: { [key: string]: IDropdownOption[] }) {
+    this.addressTypeList = staticData[StaticData.AddressType];
+    this.propertyTypeList = staticData[StaticData.PropertyType];
+    const addressList = Object.assign(this.addressTypeList);
+    const propertyList = Object.assign(this.propertyTypeList);
+    const address = addressList.find(data => {
+      return data.text === addressType;
     });
+    const property = propertyList.find(data => {
+      return (data.text = propertyType);
+    });
+    this.addressValue = { ...address };
+    this.propertyValue = { ...property };
   }
 }

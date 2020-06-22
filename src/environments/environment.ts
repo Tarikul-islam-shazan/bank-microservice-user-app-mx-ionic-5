@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   label: 'development',
-  deployment: 'development',
+  deployment: 'dev',
   serviceUrl: 'http://localhost:6064/api/v1.0.0',
   loadingControllerOptions: {
     message: 'Please wait...'
@@ -55,7 +55,7 @@ export const environment = {
   },
   translateLoader: {
     usedRemote: false,
-    remoteUrl: 'https://s3.amazonaws.com/meedbankingclub-mobile/i18n'
+    remoteUrl: 'https://s3.amazonaws.com/meedbankingclub-mobile'
   },
   appBundleIdentifier: 'com.mx.qa.meedbankingclub'
 };

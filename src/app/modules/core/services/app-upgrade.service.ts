@@ -60,7 +60,9 @@ export class AppUpgradeService {
       if (appUpgradeService.appPlatform.isCordova()) {
         // added ModalService through injector cause ModalService is created after the AppUpgradeService.
         appUpgradeService.modalService = appUpgradeService.injector.get(ModalService);
-        return appUpgradeService.checkUpgrade();
+        return appUpgradeService.appPlatform.ready().then(() => {
+          return appUpgradeService.checkUpgrade();
+        });
       }
       return EMPTY;
     };
