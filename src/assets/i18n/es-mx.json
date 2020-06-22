@@ -1865,6 +1865,15 @@
       "my-payee-title": "My Payees",
       "edit-delete-title": "EDIT/DELETE",
       "next-button-title": "Next"
+    },
+    "registration-type-page": {
+      "page-title": "Send Money",
+      "send-money-to-title": "SEND MONEY TO",
+      "via-their-title": "VIA THEIR",
+      "meed-account-title": "Meed Member Account",
+      "invex-account-title": "Invex Account",
+      "bank-account-title": "Others Domestic Bank Account",
+      "continue-button-title": "Continue"
     }
   }
 }
