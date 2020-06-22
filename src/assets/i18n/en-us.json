@@ -1871,6 +1871,17 @@
       "invex-account-title": "Invex Account",
       "bank-account-title": "Others Domestic Bank Account",
       "continue-button-title": "Continue"
+    },
+    "invex-payee-registration-page": {
+      "page-title": "Send Money",
+      "content-title": "New Payee Registratio",
+      "payee-alias-placeholder": "Payee Alias",
+      "identifier-placeholder": "Payee Identifier",
+      "form": {
+        "email-placeholder": "Email Address (Optional)",
+        "mobile-placeholder": "Mobile Number (Optional)"
+      },
+      "next-button-title": "Next"
     }
   }
 }

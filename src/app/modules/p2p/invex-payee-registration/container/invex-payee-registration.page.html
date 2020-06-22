@@ -1,0 +1,53 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md"></ion-back-button>
+    </ion-buttons>
+    <ion-title>{{"p2p-module.invex-payee-registration-page.page-title" | translate}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="title">{{"p2p-module.invex-payee-registration-page.content-title" | translate}}</div>
+  <ion-list lines="none" class="form" mode="ios">
+    <ion-item class="ion-no-padding">
+      <ion-input
+        class="ion-margin-start"
+        placeholder="{{'p2p-module.invex-payee-registration-page.payee-alias-placeholder' | translate}}"
+      ></ion-input>
+    </ion-item>
+    <ion-item class="ion-no-padding">
+      <ion-input
+        readonly
+        class="ion-margin-start"
+        placeholder="{{'p2p-module.invex-payee-registration-page.identifier-placeholder' | translate}}"
+      ></ion-input>
+      <ion-icon slot="end" name="chevron-down"></ion-icon>
+    </ion-item>
+
+    <form>
+      <ion-item class="ion-no-padding">
+        <ion-input class="ion-margin-start" placeholder="payeeIdentifier.text"></ion-input>
+      </ion-item>
+      <ion-item class="ion-no-padding">
+        <ion-input
+          class="ion-margin-start"
+          placeholder="{{'p2p-module.invex-payee-registration-page.form.email-placeholder' | translate}}"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="ion-no-padding">
+        <ion-input
+          class="ion-margin-start"
+          placeholder="{{'p2p-module.invex-payee-registration-page.form.mobile-placeholder' | translate}}"
+        ></ion-input>
+      </ion-item>
+    </form>
+  </ion-list>
+</ion-content>
+<ion-footer>
+  <ion-toolbar>
+    <ion-button class="white-button" (click)="next()">
+      {{"p2p-module.invex-payee-registration-page.next-button-title" | translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
