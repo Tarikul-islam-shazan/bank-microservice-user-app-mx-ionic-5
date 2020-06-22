@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'login-module.forgot-username-page.page-title' | translate}}</ion-title>
+    <ion-title id="forgot-username-page-header-title"
+      >{{'login-module.forgot-username-page.page-title' | translate}}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +14,12 @@
     <form [formGroup]="usernameForm">
       <ion-item lines="none">
         <ion-label position="stacked">{{'login-module.forgot-username-page.input-label-email' | translate}}</ion-label>
-        <ion-input formControlName="email" type="text" class="white-input"></ion-input>
+        <ion-input
+          formControlName="email"
+          type="text"
+          class="white-input"
+          id="forgot-username-page-email-input"
+        ></ion-input>
       </ion-item>
     </form>
   </div>
@@ -20,7 +27,13 @@
 
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" (click)="continue()" [disabled]="usernameForm.invalid">
+    <ion-button
+      class="white-button"
+      id="forgot-username-page-continue-btn"
+      expand="block"
+      (click)="continue()"
+      [disabled]="usernameForm.invalid"
+    >
       {{'login-module.forgot-username-page.btn-label' | translate}}
     </ion-button>
   </ion-toolbar>

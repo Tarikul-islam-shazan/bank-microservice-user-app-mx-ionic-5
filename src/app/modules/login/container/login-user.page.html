@@ -6,7 +6,7 @@
           <div class="header-logo">
             <span class="white-meed-logo"></span>
           </div>
-          <h1 class="welcome-header">
+          <h1 class="welcome-header" id="login-page-header-title-text">
             {{ 'login-module.create-login-page.welcome-back' | translate }}
           </h1>
           <form [formGroup]="loginForm" novalidate>
@@ -14,6 +14,7 @@
               formControlName="username"
               type="text"
               class="blue-input ion-text-left"
+              id="login-page-user-name-input"
               placeholder="{{ 'login-module.create-login-page.login-form.username' | translate }}"
               appInputTrimWhitespace
             ></ion-input>
@@ -21,12 +22,13 @@
               <ion-input
                 formControlName="password"
                 class="blue-input ion-text-left"
+                id="login-page-password-input"
                 clearOnEdit="false"
                 placeholder="{{ 'login-module.create-login-page.login-form.password' | translate }}"
                 [type]="isPasswordVisible ? 'text': 'password'"
               >
               </ion-input>
-              <div class="right-content white-text" (click)="passwordShowHide()">
+              <div class="right-content white-text" (click)="passwordShowHide()" id="login-page-password-show">
                 <p translate>
                   {{ isPasswordVisible ?
                   'login-module.create-login-page.login-form.hide-password':'login-module.create-login-page.login-form.show-password'}}
@@ -36,6 +38,7 @@
             <div class="clearfix login-submit-button-div">
               <ion-button
                 class="blue-button login-btn-margin"
+                id="login-page-login-btn"
                 type="submit"
                 expand="block"
                 [disabled]="loginForm.invalid"
@@ -84,7 +87,7 @@
               </ion-grid>
             </div>
           </form>
-          <p class="forgot" routerLink="/account-recovery">
+          <p class="forgot" routerLink="/account-recovery" id="login-page-forgot-username-password-text">
             {{ 'login-module.create-login-page.login-form.forgot-username-Password' | translate }}
           </p>
           <ion-row>
@@ -100,7 +103,12 @@
                 </div>
                 <img src="assets/img/login/dollar.png" />
               </div>
-              <ion-button class="blue-outline-button help-button" expand="block" (click)="loginFacade.openHelpModal()">
+              <ion-button
+                class="blue-outline-button help-button"
+                expand="block"
+                (click)="loginFacade.openHelpModal()"
+                id="login-page-help-btn"
+              >
                 {{ 'login-module.create-login-page.help-button-text' | translate }}
               </ion-button>
             </ion-col>
