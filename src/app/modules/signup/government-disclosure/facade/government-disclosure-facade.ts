@@ -20,7 +20,6 @@ import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 @Injectable()
 export class GovernmentDisclosureFacade {
   onlyNumber: IinputOption;
-  onlyWord: IinputOption;
 
   holdGovtPosition: boolean;
   relativeHoldGovtPosition = false;
@@ -53,10 +52,6 @@ export class GovernmentDisclosureFacade {
     this.onlyNumber = {
       type: InputFormatType.ONLY_NUMBER,
       maxLength: 20
-    };
-    this.onlyWord = {
-      type: InputFormatType.WORDS,
-      maxLength: this.nameMaxLength
     };
     this.initializeForms();
     this.initializeDropdownData();
