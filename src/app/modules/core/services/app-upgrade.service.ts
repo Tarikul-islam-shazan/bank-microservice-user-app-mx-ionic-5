@@ -5,6 +5,7 @@ import * as semanticVersioning from '@env/semantic-versioning.json';
 import { AppPlatform } from '@app/core/util/app-platform';
 import { EMPTY } from 'rxjs';
 import { ModalService, IMeedModalComponentProps } from '@app/shared/services/modal.service';
+import { SettingsService } from '@app/core/services/settings.service';
 
 enum AppUpdateStatus {
   None = 'None',
@@ -27,6 +28,7 @@ interface IQueryRequest {
   deviceOSVersion: string;
   deviceModel: string;
   deviceManufacturer: string;
+  country: string;
 }
 
 @Injectable({
@@ -35,37 +37,20 @@ interface IQueryRequest {
 export class AppUpgradeService {
   private baseUrl = environment.serviceUrl;
   private updateResponse: IUpgradeResponse;
-  private modalService: ModalService;
-  constructor(private http: HttpClient, private appPlatform: AppPlatform, private injector: Injector) {}
+  constructor(
+    private http: HttpClient,
+    private appPlatform: AppPlatform,
+    private settingsService: SettingsService,
+    private modalService: ModalService
+  ) {}
 
-  /**
-   * Issue:  GMA-4462
-   * Details:  Add device modal and manufacturer description when checking app upgradation
-   * Date: March 18, 2020
-   * Developer: Raihan <raihanuzzaman@bs-23.net>
-   */
-
-  /**
-   * This function is called everytime whenever a user opens the meed app on a mobile device through the APP_INITIALIZER.
-   * This function checks if the meed app is running on a mobile device and based on that makes a
-   * server call on whether to show the update modal (force/soft) to the user.
-   *
-   * @static
-   * @param {AppUpgradeService} appUpgradeService
-   * @returns
-   * @memberof AppUpgradeService
-   */
-  static factory(appUpgradeService: AppUpgradeService) {
-    return () => {
-      if (appUpgradeService.appPlatform.isCordova()) {
-        // added ModalService through injector cause ModalService is created after the AppUpgradeService.
-        appUpgradeService.modalService = appUpgradeService.injector.get(ModalService);
-        return appUpgradeService.appPlatform.ready().then(() => {
-          return appUpgradeService.checkUpgrade();
-        });
-      }
-      return EMPTY;
-    };
+  async load(): Promise<any> {
+    if (this.appPlatform.isCordova()) {
+      return this.appPlatform.ready().then(() => {
+        return this.checkUpgrade();
+      });
+    }
+    return EMPTY;
   }
 
   async checkUpgrade(): Promise<void> {
@@ -75,7 +60,8 @@ export class AppUpgradeService {
       platform: this.appPlatform.currentPlatform(),
       deviceOSVersion: this.appPlatform.deviceOSVersion,
       deviceModel: this.appPlatform.deviceModel,
-      deviceManufacturer: this.appPlatform.deviceManufacturer
+      deviceManufacturer: this.appPlatform.deviceManufacturer,
+      country: this.settingsService.getCurrentLocale().country
     };
     return this.http
       .get<IUpgradeResponse>(`${this.baseUrl}/app-version/upgrade`, {

@@ -1,4 +1,4 @@
-import { NgModule, APP_INITIALIZER, ErrorHandler, Injector } from '@angular/core';
+import { NgModule, APP_INITIALIZER, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -22,6 +22,9 @@ import { StorageService } from '@app/core/services/storage.service';
 
 // TODO: Move Analytics Module to Core
 import { AnalyticsModule, AnalyticsConfig } from '@app/analytics/analytics.module';
+
+// Configaration fectory: Handle dependent APP_INITIALIZER service
+import { configurationFactory } from '@app/core/util/configuration-factory';
 
 // Meed http intercepter
 import {
@@ -63,14 +66,8 @@ const analyticsConfig: AnalyticsConfig = {
     SplashScreen,
     {
       provide: APP_INITIALIZER,
-      useFactory: SettingsService.factory,
-      deps: [SettingsService],
-      multi: true
-    },
-    {
-      provide: APP_INITIALIZER,
-      useFactory: AppUpgradeService.factory,
-      deps: [AppUpgradeService, Injector],
+      useFactory: configurationFactory,
+      deps: [SettingsService, AppUpgradeService],
       multi: true
     },
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
