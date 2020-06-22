@@ -68,7 +68,7 @@ export class MoveMoneyFacade {
             itemName: 'move-money-module.home-page.menu.send-money',
             appSuppress: 'SendMoney',
             onClick: () => {
-              this.router.navigate(['/move-money/send-money']);
+              this.router.navigate(['/p2p']);
             }
           },
           {

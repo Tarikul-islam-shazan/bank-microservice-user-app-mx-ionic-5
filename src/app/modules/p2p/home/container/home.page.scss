@@ -1,0 +1,60 @@
+.title {
+  font-family: 'Averta W05 Regular';
+  font-weight: bold;
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+.payee-search-wrapper {
+  ion-item.icon-input {
+    --border-color: var(--input-white-border-color) !important;
+    --inner-padding-bottom: 0 !important;
+    --inner-padding-end: 0 !important;
+    --inner-padding-start: 0 !important;
+    --inner-padding-top: 0 !important;
+    --border-width: 2px;
+    --border-style: solid;
+    --border-radius: 12px;
+    &.item-has-focus {
+      --border-color: var(--input-white-focus-border-color) !important;
+    }
+    ion-input {
+      height: 60px;
+      --placeholder-color: var(--input-white-placeholder-color) !important;
+    }
+    ion-icon {
+      font-size: 2rem !important;
+      color: var(--input-white-placeholder-color) !important;
+    }
+  }
+}
+
+.contactEditable {
+  color: #3880ff;
+}
+
+.requests-wrapper,
+.my-payees-wrapper {
+  padding: 20px 0;
+  ion-item {
+    --padding-start: 0 !important;
+    --inner-padding-end: 0 !important;
+    span {
+      font-size: 1.4rem;
+    }
+    ion-label {
+      font-size: 1.4rem !important;
+      span {
+        font-size: 1.2rem;
+        color: var(--input-white-placeholder-color) !important;
+      }
+    }
+    ion-icon {
+      color: #3880ff;
+      font-size: 2.2rem;
+      font-weight: bolder;
+    }
+  }
+}
+
+.my-payees-wrapper {
+}
