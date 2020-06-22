@@ -8,9 +8,10 @@ import { HomePageRoutingModule } from './home-routing.module';
 
 import { HomePage } from './container/home.page';
 import { FACADE_SERVICE } from './facade';
+import { SharedModule } from '@app/shared';
 
 @NgModule({
-  imports: [CommonModule, FormsModule, IonicModule, HomePageRoutingModule],
+  imports: [SharedModule, HomePageRoutingModule],
   declarations: [HomePage],
   providers: [...FACADE_SERVICE]
 })

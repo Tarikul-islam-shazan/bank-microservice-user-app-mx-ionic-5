@@ -1852,5 +1852,16 @@
   "state-modal": {
     "header-title": "Choose State",
     "placeholder-text": "Search State"
+  },
+  "p2p-module": {
+    "home-page": {
+      "page-title": "Send Money",
+      "add-new-payee-title": "Add New Payee",
+      "search-input-placeholder": "Email or existing contact name",
+      "request-title": "Requests from Payees",
+      "my-payee-title": "My Payees",
+      "edit-delete-title": "EDIT/DELETE",
+      "next-button-title": "Next"
+    }
   }
 }
