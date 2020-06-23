@@ -121,7 +121,8 @@ export enum AnalyticsEventTypes {
   PasswordChanged = 'password_changed',
   InternalTransferSubmitted = 'internal_transfer_submitted',
   ScheduleTransferModifyed = 'internal_transfer_modifyed',
-  ScheduleTransferDeleted = 'schedule_transfer_deleted'
+  ScheduleTransferDeleted = 'schedule_transfer_deleted',
+  P2PSearchedNext = 'email_existing_contact_search_clicked_next'
 }
 export interface AnalyticsNavigationParameters {
   from: string;

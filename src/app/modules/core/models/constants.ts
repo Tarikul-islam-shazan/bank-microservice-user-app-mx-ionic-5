@@ -410,5 +410,21 @@ export const PAGES: Page = {
   CHANGE_PASSWORD: {
     NAME: 'change-password',
     ROUTE_PATH: '/more/settings/change-password'
+  },
+  P2P_HOME: {
+    NAME: 'p2p-home',
+    ROUTE_PATH: '/p2p/home'
+  },
+  P2P_REGISTRATION_TYPE: {
+    NAME: 'p2p-registration-type',
+    ROUTE_PATH: 'registration-type/:to'
+  },
+  P2P_INVEX_PAYEE_REGISTRATION: {
+    NAME: 'p2p-invex-payee-registration',
+    ROUTE_PATH: '/p2p/invex-payee-registration'
+  },
+  P2P_OTHER_PAYEE_REGISTRATION: {
+    NAME: 'p2p-other-bank-payee-registration',
+    ROUTE_PATH: '/p2p/home'
   }
 };
