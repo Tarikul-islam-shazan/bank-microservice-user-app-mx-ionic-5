@@ -19,6 +19,15 @@ $meed-custom-font-path: $font-path !default;
     url('#{$meed-custom-font-path}/Fonts/averta/5204651/a1ca04fc-c39f-49ca-895d-112f4b63ca67.ttf') format('truetype');
 }
 @font-face {
+  font-family: 'Averta W05 Bold';
+  src: url('#{$meed-custom-font-path}/Fonts/averta/5204651/fbf19079-c8b1-489e-afe7-dac8bdebb7af.eot?#iefix');
+  src: url('#{$meed-custom-font-path}/Fonts/averta/5204651/fbf19079-c8b1-489e-afe7-dac8bdebb7af.eot?#iefix')
+      format('eot'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5204651/7da3bf9d-6f81-483b-9e6f-5ddd0b7a5372.woff2') format('woff2'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5204651/1eceb596-742a-454a-a300-14eed3d828cc.woff') format('woff'),
+    url('#{$meed-custom-font-path}/Fonts/averta/5204651/a1ca04fc-c39f-49ca-895d-112f4b63ca67.ttf') format('truetype');
+}
+@font-face {
   font-family: 'Averta W05 Regular5345108';
   src: url('#{$meed-custom-font-path}/Fonts/averta/5345108/513a6dbd-6ed6-4ed6-b433-f30ee4fd83ec.eot?#iefix');
   src: url('#{$meed-custom-font-path}/Fonts/averta/5345108/513a6dbd-6ed6-4ed6-b433-f30ee4fd83ec.eot?#iefix')

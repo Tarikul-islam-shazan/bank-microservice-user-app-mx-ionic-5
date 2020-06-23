@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { PAGES } from '@app/core';
 import { InitializeRouteGuard } from '@app/core/routeGuards';
 const routes: Routes = [
@@ -54,6 +54,10 @@ const routes: Routes = [
     path: 'account-recovery',
     loadChildren: () =>
       import('./modules/account-recovery/account-recovery.module').then(m => m.AccountRecoveryPageModule)
+  },
+  {
+    path: 'p2p',
+    loadChildren: () => import('./modules/p2p/p2p.module').then(m => m.P2PModule)
   }
 ];
 
