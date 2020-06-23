@@ -2,6 +2,7 @@ export const environment = {
   production: true,
   label: 'production',
   deployment: 'prod',
+  country: 'mx',
   serviceUrl: 'https://services-mxqa.meedbankingclub.com/api/v1.0.0',
   loadingControllerOptions: {
     message: 'Please wait...'

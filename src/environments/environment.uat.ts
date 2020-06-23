@@ -6,6 +6,7 @@ export const environment = {
   production: false,
   label: 'UAT',
   deployment: 'uat',
+  country: 'mx',
   serviceUrl: 'https://services-mxqa.meedbankingclub.com/api/v1.0.0',
   loadingControllerOptions: {
     message: 'Please wait...'

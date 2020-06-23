@@ -1,11 +1,10 @@
-import { Injectable, Injector } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@env/environment';
 import * as semanticVersioning from '@env/semantic-versioning.json';
 import { AppPlatform } from '@app/core/util/app-platform';
 import { EMPTY } from 'rxjs';
 import { ModalService, IMeedModalComponentProps } from '@app/shared/services/modal.service';
-import { SettingsService } from '@app/core/services/settings.service';
 
 enum AppUpdateStatus {
   None = 'None',
@@ -37,12 +36,7 @@ interface IQueryRequest {
 export class AppUpgradeService {
   private baseUrl = environment.serviceUrl;
   private updateResponse: IUpgradeResponse;
-  constructor(
-    private http: HttpClient,
-    private appPlatform: AppPlatform,
-    private settingsService: SettingsService,
-    private modalService: ModalService
-  ) {}
+  constructor(private http: HttpClient, private appPlatform: AppPlatform, private modalService: ModalService) {}
 
   async load(): Promise<any> {
     if (this.appPlatform.isCordova()) {
@@ -61,7 +55,7 @@ export class AppUpgradeService {
       deviceOSVersion: this.appPlatform.deviceOSVersion,
       deviceModel: this.appPlatform.deviceModel,
       deviceManufacturer: this.appPlatform.deviceManufacturer,
-      country: this.settingsService.getCurrentLocale().country
+      country: environment.country
     };
     return this.http
       .get<IUpgradeResponse>(`${this.baseUrl}/app-version/upgrade`, {
