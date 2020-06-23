@@ -11,14 +11,14 @@
   <div class="send-money-wrapper">
     <div class="title">{{'p2p-module.registration-type-page.send-money-to-title' | translate}}</div>
     <ion-item class="ion-no-padding">
-      <ion-label class="ion-padding-top ion-padding-bottom">abstract@yahoo.com</ion-label>
+      <ion-label class="ion-padding-top ion-padding-bottom">{{payeeTo}}</ion-label>
     </ion-item>
   </div>
   <div class="via-their-wrapper">
     <div class="title">{{'p2p-module.registration-type-page.via-their-title' | translate}}</div>
     <ion-list>
       <ion-radio-group mode="md" name="type" [(ngModel)]="payeeType">
-        <ion-item class="ion-no-padding">
+        <ion-item class="ion-no-padding" *ngIf="isMeedMember">
           <ion-radio [value]="payeeTypes.Meed"></ion-radio>
           <ion-label class="ion-padding"
             >{{'p2p-module.registration-type-page.meed-account-title' | translate}}</ion-label
