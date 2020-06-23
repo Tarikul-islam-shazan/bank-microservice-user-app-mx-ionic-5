@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { HeaderService } from '@app/core/services/header-service.service';
 import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
-import { IContact } from '../models';
+import { IContact, IInvexContact } from '../models';
 
 @Injectable()
 export class P2PService {
@@ -20,5 +20,10 @@ export class P2PService {
   verifyMember(email: string[]): Observable<string[]> {
     const url = this.baseUrl + '/meed/members/verify';
     return this.http.post<string[]>(url, email);
+  }
+
+  addInvexContact(contact: IInvexContact): Observable<void> {
+    const url = this.baseUrl + '/contacts';
+    return this.http.post<void>(url, contact, { headers: this.headerService.getMemberICustomerIdHeader() });
   }
 }

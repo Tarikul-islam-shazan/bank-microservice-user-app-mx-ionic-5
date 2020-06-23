@@ -1874,7 +1874,7 @@
     },
     "invex-payee-registration-page": {
       "page-title": "Send Money",
-      "content-title": "New Payee Registratio",
+      "content-title": "New Payee Registration",
       "payee-alias-placeholder": "Payee Alias",
       "identifier-placeholder": "Payee Identifier",
       "form": {
