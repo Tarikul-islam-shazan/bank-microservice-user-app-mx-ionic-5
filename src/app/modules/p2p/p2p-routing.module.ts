@@ -20,6 +20,13 @@ const routes: Routes = [
     path: 'invex-payee-registration',
     loadChildren: () =>
       import('./invex-payee-registration/invex-payee-registration.module').then(m => m.InvexPayeeRegistrationPageModule)
+  },
+  {
+    path: 'other-bank-payee-registration',
+    loadChildren: () =>
+      import('./other-bank-payee-registration/other-bank-payee-registration.module').then(
+        m => m.OtherBankPayeeRegistrationPageModule
+      )
   }
 ];
 
