@@ -42,7 +42,7 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" (click)="continue()">
+    <ion-button class="white-button" [disabled]="!payeeType" (click)="continue()">
       {{'p2p-module.registration-type-page.continue-button-title' | translate}}
     </ion-button>
   </ion-toolbar>
