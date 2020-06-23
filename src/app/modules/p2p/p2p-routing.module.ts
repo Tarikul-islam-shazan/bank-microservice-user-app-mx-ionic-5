@@ -15,6 +15,11 @@ const routes: Routes = [
     path: 'registration-type/:to',
     loadChildren: () =>
       import('./payee-registration-type/payee-registration-type.module').then(m => m.PayeeRegistrationTypePageModule)
+  },
+  {
+    path: 'invex-payee-registration',
+    loadChildren: () =>
+      import('./invex-payee-registration/invex-payee-registration.module').then(m => m.InvexPayeeRegistrationPageModule)
   }
 ];
 
