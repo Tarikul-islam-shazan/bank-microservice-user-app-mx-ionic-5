@@ -5,6 +5,11 @@ import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
 import { IContact } from '../models';
 
+interface IMeedContact {
+  contactType: string;
+  email: string;
+}
+
 @Injectable()
 export class P2PService {
   private baseUrl = environment.serviceUrl;
@@ -17,8 +22,13 @@ export class P2PService {
     });
   }
 
-  verifyMember(email: string[]): Observable<string[]> {
+  verifyMember(email: string): Observable<string[]> {
     const url = this.baseUrl + '/meed/members/verify';
-    return this.http.post<string[]>(url, email);
+    return this.http.post<string[]>(url, [email]);
+  }
+
+  addMeedContact(contact: IMeedContact): Observable<{}> {
+    const url = this.baseUrl + '/contacts';
+    return this.http.post<{}>(url, contact, { headers: this.headerService.getMemberICustomerIdHeader() });
   }
 }
