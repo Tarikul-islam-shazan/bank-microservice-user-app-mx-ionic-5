@@ -10,43 +10,54 @@
 <ion-content>
   <div class="title">{{"p2p-module.invex-payee-registration-page.content-title" | translate}}</div>
   <ion-list lines="none" class="form" mode="ios">
-    <ion-item class="ion-no-padding">
-      <ion-input
-        class="ion-margin-start"
-        placeholder="{{'p2p-module.invex-payee-registration-page.payee-alias-placeholder' | translate}}"
-      ></ion-input>
-    </ion-item>
-    <ion-item class="ion-no-padding">
-      <ion-input
-        readonly
-        class="ion-margin-start"
-        placeholder="{{'p2p-module.invex-payee-registration-page.identifier-placeholder' | translate}}"
-      ></ion-input>
-      <ion-icon slot="end" name="chevron-down"></ion-icon>
-    </ion-item>
+    <form [formGroup]="contactForm">
+      <ion-item class="ion-no-padding">
+        <ion-input
+          formControlName="alias"
+          class="ion-margin-start"
+          placeholder="{{'p2p-module.invex-payee-registration-page.payee-alias-placeholder' | translate}}"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="ion-no-padding">
+        <ion-input
+          formControlName="identityName"
+          readonly
+          (click)="openIdentifierModal()"
+          class="ion-margin-start"
+          placeholder="{{'p2p-module.invex-payee-registration-page.identifier-placeholder' | translate}}"
+        ></ion-input>
+        <ion-icon slot="end" name="chevron-down"></ion-icon>
+      </ion-item>
 
-    <form>
-      <ion-item class="ion-no-padding">
-        <ion-input class="ion-margin-start" placeholder="payeeIdentifier.text"></ion-input>
-      </ion-item>
-      <ion-item class="ion-no-padding">
-        <ion-input
-          class="ion-margin-start"
-          placeholder="{{'p2p-module.invex-payee-registration-page.form.email-placeholder' | translate}}"
-        ></ion-input>
-      </ion-item>
-      <ion-item class="ion-no-padding">
-        <ion-input
-          class="ion-margin-start"
-          placeholder="{{'p2p-module.invex-payee-registration-page.form.mobile-placeholder' | translate}}"
-        ></ion-input>
-      </ion-item>
+      <div class="second-step" *ngIf="contactForm.value.identityName">
+        <ion-item class="ion-no-padding">
+          <ion-input
+            formControlName="identityNumber"
+            class="ion-margin-start"
+            [placeholder]="contactForm.value.identityName"
+          ></ion-input>
+        </ion-item>
+        <ion-item class="ion-no-padding">
+          <ion-input
+            formControlName="email"
+            class="ion-margin-start"
+            placeholder="{{'p2p-module.invex-payee-registration-page.form.email-placeholder' | translate}}"
+          ></ion-input>
+        </ion-item>
+        <ion-item class="ion-no-padding">
+          <ion-input
+            formControlName="phone"
+            class="ion-margin-start"
+            placeholder="{{'p2p-module.invex-payee-registration-page.form.mobile-placeholder' | translate}}"
+          ></ion-input>
+        </ion-item>
+      </div>
     </form>
   </ion-list>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" (click)="next()">
+    <ion-button class="white-button" [disabled]="contactForm.invalid" (click)="next()">
       {{"p2p-module.invex-payee-registration-page.next-button-title" | translate}}
     </ion-button>
   </ion-toolbar>

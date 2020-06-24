@@ -66,3 +66,12 @@ export const OtherBankPayeeIdentifiers: DropdownOption[] = [
     value: IdentityType.Mobile
   }
 ];
+
+export interface IInvexContact {
+  alias: string;
+  contactType: ContactType;
+  identityType: string;
+  identityNumber: string;
+  email?: string;
+  phone?: string;
+}
