@@ -11,6 +11,9 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 export class TermsConditionsPage implements OnInit {
   termsConditions: TncDocument[] = [];
   termsConditionForm: FormGroup;
+  showCorporateTnc = false;
+  corporateTnCAccepted = false;
+  corporateTnCNotAccepted = false;
   constructor(private formBuilder: FormBuilder, public facade: SignUpTermsConditionFacade) {}
 
   ngOnInit() {
@@ -33,12 +36,58 @@ export class TermsConditionsPage implements OnInit {
           new FormControl(false, [Validators.required, Validators.requiredTrue])
         );
       });
+      if (true) {
+        this.termsConditionForm.addControl(
+          'corporateTnCAccepted',
+          new FormControl(false, [Validators.required, Validators.requiredTrue])
+        );
+        this.termsConditionForm.addControl(
+          'corporateTnCNotAccepted',
+          new FormControl(false, [Validators.required, Validators.requiredTrue])
+        );
+      }
+      // if (resp.showCorporateTnc) {
+      //   this.showCorporateTnc = resp.showCorporateTnc;
+      //   this.corporateTnCAccepted = true;
+      // }
     });
   }
 
   async acceptTermsConditions() {
     if (this.termsConditionForm.valid) {
       this.facade.acceptTermsCondition();
+    }
+  }
+
+  /**
+   * This method check or uncheck "ion-checkbox" for
+   * Ok to Share or Do Not Share checkbox.
+   *
+   * @param null
+   * @returns null
+   */
+  onCorporateTnCAccepted(): void {
+    if (!this.corporateTnCAccepted) {
+      this.corporateTnCNotAccepted = true;
+      this.termsConditionForm.controls.corporateTnCAccepted.patchValue(true);
+      this.termsConditionForm.controls.corporateTnCNotAccepted.patchValue(false);
+    } else {
+      this.corporateTnCNotAccepted = false;
+    }
+  }
+
+  /**
+   * This method check or uncheck "ion-checkbox" for
+   * Ok to Share or Do Not Share checkbox.
+   *
+   * @param null
+   * @returns null
+   */
+  onCorporateTnCNotAccepted(): void {
+    if (!this.corporateTnCNotAccepted) {
+      this.corporateTnCAccepted = true;
+    } else {
+      this.corporateTnCAccepted = false;
     }
   }
 }

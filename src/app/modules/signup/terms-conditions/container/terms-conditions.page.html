@@ -27,6 +27,51 @@
           ></ion-checkbox>
         </ion-item>
       </ion-list>
+      <ion-list lines="none">
+        <div class="tnc-wrapper">
+          <div class="tnc-item ack-item">
+            <div class="tnc-content">
+              <span class="tnc-title">
+                {{ 'signup-module.terms-conditions-page.corporate-terms' | translate }}
+              </span>
+            </div>
+
+            <div class="checkbox-group">
+              <ion-row>
+                <ion-col class="ion-no-padding">
+                  <ion-item lines="none" class="check-box-1">
+                    <ion-label class="ion-text-wrap">
+                      {{ 'signup-module.terms-conditions-page.corporate-terms-share-checkbox' | translate }}
+                    </ion-label>
+                    <ion-checkbox
+                      slot="start"
+                      mode="md"
+                      value="true"
+                      formControlName="corporateTnCAccepted"
+                      (ionChange)="onCorporateTnCAccepted()"
+                    ></ion-checkbox>
+                  </ion-item>
+                </ion-col>
+
+                <ion-col class="ion-no-padding">
+                  <ion-item lines="none" class="check-box-2">
+                    <ion-label class="ion-text-wrap">
+                      {{ 'signup-module.terms-conditions-page.corporate-terms-not-share-checkbox' | translate }}
+                    </ion-label>
+                    <ion-checkbox
+                      slot="start"
+                      mode="md"
+                      value="true"
+                      formControlName="corporateTnCNotAccepted"
+                      (ionChange)="onCorporateTnCNotAccepted()"
+                    ></ion-checkbox>
+                  </ion-item>
+                </ion-col>
+              </ion-row>
+            </div>
+          </div>
+        </div>
+      </ion-list>
     </form>
   </div>
 </ion-content>

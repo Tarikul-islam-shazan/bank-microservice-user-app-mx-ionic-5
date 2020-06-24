@@ -50,8 +50,24 @@
         ion-row {
           margin-top: 10px;
           ion-col {
-            ion-item {
+            .check-box-1 {
               --padding-start: -10px;
+              ion-label {
+                margin-right: 0px;
+                font-family: 'Averta W05 Regular';
+                font-size: 1.6rem;
+                color: #070a18 !important;
+                line-height: 24px;
+              }
+              ion-checkbox {
+                align-self: baseline;
+                margin-top: 14px;
+                margin-right: 16px;
+              }
+            }
+            .check-box-2 {
+              --padding-start: -10px;
+              padding-top: 18px;
               ion-label {
                 margin-right: 0px;
                 font-family: 'Averta W05 Regular';
@@ -75,7 +91,6 @@
     display: flex;
     align-items: center;
     min-height: 80px;
-    border-bottom: 1px solid #ebedf2;
     ion-label {
       --color: #435cdc;
       z-index: 999999;
