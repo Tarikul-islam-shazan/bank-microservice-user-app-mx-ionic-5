@@ -12,50 +12,72 @@
     <div class="title">{{'p2p-module.home-page.add-new-payee-title' | translate}}</div>
     <ion-item lines="none" class="icon-input">
       <ion-icon slot="start" name="search"></ion-icon>
-      <ion-input placeholder="{{'p2p-module.home-page.search-input-placeholder' | translate}}"></ion-input>
+      <ion-input
+        (ionChange)="searchContact()"
+        [(ngModel)]="searchQuery"
+        placeholder="{{'p2p-module.home-page.search-input-placeholder' | translate}}"
+      ></ion-input>
     </ion-item>
   </div>
-
-  <div class="requests-wrapper">
-    <ion-item lines="none" class="ion-no-padding">
-      <ion-label><b>{{'p2p-module.home-page.request-title' | translate}}</b></ion-label>
-    </ion-item>
-    <ion-list>
-      <ion-item class="ion-no-padding" lines="none">
-        <ion-label class="ion-padding-top ion-padding-bottom">
-          From sean.evan@yopmail.com <br />
-          <span>Requested on June 12, 2020</span>
-        </ion-label>
-        <span slot="end"> <b>$38.00</b></span>
-      </ion-item>
-    </ion-list>
-  </div>
-  <div class="my-payees-wrapper">
-    <!-- <div class="title">My Payees</div> -->
-    <ion-item lines="none" class="ion-no-padding">
-      <ion-label><b>{{'p2p-module.home-page.my-payee-title' | translate}}</b></ion-label>
-      <ion-label
-        *ngIf="myPayees.length > 0"
-        [ngClass]="{'contactEditable': isEditable}"
-        class="ion-text-right"
-        slot="end"
-        (click)="makeContactEditAble()"
-        >{{'p2p-module.home-page.edit-delete-title' | translate}}</ion-label
-      >
-    </ion-item>
-    <ion-list>
-      <ion-item *ngFor="let item of myPayees">
-        <ion-label class="ion-padding-top ion-padding-bottom">
-          sean.evan@yopmail.com
+  <div class="search-result-wrapper" *ngIf="facade.startSearching">
+    <ion-list *ngIf="facade.searchResult.length > 0">
+      <ion-item *ngFor="let payee of facade.searchResult">
+        <ion-label class="ion-padding-top ion-padding-bottom ion-text-wrap">
+          {{payee.alias}} <br />
+          {{payee.email}}
         </ion-label>
         <ion-icon *ngIf="isEditable" slot="end" name="pencil"></ion-icon>
       </ion-item>
     </ion-list>
+
+    <div class="no-result-block" *ngIf="facade.searchResult.length === 0">
+      <ion-label class="ion-text-center ion-text-wrap"
+        >{{'p2p-module.home-pag.no-result-fond-text' | translate}}</ion-label
+      >
+    </div>
+  </div>
+  <div class="data-content-wrapper" [hidden]="facade.startSearching">
+    <div class="requests-wrapper">
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-label><b>{{'p2p-module.home-page.request-title' | translate}}</b></ion-label>
+      </ion-item>
+      <ion-list>
+        <ion-item class="ion-no-padding" lines="none">
+          <ion-label class="ion-padding-top ion-padding-bottom">
+            From sean.evan@yopmail.com <br />
+            <span>Requested on June 12, 2020</span>
+          </ion-label>
+          <span slot="end"> <b>$38.00</b></span>
+        </ion-item>
+      </ion-list>
+    </div>
+    <div class="my-payees-wrapper">
+      <!-- <div class="title">My Payees</div> -->
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-label><b>{{'p2p-module.home-page.my-payee-title' | translate}}</b></ion-label>
+        <ion-label
+          *ngIf="facade.myPayees.length > 0"
+          [ngClass]="{'contactEditable': isEditable}"
+          class="ion-text-right"
+          slot="end"
+          (click)="makeContactEditAble()"
+          >{{'p2p-module.home-page.edit-delete-title' | translate}}</ion-label
+        >
+      </ion-item>
+      <ion-list>
+        <ion-item *ngFor="let payee of facade.myPayees$ | async">
+          <ion-label class="ion-padding-top ion-padding-bottom">
+            {{payee.email ? payee.email : payee.alias}}
+          </ion-label>
+          <ion-icon *ngIf="isEditable" slot="end" name="pencil"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </div>
   </div>
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" routerLink="/p2p/payee-registration-type">
+    <ion-button class="white-button" (click)="next()" [disabled]="!searchQuery">
       {{'p2p-module.home-page.next-button-title' | translate}}
     </ion-button>
   </ion-toolbar>
