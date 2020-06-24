@@ -3,10 +3,12 @@
 </ion-header>
 <ion-content>
   <div class="content-wrapper">
-    <div class="step-counter">
+    <div class="step-counter" id="signup-address-information-page-step-counter">
       <step-counter [step]="'signup-module.signup-address-information-page.step-text'" [stepNo]="3"></step-counter>
     </div>
-    <div class="header-title">{{ 'signup-module.signup-address-information-page.page-title' | translate }}</div>
+    <div class="header-title" id="signup-address-information-page-header-title">
+      {{ 'signup-module.signup-address-information-page.page-title' | translate }}
+    </div>
     <form [formGroup]="addressForm" novalidate>
       <ion-list lines="none">
         <div
@@ -19,7 +21,7 @@
             addressForm.controls.addressTypeField.invalid && skipErrorFields.addressTypeField ? 'error-input' : 'white-input'
           "
             readonly
-            id="addressTypeField"
+            id="signup-address-information-page-address-type-field-dropdown"
             formControlName="addressTypeField"
             class="white-input"
             type="text"
@@ -37,7 +39,7 @@
             addressForm.controls.propertyTypeField.invalid && skipErrorFields.propertyTypeField ? 'error-input' : 'white-input'
           "
             readonly
-            id="propertyTypeField"
+            id="signup-address-information-page-property-type-field-dropdown"
             formControlName="propertyTypeField"
             class="white-input"
             type="text"
@@ -54,6 +56,7 @@
             id="street"
             formControlName="street"
             class="white-input"
+            id="signup-address-information-page-street-input"
             type="text"
             maxlength="40"
             placeholder="{{ 'signup-module.signup-address-information-page.address-form.street-name' | translate }}"
@@ -65,7 +68,7 @@
             [ngClass]="
             addressForm.controls.outdoorNumber.invalid && skipErrorFields.outdoorNumber ? 'error-input' : 'white-input'
           "
-            id="outdoorNumber"
+            id="signup-address-information-page-outdoor-number-input"
             formControlName="outdoorNumber"
             class="white-input"
             type="text"
@@ -80,7 +83,7 @@
             [ngClass]="
             addressForm.controls.interiorNumber.invalid && skipErrorFields.interiorNumber ? 'error-input' : 'white-input'
           "
-            id="interiorNumber"
+            id="signup-address-information-page-interior-number-input"
             formControlName="interiorNumber"
             class="white-input"
             type="text"
@@ -96,7 +99,7 @@
             [ngClass]="
             addressForm.controls.postCode.invalid && skipErrorFields.postCode ? 'error-input' : 'white-input'
           "
-            id="postCode"
+            id="signup-address-information-page-post-code-input"
             formControlName="postCode"
             class="white-input"
             type="tel"
@@ -112,7 +115,7 @@
             addressForm.controls.stateField.invalid && skipErrorFields.stateField ? 'error-input' : 'background-input'
           "
             readonly
-            id="stateField"
+            id="signup-address-information-page-state-field-input"
             formControlName="stateField"
             class="background-input"
             type="text"
@@ -126,7 +129,7 @@
             addressForm.controls.municipalityField.invalid && skipErrorFields.municipalityField ? 'error-input' : 'background-input'
           "
             readonly
-            id="municipalityField"
+            id="signup-address-information-page-municipality-field-input"
             formControlName="municipalityField"
             class="background-input"
             type="text"
@@ -140,7 +143,7 @@
             addressForm.controls.cityField.invalid && skipErrorFields.cityField ? 'error-input' : 'background-input'
           "
             readOnly
-            id="cityField"
+            id="signup-address-information-page-city-field-input"
             formControlName="cityField"
             class="background-input"
             type="text"
@@ -155,7 +158,7 @@
             addressForm.controls.suburbField.invalid && skipErrorFields.suburbField ? 'error-input' : 'white-input'
           "
             readonly
-            id="suburbField"
+            id="signup-address-information-page-suburb-field-dropdown"
             formControlName="suburbField"
             class="white-input"
             type="text"
@@ -169,7 +172,7 @@
             [ngClass]="
             addressForm.controls.dateOfResidence.invalid && skipErrorFields.dateOfResidence ? 'error-input' : 'white-input'
           "
-            id="dateOfResidence"
+            id="signup-address-information-page-date-of-residence-input"
             placeholder="{{ 'signup-module.signup-address-information-page.address-form.dateOfResidence' | translate }}"
             formControlName="dateOfResidence"
             displayFormat="{{ 'signup-module.signup-address-information-page.address-form.dateFormate' | translate }}"
@@ -183,7 +186,13 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" [disabled]="addressForm.invalid" expand="block" (click)="next()">
+    <ion-button
+      class="white-button"
+      [disabled]="addressForm.invalid"
+      expand="block"
+      (click)="next()"
+      id="signup-address-information-page-next-btn"
+    >
       {{ 'signup-module.signup-address-information-page.button-text' | translate }}
     </ion-button>
   </ion-toolbar>

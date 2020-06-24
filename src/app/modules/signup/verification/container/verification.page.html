@@ -3,18 +3,18 @@
   <div class="verification-content">
     <ion-row>
       <ion-col col-lg-4 col-md-6 col-sm-8 no-padding offset-lg-4 offset-md-3 offset-sm-2 align-self-center>
-        <div class="help-icon" (click)="openInfo()">
+        <div class="help-icon" (click)="openInfo()" id="verification-page-info-modal">
           <img src="assets/icon/svg/help-outline.svg" alt="help icon" srcset="" />
         </div>
         <div class="header-logo">
           <span class="white-meed-logo"></span>
         </div>
-        <div class="signup-verification-header">
+        <div class="signup-verification-header" id="verification-page-header-title-text">
           <span>{{ 'signup-module.verification-page.header-text' | translate }}</span>
         </div>
         <div *ngIf="!isInput" class="resend-code-wrapper">
           <div class="resend-error-text">{{ 'signup-module.verification-page.resend-error-text' | translate }}</div>
-          <ion-button class="blue-outline-button resend-btn" (click)="resend()">
+          <ion-button class="blue-outline-button resend-btn" (click)="resend()" id="verification-page-resend-btn">
             {{ 'signup-module.verification-page.resend-btn-text' | translate }}
           </ion-button>
         </div>
@@ -23,6 +23,7 @@
             <ion-item>
               <ion-input
                 class="verification-input"
+                id="verification-page-verification-code-input"
                 [ngClass]="{'verification-code-error': codeError}"
                 #hiddenInput
                 type="tel"
@@ -33,7 +34,7 @@
               ></ion-input>
             </ion-item>
           </div>
-          <p id="verification-note" *ngIf="codeError" class="verification-error">
+          <p id="verification-note" *ngIf="codeError" class="verification-error" id="verification-page-error-code-text">
             {{ 'signup-module.verification-page.error-text' | translate }}
           </p>
         </div>
@@ -49,7 +50,7 @@
         <p class="verification-note" *ngIf="isInput">
           {{ 'signup-module.verification-page.footer-text' | translate }}
         </p>
-        <p class="verification-note" *ngIf="!isInput">
+        <p class="verification-note" *ngIf="!isInput" id="verification-page-resend-text">
           {{ 'signup-module.verification-page.resend-footer-text' | translate }}
         </p>
       </ion-col>

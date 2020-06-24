@@ -3,28 +3,45 @@
 </ion-header>
 
 <ion-content>
-  <div class="step-counter">
+  <div class="step-counter" id="signup-account-selection-page-step-counter">
     <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
   </div>
-  <div class="header-title">{{ 'signup-module.signup-account-selection.page-title' | translate }}</div>
+  <div class="header-title" id="signup-account-selection-page-header-title">
+    {{ 'signup-module.signup-account-selection.page-title' | translate }}
+  </div>
 
   <ion-list lines="none">
     <ion-radio-group name="account" [(ngModel)]="facade.accountLevel">
       <ion-item lines="full">
-        <ion-radio slot="start" mode="md" [value]="facade.level.Full"></ion-radio>
+        <ion-radio
+          slot="start"
+          mode="md"
+          [value]="facade.level.Full"
+          id="signup-account-selection-page-account-level-full-radio-input"
+        ></ion-radio>
         <ion-label class="ion-text-wrap">
           <div class="title">{{'signup-module.signup-account-selection.account-level-full-title' | translate}}</div>
           <div class="details">
             {{'signup-module.signup-account-selection.account-level-full-details' | translate}}
           </div>
         </ion-label>
-        <ion-button slot="end" fill="clear" (click)="facade.openInfoModal(facade.level.Full)">
+        <ion-button
+          slot="end"
+          fill="clear"
+          (click)="facade.openInfoModal(facade.level.Full)"
+          id="signup-account-selection-page-account-level-full-question-mark-icon"
+        >
           <img class="icon-question-mark" />
         </ion-button>
       </ion-item>
 
       <ion-item>
-        <ion-radio slot="start" mode="md" [value]="facade.level.Express"></ion-radio>
+        <ion-radio
+          slot="start"
+          mode="md"
+          [value]="facade.level.Express"
+          id="signup-account-selection-page-account-level-express-radio-input"
+        ></ion-radio>
         <ion-label class="ion-text-wrap">
           <div class="title">
             {{'signup-module.signup-account-selection.account-level-express-title' | translate}}
@@ -33,7 +50,12 @@
             {{'signup-module.signup-account-selection.account-level-express-details' | translate}}
           </div>
         </ion-label>
-        <ion-button slot="end" fill="clear" (click)="facade.openInfoModal(facade.level.Express)">
+        <ion-button
+          slot="end"
+          fill="clear"
+          (click)="facade.openInfoModal(facade.level.Express)"
+          id="signup-account-selection-page-account-level-express-question-mark-icon"
+        >
           <img class="icon-question-mark" />
         </ion-button>
       </ion-item>
@@ -43,7 +65,12 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" (click)="facade.onClickNext()">
+    <ion-button
+      class="white-button"
+      id="signup-account-selection-page-next-btn"
+      expand="block"
+      (click)="facade.onClickNext()"
+    >
       {{ 'signup-module.signup-address-page.button-text' | translate }}
     </ion-button>
   </ion-toolbar>

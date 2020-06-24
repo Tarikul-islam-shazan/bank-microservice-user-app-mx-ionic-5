@@ -1,11 +1,12 @@
 <div class="modal-content ion-padding">
   <div class="content-wrapper">
-    <div class="header-close-button" (click)="dismiss()"></div>
+    <div class="header-close-button" id="info-modal-header-close-btn" (click)="dismiss()"></div>
     <div class="text-content" *ngFor="let content of contents">
-      <p translate class="modal-sub-title">{{ content.title }}</p>
+      <p translate class="modal-sub-title" id="info-modal-header-title-text">{{ content.title }}</p>
       <p
         [innerHTML]="paragraph | translate: content.values"
         class="modal-paragraph"
+        id="info-modal-description-text"
         *ngFor="let paragraph of content.details"
       ></p>
     </div>
@@ -14,6 +15,7 @@
         (click)="actionButton.handler($event)"
         *ngFor="let actionButton of actionButtons"
         class="{{ actionButton.cssClass }}"
+        id="info-modal-action-btn"
         [disabled]="actionButton.disabled ? actionButton.disabled : false"
         expand="block"
         >{{ actionButton.text | translate: actionButton.params }}

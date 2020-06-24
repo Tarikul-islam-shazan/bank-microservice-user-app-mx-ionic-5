@@ -7,21 +7,21 @@
 </ion-header>
 <ion-content class="direct-deposit-info-content">
   <div class="content-wrapper">
-    <div class="direct-diposit-info-header">
+    <div class="direct-diposit-info-header" id="direct-deposit-info-page-header-title-text">
       <p>{{ 'deposit.direct-deposit-info.header-text' | translate }}</p>
     </div>
-    <div class="direct-diposit-info-text1">
+    <div class="direct-diposit-info-text1" id="direct-deposit-info-page-direct-diposit-info-text-one">
       <p>{{ 'deposit.direct-deposit-info.info-text-1' | translate }}</p>
     </div>
-    <div class="direct-diposit-info-text1">
+    <div class="direct-diposit-info-text1" id="direct-deposit-info-page-direct-diposit-info-text-two">
       <p>{{ 'deposit.direct-deposit-info.info-text-2' | translate }}</p>
     </div>
 
-    <div class="direct-diposit-info-text1">
+    <div class="direct-diposit-info-text1" id="direct-deposit-info-page-direct-diposit-info-text-three">
       <p>{{ 'deposit.direct-deposit-info.info-text-3' | translate }}</p>
     </div>
 
-    <div class="direct-diposit-info-text2">
+    <div class="direct-diposit-info-text2" id="direct-deposit-info-page-direct-diposit-info-text-four">
       <p>{{ 'deposit.direct-deposit-info.info-text-4' | translate }}</p>
     </div>
   </div>
@@ -29,7 +29,12 @@
 
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" (click)="directDepositFacade.continue()">
+    <ion-button
+      class="white-button"
+      id="direct-deposit-info-page-continue-btn"
+      expand="block"
+      (click)="directDepositFacade.continue()"
+    >
       {{ 'deposit.direct-deposit-info.continue-btn-text' | translate }}
     </ion-button>
   </ion-toolbar>
