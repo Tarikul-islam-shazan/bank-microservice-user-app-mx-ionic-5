@@ -41,7 +41,7 @@ export class OtherBankPayeeRegistrationPage implements OnInit {
     this.initialForm = this.formBuilder.group({
       alias: ['', Validators.required],
       identityTypeName: ['', Validators.required],
-      contactType: 'other'
+      contactType: ContactType.Other
     });
   }
 
