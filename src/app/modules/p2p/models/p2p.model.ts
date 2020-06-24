@@ -48,7 +48,7 @@ export const invexPayeeIdentifiers: DropdownOption[] = [
   }
 ];
 
-export const OtherBankPayeeIdentifiers: DropdownOption[] = [
+export const otherBankPayeeIdentifiers: DropdownOption[] = [
   {
     text: 'Company Name',
     value: IdentityType.Company
@@ -66,6 +66,20 @@ export const OtherBankPayeeIdentifiers: DropdownOption[] = [
     value: IdentityType.Mobile
   }
 ];
+export interface IOtherContact {
+  alias: string;
+  contactType: string;
+  identityType: string;
+  identityNumber?: string;
+  bankCode: string;
+  firstName?: string;
+  secondName?: string;
+  paternalLastName?: string;
+  maternalLastName?: string;
+  email?: string;
+  phone?: string;
+  rfc?: string;
+}
 
 export interface IInvexContact {
   alias: string;

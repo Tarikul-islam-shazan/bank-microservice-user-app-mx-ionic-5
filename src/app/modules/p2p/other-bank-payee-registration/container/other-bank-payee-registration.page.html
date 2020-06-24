@@ -10,97 +10,196 @@
 <ion-content>
   <div class="title">{{"p2p-module.other-payee-registration-page.content-title" | translate}}</div>
   <ion-list lines="none" class="form" mode="ios">
-    <ion-item class="ion-no-padding">
-      <ion-input
-        class="ion-margin-start"
-        placeholder="{{'p2p-module.other-payee-registration-page.payee-alias-placeholder' | translate}}"
-      ></ion-input>
-    </ion-item>
-    <ion-item class="ion-no-padding">
-      <ion-input
-        readonly
-        class="ion-margin-start"
-        placeholder="{{'p2p-module.other-payee-registration-page.identifier-placeholder' | translate}}"
-      ></ion-input>
-      <ion-icon slot="end" name="chevron-down"></ion-icon>
-    </ion-item>
-
-    <form>
+    <!-- Alias-identifer form -->
+    <form [formGroup]="initialForm">
       <ion-item class="ion-no-padding">
-        <ion-input class="ion-margin-start" placeholder="payeeIdentifier.text"></ion-input>
+        <ion-input
+          formControlName="alias"
+          class="ion-margin-start"
+          placeholder="{{'p2p-module.other-payee-registration-page.payee-alias-placeholder' | translate}}"
+        ></ion-input>
       </ion-item>
       <ion-item class="ion-no-padding">
         <ion-input
+          formControlName="identityTypeName"
+          (click)="openIdentifierModal()"
+          readonly
+          class="ion-margin-start"
+          placeholder="{{'p2p-module.other-payee-registration-page.identifier-placeholder' | translate}}"
+        ></ion-input>
+        <ion-icon slot="end" name="chevron-down"></ion-icon>
+      </ion-item>
+    </form>
+
+    <!-- Company Form -->
+    <form [formGroup]="companyForm" *ngIf="payeeIdentifier && payeeIdentifier.value === identityTypes.Company">
+      <ion-item class="ion-no-padding">
+        <ion-input
+          formControlName="companyName"
+          class="ion-margin-start"
+          [placeholder]="payeeIdentifier.text"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-no-padding">
+        <ion-input
+          (click)="openBankListModal()"
+          formControlName="bankName"
           readonly
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.bank-placeholder' | translate}}"
         ></ion-input>
         <ion-icon slot="end" name="chevron-down"></ion-icon>
       </ion-item>
+
       <ion-item class="ion-no-padding">
         <ion-input
+          formControlName="identityNumber"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.clabe-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
       <ion-item class="ion-no-padding">
         <ion-input
+          formControlName="email"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.email-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
     </form>
-
-    <form>
-      <ion-item class="ion-no-padding">
-        <ion-input class="ion-margin-start" placeholder="payeeIdentifier.text"></ion-input>
-      </ion-item>
+    <!-- Clabe Debit Card Form -->
+    <form
+      [formGroup]="clabeDebitCardForm"
+      *ngIf="(payeeIdentifier && payeeIdentifier.value === identityTypes.Clabe) ||(payeeIdentifier && payeeIdentifier.value === identityTypes.DebitCard)"
+    >
       <ion-item class="ion-no-padding">
         <ion-input
+          formControlName="identityNumber"
+          class="ion-margin-start"
+          [placeholder]="payeeIdentifier.text"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-no-padding">
+        <ion-input
+          (click)="openBankListModal()"
+          formControlName="bankName"
           readonly
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.bank-placeholder' | translate}}"
         ></ion-input>
         <ion-icon slot="end" name="chevron-down"></ion-icon>
       </ion-item>
+
       <ion-item class="ion-no-padding">
         <ion-input
+          formControlName="firstName"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.first-name-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
       <ion-item class="ion-no-padding">
         <ion-input
+          formControlName="secondName"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.second-name-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
       <ion-item class="ion-no-padding">
         <ion-input
+          formControlName="paternalLastName"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.paternal-last-name-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
       <ion-item class="ion-no-padding">
         <ion-input
+          formControlName="maternalLastName"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.maternal-last-name-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
       <ion-item class="ion-no-padding">
         <ion-input
+          formControlName="email"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.email-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
       <ion-item class="ion-no-padding">
         <ion-input
+          formControlName="phone"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.mobile-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
       <ion-item class="ion-no-padding">
         <ion-input
+          formControlName="rfc"
+          class="ion-margin-start"
+          placeholder="{{'p2p-module.other-payee-registration-page.form.rfc-placeholder' | translate}}"
+        ></ion-input>
+      </ion-item>
+    </form>
+    <!-- Mobile Number Form -->
+    <form [formGroup]="mobileForm" *ngIf="payeeIdentifier && payeeIdentifier.value === identityTypes.Mobile">
+      <ion-item class="ion-no-padding">
+        <ion-input
+          formControlName="identityNumber"
+          class="ion-margin-start"
+          [placeholder]="payeeIdentifier.text"
+        ></ion-input>
+      </ion-item>
+
+      <ion-item class="ion-no-padding">
+        <ion-input
+          (click)="openBankListModal()"
+          formControlName="bankName"
+          readonly
+          class="ion-margin-start"
+          placeholder="{{'p2p-module.other-payee-registration-page.form.bank-placeholder' | translate}}"
+        ></ion-input>
+        <ion-icon slot="end" name="chevron-down"></ion-icon>
+      </ion-item>
+
+      <ion-item class="ion-no-padding">
+        <ion-input
+          formControlName="firstName"
+          class="ion-margin-start"
+          placeholder="{{'p2p-module.other-payee-registration-page.form.first-name-placeholder' | translate}}"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="ion-no-padding">
+        <ion-input
+          formControlName="secondName"
+          class="ion-margin-start"
+          placeholder="{{'p2p-module.other-payee-registration-page.form.second-name-placeholder' | translate}}"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="ion-no-padding">
+        <ion-input
+          formControlName="paternalLastName"
+          class="ion-margin-start"
+          placeholder="{{'p2p-module.other-payee-registration-page.form.paternal-last-name-placeholder' | translate}}"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="ion-no-padding">
+        <ion-input
+          formControlName="maternalLastName"
+          class="ion-margin-start"
+          placeholder="{{'p2p-module.other-payee-registration-page.form.maternal-last-name-placeholder' | translate}}"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="ion-no-padding">
+        <ion-input
+          formControlName="email"
+          class="ion-margin-start"
+          placeholder="{{'p2p-module.other-payee-registration-page.form.email-placeholder' | translate}}"
+        ></ion-input>
+      </ion-item>
+      <ion-item class="ion-no-padding">
+        <ion-input
+          formControlName="rfc"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.rfc-placeholder' | translate}}"
         ></ion-input>
@@ -110,7 +209,7 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" (click)="next()">
+    <ion-button class="white-button" [disabled]="checkButtonDisable()" (click)="next()">
       {{'p2p-module.other-payee-registration-page.next-button-title' | translate}}
     </ion-button>
   </ion-toolbar>
