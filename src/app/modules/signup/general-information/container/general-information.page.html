@@ -3,10 +3,12 @@
 </ion-header>
 <ion-content>
   <div class="content-wrapper">
-    <div class="step-counter">
+    <div class="step-counter" id="general-info-page-step-counter">
       <step-counter [step]="'Step 3 of 3'" [stepNo]="3"></step-counter>
     </div>
-    <div class="header-title">{{ 'signup-module.general-info-page.page-title' | translate }}</div>
+    <div class="header-title" id="general-info-page-step-header-title-text">
+      {{ 'signup-module.general-info-page.page-title' | translate }}
+    </div>
     <form [formGroup]="generalForm">
       <ion-list lines="none">
         <ion-item>
@@ -15,6 +17,7 @@
             appInputMaxLength="{{nameMaxLength}}"
             formControlName="firstName"
             class="white-input"
+            id="general-info-page-first-name-input"
             type="text"
             placeholder="{{ 'signup-module.general-info-page.generalForm.first-name' | translate }}"
           ></ion-input>
@@ -24,6 +27,7 @@
             [ngClass]="generalForm.controls.secondName.invalid && generalForm.controls.secondName.touched ? 'error-input' : 'white-input'"
             appInputMaxLength="{{nameMaxLength}}"
             formControlName="secondName"
+            id="general-info-page-second-name-input"
             class="white-input"
             type="text"
             placeholder="{{ 'signup-module.general-info-page.generalForm.second-name' | translate }}"
@@ -35,6 +39,7 @@
             appInputMaxLength="{{nameMaxLength}}"
             formControlName="paternalLastName"
             class="white-input"
+            id="general-info-page-parental-last-name-input"
             type="text"
             placeholder="{{ 'signup-module.general-info-page.generalForm.paternal-last-name' | translate }}"
           ></ion-input>
@@ -45,6 +50,7 @@
             appInputMaxLength="{{nameMaxLength}}"
             formControlName="maternalLastName"
             class="white-input"
+            id="general-info-page-maternal-last-name-input"
             type="text"
             placeholder="{{ 'signup-module.general-info-page.generalForm.maternal-last-name' | translate }}"
           ></ion-input>
@@ -62,6 +68,7 @@
             pickerFormat="{{ 'signup-module.general-info-page.generalForm.date-of-birth-display-format' | translate }}"
             [max]="facade.maxDate"
             (ionChange)="validateCurp()"
+            id="general-info-page-date-of-birth-input"
           ></ion-datetime>
           <ion-icon name="chevron-down"></ion-icon>
         </ion-item>
@@ -71,6 +78,7 @@
             appInputMaxLength="{{curpMaxLength}}"
             formControlName="curp"
             class="white-input"
+            id="general-info-page-curp-input"
             type="text"
             placeholder="{{ 'signup-module.general-info-page.generalForm.curp' | translate }}"
           ></ion-input>
@@ -81,12 +89,13 @@
             appInputMaxLength="10"
             formControlName="mobileNumber"
             class="white-input"
+            id="general-info-page-mobile-number-input"
             type="tel"
             placeholder="{{ 'signup-module.general-info-page.generalForm.mobile-number' | translate }}"
           ></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label class="ion-text-wrap question"
+          <ion-label class="ion-text-wrap question" id="general-info-permission-text"
             >{{ 'signup-module.general-info-page.permission-text' | translate }}</ion-label
           >
         </ion-item>
@@ -100,6 +109,7 @@
     <ion-button
       [disabled]="generalForm.invalid"
       class="white-button"
+      id="general-info-page-next-btn"
       expand="block"
       (click)="applyGeneralInformation()"
     >

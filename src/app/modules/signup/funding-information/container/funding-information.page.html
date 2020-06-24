@@ -3,29 +3,41 @@
 </ion-header>
 <ion-content>
   <div class="content-wrapper">
-    <div class="step-counter">
+    <div class="step-counter" id="signup-funding-information-page-step-counter">
       <step-counter [step]="'signup-module.funding-information-page.step-text'" [stepNo]="3"></step-counter>
     </div>
-    <div class="header-title">{{ 'signup-module.funding-information-page.page-title' | translate }}</div>
+    <div class="header-title" id="signup-funding-information-page-header-title-text">
+      {{ 'signup-module.funding-information-page.page-title' | translate }}
+    </div>
     <div class="content-block">
       <ion-list lines="none">
         <ion-radio-group (ionChange)="checkFundMyself()" [(ngModel)]="fundMyself">
           <ion-list-header>
-            <ion-label
+            <ion-label id="signup-funding-information-page-fund-provider-selector-label"
               >{{ 'signup-module.funding-information-page.fund-provider-selector-title' | translate }}</ion-label
             >
           </ion-list-header>
           <ion-item>
-            <ion-label
+            <ion-label id="signup-funding-information-page-fund-provider-selector-option-one-radio-input"
               >{{ 'signup-module.funding-information-page.fund-provider-selector-option-one' | translate }}</ion-label
             >
-            <ion-radio mode="md" slot="start" [value]="true"></ion-radio>
+            <ion-radio
+              mode="md"
+              slot="start"
+              [value]="true"
+              id="signup-funding-information-page-fund-provider-selector-option-one-radio-input"
+            ></ion-radio>
           </ion-item>
           <ion-item>
-            <ion-label
+            <ion-label id="signup-funding-information-page-fund-provider-selector-option-two-label"
               >{{ 'signup-module.funding-information-page.fund-provider-selector-option-two' | translate }}</ion-label
             >
-            <ion-radio mode="md" slot="start" [value]="false"></ion-radio>
+            <ion-radio
+              mode="md"
+              slot="start"
+              [value]="false"
+              id="signup-funding-information-page-fund-provider-selector-option-two-radio-input"
+            ></ion-radio>
           </ion-item>
         </ion-radio-group>
       </ion-list>
@@ -36,7 +48,7 @@
           <ion-item>
             <ion-input
               [ngClass]="fundingInformationForm.controls.firstName.invalid && (fundingInformationForm.controls.firstName.dirty || fundingInformationForm.controls.firstName.touched) ? 'error-input' : 'white-input'"
-              id="first-name"
+              id="signup-funding-information-page-first-name-input"
               type="text"
               formControlName="firstName"
               placeholder="{{ 'signup-module.funding-information-page.funding-info-form.first-name' | translate }}"
@@ -46,7 +58,7 @@
           </ion-item>
           <ion-item>
             <ion-input
-              id="second-name"
+              id="signup-funding-information-page-second-name-input"
               class="white-input"
               type="text"
               formControlName="secondName"
@@ -57,7 +69,7 @@
           </ion-item>
           <ion-item>
             <ion-input
-              id="paternal-last-name"
+              id="signup-funding-information-paternal-last-name-input"
               [ngClass]="fundingInformationForm.controls.paternalLastName.invalid && (fundingInformationForm.controls.paternalLastName.dirty || fundingInformationForm.controls.paternalLastName.touched) ? 'error-input' : 'white-input'"
               type="text"
               formControlName="paternalLastName"
@@ -68,7 +80,7 @@
           </ion-item>
           <ion-item>
             <ion-input
-              id="maternal-last-name"
+              id="signup-funding-information-maternal-last-name-input"
               class="white-input"
               type="text"
               formControlName="maternalLastName"
@@ -85,6 +97,7 @@
               type="text"
               [max]="maximumDate"
               formControlName="dateOfBirth"
+              id="signup-funding-information-date-of-birth-input"
               placeholder="{{ 'signup-module.funding-information-page.funding-info-form.date-of-birth' | translate }}"
             ></ion-datetime>
             <ion-icon name="chevron-down"></ion-icon>
@@ -99,6 +112,7 @@
   <ion-toolbar>
     <ion-button
       class="white-button"
+      id="signup-funding-information-next-btn"
       expand="block"
       (click)="fundInformationFormSubmit()"
       [disabled]="!fundMyself && fundingInformationForm.invalid"

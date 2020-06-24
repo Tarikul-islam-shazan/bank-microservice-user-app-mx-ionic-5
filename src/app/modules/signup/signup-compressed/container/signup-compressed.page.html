@@ -5,7 +5,9 @@
       <div class="header-logo">
         <span class="white-meed-logo"></span>
       </div>
-      <h1 class="title">{{ 'signup-module.signup-compressed-page.title' | translate }}</h1>
+      <h1 class="title" id="signup-compressed-page-header-title-text">
+        {{ 'signup-module.signup-compressed-page.title' | translate }}
+      </h1>
       <form [formGroup]="signupCompressedForm" novalidate>
         <div class="ion-margin-bottom">
           <div class="right-content-input">
@@ -14,6 +16,7 @@
               placeholder="{{ 'signup-module.signup-compressed-page.nick-name-placeholder' | translate }}"
               type="text"
               class="blue-input ion-text-left"
+              id="signup-compressed-page-nickname-input"
               formControlName="nickname"
             >
             </ion-input>
@@ -28,6 +31,7 @@
             (ionFocus)="inviterEmailClick()"
             [attr.readonly]="isInviterEmailReadOnly"
             class="blue-input ion-text-left"
+            id="signup-compressed-page-inviter-email-or-code-input"
             formControlName="inviterEmailOrCode"
             placeholder="{{ 'signup-module.signup-compressed-page.inviter-email-placeholder' | translate }}"
             type="text"
@@ -54,6 +58,7 @@
                   <ion-checkbox
                     (ionChange)="changeCheckboxValue()"
                     class="checkbox-square"
+                    id="signup-compressed-page-inviter-found-own-checkbox"
                     color="primary"
                     formControlName="inviterFoundOwn"
                     mode="md"
@@ -70,6 +75,7 @@
             <ion-input
               readonly
               class="blue-input ion-text-left"
+              id="signup-compressed-page-country-dropdown"
               type="text"
               formControlName="country"
               [placeholder]="'signup-module.signup-compressed-page.country-placeholder-text' | translate"
@@ -85,7 +91,13 @@
 
 <ion-footer>
   <ion-toolbar class="ion-no-border">
-    <ion-button class="blue-outline-button" expand="block" [disabled]="isContinueDisabled()" (click)="continueSignup()">
+    <ion-button
+      class="blue-outline-button"
+      expand="block"
+      [disabled]="isContinueDisabled()"
+      (click)="continueSignup()"
+      id="signup-compressed-page-continue-btn"
+    >
       {{ 'signup-module.signup-compressed-page.button-text' | translate }}
     </ion-button>
   </ion-toolbar>

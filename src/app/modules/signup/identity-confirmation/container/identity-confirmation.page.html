@@ -3,12 +3,14 @@
 </ion-header>
 <ion-content>
   <div class="content-wrapper">
-    <div class="step-counter">
+    <div class="step-counter" id="signup-identity-confirmation-page-step-counter">
       <step-counter [step]="'signup-module.identity-confirmation-page.step-text'" [stepNo]="3"></step-counter>
     </div>
-    <div class="header-title">{{ 'signup-module.identity-confirmation-page.page-title' | translate }}</div>
+    <div class="header-title" id="signup-identity-confirmation-page-header-title-text">
+      {{ 'signup-module.identity-confirmation-page.page-title' | translate }}
+    </div>
     <div class="content-block">
-      <div class="description">
+      <div class="description" id="signup-identity-confirmation-page-description-text">
         {{ 'signup-module.identity-confirmation-page.verify-text' | translate }}
       </div>
       <form [formGroup]="identityConfirmationForm">
@@ -16,7 +18,7 @@
           <ion-input
             readonly
             class="white-input"
-            id="utilityDocument"
+            id="signup-identity-confirmation-page-utility-document-dropdown-input"
             type="text"
             formControlName="utilityDocument"
             placeholder="{{ 'signup-module.identity-confirmation-page.dropdown-placeholder' | translate }}"
@@ -37,7 +39,14 @@
               (click)="takePhoto()"
             />
           </div>
-          <ion-input #utilityPictureInput [hidden]="true" type="file" accept="image/*" (ionChange)="uploadImage()">
+          <ion-input
+            #utilityPictureInput
+            [hidden]="true"
+            id="signup-identity-confirmation-page-utility-picture-input"
+            type="file"
+            accept="image/*"
+            (ionChange)="uploadImage()"
+          >
           </ion-input>
           <div class="scan-button" *ngIf="!facade.utilityBillImage" (click)="takePhoto()">
             <div class="button-image">
@@ -53,7 +62,13 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" [disabled]="isSubmitButtonDisabled" (click)="continue()">
+    <ion-button
+      class="white-button"
+      expand="block"
+      id="signup-identity-confirmation-page-continue-btn"
+      [disabled]="isSubmitButtonDisabled"
+      (click)="continue()"
+    >
       {{ 'signup-module.signup-address-page.button-text' | translate }}
     </ion-button>
   </ion-toolbar>

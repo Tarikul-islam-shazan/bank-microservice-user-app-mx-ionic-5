@@ -1,22 +1,30 @@
 <ion-content class="safe-area-content">
   <div class="content-wrapper">
-    <div class="step-counter">
+    <div class="step-counter" id="terms-conditions-page-step-counter">
       <step-counter [step]="'signup-module.terms-conditions-page.step-text'" [stepNo]="3"></step-counter>
     </div>
-    <div class="header-title">
+    <div class="header-title" id="terms-conditions-page-header-title-text">
       <p>{{ 'signup-module.terms-conditions-page.page-title' | translate }}</p>
     </div>
-    <p id="signup-terms-info">
+    <p id="signup-terms-info" id="terms-conditions-page-signup-terms-info-first-text">
       {{ 'signup-module.terms-conditions-page.page-subtitle' | translate }}
     </p>
-    <p id="signup-terms-info">
+    <p id="signup-terms-info" id="terms-conditions-page-signup-terms-info-second-text">
       {{ 'signup-module.terms-conditions-page.terms_text_1' | translate }}
     </p>
     <form [formGroup]="termsConditionForm" *ngIf="termsConditions.length > 0">
       <ion-list lines="none">
         <ion-item *ngFor="let tc of termsConditions; let i=index">
-          <ion-label (click)="showPdf(tc.code,tc.title)">{{tc.title}}</ion-label>
-          <ion-checkbox formControlName="{{'tc'+i}}" value="true" mode="md" slot="end"></ion-checkbox>
+          <ion-label (click)="showPdf(tc.code,tc.title)" id="terms-conditions-page-terms-conditions-{{ i }}-label"
+            >{{tc.title}}</ion-label
+          >
+          <ion-checkbox
+            formControlName="{{'tc'+i}}"
+            value="true"
+            mode="md"
+            slot="end"
+            id="terms-conditions-page-terms-conditions-{{ i }}-checkbox"
+          ></ion-checkbox>
         </ion-item>
       </ion-list>
     </form>
@@ -26,6 +34,7 @@
   <ion-toolbar>
     <ion-button
       class="white-button"
+      id="terms-conditions-page-accept-btn"
       expand="block"
       (click)="acceptTermsConditions()"
       [disabled]="termsConditionForm.invalid"

@@ -4,14 +4,14 @@
 <ion-content class="safe-area-content">
   <div class="content-wrapper">
     <div class="beneficiary-header">
-      <div class="step-counter">
+      <div class="step-counter" id="signup-beneficiary-page-step-counter">
         <step-counter [step]="'signup-module.signup-beneficiary-page.step-text'" [stepNo]="3"></step-counter>
       </div>
       <div (click)="openBeneficiaryModal()">
         <img src="assets/svg/question-mark.svg" />
       </div>
     </div>
-    <div class="header-title">
+    <div class="header-title" id="signup-beneficiary-page-header-title-text">
       {{ 'signup-module.signup-beneficiary-page.page-title' | translate }}
     </div>
 
@@ -25,7 +25,7 @@
             "
               (ionFocus)="isInputFieldSkip('firstName')"
               class="white-input ion-text-capitalize"
-              id="first-name"
+              id="signup-beneficiary-page-first-name-input"
               type="text"
               formControlName="firstName"
               placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.first-name' | translate }}"
@@ -40,7 +40,7 @@
             "
               (ionFocus)="isInputFieldSkip('secondName')"
               class="white-input ion-text-capitalize"
-              id="second-name"
+              id="signup-beneficiary-page-second-name-input"
               type="text"
               formControlName="secondName"
               placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.second-name' | translate }}"
@@ -55,7 +55,7 @@
             "
               (ionFocus)="isInputFieldSkip('parentalName')"
               class="white-input ion-text-capitalize"
-              id="parental-name"
+              id="signup-beneficiary-page-parental-name-input"
               type="text"
               formControlName="parentalName"
               placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.parental-name' | translate }}"
@@ -70,7 +70,7 @@
             "
               (ionFocus)="isInputFieldSkip('maternalLastName')"
               class="white-input ion-text-capitalize"
-              id="maternal-name"
+              id="signup-beneficiary-page-maternal-name-input"
               type="text"
               formControlName="maternalLastName"
               placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.maternal-last-name' | translate }}"
@@ -83,7 +83,7 @@
             <ion-datetime
               (ionFocus)="isInputFieldSkip('dateOfResidence')"
               [ngClass]="beneficiaryForm.controls.dateOfBirth.invalid && skipErrorFields.dateOfBirth ? 'error-input' : 'white-input'"
-              id="dateOfResidence"
+              id="signup-beneficiary-page-date-of-residence-input"
               placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.dob' | translate }}"
               formControlName="dateOfBirth"
               displayFormat="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.date-of-birth-display-format' | translate }}"
@@ -96,7 +96,7 @@
               [ngClass]="beneficiaryForm.controls.relationship.invalid && skipErrorFields.relationship ? 'error-input' : 'white-input'"
               readonly
               class="white-input"
-              id="relationship"
+              id="signup-beneficiary-page-relationship-dropdown-input"
               type="text"
               formControlName="relationship"
               placeholder="{{ 'signup-module.signup-beneficiary-page.beneficiary-form.relationship' | translate }}"
@@ -111,7 +111,13 @@
 
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" (click)="next()" [disabled]="beneficiaryForm.invalid">
+    <ion-button
+      class="white-button"
+      id="signup-beneficiary-page-next-btn"
+      expand="block"
+      (click)="next()"
+      [disabled]="beneficiaryForm.invalid"
+    >
       {{ 'signup-module.signup-beneficiary-page.button-text-processing-done' | translate }}
     </ion-button>
   </ion-toolbar>

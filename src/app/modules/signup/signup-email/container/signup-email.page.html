@@ -5,10 +5,13 @@
       <span class="white-meed-logo"></span>
     </div>
     <div class="signup-email-screen-pagecontent">
-      <div class="title">{{ 'signup-module.signup-email-page.title' | translate }}</div>
+      <div class="title" id="signup-email-page-header-title-text">
+        {{ 'signup-module.signup-email-page.title' | translate }}
+      </div>
       <form [formGroup]="signupEmailForm" novalidate>
         <ion-input
           class="blue-input ion-text-left"
+          id="signup-email-page-email-input"
           formControlName="email"
           placeholder="{{ 'signup-module.signup-email-page.email-placeholder' | translate }}"
           type="text"
@@ -19,6 +22,7 @@
           [disabled]="signupEmailForm.invalid"
           (click)="continueSignup(signupEmailForm.value)"
           class="blue-button"
+          id="signup-email-page-continue-btn"
           expand="block"
         >
           {{ 'signup-module.signup-email-page.button-continue' | translate }}

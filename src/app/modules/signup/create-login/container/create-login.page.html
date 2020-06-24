@@ -1,10 +1,12 @@
 <ion-content class="safe-area-content">
   <!-- safe area adding -->
   <div class="content-wrapper">
-    <div class="step-counter">
+    <div class="step-counter" id="create-login-page-step-counter">
       <step-counter [step]="'signup-module.create-login-page.step-text'" [stepNo]="1"></step-counter>
     </div>
-    <div class="header-title">{{ 'signup-module.create-login-page.page-title' | translate }}</div>
+    <div class="header-title" id="create-login-page-header-title-text">
+      {{ 'signup-module.create-login-page.page-title' | translate }}
+    </div>
   </div>
   <div class="loginForm-wrapper">
     <form [formGroup]="createLoginForm">
@@ -14,6 +16,7 @@
           <ion-input
             id="username"
             class="white-input"
+            id="create-login-page-username-text"
             type="text"
             formControlName="username"
             placeholder="{{ 'signup-module.create-login-page.login-form.username' | translate }}"
@@ -23,7 +26,7 @@
             <img src="assets/svg/question-mark.svg" />
           </div>
         </div>
-        <div class="validation-tags">
+        <div class="validation-tags" id="create-login-page-username-validation-tags">
           <div class="tags-row">
             <span
               [ngClass]="
@@ -50,18 +53,18 @@
         <div class="field-title">{{ 'signup-module.create-login-page.password-label' | translate }}</div>
         <div class="right-content-input">
           <ion-input
-            id="password"
             class="white-input"
+            id="create-login-page-password-input"
             clearOnEdit="false"
             [type]="isPasswordVisible ? 'text' : 'password'"
             formControlName="password"
             placeholder="{{ 'signup-module.create-login-page.login-form.password' | translate }}"
           ></ion-input>
-          <div class="right-content" (click)="showPassword()">
+          <div class="right-content" (click)="showPassword()" id="create-login-page-password-show-btn">
             <p>{{ isPasswordVisible ? 'hide' : 'show' }}</p>
           </div>
         </div>
-        <div class="validation-tags">
+        <div class="validation-tags" id="create-login-page-password-validation-tags">
           <div class="tags-row">
             <span
               [ngClass]="
@@ -117,7 +120,7 @@
         <div class="field-title">{{ 'signup-module.create-login-page.repeat-password-label' | translate }}</div>
         <div class="right-content-input">
           <ion-input
-            id="repeatPassword"
+            id="create-login-page-repeat-password-input"
             class="white-input"
             clearOnEdit="false"
             [type]="isRepeatPasswordVisible ? 'text' : 'password'"
@@ -149,6 +152,7 @@
   <ion-toolbar>
     <ion-button
       class="white-button"
+      id="create-login-page-continue-btn"
       expand="block"
       (click)="continue()"
       [disabled]="createLoginForm.invalid || !isPasswordMatch()"

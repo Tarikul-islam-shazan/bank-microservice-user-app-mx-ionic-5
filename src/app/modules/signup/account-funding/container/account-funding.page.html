@@ -1,34 +1,66 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ 'signup-module.account-funding-page.header-title' | translate }}</ion-title>
+    <ion-title id="account-funding-page-header-title-text"
+      >{{ 'signup-module.account-funding-page.header-title' | translate }}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="content-wrapper">
-    <div *ngIf="facade.isLoginActive" class="content-info">
+    <div *ngIf="facade.isLoginActive" class="content-info" id="account-funding-page-content-info-text">
       {{ 'signup-module.account-funding-page.content-info' | translate }}
     </div>
-    <div class="content-title">{{ 'signup-module.account-funding-page.page-title' | translate }}</div>
+    <div class="content-title" id="account-funding-page-content-title-text">
+      {{ 'signup-module.account-funding-page.page-title' | translate }}
+    </div>
     <ion-list lines="none">
       <ion-radio-group [(ngModel)]="facade.fundingType">
         <ion-item>
-          <ion-radio slot="start" [value]="facade.type.SPEI" mode="md"></ion-radio>
+          <ion-radio
+            slot="start"
+            [value]="facade.type.SPEI"
+            mode="md"
+            id="account-funding-page-SPEI-radio-input"
+          ></ion-radio>
           <div class="radio-content">
-            <div class="radio-title">{{ 'signup-module.account-funding-page.spei-title' | translate }}</div>
-            <div class="radio-subtitle">{{ 'signup-module.account-funding-page.spei-subtitle' | translate }}</div>
+            <div class="radio-title" id="account-funding-page-SPEI-radio-title-text">
+              {{ 'signup-module.account-funding-page.spei-title' | translate }}
+            </div>
+            <div class="radio-subtitle" id="account-funding-page-SPEI-radio-subtitle-text">
+              {{ 'signup-module.account-funding-page.spei-subtitle' | translate }}
+            </div>
           </div>
-          <div class="ques-mark" slot="end" (click)="facade.openSPEIModal()">
+          <div
+            class="ques-mark"
+            slot="end"
+            (click)="facade.openSPEIModal()"
+            id="account-funding-page-SPEI-ques-mark-btn"
+          >
             <img src="assets/svg/question-mark.svg" />
           </div>
         </ion-item>
         <ion-item>
-          <ion-radio slot="start" [value]="facade.type.OXXO" mode="md"></ion-radio>
+          <ion-radio
+            slot="start"
+            [value]="facade.type.OXXO"
+            mode="md"
+            id="account-funding-page-oxxo-radio-btn"
+          ></ion-radio>
           <div class="radio-content">
-            <div class="radio-title">{{ 'signup-module.account-funding-page.oxxo-title' | translate }}</div>
-            <div class="radio-subtitle">{{ 'signup-module.account-funding-page.oxxo-subtitle' | translate }}</div>
+            <div class="radio-title" id="account-funding-page-oxxo-radio-title-text">
+              {{ 'signup-module.account-funding-page.oxxo-title' | translate }}
+            </div>
+            <div class="radio-subtitle" id="account-funding-page-oxxo-radio-subtitle-text">
+              {{ 'signup-module.account-funding-page.oxxo-subtitle' | translate }}
+            </div>
           </div>
-          <div class="ques-mark" slot="end" (click)="facade.openOXXOModal()">
+          <div
+            class="ques-mark"
+            id="account-funding-page-oxxo-ques-mark-btn"
+            slot="end"
+            (click)="facade.openOXXOModal()"
+          >
             <img src="assets/svg/question-mark.svg" />
           </div>
         </ion-item>
@@ -38,10 +70,16 @@
 </ion-content>
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ion-button (click)="facade.goToNext()" class="white-button" expand="block">
+    <ion-button (click)="facade.goToNext()" class="white-button" expand="block" id="account-funding-page-next-btn">
       {{ 'signup-module.account-funding-page.button-text' | translate }}
     </ion-button>
-    <ion-button *ngIf="facade.isLoginActive" (click)="facade.goToLogin()" class="grey-outline-button" expand="block">
+    <ion-button
+      *ngIf="facade.isLoginActive"
+      (click)="facade.goToLogin()"
+      class="grey-outline-button"
+      id="account-funding-page-login-btn"
+      expand="block"
+    >
       {{ 'signup-module.account-funding-page.logout-button-text' | translate }}
     </ion-button>
   </ion-toolbar>

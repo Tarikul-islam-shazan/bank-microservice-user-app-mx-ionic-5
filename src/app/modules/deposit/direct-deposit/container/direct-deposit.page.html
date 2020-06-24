@@ -3,8 +3,15 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title class="header-text" color="light">{{ 'deposit.direct-deposit.header' | translate }}</ion-title>
-    <div slot="end" class="icon-white-ques-mark" (click)="facade.openInfoModal()"></div>
+    <ion-title class="header-text" id="direct-deposit-page-header-title-text" color="light"
+      >{{ 'deposit.direct-deposit.header' | translate }}</ion-title
+    >
+    <div
+      slot="end"
+      class="icon-white-ques-mark"
+      id="direct-deposit-page-ques-mark-icon"
+      (click)="facade.openInfoModal()"
+    ></div>
   </ion-toolbar>
 </ion-header>
 
@@ -12,10 +19,10 @@
   <div class="content-wrapper">
     <div class="deposit-content">
       <div class="deposit-info">
-        <div id="title">
+        <div id="direct-deposit-page-title-text">
           <p>{{ 'deposit.direct-deposit.title-text' | translate }}</p>
         </div>
-        <div id="description">
+        <div id="direct-deposit-page-subtitle-text">
           <p>
             {{ 'deposit.direct-deposit.subtitle-text' | translate }}
           </p>
@@ -26,7 +33,7 @@
           <ion-input
             class="white-input"
             #business
-            id="businessName"
+            id="direct-deposit-page-business-name-input"
             type="text"
             formControlName="businessName"
             hide-keyboard
@@ -37,9 +44,9 @@
       </div>
       <div class="terms-block">
         <div class="checkbox-wrapper">
-          <ion-checkbox mode="md" [(ngModel)]="isChecked"></ion-checkbox>
+          <ion-checkbox mode="md" [(ngModel)]="isChecked" id="direct-deposit-page-terms-radio-input"></ion-checkbox>
         </div>
-        <div class="check-box-text">
+        <div class="check-box-text" id="direct-deposit-page-terms-text">
           <span>
             {{ 'deposit.direct-deposit.checkbox-text' | translate }}
           </span>
@@ -53,6 +60,7 @@
   <ion-toolbar>
     <ion-button
       class="white-button"
+      id="direct-deposit-page-email-deposit-btn"
       expand="block"
       [disabled]="depositForm.invalid || !isChecked"
       (click)="emailDepositForm()"
