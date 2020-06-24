@@ -78,7 +78,10 @@ export class StaticDataService {
         const subData = { ...rest };
         // we do not know what's the sub data object key but key will be string
         const subDataKey = (Object.keys(subData) as unknown) as string;
-        const subDataMapping = this.mappingData(subData[subDataKey]);
+        let subDataMapping = subData[subDataKey];
+        if (Array.isArray(subData[subDataKey])) {
+          subDataMapping = this.mappingData(subData[subDataKey]);
+        }
         staticDataformat.push({
           value,
           text,
@@ -102,7 +105,7 @@ export class StaticDataService {
     const bank = this.member.bank;
     return this.http
       .get<any>(`${this.baseUrl}/static-data`, {
-        params: { bank, category: StaticDataCategory.Conatcts, subCategory: StaticData.Support }
+        params: { bank, category: StaticDataCategory.Contacts, subCategory: StaticData.Support }
       })
       .pipe(
         map((staticData: ISupportStaticData[]) => {

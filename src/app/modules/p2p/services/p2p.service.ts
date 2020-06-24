@@ -21,4 +21,9 @@ export class P2PService {
     const url = this.baseUrl + '/meed/members/verify';
     return this.http.post<string[]>(url, email);
   }
+
+  addOtherDomesticContact(contact): Observable<void> {
+    const url = this.baseUrl + '/contacts';
+    return this.http.post<void>(url, contact, { headers: this.headerService.getMemberICustomerIdHeader() });
+  }
 }

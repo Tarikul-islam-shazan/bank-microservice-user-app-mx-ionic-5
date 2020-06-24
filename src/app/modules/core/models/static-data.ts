@@ -5,7 +5,8 @@ export enum StaticDataCategory {
   GovtDisclosure = 'govtDisclosure',
   IdentityConfirmation = 'identityConfirmation',
   TransferFrequency = 'transferFrequency',
-  Conatcts = 'contacts'
+  Contacts = 'contacts',
+  Banks = 'bankList'
 }
 
 export enum StaticData {
