@@ -1861,7 +1861,8 @@
       "request-title": "Requests from Payees",
       "my-payee-title": "My Payees",
       "edit-delete-title": "EDIT/DELETE",
-      "next-button-title": "Next"
+      "next-button-title": "Next",
+      "no-result-fond-text": "No match found. You can still send money hit next register your friend"
     },
     "registration-type-page": {
       "page-title": "Send Money",
@@ -1870,11 +1871,14 @@
       "meed-account-title": "Meed Member Account",
       "invex-account-title": "Invex Account",
       "bank-account-title": "Others Domestic Bank Account",
-      "continue-button-title": "Continue"
+      "continue-button-title": "Continue",
+      "meed-registration-success-title": "Thanks for Registering!",
+      "meed-registration-success-description": "The clock starts now! You can send the moolah anytime after 30 minutes have elapsed",
+      "done-button-text": "Done"
     },
     "invex-payee-registration-page": {
       "page-title": "Send Money",
-      "content-title": "New Payee Registratio",
+      "content-title": "New Payee Registration",
       "payee-alias-placeholder": "Payee Alias",
       "identifier-placeholder": "Payee Identifier",
       "form": {

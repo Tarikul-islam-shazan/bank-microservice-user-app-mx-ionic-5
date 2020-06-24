@@ -80,3 +80,12 @@ export interface IOtherContact {
   phone?: string;
   rfc?: string;
 }
+
+export interface IInvexContact {
+  alias: string;
+  contactType: ContactType;
+  identityType: string;
+  identityNumber: string;
+  email?: string;
+  phone?: string;
+}

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ContactType } from '@app/p2p/models';
-import { Router } from '@angular/router';
+import { PayeeRegistrationTypeFacade } from '../facade';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'mbc-payee-registration-type',
@@ -8,22 +9,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./payee-registration-type.page.scss']
 })
 export class PayeeRegistrationTypePage implements OnInit {
-  payeeType = 'meed';
+  payeeTo: string;
+  payeeType: string;
   payeeTypes = ContactType;
-  constructor(private router: Router) {}
+  isMeedMember = false;
+  constructor(private route: ActivatedRoute, private facade: PayeeRegistrationTypeFacade) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.getPayeeTo();
+  }
+
+  getPayeeTo() {
+    this.route.paramMap.subscribe(params => {
+      this.payeeTo = params.get('to');
+      const isEmail = this.facade.isEmail(this.payeeTo);
+      if (isEmail) {
+        this.facade.verifyMeedMember(this.payeeTo).subscribe(resp => {
+          if (resp.length > 0) {
+            this.isMeedMember = true;
+            this.payeeType = ContactType.Meed;
+          }
+        });
+      }
+    });
+  }
 
   continue() {
-    switch (this.payeeType) {
-      case this.payeeTypes.Meed:
-        break;
-      case this.payeeTypes.Invex:
-        this.router.navigateByUrl('/p2p/invex-payee-registration');
-        break;
-      case this.payeeTypes.Other:
-        this.router.navigateByUrl('/p2p/other-bank-payee-registration');
-        break;
-    }
+    this.facade.continue({ payeeTo: this.payeeTo, payeeType: this.payeeType });
   }
 }
