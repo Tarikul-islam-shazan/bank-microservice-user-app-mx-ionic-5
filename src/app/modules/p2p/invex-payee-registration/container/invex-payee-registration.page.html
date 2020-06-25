@@ -18,11 +18,10 @@
           placeholder="{{'p2p-module.invex-payee-registration-page.payee-alias-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
-      <ion-item class="ion-no-padding">
+      <ion-item class="ion-no-padding" (click)="openIdentifierModal()">
         <ion-input
           formControlName="identityName"
           readonly
-          (click)="openIdentifierModal()"
           class="ion-margin-start"
           placeholder="{{'p2p-module.invex-payee-registration-page.identifier-placeholder' | translate}}"
         ></ion-input>

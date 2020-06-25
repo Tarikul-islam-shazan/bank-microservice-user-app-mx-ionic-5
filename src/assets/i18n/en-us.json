@@ -1912,7 +1912,7 @@
         "first-name-placeholder": "First Name",
         "second-name-placeholder": "Second Name (Optional)",
         "paternal-last-name-placeholder": "Paternal Last Name",
-        "maternal-last-name-placeholder": "Maternal Name (Optional)",
+        "maternal-last-name-placeholder": "Maternal Last Name (Optional)",
         "rfc-placeholder": "RFC (Optional)"
       },
       "next-button-title": "Next"

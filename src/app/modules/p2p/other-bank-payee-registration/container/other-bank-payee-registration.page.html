@@ -19,10 +19,9 @@
           placeholder="{{'p2p-module.other-payee-registration-page.payee-alias-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
-      <ion-item class="ion-no-padding">
+      <ion-item class="ion-no-padding" (click)="openIdentifierModal()">
         <ion-input
           formControlName="identityTypeName"
-          (click)="openIdentifierModal()"
           readonly
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.identifier-placeholder' | translate}}"
@@ -41,9 +40,8 @@
         ></ion-input>
       </ion-item>
 
-      <ion-item class="ion-no-padding">
+      <ion-item class="ion-no-padding" (click)="openBankListModal()">
         <ion-input
-          (click)="openBankListModal()"
           formControlName="bankName"
           readonly
           class="ion-margin-start"
@@ -80,9 +78,8 @@
         ></ion-input>
       </ion-item>
 
-      <ion-item class="ion-no-padding">
+      <ion-item class="ion-no-padding" (click)="openBankListModal()">
         <ion-input
-          (click)="openBankListModal()"
           formControlName="bankName"
           readonly
           class="ion-margin-start"
@@ -151,9 +148,8 @@
         ></ion-input>
       </ion-item>
 
-      <ion-item class="ion-no-padding">
+      <ion-item class="ion-no-padding" (click)="openBankListModal()">
         <ion-input
-          (click)="openBankListModal()"
           formControlName="bankName"
           readonly
           class="ion-margin-start"
