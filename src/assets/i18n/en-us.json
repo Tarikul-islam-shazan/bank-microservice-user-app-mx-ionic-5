@@ -1874,7 +1874,7 @@
       "my-payee-title": "My Payees",
       "edit-delete-title": "EDIT/DELETE",
       "next-button-title": "Next",
-      "no-result-fond-text": "No match found. You can still send money hit next register your friend"
+      "no-result-found-text": "No match found. You can still send money hit next register your friend"
     },
     "registration-type-page": {
       "page-title": "Send Money",
