@@ -18,6 +18,7 @@ export enum InputFormatType {
   ONLY_ONE_WORD = 'ONLY_ONE_WORD',
   PHONE_MASK = 'PHONE_MASK',
   EMAIL_VERIFICATION = 'EMAIL_VERIFICATION',
+  EMAIL_ADDRESS_FORMAT = 'EMAIL_ADDRESS_FORMAT',
   ONLY_NUMBER = 'ONLY_NUMBER',
   ALPHA_NUMERIC = 'ALPHA_NUMERIC'
 }
@@ -43,6 +44,9 @@ export class MaskInputDirective {
         break;
       case InputFormatType.EMAIL_VERIFICATION:
         this.inputField.value = this.emailVerificationMask(this.inputField.value);
+        break;
+      case InputFormatType.EMAIL_ADDRESS_FORMAT:
+        this.inputField.value = this.formatEmailAddress(this.inputField.value);
         break;
       case InputFormatType.ONLY_NUMBER:
         this.inputField.value = this.onlyNumber(this.inputField.value, this.inputItem.maxLength);
@@ -158,6 +162,11 @@ export class MaskInputDirective {
   emailVerificationMask(word): string {
     word = word.replace(REG_EX_PATTERNS.ONLY_NUMBER, '');
     return word;
+  }
+
+  formatEmailAddress(emailAddress): string {
+    emailAddress = emailAddress.toLowerCase();
+    return emailAddress.replace(REG_EX_PATTERNS.WHITE_SPACE, '');
   }
 
   onlyNumber(word, inputMaxLength = null): string {
