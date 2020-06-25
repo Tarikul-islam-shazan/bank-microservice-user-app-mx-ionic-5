@@ -46,6 +46,6 @@ export class ForgotUsernamePage implements OnInit {
   }
 
   continue() {
-    this.facade.forgotUsername(this.usernameForm.value.email.toLowerCase());
+    this.facade.forgotUsername(this.usernameForm.value.email);
   }
 }
