@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ForgotUsernameFacade } from '../facade';
 import { REG_EX_PATTERNS } from '@app/core';
+import { IinputOption, InputFormatType } from '@app/shared/directives/mask-input.directive';
 
 @Component({
   selector: 'mbc-forgot-username',
@@ -11,8 +12,13 @@ import { REG_EX_PATTERNS } from '@app/core';
 export class ForgotUsernamePage implements OnInit {
   usernameForm: FormGroup;
   regExPattern = null;
+  emailFormatMask: IinputOption; // input directive property for Email
+
   constructor(private formBuilder: FormBuilder, private facade: ForgotUsernameFacade) {
     this.regExPattern = REG_EX_PATTERNS;
+    this.emailFormatMask = {
+      type: InputFormatType.EMAIL_ADDRESS_FORMAT
+    };
   }
 
   ngOnInit() {
@@ -40,6 +46,6 @@ export class ForgotUsernamePage implements OnInit {
   }
 
   continue() {
-    this.facade.forgotUsername(this.usernameForm.value.email.toLowerCase());
+    this.facade.forgotUsername(this.usernameForm.value.email);
   }
 }
