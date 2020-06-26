@@ -42,10 +42,10 @@
       "input-label-username": "Indica tu nombre de usuario",
       "security-question-title": "Responde a estas preguntas de seguridad para recuperar tu contraseña",
       "security-question-dob": "What is your birth date?",
-      "security-question-rfs": "What is your RFC?",
+      "security-question-debit-card-no": "¿Cuál es su número de tarjeta de débito?",
       "form-input-placeholders": {
         "date": "MM / DD / YYYY",
-        "debit-card-number": "XXXXXXXXXX"
+        "debit-card-number": "XXXX-XXXX-XXXX-XXXX"
       },
       "button-name": "Continue",
       "success-modal": {
