@@ -97,6 +97,13 @@ export class MoreFacade {
         {
           details: ['more-module.biometric-modal-alert-message']
         }
+      ],
+      actionButtons: [
+        {
+          text: 'more-module.biometric-modal-alert-btn-cancel',
+          cssClass: 'grey-outline-button',
+          handler: () => this.modalService.close()
+        }
       ]
     };
     this.modalService.openInfoModalComponent({ componentProps });

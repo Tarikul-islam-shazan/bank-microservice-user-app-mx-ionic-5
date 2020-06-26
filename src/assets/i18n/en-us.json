@@ -982,6 +982,7 @@
       }
     },
     "biometric-modal-alert-message": "You need to login again with the biometric box checked.",
+    "biometric-modal-alert-btn-cancel": "Cancel",
     "logout-modal-confirmation-details": "Are you sure you want to Logout?",
     "logout-modal-yes-button": "YES",
     "logout-modal-no-button": "NO"

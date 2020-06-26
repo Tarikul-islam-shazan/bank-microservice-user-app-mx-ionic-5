@@ -973,6 +973,7 @@
       }
     },
     "biometric-modal-alert-message": "Debes volver a iniciar sesión con la casilla biométrica comprobada.",
+    "biometric-modal-alert-btn-cancel": "Cancelar",
     "logout-modal-confirmation-details": "¿Estás seguro de que deseas cerrar sesión?",
     "logout-modal-yes-button": "Sí",
     "logout-modal-no-button": "No"
