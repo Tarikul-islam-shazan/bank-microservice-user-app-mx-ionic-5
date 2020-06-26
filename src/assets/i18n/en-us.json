@@ -441,7 +441,7 @@
         "street-name": "Street Name",
         "outdoor-number": "Outdoor Number",
         "interior-number": "Interior Number (Optional)",
-        "post-code": "Post Code",
+        "postal-code": "Postal Code",
         "city": "City",
         "state": "State",
         "municipality": "Municipality",
@@ -553,7 +553,7 @@
       "beneficiary-form": {
         "first-name": "First Name",
         "second-name": "Second Name (optional)",
-        "parental-name": "Parental Last Name",
+        "paternal-name": "Paternal Last Name",
         "maternal-last-name": "Maternal Last Name (optional)",
         "dob": "Date of birth",
         "relationship": "Relationship",
