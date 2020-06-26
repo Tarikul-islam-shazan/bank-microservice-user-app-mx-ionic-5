@@ -1130,7 +1130,7 @@
       "country-unavailable-modal-description": "Unfortunately we're only live in the US at the moment. Follow us on social media to be the first to hear about our roll-out plans",
       "country-unavailable-modal-button-text": "Aceptar"
     },
-    "code-1203": "Username or Password is not correct",
+    "code-1203": "Username or Password is incorrect",
     "code-1204": "Language not supported",
     "code-1205": "El correo electrónico o el código introducido no pertenecen a un usuario de Meed existente. Comprueba si lo escribiste correctamente o prueba el correo electrónico/código de otro invitado.",
     "code-1501": "Authentication token missing",
