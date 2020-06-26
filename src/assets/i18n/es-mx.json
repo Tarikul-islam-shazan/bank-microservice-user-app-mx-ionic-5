@@ -910,7 +910,7 @@
       "name-or-nickname": "Nombre o apodo",
       "street-address": "DIRECCIÓN",
       "email": "Correo electrónico",
-      "phone": "teléfono",
+      "phone": "Número de teléfono móvil",
       "change-name-info-modal": {
         "title": "Name Change",
         "message": "To change your name, please contact Customer Service at {{contactNumber}}."

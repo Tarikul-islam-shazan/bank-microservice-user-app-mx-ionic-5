@@ -919,7 +919,7 @@
       "name-or-nickname": "Name or Nickname",
       "street-address": "Street Address",
       "email": "Email",
-      "phone": "Phone",
+      "phone": "Mobile Number",
       "change-name-info-modal": {
         "title": "Name Change",
         "message": "To change your name, please contact Customer Service at {{contactNumber}}."

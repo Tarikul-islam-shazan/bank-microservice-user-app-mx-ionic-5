@@ -96,6 +96,14 @@ export class PersonalDetailsFacade {
     return conatcts && this.bankIdentifier ? conatcts[this.bankIdentifier] : '';
   }
 
+  /**
+   * Ticket: MM2-463
+   * Date: June 26, 2020
+   * Developer: Kausar <md.kausar@brainstation23.com>
+   * @summary A function to show change name info as half modal;
+   * @returns {Promise<void>}
+   * @memberof PersonalDetailsFacade
+   */
   async showEditFullNameInfoModal(): Promise<void> {
     const contactNumber = this.bankContactNumber;
     const modalComponentContent: IMeedModalComponentProps = {
@@ -110,5 +118,28 @@ export class PersonalDetailsFacade {
       }
     };
     await this.modalService.openInfoModalComponent(modalComponentContent);
+  }
+
+  /**
+   * Ticket: MM2-463
+   * Date: June 26, 2020
+   * Developer: Kausar <md.kausar@brainstation23.com>
+   * @summary A function to convert a pattern phone number
+   * @param {string} mobilePhone
+   * @returns {string}
+   * @memberof PersonalDetailsFacade
+   *
+   */
+  getFormatedMobilePhoneNumber(mobilePhone: string): string {
+    if (!mobilePhone) {
+      return '';
+    }
+    const cleaned = mobilePhone.replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      const intlCode = match[1] ? '+1' : '';
+      return `${intlCode}-${match[1]}-${match[2]}-${match[3]}`;
+    }
+    return mobilePhone;
   }
 }
