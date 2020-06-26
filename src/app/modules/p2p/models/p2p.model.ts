@@ -62,7 +62,7 @@ export const otherBankPayeeIdentifiers: DropdownOption[] = [
     value: IdentityType.DebitCard
   },
   {
-    text: 'Mobile Phone',
+    text: 'Mobile Number',
     value: IdentityType.Mobile
   }
 ];
