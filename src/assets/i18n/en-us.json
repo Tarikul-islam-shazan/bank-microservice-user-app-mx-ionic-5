@@ -736,7 +736,7 @@
     "account-info-page": {
       "header-title": "Account Details",
       "account-number": "Account Number",
-      "bank-routing-number": "Bank Routing Number",
+      "bank-routing-number": "Bank Clabe",
       "inviter-email": "Inviter's Email",
       "member-since": "Member Since",
       "disclaimer-text": "This is your personal account information. Please use caution when sharing."
