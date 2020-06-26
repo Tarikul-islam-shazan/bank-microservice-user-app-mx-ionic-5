@@ -11,7 +11,7 @@
   <ion-list class="list-wrapper">
     <div *ngFor="let language of changeLanguageFacade.availableLanguage">
       <ion-item (click)="changeLanguageFacade.updateLanguage(language)">
-        <div class="clearfix" style="padding: 20px 0;" (click)="navigateToPage('settings/version-info')">
+        <div class="clearfix" style="padding: 20px 0;">
           <div class="clearfix item-wrapper">
             <div class="clearfix">
               <span class="list-title">{{ language.name | translate }}</span>
