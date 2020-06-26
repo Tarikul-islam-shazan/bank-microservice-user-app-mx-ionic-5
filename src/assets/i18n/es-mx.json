@@ -911,6 +911,10 @@
       "street-address": "DIRECCIÓN",
       "email": "Correo electrónico",
       "phone": "teléfono",
+      "change-name-info-modal": {
+        "title": "Name Change",
+        "message": "To change your name, please contact Customer Service at {{contactNumber}}."
+      },
       "change-nick-name-modal": {
         "header-title": "Cambia el alias o apodo",
         "nick-name-text": "Nombre o apodo",

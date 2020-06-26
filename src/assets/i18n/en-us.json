@@ -920,6 +920,10 @@
       "street-address": "Street Address",
       "email": "Email",
       "phone": "Phone",
+      "change-name-info-modal": {
+        "title": "Name Change",
+        "message": "To change your name, please contact Customer Service at {{contactNumber}}."
+      },
       "change-nick-name-modal": {
         "header-title": "Change nickname",
         "nick-name-text": "Name or Nickname",
