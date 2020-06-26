@@ -1139,7 +1139,7 @@
       "country-unavailable-modal-description": "Unfortunately we're only live in Mexico at the moment. Follow us on social media to be the first to hear about our roll-out plans",
       "country-unavailable-modal-button-text": "OK"
     },
-    "code-1203": "Username or Password is not correct",
+    "code-1203": "Username or Password is incorrect",
     "code-1204": "Language not supported",
     "code-1205": "The email or code entered does not belong to an existing Meed user. Please check the spelling or try another inviter's email/code.",
     "code-1501": "Authentication token missing",
