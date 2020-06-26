@@ -902,7 +902,7 @@
     "personal-details": {
       "header-title": "Detalles personales",
       "btn-edit": "Editar",
-      "full-name": "Nombre",
+      "full-name": "Nombre completo",
       "first-name": "First Name",
       "second-name": "Second Name",
       "paternal-last-name": "Paternal Last Name",

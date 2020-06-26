@@ -911,7 +911,7 @@
     "personal-details": {
       "header-title": "Personal Details",
       "btn-edit": "Edit",
-      "full-name": "Name",
+      "full-name": "Full Name",
       "first-name": "First Name",
       "second-name": "Second Name",
       "paternal-last-name": "Paternal Last Name",
