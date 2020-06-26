@@ -19,6 +19,9 @@
             {{customer.firstName?customer.firstName+' ':''}} {{customer.maternalLastName?customer.maternalLastName+'
             ':''}} {{customer.paternalLastName?customer.paternalLastName+' ':''}}
           </ion-label>
+          <ion-button fill="clear" slot="end" class="ion-text-uppercase" (click)="facade.showEditFullNameInfoModal()">
+            {{'more-module.personal-details.btn-edit' | translate}}</ion-button
+          >
         </ion-item>
       </div>
     </ion-item>
@@ -87,7 +90,7 @@
           <ion-item class="ion-no-padding" lines="none">
             <img class="img-icon-mobile" />
             <ion-label class="details-info ion-text-wrap">
-              {{customer.mobilePhone}}
+              {{facade.getFormatedMobilePhoneNumber(customer.mobilePhone)}}
             </ion-label>
             <ion-button fill="clear" slot="end" class="ion-text-uppercase" (click)="openModal('mobile')">
               {{'more-module.personal-details.btn-edit' | translate}}</ion-button

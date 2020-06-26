@@ -902,7 +902,7 @@
     "personal-details": {
       "header-title": "Detalles personales",
       "btn-edit": "Editar",
-      "full-name": "Nombre",
+      "full-name": "Nombre completo",
       "first-name": "First Name",
       "second-name": "Second Name",
       "paternal-last-name": "Paternal Last Name",
@@ -910,28 +910,10 @@
       "name-or-nickname": "Nombre o apodo",
       "street-address": "DIRECCIÓN",
       "email": "Correo electrónico",
-      "phone": "teléfono",
-      "change-full-name-modal": {
-        "header-title": "Cambiar nombre",
-        "first-name": "Nombre",
-        "middle-name": "Segundo nombre",
-        "last-name": "Apellido",
-        "reason-placeholder": "Elegir motivos",
-        "reason-for-name-change": "Lý do đổi tên",
-        "valid-doc-need-message": "Necesitarás una identificación o un pasaporte válidos {{documentName}} ",
-        "next-btn": "Siguiente",
-        "reasons-list": {
-          "misspell": "Hay un error de escritura del nombre legal en tu cuenta",
-          "misspell-document": "Certificado de nacimiento",
-          "marriage": "Matrimonio",
-          "marriage-document": "Certificado de matrimonio",
-          "divoce": "Divorcio",
-          "divoce-document": "Decreto de divorcio",
-          "court": "Orden judicial",
-          "court-document": "Orden judicial",
-          "adoption": "Adopción",
-          "adoption-document": "Certificado de adopción"
-        }
+      "phone": "Número de teléfono móvil",
+      "change-name-info-modal": {
+        "title": "Name Change",
+        "message": "To change your name, please contact Customer Service at {{contactNumber}}."
       },
       "change-nick-name-modal": {
         "header-title": "Cambia el alias o apodo",

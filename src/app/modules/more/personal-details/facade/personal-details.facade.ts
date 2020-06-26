@@ -2,19 +2,16 @@ import * as moment from 'moment';
 import { AnalyticsService, AnalyticsUserProperties } from '@app/analytics';
 import { ChangeAddressPage } from '../change-address/container/change-address.page';
 import { ChangeEmailPage } from '../change-email/container/change-email.page';
-import { ChangeNamePage } from '../change-name/container/change-name.page';
 import { ChangeNicknamePage } from '../change-nickname/container/change-nickname.page';
 import { ChangePhonePage } from '../change-phone/container/change-phone.page';
 import { CustomerService } from '@app/core/services/customer-service.service';
-import { ICustomer } from '@app/core';
+import { ICustomer, SettingsService } from '@app/core';
 import { Injectable, Type } from '@angular/core';
-import { ModalService } from '@app/shared';
+import { ModalService, IMeedModalComponentProps } from '@app/shared';
 import { Observable } from 'rxjs';
 import { PersonalDetailsState } from './personal-details.state';
 
-type PersonalDetailsEditModalType = Type<
-  ChangeNamePage | ChangeNicknamePage | ChangeAddressPage | ChangeEmailPage | ChangePhonePage
->;
+type PersonalDetailsEditModalType = Type<ChangeNicknamePage | ChangeAddressPage | ChangeEmailPage | ChangePhonePage>;
 
 @Injectable()
 export class PersonalDetailsFacade {
@@ -24,7 +21,8 @@ export class PersonalDetailsFacade {
     private analyticsService: AnalyticsService,
     private customerService: CustomerService,
     private modalService: ModalService,
-    private state: PersonalDetailsState
+    private state: PersonalDetailsState,
+    private settingsService: SettingsService
   ) {}
 
   /**
@@ -66,8 +64,6 @@ export class PersonalDetailsFacade {
    */
   private getComponent(editFieldName: string): PersonalDetailsEditModalType {
     switch (editFieldName) {
-      case 'name':
-        return ChangeNamePage;
       case 'nickname':
         return ChangeNicknamePage;
       case 'address':
@@ -89,5 +85,61 @@ export class PersonalDetailsFacade {
   openEditModal(editFieldName: string): void {
     const componentClass = this.getComponent(editFieldName);
     this.modalService.openModal(componentClass);
+  }
+
+  get bankIdentifier(): string {
+    return this.settingsService.getSettings().userSettings.bankIdentifier;
+  }
+
+  get bankContactNumber(): string {
+    const conatcts = this.settingsService.getSettings().userSettings.contacts;
+    return conatcts && this.bankIdentifier ? conatcts[this.bankIdentifier] : '';
+  }
+
+  /**
+   * Ticket: MM2-463
+   * Date: June 26, 2020
+   * Developer: Kausar <md.kausar@brainstation23.com>
+   * @summary A function to show change name info as half modal;
+   * @returns {Promise<void>}
+   * @memberof PersonalDetailsFacade
+   */
+  async showEditFullNameInfoModal(): Promise<void> {
+    const contactNumber = this.bankContactNumber;
+    const modalComponentContent: IMeedModalComponentProps = {
+      componentProps: {
+        contents: [
+          {
+            title: 'more-module.personal-details.change-name-info-modal.title',
+            details: ['more-module.personal-details.change-name-info-modal.message'],
+            values: { contactNumber }
+          }
+        ]
+      }
+    };
+    await this.modalService.openInfoModalComponent(modalComponentContent);
+  }
+
+  /**
+   * Ticket: MM2-463
+   * Date: June 26, 2020
+   * Developer: Kausar <md.kausar@brainstation23.com>
+   * @summary A function to convert a pattern phone number
+   * @param {string} mobilePhone
+   * @returns {string}
+   * @memberof PersonalDetailsFacade
+   *
+   */
+  getFormatedMobilePhoneNumber(mobilePhone: string): string {
+    if (!mobilePhone) {
+      return '';
+    }
+    const cleaned = mobilePhone.replace(/\D/g, '');
+    const match = cleaned.match(/^(\d{3})(\d{3})(\d{4})$/);
+    if (match) {
+      const intlCode = match[1] ? '+1' : '';
+      return `${intlCode}-${match[1]}-${match[2]}-${match[3]}`;
+    }
+    return mobilePhone;
   }
 }

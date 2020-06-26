@@ -1,6 +1,5 @@
 import { ChangeAddressPageModule } from './change-address/change-address.module';
 import { ChangeEmailPageModule } from './change-email/change-email.module';
-import { ChangeNamePageModule } from './change-name/change-name.module';
 import { ChangeNicknamePageModule } from './change-nickname/change-nickname.module';
 import { ChangePhonePageModule } from './change-phone/change-phone.module';
 import { NgModule } from '@angular/core';
@@ -23,9 +22,7 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     ChangeNicknamePageModule,
     ChangeAddressPageModule,
-    ChangeNamePageModule,
     ChangeEmailPageModule,
-    ChangeNamePageModule,
     ChangePhonePageModule,
     OtpVerificationModalPageModule
   ],

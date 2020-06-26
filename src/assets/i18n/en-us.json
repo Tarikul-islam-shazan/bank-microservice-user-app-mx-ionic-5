@@ -911,7 +911,7 @@
     "personal-details": {
       "header-title": "Personal Details",
       "btn-edit": "Edit",
-      "full-name": "Name",
+      "full-name": "Full Name",
       "first-name": "First Name",
       "second-name": "Second Name",
       "paternal-last-name": "Paternal Last Name",
@@ -919,28 +919,10 @@
       "name-or-nickname": "Name or Nickname",
       "street-address": "Street Address",
       "email": "Email",
-      "phone": "Phone",
-      "change-full-name-modal": {
-        "header-title": "Change name",
-        "first-name": "First Name",
-        "middle-name": "Middle Name",
-        "last-name": "Last Name",
-        "reason-placeholder": "Choose Reasons",
-        "reason-for-name-change": "Reasons for name change ",
-        "valid-doc-need-message": "You will need a valid {{documentName}} ",
-        "next-btn": "Next",
-        "reasons-list": {
-          "misspell": "Legal name misspelling on your account",
-          "misspell-document": "Birth certificate",
-          "marriage": "Marriage",
-          "marriage-document": "Marriage certificate",
-          "divoce": "Divorce",
-          "divoce-document": "Divorce decree",
-          "court": "Legal court order",
-          "court-document": "Legal court order",
-          "adoption": "Adoption",
-          "adoption-document": "Adoption certificate"
-        }
+      "phone": "Mobile Number",
+      "change-name-info-modal": {
+        "title": "Name Change",
+        "message": "To change your name, please contact Customer Service at {{contactNumber}}."
       },
       "change-nick-name-modal": {
         "header-title": "Change nickname",
