@@ -1,36 +1,46 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    <ion-tab-button appSuppress="Home" tab="home">
+    <ion-tab-button appSuppress="Home" tab="home" id="dashboard-tabs-tab-home-btn">
       <div class="tab-icon">
         <span class="icon-home"></span>
       </div>
-      <ion-label>{{ 'dashboard-tabs.tab-home-text' | translate }}</ion-label>
+      <ion-label id="dashboard-tabs-tab-home-text">
+        {{ 'dashboard-tabs.tab-home-text' | translate }}
+      </ion-label>
     </ion-tab-button>
 
-    <ion-tab-button class="move-money" appSuppress="MoveMoney" tab="move-money">
+    <ion-tab-button class="move-money" appSuppress="MoveMoney" tab="move-money" id="dashboard-tabs-tab-move-money-btn">
       <div class="tab-icon">
         <span class="icon-move-money"></span>
       </div>
-      <ion-label>{{ 'dashboard-tabs.tab-move-money-text' | translate }}</ion-label>
+      <ion-label id="dashboard-tabs-tab-move-money-text">
+        {{ 'dashboard-tabs.tab-move-money-text' | translate }}
+      </ion-label>
     </ion-tab-button>
 
-    <ion-tab-button appSuppress="Rewards" tab="rewards">
+    <ion-tab-button appSuppress="Rewards" tab="rewards" id="dashboard-tabs-tab-rewards-btn">
       <div class="tab-icon">
         <span class="icon-rewards"></span>
       </div>
-      <ion-label>{{ 'dashboard-tabs.tab-rewards-text' | translate }}</ion-label>
+      <ion-label id="dashboard-tabs-tab-rewards-text">
+        {{ 'dashboard-tabs.tab-rewards-text' | translate }}
+      </ion-label>
     </ion-tab-button>
-    <ion-tab-button appSuppress="Invite" tab="invite">
+    <ion-tab-button appSuppress="Invite" tab="invite" id="dashboard-tabs-tab-invite-btn">
       <div class="tab-icon">
         <span class="icon-invite"></span>
       </div>
-      <ion-label>{{ 'dashboard-tabs.tab-invite-text' | translate }}</ion-label>
+      <ion-label id="dashboard-tabs-tab-invite-text">
+        {{ 'dashboard-tabs.tab-invite-text' | translate }}
+      </ion-label>
     </ion-tab-button>
-    <ion-tab-button tab="more">
+    <ion-tab-button tab="more" id="dashboard-tabs-tab-more-btn">
       <div class="tab-icon">
         <span class="icon-more"></span>
       </div>
-      <ion-label>{{ 'dashboard-tabs.tab-more-text' | translate }}</ion-label>
+      <ion-label id="dashboard-tabs-tab-more-text">
+        {{ 'dashboard-tabs.tab-more-text' | translate }}
+      </ion-label>
     </ion-tab-button>
   </ion-tab-bar>
 </ion-tabs>

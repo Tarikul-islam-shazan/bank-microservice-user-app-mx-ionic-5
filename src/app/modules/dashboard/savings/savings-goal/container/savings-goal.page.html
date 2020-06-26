@@ -1,7 +1,12 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <div slot="start" class="modal-close-button" (click)="savingGoalFacade.closeModal()"></div>
-    <ion-title translate
+    <div
+      slot="start"
+      class="modal-close-button"
+      id="savings-goal-page-modal-close-btn"
+      (click)="savingGoalFacade.closeModal()"
+    ></div>
+    <ion-title translate id="line-of-credit-page-search-icon"
       >{{ savingGoalFacade.savingsGoalState.isNew ? 'dashboard-module.savings-goal.new-header-text':
       'dashboard-module.savings-goal.edit-header-text'}}</ion-title
     >
@@ -12,10 +17,13 @@
     <div class="saving-goal-form">
       <ion-list lines="none" class="input-list">
         <div class="title-input-field">
-          <div class="field-title">{{ 'dashboard-module.savings-goal.goal-name-text' | translate }}</div>
+          <div class="field-title" id="savings-goal-page-goal-name-text">
+            {{ 'dashboard-module.savings-goal.goal-name-text' | translate }}
+          </div>
           <div class="right-content-input">
             <ion-input
               class="white-input"
+              id="savings-goal-page-goal-name-text-input"
               type="text"
               [(ngModel)]="savingGoalFacade.savingsGoalState.savingsGoal.name"
               placeholder="{{ 'dashboard-module.savings-goal.goal-name-text' | translate }}"
@@ -26,27 +34,41 @@
           <ion-grid class="ion-no-padding">
             <ion-row class="ion-no-padding">
               <ion-col size="6" class="ion-no-padding">
-                <div class="field-title upper-case-font">
+                <div class="field-title upper-case-font" id="savings-goal-page-monthly-amount-text">
                   {{ 'dashboard-module.savings-goal.monthly-amount-text' | translate }}
                 </div>
                 <ion-input
                   class="mask-input ion-no-padding"
+                  id="savings-goal-page-target-amount-input"
                   appInputDecimalMask
                   type="tel"
                   [(decModel)]="savingGoalFacade.savingsGoalState.savingsGoal.targetAmount"
                   (ionChange)="savingGoalFacade.updateAmount(0)"
                   placeholder="{{ '0.00' | negToPos }}"
                 ></ion-input>
-                <div *ngIf="savingGoalFacade.savingsGoalState.savingsGoal.targetAmount < 10" class="error" fixed>
+                <div
+                  *ngIf="savingGoalFacade.savingsGoalState.savingsGoal.targetAmount < 10"
+                  class="error"
+                  id="savings-goal-page-monthly-mininmum-target-text"
+                  fixed
+                >
                   {{ 'dashboard-module.savings-goal.monthly-mininmum-target-text' | translate }}
                 </div>
               </ion-col>
               <ion-col size="6" class="ion-no-padding">
                 <div class="button-group">
-                  <ion-button (click)="savingGoalFacade.updateAmount(2)" fill="clear">
+                  <ion-button
+                    (click)="savingGoalFacade.updateAmount(2)"
+                    id="savings-goal-page-update-amount-remove-btn"
+                    fill="clear"
+                  >
                     <ion-icon slot="icon-only" name="remove"></ion-icon>
                   </ion-button>
-                  <ion-button (click)="savingGoalFacade.updateAmount(1)" fill="clear">
+                  <ion-button
+                    (click)="savingGoalFacade.updateAmount(1)"
+                    id="savings-goal-page-update-amount-add-btn"
+                    fill="clear"
+                  >
                     <ion-icon slot="icon-only" name="add"></ion-icon>
                   </ion-button>
                 </div>
@@ -58,17 +80,25 @@
           <ion-grid class="ion-no-padding">
             <ion-row class="ion-no-padding">
               <ion-col size="6" class="ion-no-padding">
-                <div class="field-title upper-case-font">
+                <div class="field-title upper-case-font" id="savings-goal-page-years-of-savings-text">
                   {{ 'dashboard-module.savings-goal.years-of-savings-text' | translate }}
                 </div>
                 <ion-label class="mask-input">{{savingGoalFacade.savingsGoalState.savingsGoal.yearOfSaving}}</ion-label>
               </ion-col>
               <ion-col size="6" class="ion-no-padding">
                 <div class="button-group">
-                  <ion-button (click)="savingGoalFacade.updateYear(2)" fill="clear">
+                  <ion-button
+                    (click)="savingGoalFacade.updateYear(2)"
+                    id="savings-goal-page-update-year-remove-text"
+                    fill="clear"
+                  >
                     <ion-icon slot="icon-only" name="remove"></ion-icon>
                   </ion-button>
-                  <ion-button (click)="savingGoalFacade.updateYear(1)" fill="clear">
+                  <ion-button
+                    (click)="savingGoalFacade.updateYear(1)"
+                    id="savings-goal-page-update-year-add-text"
+                    fill="clear"
+                  >
                     <ion-icon slot="icon-only" name="add"></ion-icon>
                   </ion-button>
                 </div>
@@ -82,14 +112,20 @@
       <ion-grid class="ion-no-padding">
         <ion-row class="ion-no-padding">
           <ion-col size="6">
-            <div class="title ion-text-center">{{ savingGoalFacade.calculatePNR() | negToPos }}</div>
-            <div class="sub-title ion-text-center">
+            <div class="title ion-text-center" id="savings-goal-page-update-saving-goal-amount">
+              {{ savingGoalFacade.calculatePNR() | negToPos }}
+            </div>
+            <div class="sub-title ion-text-center" id="savings-goal-page-update-saving-goal-projected-value-text">
               {{ 'dashboard-module.savings-goal.projected-value-text' | translate }}
             </div>
           </ion-col>
           <ion-col size="6">
-            <div class="title ion-text-center">{{savingGoalFacade.getYear()}}</div>
-            <div class="sub-title ion-text-center">{{ 'dashboard-module.savings-goal.by-year-text' | translate }}</div>
+            <div class="title ion-text-center" id="savings-goal-page-update-saving-goal-year">
+              {{savingGoalFacade.getYear()}}
+            </div>
+            <div class="sub-title ion-text-center" id="savings-goal-page-update-saving-goal-by-year-text">
+              {{ 'dashboard-module.savings-goal.by-year-text' | translate }}
+            </div>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -101,6 +137,7 @@
     <ion-button
       *ngIf="savingGoalFacade.savingsGoalState.isNew"
       class="white-button"
+      id="savings-goal-page-update-add-saving-goal-btn"
       expand="block"
       [disabled]="savingGoalFacade.checkIsDisable()"
       (click)="savingGoalFacade.addSavingGoal()"
@@ -110,6 +147,7 @@
     <ion-button
       *ngIf="!savingGoalFacade.savingsGoalState.isNew"
       class="white-button"
+      id="savings-goal-page-update-edit-saving-goal-btn"
       [disabled]="savingGoalFacade.checkIsDisable()"
       (click)="savingGoalFacade.editSavingGoal()"
       expand="block"
@@ -119,6 +157,7 @@
     <ion-button
       *ngIf="!savingGoalFacade.savingsGoalState.isNew"
       class="grey-outline-button"
+      id="savings-goal-page-update-delete-saving-goal-btn"
       expand="block"
       (click)="savingGoalFacade.deleteSavingGoal()"
     >
