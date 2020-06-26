@@ -218,6 +218,51 @@
     }
   }
 }
+.login-help-action-sheet {
+  .action-sheet-group {
+    .action-sheet-title {
+      display: flex;
+      align-items: center;
+      height: 51px;
+      padding: 0 0 0 20px;
+      text-align: left;
+      color: #8c90a3;
+      font-family: 'Averta W05 Regular';
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1px;
+      line-height: 16px;
+      background-image: none;
+    }
+    .action-sheet-button {
+      background-color: #ebedf2;
+      border-bottom: 1px solid #ebedf2;
+      height: 60px;
+      letter-spacing: 0.2px;
+      .action-sheet-button-inner {
+        color: #435cdc;
+        font-family: 'Averta W05 Regular';
+        font-size: 16px;
+        font-weight: bold;
+        justify-content: center;
+        line-height: 24px;
+      }
+    }
+    .action-sheet-cancel {
+      height: 60px;
+      border: none;
+      .action-sheet-button-inner {
+        color: #435cdc;
+        font-family: 'Averta W05 Regular';
+        font-size: 16px;
+        font-weight: bold;
+        letter-spacing: 0.2px;
+        line-height: 16px;
+        justify-content: center;
+      }
+    }
+  }
+}
 /* safe area content add for notch issue */
 .safe-area-content {
   --padding-top: var(--ion-safe-area-top) !important;
