@@ -851,8 +851,8 @@
     },
     "change-language": {
       "header-title": "Cambiar idioma",
-      "english-text": "Inglesa",
-      "spanish-text": "Española"
+      "english-text": "English",
+      "spanish-text": "Español"
     },
     "contact-preference": {
       "header-title": "Preferencias de contacto",
