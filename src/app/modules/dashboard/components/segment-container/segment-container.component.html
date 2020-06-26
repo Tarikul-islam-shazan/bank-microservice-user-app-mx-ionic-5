@@ -4,6 +4,7 @@
       <div
         [ngClass]="{ active: eachSegment.reference === selectedItem }"
         class="segment-item-content"
+        id="segment-item-content-segment-name-{{ i }}"
         (click)="tapToSelect(i)"
         translate
       >

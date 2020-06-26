@@ -22,28 +22,29 @@
     <div class="payment-due-wrapper">
       <div class="payment-due-block">
         <div class="payment-due-content">
-          <div class="title">
+          <div class="title" id="line-of-credit-page-minimum-payment-due-text">
             {{ 'dashboard-module.loc-transaction-page.minimum-payment-due-text' | translate }}
           </div>
-          <div class="right-content">
+          <div class="right-content" id="line-of-credit-page-minimum-payment-due-amount">
             {{ (lineOfCreditFacade.lineOfCreditAccount$ | async).minimumPaymentDue | negToPos }}
           </div>
         </div>
         <div
           class="payment-due-date-content"
+          id="line-of-credit-page-minimum-payment-due-date"
           *ngIf="(lineOfCreditFacade.lineOfCreditAccount$ | async).minimumPaymentDue>0;else noPaymentDueDate"
         >
-          <div class="title">
+          <div class="title" id="line-of-credit-page-payment-due-date-text">
             {{ 'dashboard-module.loc-transaction-page.payment-due-date-text' | translate }}
           </div>
-          <div class="right-content">
+          <div class="right-content" id="line-of-credit-page-payment-due-date">
             {{ (lineOfCreditFacade.lineOfCreditAccount$ |
             async).paymentDueDate|date:('dashboard-module.loc-transaction-page.payment-due-date-format'|translate) }}
           </div>
         </div>
         <ng-template #noPaymentDueDate>
           <div class="no-payment-due-date-content">
-            <div class="title">
+            <div class="title" id="line-of-credit-page-no-payment-due-date-text">
               {{ 'dashboard-module.loc-transaction-page.no-payment-due-date-text' | translate }}
             </div>
           </div>
@@ -51,21 +52,31 @@
       </div>
     </div>
 
-    <ion-button expand="full" class="grey-outline-button" (click)="lineOfCreditFacade.makePayment()">
+    <ion-button
+      expand="full"
+      class="grey-outline-button"
+      id="line-of-credit-page-make-payment-text"
+      (click)="lineOfCreditFacade.makePayment()"
+    >
       {{ 'dashboard-module.loc-transaction-page.make-payment-text' | translate }}
     </ion-button>
 
     <div class="transaction-container pending-transaction-margin">
       <div>
-        <span class="transaction-title">
+        <span class="transaction-title" id="line-of-credit-page-pending-transaction-text">
           {{ 'dashboard-module.loc-transaction-page.pending-transaction-text' | translate }}
         </span>
-        <span class="show-hide-title" (click)="lineOfCreditFacade.showHideTransactions()" translate>
+        <span
+          class="show-hide-title"
+          (click)="lineOfCreditFacade.showHideTransactions()"
+          id="line-of-credit-page-hide-text"
+          translate
+        >
           {{(lineOfCreditFacade.showHide$ | async) ? 'dashboard-module.loc-transaction-page.hide-text' :
           'dashboard-module.loc-transaction-page.show-text'}}
         </span>
       </div>
-      <div class="transaction-title">
+      <div class="transaction-title" id="line-of-credit-page-pending-amount">
         {{ (lineOfCreditFacade.pendingAmount$ | async) | negToPos }}
       </div>
     </div>
@@ -79,11 +90,11 @@
     </ng-container>
 
     <div class="transaction-container recent-transaction-margin">
-      <div class="transaction-title">
+      <div class="transaction-title" id="line-of-credit-page-recent-transaction-text">
         {{ 'dashboard-module.loc-transaction-page.recent-transaction-text' | translate }}
       </div>
       <div>
-        <ion-icon name="search" (click)="toggleSearchAccordion()"></ion-icon>
+        <ion-icon name="search" id="line-of-credit-page-search-icon" (click)="toggleSearchAccordion()"></ion-icon>
       </div>
     </div>
     <advanced-search (search)="submitSearch($event)" *ngIf="searchAccordion"></advanced-search>

@@ -45,14 +45,18 @@
           >
           </account-balance>
           <div class="goals-block">
-            <div class="title">{{ 'dashboard-module.ssa-transaction-page.saving-goal-text' | translate }}</div>
+            <div class="title" id="saving-transactions-page-saving-goal-text">
+              {{ 'dashboard-module.ssa-transaction-page.saving-goal-text' | translate }}
+            </div>
             <ng-container *ngIf="savingTransactionsFacade?.listOfSavingGoal.length === 0">
               <div class="goals-empty-block">
                 <div class="tree">
-                  <ion-img src="assets/img/desert-island.png"></ion-img>
+                  <ion-img src="assets/img/desert-island.png" id="saving-transactions-page-desert-island-img"></ion-img>
                 </div>
-                <div class="title">{{ 'dashboard-module.ssa-transaction-page.no-active-goal-text' | translate }}</div>
-                <div class="subtitle">
+                <div class="title" id="saving-transactions-page-no-active-goal-text">
+                  {{ 'dashboard-module.ssa-transaction-page.no-active-goal-text' | translate }}
+                </div>
+                <div class="subtitle" id="saving-transactions-page-maybe-start-saving-text">
                   {{ 'dashboard-module.ssa-transaction-page.maybe-start-saving-text' | translate }}
                 </div>
               </div>
@@ -66,8 +70,8 @@
                   (click)="savingTransactionsFacade.modifyGoal(item)"
                 >
                   <div class="item-content">
-                    <div class="item-title">{{item.name}}</div>
-                    <div class="item-subtitle">
+                    <div class="item-title" id="saving-transactions-page-saving-goal-item-name">{{item.name}}</div>
+                    <div class="item-subtitle" id="saving-transactions-page-saving-goal-item-per-month-text">
                       {{item.targetAmount | negToPos}} {{ 'dashboard-module.ssa-transaction-page.per-month-text' |
                       translate }}
                     </div>
@@ -91,7 +95,13 @@
 
 <ion-footer class="ion-no-border" *ngIf="savingTransactionsFacade.selectedTab !== 'tab-history'">
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" (click)="savingTransactionsFacade.goToSelectedPage()" translate>
+    <ion-button
+      class="white-button"
+      id="saving-history-page-saving-goal-btn"
+      expand="block"
+      (click)="savingTransactionsFacade.goToSelectedPage()"
+      translate
+    >
       {{ savingTransactionsFacade.selectedTab === 'tab-goal' ?
       'dashboard-module.ssa-transaction-page.add-saving-goal-button-text' :
       'dashboard-module.ssa-transaction-page.save-now-button-text'}}

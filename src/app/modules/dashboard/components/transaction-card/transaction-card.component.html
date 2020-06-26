@@ -1,18 +1,22 @@
 <div class="transactions-container">
   <div class="transaction-item" *ngFor="let transaction of transactions" (click)="selectTransaction(transaction)">
     <div class="item-content">
-      <div class="content-title">{{ transaction.transactionType }}</div>
-      <div class="content-subtitle">{{ transaction.dateTime | date: 'MMM d, yyyy' }}</div>
-      <div class="content-subtitle">
+      <div class="content-title" id="transaction-card-transaction-type-title-text">
+        {{ transaction.transactionType }}
+      </div>
+      <div class="content-subtitle" id="transaction-card-transaction-date-time">
+        {{ transaction.dateTime | date: 'MMM d, yyyy' }}
+      </div>
+      <div class="content-subtitle" id="transaction-card-transaction-country-city-state">
         {{ transaction?.country }} {{ transaction?.city }}
         {{ transaction?.state }}
       </div>
     </div>
-    <div class="item-amount">
+    <div class="item-amount" id="transaction-card-transaction-amount">
       {{ transaction.amount | negToPos }}
     </div>
   </div>
-  <div class="transaction-subtitle" *ngIf="transactions?.length === 0">
+  <div class="transaction-subtitle" id="transaction-card-not-found-title" *ngIf="transactions?.length === 0">
     {{ notFound }}
   </div>
 </div>

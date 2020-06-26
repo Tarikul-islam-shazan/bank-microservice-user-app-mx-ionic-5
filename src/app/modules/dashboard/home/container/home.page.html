@@ -4,17 +4,25 @@
       <span class="white-meed-logo"></span>
     </ion-title>
     <ion-buttons slot="end">
-      <ion-button class="icon-white-ques-mark" (click)="openInfoModal()"></ion-button>
+      <ion-button
+        class="icon-white-ques-mark"
+        id="dashboard-home-ques-mark-info-modal-btn"
+        (click)="openInfoModal()"
+      ></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="content-wrapper">
   <div class="blue-content-wrapper">
-    <div class="header-greetings">
+    <div class="header-greetings" id="dashboard-home-page-hi-text">
       {{ 'dashboard-module.home-page.hi-text' | translate }} {{homeFacade.member?.nickname}}!
     </div>
-    <div class="available-amount-content" (click)="openInfoModal()">
+    <div
+      class="available-amount-content"
+      id="dashboard-home-available-amount-content-info-modal-btn"
+      (click)="openInfoModal()"
+    >
       <account-balance
         title="dashboard-module.home-page.available-meedflex-text"
         [amount]="homeFacade.availableMeedFlex"
@@ -26,12 +34,17 @@
       <ion-progress-bar [value]="homeFacade.progressBar.percentage"></ion-progress-bar>
       <div class="balance-content">
         <div class="balance-title">
-          <span>{{ 'dashboard-module.home-page.available-checking-text' | translate }}</span> <span>+</span>
-          <span>{{ 'dashboard-module.home-page.available-credit-text' | translate }}</span>
+          <span id="dashboard-home-page-available-checking-text"
+            >{{ 'dashboard-module.home-page.available-checking-text' | translate }}</span
+          >
+          <span>+</span>
+          <span id="dashboard-home-page-available-credit-text"
+            >{{ 'dashboard-module.home-page.available-credit-text' | translate }}</span
+          >
         </div>
         <div class="balance-amount">
           <ng-container *ngFor="let progressBarListItem of homeFacade.progressBar.amountLists">
-            <span>{{ progressBarListItem | negToPos }}</span>
+            <span id="dashboard-home-page-progressbar-list-item">{{ progressBarListItem | negToPos }}</span>
           </ng-container>
         </div>
       </div>
@@ -44,7 +57,7 @@
       </ng-container>
     </div>
   </div>
-  <div class="reward-block">
+  <div class="reward-block" id="dashboard-home-page-rewards-text">
     {{ 'dashboard-module.home-page.rewards-text' | translate }} &nbsp;<span
       >{{ homeFacade.getReward() | negToPos }}</span
     >

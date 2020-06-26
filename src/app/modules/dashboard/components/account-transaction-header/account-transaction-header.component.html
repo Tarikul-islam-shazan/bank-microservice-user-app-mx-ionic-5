@@ -2,7 +2,9 @@
   <ion-buttons slot="start">
     <ng-content></ng-content>
   </ion-buttons>
-  <ion-title> {{ title }} (...{{ accountInfo?.accountNumber | slice: -4 }}) </ion-title>
+  <ion-title id="account-info-account-number">
+    {{ title }} (...{{ accountInfo?.accountNumber | slice: -4 }})
+  </ion-title>
   <ion-buttons slot="end" *ngIf="iconName">
     <ion-button (click)="showInfoModal(accountInfo?.accountType)">
       <ion-button class="white-ques-mark" [style.color]="iconColor"></ion-button>

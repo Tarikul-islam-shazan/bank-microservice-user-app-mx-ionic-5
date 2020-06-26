@@ -17,16 +17,21 @@
 
     <div class="transaction-container pending-transaction-margin">
       <div>
-        <span class="transaction-title">
+        <span class="transaction-title" id="checking-page-pending-transaction-title-text">
           {{ 'dashboard-module.dda-transaction-page.pending-transaction-text' | translate }}
         </span>
 
-        <span class="show-hide-title" (click)="checkingFacade.showHideTransactions()" translate>
+        <span
+          class="show-hide-title"
+          id="checking-page-show-hide-title-text"
+          (click)="checkingFacade.showHideTransactions()"
+          translate
+        >
           {{(checkingFacade.showHide$ | async) ? 'dashboard-module.dda-transaction-page.hide-text' :
           'dashboard-module.dda-transaction-page.show-text'}}
         </span>
       </div>
-      <div class="transaction-title">
+      <div class="transaction-title" id="checking-page-pending-amount">
         {{ (checkingFacade.pendingAmount$ | async) | negToPos }}
       </div>
     </div>
@@ -39,11 +44,15 @@
     </ng-container>
 
     <div class="transaction-container recent-transaction-margin">
-      <div class="transaction-title">
+      <div class="transaction-title" id="checking-page-recent-transaction-title-text">
         {{ 'dashboard-module.dda-transaction-page.recent-transaction-text' | translate }}
       </div>
       <div>
-        <ion-icon name="search" (click)="toggleSearchAccordion()"></ion-icon>
+        <ion-icon
+          name="search"
+          id="checking-page-recent-transaction-search-icon"
+          (click)="toggleSearchAccordion()"
+        ></ion-icon>
       </div>
     </div>
     <advanced-search (search)="submitSearch($event)" *ngIf="searchAccordion"></advanced-search>
