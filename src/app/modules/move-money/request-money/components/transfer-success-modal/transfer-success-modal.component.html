@@ -5,12 +5,12 @@
         <img src="assets/img/success.png" />
       </div>
       <div class="title-block">
-        <span class="title">
+        <span class="title" id="transfer-success-modal-title-text">
           <span>You’ve requested ${{ amount }} from {{ totalRequestCount }} person </span>
         </span>
       </div>
       <div class="subtitle-block">
-        <div class="subtitle-text">
+        <div class="subtitle-text" id="transfer-success-modal-created-at-text">
           {{ createdAt | date: 'MMMM dd, yyyy' }}
         </div>
       </div>
@@ -19,7 +19,7 @@
 </ion-content>
 <ion-footer class="footer-content ion-no-border">
   <ion-toolbar>
-    <ion-button (click)="dismiss()" expand="block" class="white-button">
+    <ion-button (click)="dismiss()" expand="block" class="white-button" id="transfer-success-modal-dismiss-btn">
       Done
     </ion-button>
   </ion-toolbar>

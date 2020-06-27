@@ -3,20 +3,22 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'move-money-module.request-money.selected.page-title' | translate}}</ion-title>
+    <ion-title id="request-money-selected-page-header-title-text">
+      {{'move-money-module.request-money.selected.page-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <div class="selected-page">
     <ion-list class="selected-list">
       <ion-list-header class="list-header">
-        <ion-label class="ion-text-uppercase">
+        <ion-label class="ion-text-uppercase" id="request-money-selected-page-selected-list-header-title-text">
           {{'move-money-module.request-money.selected.selected-list-header' | translate}}</ion-label
         >
       </ion-list-header>
       <ion-item *ngFor="let fundRequest of facade.fundRequests" button="true" lines="inset">
         <ion-label class="ion-text-wrap">
-          <h3 class="title">{{fundRequest.receiverEmail}}</h3>
+          <h3 class="title" id="request-money-selected-page-receiver-email">{{fundRequest.receiverEmail}}</h3>
         </ion-label>
       </ion-item>
     </ion-list>
@@ -24,7 +26,12 @@
 </ion-content>
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ion-button (click)="facade.continue()" class="white-button" expand="block">
+    <ion-button
+      (click)="facade.continue()"
+      class="white-button"
+      expand="block"
+      id="request-money-selected-page-continue-btn"
+    >
       {{'move-money-module.request-money.selected.next-button' | translate}}
     </ion-button>
   </ion-toolbar>

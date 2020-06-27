@@ -1,10 +1,17 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" icon="arrow-back" (click)="navigateToPage('/move-money/pay-bills/bill-pay')">
+      <ion-back-button
+        mode="md"
+        icon="arrow-back"
+        id="bill-payment-page-back-btn"
+        (click)="navigateToPage('/move-money/pay-bills/bill-pay')"
+      >
       </ion-back-button>
     </ion-buttons>
-    <ion-title>{{'move-money-module.pay-bills.bill-payment.page-title' | translate}}</ion-title>
+    <ion-title id="bill-payment-page-header-title-text">
+      {{'move-money-module.pay-bills.bill-payment.page-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -15,8 +22,12 @@
         <img src="assets/svg/statements-list.svg" />
       </div>
       <div class="payee-info">
-        <div class="payee-name">{{billPayee.fullName}}</div>
-        <div class="payee-action" (click)="navigateToPage('/move-money/pay-bills/add-payee')">
+        <div class="payee-name" id="bill-payment-page-bill-payee-full-name">{{billPayee.fullName}}</div>
+        <div
+          class="payee-action"
+          id="bill-payment-page-payee-action"
+          (click)="navigateToPage('/move-money/pay-bills/add-payee')"
+        >
           {{'move-money-module.pay-bills.bill-payment.payee-action' | translate}}
         </div>
       </div>
@@ -24,18 +35,34 @@
     <div class="clearfix">
       <form [formGroup]="billPaymentForm" novalidate>
         <div class="payment-amount-block">
-          <div class="title">{{'move-money-module.pay-bills.bill-payment.payment-amount-title' | translate}}</div>
-          <ion-input placeholder="{{ '0.00' | negToPos }}" appInputDecimalMask type="tel" formControlName="amount">
+          <div class="title" id="bill-payment-page-payment-amount-title-text">
+            {{'move-money-module.pay-bills.bill-payment.payment-amount-title' | translate}}
+          </div>
+          <ion-input
+            placeholder="{{ '0.00' | negToPos }}"
+            appInputDecimalMask
+            type="tel"
+            formControlName="amount"
+            id="bill-payment-page-amount-input"
+          >
           </ion-input>
           <div
             class="clearfix"
             *ngIf="billPaymentForm.controls.amount.dirty && billPaymentForm.controls.amount.invalid"
           >
-            <div class="error-msg" *ngIf="billPaymentForm.controls.amount.hasError('minimumTransferAmount')">
+            <div
+              class="error-msg"
+              id="bill-payment-page-min-amount-limit-text"
+              *ngIf="billPaymentForm.controls.amount.hasError('minimumTransferAmount')"
+            >
               {{'move-money-module.pay-bills.bill-payment.errors.min-amount-limit-text' | translate}}
             </div>
           </div>
-          <div class="error-msg" *ngIf="billPaymentForm.controls.amount.hasError('maximumTransferAmount')">
+          <div
+            class="error-msg"
+            id="bill-payment-page-max-amount-limit-text"
+            *ngIf="billPaymentForm.controls.amount.hasError('maximumTransferAmount')"
+          >
             {{'move-money-module.pay-bills.bill-payment.errors.max-amount-limit-text' | translate}}
           </div>
         </div>
@@ -51,19 +78,24 @@
                   cancelable="false"
                   displayFormat="MMM DD, YYYY"
                   formControlName="executionDate"
+                  id="bill-payment-page-execution-date-input"
                 ></ion-datetime>
               </div>
-              <div class="date-action">{{'move-money-module.pay-bills.bill-payment.date-action' | translate}}</div>
+              <div class="date-action" id="bill-payment-page-date-action-text">
+                {{'move-money-module.pay-bills.bill-payment.date-action' | translate}}
+              </div>
             </div>
           </div>
         </div>
         <div class="repeat-toggle-block">
-          <div class="title">{{'move-money-module.pay-bills.bill-payment.repeat-toggle-title' | translate}}</div>
-          <ion-toggle slot="end" formControlName="frequency"></ion-toggle>
+          <div class="title" id="bill-payment-page-repeat-toggle-title-text">
+            {{'move-money-module.pay-bills.bill-payment.repeat-toggle-title' | translate}}
+          </div>
+          <ion-toggle slot="end" formControlName="frequency" id="bill-payment-page-frequency-input"> </ion-toggle>
         </div>
       </form>
     </div>
-    <div class="info-block">
+    <div class="info-block" id="bill-payment-page-bill-payment-info-text">
       <ion-icon slot="start" name="medical"></ion-icon>
       {{'move-money-module.pay-bills.bill-payment.info' | translate}}
     </div>
@@ -76,17 +108,29 @@
         [disabled]="billPaymentForm.disabled || billPaymentForm.invalid"
         (click)="update()"
         class="white-button"
+        id="bill-payment-page-bill-payment-update-btn"
         expand="block"
       >
         {{'move-money-module.pay-bills.bill-payment.buttons.confirm-button-text' | translate}}
       </ion-button>
 
-      <ion-button (click)="delete()" class="grey-outline-button" expand="block">
+      <ion-button
+        (click)="delete()"
+        class="grey-outline-button"
+        id="bill-payment-page-bill-payment-delete-btn"
+        expand="block"
+      >
         {{'move-money-module.pay-bills.bill-payment.buttons.delete-button-text' | translate}}
       </ion-button>
     </ng-template>
     <ng-template #paymentNotEditAble>
-      <ion-button [disabled]="billPaymentForm.invalid" (click)="add()" class="white-button" expand="block">
+      <ion-button
+        [disabled]="billPaymentForm.invalid"
+        (click)="add()"
+        class="white-button"
+        id="bill-payment-page-bill-payment-add-btn"
+        expand="block"
+      >
         {{'move-money-module.pay-bills.bill-payment.buttons.confirm-button-text' | translate}}
       </ion-button>
     </ng-template>

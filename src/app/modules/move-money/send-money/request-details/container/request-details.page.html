@@ -3,22 +3,30 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'move-money-module.send-money.request-details.page-title' | translate}}</ion-title>
+    <ion-title id="request-details-page-header-title-text">
+      {{'move-money-module.send-money.request-details.page-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content>
   <div class="request-details-page">
     <div class="ion-text-center amount-block">
-      <div class="title">{{'move-money-module.send-money.request-details.amount-title' | translate}}</div>
-      <div class="amount">${{facade.amount | number: '1.2-2'}}</div>
+      <div class="title" id="request-details-page-amount-title-text">
+        {{'move-money-module.send-money.request-details.amount-title' | translate}}
+      </div>
+      <div class="amount" id="request-details-page-amount">${{facade.amount | number: '1.2-2'}}</div>
     </div>
     <div class="request-block">
-      <div class="title">{{'move-money-module.send-money.request-details.request-from' | translate}}</div>
-      <div class="description">{{facade.email}}</div>
+      <div class="title" id="request-details-page-amount">
+        {{'move-money-module.send-money.request-details.request-from' | translate}}
+      </div>
+      <div class="description" id="request-details-page-email">{{facade.email}}</div>
     </div>
     <div class="note-block">
-      <div class="title">{{'move-money-module.send-money.request-details.note-title' | translate}}</div>
-      <div class="description">{{facade.message}}</div>
+      <div class="title" id="request-details-page-note-title-text">
+        {{'move-money-module.send-money.request-details.note-title' | translate}}
+      </div>
+      <div class="description" id="request-details-page-message-text">{{facade.message}}</div>
     </div>
   </div>
 </ion-content>
@@ -27,14 +35,20 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <ion-button (click)="facade.payFund()" expand="block" class="white-button">
+          <ion-button (click)="facade.payFund()" id="request-details-page-pay-btn" expand="block" class="white-button">
             {{'move-money-module.send-money.request-details.pay-button' | translate}}
           </ion-button>
         </ion-col>
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button (click)="facade.declineFund()" expand="block" fill="outline" class="cancel-btn">
+          <ion-button
+            (click)="facade.declineFund()"
+            id="request-details-page-decline-btn"
+            expand="block"
+            fill="outline"
+            class="cancel-btn"
+          >
             {{'move-money-module.send-money.request-details.decline-button' | translate}}
           </ion-button>
         </ion-col>

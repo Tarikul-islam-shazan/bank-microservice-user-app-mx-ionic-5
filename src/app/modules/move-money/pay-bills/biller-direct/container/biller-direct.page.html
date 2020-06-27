@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ 'move-money-module.pay-bills.biller-direct.header-title' | translate }}</ion-title>
+    <ion-title id="biller-direct-page-header-title-text">
+      {{ 'move-money-module.pay-bills.biller-direct.header-title' | translate }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,6 +15,7 @@
       *ngIf="billerDirectFacade.billerDirectSrcURL"
       [src]="billerDirectFacade.billerDirectSrcURL"
       class="biller-direct-iframe"
+      id="biller-direct-page-biller-direct-iframe"
     ></iframe>
   </div>
 </ion-content>

@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'move-money-module.send-money.edit.page-title' | translate}}</ion-title>
+    <ion-title id="send-money-edit-page-header-title-text">
+      {{'move-money-module.send-money.edit.page-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,19 +13,34 @@
   <form [formGroup]="p2pEditForm">
     <div class="edit-page">
       <div class="sending-block">
-        <div class="title">{{'move-money-module.send-money.edit.sending-title' | translate}}</div>
-        <div class="recipient">{{facade.receiverEmail}}</div>
+        <div class="title" id="send-money-edit-page-sending-title-text">
+          {{'move-money-module.send-money.edit.sending-title' | translate}}
+        </div>
+        <div class="recipient" id="send-money-edit-page-receiver-email-text">{{facade.receiverEmail}}</div>
       </div>
       <div class="amount-block">
-        <div class="title">{{'move-money-module.send-money.edit.amount-title' | translate}}</div>
-        <ion-input formControlName="amount" appInputDecimalMask type="tel" placeholder="$0.00"></ion-input>
-        <div class="amount-error-default">{{'move-money-module.send-money.edit.amount-error-default' | translate}}</div>
+        <div class="title" id="send-money-edit-page-amount-title-text">
+          {{'move-money-module.send-money.edit.amount-title' | translate}}
+        </div>
+        <ion-input
+          formControlName="amount"
+          id="send-money-edit-page-amount-input"
+          appInputDecimalMask
+          type="tel"
+          placeholder="$0.00"
+        ></ion-input>
+        <div class="amount-error-default" id="send-money-edit-page-amount-error-default-text">
+          {{'move-money-module.send-money.edit.amount-error-default' | translate}}
+        </div>
       </div>
       <div class="note-block">
-        <div class="title">{{'move-money-module.send-money.edit.note-title' | translate}}</div>
+        <div class="title" id="send-money-edit-page-note-title">
+          {{'move-money-module.send-money.edit.note-title' | translate}}
+        </div>
         <ion-input
           formControlName="message"
           type="text"
+          id="send-money-edit-page-note-input"
           placeholder="{{'move-money-module.send-money.edit.note-input' | translate}}"
         >
         </ion-input>
@@ -41,6 +58,7 @@
             (click)="facade.gotoConfirm(p2pEditForm.value)"
             expand="block"
             class="white-button"
+            id="send-money-edit-page-confirm-btn"
           >
             {{'move-money-module.send-money.edit.confirm-button' | translate}}
           </ion-button>
@@ -48,7 +66,13 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <ion-button (click)="facade.cancelEdit()" expand="block" fill="clear" class="cancel-btn">
+          <ion-button
+            (click)="facade.cancelEdit()"
+            expand="block"
+            fill="clear"
+            class="cancel-btn"
+            id="send-money-edit-page-cancel-btn"
+          >
             {{'move-money-module.send-money.edit.cancel-button' | translate}}
           </ion-button>
         </ion-col>

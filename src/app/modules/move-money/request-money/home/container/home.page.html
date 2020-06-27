@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'move-money-module.request-money.home.page-title' | translate}}</ion-title>
+    <ion-title id="request-money-home-page-header-title-text">
+      {{'move-money-module.request-money.home.page-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -22,7 +24,7 @@
     <div class="list-container">
       <ion-list class="requests-list">
         <ion-list-header class="list-header">
-          <ion-label class="ion-text-capitalize">
+          <ion-label class="ion-text-capitalize" id="request-money-home-page-unpaid-request-list-header-text">
             {{'move-money-module.request-money.home.unpaid-request-list-header' | translate}}</ion-label
           >
         </ion-list-header>
@@ -31,22 +33,25 @@
           *ngFor="let fundRequest of facade.fundRequests"
           button="true"
           lines="none"
+          id="request-money-home-page-fund-Request-btn"
         >
           <ion-label class="ion-text-wrap">
-            <h3 class="title">To {{fundRequest.receiverEmail}}</h3>
-            <p class="details">
+            <h3 class="title" id="request-money-home-page-receiver-email-text">
+              To {{fundRequest.receiverEmail}}
+            </h3>
+            <p class="details" id="request-money-home-page-created-at-text">
               {{ fundRequest.createdAt | date: 'MMMM dd, yyyy' }}
             </p>
           </ion-label>
-          <div slot="end" class="amount">${{fundRequest.amount}}</div>
+          <div slot="end" class="amount" id="request-money-home-page-amount">${{fundRequest.amount}}</div>
         </ion-item>
       </ion-list>
       <ion-list class="paid-list">
         <ion-list-header class="list-header">
-          <ion-label class="ion-text-capitalize">
+          <ion-label class="ion-text-capitalize" id="request-money-home-page-request-list-header-text">
             {{'move-money-module.request-money.home.request-list-header' | translate}}</ion-label
           >
-          <ion-button size="small" fill="clear">
+          <ion-button size="small" fill="clear" id="request-money-home-page-request-list-btn">
             {{'move-money-module.request-money.home.request-list-button' | translate}}
           </ion-button>
         </ion-list-header>
@@ -55,9 +60,10 @@
           *ngFor="let contact of facade.contacts | contactsFilter:filterKey"
           button="true"
           lines="inset"
+          id="request-money-home-page-contact-btn"
         >
           <ion-label class="ion-text-wrap">
-            <h3 class="title">{{contact.email}}</h3>
+            <h3 class="title" id="request-money-home-page-contact-email-text">{{contact.email}}</h3>
           </ion-label>
         </ion-item>
       </ion-list>
@@ -70,6 +76,7 @@
       [disabled]="!facade.receiverEmails?.length"
       (click)="facade.continue()"
       class="white-button"
+      id="request-money-home-page-continue-btn"
       expand="block"
     >
       {{'move-money-module.request-money.home.next-button' | translate}}
