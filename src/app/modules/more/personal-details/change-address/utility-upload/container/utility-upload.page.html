@@ -1,0 +1,28 @@
+<ion-header class="white-header ion-no-border">
+  <ion-toolbar>
+    <div slot="start" class="header-close-button"></div>
+    <ion-title>Upload Utility</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <form novalidate>
+      <div class="dropdown-input-wrapper">
+        <div class="label-text">{{'more-module.personal-details.change-address-modal.address-type' | translate}}</div>
+        <div class="dropdown-input">
+          <ion-input readonly class="white-input" type="text" id="addressTypeField"> </ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button class="white-button" expand="block">
+      {{'more-module.personal-details.change-address-modal.button-text' | translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

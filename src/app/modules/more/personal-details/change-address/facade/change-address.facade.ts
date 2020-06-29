@@ -59,19 +59,20 @@ export class ChangeAddressFacade {
    * @memberOf ChangeAddressFacade
    */
   save(formValue: IAddress): void {
-    const customer: Partial<ICustomer> = {};
-    const addressArrar: IAddress[] = [formValue];
-    customer.addresses = addressArrar;
-    this.customerService.updateAddress(customer).subscribe((response: any) => {
-      const data = response.addresses;
-      this.customer.addresses = data;
-      // Object.assign(this.customer, data);
-      Object.assign(this.memberService.member, data);
-      this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
-      setTimeout(() => {
-        this.router.navigate([`/more/personal-details`]);
-      }, 500);
-    });
+    this.router.navigate([`/more/personal-details/utility-upload`]);
+    // const customer: Partial<ICustomer> = {};
+    // const addressArrar: IAddress[] = [formValue];
+    // customer.addresses = addressArrar;
+    // this.customerService.updateAddress(customer).subscribe((response: any) => {
+    //   const data = response.addresses;
+    //   this.customer.addresses = data;
+    //   // Object.assign(this.customer, data);
+    //   Object.assign(this.memberService.member, data);
+    //   this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
+    //   setTimeout(() => {
+    //     this.router.navigate([`/more/personal-details`]);
+    //   }, 500);
+    // });
   }
 
   /**
