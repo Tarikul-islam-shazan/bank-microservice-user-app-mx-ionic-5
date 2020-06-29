@@ -1,21 +1,42 @@
 <ion-header class="white-header ion-no-border">
   <ion-toolbar>
-    <div slot="start" class="header-close-button"></div>
+    <div slot="start" class="header-close-button" (click)="dismiss()"></div>
     <ion-title>Upload Utility</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="content-wrapper">
-    <form novalidate>
-      <div class="dropdown-input-wrapper">
-        <div class="label-text">{{'more-module.personal-details.change-address-modal.address-type' | translate}}</div>
-        <div class="dropdown-input">
-          <ion-input readonly class="white-input" type="text" id="addressTypeField"> </ion-input>
-          <ion-icon name="chevron-down"></ion-icon>
+    <div class="dropdown-input-wrapper">
+      <div class="label-text">{{'more-module.personal-details.change-address-modal.address-type' | translate}}</div>
+      <div class="dropdown-input">
+        <ion-input readonly class="white-input" type="text" id="addressTypeField"> </ion-input>
+        <ion-icon name="chevron-down"></ion-icon>
+      </div>
+    </div>
+    <div class="scan-wrapper">
+      <div class="front scan-button-wrapper">
+        <ion-icon name="checkmark-circle" class="tick-icon"></ion-icon>
+        <img class="preview" />
+        <ion-input
+          #frontIdImageInput
+          [hidden]="true"
+          id="web-image-front-id-image"
+          type="file"
+          accept="image/*"
+        ></ion-input>
+        <div class="scan-button">
+          <div class="button-image">
+            <img src="assets/img/camera.png" />
+          </div>
+          <div class="button-text">{{'more-module.change-name-required-documents.front-id' | translate}}</div>
         </div>
       </div>
-    </form>
+    </div>
+    <div class="disclaimer">
+      <div class="header">Note</div>
+      <div class="circle"></div>
+    </div>
   </div>
 </ion-content>
 

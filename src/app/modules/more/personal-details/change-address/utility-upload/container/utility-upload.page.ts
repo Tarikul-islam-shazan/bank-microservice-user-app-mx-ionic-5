@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mbc-utility-upload',
@@ -6,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./utility-upload.page.scss']
 })
 export class UtilityUploadPage implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  dismiss() {
+    this.router.navigate([`/more/personal-details/change-address`]);
+  }
 }
