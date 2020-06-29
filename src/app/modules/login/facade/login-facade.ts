@@ -15,8 +15,6 @@ import { AppPlatform } from '@app/core/util/app-platform';
 import { ModalService, IMeedModalComponentProps } from '@app/shared';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { StaticDataService } from '@app/core/services/static-data.service';
-import { ActionSheetController } from '@ionic/angular';
-import { TranslateService } from '@ngx-translate/core';
 @Injectable()
 export class LoginFacade {
   constructor(
@@ -33,9 +31,7 @@ export class LoginFacade {
     private appPlatform: AppPlatform,
     private modalService: ModalService,
     private callService: CallNumber,
-    private staticDataService: StaticDataService,
-    private actionSheetController: ActionSheetController,
-    private translate: TranslateService
+    private staticDataService: StaticDataService
   ) {}
 
   /**
@@ -325,48 +321,44 @@ export class LoginFacade {
   }
 
   /**
-   * @summary returns buttons for help action sheet
-   *
-   * @returns {Record<string, any>[]}
-   * @memberOf LoginFacade
-   */
-  loginHelpActionButtons(): Record<string, any>[] {
-    const contactNumber = this.bankContactNumber.replace(/\s/g, '');
-    const buttons = [
-      {
-        text: this.translate.instant('login-module.create-login-page.help-modal-call-no'),
-        handler: () => {
-          if (contactNumber) {
-            if (this.appPlatform.isIos || this.appPlatform.isAndroid) {
-              this.callService.callNumber(contactNumber, true);
-            } else {
-              window.open(contactNumber, '_system');
-            }
-          }
-        }
-      },
-      {
-        text: this.translate.instant('login-module.create-login-page.help-modal-cancle-btn-text'),
-        role: 'cancel'
-      }
-    ];
-
-    return buttons;
-  }
-
-  /**
    * @summary opens help action sheet
    *
    * @returns {Promise<void>}
    * @memberOf LoginFacade
    */
-  async openHelpActionSheet(): Promise<void> {
-    const actionSheet = await this.actionSheetController.create({
-      buttons: this.loginHelpActionButtons(),
-      cssClass: 'login-help-action-sheet',
-      mode: 'ios'
-    });
-    await actionSheet.present();
+  async openHelpModal(): Promise<void> {
+    let contactNumber = this.bankContactNumber.replace(/\s/g, '');
+    const modalComponentContent: IMeedModalComponentProps = {
+      componentProps: {
+        contents: [
+          {
+            details: ['login-module.create-login-page.help-modal-message']
+          }
+        ],
+        actionButtons: [
+          {
+            text: 'login-module.create-login-page.help-modal-call-no',
+            params: { contactNumber },
+            cssClass: 'white-button',
+            handler: () => {
+              if (contactNumber) {
+                if (this.appPlatform.isIos || this.appPlatform.isAndroid) {
+                  this.callService.callNumber(contactNumber, true);
+                } else {
+                  window.open(contactNumber, '_system');
+                }
+              }
+            }
+          },
+          {
+            text: 'login-module.create-login-page.help-modal-cancle-btn-text',
+            cssClass: 'grey-outline-button',
+            handler: () => this.modalService.close()
+          }
+        ]
+      }
+    };
+    await this.modalService.openInfoModalComponent(modalComponentContent);
   }
 
   get member(): IMember {
