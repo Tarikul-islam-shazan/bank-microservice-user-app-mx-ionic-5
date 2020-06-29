@@ -11,13 +11,15 @@ import { AppPlatform } from '@app/core';
 import { Router } from '@angular/router';
 import { InviteeEmail, InviteeContact } from '@app/invite/models/invite';
 import { REG_EX_PATTERNS } from '@app/core/models';
-import { ModalService, IMeedModalContent } from '@app/shared';
+import { ModalService, IMeedModalContent, IinputOption, InputFormatType } from '@app/shared';
 import { ChooseContactPage } from '../choose-contact/container/choose-contact.page';
 
 @Injectable()
 export class InviteNewMemberFacade {
+  emailFormatMask: IinputOption;
   public inviteeContact: InviteeContact[];
   public email = '';
+  public name = '';
 
   constructor(
     private appPlatform: AppPlatform,
@@ -25,6 +27,9 @@ export class InviteNewMemberFacade {
     private router: Router,
     private modalService: ModalService
   ) {
+    this.emailFormatMask = {
+      type: InputFormatType.EMAIL_ADDRESS_FORMAT
+    };
     this.inviteeContact = [];
   }
 
@@ -39,18 +44,19 @@ export class InviteNewMemberFacade {
   }
 
   /**
-   * This method will create Email badge when user enter a valid email
-   * and press space to enter another email.
+   * This method will create Email badge when user enter a valid email and name
+   * and click Add Invitee button to enter another invitee.
    *
-   * @param inputEmail { string }
+   * @param null
    * @returns null { void }
    */
 
-  createContactBadge(inputEmail: string): void {
-    if (REG_EX_PATTERNS.WHITE_SPACE.test(inputEmail) && this.isValidEmail()) {
+  addInvitee() {
+    if (this.isValidEmail()) {
       if (!this.emailAlreadyEntered()) {
-        this.inviteService.inviteeContacts.push({ email: this.email.trim() });
+        this.inviteService.inviteeContacts.push({ name: this.name.trim(), email: this.email.trim() });
         this.email = '';
+        this.name = '';
       }
     }
   }
@@ -73,11 +79,13 @@ export class InviteNewMemberFacade {
    * @returns { null }
    */
   onContinueClick(): void {
-    if (this.isValidEmail() && !this.emailAlreadyEntered()) {
-      this.inviteService.inviteeContacts.push({ email: this.email.trim() });
+    if (this.isValidEmail() && !this.emailAlreadyEntered() && this.name !== '') {
+      this.inviteService.inviteeContacts.push({ name: this.name.trim(), email: this.email.trim() });
       this.email = '';
+      this.name = '';
     } else {
       this.email = '';
+      this.name = '';
     }
 
     const inviteeEmails: InviteeEmail[] = [];
@@ -142,7 +150,7 @@ export class InviteNewMemberFacade {
    * @param null
    * @returns true/false { boolean }
    */
-  private emailAlreadyEntered(): boolean {
+  emailAlreadyEntered(): boolean {
     return this.inviteService.inviteeContacts.find(contact => contact.email === this.email.trim()) ? true : false;
   }
 }

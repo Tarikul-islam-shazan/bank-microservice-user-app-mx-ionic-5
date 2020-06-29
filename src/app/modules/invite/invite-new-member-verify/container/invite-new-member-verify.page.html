@@ -17,8 +17,9 @@
         *ngFor="let contact of facade.inviteeContacts"
         [class.existing-member-email]="contact.isAlreadyMeedMember"
       >
-        <ion-label *ngIf="contact.name">{{ contact.name }}</ion-label>
-        <ion-label *ngIf="!contact.name">{{ contact.email }}</ion-label>
+        <ion-label>
+          {{ contact.name }} - {{ contact.email }}
+        </ion-label>
       </ion-chip>
     </div>
     <div class="invite-note">
