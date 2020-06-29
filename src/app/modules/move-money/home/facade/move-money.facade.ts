@@ -51,11 +51,11 @@ export class MoveMoneyFacade {
             }
           },
           {
-            iconClass: 'img-credit-debit-card',
-            itemName: 'move-money-module.home-page.menu.credit-debit-card',
-            appSuppress: 'CreditOrDebitCards',
+            iconClass: 'img-transfer-from-other-bank',
+            itemName: 'move-money-module.home-page.menu.oxxo-money-deposit',
+            appSuppress: 'OxxoMoneyDeposit',
             onClick: () => {
-              this.creditCheckingBeforeDeposit('/move-money/credit-debit-card');
+              this.creditCheckingBeforeDeposit('/move-money/oxxo-money-deposit');
             }
           }
         ]
