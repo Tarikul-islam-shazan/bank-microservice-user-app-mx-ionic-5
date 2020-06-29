@@ -8,33 +8,47 @@
 </ion-header>
 
 <ion-content>
-  <div>
-    <div>
-      <div class="invite-label">
-        {{ 'invite-module.invite-new-member-page.invite-label' | translate }}
-      </div>
-      <div class="email-container">
-        <ion-chip *ngFor="let contact of facade.inviteeContact; let i = index">
-          <ion-label *ngIf="contact.name">{{ contact.name }}</ion-label>
-          <ion-label *ngIf="!contact.name">{{ contact.email }}</ion-label>
-          <ion-button fill="clear" size="small" (click)="facade.removeContact(i)">
-            <ion-icon slot="icon-only" name="close"></ion-icon>
-          </ion-button>
-        </ion-chip>
-        <div>
-          <ion-input
-            class="input-field"
-            [(ngModel)]="facade.email"
-            (keyup)="facade.createContactBadge($event.target.value)"
-            placeholder="{{ 'invite-module.invite-new-member-page.invite-input-placeholder' | translate }}"
-            type="text"
-          ></ion-input>
-        </div>
-      </div>
-      <div class="invite-note ion-text-center">
-        {{ 'invite-module.invite-new-member-page.invite-note' | translate }}
-      </div>
+  <div class="input-group">
+    <div class="invite-label">
+      {{ 'invite-module.invite-new-member-page.invite-label' | translate }}
     </div>
+
+    <div class="badges-container">
+      <ion-chip class="email-badge" *ngFor="let contact of facade.inviteeContact; let i = index">
+        <ion-label>{{ contact.name }} - {{ contact.email }} </ion-label>
+        <ion-button fill="clear" size="small" (click)="facade.removeContact(i)">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-chip>
+    </div>
+
+    <div class="input-field">
+      <ion-input
+        [(ngModel)]="facade.email"
+        [appMaskInput]="facade.emailFormatMask"
+        placeholder="{{ 'invite-module.invite-new-member-page.invite-email-input-placeholder' | translate }}"
+        type="text"
+      >
+      </ion-input>
+    </div>
+
+    <div class="input-field">
+      <ion-input
+        [(ngModel)]="facade.name"
+        placeholder="{{ 'invite-module.invite-new-member-page.invite-name-input-placeholder' | translate }}"
+        type="text"
+      >
+      </ion-input>
+    </div>
+
+    <ion-button
+      expand="block"
+      class="grey-outline-button"
+      (click)="facade.addInvitee()"
+      [disabled]="(!facade.isValidEmail() || facade.name === '' || facade.emailAlreadyEntered())"
+    >
+      {{ 'invite-module.invite-new-member-page.add-invitee-button' | translate }}
+    </ion-button>
   </div>
 
   <div class="invite-divider" *ngIf="facade.isCordova">
@@ -59,7 +73,7 @@
     <ion-button
       expand="block"
       class="white-button"
-      [disabled]="(facade.inviteeContact.length <= 0 ) && (!facade.isValidEmail())"
+      [disabled]="(facade.inviteeContact.length <= 0 ) && (!facade.isValidEmail() || facade.name === '')"
       (click)="facade.onContinueClick()"
     >
       {{ 'invite-module.invite-new-member-page.continue-button' | translate }}

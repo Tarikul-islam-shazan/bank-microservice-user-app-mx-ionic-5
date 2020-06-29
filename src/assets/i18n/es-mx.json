@@ -670,8 +670,9 @@
     "invite-new-member-page": {
       "header-title": "Invitar a un nuevo miembro",
       "invite-label": "Personas Invitadas",
-      "invite-input-placeholder": "Introducir correo electrónico",
-      "invite-note": "Para introducir más correos electrónicos, sepáralos con un “Espacio”.",
+      "invite-email-input-placeholder": "Introducir correo electrónico",
+      "invite-name-input-placeholder": "Introducir nombre",
+      "add-invitee-button": "Añade Invitada",
       "invite-or-divider": "O",
       "choose-contact-button": "Elige entre tus contactos",
       "continue-button": "Continuar",
@@ -697,7 +698,8 @@
       "header-title": "Invitar a un nuevo miembro",
       "invitees-title": "Personas Invitadas",
       "edit-message-title": "EDITA TU MENSAJE A CONTINUACIÓN",
-      "invite-message": "Deberías unirte a mí como miembro del Meed Banking Club. ¡Meed es mejor si estamos juntos!\n\nPodrás tener una excelente forma de hacer tus operaciones bancarias directamente desde tu teléfono. Además, los tres programas de reembolso de efectivo podrán ayudarte a ganar y ahorrar cientos de dólares. ¡Será como recibir un sueldo extra cada año!",
+      "invite-textbox-message": "Hello!\n \nI’d like to invite you to join the meed community where you can manage your money anywhere, and anytime straight from your phone. \n\nPlus, you get access to 3 cash back programs that can help you earn $100’s and save $100’s, and much more – a financial experience that can actually pay you. Imagine!",
+      "invite-message-greeting": "Hello {{invitee}}!",
       "invite-new-member-confirm-btn": "Invitar"
     },
     "invite-success-modal": {
