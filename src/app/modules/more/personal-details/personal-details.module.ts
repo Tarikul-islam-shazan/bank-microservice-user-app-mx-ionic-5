@@ -8,11 +8,16 @@ import { PersonalDetailsPage } from './container/personal-details.page';
 import { RouterModule, Routes } from '@angular/router';
 import { SERVICE_PROVIDER } from './facade';
 import { SharedModule } from '@app/shared';
+import { ChangeAddressPage } from './change-address/container/change-address.page';
 
 const routes: Routes = [
   {
     path: '',
     component: PersonalDetailsPage
+  },
+  {
+    path: 'change-address',
+    component: ChangeAddressPage
   }
 ];
 

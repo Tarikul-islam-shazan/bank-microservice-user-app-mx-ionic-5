@@ -14,6 +14,7 @@ import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { DropdownModalComponent, IinputOption, InputFormatType } from '@app/shared';
 import { DropdownOption } from '@app/signup/models/signup';
+import { Router } from '@angular/router';
 const moment = require('moment');
 
 interface StreetObj {
@@ -48,7 +49,8 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
   constructor(
     public facade: ChangeAddressFacade,
     private formBuilder: FormBuilder,
-    private modalCtrl: ModalController
+    private modalCtrl: ModalController,
+    private router: Router
   ) {
     this.aplhaNumeric = {
       type: InputFormatType.ALPHA_NUMERIC,
@@ -199,7 +201,9 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
    * @memberOf ChangeAddressPage
    */
   dismiss(): void {
-    this.modalCtrl.dismiss();
+    // this.modalCtrl.dismiss();
+    // navigateToPage
+    this.router.navigate([`/more/personal-details`]);
   }
 
   /**
@@ -244,8 +248,8 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
   filterAddressType(addressType: string, propertyType: string, staticData: { [key: string]: IDropdownOption[] }) {
     this.addressTypeList = staticData[StaticData.AddressType];
     this.propertyTypeList = staticData[StaticData.PropertyType];
-    const addressList = Object.assign(this.addressTypeList);
-    const propertyList = Object.assign(this.propertyTypeList);
+    const addressList = JSON.parse(JSON.stringify(this.addressTypeList));
+    const propertyList = JSON.parse(JSON.stringify(this.propertyTypeList));
     const address = addressList.find(data => {
       return data.text === addressType;
     });

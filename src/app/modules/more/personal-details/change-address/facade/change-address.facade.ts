@@ -1,5 +1,5 @@
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
-import { ModalService } from '@app/shared';
+
 import { CustomerService } from '@app/core/services/customer-service.service';
 import { ICustomer, IStates, SignUpService, IAddressInfo, IAddress } from '@app/core';
 import { StaticDataService, StaticDataCategory, IDropdownOption } from '@app/core/services/static-data.service';
@@ -7,6 +7,7 @@ import { Injectable } from '@angular/core';
 import { MemberService } from '@app/core/services/member.service';
 import { Observable, Subscription } from 'rxjs';
 import { PersonalDetailsState } from '@app/more/personal-details/facade/personal-details.state';
+import { Router } from '@angular/router';
 @Injectable()
 export class ChangeAddressFacade {
   customer: ICustomer = {};
@@ -18,7 +19,7 @@ export class ChangeAddressFacade {
     private personalDetailsState: PersonalDetailsState,
     private staticDataService: StaticDataService,
     private signUpService: SignUpService,
-    private modalService: ModalService
+    private router: Router
   ) {
     this.getCustomer();
   }
@@ -68,7 +69,7 @@ export class ChangeAddressFacade {
       Object.assign(this.memberService.member, data);
       this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
       setTimeout(() => {
-        this.modalService.close();
+        this.router.navigate([`/more/personal-details`]);
       }, 500);
     });
   }
