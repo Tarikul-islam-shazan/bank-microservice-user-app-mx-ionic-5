@@ -3,15 +3,23 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>
+    <ion-title id="atm-finder-page-header-title-text">
       {{ 'more-module.atm-finder-page.header-title' | translate }}
     </ion-title>
   </ion-toolbar>
   <div class="tab-bar-block">
-    <div [ngClass]="selectedTab ==='map' ? 'active-tab-item':'tab-item'" (click)="switchTab('map')">
+    <div
+      [ngClass]="selectedTab ==='map' ? 'active-tab-item':'tab-item'"
+      (click)="switchTab('map')"
+      id="atm-finder-page-header-map-view-tab-text"
+    >
       {{ 'more-module.atm-finder-page.map-view-tab' | translate }}
     </div>
-    <div [ngClass]="selectedTab ==='list' ? 'active-tab-item':'tab-item'" (click)="switchTab('list')">
+    <div
+      [ngClass]="selectedTab ==='list' ? 'active-tab-item':'tab-item'"
+      (click)="switchTab('list')"
+      id="atm-finder-page-header-atm-list-tab-text"
+    >
       {{ 'more-module.atm-finder-page.atm-list-tab' | translate }}
     </div>
   </div>
@@ -22,14 +30,15 @@
     <div class="map-wrapper" *ngSwitchCase="'map'">
       <agm-map [latitude]="facade.coords.latitude" [longitude]="facade.coords.longitude" [zoom]="facade.zoom">
         <agm-marker
+          id="atm-finder-page-header-location-marker"
           *ngFor="let atm of facade.atms"
           [latitude]="atm.location.latitude"
           [longitude]="atm.location.longitude"
         >
-          <agm-info-window>
+          <agm-info-window id="atm-finder-page-header-atm-info">
             {{atm.locationName}} <br />
-            {{atm.streetAddress}}, {{atm.zipCode}}, {{atm.city}}, {{atm.state}}</agm-info-window
-          >
+            {{atm.streetAddress}}, {{atm.zipCode}}, {{atm.city}}, {{atm.state}}
+          </agm-info-window>
         </agm-marker>
       </agm-map>
     </div>
@@ -39,10 +48,16 @@
           <img [src]="atm.mapUrl" />
         </div>
         <div class="item-content">
-          <div class="bank-name">{{atm.locationName}}</div>
-          <div class="bank-address">{{atm.streetAddress}}, {{atm.zipCode}}, {{atm.city}}, {{atm.state}}</div>
+          <div class="bank-name" id="atm-finder-page-header-atm-location-name">
+            {{atm.locationName}}
+          </div>
+          <div class="bank-address" id="atm-finder-page-header-address">
+            {{atm.streetAddress}}, {{atm.zipCode}}, {{atm.city}}, {{atm.state}}
+          </div>
         </div>
-        <div class="item-distance">{{atm.distance}} mi</div>
+        <div class="item-distance" id="atm-finder-page-header-atm-distance">
+          {{atm.distance}} mi
+        </div>
       </div>
     </div>
   </div>

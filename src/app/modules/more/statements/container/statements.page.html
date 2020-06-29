@@ -1,9 +1,17 @@
 <ion-header meed class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+      <ion-back-button
+        mode="md"
+        text=""
+        id="statements-page-header-back-btn"
+        icon="arrow-back"
+        color="light"
+      ></ion-back-button>
     </ion-buttons>
-    <ion-title text-center>{{ 'more-module.statements-page.header-title' | translate }}</ion-title>
+    <ion-title text-center id="statements-page-header-title-text"
+      >{{ 'more-module.statements-page.header-title' | translate }}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 <ion-content class="statements-page override-ion-content-padding">
@@ -13,17 +21,23 @@
       [options]="{initialSlide: bankStatements.length - 1,speed: 400}"
       (ionSlideWillChange)="doCheck()"
       *ngIf="bankStatements.length > 0; else noStatementsAvailable"
+      id="statements-page-slides"
     >
       <ion-slide *ngFor="let year of bankStatements; let j = index">
         <div class="clearfix">
           <div class="yearWrapper">
-            <div *ngIf="!isBeginning" (click)="slidePrevious()" class="year-arrow">
+            <div
+              *ngIf="!isBeginning"
+              (click)="slidePrevious()"
+              id="statements-page-slide-previous-btn"
+              class="year-arrow"
+            >
               <ion-icon name="chevron-back"></ion-icon>
             </div>
             <div class="year-wrapper" text-center>
-              <b>{{ year.year | slice: -4 }}</b>
+              <b id="statements-page-year">{{ year.year | slice: -4 }}</b>
             </div>
-            <div *ngIf="!isEnd" (click)="slideNext()" class="year-arrow">
+            <div *ngIf="!isEnd" (click)="slideNext()" id="statements-page-slide-next-btn" class="year-arrow">
               <ion-icon name="chevron-forward"></ion-icon>
             </div>
           </div>
@@ -32,12 +46,20 @@
           <ion-list>
             <ion-item *ngFor="let statement of year.statements; let i = index; last as isLast">
               <div class="clearfix" style="padding: 20px 0;">
-                <div class="clearfix month-wrapper" (click)="openModal($event, statement, 'DDA')">
+                <div
+                  class="clearfix month-wrapper"
+                  id="statements-page-modal-btn"
+                  (click)="openModal($event, statement, 'DDA')"
+                >
                   <div class="clearfix">
-                    <img src="assets/svg/statements-list.svg" alt="statements-image" />
-                    <span class="year-section"
-                      >{{ 'more-module.statements-page.months.'+statement.month | translate}} {{year.year}}</span
-                    >
+                    <img
+                      src="assets/svg/statements-list.svg"
+                      id="statements-page-statements-list-img"
+                      alt="statements-image"
+                    />
+                    <span class="year-section" id="statements-page-statements-year">
+                      {{ 'more-module.statements-page.months.'+statement.month | translate}} {{year.year}}
+                    </span>
                   </div>
                   <div class=" icon-arrow">
                     <img id="button-view-{{ i }}" src="assets/svg/arrow.svg" alt="arrow" srcset="" />
@@ -50,7 +72,7 @@
       </ion-slide>
     </ion-slides>
     <ng-template #noStatementsAvailable>
-      <p class="no-statements-text ion-text-center">
+      <p class="no-statements-text ion-text-center" id="statements-page-no-statements-available-text">
         {{ 'more-module.statements-page.no-statements-available-text' | translate }}
       </p>
     </ng-template>

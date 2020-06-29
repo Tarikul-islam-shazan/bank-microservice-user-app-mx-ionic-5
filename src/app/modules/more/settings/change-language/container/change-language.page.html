@@ -1,20 +1,30 @@
 <ion-header meed class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+      <ion-back-button
+        mode="md"
+        id="change-language-page-back-btn"
+        text=""
+        icon="arrow-back"
+        color="light"
+      ></ion-back-button>
     </ion-buttons>
-    <ion-title text-center>{{ 'more-module.change-language.header-title' | translate }}</ion-title>
+    <ion-title text-center id="change-language-page-header-title-text"
+      >{{ 'more-module.change-language.header-title' | translate }}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="change-language-page override-ion-content-padding">
   <ion-list class="list-wrapper">
     <div *ngFor="let language of changeLanguageFacade.availableLanguage">
-      <ion-item (click)="changeLanguageFacade.updateLanguage(language)">
+      <ion-item (click)="changeLanguageFacade.updateLanguage(language)" id="change-language-page-language-item">
         <div class="clearfix" style="padding: 20px 0;">
           <div class="clearfix item-wrapper">
             <div class="clearfix">
-              <span class="list-title">{{ language.name | translate }}</span>
+              <span class="list-title" id="change-language-page-language-name-title"
+                >{{ language.name | translate }}</span
+              >
             </div>
             <div class=" icon-arrow" *ngIf="language.language === changeLanguageFacade.selectedLanguage.language">
               <img id="button-view-version-info" src="assets/svg/select.svg" alt="arrow" srcset="" />

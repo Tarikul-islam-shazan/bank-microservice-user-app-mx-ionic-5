@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
     </ion-buttons>
-    <ion-title text-center>{{ 'more-module.account-info-page.header-title' | translate }}</ion-title>
+    <ion-title text-center id="account-info-page-header-title-text">
+      {{ 'more-module.account-info-page.header-title' | translate }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,11 +15,13 @@
     <ion-list>
       <ion-item>
         <div class="clearfix">
-          <h6 class="heading">
+          <h6 class="heading" id="account-info-page-account-number-text">
             {{ 'more-module.account-info-page.account-number' | translate }}
           </h6>
-          <p class="valuebold">{{ accountInfoFacade?.accountInfo.accountNumber }}</p>
-          <p class="subtext">
+          <p class="valuebold" id="account-info-page-account-number">
+            {{ accountInfoFacade?.accountInfo.accountNumber }}
+          </p>
+          <p class="subtext" id="account-info-page-account-disclaimer-text">
             {{ 'more-module.account-info-page.disclaimer-text' | translate }}
           </p>
         </div>
@@ -25,11 +29,13 @@
 
       <ion-item>
         <div class="clearfix">
-          <h6 class="heading">
+          <h6 class="heading" id="account-info-page-bank-routing-number-text">
             {{ 'more-module.account-info-page.bank-routing-number' | translate }}
           </h6>
-          <p class="valuebold">{{ accountInfoFacade?.accountInfo.routingNumber }}</p>
-          <p class="subtext">
+          <p class="valuebold" id="account-info-page-bank-routing-number">
+            {{ accountInfoFacade?.accountInfo.routingNumber }}
+          </p>
+          <p class="subtext" id="account-info-page-disclaimer-text">
             {{ 'more-module.account-info-page.disclaimer-text' | translate }}
           </p>
         </div>
@@ -37,10 +43,10 @@
 
       <ion-item>
         <div class="clearfix">
-          <h6 class="heading">
+          <h6 class="heading" id="account-info-page-disclaimer-text">
             {{ 'more-module.account-info-page.inviter-email' | translate }}
           </h6>
-          <p class="valuebold onlyValue">
+          <p class="valuebold onlyValue" id="account-info-page-disclaimer-text">
             {{ accountInfoFacade?.memberInfo.inviter }}
           </p>
         </div>
@@ -48,10 +54,10 @@
 
       <ion-item lines="none">
         <div class="clearfix">
-          <h6 class="heading">
+          <h6 class="heading" id="account-info-page-member-since-text">
             {{ 'more-module.account-info-page.member-since' | translate }}
           </h6>
-          <p class="valuebold onlyValue">
+          <p class="valuebold onlyValue" id="account-info-page-member-since-date">
             {{ accountInfoFacade?.memberInfo.createdDate | date: 'MMM dd, yyyy' }}
           </p>
         </div>

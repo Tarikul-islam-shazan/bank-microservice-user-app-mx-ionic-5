@@ -1,32 +1,55 @@
 <ion-header meed class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+      <ion-back-button mode="md" text="" icon="arrow-back" color="light" id="card-details-page-back-btn">
+      </ion-back-button>
     </ion-buttons>
-    <ion-title class="ion-text-center">{{ 'more-module.card-details-page.header-title' | translate }}</ion-title>
+    <ion-title class="ion-text-center" id="card-details-page-header-title-text">
+      {{ 'more-module.card-details-page.header-title' | translate }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 <ion-content class="card-details-page override-ion-content-padding">
   <div class="clearfix" *ngIf="(cardDetailsFacade.cards$ | async) as card">
     <div class="img-container ion-text-center">
-      <img id="card-management-img" class="card-management-img" [src]="cardImgSrc" height="320px" />
-      <p class="card-number ion-text-center">{{ getCardNumber(card.cardNumber) }}</p>
+      <img id="card-details-page-card-management-img" class="card-management-img" [src]="cardImgSrc" height="320px" />
+      <p class="card-number ion-text-center" id="card-details-page-header-title-text">
+        {{ getCardNumber(card.cardNumber) }}
+      </p>
     </div>
     <div class="clearfix">
       <ion-list>
         <ion-item>
           <div (click)="navigateToPage('card/card-status')" class="list-item">
             <div class="list-item-icon" [ngClass]="card.isCardActive ? 'item-img' : 'unfreeze-img'">
-              <img *ngIf="!card.isCardActive" class="item-icon" src="assets/svg/unfreeze.svg" alt="freeze-card" />
-              <img *ngIf="card.isCardActive" class="item-icon" src="assets/svg/freeze.svg" alt="freeze-card" />
+              <img
+                *ngIf="!card.isCardActive"
+                class="item-icon"
+                id="card-details-page-card-unfreeze-img"
+                src="assets/svg/unfreeze.svg"
+                alt="freeze-card"
+              />
+              <img
+                *ngIf="card.isCardActive"
+                class="item-icon"
+                id="card-details-page-card-freeze-img"
+                src="assets/svg/freeze.svg"
+                alt="freeze-card"
+              />
             </div>
             <div class="text-wrapper">
               <div [ngClass]="card.isCardActive ? 'item-header' : 'item-header-without-subheader'">
-                <span *ngIf="card.isCardActive">{{ 'more-module.card-details-page.freeze-card' | translate }}</span>
-                <span *ngIf="!card.isCardActive">{{ 'more-module.card-details-page.unfreeze-card' | translate }}</span>
+                <span *ngIf="card.isCardActive" id="card-details-page-freeze-card-text">
+                  {{ 'more-module.card-details-page.freeze-card' | translate }}
+                </span>
+                <span *ngIf="!card.isCardActive" id="card-details-page-unfreeze-card-text">
+                  {{ 'more-module.card-details-page.unfreeze-card' | translate }}
+                </span>
               </div>
               <div *ngIf="card.isCardActive" class="item-subheader">
-                <span>{{ 'more-module.card-details-page.hold-subheader' | translate }}</span>
+                <span id="card-details-page-card-hold-text">
+                  {{ 'more-module.card-details-page.hold-subheader' | translate }}
+                </span>
               </div>
             </div>
           </div>
@@ -35,17 +58,23 @@
         <ion-item>
           <div (click)="navigateToPage('card/card-lost')" class="list-item">
             <div class="item-img list-item-icon">
-              <img class="item-icon" src="assets/svg/report.svg" alt="freeze-card" />
+              <img class="item-icon" id="card-details-page-report-img" src="assets/svg/report.svg" alt="freeze-card" />
             </div>
             <div class="text-wrapper">
               <div class="item-header">
-                <span>{{ 'more-module.card-details-page.stolen-card' | translate }}</span>
+                <span id="card-details-page-stolen-card-text">
+                  {{ 'more-module.card-details-page.stolen-card' | translate }}
+                </span>
               </div>
               <div *ngIf="card.isCardActive" class="item-subheader">
-                <span>{{ 'more-module.card-details-page.call-immediately-text' | translate }}</span>
+                <span id="card-details-page-stolen-card-text">
+                  {{ 'more-module.card-details-page.call-immediately-text' | translate }}
+                </span>
               </div>
               <div *ngIf="!card.isCardActive" class="item-subheader">
-                <span>{{ 'more-module.card-details-page.deactivated-text' | translate }}</span>
+                <span id="card-details-page-deactivated-text">
+                  {{ 'more-module.card-details-page.deactivated-text' | translate }}
+                </span>
               </div>
             </div>
           </div>
@@ -54,17 +83,28 @@
         <ion-item>
           <div (click)="navigateToPage('card/card-replace')" class="list-item">
             <div class="item-img list-item-icon">
-              <img class="item-icon" src="assets/svg/replace.svg" alt="freeze-card" />
+              <img
+                class="item-icon"
+                id="card-details-page-freeze-card-img"
+                src="assets/svg/replace.svg"
+                alt="freeze-card"
+              />
             </div>
             <div class="text-wrapper">
               <div class="item-header">
-                <span>{{ 'more-module.card-details-page.replace-card' | translate }}</span>
+                <span id="card-details-page-replace-card-text">
+                  {{ 'more-module.card-details-page.replace-card' | translate }}
+                </span>
               </div>
               <div *ngIf="card.isCardActive" class="item-subheader">
-                <span>{{ 'more-module.card-details-page.replace-card-subheader' | translate }}</span>
+                <span id="card-details-page-replace-card-subheader-text">
+                  {{ 'more-module.card-details-page.replace-card-subheader' | translate }}
+                </span>
               </div>
               <div *ngIf="!card.isCardActive" class="item-subheader">
-                <span>{{ 'more-module.card-details-page.replace-card-unfreze-text' | translate }}</span>
+                <span id="card-details-page-replace-card-unfreeze-text">
+                  {{ 'more-module.card-details-page.replace-card-unfreze-text' | translate }}
+                </span>
               </div>
             </div>
           </div>
@@ -73,17 +113,28 @@
         <ion-item lines="none">
           <div (click)="navigateToPage('card/card-pin')" class="list-item">
             <div class="item-img list-item-icon">
-              <img class="item-icon" src="assets/svg/card-pin.svg" alt="freeze-card" />
+              <img
+                class="item-icon"
+                id="card-details-page-card-pin-img"
+                src="assets/svg/card-pin.svg"
+                alt="freeze-card"
+              />
             </div>
             <div class="text-wrapper">
               <div class="item-header">
-                <span>{{ 'more-module.card-details-page.card-pin' | translate }}</span>
+                <span id="card-details-page-card-pin-text">
+                  {{ 'more-module.card-details-page.card-pin' | translate }}
+                </span>
               </div>
               <div *ngIf="card.isCardActive" class="item-subheader">
-                <span>{{ 'more-module.card-details-page.change-pin-subheader' | translate }}</span>
+                <span id="card-details-page-card-pin-subheader-text">
+                  {{ 'more-module.card-details-page.change-pin-subheader' | translate }}
+                </span>
               </div>
               <div *ngIf="!card.isCardActive" class="item-subheader">
-                <span>{{ 'more-module.card-details-page.pin-protaction-text' | translate }}</span>
+                <span id="card-details-page-card-pin-protaction-text">
+                  {{ 'more-module.card-details-page.pin-protaction-text' | translate }}
+                </span>
               </div>
             </div>
           </div>

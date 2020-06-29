@@ -1,34 +1,44 @@
 <ion-header meed class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+      <ion-back-button
+        mode="md"
+        id="contact-preference-page-back-btn"
+        text=""
+        icon="arrow-back"
+        color="light"
+      ></ion-back-button>
     </ion-buttons>
-    <ion-title id="contact-preference-header-title" text-center
-      >{{ 'more-module.contact-preference.header-title' | translate }}</ion-title
-    >
+    <ion-title id="contact-preference-page-header-title-text" text-center>
+      {{ 'more-module.contact-preference.header-title' | translate }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="contact-preferences-page">
   <div class="meed-bank">
     <div class="meed-bank-title">
-      <p id="contact-preference-bank-title" class="contact-pref-title">
+      <p
+        id="contact-preference-bank-title"
+        class="contact-pref-title"
+        id="contact-preference-page-invex-bank-header-text"
+      >
         {{ 'more-module.contact-preference.invex-bank-header' | translate }}
       </p>
     </div>
     <div class="contact-pref-message">
-      <p id="contact-preference-bank-subtitle">
+      <p id="contact-preference-bank-subtitle" id="contact-preference-page-invex-bank-sub-header-text">
         {{ 'more-module.contact-preference.invex-bank-sub-header' | translate }}
       </p>
     </div>
   </div>
   <ion-list lines="none">
     <ion-item class="meed-bank-options">
-      <ion-label id="contact-preference-bank-email-label" class="meed-bank-options-email">
+      <ion-label id="contact-preference-page-bank-email-label" class="meed-bank-options-email">
         {{ 'more-module.contact-preference.email-text' | translate }}
       </ion-label>
       <ion-toggle
-        id="contact-preference-bank-email-toggle"
+        id="contact-preference-pagew-bank-email-toggle"
         color="primary"
         [(ngModel)]="contactPreferencesFacade.isBankEmail"
         (click)="contactPreferencesFacade.changeBankEmailStatus()"
@@ -36,11 +46,11 @@
       </ion-toggle>
     </ion-item>
     <ion-item class="meed-bank-options">
-      <ion-label id="contact-preference-bank-push-label" class="meed-bank-options-email" padding-vertical>
+      <ion-label id="contact-preference-page-bank-push-label" class="meed-bank-options-email" padding-vertical>
         {{ 'more-module.contact-preference.push-text' | translate }}</ion-label
       >
       <ion-toggle
-        id="contact-preference-bank-push-toggle"
+        id="contact-preference-page-bank-push-toggle"
         color="primary"
         [(ngModel)]="contactPreferencesFacade.isBankPushNotify"
         (click)="contactPreferencesFacade.changeBankPushStatus()"
@@ -51,22 +61,24 @@
 
   <div class="meed-bank meed-pref">
     <div class="meed-bank-title">
-      <p id="contact-preference-meed-title" class="contact-pref-title">
+      <p id="contact-preference-page-meed-title" class="contact-pref-title">
         {{ 'more-module.contact-preference.meed-header' | translate }}
       </p>
     </div>
     <div class="contact-pref-message">
-      <p id="contact-preference-meed-subtitle">{{ 'more-module.contact-preference.meed-sub-header' | translate }}</p>
+      <p id="contact-preference-page-meed-subtitle">
+        {{ 'more-module.contact-preference.meed-sub-header' | translate }}
+      </p>
     </div>
   </div>
 
   <ion-list lines="none">
     <ion-item class="meed-bank-options">
-      <ion-label id="contact-preference-meed-email-label" class="meed-bank-options-email" padding-vertical>
+      <ion-label id="contact-preference-page-meed-email-label" class="meed-bank-options-email" padding-vertical>
         {{ 'more-module.contact-preference.email-text' | translate }}
       </ion-label>
       <ion-toggle
-        id="contact-preference-meed-email-toggle"
+        id="contact-preference-page-meed-email-toggle"
         color="primary"
         [(ngModel)]="contactPreferencesFacade.isEmail"
         (click)="contactPreferencesFacade.changeMeedEmailStatus()"
@@ -74,11 +86,11 @@
       </ion-toggle>
     </ion-item>
     <ion-item class="meed-bank-options">
-      <ion-label id="contact-preference-meed-push-label" class="meed-bank-options-email" padding-vertical>
+      <ion-label id="contact-preference-page-meed-push-label" class="meed-bank-options-email" padding-vertical>
         {{ 'more-module.contact-preference.push-text' | translate }}</ion-label
       >
       <ion-toggle
-        id="contact-preference-meed-push-toggle"
+        id="contact-preference-page-meed-push-toggle"
         color="primary"
         [(ngModel)]="contactPreferencesFacade.isPushNotify"
         (click)="contactPreferencesFacade.changeMeedPushStatus()"

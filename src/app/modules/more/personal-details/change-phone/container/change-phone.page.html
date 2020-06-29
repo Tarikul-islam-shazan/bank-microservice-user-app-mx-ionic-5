@@ -1,7 +1,14 @@
 <ion-header class="white-header ion-no-border">
   <ion-toolbar>
-    <div slot="start" class="header-close-button" (click)="dismiss()"></div>
-    <ion-title> {{'more-module.personal-details.change-phone-no-modal.header-title' | translate}}</ion-title>
+    <div
+      slot="start"
+      class="header-close-button"
+      id="change-phone-no-modal-page-header-close-btn"
+      (click)="dismiss()"
+    ></div>
+    <ion-title id="change-phone-no-modal-page-header-title-text">
+      {{'more-module.personal-details.change-phone-no-modal.header-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,12 +17,13 @@
     <form [formGroup]="changePhoneForm">
       <ion-list lines="none" class="input-list">
         <ion-item>
-          <ion-label position="stacked">
-            {{'more-module.personal-details.change-phone-no-modal.phone-no-text' | translate}}</ion-label
-          >
+          <ion-label position="stacked" id="change-phone-no-modal-page-phone-no-text">
+            {{'more-module.personal-details.change-phone-no-modal.phone-no-text' | translate}}
+          </ion-label>
           <ion-input
             type="tel"
             class="white-input"
+            id="change-phone-no-modal-page-phone-no-input"
             [appMaskInput]="phoneNumber"
             formControlName="mobilePhone"
             [maxlength]="phoneNumberLength"
@@ -31,6 +39,7 @@
   <ion-toolbar>
     <ion-button
       class="white-button"
+      id="change-phone-no-modal-page-phone-no-save-btn"
       expand="block"
       [disabled]="changePhoneForm.invalid || !isFormValueChanged"
       (click)="save()"

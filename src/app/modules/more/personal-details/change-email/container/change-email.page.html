@@ -1,7 +1,14 @@
 <ion-header class="white-header ion-no-border">
   <ion-toolbar>
-    <div slot="start" class="header-close-button" (click)="dismiss()"></div>
-    <ion-title> {{'more-module.personal-details.change-email-address-modal.header-title' | translate}}</ion-title>
+    <div
+      slot="start"
+      class="header-close-button"
+      id="change-email-address-modal-page-close-btn"
+      (click)="dismiss()"
+    ></div>
+    <ion-title id="change-email-address-modal-page-header-title-text">
+      {{'more-module.personal-details.change-email-address-modal.header-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -10,26 +17,43 @@
     <form [formGroup]="changeEmailForm" novalidate>
       <ion-list lines="none" class="input-list">
         <ion-item>
-          <ion-label position="stacked">
+          <ion-label position="stacked" id="change-email-address-modal-page-registered-email-text">
             {{ 'more-module.personal-details.change-email-address-modal.registered-email-text' | translate }}
           </ion-label>
-          <ion-input type="email" class="white-input" formControlName="currentEmail"></ion-input>
+          <ion-input
+            type="email"
+            class="white-input"
+            id="change-email-address-modal-page-current-email-input"
+            formControlName="currentEmail"
+          >
+          </ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">
+          <ion-label position="stacked" id="change-email-address-modal-page-new-email-text">
             {{ 'more-module.personal-details.change-email-address-modal.new-email-text' | translate }}</ion-label
           >
-          <ion-input type="email" class="white-input" formControlName="newEmail"></ion-input>
+          <ion-input
+            type="email"
+            class="white-input"
+            id="change-email-address-modal-page-new-email-input"
+            formControlName="newEmail"
+          ></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label position="stacked">
+          <ion-label position="stacked" id="change-email-address-modal-page-confirm-email-text">
             {{ 'more-module.personal-details.change-email-address-modal.confirm-email-text' | translate }}</ion-label
           >
-          <ion-input type="email" class="white-input" formControlName="confirmEmail"></ion-input>
+          <ion-input
+            type="email"
+            class="white-input"
+            id="change-email-address-modal-page-confirm-email-input"
+            formControlName="confirmEmail"
+          ></ion-input>
         </ion-item>
         <div
           *ngIf="changeEmailForm.controls.confirmEmail.dirty && changeEmailForm.controls.confirmEmail.errors?.mustMatch"
           class="change-email-error-msg"
+          id="change-email-address-modal-page-email-address-mismatch-text"
         >
           {{ 'more-module.personal-details.change-email-address-modal.errors.email-address-mismatch-text' | translate }}
         </div>
@@ -40,7 +64,13 @@
 
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" [disabled]="changeEmailForm.invalid" (click)="save()">
+    <ion-button
+      class="white-button"
+      id="change-email-address-modal-page-email-save-btn"
+      expand="block"
+      [disabled]="changeEmailForm.invalid"
+      (click)="save()"
+    >
       {{ 'more-module.personal-details.change-email-address-modal.button-text' | translate }}
     </ion-button>
   </ion-toolbar>

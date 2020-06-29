@@ -3,17 +3,19 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
     </ion-buttons>
-    <ion-title text-center>{{ 'more-module.card-pin-page.header-title' | translate }}</ion-title>
+    <ion-title text-center id="card-pin-page-header-title-text">
+      {{ 'more-module.card-pin-page.header-title' | translate }}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="card-pin-page override-ion-content-padding">
   <div class="container">
-    <div class="header-text-1">
+    <div class="header-text-1" id="card-pin-page-header-text-one">
       <h4>{{ 'more-module.card-pin-page.header-text' | translate }}</h4>
     </div>
     <div class="sub-text">
-      <p>
+      <p id="card-pin-page-card-pin-call-text">
         {{ 'more-module.card-pin-page.card-pin-call' | translate:{'callNumber':cardPinFacade.supportNumber} }}
       </p>
     </div>
@@ -21,7 +23,12 @@
 </ion-content>
 
 <ion-footer class="ion-no-border" *ngIf="cardPinFacade.isCordova()">
-  <ion-button class="white-button" expand="block" (click)="cardPinFacade.callANumber()">
+  <ion-button
+    class="white-button"
+    id="card-pin-page-call-number-btn"
+    expand="block"
+    (click)="cardPinFacade.callANumber()"
+  >
     {{ 'more-module.card-pin-page.btn-text' | translate }}
   </ion-button>
 </ion-footer>
