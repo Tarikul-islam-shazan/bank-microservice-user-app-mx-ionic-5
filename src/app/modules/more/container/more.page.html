@@ -1,13 +1,15 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ 'more-module.more-page.header-title' | translate}}</ion-title>
+    <ion-title id="more-page-header-title-text">
+      {{ 'more-module.more-page.header-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list lines="full" *ngFor="let menu of moreMenuList">
     <ion-list-header>
-      <ion-label>{{menu.optionName | translate}}</ion-label>
+      <ion-label id="more-page-option-name-text">{{menu.optionName | translate}}</ion-label>
     </ion-list-header>
     <ion-item
       *ngFor="let item of menu.options; let i = index"
@@ -15,14 +17,15 @@
       appSuppress="{{item.suppress}}"
       lines="{{menu.options.length === (i+1)? 'none':''}}"
     >
-      <img slot="start" [class]="item.iconClass" />
-      <ion-label class="{{facade.getLabelClass(item.route)}}">
+      <img slot="start" [class]="item.iconClass" id="more-page-menu-item-img" />
+      <ion-label class="{{facade.getLabelClass(item.route)}}" id="more-page-menu-item-name-text">
         {{item.menuItemName | translate}}
       </ion-label>
-      <img slot="end" class="img-arrow-right" *ngIf="item.route !== 'face-id' " />
+      <img slot="end" class="img-arrow-right" id="more-page-arrow-right-img" *ngIf="item.route !== 'face-id' " />
       <ng-container *ngIf="item.route === 'face-id'">
         <ion-toggle
           slot="end"
+          id="more-page-menu-FaceId-Or-TouchID-Enable-btn"
           [disabled]="!item.isNativeFeatureAvailable"
           [(ngModel)]="facade.isFaceIdOrTouchIDisEnabled"
           (ngModelChange)="facade.disableOrShowAlertBiometricLogin()"

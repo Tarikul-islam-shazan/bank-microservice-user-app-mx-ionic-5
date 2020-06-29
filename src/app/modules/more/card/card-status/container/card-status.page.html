@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
     </ion-buttons>
-    <ion-title text-center>{{ 'more-module.card-status-page.header-title' | translate }}</ion-title>
+    <ion-title text-center id="card-status-page-header-title-text">
+      {{ 'more-module.card-status-page.header-title' | translate }}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
@@ -11,13 +13,17 @@
   <div class="container">
     <div class="clearfix">
       <div class="text-header">
-        <p>{{ 'more-module.card-status-page.header-text' | translate }}</p>
+        <p id="card-status-page-header-text">{{ 'more-module.card-status-page.header-text' | translate }}</p>
       </div>
       <div class="disclaimer">
-        <p>{{ 'more-module.card-status-page.disclaimer-text-1' | translate }}</p>
+        <p id="card-status-page-disclaimer-text-one">
+          {{ 'more-module.card-status-page.disclaimer-text-1' | translate }}
+        </p>
       </div>
       <div class="disclaimer">
-        <p>{{ 'more-module.card-status-page.disclaimer-text-2' | translate }}</p>
+        <p id="card-status-page-disclaimer-text-two">
+          {{ 'more-module.card-status-page.disclaimer-text-2' | translate }}
+        </p>
       </div>
     </div>
   </div>
@@ -25,11 +31,16 @@
 
 <ion-footer class="ion-no-border" *ngIf="(cardStatusFacade.cards$ | async) as card">
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" (click)="updateCardStatus(card.cardId,card.isCardActive)">
-      <ng-template [ngIf]="card.isCardActive" [ngIfElse]="unfreezeCard">
+    <ion-button
+      class="white-button"
+      id="card-status-page-update-card-status-btn"
+      expand="block"
+      (click)="updateCardStatus(card.cardId,card.isCardActive)"
+    >
+      <ng-template [ngIf]="card.isCardActive" [ngIfElse]="unfreezeCard" id="card-status-page-freeze-btn-text">
         {{ 'more-module.card-status-page.btn-text-freeze' | translate }}
       </ng-template>
-      <ng-template #unfreezeCard>
+      <ng-template #unfreezeCard id="card-status-page-unfreeze-btn-text">
         {{ 'more-module.card-status-page.btn-text-unfreeze' | translate }}
       </ng-template>
     </ion-button>
