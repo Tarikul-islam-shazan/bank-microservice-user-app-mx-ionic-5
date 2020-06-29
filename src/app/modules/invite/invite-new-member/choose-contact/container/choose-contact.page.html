@@ -1,6 +1,11 @@
 <ion-header class="white-header" no-border>
   <ion-toolbar>
-    <div slot="start" class="header-close-button" (click)="facade.onBackClick()"></div>
+    <div
+      slot="start"
+      class="header-close-button"
+      id="invite-page-header-close-button"
+      (click)="facade.onBackClick()"
+    ></div>
   </ion-toolbar>
 </ion-header>
 
@@ -9,9 +14,10 @@
     <ion-row class="search-bar">
       <ion-col size="12" class="ion-no-padding">
         <ion-item class="search-field" lines="none">
-          <ion-icon name="search" slot="start"></ion-icon>
+          <ion-icon name="search" slot="start" id="invite-page-header-search-icon"></ion-icon>
           <ion-input
             (ionChange)="facade.searchContact($event.target.value)"
+            id="invite-page-search-contact-input"
             type="text"
             placeholder="{{'invite-module.invite-new-member-page.choose-contact-modal.search-input-placeholder' | translate }}"
             required
@@ -26,14 +32,15 @@
         <ion-list lines="none" *ngIf="facade.searchString !== ''">
           <ion-item *ngFor="let contact of facade.searchContacts">
             <ion-label>
-              <h2>{{contact.name}}</h2>
-              <p>{{contact.emails[0]}}</p>
+              <h2 id="invite-page-contact-name">{{contact.name}}</h2>
+              <p id="invite-page-contact-email">{{contact.emails[0]}}</p>
             </ion-label>
             <ion-checkbox
               [(ngModel)]="contact.selected"
               (ionChange)="facade.onSelectSearchContact(contact)"
               mode="md"
               slot="end"
+              id="invite-page-contact-checkbox-input"
             ></ion-checkbox>
           </ion-item>
         </ion-list>
@@ -43,14 +50,15 @@
         <ion-list lines="none" *ngIf="facade.searchString === ''">
           <ion-item *ngFor="let contact of facade.contacts">
             <ion-label>
-              <h2>{{contact.name}}</h2>
-              <p>{{contact.emails[0]}}</p>
+              <h2 id="invite-page-header-contact-name">{{contact.name}}</h2>
+              <p id="invite-page-header-contact-email">{{contact.emails[0]}}</p>
             </ion-label>
             <ion-checkbox
               [(ngModel)]="contact.selected"
               (ionChange)="facade.onSelectContact(contact)"
               mode="md"
               slot="end"
+              id="invite-page-contact-checkbox"
             ></ion-checkbox>
           </ion-item>
         </ion-list>
@@ -63,6 +71,7 @@
     *ngIf="facade.searchString === ''"
     (ionInfinite)="facade.doInfinite($event)"
     [disabled]="facade.infiniteScrollDisabled"
+    id="invite-page-infinite-scroll"
   >
     <ion-infinite-scroll-content loadingSpinner="null" loadingText=""> </ion-infinite-scroll-content>
   </ion-infinite-scroll>
@@ -75,6 +84,7 @@
       [disabled]="facade.enableAddFriendButton()"
       class="white-button"
       expand="block"
+      id="invite-page-add-friend-btn"
     >
       {{ 'invite-module.invite-new-member-page.choose-contact-modal.add-friends-button' | translate}}
     </ion-button>
