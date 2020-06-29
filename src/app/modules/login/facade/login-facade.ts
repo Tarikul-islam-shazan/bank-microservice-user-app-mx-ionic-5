@@ -327,7 +327,7 @@ export class LoginFacade {
    * @memberOf LoginFacade
    */
   async openHelpModal(): Promise<void> {
-    let contactNumber = this.bankContactNumber.replace(/\s/g, '');
+    const contactNumber = this.bankContactNumber.replace(/\s/g, '');
     const modalComponentContent: IMeedModalComponentProps = {
       componentProps: {
         contents: [
