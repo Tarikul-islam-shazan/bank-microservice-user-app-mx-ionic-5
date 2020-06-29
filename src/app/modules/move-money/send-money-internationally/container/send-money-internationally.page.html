@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"> </ion-back-button>
     </ion-buttons>
-    <ion-title>{{'move-money-module.send-money-internationally.page-title' | translate}}</ion-title>
+    <ion-title id="send-money-internationally-page-header-title-text">
+      {{'move-money-module.send-money-internationally.page-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,14 +14,14 @@
     <ion-grid>
       <ion-row>
         <ion-col size="12" class="ion-no-padding">
-          <div class="international-header ion-no-padding">
+          <div class="international-header ion-no-padding" id="send-money-internationally-page-header-text">
             <p>
               <b>{{'move-money-module.send-money-internationally.page-header' | translate}}</b>
             </p>
           </div>
         </ion-col>
         <ion-col size="12" class="ion-no-padding">
-          <div class="international-sub-header">
+          <div class="international-sub-header" id="send-money-internationally-page-sub-header-text">
             <p>
               {{'move-money-module.send-money-internationally.page-sub-header' | translate}}
             </p>
@@ -32,12 +34,13 @@
           (click)="openModal(
           'https://www.remitly.com/us/en?g_acctid=246-442-0064&g_campaign=USA-Global_Global_Acquisition_Core_Brand&g_campaignid=244948518&g_adgroupid=18798783918&g_adid=280844115275&g_keyword=remitly&g_keywordid=kwd-119128217835&g_network=g&utm_source=google&utm_medium=Direct&utm_term=USA-Global_Global_Acquisition_Direct_Brand_Brand&utm_content=Savings&utm_campaign=USA-Global_Global_Acquisition_Core_Brand&kpid=280844115275&gclid=CjwKCAjwiZnnBRBQEiwAcWKfYvlpwY5moR9GwbArP6U_urYe6h7UPyoaEdHkZV1gIWH0i21PAMCXzhoCZU8QAvD_BwE'
         )"
+          id="send-money-internationally-page-modal"
         >
           <div>
             <img src="assets/img/remitlyLogo.png" />
           </div>
         </ion-col>
-        <ion-col size="6" (click)="openModal('https://transferwise.com/us')">
+        <ion-col size="6" (click)="openModal('https://transferwise.com/us')" id="send-money-internationally-page-modal">
           <div>
             <img src="assets/img/TransferwiseBigger.png" />
           </div>
@@ -45,7 +48,7 @@
       </ion-row>
       <ion-row>
         <ion-col size="12" class="ion-no-padding">
-          <div class="international-header ion-no-padding">
+          <div class="international-header ion-no-padding" id="send-money-internationally-page-about-the-links-text">
             <p>
               <b>
                 {{'move-money-module.send-money-internationally.about-the-links' | translate}}
@@ -54,14 +57,20 @@
           </div>
         </ion-col>
         <ion-col size="12" class="ion-no-padding">
-          <div class="international-sub-header ion-no-padding">
+          <div
+            class="international-sub-header ion-no-padding"
+            id="send-money-internationally-page-international-transferPage-message-1-text"
+          >
             <p>
               {{'move-money-module.send-money-internationally.international-transferPage-message-1' | translate}}
             </p>
           </div>
         </ion-col>
         <ion-col size="12" class="ion-no-padding">
-          <div class="international-sub-header">
+          <div
+            class="international-sub-header"
+            id="send-money-internationally-page-international-transferPage-message-2-text"
+          >
             <p>
               {{'move-money-module.send-money-internationally.international-transferPage-message-2' | translate}}
             </p>

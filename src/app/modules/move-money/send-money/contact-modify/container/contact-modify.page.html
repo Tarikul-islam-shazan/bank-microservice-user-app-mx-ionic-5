@@ -3,26 +3,31 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'move-money-module.send-money.contact-modify.page-title' | translate}}</ion-title>
+    <ion-title id="send-money-contact-modify-page-header-title-text">
+      {{'move-money-module.send-money.contact-modify.page-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="contact-modify-page">
     <div class="contact-modify-keyword-form">
-      <div class="form-details">{{'move-money-module.send-money.contact-modify.form-title' | translate}}</div>
+      <div class="form-details" id="send-money-contact-modify-page-form-title-text">
+        {{'move-money-module.send-money.contact-modify.form-title' | translate}}
+      </div>
       <form [formGroup]="contactModifyForm">
         <ion-list lines="none" class="input-list">
           <ion-item>
             <ion-input
               type="email"
+              id="send-money-contact-modify-page-email-input"
               class="white-input"
               formControlName="email"
               placeholder="{{'move-money-module.send-money.contact-modify.form-email-placeholder' | translate}}"
             ></ion-input>
           </ion-item>
         </ion-list>
-        <div class="form-details">
+        <div class="form-details" id="send-money-contact-modify-page-remember-title-text">
           {{'move-money-module.send-money.contact-modify.remember-title' | translate}}
         </div>
       </form>
@@ -39,6 +44,7 @@
             (click)="facade.updateContact(contactModifyForm.value.email)"
             expand="block"
             class="white-button"
+            id="send-money-contact-modify-page-save-btn"
           >
             {{'move-money-module.send-money.contact-modify.save-button' | translate}}
           </ion-button>
@@ -52,6 +58,7 @@
             expand="block"
             fill="outline"
             class="cancel-btn"
+            id="send-money-contact-modify-page-delete-btn"
           >
             {{'move-money-module.send-money.contact-modify.delete-button' | translate}}
           </ion-button>

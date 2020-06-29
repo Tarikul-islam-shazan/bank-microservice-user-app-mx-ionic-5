@@ -3,49 +3,59 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'move-money-module.internal-transfer.cancel-transfer.header-title' | translate}}</ion-title>
+    <ion-title id="internal-transfer-cancel-transfer-page-header-title-text">
+      {{'move-money-module.internal-transfer.cancel-transfer.header-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="cancel-transfer-content-wrapper">
     <div class="ion-text-center amount-block">
-      <div class="title">{{'move-money-module.internal-transfer.cancel-transfer.amount-title' | translate}}</div>
+      <div class="title" id="internal-transfer-cancel-transfer-page-amount-title-text">
+        {{'move-money-module.internal-transfer.cancel-transfer.amount-title' | translate}}
+      </div>
       <div class="amount">${{facade.transfer?.amount | number: '1.2-2'}}</div>
     </div>
     <div class="account-block">
-      <div class="title">{{'move-money-module.internal-transfer.cancel-transfer.transfer-from' | translate}}</div>
+      <div class="title" id="internal-transfer-cancel-transfer-page-transfer-from-text">
+        {{'move-money-module.internal-transfer.cancel-transfer.transfer-from' | translate}}
+      </div>
       <ion-item lines="none">
         <ion-avatar slot="start">
           <span
             [ngClass]="{'img-checking': facade.isActiveAccount(facade.accountType.DDA, facade.transferFor.FromAccount), 'img-savings': facade.isActiveAccount(facade.accountType.SSA, facade.transferFor.FromAccount), 'img-loc': facade.isActiveAccount(facade.accountType.LOC, facade.transferFor.FromAccount)}"
           ></span>
         </ion-avatar>
-        <ion-label>
+        <ion-label id="internal-transfer-cancel-transfer-page-account-type-and-number">
           {{facade.accountTypeTranslation(facade.fromAccount?.accountType)}} (•••• {{facade.fromAccount?.accountNumber |
           slice: -4}})
         </ion-label>
       </ion-item>
     </div>
     <div class="account-block">
-      <div class="title">{{'move-money-module.internal-transfer.cancel-transfer.transfer-to' | translate}}</div>
+      <div class="title" id="internal-transfer-cancel-transfer-page-transfer-to-text">
+        {{'move-money-module.internal-transfer.cancel-transfer.transfer-to' | translate}}
+      </div>
       <ion-item lines="none">
         <ion-avatar slot="start">
           <span
             [ngClass]="{'img-checking': facade.isActiveAccount(facade.accountType.DDA, facade.transferFor.ToAccount), 'img-savings': facade.isActiveAccount(facade.accountType.SSA, facade.transferFor.ToAccount), 'img-loc': facade.isActiveAccount(facade.accountType.LOC, facade.transferFor.ToAccount)}"
           ></span>
         </ion-avatar>
-        <ion-label>
+        <ion-label id="internal-transfer-cancel-transfer-page-account-type-and-number">
           {{facade.accountTypeTranslation(facade.toAccount?.accountType)}} (•••• {{facade.toAccount?.accountNumber |
           slice: -4}})
         </ion-label>
       </ion-item>
     </div>
     <div class="scheduled-block">
-      <div class="title">{{'move-money-module.internal-transfer.cancel-transfer.schedule-title' | translate}}</div>
+      <div class="title" id="internal-transfer-cancel-transfer-page-schedule-title-text">
+        {{'move-money-module.internal-transfer.cancel-transfer.schedule-title' | translate}}
+      </div>
       <ion-item lines="none">
         <div slot="start" class="img-calendar"></div>
-        <ion-label>
+        <ion-label id="internal-transfer-cancel-transfer-page-transfer-date">
           {{facade.transfer?.transferDate | date:
           translation('move-money-module.internal-transfer.cancel-transfer.transfer-date')}}
         </ion-label>
@@ -55,7 +65,13 @@
 </ion-content>
 <ion-footer class="footer-content ion-no-border">
   <ion-toolbar>
-    <ion-button (click)="cancelInternalTransfer()" expand="block" fill="outline" class="white-button cancel-button">
+    <ion-button
+      (click)="cancelInternalTransfer()"
+      expand="block"
+      fill="outline"
+      class="white-button cancel-button"
+      id="internal-transfer-cancel-transfer-page-cancel-btn"
+    >
       {{'move-money-module.internal-transfer.cancel-transfer.cancel-button' | translate}}
     </ion-button>
   </ion-toolbar>

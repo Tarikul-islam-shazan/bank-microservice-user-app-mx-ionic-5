@@ -3,21 +3,28 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'move-money-module.send-money.ipay.contact-keyword.page-title' | translate}}</ion-title>
+    <ion-title id="send-money-ipay-contact-keyword-page-header-title-text">
+      {{'move-money-module.send-money.ipay.contact-keyword.page-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="contact-keyword">
     <div class="contact-keyword-form">
-      <div class="form-title">{{'move-money-module.send-money.ipay.contact-keyword.form-title' | translate}}</div>
-      <div class="form-details">{{'move-money-module.send-money.ipay.contact-keyword.form-details' | translate}}</div>
+      <div class="form-title" id="send-money-ipay-contact-keyword-page-form-title-text">
+        {{'move-money-module.send-money.ipay.contact-keyword.form-title' | translate}}
+      </div>
+      <div class="form-details" id="send-money-ipay-contact-keyword-page-form-details-text">
+        {{'move-money-module.send-money.ipay.contact-keyword.form-details' | translate}}
+      </div>
       <form [formGroup]="contactKeywordForm">
         <ion-list lines="none" class="input-list">
           <ion-item>
             <ion-input
               type="text"
               class="white-input"
+              id="send-money-ipay-contact-keyword-page-shared-Secret-input"
               formControlName="sharedSecret"
               placeholder="{{'move-money-module.send-money.ipay.contact-keyword.keyword' | translate}}"
             ></ion-input>
@@ -26,12 +33,13 @@
             <ion-input
               type="text"
               class="white-input"
+              id="send-money-ipay-contact-keyword-page-confirm-shared-Secret-input"
               formControlName="confirmsharedSecret"
               placeholder="{{'move-money-module.send-money.ipay.contact-keyword.confirm-keyword' | translate}}"
             ></ion-input>
           </ion-item>
         </ion-list>
-        <div class="form-details">
+        <div class="form-details" id="send-money-ipay-contact-keyword-page-remember-share-text">
           {{'move-money-module.send-money.ipay.contact-keyword.remember-share' | translate}}
         </div>
       </form>
@@ -45,6 +53,7 @@
       [disabled]="contactKeywordForm.invalid"
       (click)="facade.continue(contactKeywordForm.value.sharedSecret)"
       class="white-button"
+      id="send-money-ipay-contact-keyword-page-continue-btn"
       expand="block"
       >{{'move-money-module.send-money.ipay.contact-keyword.next-button' | translate}}</ion-button
     >

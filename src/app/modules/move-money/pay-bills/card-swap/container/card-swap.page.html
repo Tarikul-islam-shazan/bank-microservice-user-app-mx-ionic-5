@@ -3,7 +3,9 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ 'move-money-module.pay-bills.card-swap.header-title' | translate }}</ion-title>
+    <ion-title id="card-swap-page-header-title-text">
+      {{ 'move-money-module.pay-bills.card-swap.header-title' | translate }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,6 +15,7 @@
       *ngIf="cardSwapFacade.cardSwapSrcURL"
       [src]="cardSwapFacade.cardSwapSrcURL"
       class="card-swap-iframe"
+      id="card-swap-page-card-swap-iframe"
     ></iframe>
   </div>
 </ion-content>
