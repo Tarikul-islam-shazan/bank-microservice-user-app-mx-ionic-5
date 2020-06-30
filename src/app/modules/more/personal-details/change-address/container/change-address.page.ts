@@ -9,7 +9,7 @@ import { ChangeAddressFacade } from '../facade';
 import { ICustomer, IDropdownOption, IAddressInfo, IAddress, StaticData } from '@app/core';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { isEqual } from 'lodash';
+import { isEqual, cloneDeep } from 'lodash';
 import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { DropdownModalComponent, IinputOption, InputFormatType } from '@app/shared';
@@ -248,8 +248,8 @@ export class ChangeAddressPage implements OnDestroy, OnInit {
   filterAddressType(addressType: string, propertyType: string, staticData: { [key: string]: IDropdownOption[] }) {
     this.addressTypeList = staticData[StaticData.AddressType];
     this.propertyTypeList = staticData[StaticData.PropertyType];
-    const addressList = JSON.parse(JSON.stringify(this.addressTypeList));
-    const propertyList = JSON.parse(JSON.stringify(this.propertyTypeList));
+    const addressList = cloneDeep(this.addressTypeList);
+    const propertyList = cloneDeep(this.propertyTypeList);
     const address = addressList.find(data => {
       return data.text === addressType;
     });

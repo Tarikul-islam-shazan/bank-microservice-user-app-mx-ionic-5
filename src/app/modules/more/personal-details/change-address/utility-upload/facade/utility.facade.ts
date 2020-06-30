@@ -219,28 +219,15 @@ export class UtilityUploadFacade {
     return formData;
   }
 
-  /**
-   * @summary continues signup process by sending form data
-   *
-   * @returns {void}
-   * @memberOf IdentityConfirmationFacade
-   */
-  continue(): void {
+  async continue() {
     const formData = this.getFormData();
     const customer: ICustomer = this.changeAddressService.customerData;
-    this.signupService.confirmIdentity(formData).subscribe(() => {
-      this.customerService.updateAddress(customer).subscribe((response: any) => {
-        const data = response.addresses;
-        this.customer.addresses = data;
-        // Object.assign(this.customer, data);
-        Object.assign(this.memberService.member, data);
-        this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
-        setTimeout(() => {
-          // this.router.navigate([`/more/personal-details`]);
-          this.transferSuccess();
-        }, 500);
-      });
-    });
+    await this.signupService.confirmIdentity(formData).toPromise();
+    const data = await this.customerService.updateAddress(customer).toPromise();
+    this.customer.addresses = data.addresses;
+    // Object.assign(this.customer, data);
+    Object.assign(this.memberService.member, data);
+    this.transferSuccess();
   }
 
   // Transfer success, show the success modal.
