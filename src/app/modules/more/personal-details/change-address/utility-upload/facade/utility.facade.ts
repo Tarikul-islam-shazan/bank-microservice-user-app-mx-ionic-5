@@ -1,12 +1,71 @@
 import { Injectable } from '@angular/core';
 import { AppPlatform } from '@app/core/util/app-platform';
-import { IMeedModalContent, ModalService } from '@app/shared';
+import { IMeedModalContent, ModalService, DropdownModalComponent } from '@app/shared';
+import { Observable } from 'rxjs';
+import { DropdownOption } from '@app/signup/models/signup';
+import { StaticDataService, StaticDataCategory, StaticData } from '@app/core';
+import { map } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
 
 @Injectable()
 export class UtilityUploadFacade {
   documentImage: string;
+  selectedUtility: DropdownOption;
+  constructor(
+    private platformService: AppPlatform,
+    private modalService: ModalService,
+    private staticDataService: StaticDataService,
+    private translateService: TranslateService
+  ) {}
 
-  constructor(private platformService: AppPlatform, private modalService: ModalService) {}
+  /**
+   * @summary gets utility options
+   *
+   * @returns {DropdownOption[]}
+   * @memberOf IdentityConfirmationFacade
+   */
+  getUtilityOptions(): Observable<DropdownOption[]> {
+    return this.staticDataService
+      .get(StaticDataCategory.IdentityConfirmation)
+      .pipe(map(staticData => staticData[StaticData.UtilityDocument]));
+  }
+
+  /**
+   * @summary opens utility modal
+   *
+   * @param {DropdownOption[]} options
+   * @param {(selectedUtility: DropdownOption) => void} callback
+   * @returns {Promise<void>}
+   * @memberOf IdentityConfirmationFacade
+   */
+  async openUtilityModal(
+    options: DropdownOption[],
+    callback: (selectedUtility: DropdownOption) => void
+  ): Promise<void> {
+    const componentProps: IMeedModalContent = {
+      data: options,
+      onDidDismiss: response => {
+        const { data } = response;
+        if (data) {
+          this.selectedUtility = data;
+          this.selectedUtility.text = this.getTranlatedValueByKey(this.selectedUtility.text);
+          callback(this.selectedUtility);
+        }
+      }
+    };
+    await this.modalService.openModal(DropdownModalComponent, componentProps);
+  }
+
+  /**
+   * @summary translates the given key
+   *
+   * @param {string} keyToTranslate
+   * @returns {string}
+   * @memberOf IdentityConfirmationFacade
+   */
+  getTranlatedValueByKey(keyToTranslate: string): string {
+    return this.translateService.instant(keyToTranslate);
+  }
 
   /**
    * @summary Take the camera permission if not authorized and initialize the process of capturing images

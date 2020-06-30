@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { UtilityUploadFacade } from '../facade/utility.facade';
 import { IonInput } from '@ionic/angular';
+import { DropdownOption } from '@app/signup/models/signup';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
   selector: 'mbc-utility-upload',
@@ -10,9 +12,52 @@ import { IonInput } from '@ionic/angular';
 })
 export class UtilityUploadPage implements OnInit {
   @ViewChild('documentImageInput', { static: false }) documentImageInput: IonInput;
-  constructor(private router: Router, public facade: UtilityUploadFacade) {}
+  utitlityOptions: DropdownOption[];
+  identityConfirmationForm: FormGroup;
+  constructor(private router: Router, public facade: UtilityUploadFacade, private formBuilder: FormBuilder) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.setUtilityOptions();
+    this.initIdentityConfirmation();
+  }
+
+  /**
+   * @summary gets utility sets utility options
+   *
+   * @private
+   * @returns {void}
+   * @memberOf IdentityConfirmationPage
+   */
+  private setUtilityOptions(): void {
+    this.facade.getUtilityOptions().subscribe(utilityDocument => {
+      this.utitlityOptions = utilityDocument;
+    });
+  }
+
+  /**
+   * @summary initializes the form
+   *
+   * @private
+   * @returns {void}
+   * @memberOf IdentityConfirmationPage
+   */
+  private initIdentityConfirmation(): void {
+    this.identityConfirmationForm = this.formBuilder.group({
+      utilityDocument: [null, Validators.required]
+    });
+  }
+
+  /**
+   * @summary opens utility modal
+   *
+   * @returns {void}
+   * @memberOf IdentityConfirmationPage
+   */
+  openModal(): void {
+    this.facade.openUtilityModal(this.utitlityOptions, (selectedUtility: DropdownOption) => {
+      this.identityConfirmationForm.controls.utilityDocument.patchValue(selectedUtility.text);
+    });
+  }
 
   dismiss() {
     this.router.navigate([`/more/personal-details/change-address`]);
