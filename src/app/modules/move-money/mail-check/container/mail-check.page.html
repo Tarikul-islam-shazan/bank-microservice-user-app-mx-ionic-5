@@ -3,25 +3,29 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ 'move-money-module.mail-check.bill-pay.page-title' | translate }}</ion-title>
+    <ion-title id="mail-check-page-header-title-text">
+      {{ 'move-money-module.mail-check.bill-pay.page-title' | translate }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="content-wrapper">
     <div class="add-payees-block">
-      <ion-fab-button (click)="addPayee()">
+      <ion-fab-button (click)="addPayee()" id="mail-check-page-add-payee-btn">
         <ion-icon name="add"></ion-icon>
       </ion-fab-button>
-      <div class="title" (click)="addPayee()">
+      <div class="title" id="mail-check-page-add-payee-button-title-text" (click)="addPayee()">
         {{ 'move-money-module.mail-check.bill-pay.add-payee-button-title' | translate }}
       </div>
     </div>
     <div class="my-payees-block">
-      <div class="title">{{ 'move-money-module.mail-check.bill-pay.add-payee-button-title' | translate }}</div>
+      <div class="title" id="mail-check-page-add-payee-button-title-text">
+        {{ 'move-money-module.mail-check.bill-pay.add-payee-button-title' | translate }}
+      </div>
       <div class="payee-item" *ngFor="let payee of payeeList" (click)="goToBillPayment(payee)">
         <div class="avatar">{{payee.fullName.slice(0,1)}}</div>
-        <div class="payee-name">{{payee.fullName}}</div>
+        <div class="payee-name" id="mail-check-page-payee-full-name-text">{{payee.fullName}}</div>
       </div>
     </div>
   </div>

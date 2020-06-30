@@ -3,29 +3,43 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'move-money-module.request-money.cancel.page-title' | translate}}</ion-title>
+    <ion-title id="request-money-cancel-page-header-title-text">
+      {{'move-money-module.request-money.cancel.page-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="cancel-page">
     <div class="ion-text-center amount-block">
-      <div class="title">{{'move-money-module.request-money.cancel.amount-title' | translate}}</div>
-      <div class="amount">${{facade.amount | number: '1.2-2'}}</div>
+      <div class="title" id="request-money-cancel-page-amount-title-text">
+        {{'move-money-module.request-money.cancel.amount-title' | translate}}
+      </div>
+      <div class="amount" id="request-money-cancel-page-amount">${{facade.amount | number: '1.2-2'}}</div>
     </div>
     <div class="request-block">
-      <div class="title">{{'move-money-module.request-money.cancel.request-from' | translate}}</div>
-      <div class="description">{{facade.email}}</div>
+      <div class="title" id="request-money-cancel-page-request-from-text">
+        {{'move-money-module.request-money.cancel.request-from' | translate}}
+      </div>
+      <div class="description" id="request-money-cancel-page-email-text">{{facade.email}}</div>
     </div>
     <div class="note-block">
-      <div class="title">{{'move-money-module.request-money.cancel.note-title' | translate}}</div>
-      <div class="description">{{facade.message}}</div>
+      <div class="title" id="request-money-cancel-page-note-title-text">
+        {{'move-money-module.request-money.cancel.note-title' | translate}}
+      </div>
+      <div class="description" id="request-money-cancel-page-message-text">{{facade.message}}</div>
     </div>
   </div>
 </ion-content>
 <ion-footer class="footer-content ion-no-border">
   <ion-toolbar>
-    <ion-button (click)="facade.deleteRequest()" expand="block" fill="outline" class="cancel-btn">
+    <ion-button
+      (click)="facade.deleteRequest()"
+      expand="block"
+      fill="outline"
+      class="cancel-btn"
+      id="request-money-cancel-page-cancel-btn"
+    >
       {{'move-money-module.request-money.cancel.cancel-button' | translate}}
     </ion-button>
   </ion-toolbar>

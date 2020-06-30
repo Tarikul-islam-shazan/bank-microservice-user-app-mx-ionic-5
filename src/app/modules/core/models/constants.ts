@@ -215,9 +215,9 @@ export const PAGES: Page = {
     NAME: 'scheduled-transfers',
     ROUTE_PATH: '/move-money/scheduled-transfers'
   },
-  CREDIT_DEBIT_CARD: {
-    NAME: 'credit-debit-card',
-    ROUTE_PATH: '/move-money/credit-debit-card'
+  OXXO_MONEY_DEPOSIT: {
+    NAME: 'oxxo-money-deposit',
+    ROUTE_PATH: '/move-money/oxxo-money-deposit'
   },
   TRANSFER_FROM_OTHER_BANK: {
     NAME: 'transfer-from-other-bank',

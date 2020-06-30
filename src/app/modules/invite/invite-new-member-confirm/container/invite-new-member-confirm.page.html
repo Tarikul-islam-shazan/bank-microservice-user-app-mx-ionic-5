@@ -21,11 +21,8 @@
     </div>
     <div class="invitees-badges">
       <ion-chip *ngFor="let contact of facade.inviteeContacts; let i = index">
-        <ion-label *ngIf="contact.name" id="invite-new-member-confirm-page-invitee-contact-name">
-          {{contact.name}}
-        </ion-label>
-        <ion-label *ngIf="!contact.name" id="invite-new-member-confirm-page-invitee-contact-email">
-          {{contact.email}}
+        <ion-labelid="invite-new-member-confirm-page-invitee-contact-name-email" >
+          {{ contact.name }} - {{ contact.email }}
         </ion-label>
         <ion-button
           fill="clear"
@@ -47,8 +44,7 @@
         auto-grow="true"
         id="invite-new-member-confirm-page-invitee-contact-edit-message-input"
         class="edit-message-textarea-div"
-        [(ngModel)]="facade.inviteMessage"
-      >
+        [(ngModel)]="facade.inviteMessage">
       </ion-textarea>
     </div>
   </div>

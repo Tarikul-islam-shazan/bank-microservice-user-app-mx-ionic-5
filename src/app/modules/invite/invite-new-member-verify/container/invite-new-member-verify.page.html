@@ -25,12 +25,9 @@
         id="invite-new-member-verify-page-invite-contact-chip"
         [class.existing-member-email]="contact.isAlreadyMeedMember"
       >
-        <ion-label *ngIf="contact.name" id="invite-new-member-verify-page-invite-contact-name"
-          >{{ contact.name }}</ion-label
-        >
-        <ion-label *ngIf="!contact.name" id="invite-new-member-verify-page-invite-contact-email"
-          >{{ contact.email }}</ion-label
-        >
+        <ion-label id="invite-new-member-verify-page-invite-contact-name-email">
+          {{ contact.name }} - {{ contact.email }}
+        </ion-label>
       </ion-chip>
     </div>
     <div class="invite-note">

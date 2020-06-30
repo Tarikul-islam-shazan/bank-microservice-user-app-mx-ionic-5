@@ -1,9 +1,11 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
-    <ion-buttons slot="start">
+    <ion-buttons slot="start" id="message-center-page-back-button">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title translate>{{ 'more-module.message-center.header-title-text'}}</ion-title>
+    <ion-title translate id="message-center-page-header-title-text">
+      {{ 'more-module.message-center.header-title-text'}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,7 +13,9 @@
   <ng-container *ngIf="messageCenterFacade.messages as messages">
     <ng-container *ngIf="messages.length then hasMessage else noMessage"></ng-container>
     <ng-template #noMessage>
-      <div translate class="no-inbox-text">{{ 'more-module.message-center.empty-inbox-text'}}</div>
+      <div translate class="no-inbox-text" id="message-center-page-empty-inbox-text">
+        {{ 'more-module.message-center.empty-inbox-text'}}
+      </div>
     </ng-template>
     <ng-template #hasMessage>
       <ion-list no-padding no-margin>
@@ -21,12 +25,18 @@
           *ngFor="let message of messages; let i=index"
         >
           <ion-label (click)="messageCenterFacade.showMessageDetails(message)">
-            <ion-text>
+            <ion-text id="message-center-page-message-title-text">
               <h3 [ngClass]="{ 'unread-msg' : message.isRead != true}">{{message.title}}</h3>
             </ion-text>
-            <p class="message-center-date">{{message.dateTime | date: 'MMM d, yyyy' }}</p>
+            <p class="message-center-date" id="message-center-page-message-date">
+              {{message.dateTime | date: 'MMM d, yyyy' }}
+            </p>
           </ion-label>
-          <span class="message-ceter-delete" (click)="messageCenterFacade.deleteMessageConfirmation(message)"></span>
+          <span
+            class="message-ceter-delete"
+            id="message-center-page-message-delete"
+            (click)="messageCenterFacade.deleteMessageConfirmation(message)"
+          ></span>
         </ion-item>
       </ion-list>
     </ng-template>

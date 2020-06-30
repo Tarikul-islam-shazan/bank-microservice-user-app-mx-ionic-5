@@ -1,33 +1,42 @@
 <ion-header meed class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+      <ion-back-button id="card-lost-page-back-btn" mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
     </ion-buttons>
-    <ion-title text-center>{{ 'more-module.card-lost-page.header-title' | translate }}</ion-title>
+    <ion-title text-center id="card-lost-page-header-title-text">
+      {{ 'more-module.card-lost-page.header-title' | translate }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content class="card-lost-page override-ion-content-padding">
   <div class="container">
     <div class="clearfix">
-      <div class="header-text-1">
+      <div class="header-text-1" id="card-lost-page-header-text-one">
         <h4>{{ 'more-module.card-lost-page.header-text' | translate }}</h4>
       </div>
       <div class="sub-text">
-        <p>{{ 'more-module.card-lost-page.stolen-text-1' | translate }}</p>
+        <p id="card-lost-page-stolen-text-one">{{ 'more-module.card-lost-page.stolen-text-1' | translate }}</p>
       </div>
       <div class="header-text-2">
-        <h4>{{ 'more-module.card-lost-page.header-text-2' | translate }}<br />{{cardLostFacade.supportNumber}}</h4>
+        <h4 id="card-lost-page-header-text-two">
+          {{ 'more-module.card-lost-page.header-text-2' | translate }}<br />{{cardLostFacade.supportNumber}}
+        </h4>
       </div>
       <div class="sub-text">
-        <p>{{ 'more-module.card-lost-page.stolen-text-2' | translate }}</p>
+        <p id="card-lost-page-stolen-text-two">{{ 'more-module.card-lost-page.stolen-text-2' | translate }}</p>
       </div>
     </div>
   </div>
 </ion-content>
 
 <ion-footer class="ion-no-border" *ngIf="cardLostFacade.isCordova()">
-  <ion-button class="white-button" expand="block" (click)="cardLostFacade.callANumber()">
+  <ion-button
+    class="white-button"
+    id="card-lost-page-call-number-btn"
+    expand="block"
+    (click)="cardLostFacade.callANumber()"
+  >
     {{ 'more-module.card-lost-page.btn-text' | translate }}
   </ion-button>
 </ion-footer>

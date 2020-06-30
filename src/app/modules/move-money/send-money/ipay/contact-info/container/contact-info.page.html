@@ -3,14 +3,18 @@
     <ion-buttons slot="start">
       <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'move-money-module.send-money.ipay.contact-info.page-title' | translate}}</ion-title>
+    <ion-title id="send-money-ipay-contact-info-page-header-title-text">
+      {{'move-money-module.send-money.ipay.contact-info.page-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="contact-info">
     <div class="contact-info-form">
-      <div class="form-title">{{'move-money-module.send-money.ipay.contact-info.form-title' | translate}}</div>
+      <div class="form-title" id="send-money-ipay-contact-info-page-form-title-text">
+        {{'move-money-module.send-money.ipay.contact-info.form-title' | translate}}
+      </div>
       <form [formGroup]="contactInfoForm">
         <ion-list lines="none" class="input-list">
           <ion-item>
@@ -18,6 +22,7 @@
               type="text"
               class="white-input"
               formControlName="firstName"
+              id="send-money-ipay-contact-info-page-first-name-input"
               placeholder="{{'move-money-module.send-money.ipay.contact-info.first-name' | translate}}"
             ></ion-input>
           </ion-item>
@@ -26,6 +31,7 @@
               type="text"
               class="white-input"
               formControlName="lastName"
+              id="send-money-ipay-contact-info-page-last-name-input"
               placeholder="{{'move-money-module.send-money.ipay.contact-info.last-name' | translate}}"
             ></ion-input>
           </ion-item>
@@ -34,6 +40,7 @@
               type="tel"
               class="white-input"
               formControlName="phone"
+              id="send-money-ipay-contact-info-page-phone-input"
               placeholder="{{'move-money-module.send-money.ipay.contact-info.mobile-number' | translate}}"
             >
             </ion-input>
@@ -44,12 +51,19 @@
               type="email"
               class="white-input"
               formControlName="email"
+              id="send-money-ipay-contact-info-page-email-input"
               placeholder="{{'move-money-module.send-money.ipay.contact-info.email' | translate}}"
             ></ion-input>
           </ion-item>
           <ion-item>
-            <ion-checkbox formControlName="sendInvitation" slot="start"></ion-checkbox>
-            <ion-label>{{'move-money-module.send-money.ipay.contact-info.send-invitation' | translate}}</ion-label>
+            <ion-checkbox
+              formControlName="sendInvitation"
+              slot="start"
+              id="send-money-ipay-contact-info-page-send-Invitation-checkbox"
+            ></ion-checkbox>
+            <ion-label id="send-money-ipay-contact-info-page-send-invitation-label">
+              {{'move-money-module.send-money.ipay.contact-info.send-invitation' | translate}}</ion-label
+            >
           </ion-item>
         </ion-list>
       </form>
@@ -58,7 +72,12 @@
 </ion-content>
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ion-button [disabled]="contactInfoForm.invalid" (click)="continue()" class="white-button" expand="block"
+    <ion-button
+      [disabled]="contactInfoForm.invalid"
+      (click)="continue()"
+      class="white-button"
+      expand="block"
+      id="send-money-ipay-contact-info-page-continue-btn"
       >{{'move-money-module.send-money.ipay.contact-info.next-button' | translate}}</ion-button
     >
   </ion-toolbar>

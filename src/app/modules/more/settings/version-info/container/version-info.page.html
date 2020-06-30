@@ -1,9 +1,17 @@
 <ion-header meed class="ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" text="" icon="arrow-back" color="light"></ion-back-button>
+      <ion-back-button
+        mode="md"
+        id="version-info-page-header-back-btn"
+        text=""
+        icon="arrow-back"
+        color="light"
+      ></ion-back-button>
     </ion-buttons>
-    <ion-title text-center>{{ 'more-module.version-info.header-title' | translate }}</ion-title>
+    <ion-title text-center id="version-info-page-header-title-text">
+      {{ 'more-module.version-info.header-title' | translate }}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -11,18 +19,18 @@
   <ion-list lines="none">
     <div class="version">
       <div class="version-num">
-        <p>{{ 'more-module.version-info.version-text' | translate }}</p>
+        <p id="version-info-page-version-text">{{ 'more-module.version-info.version-text' | translate }}</p>
       </div>
       <div class="version-data">
-        <p>{{versionInfoFacade.version}}</p>
+        <p id="version-info-page-version">{{versionInfoFacade.version}}</p>
       </div>
     </div>
     <div class="version">
       <div class="version-num">
-        <p>{{ 'more-module.version-info.release-text' | translate }}</p>
+        <p id="version-info-page-release-text">{{ 'more-module.version-info.release-text' | translate }}</p>
       </div>
       <div class="version-data version-date-margin">
-        <p>{{versionInfoFacade.releaseDate | date: 'MMMM dd, yyyy'}}</p>
+        <p id="version-info-page-release-date">{{versionInfoFacade.releaseDate | date: 'MMMM dd, yyyy'}}</p>
       </div>
     </div>
     <div class="version">

@@ -15,39 +15,47 @@
 </ion-header>
 
 <ion-content>
-  <div>
-    <div>
-      <div class="invite-label" id="invite-new-member-page-invite-label">
-        {{ 'invite-module.invite-new-member-page.invite-label' | translate }}
-      </div>
-      <div class="email-container">
-        <ion-chip *ngFor="let contact of facade.inviteeContact; let i = index">
-          <ion-label *ngIf="contact.name" id="invite-new-member-page-contact-name">{{ contact.name }}</ion-label>
-          <ion-label *ngIf="!contact.name" id="invite-new-member-page-contact-email">{{ contact.email }}</ion-label>
-          <ion-button
-            fill="clear"
-            size="small"
-            id="invite-new-member-page-remove-contact-btn"
-            (click)="facade.removeContact(i)"
-          >
-            <ion-icon slot="icon-only" name="close"></ion-icon>
-          </ion-button>
-        </ion-chip>
-        <div>
-          <ion-input
-            class="input-field"
-            [(ngModel)]="facade.email"
-            (keyup)="facade.createContactBadge($event.target.value)"
-            placeholder="{{ 'invite-module.invite-new-member-page.invite-input-placeholder' | translate }}"
-            type="text"
-            id="invite-new-member-page-contact-email-input"
-          ></ion-input>
-        </div>
-      </div>
-      <div class="invite-note ion-text-center" id="invite-new-member-page-invite-note-text">
-        {{ 'invite-module.invite-new-member-page.invite-note' | translate }}
-      </div>
+  <div class="input-group">
+    <div class="invite-label" id="invite-new-member-page-invite-label">
+      {{ 'invite-module.invite-new-member-page.invite-label' | translate }}
     </div>
+
+    <div class="badges-container">
+      <ion-chip class="email-badge" *ngFor="let contact of facade.inviteeContact; let i = index">
+        <ion-label id="invite-new-member-page-contact-name-email">{{ contact.name }} - {{ contact.email }} </ion-label>
+        <ion-button fill="clear" size="small" id="invite-new-member-page-remove-contact-btn" (click)="facade.removeContact(i)">
+          <ion-icon slot="icon-only" name="close"></ion-icon>
+        </ion-button>
+      </ion-chip>
+    </div>
+
+    <div class="input-field">
+      <ion-input
+        [(ngModel)]="facade.email"
+        [appMaskInput]="facade.emailFormatMask"
+        placeholder="{{ 'invite-module.invite-new-member-page.invite-email-input-placeholder' | translate }}"
+        type="text"
+        id="invite-new-member-page-contact-email-input">
+      </ion-input>
+    </div>
+
+    <div class="input-field">
+      <ion-input
+        [(ngModel)]="facade.name"
+        placeholder="{{ 'invite-module.invite-new-member-page.invite-name-input-placeholder' | translate }}"
+        type="text"
+        id="invite-new-member-page-contact-name-input">
+      </ion-input>
+    </div>
+
+    <ion-button
+      expand="block"
+      class="grey-outline-button"
+      id="invite-new-member-page-add-invitee-btn"
+      (click)="facade.addInvitee()"
+      [disabled]="(!facade.isValidEmail() || facade.name === '' || facade.emailAlreadyEntered())">
+      {{ 'invite-module.invite-new-member-page.add-invitee-button' | translate }}
+    </ion-button>
   </div>
 
   <div class="invite-divider" *ngIf="facade.isCordova">
@@ -66,17 +74,15 @@
       class="grey-outline-button"
       *ngIf="facade.isCordova"
       (click)="facade.onChooseFromContact()"
-      id="invite-new-member-page-choose-From-Contact-btn"
-    >
+      id="invite-new-member-page-choose-From-Contact-btn">
       {{ 'invite-module.invite-new-member-page.choose-contact-button' | translate }}
     </ion-button>
     <ion-button
       expand="block"
       class="white-button"
-      [disabled]="(facade.inviteeContact.length <= 0 ) && (!facade.isValidEmail())"
+      [disabled]="(facade.inviteeContact.length <= 0 ) && (!facade.isValidEmail() || facade.name === '')"
       (click)="facade.onContinueClick()"
-      id="invite-new-member-page-continue-btn"
-    >
+      id="invite-new-member-page-continue-btn">
       {{ 'invite-module.invite-new-member-page.continue-button' | translate }}
     </ion-button>
   </ion-toolbar>

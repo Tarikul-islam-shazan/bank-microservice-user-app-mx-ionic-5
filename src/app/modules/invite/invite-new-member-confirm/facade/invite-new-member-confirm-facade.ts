@@ -24,7 +24,7 @@ export class InviteNewMemberConfirmFacade {
     private modalService: ModalService,
     private translate: TranslateService
   ) {
-    this.inviteMessage = this.translate.instant('invite-module.invite-new-member-confirm.invite-message');
+    this.inviteMessage = this.translate.instant('invite-module.invite-new-member-confirm.invite-textbox-message');
   }
 
   get inviteeContacts(): InviteeContact[] {
@@ -49,7 +49,7 @@ export class InviteNewMemberConfirmFacade {
       invitations.push({
         inviteeEmail: inviteeContact.email,
         language: this.settingServices.getCurrentLocale().locale,
-        message: this.inviteMessage
+        message: this.updateInviteMessage(this.inviteMessage, inviteeContact.name)
       });
     });
 
@@ -118,5 +118,17 @@ export class InviteNewMemberConfirmFacade {
         this.router.navigateByUrl('/meed-share');
       });
     });
+  }
+
+  private updateInviteMessage(message: string, invitee: string): string {
+    const greeting = this.translate.instant('invite-module.invite-new-member-confirm.invite-message-greeting', {
+      invitee
+    });
+    if (message.includes('Hello')) {
+      message = message.replace('Hello!', greeting);
+    } else {
+      message = `${greeting}\n \n${message}`;
+    }
+    return message.replace(/\n/g, '<br>');
   }
 }

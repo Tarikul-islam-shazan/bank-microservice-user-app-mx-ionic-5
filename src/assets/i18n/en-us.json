@@ -42,10 +42,10 @@
       "input-label-username": "Please provide your username.",
       "security-question-title": "Answer these security questions to recover your password.",
       "security-question-dob": "What is your birth date?",
-      "security-question-rfs": "What is your RFC?",
+      "security-question-debit-card-no": "What is your debit card number?",
       "form-input-placeholders": {
         "date": "MM / DD / YYYY",
-        "debit-card-number": "XXXXXXXXXX"
+        "debit-card-number": "XXXX-XXXX-XXXX-XXXX"
       },
       "button-name": "Continue",
       "success-modal": {
@@ -679,8 +679,9 @@
     "invite-new-member-page": {
       "header-title": "Invite new member",
       "invite-label": "Invitees",
-      "invite-input-placeholder": "Enter email",
-      "invite-note": "To enter more emails, separate them with a “Space“",
+      "invite-email-input-placeholder": "Enter email",
+      "invite-name-input-placeholder": "Enter name",
+      "add-invitee-button": "Add Invitee",
       "invite-or-divider": "OR",
       "choose-contact-button": "Choose from your contacts",
       "continue-button": "Continue",
@@ -706,7 +707,8 @@
       "header-title": "Invite new member",
       "invitees-title": "Invitees",
       "edit-message-title": "Edit your Message Below",
-      "invite-message": "You should join me as a member of the Meed Banking Club – Meed is better together!,\n\nYou get a great way to manage all your everyday banking straight from your phone, plus there are 3 cash back programs that could help you earn $100s and save $100s – it could be like having an extra paycheck a year!",
+      "invite-textbox-message": "Hello!\n \nI’d like to invite you to join the meed community where you can manage your money anywhere, and anytime straight from your phone. \n\nPlus, you get access to 3 cash back programs that can help you earn $100’s and save $100’s, and much more – a financial experience that can actually pay you. Imagine!",
+      "invite-message-greeting": "Hello {{invitee}}!",
       "invite-new-member-confirm-btn": "Invite"
     },
     "invite-success-modal": {
@@ -1122,7 +1124,7 @@
       "country-unavailable-modal-description": "Unfortunately we're only live in Mexico at the moment. Follow us on social media to be the first to hear about our roll-out plans",
       "country-unavailable-modal-button-text": "OK"
     },
-    "code-1203": "Username or Password is incorrect",
+    "code-1203": "Username or password is incorrect",
     "code-1204": "Language not supported",
     "code-1205": "The email or code entered does not belong to an existing Meed user. Please check the spelling or try another inviter's email/code.",
     "code-1501": "Authentication token missing",
@@ -1164,7 +1166,7 @@
       "menu": {
         "direct-deposit": "Direct Deposit",
         "transfer-from-other-banks": "Transfer From Other Banks",
-        "credit-debit-card": "Credit / Debit Card",
+        "oxxo-money-deposit": "OXXO Money Deposit",
         "send-money": "Send Money",
         "request-money": "Request Money",
         "send-money-internationally": "Send Money Internationally",

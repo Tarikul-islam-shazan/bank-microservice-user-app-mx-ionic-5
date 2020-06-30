@@ -42,10 +42,10 @@
       "input-label-username": "Indica tu nombre de usuario",
       "security-question-title": "Responde a estas preguntas de seguridad para recuperar tu contraseña",
       "security-question-dob": "What is your birth date?",
-      "security-question-rfs": "What is your RFC?",
+      "security-question-debit-card-no": "¿Cuál es su número de tarjeta de débito?",
       "form-input-placeholders": {
         "date": "MM / DD / YYYY",
-        "debit-card-number": "XXXXXXXXXX"
+        "debit-card-number": "XXXX-XXXX-XXXX-XXXX"
       },
       "button-name": "Continue",
       "success-modal": {
@@ -670,8 +670,9 @@
     "invite-new-member-page": {
       "header-title": "Invitar a un nuevo miembro",
       "invite-label": "Personas Invitadas",
-      "invite-input-placeholder": "Introducir correo electrónico",
-      "invite-note": "Para introducir más correos electrónicos, sepáralos con un “Espacio”.",
+      "invite-email-input-placeholder": "Introducir correo electrónico",
+      "invite-name-input-placeholder": "Introducir nombre",
+      "add-invitee-button": "Añade Invitada",
       "invite-or-divider": "O",
       "choose-contact-button": "Elige entre tus contactos",
       "continue-button": "Continuar",
@@ -697,7 +698,8 @@
       "header-title": "Invitar a un nuevo miembro",
       "invitees-title": "Personas Invitadas",
       "edit-message-title": "EDITA TU MENSAJE A CONTINUACIÓN",
-      "invite-message": "Deberías unirte a mí como miembro del Meed Banking Club. ¡Meed es mejor si estamos juntos!\n\nPodrás tener una excelente forma de hacer tus operaciones bancarias directamente desde tu teléfono. Además, los tres programas de reembolso de efectivo podrán ayudarte a ganar y ahorrar cientos de dólares. ¡Será como recibir un sueldo extra cada año!",
+      "invite-textbox-message": "Hello!\n \nI’d like to invite you to join the meed community where you can manage your money anywhere, and anytime straight from your phone. \n\nPlus, you get access to 3 cash back programs that can help you earn $100’s and save $100’s, and much more – a financial experience that can actually pay you. Imagine!",
+      "invite-message-greeting": "Hello {{invitee}}!",
       "invite-new-member-confirm-btn": "Invitar"
     },
     "invite-success-modal": {
@@ -1113,7 +1115,7 @@
       "country-unavailable-modal-description": "Unfortunately we're only live in the US at the moment. Follow us on social media to be the first to hear about our roll-out plans",
       "country-unavailable-modal-button-text": "Aceptar"
     },
-    "code-1203": "Username or Password is incorrect",
+    "code-1203": "Username or password is incorrect",
     "code-1204": "Language not supported",
     "code-1205": "El correo electrónico o el código introducido no pertenecen a un usuario de Meed existente. Comprueba si lo escribiste correctamente o prueba el correo electrónico/código de otro invitado.",
     "code-1501": "Authentication token missing",
@@ -1155,7 +1157,7 @@
       "menu": {
         "direct-deposit": "Depósito Directo",
         "transfer-from-other-banks": "Transferencia de otros bancos",
-        "credit-debit-card": "Tarjeta de crédito/débito",
+        "oxxo-money-deposit": "OXXO Money Deposit",
         "send-money": "Enviar dinero",
         "request-money": "Solicitar dinero",
         "send-money-internationally": "Enviar dinero a nivel internacional",

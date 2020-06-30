@@ -1,12 +1,14 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{'move-money-module.home-page.page-title' | translate}}</ion-title>
+    <ion-title id="move-money-home-page-header-title-text">
+      {{'move-money-module.home-page.page-title' | translate}}
+    </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <ion-list no-padding no-margin *ngFor="let item of facade.menuList">
-    <ion-list-header no-padding class="move-money-header header-margin">
+    <ion-list-header no-padding class="move-money-header header-margin" id="move-money-home-page-header-title-text">
       {{ item.optionName | translate }}
     </ion-list-header>
     <ion-item
@@ -17,7 +19,9 @@
       (click)="eachOption.onClick($event)"
     >
       <span [class]="eachOption.iconClass"></span>
-      <ion-label class="title custom-title-margin">{{ eachOption.itemName | translate}}</ion-label>
+      <ion-label class="title custom-title-margin" id="move-money-home-page-item-name-text"
+        >{{ eachOption.itemName | translate}}</ion-label
+      >
       <span class="img-move-money-arrow-right custom-margin"></span>
     </ion-item>
   </ion-list>
