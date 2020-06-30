@@ -1,18 +1,23 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+      <ion-back-button id="categories-offer-page-header-back-btn" mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ categoriesOfferFacade?.category?.name }}</ion-title>
+    <ion-title id="categories-offer-page-header-title-text">{{ categoriesOfferFacade?.category?.name }}</ion-title>
     <div slot="end" (click)="goToSearchPage()">
-      <img class="header-search-img" src="assets/img/white-search.png" alt="search" />
+      <img
+        class="header-search-img"
+        id="categories-offer-page-header-search-img"
+        src="assets/img/white-search.png"
+        alt="search"
+      />
     </div>
   </ion-toolbar>
 </ion-header>
 
 <div class="alphabet-list">
   <ul>
-    <li *ngFor="let alphabet of alphabets" (click)="scrollTo(alphabet)">
+    <li *ngFor="let alphabet of alphabets" (click)="scrollTo(alphabet)" id="categories-offer-page-alphabet-list">
       {{ alphabet }}
     </li>
   </ul>
@@ -27,7 +32,13 @@
           id="{{ subOfferList[0].index }}"
         >
           <div *ngFor="let offer of subOfferList">
-            <offer-card *ngIf="!offer.index" (OfferClick)="setOffer($event)" [offer]="offer"> </offer-card>
+            <offer-card
+              id="categories-offer-page-offer-card"
+              *ngIf="!offer.index"
+              (OfferClick)="setOffer($event)"
+              [offer]="offer"
+            >
+            </offer-card>
           </div>
         </div>
       </div>

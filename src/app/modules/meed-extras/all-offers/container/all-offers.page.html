@@ -1,18 +1,20 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+      <ion-back-button id="all-deals-page-header-back-btn" mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ 'meed-extra-module.all-deals-page.header-title' | translate }}</ion-title>
+    <ion-title id="all-deals-page-header-title"
+      >{{ 'meed-extra-module.all-deals-page.header-title' | translate }}</ion-title
+    >
     <div slot="end" (click)="goToSearchPage()">
-      <img class="header-search-img" src="assets/img/white-search.png" alt="search" />
+      <img class="header-search-img" id="all-deals-page-search-img" src="assets/img/white-search.png" alt="search" />
     </div>
   </ion-toolbar>
 </ion-header>
 
 <div class="alphabet-list">
   <ul>
-    <li *ngFor="let alphabet of alphabets" (click)="scrollTo(alphabet)">
+    <li *ngFor="let alphabet of alphabets" (click)="scrollTo(alphabet)" id="all-deals-page-alphabet-list">
       {{ alphabet }}
     </li>
   </ul>
@@ -22,7 +24,9 @@
   <div class="all-offer-page">
     <div class="content-wrapper">
       <div class="offer-details-header">
-        <p>{{ 'meed-extra-module.all-deals-page.all-deals-title' | translate }}</p>
+        <p id="all-deals-page-all-deals-title-text">
+          {{ 'meed-extra-module.all-deals-page.all-deals-title' | translate }}
+        </p>
       </div>
       <div class="alphabetic-list-wrapper">
         <div class="alphabetic-offer-list">
@@ -30,10 +34,10 @@
             <div *ngFor="let offer of subOfferList">
               <div class="offer-item" *ngIf="!offer.index" (click)="goToOfferPage(offer)">
                 <div class="offer-content-wrapper">
-                  <div class="offer-title">
+                  <div class="offer-title" id="all-deals-page-offer-marchant">
                     {{ offer.merchant }}
                   </div>
-                  <div class="offer-percentage">{{ offer.offerValue }}%</div>
+                  <div class="offer-percentage" id="all-deals-page-offer-value">{{ offer.offerValue }}%</div>
                 </div>
               </div>
             </div>

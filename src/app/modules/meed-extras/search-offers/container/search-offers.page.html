@@ -1,9 +1,11 @@
 <ion-header class="white-header ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+      <ion-back-button id="offer-search-page-header-back-btn" mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ 'meed-extra-module.offer-search.header-title' | translate }}</ion-title>
+    <ion-title id="offer-search-page-header-title"
+      >{{ 'meed-extra-module.offer-search.header-title' | translate }}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
@@ -12,7 +14,7 @@
     <ion-searchbar
       class="offer-search-input"
       color="none"
-      id="offer_search"
+      id="offer-search-page-offer-search-input"
       placeholder="{{ 'meed-extra-module.offer-search.search-offer-placeholder' | translate }}"
       [(ngModel)]="searchOffersFacade.searchField"
       (ionChange)="searchOffersFacade.searchOffer()"
@@ -21,13 +23,16 @@
 
     <div class="filter-wrapper" *ngIf="(categories$ | async) as categories">
       <div class="type-filter-wrapper" (click)="openFilterModal('type')">
-        <p [style.color]="searchOffersFacade.typeFieldText?'#435CDC' :'#8c90a3'">
+        <p id="offer-search-page-type-text" [style.color]="searchOffersFacade.typeFieldText?'#435CDC' :'#8c90a3'">
           {{ 'meed-extra-module.offer-search.type-text' | translate }} {{searchOffersFacade.typeFieldText?
           searchOffersFacade.typeFieldText: 'None'}}
         </p>
       </div>
       <div class="category-filter-wrapper" (click)="openFilterModal('category',categories)">
-        <p [style.color]="searchOffersFacade.categoryFieldText?'#435CDC' :'#8c90a3'">
+        <p
+          id="offer-search-page-category-text"
+          [style.color]="searchOffersFacade.categoryFieldText?'#435CDC' :'#8c90a3'"
+        >
           {{ 'meed-extra-module.offer-search.category-text' | translate }} {{searchOffersFacade.categoryFieldText?
           searchOffersFacade.categoryFieldText: 'None'}}
         </p>
@@ -35,13 +40,14 @@
     </div>
 
     <div class="result-section">
-      <p>{{ 'meed-extra-module.offer-search.result-text' | translate }}</p>
+      <p id="offer-search-page-result-text">{{ 'meed-extra-module.offer-search.result-text' | translate }}</p>
     </div>
     <div class="offer-result">
       <offer-card
         (OfferClick)="goToOfferPage($event)"
         *ngFor="let offer of searchOffersFacade.searchedOffers"
         [offer]="offer"
+        id="offer-search-page-offer-card"
       ></offer-card>
     </div>
   </div>

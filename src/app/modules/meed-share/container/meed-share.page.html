@@ -1,18 +1,23 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+      <ion-back-button id="meed-share-page-header-back-btn" mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'meed-share-page.header-title' | translate}}</ion-title>
+    <ion-title id="meed-share-page-header-title">{{'meed-share-page.header-title' | translate}}</ion-title>
     <div slot="end" (click)="meedShareFacade.showModal()">
-      <img class="header-info-img" src="assets/img/white-question.png" alt="info" />
+      <img
+        class="header-info-img"
+        id="meed-share-page-header-info-img"
+        src="assets/img/white-question.png"
+        alt="info"
+      />
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div *ngIf="(meedShareFacade.meedShare$ | async) as meedShare">
-    <div class="data-part">
+    <div class="data-part" id="meed-share-page-meed-share-card">
       <meed-share-card
         title="meed-share-page.main-page.active-share-text"
         value="{{meedShare.totalInvitees}}"
@@ -32,7 +37,7 @@
         serial="3"
       ></meed-share-card>
     </div>
-    <div class="invite-section">
+    <div class="invite-section" id="meed-share-page-invite-info-card">
       <invite-info
         *ngIf="(meedShare.totalInvitees && meedShare.lastMonthDistribution && meedShare.totalDistribution) && (meedShare.totalInvitees != 0 && meedShare.lastMonthDistribution != 0 && meedShare.totalDistribution != 0)"
         emoji="🚀"
