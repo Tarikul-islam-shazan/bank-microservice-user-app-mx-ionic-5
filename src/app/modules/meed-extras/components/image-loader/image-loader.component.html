@@ -1,4 +1,4 @@
-<img *ngIf="!isShowTitle && _src" [src]="_src" (error)="imageLoadError()" />
-<span *ngIf="isShowTitle && _title" class="image-alt-title">
+<img id="image-loader-img" *ngIf="!isShowTitle && _src" [src]="_src" (error)="imageLoadError()" />
+<span id="image-loader-title" *ngIf="isShowTitle && _title" class="image-alt-title">
   {{ _title }}
 </span>

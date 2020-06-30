@@ -1,7 +1,7 @@
 <ion-header class="white-header ion-no-border">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+      <ion-back-button id="instore-offer-page-back-btn" mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -14,15 +14,16 @@
     ></mbc-image-loader>
   </div>
   <div class="store-name">
-    <p>{{instoreOfferFacade?.offer?.merchant}}</p>
+    <p id="instore-offer-page-offer-merchant">{{instoreOfferFacade?.offer?.merchant}}</p>
   </div>
   <div class="offer-description">
-    <p>{{ instoreOfferFacade?.offer?.tenWord }}</p>
+    <p id="instore-offer-page-offer-merchant">{{ instoreOfferFacade?.offer?.tenWord }}</p>
   </div>
   <div class="active-btn">
     <ion-button
       *ngIf="instoreOfferFacade?.offer?.requiresActivation && !instoreOfferFacade?.offer?.activated"
       class="grey-outline-button"
+      id="instore-offer-page-active-offer"
       expand="block"
       (click)="activeOffer()"
     >
@@ -38,39 +39,53 @@
   </div>
   <div class="devider"></div>
   <div class="header-text">
-    <p>{{ 'meed-extra-module.instore-offer-page.offer-details-text' | translate }}</p>
+    <p id="instore-offer-page-offer-details-text">
+      {{ 'meed-extra-module.instore-offer-page.offer-details-text' | translate }}
+    </p>
   </div>
   <div class="sub-header-text" [innerHTML]="instoreOfferFacade?.offer?.twentyWord"></div>
 
   <div *ngIf="(offerDetails$ | async)?.stores as storeDetails">
     <div class="location-text">
-      <p>{{ 'meed-extra-module.instore-offer-page.locations-text' | translate }}</p>
+      <p id="instore-offer-page-offer-locations-text">
+        {{ 'meed-extra-module.instore-offer-page.locations-text' | translate }}
+      </p>
     </div>
     <div class="nearest-address">
-      <p>{{ 'meed-extra-module.instore-offer-page.nearest-text' | translate }}:</p>
-      <p>
+      <p id="instore-offer-page-offer-nearest-text">
+        {{ 'meed-extra-module.instore-offer-page.nearest-text' | translate }}:
+      </p>
+      <p id="instore-offer-page-store-address">
         {{storeDetails[0].address}}, {{storeDetails[0].city}} {{storeDetails[0].zip}}
       </p>
     </div>
-    <div class="distence-wrapper">
+    <div class="distence-wrapper" id="instore-offer-page-store-distance">
       <p>{{storeDetails[0].distance}} mi</p>
     </div>
     <div class="zip-code-text">
-      <p>{{ 'meed-extra-module.instore-offer-page.search-zip-info-text' | translate }}</p>
+      <p id="instore-offer-page-zip-info-text">
+        {{ 'meed-extra-module.instore-offer-page.search-zip-info-text' | translate }}
+      </p>
     </div>
     <div class="zip-code-search-wrapper">
       <form [formGroup]="zipOfferForm" (ngSubmit)="search(zipOfferForm.value)">
         <div class="nput-field-container">
           <ion-input
             class="white-input"
-            id="zipCode"
+            id="instore-offer-page-zip-code-input"
             type="number"
             hide-keyboard
             placeholder="{{ 'meed-extra-module.instore-offer-page.zip-code-placeholder' | translate }}"
             formControlName="zipCode"
             required
           ></ion-input>
-          <ion-button type="submit" [disabled]="zipOfferForm.invalid" class="grey-outline-button" expand="block">
+          <ion-button
+            type="submit"
+            id="instore-offer-page-search-btn"
+            [disabled]="zipOfferForm.invalid"
+            class="grey-outline-button"
+            expand="block"
+          >
             {{ 'meed-extra-module.instore-offer-page.search-btn-text' | translate }}
           </ion-button>
         </div>
@@ -79,6 +94,7 @@
     <div class="offer-cards">
       <div *ngFor="let storeOffer of storeDetails">
         <location-offer-card
+          id="instore-offer-page-location-offer-card"
           *ngIf="storeOffer.id != instoreOfferFacade?.offer.id"
           [locationOffer]="{store: storeOffer, offer: instoreOfferFacade?.offer}"
         ></location-offer-card>

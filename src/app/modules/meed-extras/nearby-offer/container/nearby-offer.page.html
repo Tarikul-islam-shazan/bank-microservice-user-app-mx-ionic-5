@@ -1,18 +1,25 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+      <ion-back-button id="nearby-offer-page-header-back-btn" mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ 'meed-extra-module.nearby-offer-page.header-title' | translate }}</ion-title>
+    <ion-title id="nearby-offer-page-header-title-text"
+      >{{ 'meed-extra-module.nearby-offer-page.header-title' | translate }}</ion-title
+    >
     <div slot="end" (click)="goToSearchPage()">
-      <img class="header-search-img" src="assets/img/white-search.png" alt="search" />
+      <img
+        class="header-search-img"
+        id="nearby-offer-page-header-search-img"
+        src="assets/img/white-search.png"
+        alt="search"
+      />
     </div>
   </ion-toolbar>
 </ion-header>
 
 <div class="alphabet-list">
   <ul>
-    <li *ngFor="let alphabet of alphabets" (click)="scrollTo(alphabet)">
+    <li *ngFor="let alphabet of alphabets" (click)="scrollTo(alphabet)" id="nearby-offer-page-alphabet-list">
       {{ alphabet }}
     </li>
   </ul>
@@ -21,10 +28,10 @@
 <ion-content>
   <div class="nearby-wrapper">
     <div class="location-text">
-      <p>{{ 'meed-extra-module.nearby-offer-page.location-text' | translate }}</p>
+      <p id="nearby-offer-page-location-text">{{ 'meed-extra-module.nearby-offer-page.location-text' | translate }}</p>
     </div>
     <div class="my-location-text">
-      <p>
+      <p id="nearby-offer-page-address-text">
         {{ this.nearbyOfferFacade.address.postalCode }} {{ this.nearbyOfferFacade.address.thoroughfare }} {{
         this.nearbyOfferFacade.address.locality ? this.nearbyOfferFacade.address.locality :
         this.nearbyOfferFacade.address.administrativeArea }}
@@ -35,14 +42,20 @@
         <div class="nput-field-container">
           <ion-input
             class="white-input"
-            id="zipCode"
+            id="nearby-offer-page-zip-code-input"
             type="number"
             hide-keyboard
             placeholder="{{ 'meed-extra-module.nearby-offer-page.zip-code-placeholder' | translate }}"
             formControlName="zipCode"
             required
           ></ion-input>
-          <ion-button type="submit" [disabled]="zipOfferForm.invalid" class="grey-outline-button" expand="block">
+          <ion-button
+            type="submit"
+            id="nearby-offer-page-search-btn"
+            [disabled]="zipOfferForm.invalid"
+            class="grey-outline-button"
+            expand="block"
+          >
             {{ 'meed-extra-module.nearby-offer-page.search-btn' | translate }}
           </ion-button>
         </div>
@@ -57,10 +70,12 @@
         <p>🌎</p>
       </div>
       <div class="gps-header">
-        <p>{{ 'meed-extra-module.nearby-offer-page.gps-header' | translate }}</p>
+        <p id="nearby-offer-page-gps-header-text">{{ 'meed-extra-module.nearby-offer-page.gps-header' | translate }}</p>
       </div>
       <div class="gps-sub-header">
-        <p>{{ 'meed-extra-module.nearby-offer-page.gps-subheader' | translate }}</p>
+        <p id="nearby-offer-page-gps-sub-header-text">
+          {{ 'meed-extra-module.nearby-offer-page.gps-subheader' | translate }}
+        </p>
       </div>
       <ion-button class="white-button" expand="block" (click)="this.nearbyOfferFacade.openLocationAuthorization()">
         {{ 'meed-extra-module.nearby-offer-page.gps-button' | translate }}
@@ -72,7 +87,13 @@
         <div class="alphabetic-offer-list">
           <div *ngFor="let subOfferList of offers$ | async" id="{{ subOfferList[0].index }}">
             <div *ngFor="let offer of subOfferList">
-              <offer-card *ngIf="!offer.index" (OfferClick)="setOffer($event)" [offer]="offer"> </offer-card>
+              <offer-card
+                id="nearby-offer-page-offer-card"
+                *ngIf="!offer.index"
+                (OfferClick)="setOffer($event)"
+                [offer]="offer"
+              >
+              </offer-card>
             </div>
           </div>
         </div>

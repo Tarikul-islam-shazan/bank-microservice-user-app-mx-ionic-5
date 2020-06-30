@@ -1,40 +1,56 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+      <ion-back-button id="meed-extra-page-header-back-btn" mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ 'meed-extra-module.extra-page.header-title' | translate }}</ion-title>
+    <ion-title id="meed-extra-page-header-title-text"
+      >{{ 'meed-extra-module.extra-page.header-title' | translate }}</ion-title
+    >
     <div slot="end" (click)="meedExtraFacade.goToSearch()">
-      <img class="header-search-img" src="assets/img/white-search.png" alt="search" />
+      <img
+        class="header-search-img"
+        id="meed-extra-page-header-search-img"
+        src="assets/img/white-search.png"
+        alt="search"
+      />
     </div>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="featured-offer-section">
-    <p class="section-title">{{ 'meed-extra-module.extra-page.featured-offer-title' | translate }}</p>
+    <p class="section-title" id="meed-extra-page-featured-offer-title-text">
+      {{ 'meed-extra-module.extra-page.featured-offer-title' | translate }}
+    </p>
     <div class="featured-sliders">
       <ion-slides [options]="feturedSlideOpts">
         <ion-slide
           class="featured-slider-wrapper"
+          id="meed-extra-page-featured-offer-slide"
           *ngFor="let featuredOffer of featuredOffers$ | async"
           (click)="setOffer(featuredOffer)"
         >
-          <feature-offer-card [featuredOffer]="featuredOffer"></feature-offer-card>
+          <feature-offer-card
+            id="meed-extra-page-featured-offer-card"
+            [featuredOffer]="featuredOffer"
+          ></feature-offer-card>
         </ion-slide>
       </ion-slides>
     </div>
   </div>
   <div class="categories-section">
-    <p class="section-title">{{ 'meed-extra-module.extra-page.categories-title' | translate }}</p>
+    <p class="section-title" id="meed-extra-page-categories-title-text">
+      {{ 'meed-extra-module.extra-page.categories-title' | translate }}
+    </p>
     <div class="categories-sliders">
       <ion-slides [options]="categoriesSlideOpts">
         <ion-slide
           class="categories-slider-wrapper"
+          id="meed-extra-page-categories-slide"
           *ngFor="let category of categories$ | async"
           (click)="setCategory(category)"
         >
-          <category-card [category]="category"></category-card>
+          <category-card id="meed-extra-page-category-card" [category]="category"></category-card>
         </ion-slide>
       </ion-slides>
     </div>

@@ -1,27 +1,28 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+      <ion-back-button id="meed-cover-page-header-back-btn" mode="md" icon="arrow-back"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'meed-cover-page.header-title' | translate}}</ion-title>
+    <ion-title id="meed-cover-page-header-title-text">{{'meed-cover-page.header-title' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="meed-cover-wrapper">
     <div class="cover-image">
-      <img src="assets/img/rewards/cover.png" />
+      <img src="assets/img/rewards/cover.png" id="meed-cover-page-cover-img" />
     </div>
-    <div class="meed-cover-text">
-      {{'meed-cover-page.main-page.meed-text' | translate}}<span id="cover-text"
-        >{{'meed-cover-page.main-page.cover-text' | translate}}</span
-      >
-    </div>
-    <div class="cover-description">
-      <p>{{'meed-cover-page.main-page.description-text' | translate}}</p>
+    <div class="meed-cover-text" id="meed-cover-page-meed-text">
+      {{'meed-cover-page.main-page.meed-text' | translate}}
+      <span id="meed-cover-page-cover-text">
+        {{'meed-cover-page.main-page.cover-text' | translate}}
+      </span>
     </div>
     <div class="cover-description">
-      <p>
+      <p id="meed-cover-page-description-text">{{'meed-cover-page.main-page.description-text' | translate}}</p>
+    </div>
+    <div class="cover-description">
+      <p id="meed-cover-page-hotline-text">
         {{'meed-cover-page.main-page.hotline-text' | translate}}<br />
         {{'meed-cover-page.main-page.hotline-number' | translate}}
       </p>
@@ -31,7 +32,7 @@
 
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ion-button class="white-button" expand="block" (click)="viewPolicy()">
+    <ion-button class="white-button" id="meed-cover-page-view-policy-btn" expand="block" (click)="viewPolicy()">
       {{'meed-cover-page.main-page.view-policy-btn-text' | translate}}
     </ion-button>
   </ion-toolbar>

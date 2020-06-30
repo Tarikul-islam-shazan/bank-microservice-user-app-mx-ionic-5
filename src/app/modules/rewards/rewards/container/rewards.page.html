@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ 'rewards.header-title' | translate }}</ion-title>
+    <ion-title id="rewards-page-header-title-text">{{ 'rewards.header-title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,12 +12,15 @@
           <img class="meed-extra-icon" />
         </div>
         <div class="item-content">
-          <div class="item-name">
-            {{ 'rewards.reward-meed' | translate }}<span class="extra"
-              >{{ 'rewards.reward-meed-extra-name' | translate }}</span
-            >
+          <div class="item-name" id="rewards-page-reward-meed-text">
+            {{ 'rewards.reward-meed' | translate }}
+            <span class="extra" id="rewards-page-reward-meed-extra-text">
+              {{ 'rewards.reward-meed-extra-name' | translate }}
+            </span>
           </div>
-          <div class="item-note">{{ 'rewards.reward-meed-extra-note' | translate }}</div>
+          <div class="item-note" id="rewards-page-reward-meed-extra-note-text">
+            {{ 'rewards.reward-meed-extra-note' | translate }}
+          </div>
         </div>
       </ion-col>
       <ion-col size="6" (click)="goToMeedSharePage()">
@@ -25,12 +28,15 @@
           <img class="meed-share-icon" />
         </div>
         <div class="item-content">
-          <div class="item-name">
-            {{ 'rewards.reward-meed' | translate }}<span class="share"
-              >{{ 'rewards.reward-meed-share-name' | translate }}</span
-            >
+          <div class="item-name" id="rewards-page-reward-meed-text">
+            {{ 'rewards.reward-meed' | translate }}
+            <span class="share" id="rewards-page-reward-meed-share-text">
+              {{ 'rewards.reward-meed-share-name' | translate }}
+            </span>
           </div>
-          <div class="item-note">{{ 'rewards.reward-meed-share-note' | translate }}</div>
+          <div class="item-note" id="rewards-page-reward-meed-share-note-text">
+            {{ 'rewards.reward-meed-share-note' | translate }}
+          </div>
         </div>
       </ion-col>
     </ion-row>
@@ -41,12 +47,15 @@
           <img class="meed-travel-icon" />
         </div>
         <div class="item-content">
-          <div class="item-name">
-            {{ 'rewards.reward-meed' | translate }}<span class="travel"
-              >{{ 'rewards.reward-meed-travel-name' | translate }}</span
+          <div class="item-name" id="rewards-page-reward-meed-text">
+            {{ 'rewards.reward-meed' | translate }}
+            <span class="travel" id="rewards-page-reward-meed-travel-text">
+              {{ 'rewards.reward-meed-travel-name' | translate }}</span
             >
           </div>
-          <div class="item-note">{{ 'rewards.reward-meed-travel-note' | translate }}</div>
+          <div class="item-note" id="rewards-page-reward-meed-travel-note-text">
+            {{ 'rewards.reward-meed-travel-note' | translate }}
+          </div>
         </div>
       </ion-col>
       <ion-col size="6" (click)="goToMeedCoverPage()">
@@ -54,12 +63,15 @@
           <img class="meed-cover-icon" />
         </div>
         <div class="item-content">
-          <div class="item-name">
-            {{ 'rewards.reward-meed' | translate }}<span class="cover"
-              >{{ 'rewards.reward-meed-cover-name' | translate }}</span
-            >
+          <div class="item-name" id="rewards-page-reward-meed-text">
+            {{ 'rewards.reward-meed' | translate }}
+            <span class="cover" id="rewards-page-reward-meed-cover-text">
+              {{ 'rewards.reward-meed-cover-name' | translate }}
+            </span>
           </div>
-          <div class="item-note">{{ 'rewards.reward-meed-cover-note' | translate }}</div>
+          <div class="item-note" id="rewards-page-reward-meed-cover-note-text">
+            {{ 'rewards.reward-meed-cover-note' | translate }}
+          </div>
         </div>
       </ion-col>
     </ion-row>
@@ -67,16 +79,16 @@
     <ion-row class="reward-bottom-card">
       <ion-col size="8">
         <div class="reward-card-content">
-          <div class="earn-even-more-title">
+          <div class="earn-even-more-title" id="rewards-page-earn-even-more-header-text">
             {{ 'rewards.reward-earn-even-more-header' | translate }}
           </div>
-          <div class="earn-even-more-note">
+          <div class="earn-even-more-note" id="rewards-page-earn-even-more-content-text">
             {{ 'rewards.reward-earn-even-more-content' | translate }}
           </div>
         </div>
       </ion-col>
       <ion-col class="ion-text-right">
-        <img class="dollar-icon" />
+        <img class="dollar-icon" id="rewards-page-dollar-img" />
       </ion-col>
     </ion-row>
   </ion-grid>

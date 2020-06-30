@@ -1,15 +1,21 @@
 <div class="location-offer-card-wrapper">
   <div class="store-image">
-    <mbc-image-loader [src]="locationOffer.offer.image" [title]="locationOffer.offer.merchant"></mbc-image-loader>
+    <mbc-image-loader
+      id="location-offer-card-image-loader"
+      [src]="locationOffer.offer.image"
+      [title]="locationOffer.offer.merchant"
+    ></mbc-image-loader>
   </div>
   <div class="text-wrapper">
     <div class="store-name">
-      <p>{{ locationOffer?.offer?.merchant }}</p>
+      <p id="location-offer-card-offer-merchant">{{ locationOffer?.offer?.merchant }}</p>
     </div>
     <div class="offer-description">
-      <p>{{ locationOffer?.store?.address }}<br />{{ locationOffer?.store?.city }}, {{ locationOffer?.store?.zip }}</p>
+      <p id="location-offer-card-store-address">
+        {{ locationOffer?.store?.address }}<br />{{ locationOffer?.store?.city }}, {{ locationOffer?.store?.zip }}
+      </p>
     </div>
-    <div class="offer-type">
+    <div class="offer-type" id="location-offer-card-shop-type">
       {{ locationOffer?.offer?.shopType }}
     </div>
   </div>
