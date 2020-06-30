@@ -12,6 +12,7 @@ import { ChangeAddressService } from '@app/more/personal-details/change-address/
 import { PersonalDetailsState } from '@app/more/personal-details/facade/personal-details.state';
 import { MemberService } from '@app/core/services/member.service';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
+import { AddressSuccessModalComponent } from '../../components/address-success-modal/address-success-modal.component';
 @Injectable()
 export class UtilityUploadFacade {
   utilityBillImage: string;
@@ -235,9 +236,21 @@ export class UtilityUploadFacade {
         Object.assign(this.memberService.member, data);
         this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
         setTimeout(() => {
-          this.router.navigate([`/more/personal-details`]);
+          // this.router.navigate([`/more/personal-details`]);
+          this.transferSuccess();
         }, 500);
       });
     });
+  }
+
+  // Transfer success, show the success modal.
+  // When modal closed we redirect to move money page or scheduled transfer page based on transfer type
+  async transferSuccess() {
+    const componentProps: IMeedModalContent = {
+      onDidDismiss: () => {
+        this.router.navigate([`/more/personal-details`]);
+      }
+    };
+    await this.modalService.openModal(AddressSuccessModalComponent, componentProps);
   }
 }

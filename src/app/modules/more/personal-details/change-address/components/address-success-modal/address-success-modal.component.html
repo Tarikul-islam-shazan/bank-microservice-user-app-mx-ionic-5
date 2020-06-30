@@ -1,0 +1,33 @@
+<ion-content fullscreen class="transfer-success-modal-content">
+  <div class="main-container top-margin">
+    <div class="content-wrapper">
+      <div class="img-block">
+        <img src="assets/img/success.png" />
+      </div>
+      <div class="title-block">
+        <span class="title">
+          <!-- <span translate>
+            {{ 'move-money-module.internal-transfer.transfer-success-modal.transfer-title' }}
+          </span> -->
+          <span>
+            The address change has been submitted for review.
+          </span>
+        </span>
+      </div>
+      <div class="subtitle-block">
+        <div class="subtitle-text">
+          <span>
+            It may take several days for the address to be validated and applied to your profile.
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="footer-content ion-no-border">
+  <ion-toolbar>
+    <ion-button expand="block" class="white-button" (click)="dismiss()">
+      {{ 'move-money-module.internal-transfer.transfer-success-modal.done-button' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
