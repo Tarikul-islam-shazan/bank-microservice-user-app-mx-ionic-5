@@ -226,6 +226,7 @@ export class UtilityUploadFacade {
     const data = await this.customerService.updateAddress(customer).toPromise();
     this.customer.addresses = data.addresses;
     // Object.assign(this.customer, data);
+    this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
     Object.assign(this.memberService.member, data);
     this.transferSuccess();
   }
