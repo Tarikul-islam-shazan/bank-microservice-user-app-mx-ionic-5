@@ -1,9 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md"></ion-back-button>
+      <ion-back-button id="invex-payee-registration-page-back-btn" mode="md"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{"p2p-module.invex-payee-registration-page.page-title" | translate}}</ion-title>
+    <ion-title id="invex-payee-registration-page-header-title"
+      >{{"p2p-module.invex-payee-registration-page.page-title" | translate}}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
@@ -14,6 +16,7 @@
       <ion-item class="ion-no-padding">
         <ion-input
           formControlName="alias"
+          id="invex-payee-registration-page-alias-input"
           class="ion-margin-start"
           placeholder="{{'p2p-module.invex-payee-registration-page.payee-alias-placeholder' | translate}}"
         ></ion-input>
@@ -23,6 +26,7 @@
           formControlName="identityName"
           readonly
           class="ion-margin-start"
+          id="invex-payee-registration-page-identity-Name-input"
           placeholder="{{'p2p-module.invex-payee-registration-page.identifier-placeholder' | translate}}"
         ></ion-input>
         <ion-icon slot="end" name="chevron-down"></ion-icon>
@@ -32,6 +36,7 @@
         <ion-item class="ion-no-padding">
           <ion-input
             formControlName="identityNumber"
+            id="invex-payee-registration-page-identit-Number-input"
             class="ion-margin-start"
             [placeholder]="contactForm.value.identityName"
           ></ion-input>
@@ -39,6 +44,7 @@
         <ion-item class="ion-no-padding">
           <ion-input
             formControlName="email"
+            id="invex-payee-registration-page-email-input"
             class="ion-margin-start"
             placeholder="{{'p2p-module.invex-payee-registration-page.form.email-placeholder' | translate}}"
           ></ion-input>
@@ -46,6 +52,7 @@
         <ion-item class="ion-no-padding">
           <ion-input
             formControlName="phone"
+            id="invex-payee-registration-page-phone-input"
             class="ion-margin-start"
             placeholder="{{'p2p-module.invex-payee-registration-page.form.mobile-placeholder' | translate}}"
           ></ion-input>
@@ -56,7 +63,12 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" [disabled]="contactForm.invalid" (click)="next()">
+    <ion-button
+      class="white-button"
+      id="invex-payee-registration-page-next-btn"
+      [disabled]="contactForm.invalid"
+      (click)="next()"
+    >
       {{"p2p-module.invex-payee-registration-page.next-button-title" | translate}}
     </ion-button>
   </ion-toolbar>
