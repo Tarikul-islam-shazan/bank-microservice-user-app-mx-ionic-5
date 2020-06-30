@@ -16,16 +16,17 @@
     </div>
     <div class="scan-wrapper">
       <div class="front scan-button-wrapper">
-        <ion-icon name="checkmark-circle" class="tick-icon"></ion-icon>
-        <img class="preview" />
+        <ion-icon name="checkmark-circle" class="tick-icon" *ngIf="facade.documentImage"></ion-icon>
+        <img class="preview" [src]="facade.documentImage" *ngIf="facade.documentImage" (click)="takePhoto()" />
         <ion-input
-          #frontIdImageInput
+          #documentImageInput
           [hidden]="true"
           id="web-image-front-id-image"
           type="file"
           accept="image/*"
+          (ionChange)="uploadImage()"
         ></ion-input>
-        <div class="scan-button">
+        <div class="scan-button" *ngIf="!facade.documentImage" (click)="takePhoto()">
           <div class="button-image">
             <img src="assets/img/camera.png" />
           </div>
@@ -35,7 +36,10 @@
     </div>
     <div class="disclaimer">
       <div class="header">Note</div>
-      <div class="circle"></div>
+      <ul class="content">
+        <li class="text">The utility bill must be recent, from the last 3 months.</li>
+        <li class="text">The complete address and utility provider must be visible on the document.</li>
+      </ul>
     </div>
   </div>
 </ion-content>
