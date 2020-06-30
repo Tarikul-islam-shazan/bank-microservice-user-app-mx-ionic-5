@@ -1,19 +1,23 @@
 import { Injectable } from '@angular/core';
 import { AppPlatform } from '@app/core/util/app-platform';
 import { IMeedModalContent, ModalService, DropdownModalComponent } from '@app/shared';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { DropdownOption } from '@app/signup/models/signup';
 import { StaticDataService, StaticDataCategory, StaticData, SignUpService, ICustomer } from '@app/core';
 import { map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { Router } from '@angular/router';
 import { CustomerService } from '@app/core/services/customer-service.service';
-
+import { ChangeAddressService } from '@app/more/personal-details/change-address/services/change-address.service';
+import { PersonalDetailsState } from '@app/more/personal-details/facade/personal-details.state';
+import { MemberService } from '@app/core/services/member.service';
+import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 @Injectable()
 export class UtilityUploadFacade {
   utilityBillImage: string;
   selectedUtility: DropdownOption;
   scannedUtilityBillImage: Blob;
+  customer: ICustomer = {};
   constructor(
     private platformService: AppPlatform,
     private modalService: ModalService,
@@ -21,8 +25,27 @@ export class UtilityUploadFacade {
     private translateService: TranslateService,
     private signupService: SignUpService,
     private router: Router,
-    private customerService: CustomerService
-  ) {}
+    private customerService: CustomerService,
+    private changeAddressService: ChangeAddressService,
+    private personalDetailsState: PersonalDetailsState,
+    private memberService: MemberService,
+    private analyticsService: AnalyticsService
+  ) {
+    this.getCustomer();
+  }
+
+  /**
+   * @summary gets customer info
+   *
+   * @private
+   * @returns {Subscription}
+   * @memberOf ChangeAddressFacade
+   */
+  private getCustomer(): Subscription {
+    return this.personalDetailsState.customer$.subscribe((customer: ICustomer) => {
+      this.customer = customer;
+    });
+  }
 
   /**
    * @summary gets utility options
@@ -201,18 +224,20 @@ export class UtilityUploadFacade {
    * @returns {void}
    * @memberOf IdentityConfirmationFacade
    */
-  continue(customer: ICustomer): void {
+  continue(): void {
     const formData = this.getFormData();
-    this.signupService.confirmIdentity(formData).subscribe(() => this.router.navigate([`/more/personal-details`]));
-    // this.customerService.updateAddress(customer).subscribe((response: any) => {
-    //   const data = response.addresses;
-    //   this.customer.addresses = data;
-    //   // Object.assign(this.customer, data);
-    //   Object.assign(this.memberService.member, data);
-    //   this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
-    //   setTimeout(() => {
-    //     this.router.navigate([`/more/personal-details`]);
-    //   }, 500);
-    // });
+    const customer: ICustomer = this.changeAddressService.customerData;
+    this.signupService.confirmIdentity(formData).subscribe(() => {
+      this.customerService.updateAddress(customer).subscribe((response: any) => {
+        const data = response.addresses;
+        this.customer.addresses = data;
+        // Object.assign(this.customer, data);
+        Object.assign(this.memberService.member, data);
+        this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
+        setTimeout(() => {
+          this.router.navigate([`/more/personal-details`]);
+        }, 500);
+      });
+    });
   }
 }

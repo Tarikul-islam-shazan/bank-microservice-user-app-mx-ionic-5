@@ -1,10 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { UtilityUploadFacade } from '../facade/utility.facade';
 import { IonInput } from '@ionic/angular';
 import { DropdownOption } from '@app/signup/models/signup';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { ICustomer, IAddress } from '@app/core';
 
 @Component({
   selector: 'mbc-utility-upload',
@@ -15,20 +14,7 @@ export class UtilityUploadPage implements OnInit {
   @ViewChild('documentImageInput', { static: false }) documentImageInput: IonInput;
   utitlityOptions: DropdownOption[];
   utilityBillForm: FormGroup;
-  customer: Partial<ICustomer> = {};
-  constructor(
-    private router: Router,
-    public facade: UtilityUploadFacade,
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute
-  ) {
-    this.route.queryParams.subscribe(params => {
-      if (params && params.address) {
-        const addressArrar: IAddress[] = [params.address];
-        this.customer.addresses = addressArrar;
-      }
-    });
-  }
+  constructor(private router: Router, public facade: UtilityUploadFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.setUtilityOptions();
@@ -103,7 +89,7 @@ export class UtilityUploadPage implements OnInit {
 
   continue(): void {
     if (!this.isSubmitButtonDisabled) {
-      this.facade.continue(this.customer);
+      this.facade.continue();
     }
   }
 }
