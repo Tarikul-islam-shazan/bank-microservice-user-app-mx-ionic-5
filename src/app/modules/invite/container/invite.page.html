@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>{{ 'invite-module.invite-page.page-title' | translate }}</ion-title>
+    <ion-title id="invite-page-header-title-text">{{ 'invite-module.invite-page.page-title' | translate }}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,27 +14,31 @@
       <ion-row padding-vertical>
         <ion-col col-lg-4 col-md-6 col-sm-8 no-padding offset-lg-4 offset-md-3 offset-sm-2>
           <div class="invitees-header main-container">
-            <p>{{ 'invite-module.invite-page.invitees-header' | translate | uppercase }}</p>
-            <p>{{facade.invitations.length}}</p>
+            <p id="invite-page-header-title-text">
+              {{ 'invite-module.invite-page.invitees-header' | translate | uppercase }}
+            </p>
+            <p id="invite-page-invitations-length">{{facade.invitations.length}}</p>
           </div>
           <div class="track-list">
             <ion-list *ngFor="let invitation of facade.invitations; let i = index" lines="none">
               <ion-item>
                 <div id="track-users-contact-list-avatar-{{ i }}" text-center class="track-avater" no-padding no-margin>
-                  <p class="track-initials">{{invitation.inviteeEmail | emailName | uppercase}}</p>
+                  <p class="track-initials" id="invite-page-invitee-email">
+                    {{invitation.inviteeEmail | emailName | uppercase}}
+                  </p>
                   <div *ngIf="invitation.status === facade.status.Read">
-                    <img src="assets/img/invite/success.png" class="track-icon" />
+                    <img src="assets/img/invite/success.png" class="track-icon" id="invite-page-success-img" />
                   </div>
                   <div *ngIf="invitation.status === facade.status.Sent">
-                    <img src="assets/img/invite/pending.png" class="track-icon" />
+                    <img src="assets/img/invite/pending.png" class="track-icon" id="invite-page-pending-img" />
                   </div>
                 </div>
               </ion-item>
               <div class="track-email">
-                <p>{{invitation.inviteeEmail | slice: 0: 17 }}...</p>
+                <p id="invite-page-invitee-email">{{invitation.inviteeEmail | slice: 0: 17 }}...</p>
               </div>
               <div class="track-email-status">
-                <p align="center">{{invitation.status | titlecase }}</p>
+                <p align="center" id="invite-page-invitee-status">{{invitation.status | titlecase }}</p>
               </div>
             </ion-list>
           </div>
@@ -47,7 +51,12 @@
 <ion-footer class="ion-no-border">
   <ion-toolbar>
     <div class="toolbar-content-wrapper">
-      <ion-button class="white-button" expand="block" (click)="onInviteNewFriend()">
+      <ion-button
+        class="white-button"
+        id="invite-page-invite-new-friend-btn"
+        expand="block"
+        (click)="onInviteNewFriend()"
+      >
         {{ 'invite-module.invite-page.invite-btn' | translate }}
       </ion-button>
     </div>

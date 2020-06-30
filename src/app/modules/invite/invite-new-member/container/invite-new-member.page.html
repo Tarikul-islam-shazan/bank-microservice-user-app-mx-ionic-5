@@ -1,22 +1,29 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md" icon="arrow-back" (click)="facade.onClickBack()"></ion-back-button>
+      <ion-back-button
+        id="invite-new-member-page-header-back-btn"
+        mode="md"
+        icon="arrow-back"
+        (click)="facade.onClickBack()"
+      ></ion-back-button>
     </ion-buttons>
-    <ion-title>{{ 'invite-module.invite-new-member-page.header-title' | translate }}</ion-title>
+    <ion-title id="invite-new-member-page-header-title-text"
+      >{{ 'invite-module.invite-new-member-page.header-title' | translate }}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="input-group">
-    <div class="invite-label">
+    <div class="invite-label" id="invite-new-member-page-invite-label">
       {{ 'invite-module.invite-new-member-page.invite-label' | translate }}
     </div>
 
     <div class="badges-container">
       <ion-chip class="email-badge" *ngFor="let contact of facade.inviteeContact; let i = index">
-        <ion-label>{{ contact.name }} - {{ contact.email }} </ion-label>
-        <ion-button fill="clear" size="small" (click)="facade.removeContact(i)">
+        <ion-label id="invite-new-member-page-contact-name-email">{{ contact.name }} - {{ contact.email }} </ion-label>
+        <ion-button fill="clear" size="small" id="invite-new-member-page-remove-contact-btn" (click)="facade.removeContact(i)">
           <ion-icon slot="icon-only" name="close"></ion-icon>
         </ion-button>
       </ion-chip>
@@ -28,7 +35,7 @@
         [appMaskInput]="facade.emailFormatMask"
         placeholder="{{ 'invite-module.invite-new-member-page.invite-email-input-placeholder' | translate }}"
         type="text"
-      >
+        id="invite-new-member-page-contact-email-input">
       </ion-input>
     </div>
 
@@ -37,23 +44,23 @@
         [(ngModel)]="facade.name"
         placeholder="{{ 'invite-module.invite-new-member-page.invite-name-input-placeholder' | translate }}"
         type="text"
-      >
+        id="invite-new-member-page-contact-name-input">
       </ion-input>
     </div>
 
     <ion-button
       expand="block"
       class="grey-outline-button"
+      id="invite-new-member-page-add-invitee-btn"
       (click)="facade.addInvitee()"
-      [disabled]="(!facade.isValidEmail() || facade.name === '' || facade.emailAlreadyEntered())"
-    >
+      [disabled]="(!facade.isValidEmail() || facade.name === '' || facade.emailAlreadyEntered())">
       {{ 'invite-module.invite-new-member-page.add-invitee-button' | translate }}
     </ion-button>
   </div>
 
   <div class="invite-divider" *ngIf="facade.isCordova">
     <div class="left-border"></div>
-    <div class="divider-content">
+    <div class="divider-content" id="invite-new-member-page-invite-or-divider-text">
       {{ 'invite-module.invite-new-member-page.invite-or-divider' | translate }}
     </div>
     <div class="right-border"></div>
@@ -67,7 +74,7 @@
       class="grey-outline-button"
       *ngIf="facade.isCordova"
       (click)="facade.onChooseFromContact()"
-    >
+      id="invite-new-member-page-choose-From-Contact-btn">
       {{ 'invite-module.invite-new-member-page.choose-contact-button' | translate }}
     </ion-button>
     <ion-button
@@ -75,7 +82,7 @@
       class="white-button"
       [disabled]="(facade.inviteeContact.length <= 0 ) && (!facade.isValidEmail() || facade.name === '')"
       (click)="facade.onContinueClick()"
-    >
+      id="invite-new-member-page-continue-btn">
       {{ 'invite-module.invite-new-member-page.continue-button' | translate }}
     </ion-button>
   </ion-toolbar>
