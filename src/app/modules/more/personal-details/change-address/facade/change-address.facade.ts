@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 import { MemberService } from '@app/core/services/member.service';
 import { Observable, Subscription } from 'rxjs';
 import { PersonalDetailsState } from '@app/more/personal-details/facade/personal-details.state';
-import { Router } from '@angular/router';
+import { Router, NavigationExtras } from '@angular/router';
 @Injectable()
 export class ChangeAddressFacade {
   customer: ICustomer = {};
@@ -59,10 +59,13 @@ export class ChangeAddressFacade {
    * @memberOf ChangeAddressFacade
    */
   save(formValue: IAddress): void {
-    this.router.navigate([`/more/personal-details/utility-upload`]);
-    // const customer: Partial<ICustomer> = {};
-    // const addressArrar: IAddress[] = [formValue];
-    // customer.addresses = addressArrar;
+    const navigationExtras: NavigationExtras = {
+      queryParams: {
+        address: JSON.stringify(formValue)
+      }
+    };
+    this.router.navigate([`/more/personal-details/utility-upload`], navigationExtras);
+
     // this.customerService.updateAddress(customer).subscribe((response: any) => {
     //   const data = response.addresses;
     //   this.customer.addresses = data;

@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UtilityUploadFacade } from '../facade/utility.facade';
 import { IonInput } from '@ionic/angular';
 import { DropdownOption } from '@app/signup/models/signup';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ICustomer, IAddress } from '@app/core';
 
 @Component({
   selector: 'mbc-utility-upload',
@@ -13,12 +14,29 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 export class UtilityUploadPage implements OnInit {
   @ViewChild('documentImageInput', { static: false }) documentImageInput: IonInput;
   utitlityOptions: DropdownOption[];
-  identityConfirmationForm: FormGroup;
-  constructor(private router: Router, public facade: UtilityUploadFacade, private formBuilder: FormBuilder) {}
+  utilityBillForm: FormGroup;
+  customer: Partial<ICustomer> = {};
+  constructor(
+    private router: Router,
+    public facade: UtilityUploadFacade,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute
+  ) {
+    this.route.queryParams.subscribe(params => {
+      if (params && params.address) {
+        const addressArrar: IAddress[] = [params.address];
+        this.customer.addresses = addressArrar;
+      }
+    });
+  }
 
   ngOnInit() {
     this.setUtilityOptions();
     this.initIdentityConfirmation();
+  }
+
+  get isSubmitButtonDisabled(): boolean {
+    return this.utilityBillForm.invalid || !this.facade.scannedUtilityBillImage;
   }
 
   /**
@@ -42,7 +60,7 @@ export class UtilityUploadPage implements OnInit {
    * @memberOf IdentityConfirmationPage
    */
   private initIdentityConfirmation(): void {
-    this.identityConfirmationForm = this.formBuilder.group({
+    this.utilityBillForm = this.formBuilder.group({
       utilityDocument: [null, Validators.required]
     });
   }
@@ -55,7 +73,7 @@ export class UtilityUploadPage implements OnInit {
    */
   openModal(): void {
     this.facade.openUtilityModal(this.utitlityOptions, (selectedUtility: DropdownOption) => {
-      this.identityConfirmationForm.controls.utilityDocument.patchValue(selectedUtility.text);
+      this.utilityBillForm.controls.utilityDocument.patchValue(selectedUtility.text);
     });
   }
 
@@ -81,5 +99,11 @@ export class UtilityUploadPage implements OnInit {
     let imageUploadElement: HTMLInputElement;
     imageUploadElement = await this.documentImageInput.getInputElement();
     this.facade.uploadImage(imageUploadElement);
+  }
+
+  continue(): void {
+    if (!this.isSubmitButtonDisabled) {
+      this.facade.continue(this.customer);
+    }
   }
 }

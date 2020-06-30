@@ -9,7 +9,7 @@
   <div class="content-wrapper">
     <div class="dropdown-input-wrapper">
       <div class="label-text">{{'more-module.personal-details.change-address-modal.address-type' | translate}}</div>
-      <form [formGroup]="identityConfirmationForm">
+      <form [formGroup]="utilityBillForm">
         <div class="dropdown-input" (click)="openModal()">
           <ion-input
             readonly
@@ -26,8 +26,8 @@
     </div>
     <div class="scan-wrapper">
       <div class="front scan-button-wrapper">
-        <ion-icon name="checkmark-circle" class="tick-icon" *ngIf="facade.documentImage"></ion-icon>
-        <img class="preview" [src]="facade.documentImage" *ngIf="facade.documentImage" (click)="takePhoto()" />
+        <ion-icon name="checkmark-circle" class="tick-icon" *ngIf="facade.utilityBillImage"></ion-icon>
+        <img class="preview" [src]="facade.utilityBillImage" *ngIf="facade.utilityBillImage" (click)="takePhoto()" />
         <ion-input
           #documentImageInput
           [hidden]="true"
@@ -36,7 +36,7 @@
           accept="image/*"
           (ionChange)="uploadImage()"
         ></ion-input>
-        <div class="scan-button" *ngIf="!facade.documentImage" (click)="takePhoto()">
+        <div class="scan-button" *ngIf="!facade.utilityBillImage" (click)="takePhoto()">
           <div class="button-image">
             <img src="assets/img/camera.png" />
           </div>
@@ -56,7 +56,7 @@
 
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ion-button class="white-button" expand="block">
+    <ion-button class="white-button" expand="block" [disabled]="isSubmitButtonDisabled" (click)="continue()">
       {{'more-module.personal-details.change-address-modal.button-text' | translate}}
     </ion-button>
   </ion-toolbar>

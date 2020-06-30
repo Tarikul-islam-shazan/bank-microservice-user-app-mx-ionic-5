@@ -3,19 +3,25 @@ import { AppPlatform } from '@app/core/util/app-platform';
 import { IMeedModalContent, ModalService, DropdownModalComponent } from '@app/shared';
 import { Observable } from 'rxjs';
 import { DropdownOption } from '@app/signup/models/signup';
-import { StaticDataService, StaticDataCategory, StaticData } from '@app/core';
+import { StaticDataService, StaticDataCategory, StaticData, SignUpService, ICustomer } from '@app/core';
 import { map } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
+import { CustomerService } from '@app/core/services/customer-service.service';
 
 @Injectable()
 export class UtilityUploadFacade {
-  documentImage: string;
+  utilityBillImage: string;
   selectedUtility: DropdownOption;
+  scannedUtilityBillImage: Blob;
   constructor(
     private platformService: AppPlatform,
     private modalService: ModalService,
     private staticDataService: StaticDataService,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private signupService: SignUpService,
+    private router: Router,
+    private customerService: CustomerService
   ) {}
 
   /**
@@ -84,14 +90,14 @@ export class UtilityUploadFacade {
           if (storagePermission) {
             const imageData = await this.platformService.captureImage();
             const base64Image = 'data:image/jpeg;base64,' + imageData;
-            this.documentImage = base64Image;
+            this.initImageData(base64Image, imageData);
           } else {
             this.permissionInfoModal();
           }
         } else {
           const imageData = await this.platformService.captureImage();
           const base64Image = 'data:image/jpeg;base64,' + imageData;
-          this.documentImage = base64Image;
+          this.initImageData(base64Image, imageData);
         }
       } else {
         // Show Permission Info Modal
@@ -100,6 +106,20 @@ export class UtilityUploadFacade {
     } else {
       uploadInputElement.click();
     }
+  }
+
+  /**
+   * @summary After capturing the image, save those images on variables
+   *
+   * @private
+   * @param {string} base64Image
+   * @param {string} imageData
+   * @returns {void}
+   *
+   */
+  private initImageData(base64Image: string, imageData: string): void {
+    this.utilityBillImage = base64Image;
+    this.scannedUtilityBillImage = this.platformService.base64toBlob(imageData, 'image/png');
   }
 
   /**
@@ -154,8 +174,45 @@ export class UtilityUploadFacade {
     reader.onloadend = () => {
       const imageData = (reader.result as string).replace(/^data:.+;base64,/, '');
       const base64Image = 'data:image/jpg;base64,' + imageData;
-      this.documentImage = base64Image;
+      this.utilityBillImage = base64Image;
+      this.scannedUtilityBillImage = this.platformService.base64toBlob(imageData, 'image/png');
     };
     reader.readAsDataURL(file);
+  }
+
+  /**
+   * @summary This method prepares the parameter to send to api.
+   * @summary As there are images, these datas are needed to be sent as form data
+   *
+   * @returns {FormData} The param object for sending to api
+   * @memberOf IdentityConfirmationPage
+   */
+  private getFormData(): FormData {
+    const formData = new FormData();
+    formData.append('utilityDocument', this.selectedUtility.value);
+    formData.append('utilityImage', this.scannedUtilityBillImage, 'utilityImage.png');
+
+    return formData;
+  }
+
+  /**
+   * @summary continues signup process by sending form data
+   *
+   * @returns {void}
+   * @memberOf IdentityConfirmationFacade
+   */
+  continue(customer: ICustomer): void {
+    const formData = this.getFormData();
+    this.signupService.confirmIdentity(formData).subscribe(() => this.router.navigate([`/more/personal-details`]));
+    // this.customerService.updateAddress(customer).subscribe((response: any) => {
+    //   const data = response.addresses;
+    //   this.customer.addresses = data;
+    //   // Object.assign(this.customer, data);
+    //   Object.assign(this.memberService.member, data);
+    //   this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
+    //   setTimeout(() => {
+    //     this.router.navigate([`/more/personal-details`]);
+    //   }, 500);
+    // });
   }
 }
