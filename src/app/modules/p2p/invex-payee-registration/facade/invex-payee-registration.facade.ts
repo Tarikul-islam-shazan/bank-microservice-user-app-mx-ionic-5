@@ -17,7 +17,7 @@ export class InvexPayeeRegistrationFacade {
       contents: [
         {
           title: 'p2p-module.registration-type-page.meed-registration-success-title',
-          details: ['p2p-module.registration-type-page.meed-registration-success-description']
+          details: ['p2p-module.invex-payee-registration-page.registration-success-description']
         }
       ],
       actionButtons: [

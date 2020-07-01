@@ -52,16 +52,21 @@ export class PayeeRegistrationTypeFacade {
       ],
       actionButtons: [
         {
-          text: 'p2p-module.registration-type-page.done-button-text',
+          text: 'p2p-module.registration-type-page.send-money-now-button-text',
           cssClass: 'white-button',
           handler: async () => {
             this.modalService.close();
           }
+        },
+        {
+          text: 'p2p-module.registration-type-page.done-button-text',
+          cssClass: 'gey-outline-button',
+          handler: async () => {
+            this.modalService.close();
+            this.router.navigate(['/p2p/home']);
+          }
         }
-      ],
-      onDidDismiss: async () => {
-        this.router.navigate(['/p2p/home']);
-      }
+      ]
     };
 
     this.modalService.openModal(SuccessModalPage, componentProps);

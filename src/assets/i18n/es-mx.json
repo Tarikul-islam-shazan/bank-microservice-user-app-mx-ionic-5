@@ -1874,7 +1874,8 @@
       "continue-button-title": "Continue",
       "meed-registration-success-title": "Thanks for Registering!",
       "meed-registration-success-description": "The clock starts now! You can send the moolah anytime after 30 minutes have elapsed",
-      "done-button-text": "Done"
+      "done-button-text": "Done",
+      "send-money-now-button-text": "Send Money Now"
     },
     "invex-payee-registration-page": {
       "page-title": "Send Money",
