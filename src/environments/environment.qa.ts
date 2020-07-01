@@ -50,6 +50,10 @@ export const environment = {
       name: 'travel_tnc.pdf'
     }
   },
+  meedTravel: {
+    url: 'https://meeddevsite.uat.mybookingplatform.com/en/user/autoLoginUser',
+    token: 'bQBlAGUAZABkAGUAdgBzAGkAdABlAC4AdQBhAHQALgBtAHkAYgBvAG8AawBpAG4AZwBwAGwAYQB0AGYAbwByAG0ALgBjAG8AbQA='
+  },
   appDataStorage: {
     name: 'meed-database',
     storeName: 'meed-store'

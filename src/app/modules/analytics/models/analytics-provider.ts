@@ -87,6 +87,7 @@ export enum AnalyticsEventTypes {
   SavingsGoalDeleted = 'savings_goal_deleted',
   MeedCoverPdfViewed = 'meed_cover_pdf_viewed',
   MeedTravelPdfViewed = 'meed_travel_pdf_viewed',
+  MeedTravelPageVisited = 'meed_travel_page_visited',
   OfferViewed = 'offer_viewed',
   ExtrasCategorySelected = 'extras_category_selected',
   NearbyOffersSelected = 'nearby_offers_selected',
