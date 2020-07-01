@@ -11,22 +11,47 @@
 
 <ion-content>
   <div class="content-wrapper">
-    <div class="add-payees-block">
-      <ion-fab-button (click)="addPayee()" id="bill-pay-page-add-payee-btn">
-        <ion-icon name="add"></ion-icon>
-      </ion-fab-button>
-      <div class="title" id="bill-pay-page-add-payee-button-title-text" (click)="addPayee()">
-        {{ 'move-money-module.pay-bills.bill-pay.add-payee-button-title' | translate }}
+    <div class="biller-search-wrapper">
+      <ion-item lines="none" class="icon-input">
+        <ion-icon slot="start" name="search"></ion-icon>
+        <ion-input
+          (ionChange)="searchBillers()"
+          [(ngModel)]="searchQuery"
+          placeholder="{{'move-money-module.pay-bills.bill-pay.search-input-placeholder' | translate}}"
+        ></ion-input>
+      </ion-item>
+    </div>
+    <div class="search-result-wrapper" *ngIf="searchQuery">
+      <ion-list *ngIf="facade.searchBillersResult.length > 0">
+        <ion-item *ngFor="let biller of facade.searchBillersResult">
+          <ion-label class="ion-padding-top ion-padding-bottom ion-text-wrap" (click)="facade.addPayee(biller)">
+            {{biller.name}}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <div class="no-result-block" *ngIf="facade.searchBillersResult.length === 0">
+        <ion-label class="ion-text-center ion-text-wrap"
+          >{{'move-money-module.pay-bills.bill-pay.no-result-found-text' | translate}}</ion-label
+        >
       </div>
     </div>
-    <div class="my-payees-block">
-      <div class="title" id="bill-pay-page-add-payee-button-title-text">
-        {{ 'move-money-module.pay-bills.bill-pay.add-payee-button-title' | translate }}
-      </div>
-      <div class="payee-item" *ngFor="let payee of payeeList" (click)="goToBillPayment(payee)">
-        <div class="avatar">{{payee.fullName.slice(0,1)}}</div>
-        <div class="payee-name" id="bill-pay-page-payee-full-name-text">{{payee.fullName}}</div>
-      </div>
+
+    <div class="my-bill-accounts-wrapper">
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-label><b>{{'move-money-module.pay-bills.bill-pay.my-bill-accounts-list-title' | translate}}</b></ion-label>
+      </ion-item>
+      <ion-list>
+        <ion-item *ngFor="let billAccount of facade.getMyBillAccoutns()">
+          <ion-label
+            class="ion-padding-top  ion-padding-bottom ion-text-wrap"
+            (click)="facade.goToBillPayment(billAccount)"
+          >
+            {{billAccount.name}}
+          </ion-label>
+          <ion-icon slot="end" name="pencil"></ion-icon>
+          <ion-icon slot="end" name="trash-outline"></ion-icon>
+        </ion-item>
+      </ion-list>
     </div>
   </div>
 </ion-content>

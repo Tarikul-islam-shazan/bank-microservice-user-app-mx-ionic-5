@@ -154,6 +154,10 @@ export interface IBillPayee extends IBillPayment {
   accountNumber?: string;
   paymentMethodType?: BillPaymentType;
   firstAvailableProcessDate?: string;
+  name?: string;
+}
+export interface IBiller {
+  name?: string;
 }
 export enum PaymentFrequency {
   Once = 'Once',

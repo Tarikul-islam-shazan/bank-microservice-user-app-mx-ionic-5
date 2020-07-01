@@ -2,7 +2,7 @@ import { environment } from '@env/environment';
 import { flatMap, map, tap } from 'rxjs/operators';
 import { HeaderService } from './header-service.service';
 import { HttpClient } from '@angular/common/http';
-import { IBillPayee, IBillPayment, IOtp } from '../models';
+import { IBillPayee, IBillPayment, IOtp, IBiller } from '@app/core/models/dto/member';
 import { IHttpRequestMethod, IOtpVerificationRequest, OtpService } from './otp.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -12,6 +12,7 @@ import { Observable } from 'rxjs';
 })
 export class PayBillService {
   billPayee: IBillPayee = {};
+  biller: IBiller = {};
   private billPayeeBaseUrl = environment.serviceUrl + '/bill-pay/payees';
   private billPaymentBaseUrl = environment.serviceUrl + '/bill-pay/payments';
 
