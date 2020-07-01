@@ -1,9 +1,11 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md"></ion-back-button>
+      <ion-back-button id="other-bank-payee-registration-page-header-back-btn" mode="md"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{"p2p-module.other-payee-registration-page.page-title" | translate}}</ion-title>
+    <ion-title id="other-bank-payee-registration-page-header-title-text"
+      >{{"p2p-module.other-payee-registration-page.page-title" | translate}}</ion-title
+    >
   </ion-toolbar>
 </ion-header>
 
@@ -16,12 +18,18 @@
         <ion-input
           formControlName="alias"
           class="ion-margin-start"
+          id="other-bank-payee-registration-page-alias-input"
           placeholder="{{'p2p-module.other-payee-registration-page.payee-alias-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
-      <ion-item class="ion-no-padding" (click)="openIdentifierModal()">
+      <ion-item
+        class="ion-no-padding"
+        id="other-bank-payee-registration-page-open-identifier-modal-btn"
+        (click)="openIdentifierModal()"
+      >
         <ion-input
           formControlName="identityTypeName"
+          id="other-bank-payee-registration-page-identity-type-input"
           readonly
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.identifier-placeholder' | translate}}"
@@ -36,6 +44,7 @@
         <ion-input
           formControlName="companyName"
           class="ion-margin-start"
+          id="other-bank-payee-registration-page-identity-type-input"
           [placeholder]="payeeIdentifier.text"
         ></ion-input>
       </ion-item>
@@ -45,6 +54,7 @@
           formControlName="bankName"
           readonly
           class="ion-margin-start"
+          id="other-bank-payee-registration-page-bank-name-input"
           placeholder="{{'p2p-module.other-payee-registration-page.form.bank-placeholder' | translate}}"
         ></ion-input>
         <ion-icon slot="end" name="chevron-down"></ion-icon>
@@ -53,6 +63,7 @@
       <ion-item class="ion-no-padding">
         <ion-input
           formControlName="identityNumber"
+          id="other-bank-payee-registration-page-identity-number-input"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.clabe-placeholder' | translate}}"
         ></ion-input>
@@ -60,6 +71,7 @@
       <ion-item class="ion-no-padding">
         <ion-input
           formControlName="email"
+          id="other-bank-payee-registration-page-email-input"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.email-placeholder' | translate}}"
         ></ion-input>
@@ -74,15 +86,21 @@
         <ion-input
           formControlName="identityNumber"
           class="ion-margin-start"
+          id="other-bank-payee-registration-page-identity-Number-input"
           [placeholder]="payeeIdentifier.text"
         ></ion-input>
       </ion-item>
 
-      <ion-item class="ion-no-padding" (click)="openBankListModal()">
+      <ion-item
+        class="ion-no-padding"
+        id="other-bank-payee-registration-page-open-BankList-Modal-btn"
+        (click)="openBankListModal()"
+      >
         <ion-input
           formControlName="bankName"
           readonly
           class="ion-margin-start"
+          id="other-bank-payee-registration-page-bank-name-input"
           placeholder="{{'p2p-module.other-payee-registration-page.form.bank-placeholder' | translate}}"
         ></ion-input>
         <ion-icon slot="end" name="chevron-down"></ion-icon>
@@ -99,6 +117,7 @@
         <ion-input
           formControlName="secondName"
           class="ion-margin-start"
+          id="other-bank-payee-registration-page-second-Name-input"
           placeholder="{{'p2p-module.other-payee-registration-page.form.second-name-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
@@ -106,12 +125,14 @@
         <ion-input
           formControlName="paternalLastName"
           class="ion-margin-start"
+          id="other-bank-payee-registration-page-paternal-Last-Name-input"
           placeholder="{{'p2p-module.other-payee-registration-page.form.paternal-last-name-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
       <ion-item class="ion-no-padding">
         <ion-input
           formControlName="maternalLastName"
+          id="other-bank-payee-registration-page-maternal-Last-Name-input"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.maternal-last-name-placeholder' | translate}}"
         ></ion-input>
@@ -120,6 +141,7 @@
         <ion-input
           formControlName="email"
           class="ion-margin-start"
+          id="other-bank-payee-registration-page-email-input"
           placeholder="{{'p2p-module.other-payee-registration-page.form.email-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
@@ -127,6 +149,7 @@
         <ion-input
           formControlName="phone"
           class="ion-margin-start"
+          id="other-bank-payee-registration-page-phone-input"
           placeholder="{{'p2p-module.other-payee-registration-page.form.mobile-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
@@ -134,6 +157,7 @@
         <ion-input
           formControlName="rfc"
           class="ion-margin-start"
+          id="other-bank-payee-registration-page-rfc-input"
           placeholder="{{'p2p-module.other-payee-registration-page.form.rfc-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
@@ -143,6 +167,7 @@
       <ion-item class="ion-no-padding">
         <ion-input
           formControlName="identityNumber"
+          id="other-bank-payee-registration-page-identity-Number-input"
           class="ion-margin-start"
           [placeholder]="payeeIdentifier.text"
         ></ion-input>
@@ -151,6 +176,7 @@
       <ion-item class="ion-no-padding" (click)="openBankListModal()">
         <ion-input
           formControlName="bankName"
+          id="other-bank-payee-registration-page-bank-Name-input"
           readonly
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.bank-placeholder' | translate}}"
@@ -161,6 +187,7 @@
       <ion-item class="ion-no-padding">
         <ion-input
           formControlName="firstName"
+          id="other-bank-payee-registration-page-first-Name-input"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.first-name-placeholder' | translate}}"
         ></ion-input>
@@ -168,6 +195,7 @@
       <ion-item class="ion-no-padding">
         <ion-input
           formControlName="secondName"
+          id="other-bank-payee-registration-page-second-Name-input"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.second-name-placeholder' | translate}}"
         ></ion-input>
@@ -175,6 +203,7 @@
       <ion-item class="ion-no-padding">
         <ion-input
           formControlName="paternalLastName"
+          id="other-bank-payee-registration-page-paternal-Last-Name-input"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.paternal-last-name-placeholder' | translate}}"
         ></ion-input>
@@ -182,6 +211,7 @@
       <ion-item class="ion-no-padding">
         <ion-input
           formControlName="maternalLastName"
+          id="other-bank-payee-registration-page-maternal-Last-Name-input"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.maternal-last-name-placeholder' | translate}}"
         ></ion-input>
@@ -189,6 +219,7 @@
       <ion-item class="ion-no-padding">
         <ion-input
           formControlName="email"
+          id="other-bank-payee-registration-page-email-input"
           class="ion-margin-start"
           placeholder="{{'p2p-module.other-payee-registration-page.form.email-placeholder' | translate}}"
         ></ion-input>
@@ -197,6 +228,7 @@
         <ion-input
           formControlName="rfc"
           class="ion-margin-start"
+          id="other-bank-payee-registration-page-rfc-input"
           placeholder="{{'p2p-module.other-payee-registration-page.form.rfc-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
@@ -205,7 +237,12 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" [disabled]="checkButtonDisable()" (click)="next()">
+    <ion-button
+      class="white-button"
+      id="other-bank-payee-registration-page-rfc-btn"
+      [disabled]="checkButtonDisable()"
+      (click)="next()"
+    >
       {{'p2p-module.other-payee-registration-page.next-button-title' | translate}}
     </ion-button>
   </ion-toolbar>

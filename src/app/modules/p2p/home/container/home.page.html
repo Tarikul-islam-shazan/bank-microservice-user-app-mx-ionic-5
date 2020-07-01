@@ -1,19 +1,22 @@
 <ion-header>
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button mode="md"></ion-back-button>
+      <ion-back-button id="p2p-home-page-header-back-btn" mode="md"></ion-back-button>
     </ion-buttons>
-    <ion-title>{{'p2p-module.home-page.page-title' | translate}}</ion-title>
+    <ion-title id="p2p-home-page-header-title-text">{{'p2p-module.home-page.page-title' | translate}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
   <div class="payee-search-wrapper">
-    <div class="title">{{'p2p-module.home-page.add-new-payee-title' | translate}}</div>
+    <div class="title" id="p2p-home-page-add-new-payee-title-text">
+      {{'p2p-module.home-page.add-new-payee-title' | translate}}
+    </div>
     <ion-item lines="none" class="icon-input">
       <ion-icon slot="start" name="search"></ion-icon>
       <ion-input
         (ionChange)="searchContact()"
+        id="p2p-home-page-search-query-input"
         [(ngModel)]="searchQuery"
         placeholder="{{'p2p-module.home-page.search-input-placeholder' | translate}}"
       ></ion-input>
@@ -22,7 +25,7 @@
   <div class="search-result-wrapper" *ngIf="facade.startSearching">
     <ion-list *ngIf="facade.searchResult.length > 0">
       <ion-item *ngFor="let payee of facade.searchResult">
-        <ion-label class="ion-padding-top ion-padding-bottom ion-text-wrap">
+        <ion-label class="ion-padding-top ion-padding-bottom ion-text-wrap" id="p2p-home-page-payee-email">
           {{payee.alias}} <br />
           {{payee.email}}
         </ion-label>
@@ -31,7 +34,7 @@
     </ion-list>
 
     <div class="no-result-block" *ngIf="facade.searchResult.length === 0">
-      <ion-label class="ion-text-center ion-text-wrap"
+      <ion-label class="ion-text-center ion-text-wrap" id="p2p-home-page-no-result-found-text"
         >{{'p2p-module.home-page.no-result-found-text' | translate}}</ion-label
       >
     </div>
@@ -39,7 +42,9 @@
   <div class="data-content-wrapper" [hidden]="facade.startSearching">
     <div class="requests-wrapper">
       <ion-item lines="none" class="ion-no-padding">
-        <ion-label><b>{{'p2p-module.home-page.request-title' | translate}}</b></ion-label>
+        <ion-label id="p2p-home-page-request-title-text"
+          ><b>{{'p2p-module.home-page.request-title' | translate}}</b></ion-label
+        >
       </ion-item>
       <ion-list>
         <ion-item class="ion-no-padding" lines="none">
@@ -61,12 +66,13 @@
           class="ion-text-right"
           slot="end"
           (click)="makeContactEditAble()"
+          id="p2p-home-page-edit-delete-title-text"
           >{{'p2p-module.home-page.edit-delete-title' | translate}}</ion-label
         >
       </ion-item>
       <ion-list>
         <ion-item *ngFor="let payee of facade.myPayees$ | async">
-          <ion-label class="ion-padding-top ion-padding-bottom">
+          <ion-label class="ion-padding-top ion-padding-bottom" id="p2p-home-page-payee-email-text">
             {{payee.email ? payee.email : payee.alias}}
           </ion-label>
           <ion-icon *ngIf="isEditable" slot="end" name="pencil"></ion-icon>
@@ -77,7 +83,7 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" (click)="next()" [disabled]="!searchQuery">
+    <ion-button class="white-button" id="p2p-home-page-next-btn" (click)="next()" [disabled]="!searchQuery">
       {{'p2p-module.home-page.next-button-title' | translate}}
     </ion-button>
   </ion-toolbar>
