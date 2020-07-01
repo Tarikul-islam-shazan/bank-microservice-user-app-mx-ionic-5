@@ -1868,8 +1868,9 @@
       "bank-account-title": "Others Domestic Bank Account",
       "continue-button-title": "Continue",
       "meed-registration-success-title": "Thanks for Registering!",
-      "meed-registration-success-description": "The clock starts now! You can send the moolah anytime after 30 minutes have elapsed",
-      "done-button-text": "Done"
+      "meed-registration-success-description": "Click Send Money Now to send to your new Payee",
+      "done-button-text": "Done",
+      "send-money-now-button-text": "Send Money Now"
     },
     "invex-payee-registration-page": {
       "page-title": "Send Money",
@@ -1880,7 +1881,8 @@
         "email-placeholder": "Email Address (Optional)",
         "mobile-placeholder": "Mobile Number (Optional)"
       },
-      "next-button-title": "Next"
+      "next-button-title": "Next",
+      "registration-success-description": "The clock starts now! You can send the moolah anytime after 30 minutes have elapsed"
     },
     "other-payee-registration-page": {
       "page-title": "Send Money",
@@ -1898,7 +1900,8 @@
         "maternal-last-name-placeholder": "Maternal Last Name (Optional)",
         "rfc-placeholder": "RFC (Optional)"
       },
-      "next-button-title": "Next"
+      "next-button-title": "Next",
+      "registration-success-description": "The clock starts now! You can send the moolah anytime after 30 minutes have elapsed"
     }
   }
 }
