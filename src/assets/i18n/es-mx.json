@@ -1884,7 +1884,9 @@
       "my-payee-title": "My Payees",
       "edit-delete-title": "EDIT/DELETE",
       "next-button-title": "Next",
-      "no-result-found-text": "No match found. You can still send money hit next register your friend"
+      "no-result-found-text": "No match found. You can still send money hit next register your friend",
+      "modal-title": "Oops!",
+      "modal-description": "Sorry you can't add your own account"
     },
     "registration-type-page": {
       "page-title": "Send Money",

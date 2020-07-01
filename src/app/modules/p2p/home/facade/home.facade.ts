@@ -5,13 +5,21 @@ import { Injectable } from '@angular/core';
 import { map } from 'rxjs/operators';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { Router } from '@angular/router';
+import { MemberService, REG_EX_PATTERNS } from '@app/core';
+import { IMeedModalContent, ModalService } from '@app/shared';
 @Injectable()
 export class HomeP2PFacade {
   public myPayees: IContact[] = [];
   public myPayees$: Observable<IContact[]>;
   public searchResult: IContact[] = [];
   public startSearching = false;
-  constructor(private p2pService: P2PService, private analytics: AnalyticsService, private router: Router) {
+  constructor(
+    private p2pService: P2PService,
+    private analytics: AnalyticsService,
+    private router: Router,
+    private memberService: MemberService,
+    private modalService: ModalService
+  ) {
     this.getAllContacts();
   }
 
@@ -27,8 +35,30 @@ export class HomeP2PFacade {
     }
   }
 
+  checkIsSelfEmail(email: string): boolean {
+    const regex = new RegExp(REG_EX_PATTERNS.EMAIL);
+    const isEmail = regex.test(email);
+    return isEmail ? this.memberService.member.email === email : false;
+  }
+
+  showSelfEmailAddError() {
+    const componentProps: IMeedModalContent = {
+      contents: [
+        {
+          title: 'p2p-module.home-page.modal-title',
+          details: ['p2p-module.home-page.modal-description']
+        }
+      ]
+    };
+    this.modalService.openInfoModalComponent({ componentProps });
+  }
+
   next(payeeTo: string) {
-    this.analytics.logEvent(AnalyticsEventTypes.P2PSearchedNext);
-    this.router.navigate(['/p2p/registration-type/', payeeTo]);
+    if (this.checkIsSelfEmail(payeeTo)) {
+      this.showSelfEmailAddError();
+    } else {
+      this.analytics.logEvent(AnalyticsEventTypes.P2PSearchedNext);
+      this.router.navigate(['/p2p/registration-type/', payeeTo]);
+    }
   }
 }
