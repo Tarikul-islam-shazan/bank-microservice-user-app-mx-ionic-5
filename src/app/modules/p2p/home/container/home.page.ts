@@ -7,13 +7,13 @@ import { HomeP2PFacade } from '../facade';
   styleUrls: ['./home.page.scss']
 })
 export class HomePage implements OnInit {
-  searchQuery = '';
+  searchQuery: string;
   isEditable = false;
   constructor(public readonly facade: HomeP2PFacade) {}
 
   ngOnInit() {}
 
-  ionViewWillLeave() {
+  ionViewWillEnter() {
     this.searchQuery = '';
   }
 
