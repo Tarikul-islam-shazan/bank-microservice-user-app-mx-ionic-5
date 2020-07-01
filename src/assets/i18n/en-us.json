@@ -960,6 +960,12 @@
           "header-title": " The address change has been submitted for review.",
           "subtitle": " It may take several days for the address to be validated and applied to your profile.",
           "button-text": "Done"
+        },
+        "permission-info-modal": {
+          "title": "Enable Camera and Storage",
+          "details": "Please enable Camera and Storage from the settings.",
+          "setting-button-text": "Setting",
+          "cancel-button-text": "Cancel"
         }
       },
       "change-email-address-modal": {

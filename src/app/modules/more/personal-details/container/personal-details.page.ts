@@ -43,7 +43,6 @@ export class PersonalDetailsPage implements OnInit {
   }
 
   goToChangeAddress() {
-    // change-address
     this.router.navigate([`/more/personal-details/change-address`]);
   }
 }

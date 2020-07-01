@@ -35,18 +35,39 @@ export class UtilityUploadFacade {
     this.getCustomer();
   }
 
+  /**
+   * this is use for fetching the current state of the customer
+   *
+   * @private
+   * @returns {Subscription}
+   * @memberof UtilityUploadFacade
+   */
   private getCustomer(): Subscription {
     return this.personalDetailsState.customer$.subscribe((customer: ICustomer) => {
       this.customer = customer;
     });
   }
 
+  /**
+   * fetching the utility options from the server
+   *
+   * @returns {Observable<DropdownOption[]>}
+   * @memberof UtilityUploadFacade
+   */
   getUtilityOptions(): Observable<DropdownOption[]> {
     return this.staticDataService
       .get(StaticDataCategory.IdentityConfirmation)
       .pipe(map(staticData => staticData[StaticData.UtilityDocument]));
   }
 
+  /**
+   * opens up the utility modal with the data received form the server
+   *
+   * @param {DropdownOption[]} options
+   * @param {(selectedUtility: DropdownOption) => void} callback
+   * @returns {Promise<void>}
+   * @memberof UtilityUploadFacade
+   */
   async openUtilityModal(
     options: DropdownOption[],
     callback: (selectedUtility: DropdownOption) => void
@@ -69,6 +90,14 @@ export class UtilityUploadFacade {
     return this.translateService.instant(keyToTranslate);
   }
 
+  /**
+   * This method is use for taking pic or uploading pic from web or devices and
+   * asking necessary permission for the task
+   *
+   * @param {HTMLInputElement} uploadInputElement
+   * @returns {Promise<void>}
+   * @memberof UtilityUploadFacade
+   */
   async takePhoto(uploadInputElement: HTMLInputElement): Promise<void> {
     if (this.platformService.isCordova()) {
       const cameraPermission = await this.platformService.requestCameraPermission();
@@ -96,22 +125,37 @@ export class UtilityUploadFacade {
     }
   }
 
+  /**
+   * storing the image in local variable for future use
+   *
+   * @private
+   * @param {string} base64Image
+   * @param {string} imageData
+   * @memberof UtilityUploadFacade
+   */
   private initImageData(base64Image: string, imageData: string): void {
     this.utilityBillImage = base64Image;
     this.scannedUtilityBillImage = this.platformService.base64toBlob(imageData, 'image/png');
   }
 
+  /**
+   * showing the permission modal
+   *
+   * @private
+   * @returns {Promise<void>}
+   * @memberof UtilityUploadFacade
+   */
   private async permissionInfoModal(): Promise<void> {
     const componentProps: IMeedModalContent = {
       contents: [
         {
-          title: 'more-module.change-name-required-documents.permission-info-modal.title',
-          details: ['more-module.change-name-required-documents.permission-info-modal.details']
+          title: 'more-module.personal-details.change-address-modal.permission-info-modal.title',
+          details: ['more-module.personal-details.change-address-modal.permission-info-modal.details']
         }
       ],
       actionButtons: [
         {
-          text: 'more-module.change-name-required-documents.permission-info-modal.setting-button-text',
+          text: 'more-module.personal-details.change-address-modal.permission-info-modal.setting-button-text',
           cssClass: 'white-button',
           handler: async () => {
             await this.platformService.openNativeAppSetting();
@@ -119,7 +163,7 @@ export class UtilityUploadFacade {
           }
         },
         {
-          text: 'more-module.change-name-required-documents.permission-info-modal.cancel-button-text',
+          text: 'more-module.personal-details.change-address-modal.permission-info-modal.cancel-button-text',
           cssClass: 'grey-outline-button',
           handler: async () => {
             await this.modalService.close();
@@ -131,6 +175,12 @@ export class UtilityUploadFacade {
     await this.modalService.openInfoModalComponent({ componentProps });
   }
 
+  /**
+   * This method is used for showing the uploaded pic in the UI
+   *
+   * @param {HTMLInputElement} uploadInputElement
+   * @memberof UtilityUploadFacade
+   */
   uploadImage(uploadInputElement: HTMLInputElement): void {
     const file = uploadInputElement.files[0],
       reader = new FileReader();
@@ -152,13 +202,19 @@ export class UtilityUploadFacade {
     return formData;
   }
 
+  /**
+   * This method is use for getting all the change address data and utility bill
+   * documents and send them to the server. Also change the customer status depending
+   * on the server response
+   *
+   * @memberof UtilityUploadFacade
+   */
   async continue() {
     const formData = this.getFormData();
     const customer: ICustomer = this.changeAddressService.customerData;
     await this.signupService.confirmIdentity(formData).toPromise();
     const data = await this.customerService.updateAddress(customer).toPromise();
     this.customer.addresses = data.addresses;
-    // Object.assign(this.customer, data);
     this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
     Object.assign(this.memberService.member, data);
     this.addressChangeSuccess();
