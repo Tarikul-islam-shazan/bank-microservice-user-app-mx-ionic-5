@@ -7,7 +7,7 @@ import { HomeP2PFacade } from '../facade';
   styleUrls: ['./home.page.scss']
 })
 export class HomePage implements OnInit {
-  searchQuery: string;
+  searchQuery = '';
   isEditable = false;
   constructor(public readonly facade: HomeP2PFacade) {}
 
