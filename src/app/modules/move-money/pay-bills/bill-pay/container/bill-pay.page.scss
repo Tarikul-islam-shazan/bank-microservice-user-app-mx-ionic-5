@@ -1,54 +1,71 @@
 .content-wrapper {
-  .add-payees-block {
-    height: 60px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-    ion-fab-button {
-      height: 40px;
-      width: 40px;
-    }
-    .title {
-      margin-left: 20px;
-      font-family: 'Averta W05 Bold5204651';
-      font-size: 1.6rem;
-      color: #435cdc;
+  .biller-search-wrapper {
+    ion-item.icon-input {
+      --border-color: var(--input-white-border-color) !important;
+      --inner-padding-bottom: 0 !important;
+      --inner-padding-end: 0 !important;
+      --inner-padding-start: 0 !important;
+      --inner-padding-top: 0 !important;
+      --border-width: 2px;
+      --border-style: solid;
+      --border-radius: 12px;
+      &.item-has-focus {
+        --border-color: var(--input-white-focus-border-color) !important;
+      }
+      ion-input {
+        height: 60px;
+        --placeholder-color: var(--input-white-placeholder-color) !important;
+      }
+      ion-icon {
+        font-size: 2rem !important;
+        color: var(--input-white-placeholder-color) !important;
+      }
     }
   }
-  .my-payees-block {
-    .title {
-      color: #8c90a3 !important;
-      font-family: 'Averta W05 Bold5204651' !important;
-      font-size: 1.4rem !important;
-      margin-bottom: 15px;
-    }
-    .payee-item {
-      height: 70px;
-      display: flex;
-      align-items: center;
-      border-bottom: 1px solid #eaecf7;
-      .avatar {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 40px;
-        width: 40px;
-        background-color: #eaecf7;
-        border-radius: 50%;
-        text-transform: uppercase;
-        margin-right: 10px;
-        font-family: 'Averta W05 Bold5204651';
+
+  .search-result-wrapper {
+    padding: 20px 0;
+    ion-item {
+      --padding-start: 0 !important;
+      --inner-padding-end: 0 !important;
+      span {
         font-size: 1.4rem;
-        color: #435cdc;
       }
-      .payee-name {
-        font-family: 'Averta W05 Regular';
-        font-size: 1.6rem;
-        text-transform: uppercase;
+      ion-label {
+        font-size: 1.4rem !important;
+        span {
+          font-size: 1.2rem;
+          color: var(--input-white-placeholder-color) !important;
+        }
+      }
+      ion-icon {
+        color: #3880ff;
+        font-size: 2.2rem;
+        font-weight: bolder;
       }
     }
-    .payee-item:last-child {
-      border-bottom: none;
+  }
+
+  .my-bill-accounts-wrapper {
+    padding: 20px 0;
+    ion-item {
+      --padding-start: 0 !important;
+      --inner-padding-end: 0 !important;
+      span {
+        font-size: 1.4rem;
+      }
+      ion-label {
+        font-size: 1.4rem !important;
+        span {
+          font-size: 1.2rem;
+          color: var(--input-white-placeholder-color) !important;
+        }
+      }
+      ion-icon {
+        color: #3880ff;
+        font-size: 2.2rem;
+        font-weight: bolder;
+      }
     }
   }
 }

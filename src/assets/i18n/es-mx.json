@@ -1339,8 +1339,9 @@
       },
       "bill-pay": {
         "page-title": "Pagar recibo",
-        "add-payee-button-title": "Agregar un beneficiario",
-        "payees-list-title": "Mis beneficiarios de pago de facturas",
+        "search-input-placeholder": "Search to add new Bill Payer",
+        "my-bill-accounts-list-title": "My Bill Accounts",
+        "no-result-found-text": "No match found",
         "continue-button-title": "Continuar"
       },
       "add-payee-address": {

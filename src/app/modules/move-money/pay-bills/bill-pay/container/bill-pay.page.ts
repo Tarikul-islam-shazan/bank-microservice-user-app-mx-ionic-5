@@ -9,21 +9,16 @@ import { IBillPayee } from '@app/core';
 })
 export class BillPayPage {
   payeeList: IBillPayee[] = [];
-  constructor(private facade: BillPayFacade) {}
+  searchQuery: string;
+  constructor(public facade: BillPayFacade) {}
 
-  ionViewWillEnter() {
-    this.getPayeeList();
-  }
+  ionViewWillEnter() {}
 
-  getPayeeList() {
-    this.facade.getPayeeList().subscribe(_payees => {
-      this.payeeList = _payees;
-    });
-  }
-  addPayee() {
-    this.facade.addPayee();
-  }
   goToBillPayment(billPayee: IBillPayee) {
     this.facade.goToBillPayment(billPayee);
+  }
+
+  searchBillers() {
+    this.facade.searchBillers(this.searchQuery);
   }
 }

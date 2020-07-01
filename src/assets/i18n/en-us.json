@@ -1348,8 +1348,9 @@
       },
       "bill-pay": {
         "page-title": "Pay Bills",
-        "add-payee-button-title": "Add a payee",
-        "payees-list-title": "My Bill Pay payees",
+        "search-input-placeholder": "Search to add new Bill Payer",
+        "my-bill-accounts-list-title": "My Bill Accounts",
+        "no-result-found-text": "No match found",
         "continue-button-title": "Continue"
       },
       "add-payee-address": {
@@ -1569,8 +1570,9 @@
     "mail-check": {
       "bill-pay": {
         "page-title": "Mail a Check",
-        "add-payee-button-title": "Add a payee",
-        "payees-list-title": "My Bill Pay payees",
+        "search-input-placeholder": "Search to add new Bill Payer",
+        "my-bill-accounts-list-title": "My Bill Accounts",
+        "no-result-found-text": "No match found",
         "continue-button-title": "Continue"
       },
       "add-payee-address": {
