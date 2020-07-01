@@ -51,6 +51,7 @@ export const environment = {
     }
   },
   meedTravel: {
+    url: 'https://meeddevsite.uat.mybookingplatform.com/en/user/autoLoginUser',
     token: 'bQBlAGUAZABkAGUAdgBzAGkAdABlAC4AdQBhAHQALgBtAHkAYgBvAG8AawBpAG4AZwBwAGwAYQB0AGYAbwByAG0ALgBjAG8AbQA='
   },
   appDataStorage: {

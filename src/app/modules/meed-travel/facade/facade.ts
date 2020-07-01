@@ -67,7 +67,7 @@ export class MeedTravelFacade {
       script += 'document.body.appendChild(form);';
       script += 'form.submit();';
 
-      const browser = this.iab.create('https://meeddevsite.uat.mybookingplatform.com/en/user/autoLoginUser', '_self', {
+      const browser = this.iab.create(environment.meedTravel.url, '_blank', {
         toolbarcolor: '#435cdc'
       });
 
