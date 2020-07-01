@@ -6,6 +6,8 @@ import { environment } from '@env/environment';
 import { ModalService } from '@app/shared/services/modal.service';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { PdfViewerService, IPDFContent } from '@app/core/services/pdf-viewer.service';
+import { IMember, MemberService, SettingsService } from '@app/core';
+import { CustomerService } from '@app/core/services/customer-service.service';
 
 @Injectable()
 export class MeedTravelFacade {
@@ -13,11 +15,70 @@ export class MeedTravelFacade {
     private iab: InAppBrowser,
     private modalService: ModalService,
     private analytics: AnalyticsService,
-    private pdfViewerService: PdfViewerService
+    private pdfViewerService: PdfViewerService,
+    private memberService: MemberService,
+    private customerService: CustomerService,
+    private settingService: SettingsService
   ) {}
 
-  bookTravel() {
-    this.iab.create('https://meed.mybookingplatform.com/us');
+  async bookTravel() {
+    const member: IMember = this.memberService.member;
+    this.customerService.getCustomerInfo().subscribe(customer => {
+      const options = {
+        CustomerEmail: {
+          type: 'hidden',
+          value: member.email
+        },
+        FirstName: {
+          type: 'hidden',
+          value: customer.firstName
+        },
+        LastName: {
+          type: 'hidden',
+          value: customer.lastName
+        },
+        MemberID: {
+          type: 'hidden',
+          value: member._id
+        },
+        lang: {
+          type: 'hidden',
+          value: this.settingService.getCurrentLocale().language
+        },
+        UniqueToken: {
+          type: 'hidden',
+          value: environment.meedTravel.token
+        }
+      };
+
+      let script = 'let form = document.createElement("form");';
+      script += 'let url = "https://meeddevsite.uat.mybookingplatform.com/en/user/autoLoginUser";';
+      script += 'form.method="post";';
+      script += 'form.setAttribute("action",url);';
+      for (const field in options) {
+        if (options.hasOwnProperty(field)) {
+          script += 'var inputField = document.createElement("input");';
+          script += 'inputField.setAttribute("type", "' + options[field].type + '");';
+          script += 'inputField.setAttribute("name","' + field + '");';
+          script += 'inputField.setAttribute("value","' + options[field].value + '");';
+          script += 'form.appendChild(inputField);';
+        }
+      }
+      script += 'document.body.appendChild(form);';
+      script += 'form.submit();';
+
+      const browser = this.iab.create('https://meeddevsite.uat.mybookingplatform.com/en/user/autoLoginUser', '_self', {
+        toolbarcolor: '#435cdc'
+      });
+
+      browser.on('loadstop').subscribe(async event => {
+        if (event.url.indexOf('autoLoginUser') !== -1) {
+          browser.executeScript({ code: script }).then(data => {
+            this.analytics.logEvent(AnalyticsEventTypes.MeedTravelPageVisited);
+          });
+        }
+      });
+    });
   }
 
   loadPdf() {
