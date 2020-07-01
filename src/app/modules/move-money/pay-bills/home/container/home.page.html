@@ -18,30 +18,6 @@
       <ion-radio-group [(ngModel)]="facade.paybillsOption">
         <ion-item>
           <ion-radio
-            [value]="facade.paybillsOptions.BillerDirect"
-            slot="start"
-            mode="md"
-            id="pay-bills-home-page-biller-direct-radio-btn"
-            checked
-          ></ion-radio>
-          <ion-label class="ion-text-wrap">
-            <h3 class="title" id="pay-bills-home-page-biller-direct-title-text">
-              {{ 'move-money-module.pay-bills.home.biller-direct-title' | translate }}
-            </h3>
-            <p class="details" id="pay-bills-home-page-biller-direct-details-text">
-              {{ 'move-money-module.pay-bills.home.biller-direct-details' | translate }}
-            </p>
-          </ion-label>
-          <ion-button
-            id="pay-bills-home-page-biller-direct-modal-btn"
-            (click)="facade.billerDirectModal()"
-            fill="clear"
-            slot="end"
-            ><img src="assets/svg/question-mark.svg"
-          /></ion-button>
-        </ion-item>
-        <ion-item>
-          <ion-radio
             [value]="facade.paybillsOptions.BillPay"
             id="pay-bills-home-page-bill-pay-radio-input"
             slot="start"
@@ -65,22 +41,46 @@
         </ion-item>
         <ion-item>
           <ion-radio
-            [value]="facade.paybillsOptions.CardSwap"
-            id="pay-bills-home-page-pay-bills-options-card-swap-radio-btn"
+            [value]="facade.paybillsOptions.TopUpMobile"
+            slot="start"
+            mode="md"
+            id="pay-bills-home-page-top-up-mobile-radio-btn"
+            checked
+          ></ion-radio>
+          <ion-label class="ion-text-wrap">
+            <h3 class="title" id="pay-bills-home-page-top-up-mobile-title-text">
+              {{ 'move-money-module.pay-bills.home.top-up-mobile-title' | translate }}
+            </h3>
+            <p class="details" id="pay-bills-home-page-biller-direct-details-text">
+              {{ 'move-money-module.pay-bills.home.top-up-mobile-details' | translate }}
+            </p>
+          </ion-label>
+          <ion-button
+            id="pay-bills-home-page-top-up-mobile-modal-btn"
+            (click)="facade.topUpMobileModal()"
+            fill="clear"
+            slot="end"
+            ><img src="assets/svg/question-mark.svg"
+          /></ion-button>
+        </ion-item>
+        <ion-item>
+          <ion-radio
+            [value]="facade.paybillsOptions.GiftCard"
+            id="pay-bills-home-page-pay-bills-options-gift-card-radio-btn"
             slot="start"
             mode="md"
           ></ion-radio>
           <ion-label class="ion-text-wrap">
-            <h3 class="title" id="pay-bills-home-page-card-swap-title-text">
-              {{ 'move-money-module.pay-bills.home.card-swap-title' | translate }}
+            <h3 class="title" id="pay-bills-home-page-gift-card-title-text">
+              {{ 'move-money-module.pay-bills.home.gift-card-title' | translate }}
             </h3>
-            <p class="details" id="pay-bills-home-page-card-swap-details-text">
-              {{ 'move-money-module.pay-bills.home.card-swap-details' | translate }}
+            <p class="details" id="pay-bills-home-page-gift-card-details-text">
+              {{ 'move-money-module.pay-bills.home.gift-card-details' | translate }}
             </p>
           </ion-label>
           <ion-button
-            (click)="facade.cardSwapModal()"
-            id="pay-bills-home-page-card-swap-modal-btn"
+            (click)="facade.giftCardModal()"
+            id="pay-bills-home-page-gift-card-modal-btn"
             fill="clear"
             slot="end"
             ><img src="assets/svg/question-mark.svg"
