@@ -936,7 +936,28 @@
         "suburb": "Suburb",
         "date-of-residence": "Date of Residence",
         "dateFormate": "DD/MM/YYYY",
-        "button-text": "Save"
+        "button-text": "Save",
+        "utility-upload-page": {
+          "header-title": "Upload Utility Bill",
+          "utility-type": "Utility type",
+          "dropdown-placeholder": "Valid Utility",
+          "scan-bill": "Scan Utility Bill",
+          "note": "Note",
+          "note-text-1": "The utility bill must be recent, from the last 3 months.",
+          "note-text-2": "The complete address and utility provider must be visible on the document.",
+          "button-text": "Next"
+        },
+        "address-change-success-modal": {
+          "header-title": " The address change has been submitted for review.",
+          "subtitle": " It may take several days for the address to be validated and applied to your profile.",
+          "button-text": "Done"
+        },
+        "permission-info-modal": {
+          "title": "Enable Camera and Storage",
+          "details": "Please enable Camera and Storage from the settings.",
+          "setting-button-text": "Setting",
+          "cancel-button-text": "Cancel"
+        }
       },
       "change-email-address-modal": {
         "header-title": "Cambiar correo electrónico",

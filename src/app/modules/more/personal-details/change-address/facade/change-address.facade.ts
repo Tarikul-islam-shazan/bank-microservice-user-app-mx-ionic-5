@@ -1,5 +1,3 @@
-import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
-import { ModalService } from '@app/shared';
 import { CustomerService } from '@app/core/services/customer-service.service';
 import { ICustomer, IStates, SignUpService, IAddressInfo, IAddress } from '@app/core';
 import { StaticDataService, StaticDataCategory, IDropdownOption } from '@app/core/services/static-data.service';
@@ -7,18 +5,20 @@ import { Injectable } from '@angular/core';
 import { MemberService } from '@app/core/services/member.service';
 import { Observable, Subscription } from 'rxjs';
 import { PersonalDetailsState } from '@app/more/personal-details/facade/personal-details.state';
+import { Router } from '@angular/router';
+import { ChangeAddressService } from '@app/more/personal-details/change-address/services/change-address.service';
 @Injectable()
 export class ChangeAddressFacade {
   customer: ICustomer = {};
   selectedCountryState: IStates;
   constructor(
-    private analyticsService: AnalyticsService,
     private customerService: CustomerService,
     private memberService: MemberService,
     private personalDetailsState: PersonalDetailsState,
     private staticDataService: StaticDataService,
     private signUpService: SignUpService,
-    private modalService: ModalService
+    private router: Router,
+    private changeAddressService: ChangeAddressService
   ) {
     this.getCustomer();
   }
@@ -61,16 +61,8 @@ export class ChangeAddressFacade {
     const customer: Partial<ICustomer> = {};
     const addressArrar: IAddress[] = [formValue];
     customer.addresses = addressArrar;
-    this.customerService.updateAddress(customer).subscribe((response: any) => {
-      const data = response.addresses;
-      this.customer.addresses = data;
-      // Object.assign(this.customer, data);
-      Object.assign(this.memberService.member, data);
-      this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
-      setTimeout(() => {
-        this.modalService.close();
-      }, 500);
-    });
+    this.changeAddressService.customerData = customer;
+    this.router.navigate([`/more/personal-details/utility-upload`]);
   }
 
   /**

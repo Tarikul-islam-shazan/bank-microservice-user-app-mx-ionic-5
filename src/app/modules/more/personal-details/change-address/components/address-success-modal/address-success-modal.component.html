@@ -1,0 +1,30 @@
+<ion-content fullscreen class="transfer-success-modal-content">
+  <div class="main-container top-margin">
+    <div class="content-wrapper">
+      <div class="img-block">
+        <img src="assets/img/success.png" />
+      </div>
+      <div class="title-block">
+        <span class="title">
+          <span translate>
+            {{ 'more-module.personal-details.change-address-modal.address-change-success-modal.header-title' }}
+          </span>
+        </span>
+      </div>
+      <div class="subtitle-block">
+        <div class="subtitle-text">
+          <span translate>
+            {{ 'more-module.personal-details.change-address-modal.address-change-success-modal.subtitle' }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="footer-content ion-no-border">
+  <ion-toolbar>
+    <ion-button expand="block" class="white-button" (click)="dismiss()">
+      {{ 'more-module.personal-details.change-address-modal.address-change-success-modal.button-text' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

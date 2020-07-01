@@ -6,6 +6,7 @@
  */
 import { Component, OnInit } from '@angular/core';
 import { PersonalDetailsFacade } from '../facade';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-personal-details',
@@ -13,7 +14,7 @@ import { PersonalDetailsFacade } from '../facade';
   styleUrls: ['./personal-details.page.scss']
 })
 export class PersonalDetailsPage implements OnInit {
-  constructor(public facade: PersonalDetailsFacade) {}
+  constructor(public facade: PersonalDetailsFacade, private router: Router) {}
 
   ngOnInit() {
     this.getCustomerInfo();
@@ -39,5 +40,9 @@ export class PersonalDetailsPage implements OnInit {
    */
   async openModal(componentName: string): Promise<void> {
     this.facade.openEditModal(componentName);
+  }
+
+  goToChangeAddress() {
+    this.router.navigate([`/more/personal-details/change-address`]);
   }
 }
