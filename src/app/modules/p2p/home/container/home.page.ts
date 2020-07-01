@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IContact } from '@app/p2p/models';
 import { HomeP2PFacade } from '../facade';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'mbc-home',
@@ -14,6 +12,10 @@ export class HomePage implements OnInit {
   constructor(public readonly facade: HomeP2PFacade) {}
 
   ngOnInit() {}
+
+  ionViewWillLeave() {
+    this.searchQuery = '';
+  }
 
   makeContactEditAble() {
     this.isEditable = !this.isEditable;
