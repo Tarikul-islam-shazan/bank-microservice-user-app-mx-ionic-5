@@ -1,8 +1,8 @@
 import { ApplicationStatus, MemberAccountStatus } from '@app/core/models/dto/member';
 export enum PayBillsOptions {
-  BillerDirect = 'billerdirect',
   BillPay = 'billpay',
-  CardSwap = 'cardswap'
+  TopUpMobile = 'topupmobile',
+  GiftCard = 'giftcard'
 }
 
 export interface IQ2CreateTokenRequest {

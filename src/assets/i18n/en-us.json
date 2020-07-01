@@ -1298,13 +1298,13 @@
     "pay-bills": {
       "home": {
         "header-title": "Pay Bills",
-        "page-title": "Manage your monthly bills and recurring payments.",
-        "biller-direct-title": "Pay with Debit Card",
-        "biller-direct-details": "Pay top digital billers such as Netflix, AT&T, Hulu etc.",
+        "page-title": "Manage your monthly bills.",
         "bill-pay-title": "Bill Pay Service",
-        "bill-pay-details": "Pay anybody electronically or by check.",
-        "card-swap-title": "CardSwap",
-        "card-swap-details": "Consolidate all of your subscription payments in one place.",
+        "bill-pay-details": "Pay anybody electronically.",
+        "top-up-mobile-title": "To Up Mobile",
+        "top-up-mobile-details": "Top Up your Mobile Phone Service.",
+        "gift-card-title": "Send a Gift Card",
+        "gift-card-details": "Get a virtual gift card from top providers.",
         "continue-button-text": "Continue"
       },
       "biller-direct": {
@@ -1313,17 +1313,17 @@
       "card-swap": {
         "header-title": "Card Swap"
       },
-      "biller-direct-modal": {
-        "title": "Pay with Debit Card",
-        "details": "Pay using your Meed Visa Debit Card through over 5,000 billers' websites. Add your bills, then make or schedule payments."
+      "top-up-mobile-modal": {
+        "title": "Top Up Mobile",
+        "details": "I need the verbiage"
       },
       "bill-pay-service-modal": {
         "title": "Bill Pay Service",
-        "details": "Pay virtually anyone or any company through your Meed Checking account. Electronic payment usually takes 1-3 business days. Set reminders, securely pay your bills and schedule recurring payments."
+        "details": "Add your bills, then make payments"
       },
-      "card-swap-modal": {
-        "title": "CardSwap",
-        "details": "Register your MeedCard with your service and subscription providers, then any change or update in card details can be handled one time – in seconds."
+      "gift-card-modal": {
+        "title": "Send a Gift Card",
+        "details": "Want to send someone a gift card to their favorite place?"
       },
       "bill-pay": {
         "page-title": "Pay Bills",
