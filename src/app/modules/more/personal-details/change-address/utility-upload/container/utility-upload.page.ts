@@ -18,45 +18,25 @@ export class UtilityUploadPage implements OnInit {
 
   ngOnInit() {
     this.setUtilityOptions();
-    this.initIdentityConfirmation();
+    this.initUtilityBill();
   }
 
   get isSubmitButtonDisabled(): boolean {
     return this.utilityBillForm.invalid || !this.facade.scannedUtilityBillImage;
   }
 
-  /**
-   * @summary gets utility sets utility options
-   *
-   * @private
-   * @returns {void}
-   * @memberOf IdentityConfirmationPage
-   */
   private setUtilityOptions(): void {
     this.facade.getUtilityOptions().subscribe(utilityDocument => {
       this.utitlityOptions = utilityDocument;
     });
   }
 
-  /**
-   * @summary initializes the form
-   *
-   * @private
-   * @returns {void}
-   * @memberOf IdentityConfirmationPage
-   */
-  private initIdentityConfirmation(): void {
+  private initUtilityBill(): void {
     this.utilityBillForm = this.formBuilder.group({
       utilityDocument: [null, Validators.required]
     });
   }
 
-  /**
-   * @summary opens utility modal
-   *
-   * @returns {void}
-   * @memberOf IdentityConfirmationPage
-   */
   openModal(): void {
     this.facade.openUtilityModal(this.utitlityOptions, (selectedUtility: DropdownOption) => {
       this.utilityBillForm.controls.utilityDocument.patchValue(selectedUtility.text);
@@ -73,14 +53,6 @@ export class UtilityUploadPage implements OnInit {
     this.facade.takePhoto(imageUploadElement);
   }
 
-  /**
-   * @summary Called on click event on the image boxes if its on web. Calls facade to upload
-   *
-   * @async
-   * @param {DocumentImageType} type
-   * @returns {Promise<void>}
-   * @memberOf ChangeNameRequiredDocumentsPage
-   */
   async uploadImage(): Promise<void> {
     let imageUploadElement: HTMLInputElement;
     imageUploadElement = await this.documentImageInput.getInputElement();

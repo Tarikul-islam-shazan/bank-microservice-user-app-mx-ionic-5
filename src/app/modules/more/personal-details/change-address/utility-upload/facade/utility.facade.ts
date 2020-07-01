@@ -35,39 +35,18 @@ export class UtilityUploadFacade {
     this.getCustomer();
   }
 
-  /**
-   * @summary gets customer info
-   *
-   * @private
-   * @returns {Subscription}
-   * @memberOf ChangeAddressFacade
-   */
   private getCustomer(): Subscription {
     return this.personalDetailsState.customer$.subscribe((customer: ICustomer) => {
       this.customer = customer;
     });
   }
 
-  /**
-   * @summary gets utility options
-   *
-   * @returns {DropdownOption[]}
-   * @memberOf IdentityConfirmationFacade
-   */
   getUtilityOptions(): Observable<DropdownOption[]> {
     return this.staticDataService
       .get(StaticDataCategory.IdentityConfirmation)
       .pipe(map(staticData => staticData[StaticData.UtilityDocument]));
   }
 
-  /**
-   * @summary opens utility modal
-   *
-   * @param {DropdownOption[]} options
-   * @param {(selectedUtility: DropdownOption) => void} callback
-   * @returns {Promise<void>}
-   * @memberOf IdentityConfirmationFacade
-   */
   async openUtilityModal(
     options: DropdownOption[],
     callback: (selectedUtility: DropdownOption) => void
@@ -86,25 +65,10 @@ export class UtilityUploadFacade {
     await this.modalService.openModal(DropdownModalComponent, componentProps);
   }
 
-  /**
-   * @summary translates the given key
-   *
-   * @param {string} keyToTranslate
-   * @returns {string}
-   * @memberOf IdentityConfirmationFacade
-   */
   getTranlatedValueByKey(keyToTranslate: string): string {
     return this.translateService.instant(keyToTranslate);
   }
 
-  /**
-   * @summary Take the camera permission if not authorized and initialize the process of capturing images
-   *
-   * @async
-   * @param {HTMLInputElement} uploadInputElement
-   * @returns {Promise<void>}
-   * @memberOf RequiredDocumentsFacade
-   */
   async takePhoto(uploadInputElement: HTMLInputElement): Promise<void> {
     if (this.platformService.isCordova()) {
       const cameraPermission = await this.platformService.requestCameraPermission();
@@ -132,27 +96,11 @@ export class UtilityUploadFacade {
     }
   }
 
-  /**
-   * @summary After capturing the image, save those images on variables
-   *
-   * @private
-   * @param {string} base64Image
-   * @param {string} imageData
-   * @returns {void}
-   *
-   */
   private initImageData(base64Image: string, imageData: string): void {
     this.utilityBillImage = base64Image;
     this.scannedUtilityBillImage = this.platformService.base64toBlob(imageData, 'image/png');
   }
 
-  /**
-   * @summary his method will show Info modal if user disable Camera and Storage permission
-   *
-   * @private
-   * @returns {Promise<void>}
-   * @memberOf RequiredDocumentsFacade
-   */
   private async permissionInfoModal(): Promise<void> {
     const componentProps: IMeedModalContent = {
       contents: [
@@ -183,14 +131,6 @@ export class UtilityUploadFacade {
     await this.modalService.openInfoModalComponent({ componentProps });
   }
 
-  /**
-   * @summary This method is used to upload images on Web
-   *
-   * @param {DocumentImageType} type
-   * @param {HTMLInputElement} uploadInputElement
-   * @returns {void}
-   * @memberOf RequiredDocumentsFacade
-   */
   uploadImage(uploadInputElement: HTMLInputElement): void {
     const file = uploadInputElement.files[0],
       reader = new FileReader();
@@ -204,13 +144,6 @@ export class UtilityUploadFacade {
     reader.readAsDataURL(file);
   }
 
-  /**
-   * @summary This method prepares the parameter to send to api.
-   * @summary As there are images, these datas are needed to be sent as form data
-   *
-   * @returns {FormData} The param object for sending to api
-   * @memberOf IdentityConfirmationPage
-   */
   private getFormData(): FormData {
     const formData = new FormData();
     formData.append('utilityDocument', this.selectedUtility.value);
@@ -228,12 +161,10 @@ export class UtilityUploadFacade {
     // Object.assign(this.customer, data);
     this.analyticsService.logEvent(AnalyticsEventTypes.AddressChanged);
     Object.assign(this.memberService.member, data);
-    this.transferSuccess();
+    this.addressChangeSuccess();
   }
 
-  // Transfer success, show the success modal.
-  // When modal closed we redirect to move money page or scheduled transfer page based on transfer type
-  async transferSuccess() {
+  async addressChangeSuccess() {
     const componentProps: IMeedModalContent = {
       onDidDismiss: () => {
         this.router.navigate([`/more/personal-details`]);

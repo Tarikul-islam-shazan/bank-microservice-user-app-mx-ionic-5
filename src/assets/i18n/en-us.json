@@ -955,6 +955,11 @@
           "note-text-1": "The utility bill must be recent, from the last 3 months.",
           "note-text-2": "The complete address and utility provider must be visible on the document.",
           "button-text": "Next"
+        },
+        "address-change-success-modal": {
+          "header-title": " The address change has been submitted for review.",
+          "subtitle": " It may take several days for the address to be validated and applied to your profile.",
+          "button-text": "Done"
         }
       },
       "change-email-address-modal": {
