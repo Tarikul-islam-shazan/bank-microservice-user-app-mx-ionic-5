@@ -1400,30 +1400,20 @@
       },
       "bill-payment": {
         "page-title": "Pagar recibo",
-        "payee-action": "VER/BORRAR",
-        "payment-amount-title": "Monto de pago",
-        "calendar-title": "Enviar el",
-        "date-action": "EDITAR",
-        "repeat-toggle-title": "Repetir el pago mensualmente",
-        "info": "La hora límite es a las 8 p. m. (hora del este) para la entrega electrónica en 1 día hábil",
-        "continue-button-title": "Continuar",
-        "buttons": {
-          "confirm-button-text": "Confirmar detalles",
-          "delete-button-text": "Eliminar",
-          "done-button-text": "Listo",
-          "ok-button-text": "Ok",
-          "yes-button-text": "Sí",
-          "no-button-text": "No"
-        },
+        "sending-to-title": "Sending To",
+        "account-number-title": "Account Number",
+        "payment-amount-title": "Amount To be sent",
+        "btn-pay-bill": "Pay Bill",
+        "btn-cancel": "Cancelar",
         "errors": {
           "min-amount-limit-text": "La cantidad mínima no debe ser inferior a $1.00 USD.",
           "max-amount-limit-text": "La cantidad que introdujiste supera el límite de 1,000.00 USD por pago. Por favor, introduce una cantidad menor que esa."
         },
         "modal": {
-          "title": "Has programado {{paymentAmount}} para {{payeeName}}",
-          "content": "Occurring {{paymentFrequency}} {{paymentPreposition}} {{paymentExecutionDate}}",
-          "payment-edit-success-text": "Pago editado correctamente?",
-          "payment-delete-text": "¿Estás seguro de que quieres eliminar este pago?"
+          "title": "You've paid {{paymentAmount}} to {{payeeName}}.",
+          "content-1": "Submited on {{paymentExecutionDate}}",
+          "reference-text": "Ref #{{referenceNumber}}",
+          "btn-done": "Hecho"
         }
       }
     },

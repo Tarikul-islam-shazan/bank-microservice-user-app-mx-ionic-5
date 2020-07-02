@@ -18,6 +18,7 @@
 export interface IContent {
   title?: string;
   details?: string[];
+  reference?: string;
   values?: {
     [key: string]: string;
   };
