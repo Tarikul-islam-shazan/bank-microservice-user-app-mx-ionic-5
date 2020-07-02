@@ -20,7 +20,7 @@ export class BillPaymentPage implements OnInit {
     .add(10, 'y')
     .format('YYYY-MM-DD');
 
-  constructor(private facade: BillPaymentFacade, private formBuilder: FormBuilder) {}
+  constructor(public facade: BillPaymentFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.billPayee = this.facade.getBillPayee();
