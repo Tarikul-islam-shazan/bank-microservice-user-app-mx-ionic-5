@@ -1,5 +1,5 @@
 import { AddPayeeFacade } from '../facade';
-import { BillPayeeType, CommonValidators, IBillPayee } from '@app/core';
+import { BillPayeeType, CommonValidators, IBillPayee, IBiller } from '@app/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -10,16 +10,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class AddPayeePage implements OnInit {
   addPayeeForm: FormGroup;
-  billPayee: IBillPayee;
-  billPayeeType = BillPayeeType;
-
+  biller: IBiller;
   accountNumberMaxLength = 50;
-
   constructor(private facade: AddPayeeFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.biller = this.facade.getBiller();
     this.initForm();
-    this.getPayeeDetails();
+    // this.getPayeeDetails();
   }
 
   /**
@@ -32,11 +30,9 @@ export class AddPayeePage implements OnInit {
   private initForm(): void {
     this.addPayeeForm = this.formBuilder.group(
       {
-        fullName: ['', [Validators.required, CommonValidators.alphaNumericWithSpace]],
-        nickName: [''],
+        name: [{ value: this.biller.name, disabled: true }, [Validators.required]],
         accountNumber: ['', Validators.required],
-        confirmAccountNumber: ['', Validators.required],
-        type: ['', Validators.required]
+        confirmAccountNumber: ['', Validators.required]
       },
       {
         validator: CommonValidators.compareTwoFields('accountNumber', 'confirmAccountNumber')
@@ -45,67 +41,17 @@ export class AddPayeePage implements OnInit {
   }
 
   /**
-   * @sumamry patches addPayeeForm values
-   *
-   * @private
-   * @param {IBillPayee} billPayee
-   * @memberOf AddPayeePage
-   */
-  private patchFormValue(billPayee: IBillPayee): void {
-    this.addPayeeForm.controls.fullName.patchValue(billPayee.fullName);
-    this.addPayeeForm.controls.nickName.patchValue(billPayee.fullName);
-    this.addPayeeForm.controls.accountNumber.patchValue(billPayee.accountNumber);
-    this.addPayeeForm.controls.type.patchValue(billPayee.type);
-  }
-
-  /**
-   * @summary get payee details from facade
-   *
-   * @returns {void}
-   * @memberOf AddPayeePage
-   */
-  getPayeeDetails(): void {
-    this.billPayee = this.facade.getBillPayee();
-    if (this.billPayee.payeeId) {
-      this.facade.getPayeeDetails().subscribe((billPayee: IBillPayee) => {
-        this.patchFormValue(billPayee);
-      });
-    }
-  }
-  /**
    * @sumamry handle continue button click.
    *
    * @returns {void}
    * @memberOf AddPayeePage
    */
-  continue(): void {
-    const { fullName, nickName, accountNumber, type } = this.addPayeeForm.value;
+  gotoNext(): void {
+    const { accountNumber } = this.addPayeeForm.value;
     const billPayee = {
-      fullName: fullName.trim(),
-      nickName: nickName.trim(),
-      accountNumber: `${accountNumber}`,
-      type
+      name: this.biller.name,
+      accountNumber
     };
     this.facade.continue(billPayee);
-  }
-
-  /**
-   * @summary deletes payee
-   *
-   * @returns {void}
-   * @memberOf AddPayeePage
-   */
-  delete(): void {
-    this.facade.delete();
-  }
-
-  /**
-   * @summary goes back to previous page.
-   *
-   * @returns {void}
-   * @memberOf AddPayeePage
-   */
-  cancel(): void {
-    this.facade.cancel();
   }
 }

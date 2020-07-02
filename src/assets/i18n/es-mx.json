@@ -1370,32 +1370,17 @@
       },
       "add-payee": {
         "page-title": "Pagar recibo",
-        "page-header": "Proporciona la información solicitada a continuación",
-        "form-input-placeholders": {
-          "payee-name": "Nombre del beneficiario",
-          "payee-nickname": "Apodo del beneficiario (opcional)",
-          "payee-account": "N.º de cuenta del beneficiario#",
-          "payee-confirm-account": "Confirmar el N.º de cuenta#",
-          "payee-type": "Tipo de beneficiario",
-          "payee-type-option-one": "Empresa",
-          "payee-type-option-two": "Persona"
-        },
-        "continue-button-title": "Continuar",
-        "cancel-button-title": "Cancelar",
-        "delete-button-title": "Eliminar",
-        "errors": {
-          "payee-name-required-text": "Payee name is required.",
-          "payee-name-alpha-numeric-text": "Please provide a valid name.",
-          "account-no-required-text": "Account number is required",
-          "account-mis-match-text": "Account number doesn't match."
-        },
+        "page-header": "Add New Bill Pay",
+        "account-number-placeholder": "Account Number",
+        "biller-label": "Biller",
+        "account-number-label": "Account Number",
+        "repeat-account-number-label": "Repeat Account Number",
+        "time-taken-info-message": "This bill payer can take {{timeTaken}} to fulfill payment",
+        "next-button-title": "Next",
         "modal": {
-          "content": "You added a new payee! Now you can make payments from this app. Allow a {{addPayeeDeliveryInterval}}-day delivery time",
-          "done-button": "Listo",
-          "payment-button": "Make payment",
-          "delete-payee-title": "¿Estás seguro de que quieres eliminar este pago?",
-          "yes-button": "Sí",
-          "no-button": "No"
+          "title": "You've successfully added {{billerName}} to your saved bill accounts.",
+          "btn-pay-bill": "Pay Bill",
+          "btn-view-bill-account": "View Bill Accounts"
         }
       },
       "bill-payment": {

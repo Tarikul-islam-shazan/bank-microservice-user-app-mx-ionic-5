@@ -13,127 +13,48 @@
   <div class="content-wrapper">
     <div class="add-payee-form">
       <div class="step-one">
-        <div class="form-title" id="add-payee-page-form-haeder-title-text">
-          {{'move-money-module.pay-bills.add-payee.page-header' | translate}}
-        </div>
+        <ion-item lines="none" class="ion-no-padding" id="add-payee-page-form-haeder-title-text">
+          <ion-label><b>{{'move-money-module.pay-bills.add-payee.page-header' | translate}}</b></ion-label>
+        </ion-item>
         <form [formGroup]="addPayeeForm" novalidate>
           <ion-list lines="none" class="input-list">
-            <div class="clearfix form-item">
+            <ion-item>
+              <ion-label position="stacked" id="add-paye-page-biller-name-label">
+                {{ 'move-money-module.pay-bills.add-payee.biller-label' | translate }}</ion-label
+              >
               <ion-input
-                [placeholder]="'move-money-module.pay-bills.add-payee.form-input-placeholders.payee-name' | translate"
-                [readonly]="billPayee.payeeId"
-                class="white-input"
-                id="add-payee-page-full-name-input"
-                formControlName="fullName"
                 type="text"
-              >
-              </ion-input>
-              <div
-                class="clearfix"
-                *ngIf="addPayeeForm.controls.fullName.dirty && addPayeeForm.controls.fullName.invalid"
-              >
-                <ng-template
-                  [ngIf]="addPayeeForm.controls.fullName.errors.alphaNumericWithSpace"
-                  [ngIfElse]="payeeNameRequiredError"
-                >
-                  <div class="error-msg" id="add-payee-page-payee-name-alpha-numeric-text">
-                    {{'move-money-module.pay-bills.add-payee.errors.payee-name-alpha-numeric-text' | translate}}
-                  </div>
-                </ng-template>
-                <ng-template #payeeNameRequiredError>
-                  <div class="error-msg" id="add-payee-page-payee-name-required-text">
-                    {{'move-money-module.pay-bills.add-payee.errors.payee-name-required-text' | translate}}
-                  </div>
-                </ng-template>
-              </div>
-            </div>
-            <div class="clearfix form-item">
-              <ion-input
-                [placeholder]="'move-money-module.pay-bills.add-payee.form-input-placeholders.payee-nickname' | translate"
-                [readonly]="billPayee.payeeId"
                 class="white-input"
-                id="add-payee-page-nick-name-input"
-                formControlName="nickName"
-                type="text"
-              >
-              </ion-input>
-            </div>
-            <div class="clearfix form-item">
-              <ion-input
-                [maxlength]="accountNumberMaxLength"
-                [placeholder]="'move-money-module.pay-bills.add-payee.form-input-placeholders.payee-account' | translate"
-                [readonly]="billPayee.payeeId"
-                class="white-input"
-                formControlName="accountNumber"
-                id="add-payee-page-account-number-input"
-                inputmode="numeric"
-                type="number"
-              >
-              </ion-input>
-              <div
-                class="clearfix error-msg"
-                id="add-payee-page-account-no-required-text"
-                *ngIf="addPayeeForm.controls.accountNumber.dirty && addPayeeForm.controls.accountNumber.invalid"
-              >
-                {{'move-money-module.pay-bills.add-payee.errors.account-no-required-text' | translate}}
-              </div>
-            </div>
-            <div class="clearfix form-item">
-              <ion-input
-                [maxlength]="accountNumberMaxLength"
-                [placeholder]="'move-money-module.pay-bills.add-payee.form-input-placeholders.payee-confirm-account' | translate"
-                [readonly]="billPayee.payeeId"
-                class="white-input"
-                id="add-payee-page-confirm-account-number-input"
-                formControlName="confirmAccountNumber"
-                inputmode="numeric"
-                type="number"
-              >
-              </ion-input>
-              <div
-                class="clearfix error-msg"
-                *ngIf="addPayeeForm.controls.confirmAccountNumber.errors?.mustMatch"
-                id="add-payee-page-account-mis-match-text"
-              >
-                {{'move-money-module.pay-bills.add-payee.errors.account-mis-match-text' | translate}}
-              </div>
-            </div>
-            <div class="clearfix form-item payee-type-radio">
-              <div class="title">
-                {{'move-money-module.pay-bills.add-payee.form-input-placeholders.payee-type' | translate}}
-              </div>
-              <ion-radio-group formControlName="type">
-                <ion-item>
-                  <ion-label id="add-payee-page-payee-type-option-one-text"
-                    >{{'move-money-module.pay-bills.add-payee.form-input-placeholders.payee-type-option-one' |
-                    translate}}</ion-label
-                  >
-                  <ion-radio
-                    mode="md"
-                    slot="start"
-                    [value]="billPayeeType.Company"
-                    checked
-                    [disabled]="billPayee.payeeId"
-                    id="add-payee-page-bill-payee-type-company-radio-input"
-                  ></ion-radio>
-                </ion-item>
+                id="add-paye-page-biller-name-input"
+                formControlName="name"
+              ></ion-input>
+            </ion-item>
 
-                <ion-item>
-                  <ion-label id="add-payee-page-payee-type-option-two-text"
-                    >{{'move-money-module.pay-bills.add-payee.form-input-placeholders.payee-type-option-two' |
-                    translate}}</ion-label
-                  >
-                  <ion-radio
-                    mode="md"
-                    slot="start"
-                    id="add-payee-page-bill-payee-type-individual-radio-input"
-                    [value]="billPayeeType.Individual"
-                    [disabled]="billPayee.payeeId"
-                  >
-                  </ion-radio>
-                </ion-item>
-              </ion-radio-group>
-            </div>
+            <ion-item>
+              <ion-label position="stacked" id="add-paye-page-biller-name-label">
+                {{ 'move-money-module.pay-bills.add-payee.account-number-label' | translate }}</ion-label
+              >
+              <ion-input
+                placeholder="{{ 'move-money-module.pay-bills.add-payee.account-number-placeholder' | translate }}"
+                type="text"
+                class="white-input"
+                id="add-paye-page-biller-name-input"
+                formControlName="accountNumber"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked" id="add-paye-page-repeat-account-number-label">
+                {{ 'move-money-module.pay-bills.add-payee.repeat-account-number-label' | translate }}</ion-label
+              >
+              <ion-input
+                placeholder="{{ 'move-money-module.pay-bills.add-payee.account-number-placeholder' | translate }}"
+                type="text"
+                class="white-input"
+                id="add-paye-page-repeat-account-number-input"
+                formControlName="confirmAccountNumber"
+              ></ion-input>
+            </ion-item>
           </ion-list>
         </form>
       </div>
@@ -142,25 +63,17 @@
 </ion-content>
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ng-template [ngIf]="billPayee.payeeId" [ngIfElse]="payeeIdNotPresent">
-      <ion-button class="white-button" id="add-payee-page-cancel-btn" expand="block" (click)="cancel()">
-        {{'move-money-module.pay-bills.add-payee.cancel-button-title' | translate}}
-      </ion-button>
-      <ion-button class="grey-outline-button" id="add-payee-page-delete-btn" expand="block" (click)="delete()">
-        {{'move-money-module.pay-bills.add-payee.delete-button-title' | translate}}
-      </ion-button>
-    </ng-template>
-
-    <ng-template #payeeIdNotPresent>
-      <ion-button
-        class="white-button"
-        id="add-payee-page-continue-btn"
-        expand="block"
-        (click)="continue()"
-        [disabled]="addPayeeForm.invalid"
-      >
-        {{'move-money-module.pay-bills.add-payee.continue-button-title' | translate}}
-      </ion-button>
-    </ng-template>
+    <p class="time-note" id="add-payee-page-note-for-time-taken">
+      {{'move-money-module.pay-bills.add-payee.time-taken-info-message' | translate:{timeTaken:'X.hours'} }}
+    </p>
+    <ion-button
+      [disabled]="addPayeeForm.invalid"
+      class="white-button"
+      id="add-payee-page-next-btn"
+      expand="block"
+      (click)="gotoNext()"
+    >
+      {{'move-money-module.pay-bills.add-payee.next-button-title' | translate}}
+    </ion-button>
   </ion-toolbar>
 </ion-footer>

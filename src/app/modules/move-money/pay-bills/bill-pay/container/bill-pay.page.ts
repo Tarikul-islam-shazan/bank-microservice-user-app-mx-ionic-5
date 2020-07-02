@@ -12,7 +12,9 @@ export class BillPayPage {
   searchQuery: string;
   constructor(public facade: BillPayFacade) {}
 
-  ionViewWillEnter() {}
+  ionViewWillEnter() {
+    this.searchQuery = '';
+  }
 
   goToBillPayment(billPayee: IBillPayee) {
     this.facade.goToBillPayment(billPayee);
