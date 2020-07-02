@@ -1353,25 +1353,6 @@
         "no-result-found-text": "No match found",
         "continue-button-title": "Continue"
       },
-      "add-payee-address": {
-        "page-title": "Pay Bills",
-        "page-header": "Just a little more information on who you want to pay",
-        "form-input-placeholders": {
-          "address": "Address Line",
-          "city": "City",
-          "state": "State",
-          "zip-code": "Zip code",
-          "phone": "Phone number"
-        },
-        "errors": {
-          "address-required-text": "Address is required.",
-          "city-required-text": "City is required.",
-          "state-required-text": "State is required.",
-          "zip-code-required-text": "Zip code is required.",
-          "zip-code-character-text": "Zip code must be 5 or 10 characters",
-          "phone-no-required-text": "Phone number is required."
-        }
-      },
       "add-payee": {
         "page-title": "Pay Bills",
         "page-header": "Add New Bill Pay",

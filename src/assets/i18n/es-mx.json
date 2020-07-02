@@ -1344,30 +1344,6 @@
         "no-result-found-text": "No match found",
         "continue-button-title": "Continuar"
       },
-      "add-payee-address": {
-        "page-title": "Pagar recibo",
-        "page-header": "Solo un poco más de información sobre a quién quieres pagar",
-        "form-input-placeholders": {
-          "address": "Línea de dirección",
-          "city": "Ciudad",
-          "state": "Estado",
-          "zip-code": "Código postal",
-          "phone": "Número de teléfono"
-        },
-        "errors": {
-          "address-required-text": "Address is required.",
-          "city-required-text": "City is required.",
-          "state-required-text": "State is required.",
-          "zip-code-required-text": "Zip code is required.",
-          "zip-code-character-text": "Zip code must be 5 or 10 characters",
-          "phone-no-required-text": "Phone number is required."
-        },
-        "success-modal": {
-          "title": "Your added a new payee! Now you can make payments from this app. Allow a 5-day delivery time",
-          "button-done-text": "Listo",
-          "button-payment-text": "Realiza un pago"
-        }
-      },
       "add-payee": {
         "page-title": "Pagar recibo",
         "page-header": "Add New Bill Pay",
