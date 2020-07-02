@@ -41,23 +41,6 @@ const routes: Routes = [
       import('./send-money-internationally/send-money-internationally.module').then(
         m => m.SendMoneyInternationallyPageModule
       )
-  },
-  {
-    path: 'add-payee',
-    loadChildren: () => import('./mail-check/add-payee/add-payee.module').then(m => m.AddPayeePageModule)
-  },
-  {
-    path: 'add-payee-address',
-    loadChildren: () =>
-      import('./mail-check/add-payee-address/add-payee-address.module').then(m => m.AddPayeeAddressPageModule)
-  },
-  {
-    path: 'bill-payment',
-    loadChildren: () => import('./mail-check/bill-payment/bill-payment.module').then(m => m.BillPaymentPageModule)
-  },
-  {
-    path: 'mail-check',
-    loadChildren: () => import('./mail-check/mail-check.module').then(m => m.MailCheckModule)
   }
 ];
 

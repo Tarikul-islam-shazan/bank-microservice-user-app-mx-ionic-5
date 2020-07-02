@@ -395,10 +395,6 @@ export const PAGES: Page = {
     NAME: 'send-money-internationally',
     ROUTE_PATH: '/move-money/send-money-internationally'
   },
-  MAIL_CHECK: {
-    NAME: 'mail-a-check',
-    ROUTE_PATH: '/move-money/mail-check'
-  },
   SWEEP: {
     NAME: 'sweep',
     ROUTE_PATH: '/more/settings/sweep'
