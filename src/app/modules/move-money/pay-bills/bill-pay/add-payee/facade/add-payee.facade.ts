@@ -1,6 +1,6 @@
 import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
-import { IBillPayee } from '@app/core';
-import { IMeedModalContent, ModalService } from '@app/shared';
+import { IBillPayee, IBiller } from '@app/core';
+import { IMeedModalContent, ModalService, SuccessModalPage } from '@app/shared';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { PayBillService } from '@app/core/services/pay-bill.service';
@@ -16,6 +16,15 @@ export class AddPayeeFacade {
   ) {}
 
   /**
+   *
+   * @summary A function to return IBiller
+   * @returns {IBiller}
+   * @memberof AddPayeeFacade
+   */
+  getBiller(): IBiller {
+    return this.payBillService.biller;
+  }
+  /**
    * @summary gets payee info from service
    *
    * @returns {IBillPayee}
@@ -24,7 +33,6 @@ export class AddPayeeFacade {
   getBillPayee(): IBillPayee {
     return this.payBillService.billPayee;
   }
-
   /**
    * @summary returns payee details.
    *
@@ -44,7 +52,40 @@ export class AddPayeeFacade {
    */
   continue(billPayee: IBillPayee): void {
     this.payBillService.billPayee = billPayee;
-    this.navigateToPage('/move-money/pay-bills/add-payee-address');
+    // show success modal
+    this.modalService.openModal(SuccessModalPage, this.getAddPayeeSuccessModalCompProps(billPayee.name));
+  }
+
+  private getAddPayeeSuccessModalCompProps(billerName: string): IMeedModalContent {
+    const componentProps: IMeedModalContent = {
+      contents: [
+        {
+          title: 'move-money-module.pay-bills.add-payee.modal.title',
+          values: { billerName }
+        }
+      ],
+      actionButtons: [
+        {
+          text: 'move-money-module.pay-bills.add-payee.modal.btn-pay-bill',
+          cssClass: 'white-button',
+          handler: () => {
+            this.payBillService.billPayee = this.getBillPayee();
+            this.navigateToPage('/move-money/pay-bills/bill-payment');
+            this.modalService.close();
+          }
+        },
+        {
+          text: 'move-money-module.pay-bills.add-payee.modal.btn-view-bill-account',
+          cssClass: 'grey-outline-button',
+          handler: () => {
+            this.navigateToPage('/move-money/pay-bills/bill-pay');
+            this.modalService.close();
+          }
+        }
+      ]
+    };
+
+    return componentProps;
   }
 
   /**
@@ -57,90 +98,5 @@ export class AddPayeeFacade {
    */
   private navigateToPage(pageToNavigate: string): void {
     this.router.navigate([pageToNavigate]);
-  }
-
-  /**
-   * @sumamry logs AnalyticsEventTypes.BillPayPayeeDeleted event to analytics after
-   * deleting payee. Later navigates to bill pay home page.
-   *
-   * @private
-   * @returns {void}
-   * @memberOf AddPayeeFacade
-   */
-  private deletePayee(): void {
-    this.payBillService.deletePayee().subscribe(() => {
-      this.analyticsService.logEvent(AnalyticsEventTypes.BillPayeeDeleted);
-      this.navigateToPage('/move-money/pay-bills/bill-pay');
-    });
-  }
-
-  /**
-   * @summary generates component props for openInfoModalComponent component.
-   *
-   * @returns {IMeedModalContent}
-   * @memberOf AddPayeeFacade
-   */
-  private generateDeleteConfirmationComponentProp(): IMeedModalContent {
-    const componentProps: IMeedModalContent = {
-      contents: [
-        {
-          title: '',
-          details: ['move-money-module.pay-bills.add-payee.modal.delete-payee-title']
-        }
-      ],
-      actionButtons: [
-        {
-          text: 'move-money-module.pay-bills.add-payee.modal.yes-button',
-          cssClass: 'white-button',
-          handler: () => {
-            this.deletePayee();
-            this.modalService.close();
-          }
-        },
-        {
-          text: 'move-money-module.pay-bills.add-payee.modal.no-button',
-          cssClass: 'grey-outline-button',
-          handler: () => {
-            this.modalService.close();
-          }
-        }
-      ]
-    };
-
-    return componentProps;
-  }
-
-  /**
-   * @sumamry opens openInfoModalComponent modal.
-   * deletes the payee if Yes chosen or
-   * closes modal if No chosen.
-   *
-   * @returns {Promise<void>}
-   * @memberOf AddPayeeFacade
-   */
-  openInfoModalComponent(): void {
-    this.analyticsService.logEvent(AnalyticsEventTypes.BillPayeeAdded);
-    const componentProps = this.generateDeleteConfirmationComponentProp();
-    this.modalService.openInfoModalComponent({ componentProps });
-  }
-
-  /**
-   * @summary opens delete modal
-   *
-   * @returns {void}
-   * @memberOf AddPayeeFacade
-   */
-  delete(): void {
-    this.openInfoModalComponent();
-  }
-
-  /**
-   * @summary navigates to bill pay home page.
-   *
-   * @returns {void}
-   * @memberOf AddPayeeFacade
-   */
-  cancel(): void {
-    this.navigateToPage('/move-money/pay-bills/bill-pay');
   }
 }

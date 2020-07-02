@@ -6,6 +6,11 @@
     letter-spacing: 1px;
     line-height: 16px;
   }
+  ion-item {
+    ion-label {
+      opacity: 1;
+    }
+  }
 }
 .payee-type-radio {
   display: flex;
@@ -38,6 +43,12 @@
     }
   }
 }
-.grey-outline-button {
-  color: #fe4c55;
+
+.time-note {
+  color: #8c90a3 !important;
+  font-family: 'Averta W05 Semibold5179739';
+  font-size: 14px;
+  letter-spacing: -0.15px;
+  line-height: 16px;
+  padding: 5px;
 }
