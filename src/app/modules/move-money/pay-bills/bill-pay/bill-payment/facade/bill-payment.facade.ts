@@ -41,7 +41,8 @@ export class BillPaymentFacade {
    * @memberOf BillPaymentFacade
    */
   getBillPayee(): IBillPayee {
-    return this.payBillService.billPayee;
+    //  return this.payBillService.billPayee;
+    return { name: 'Agua De Cancun', accountNumber: '2928724624' };
   }
 
   /**
@@ -54,33 +55,31 @@ export class BillPaymentFacade {
    * @memberOf BillPaymentFacade
    */
   private getPaymentSuccessModalCompProps(_paymentInfo: IBillPayment): IMeedModalContent {
-    const { amount, executionDate, frequency: paymentFrequency } = _paymentInfo,
+    const { amount, executionDate } = _paymentInfo,
+      payeeName = this.getBillPayee().name,
+      referenceNumber = '12345678910',
       paymentAmount = this.currencyPipe.transform(amount),
-      payeeName = this.getBillPayee().fullName,
       paymentExecutionDate = moment(executionDate).format('MMM DD, YYYY'),
-      paymentPreposition = paymentFrequency === PaymentFrequency.Monthly ? 'from' : 'on',
       componentProps: IMeedModalContent = {
         contents: [
           {
-            title: this.translate.instant('move-money-module.pay-bills.bill-payment.modal.title', {
+            title: 'move-money-module.pay-bills.bill-payment.modal.title',
+            details: ['move-money-module.pay-bills.bill-payment.modal.content-1'],
+            reference: 'move-money-module.pay-bills.bill-payment.modal.reference-text',
+            values: {
               paymentAmount,
-              payeeName
-            }),
-            details: [
-              this.translate.instant('move-money-module.pay-bills.bill-payment.modal.content', {
-                paymentFrequency,
-                paymentPreposition,
-                paymentExecutionDate
-              })
-            ]
+              payeeName,
+              paymentExecutionDate,
+              referenceNumber
+            }
           }
         ],
         actionButtons: [
           {
-            text: this.translate.instant('move-money-module.pay-bills.bill-payment.buttons.done-button-text'),
+            text: 'move-money-module.pay-bills.bill-payment.modal.btn-done',
             cssClass: 'white-button',
             handler: () => {
-              this.analyticsService.logEvent(AnalyticsEventTypes.BillPaymentDone);
+              // this.analyticsService.logEvent(AnalyticsEventTypes.BillPaymentDone);
               this.modalService.close();
             }
           }
@@ -172,10 +171,12 @@ export class BillPaymentFacade {
    * @memberOf BillPaymentFacade
    */
   update(_paymentInfo: IBillPayee): void {
-    this.updateBillPayment(_paymentInfo).subscribe(() => {
-      const componentProps = this.getEditSuccessCompProp();
-      this.modalService.openInfoModalComponent({ componentProps });
-    });
+    // this.updateBillPayment(_paymentInfo).subscribe(() => {
+    //   const componentProps = this.getEditSuccessCompProp();
+    //   this.modalService.openInfoModalComponent({ componentProps });
+    // });
+    const componentProps = this.getPaymentSuccessModalCompProps(_paymentInfo);
+    this.modalService.openModal(SuccessModalPage, componentProps);
   }
 
   /**

@@ -20,13 +20,13 @@ export class BillPaymentPage implements OnInit {
     .add(10, 'y')
     .format('YYYY-MM-DD');
 
-  constructor(private facade: BillPaymentFacade, private formBuilder: FormBuilder) {}
+  constructor(public facade: BillPaymentFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.billPayee = this.facade.getBillPayee();
-    this.initBillPayment();
     this.initBillPaymentForm();
-    this.patchFormValueIfExists();
+    // this.initBillPayment();
+    // this.patchFormValueIfExists();
   }
 
   /**
@@ -244,14 +244,15 @@ export class BillPaymentPage implements OnInit {
     this.facade.update(paymentInfo);
   }
 
-  /**
-   * @summary handles payment delete.
-   *
-   * @returns {void}
-   * @memberOf BillPaymentPage
-   */
-  delete(): void {
-    this.facade.delete();
+  processPayment(): void {
+    const amount = this.convertPaymentAmountToNumber(this.billPaymentForm.value.amount);
+    const executionDate = moment.now();
+    const paymentInfo = Object.assign(this.billPayee, { amount, executionDate });
+    this.facade.update(paymentInfo);
+  }
+
+  cancelPayment(): void {
+    this.facade.navigateToPage('/move-money/pay-bills/bill-pay');
   }
 
   /**
@@ -261,7 +262,4 @@ export class BillPaymentPage implements OnInit {
    * @returns {void}
    * @memberOf BillPaymentPage
    */
-  navigateToPage(pageToNavigate: string): void {
-    this.facade.navigateToPage(pageToNavigate);
-  }
 }

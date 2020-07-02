@@ -1,49 +1,31 @@
 .content-wrapper {
   font-size: 1.4rem;
-  .payee-block {
-    display: flex;
-    align-items: center;
-    font-size: 1.4rem;
+  .title {
+    color: #8c90a3;
+    font-family: 'Averta W05 Regular';
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 16px;
     text-transform: uppercase;
-    margin-bottom: 20px;
-    .payee-icon {
-      height: 40px;
-      width: 40px;
-      background-color: #eaecf7;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      img {
-        height: 15px;
-        width: 15px;
-      }
-    }
+    margin-bottom: 30px;
+  }
+  .payee-block {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    margin-top: 30px;
     .payee-info {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding-left: 20px;
-      .payee-name {
-      }
-      .payee-action {
-        color: #435cdc;
+      margin-bottom: 30px;
+      .details {
+        line-height: 16px;
       }
     }
   }
+  .error-msg {
+    margin-top: 5px;
+  }
   .payment-amount-block {
-    margin-bottom: 20px;
-    .title {
-      color: #8c90a3;
-      font-family: 'Averta W05 Regular';
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      line-height: 16px;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
+    margin-bottom: 40px;
     ion-input {
       font-weight: bold;
       font-size: 30px;
@@ -60,65 +42,6 @@
       input {
         padding: 0;
       }
-    }
-  }
-  .calendar-block {
-    display: flex;
-    flex-direction: column;
-    .title {
-      color: #8c90a3;
-      font-family: 'Averta W05 Regular';
-      font-size: 11px;
-      font-weight: bold;
-      letter-spacing: 1px;
-      line-height: 16px;
-      margin-bottom: 20px;
-      text-transform: uppercase;
-    }
-    .calendar-content {
-      display: flex;
-      align-items: center;
-      img {
-        height: 25px;
-        width: 20px;
-      }
-      .date-info {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        .date {
-          width: 100%;
-          position: relative;
-          ion-datetime {
-            width: 100%;
-            margin: 0;
-          }
-        }
-        .date-action {
-          z-index: 33;
-          position: relative;
-          color: #435cdc;
-        }
-      }
-    }
-  }
-  .repeat-toggle-block {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 40px;
-  }
-  .info-block {
-    border-top: 1px solid #ebedf2;
-    padding-top: 20px;
-    display: flex;
-    align-items: center;
-    ion-icon {
-      color: #8c90a3;
-      font-size: 30px;
-      margin-right: 20px;
     }
   }
 }

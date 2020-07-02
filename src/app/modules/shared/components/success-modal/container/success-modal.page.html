@@ -13,6 +13,9 @@
       <div class="subtitle-block" *ngFor="let detail of content.details">
         <div class="subtitle-text" [innerHTML]="detail | translate: content.values"></div>
       </div>
+      <div class="subtitle-block" *ngIf="content.reference">
+        <div class="subtitle-ref" [innerHTML]="content.reference|translate: content.values"></div>
+      </div>
     </div>
   </div>
 </ion-content>

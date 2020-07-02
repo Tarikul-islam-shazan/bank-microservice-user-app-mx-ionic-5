@@ -1370,29 +1370,20 @@
       },
       "bill-payment": {
         "page-title": "Pay Bills",
-        "payee-action": "VIEW/DELETE",
-        "payment-amount-title": "Payment Amount",
-        "calendar-title": "SEND ON",
-        "date-action": "Edit",
-        "repeat-toggle-title": "Repeat payment monthly",
-        "info": "Cutoff time is 8 PM ET for 1 business day electronic delivery",
-        "buttons": {
-          "confirm-button-text": "Confirm Details",
-          "delete-button-text": "Delete",
-          "done-button-text": "Done",
-          "ok-button-text": "Ok",
-          "yes-button-text": "Yes",
-          "no-button-text": "No"
-        },
+        "sending-to-title": "Sending To",
+        "account-number-title": "Account Number",
+        "payment-amount-title": "Amount To be sent",
+        "btn-pay-bill": "Pay Bill",
+        "btn-cancel": "Cancel",
         "errors": {
           "min-amount-limit-text": "Minimum amount should not be less than $1.00 USD.",
           "max-amount-limit-text": "The amount you entered exceeds the limit of $1,000.00 per payment. Please enter an amount less than that."
         },
         "modal": {
-          "title": "You've scheduled {{paymentAmount}} to {{payeeName}}",
-          "content": "Occuring {{paymentFrequency}} {{paymentPreposition}} {{paymentExecutionDate}}",
-          "payment-edit-success-text": "Payment edited successfully.",
-          "payment-delete-text": "Are you sure you want to delete this payment?"
+          "title": "You've paid {{paymentAmount}} to {{payeeName}}.",
+          "content-1": "Submited on {{paymentExecutionDate}}",
+          "reference-text": "Ref #{{referenceNumber}}",
+          "btn-done": "Done"
         }
       }
     },

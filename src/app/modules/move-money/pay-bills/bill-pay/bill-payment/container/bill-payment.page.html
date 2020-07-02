@@ -5,7 +5,7 @@
         mode="md"
         icon="arrow-back"
         id="bill-payment-page-back-btn"
-        (click)="navigateToPage('/move-money/pay-bills/bill-pay')"
+        (click)="facade.navigateToPage('/move-money/pay-bills/bill-pay')"
       >
       </ion-back-button>
     </ion-buttons>
@@ -18,18 +18,17 @@
 <ion-content>
   <div class="content-wrapper">
     <div class="payee-block">
-      <div class="payee-icon">
-        <img src="assets/svg/statements-list.svg" />
+      <div class="payee-info">
+        <div class="title" id="bill-payment-page-sending-to-title-text">
+          {{'move-money-module.pay-bills.bill-payment.sending-to-title' | translate}}
+        </div>
+        <div class="details" id="bill-payment-page-bill-payee-full-name">{{billPayee.name}}</div>
       </div>
       <div class="payee-info">
-        <div class="payee-name" id="bill-payment-page-bill-payee-full-name">{{billPayee.fullName}}</div>
-        <div
-          class="payee-action"
-          id="bill-payment-page-payee-action"
-          (click)="navigateToPage('/move-money/pay-bills/add-payee')"
-        >
-          {{'move-money-module.pay-bills.bill-payment.payee-action' | translate}}
+        <div class="title" id="bill-payment-page-account-number-title-text">
+          {{'move-money-module.pay-bills.bill-payment.account-number-title' | translate}}
         </div>
+        <div class="details" id="bill-payment-page-account-number">{{billPayee.accountNumber}}</div>
       </div>
     </div>
     <div class="clearfix">
@@ -66,73 +65,28 @@
             {{'move-money-module.pay-bills.bill-payment.errors.max-amount-limit-text' | translate}}
           </div>
         </div>
-        <div class="calendar-block">
-          <div class="title">{{'move-money-module.pay-bills.bill-payment.calendar-title' | translate}}</div>
-          <div class="calendar-content">
-            <img src="assets/img/calendar.png" />
-            <div class="date-info">
-              <div class="date">
-                <ion-datetime
-                  [max]="maxDate"
-                  [min]="minDate"
-                  cancelable="false"
-                  displayFormat="MMM DD, YYYY"
-                  formControlName="executionDate"
-                  id="bill-payment-page-execution-date-input"
-                ></ion-datetime>
-              </div>
-              <div class="date-action" id="bill-payment-page-date-action-text">
-                {{'move-money-module.pay-bills.bill-payment.date-action' | translate}}
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="repeat-toggle-block">
-          <div class="title" id="bill-payment-page-repeat-toggle-title-text">
-            {{'move-money-module.pay-bills.bill-payment.repeat-toggle-title' | translate}}
-          </div>
-          <ion-toggle slot="end" formControlName="frequency" id="bill-payment-page-frequency-input"> </ion-toggle>
-        </div>
       </form>
-    </div>
-    <div class="info-block" id="bill-payment-page-bill-payment-info-text">
-      <ion-icon slot="start" name="medical"></ion-icon>
-      {{'move-money-module.pay-bills.bill-payment.info' | translate}}
     </div>
   </div>
 </ion-content>
 <ion-footer class="ion-no-border">
   <ion-toolbar>
-    <ng-template [ngIf]="billPayee.amount" [ngIfElse]="paymentNotEditAble">
-      <ion-button
-        [disabled]="billPaymentForm.disabled || billPaymentForm.invalid"
-        (click)="update()"
-        class="white-button"
-        id="bill-payment-page-bill-payment-update-btn"
-        expand="block"
-      >
-        {{'move-money-module.pay-bills.bill-payment.buttons.confirm-button-text' | translate}}
-      </ion-button>
-
-      <ion-button
-        (click)="delete()"
-        class="grey-outline-button"
-        id="bill-payment-page-bill-payment-delete-btn"
-        expand="block"
-      >
-        {{'move-money-module.pay-bills.bill-payment.buttons.delete-button-text' | translate}}
-      </ion-button>
-    </ng-template>
-    <ng-template #paymentNotEditAble>
-      <ion-button
-        [disabled]="billPaymentForm.invalid"
-        (click)="add()"
-        class="white-button"
-        id="bill-payment-page-bill-payment-add-btn"
-        expand="block"
-      >
-        {{'move-money-module.pay-bills.bill-payment.buttons.confirm-button-text' | translate}}
-      </ion-button>
-    </ng-template>
+    <ion-button
+      [disabled]="billPaymentForm.disabled || billPaymentForm.invalid"
+      (click)="processPayment()"
+      class="white-button"
+      id="bill-payment-page-bill-pay-bill-btn"
+      expand="block"
+    >
+      {{'move-money-module.pay-bills.bill-payment.btn-pay-bill' | translate}}
+    </ion-button>
+    <ion-button
+      (click)="cancelPayment()"
+      class="grey-outline-button"
+      id="bill-payment-page-bill-cancel-btn"
+      expand="block"
+    >
+      {{'move-money-module.pay-bills.bill-payment.btn-cancel' | translate}}
+    </ion-button>
   </ion-toolbar>
 </ion-footer>
