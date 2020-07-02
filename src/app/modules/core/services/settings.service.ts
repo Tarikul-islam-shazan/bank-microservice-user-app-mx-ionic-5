@@ -15,6 +15,7 @@ import { Logger } from './logger.service';
 import { AnalyticsService, AnalyticsUserProperties } from '@app/analytics';
 import { getLocaleCurrencySymbol } from '@angular/common';
 const logger = new Logger('SettingsService');
+import { environment } from '@env/environment';
 import * as moment from 'moment';
 
 /**
@@ -91,30 +92,16 @@ export class SettingsService {
   loadSystemSettings(): void {
     // the only default app setting we can load is the locales/languages
     // add currency filed for change currency according to the language
-    const locales: Locale[] = [
-      {
-        country: 'us',
-        language: 'en',
-        name: 'more-module.change-language.english-text',
-        locale: 'en-us',
-        dialCode: 1,
-        currency: 'USD'
-      },
-      {
-        country: 'mx',
-        language: 'es',
-        name: 'more-module.change-language.spanish-text',
-        locale: 'es-mx',
-        dialCode: 34,
-        currency: 'MXN'
-      }
-    ];
+    const locales: Locale[] = environment.availableLocales;
 
     this.settings.systemSettings = {};
 
     this.settings.systemSettings.availableLocales = locales;
-
-    const systemLang = this.translate.getBrowserCultureLang();
+    let systemLang = this.translate.getBrowserCultureLang();
+    const deviceLang = systemLang.split('-');
+    if (deviceLang[0] === locales[1].language) {
+      systemLang = locales[1].locale;
+    }
     logger.debug(`system language is ${systemLang}`);
     // lets look if we have the sytem language in our current set of supported languages
     const foundLocales = locales.filter((foundLocale: Locale) => {

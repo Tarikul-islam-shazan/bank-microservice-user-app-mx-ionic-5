@@ -58,5 +58,23 @@ export const environment = {
     usedRemote: false,
     remoteUrl: 'https://s3.amazonaws.com/meedbankingclub-mobile'
   },
-  appBundleIdentifier: 'com.mx.meedbankingclub'
+  appBundleIdentifier: 'com.mx.meedbankingclub',
+  availableLocales: [
+    {
+      country: 'us',
+      language: 'en',
+      name: 'more-module.change-language.english-text',
+      locale: 'en-us',
+      dialCode: 1,
+      currency: 'USD'
+    },
+    {
+      country: 'mx',
+      language: 'es',
+      name: 'more-module.change-language.spanish-text',
+      locale: 'es-mx',
+      dialCode: 34,
+      currency: 'MXN'
+    }
+  ]
 };
