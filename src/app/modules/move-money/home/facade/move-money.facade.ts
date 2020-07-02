@@ -115,14 +115,6 @@ export class MoveMoneyFacade {
             }
           },
           {
-            iconClass: 'img-mail-a-check',
-            itemName: 'move-money-module.home-page.menu.mail-a-check',
-            appSuppress: 'MailACheck',
-            onClick: () => {
-              this.router.navigate(['/move-money/mail-check']);
-            }
-          },
-          {
             iconClass: 'img-transfer-to-other-bank',
             itemName: 'move-money-module.home-page.menu.transfer-to-other-banks',
             appSuppress: 'TransferToOtherBanks',
