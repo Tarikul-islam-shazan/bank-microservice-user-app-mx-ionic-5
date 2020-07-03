@@ -1725,6 +1725,9 @@
       "modal-title": "Note",
       "modal-description": "You’re now leaving the Meed app and going to a third-party website with different Terms & Conditions.",
       "modal-btn": "I'm good with that"
+    },
+    "third-party-website": {
+      "info-text": "Please wait, you are going to a third-party website with different Terms & Conditions."
     }
   },
   "signup-credentials-created": {
