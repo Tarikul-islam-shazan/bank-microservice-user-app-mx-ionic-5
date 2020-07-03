@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>479603772557-7j8f5sno3p8d0q6c3os9pl3rlsvm7b3o.apps.googleusercontent.com</string>
+	<string>479603772557-4lrau9c02n57ifm6ivgmabnq35htqjvk.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.479603772557-7j8f5sno3p8d0q6c3os9pl3rlsvm7b3o</string>
+	<string>com.googleusercontent.apps.479603772557-4lrau9c02n57ifm6ivgmabnq35htqjvk</string>
 	<key>API_KEY</key>
 	<string>AIzaSyDCZV8F158LsJmM7FFiix0ISTHki1J14GE</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.mx.uat.meedbankingclub.com</string>
+	<string>com.mx.qa.meedbankingclub</string>
 	<key>PROJECT_ID</key>
 	<string>mx-meedbankingclub</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,7 +29,7 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:479603772557:ios:eb24a4da71d52593c8e6c4</string>
+	<string>1:479603772557:ios:ff5eaf49fe9c83c5c8e6c4</string>
 	<key>DATABASE_URL</key>
 	<string>https://mx-meedbankingclub.firebaseio.com</string>
 </dict>
