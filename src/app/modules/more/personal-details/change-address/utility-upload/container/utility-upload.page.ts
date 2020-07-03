@@ -19,6 +19,7 @@ export class UtilityUploadPage implements OnInit {
   ngOnInit() {
     this.setUtilityOptions();
     this.initUtilityBill();
+    this.facade.utilityBillImage = '';
   }
 
   /**
