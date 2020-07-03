@@ -232,7 +232,7 @@ export class SignUpService {
     const bodyParams = { username: formValue.username$, password: formValue.password$ };
     return this.http
       .post<IMember>(this.baseUrl + '/bank/onboarding/create-login', bodyParams, {
-        headers: this.headerService.getMemberIdHeader()
+        headers: this.headerService.getSignupCountryHeader(this.headerService.getMemberIdHeader())
       })
       .pipe(
         tap((_member: IMember) => {
@@ -243,7 +243,7 @@ export class SignUpService {
 
   fundingInformationSubmission(fundInfo: IFundInfo): Observable<IMember> {
     return this.http.post<IMember>(this.baseUrl + '/bank/onboarding/apply/fund-provider', fundInfo, {
-      headers: this.headerService.getMemberIdCustomerIdHeader()
+      headers: this.headerService.getSignupCountryHeader(this.headerService.getMemberIdCustomerIdHeader())
     });
   }
 
@@ -258,7 +258,7 @@ export class SignUpService {
   ApplyForBankAccount(bankApplication: BankApplication): Observable<ApplyForBankResponse> {
     return this.http
       .post<ApplyForBankResponse>(this.baseUrl + '/bank/onboarding/apply', bankApplication, {
-        headers: this.headerService.getUserNameMemberIdHeader()
+        headers: this.headerService.getSignupCountryHeader(this.headerService.getUserNameMemberIdHeader())
       })
       .pipe(
         tap((resp: ApplyForBankResponse) => {
@@ -270,14 +270,14 @@ export class SignUpService {
 
   getTermsConditions(): Observable<TncDocument[]> {
     return this.http.get<TncDocument[]>(this.baseUrl + '/bank/onboarding/terms-and-conditions', {
-      headers: this.headerService.getMemberIdHeader() // backend changed the parameter from customer id to member id
+      headers: this.headerService.getSignupCountryHeader(this.headerService.getMemberIdHeader())
     });
   }
 
   getTermsConditionBase64String(code: string): Observable<{ code: string; document: string }> {
     return this.http
       .get<{ code: string; document: string }>(this.baseUrl + `/bank/onboarding/terms-and-conditions/${code}`, {
-        headers: this.headerService.getMemberIdHeader() // backend changed the parameter from customer id to member id
+        headers: this.headerService.getSignupCountryHeader(this.headerService.getMemberIdHeader())
       })
       .pipe(take(1));
   }
@@ -286,9 +286,7 @@ export class SignUpService {
     return this.http.post<ProductOnboardedResponse>(
       this.baseUrl + '/bank/onboarding/terms-and-conditions',
       {},
-      {
-        headers: this.headerService.getMemberIdCustomerIdHeader()
-      }
+      { headers: this.headerService.getSignupCountryHeader(this.headerService.getMemberIdCustomerIdHeader()) }
     );
   }
 
@@ -302,7 +300,11 @@ export class SignUpService {
     return this.http.post<FundAccountResponse>(
       this.baseUrl + '/bank/onboarding/registration-fee',
       registrationFeeRequest,
-      { headers: this.headerService.getUserNameMemberIdHeader().append('disabled-cookies', 'true') }
+      {
+        headers: this.headerService.getSignupCountryHeader(
+          this.headerService.getUserNameMemberIdHeader().append('disabled-cookies', 'true')
+        )
+      }
     );
   }
 
@@ -314,7 +316,9 @@ export class SignUpService {
    */
   fundDeposit(depositFund: DepositFund): Observable<any> {
     return this.http.post(this.baseUrl + '/deposit/direct', depositFund, {
-      headers: this.headerService.getMemberIdCustomerIdHeader().append('disabled-cookies', 'true')
+      headers: this.headerService.getSignupCountryHeader(
+        this.headerService.getMemberIdCustomerIdHeader().append('disabled-cookies', 'true')
+      )
     });
   }
 
@@ -327,7 +331,7 @@ export class SignUpService {
       this.baseUrl + '/bank/onboarding/identity-questions',
       { identityAnswers },
       {
-        headers: this.headerService.getUserNameMemberIdHeader()
+        headers: this.headerService.getSignupCountryHeader(this.headerService.getUserNameMemberIdHeader())
       }
     );
   }
@@ -339,7 +343,7 @@ export class SignUpService {
   getIdentitQuestions(): Observable<ApplyForBankResponse> {
     return this.http
       .get<ApplyForBankResponse>(this.baseUrl + '/bank/onboarding/identity-questions', {
-        headers: this.headerService.getUserNameMemberIdHeader()
+        headers: this.headerService.getSignupCountryHeader(this.headerService.getUserNameMemberIdHeader())
       })
       .pipe(
         tap((res: ApplyForBankResponse) => {
@@ -352,7 +356,7 @@ export class SignUpService {
     generalInfo.email = this.member.email;
     const url = this.baseUrl + '/bank/onboarding/apply/general-info';
     return this.http.post<IMember>(url, generalInfo, {
-      headers: this.headerService.getMemberICustomerIdHeader()
+      headers: this.headerService.getSignupCountryHeader(this.headerService.getMemberICustomerIdHeader())
     });
   }
 
@@ -367,7 +371,7 @@ export class SignUpService {
     return this.http.get<Partial<IAddressInfo[]>>(
       `${this.baseUrl}/bank/onboarding/${postalCode}/state-city-municipality`,
       {
-        headers: this.headerService.getBankIdentifierHeader()
+        headers: this.headerService.getSignupCountryHeader(this.headerService.getBankIdentifierHeader())
       }
     );
   }
@@ -382,7 +386,7 @@ export class SignUpService {
   submitAddressInfo(addressInfo: IAddressInfo): Observable<IMember> {
     return this.http
       .post<IMember>(this.baseUrl + '/bank/onboarding/apply/address-info', addressInfo, {
-        headers: this.headerService.getMemberICustomerIdHeader()
+        headers: this.headerService.getSignupCountryHeader(this.headerService.getMemberICustomerIdHeader())
       })
       .pipe(
         tap((res: IMember) => {
@@ -395,7 +399,7 @@ export class SignUpService {
     return this.http.post<IAccountLevel>(
       `${this.baseUrl}/bank/onboarding/apply/account-level`,
       { accountLevel },
-      { headers: this.headerService.getMemberIdHeader() }
+      { headers: this.headerService.getSignupCountryHeader(this.headerService.getMemberIdHeader()) }
     );
   }
 
@@ -404,13 +408,13 @@ export class SignUpService {
       this.baseUrl + '/bank/onboarding/apply/beneficiary-info',
       beneficiaryApplication,
       {
-        headers: this.headerService.getUserNameMemberICustomerIdHeader()
+        headers: this.headerService.getSignupCountryHeader(this.headerService.getUserNameMemberICustomerIdHeader())
       }
     );
   }
   submitPersonaInfo(personalInfo: IPersonalInfo): Observable<IMember> {
     return this.http.post<IMember>(`${this.baseUrl}/bank/onboarding/apply/personal-info`, personalInfo, {
-      headers: this.headerService.getMemberICustomerIdHeader()
+      headers: this.headerService.getSignupCountryHeader(this.headerService.getMemberICustomerIdHeader())
     });
   }
 
@@ -420,7 +424,7 @@ export class SignUpService {
     return this.http.post<IGovtDisclosureResponse>(
       `${this.baseUrl}/bank/onboarding/apply/gov-disclosure`,
       govtDisclosureApplication,
-      { headers: this.headerService.getMemberICustomerIdHeader() }
+      { headers: this.headerService.getSignupCountryHeader(this.headerService.getMemberICustomerIdHeader()) }
     );
   }
 
@@ -429,7 +433,7 @@ export class SignUpService {
       this.baseUrl + '/bank/onboarding/apply/identity-confirmation',
       identityInfo,
       {
-        headers: this.headerService.getMemberICustomerIdHeader()
+        headers: this.headerService.getSignupCountryHeader(this.headerService.getMemberICustomerIdHeader())
       }
     );
   }
@@ -437,7 +441,7 @@ export class SignUpService {
   getDeposistInfo(fundingType: FundingType): Observable<IFundingInfo> {
     return this.http
       .get<IFundingInfo>(`${this.baseUrl}/bank/onboarding/apply/funding-info?fundingType=${fundingType}`, {
-        headers: this.headerService.getMemberICustomerIdHeader()
+        headers: this.headerService.getSignupCountryHeader(this.headerService.getMemberICustomerIdHeader())
       })
       .pipe(
         tap((res: IFundingInfo) => {

@@ -3,11 +3,14 @@ import { HttpHeaders } from '@angular/common/http';
 import { IMember, IOtp } from '../models';
 import { MemberService } from './member.service';
 import { SettingsService } from './settings.service';
+import { environment } from '@env/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HeaderService {
+  private _country = environment.country;
+
   constructor(private memberService: MemberService, private settingService: SettingsService) {}
 
   get member(): IMember {
@@ -127,5 +130,9 @@ export class HeaderService {
       'meedbankingclub-memberid': this.member._id,
       'meedbankingclub-customerid': this.member.customerId
     });
+  }
+
+  getSignupCountryHeader(headers: HttpHeaders): HttpHeaders {
+    return headers.append('meedbankingclub-bank-country', this._country);
   }
 }
