@@ -1,6 +1,6 @@
 import { environment } from '../../../../environments/environment';
 import { Injectable } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { AnimationController, LoadingController } from '@ionic/angular';
 
 /**
  * Used for LoadingController options parameter
@@ -28,17 +28,30 @@ export class LoadingService {
   loaderCounter = 0;
   loading: HTMLIonLoadingElement;
 
-  constructor(public loadingController: LoadingController) {}
+  constructor(public loadingController: LoadingController, public animationCtrl: AnimationController) {}
 
   async show(options: LoadingOptions = {}) {
+    const leaveAnimation = (baseEl: any) => {
+      const backdropAnimation = this.animationCtrl
+        .create()
+        .addElement(baseEl.querySelector('ion-backdrop'))
+        .fromTo('opacity', '0.01', 'var(--backdrop-opacity)');
+      return this.animationCtrl
+        .create()
+        .addElement(baseEl)
+        .easing('ease-out')
+        .duration(400)
+        .addAnimation([backdropAnimation])
+        .direction('reverse');
+    };
     this.loaderCounter = this.loaderCounter + 1;
     if (this.loaderCounter === 1) {
       this.isLoading = true;
-      const { loadingDuration, loadingMessage = loadingDefaultOptions.loadingMessage, loadingCssClass } = options;
+      const { loadingDuration, loadingCssClass } = options;
       this.loading = await this.loadingController.create({
         duration: loadingDuration,
-        message: loadingMessage,
-        cssClass: loadingCssClass
+        cssClass: loadingCssClass ? loadingCssClass : 'loading-class',
+        leaveAnimation
       });
       await this.loading.present();
       return this.loading;

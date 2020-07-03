@@ -227,3 +227,15 @@
 .form-item {
   margin-bottom: 10px;
 }
+
+/* Loading css */
+.loading-class {
+  --min-height: 100%;
+  --min-width: 100%;
+  --background: #ffffff;
+  opacity: 0.5;
+  box-shadow: none !important;
+  .loading-wrapper {
+    border-radius: 0px !important;
+  }
+}

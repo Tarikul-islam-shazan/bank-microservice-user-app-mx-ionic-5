@@ -29,7 +29,7 @@ export class LoaderInterceptor implements HttpInterceptor {
       const newRequest = req.clone({ headers: newHeaders });
       return next.handle(newRequest);
     } else {
-      return from(this.loadingService.show({ loadingMessage: 'Please wait...' })).pipe(
+      return from(this.loadingService.show()).pipe(
         switchMap((loading: HTMLIonLoadingElement) => {
           return next.handle(req).pipe(
             finalize(() => {
