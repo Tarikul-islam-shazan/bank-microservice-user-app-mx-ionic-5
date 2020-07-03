@@ -1716,6 +1716,9 @@
       "modal-title": "Nota",
       "modal-description": "Estás saliendo de la aplicación de Meed y dirigiéndote a un sitio web externo, con términos y condiciones diferentes.",
       "modal-btn": "Estoy de acuerdo"
+    },
+    "third-party-website": {
+      "info-text": "Please wait, you are going to a third-party website with different Terms & Conditions."
     }
   },
   "signup-credentials-created": {
