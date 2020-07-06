@@ -245,12 +245,12 @@
       "page-title": "Select your desired account level",
       "account-level-full-title": "Full (Recommended)",
       "account-level-full-details": "I am applying for a Full Account with no deposit or transaction restriction..",
-      "account-level-full-modal-title": "Full (Recommended)",
-      "account-level-full-model-details": "I am applying for a Full Account with no deposit or transaction restriction..",
+      "account-level-full-modal-title": "Full Account Information",
+      "account-level-full-modal-details": "Need verbiage",
       "account-level-express-title": "Express",
       "account-level-express-details": "I am applying for an Express Account and understand that I will have monthly deposit or transaction restrictions",
-      "account-level-express-modal-title": "Express",
-      "account-level-express-model-details": "I am applying for an Express Account and understand that I will have monthly deposit or transaction restrictions"
+      "account-level-express-modal-title": "Express Account Information",
+      "account-level-express-modal-details": "Need verbiage"
     },
     "signup-personal": {
       "page-title": "Información general",

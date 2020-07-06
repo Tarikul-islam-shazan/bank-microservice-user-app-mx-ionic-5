@@ -38,7 +38,7 @@ export class AccountSelectionFacade {
         contents: [
           {
             title: 'signup-module.signup-account-selection.account-level-full-modal-title',
-            details: ['signup-module.signup-account-selection.account-level-full-model-details']
+            details: ['signup-module.signup-account-selection.account-level-full-modal-details']
           }
         ]
       };
@@ -47,7 +47,7 @@ export class AccountSelectionFacade {
         contents: [
           {
             title: 'signup-module.signup-account-selection.account-level-express-modal-title',
-            details: ['signup-module.signup-account-selection.account-level-express-model-details']
+            details: ['signup-module.signup-account-selection.account-level-express-modal-details']
           }
         ]
       };
