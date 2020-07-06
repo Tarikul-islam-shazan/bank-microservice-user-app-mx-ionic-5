@@ -7,10 +7,7 @@ export const environment = {
   label: 'UAT',
   deployment: 'uat',
   country: 'mx',
-  serviceUrl: 'https://services-mxqa.meedbankingclub.com/api/v1.0.0',
-  loadingControllerOptions: {
-    message: 'Please wait...'
-  },
+  serviceUrl: 'https://services-mxuat.meedbankingclub.com/api/v1.0.0',
   jumio: {
     apiToken: 'e3facdd9-292d-42da-80fd-6c356d9c8161',
     apiSecret: 'mhYjhzEd49svDm2Sh0T5nHWxM52tqigS',
@@ -27,8 +24,8 @@ export const environment = {
     projectId: 'mx-meedbankingclub',
     storageBucket: 'mx-meedbankingclub.appspot.com',
     messagingSenderId: '479603772557',
-    appId: '1:479603772557:web:2ddc84bea24348cac8e6c4',
-    measurementId: 'G-7JJ2SR7N11'
+    appId: '1:479603772557:web:3a670bbd46053c3ac8e6c4',
+    measurementId: 'G-3Z41MK45WG'
   },
   appIdleness: {
     idelnessTimeout: 2, // sets an idle timeout of 3 seconds
@@ -62,7 +59,6 @@ export const environment = {
     usedRemote: false,
     remoteUrl: 'https://s3.amazonaws.com/meedbankingclub-mobile'
   },
-  appBundleIdentifier: 'com.mx.uat.meedbankingclub.com',
   availableLocales: [
     {
       country: 'us',

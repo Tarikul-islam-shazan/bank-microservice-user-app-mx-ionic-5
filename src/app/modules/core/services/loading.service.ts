@@ -1,4 +1,3 @@
-import { environment } from '../../../../environments/environment';
 import { Injectable } from '@angular/core';
 import { AnimationController, LoadingController } from '@ionic/angular';
 
@@ -14,11 +13,6 @@ export interface LoadingOptions {
   loadingMessage?: string;
   loadingCssClass?: string;
 }
-
-// Initilize default loadingControllerOptions from environment variable
-const loadingDefaultOptions: Partial<LoadingOptions> = {
-  loadingMessage: environment.loadingControllerOptions.message
-};
 
 @Injectable({
   providedIn: 'root'
