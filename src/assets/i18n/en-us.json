@@ -465,7 +465,7 @@
       "server-error": "Server error, Please try again."
     },
     "identity-confirmation-page": {
-      "page-title": "Identity Confirmation",
+      "page-title": "Address Verification",
       "step-text": "Step 3 of 3",
       "verify-text": "To verify your address, please take an image of a utility bill from the last 3 months. Select from valid bill types below:",
       "dropdown-placeholder": "Valid Utility",
