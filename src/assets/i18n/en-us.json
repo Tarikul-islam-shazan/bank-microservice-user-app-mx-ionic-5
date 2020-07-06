@@ -1168,7 +1168,7 @@
     "code-2109": "Verify email structure",
     "code-2110": "No customer record found with the provided email",
     "code-2111": "Insufficient Data",
-    "code-2112": "Alias or payee already exists",
+    "code-2112": "The alias you have selected already exists. Please use another alias.",
     "code-2201": "Invalid phone number",
     "code-2202": "Invalid process date.",
     "code-4000": "unknown",
