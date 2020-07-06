@@ -55,7 +55,6 @@ export const environment = {
     usedRemote: false,
     remoteUrl: 'https://s3.amazonaws.com/meedbankingclub-mobile'
   },
-  appBundleIdentifier: 'com.mx.meedbankingclub',
   availableLocales: [
     {
       country: 'us',
