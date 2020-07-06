@@ -419,7 +419,7 @@
       "server-error": "Error del servidor. Por favor, inténtalo de nuevo."
     },
     "identity-confirmation-page": {
-      "page-title": "Identity Confirmation",
+      "page-title": "Verificación de dirección",
       "step-text": "Step 3 of 3",
       "verify-text": "To verify your address, please take an image of a utility bill from the last 3 months. Select from valid bill types below:",
       "dropdown-placeholder": "Valid Utility",
