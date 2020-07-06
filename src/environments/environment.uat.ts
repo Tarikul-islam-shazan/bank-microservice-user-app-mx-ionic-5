@@ -27,8 +27,8 @@ export const environment = {
     projectId: 'mx-meedbankingclub',
     storageBucket: 'mx-meedbankingclub.appspot.com',
     messagingSenderId: '479603772557',
-    appId: '1:479603772557:web:2ddc84bea24348cac8e6c4',
-    measurementId: 'G-7JJ2SR7N11'
+    appId: '1:479603772557:web:3a670bbd46053c3ac8e6c4',
+    measurementId: 'G-3Z41MK45WG'
   },
   appIdleness: {
     idelnessTimeout: 2, // sets an idle timeout of 3 seconds
