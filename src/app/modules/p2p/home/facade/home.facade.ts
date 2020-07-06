@@ -19,9 +19,7 @@ export class HomeP2PFacade {
     private router: Router,
     private memberService: MemberService,
     private modalService: ModalService
-  ) {
-    this.getAllContacts();
-  }
+  ) {}
 
   getAllContacts() {
     this.myPayees$ = this.p2pService.getAllContacts().pipe(map(payees => (this.myPayees = payees)));
