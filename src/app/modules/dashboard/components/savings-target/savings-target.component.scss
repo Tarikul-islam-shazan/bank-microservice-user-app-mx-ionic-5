@@ -11,7 +11,7 @@
       display: flex;
       flex-direction: column;
 
-      #title {
+      .title {
         opacity: 0.5;
         color: #070a18;
         font-family: 'Averta W05 Semibold5179739';
@@ -20,7 +20,7 @@
         letter-spacing: 0.15px;
         line-height: 16px;
       }
-      #amount {
+      .amount {
         color: #070a18;
         font-family: 'Averta W05 Semibold5179739';
         font-size: 13px;
@@ -30,7 +30,7 @@
       }
     }
     .saved-item {
-      #amount {
+      .amount {
         text-align: left;
       }
     }

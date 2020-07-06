@@ -1,18 +1,18 @@
 <div class="content-block">
   <div class="monthly-block">
     <div class="saved-item">
-      <div id="savings-target-save-this-month-text">
+      <div class="title" id="savings-target-save-this-month-text">
         {{ 'dashboard-module.ssa-transaction-page.save-this-month-text' | translate }}
       </div>
-      <div id="savings-target-monthly-total-save-amount">
+      <div class="amount" id="savings-target-monthly-total-save-amount">
         {{ monthlyTotalSave | negToPos }}
       </div>
     </div>
     <div class="target-item">
-      <div id="savings-target-monthly-total-save-amount">
+      <div class="title" id="savings-target-monthly-total-save-amount">
         {{ 'dashboard-module.ssa-transaction-page.monthly-saving-target-text' | translate }}
       </div>
-      <div id="savings-target-monthly-saving-target-amount">
+      <div class="amount" id="savings-target-monthly-saving-target-amount">
         {{ monthlySavingTarget | negToPos }}
       </div>
     </div>
