@@ -13,6 +13,7 @@ import { tap, catchError } from 'rxjs/operators';
 import * as semanticVersioning from '@env/semantic-versioning.json';
 import { AppPlatform } from '@app/core/util/app-platform';
 import { SettingsService } from '@app/core/services/settings.service';
+import { environment } from '@env/environment';
 @Injectable()
 export class RequestHeadersInterceptor implements HttpInterceptor {
   private correlationId: string;
@@ -31,6 +32,10 @@ export class RequestHeadersInterceptor implements HttpInterceptor {
     if (this.settingsService.getSettings().userSettings.bankIdentifier) {
       Object.assign(headers, {
         'meedbankingclub-bank-identifier': this.settingsService.getSettings().userSettings.bankIdentifier
+      });
+    } else {
+      Object.assign(headers, {
+        'meedbankingclub-bank-country': environment.country
       });
     }
     // If correlation is available the add this to default headers

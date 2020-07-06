@@ -131,8 +131,4 @@ export class HeaderService {
       'meedbankingclub-customerid': this.member.customerId
     });
   }
-
-  getSignupCountryHeader(headers: HttpHeaders): HttpHeaders {
-    return headers.append('meedbankingclub-bank-country', this._country);
-  }
 }
