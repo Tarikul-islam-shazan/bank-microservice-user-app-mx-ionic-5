@@ -8,9 +8,6 @@ export const environment = {
   deployment: 'qa',
   country: 'mx',
   serviceUrl: 'https://services-mxqa.meedbankingclub.com/api/v1.0.0',
-  loadingControllerOptions: {
-    message: 'Please wait...'
-  },
   jumio: {
     apiToken: '10ccb140-096a-4cf2-b7a9-a8bb46ca0c44',
     apiSecret: 'iVcILnNS85u2d9l1naocBb7Td4SDqs8L',

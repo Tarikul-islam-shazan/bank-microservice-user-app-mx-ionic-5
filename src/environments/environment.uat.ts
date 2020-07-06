@@ -8,9 +8,6 @@ export const environment = {
   deployment: 'uat',
   country: 'mx',
   serviceUrl: 'https://services-mxuat.meedbankingclub.com/api/v1.0.0',
-  loadingControllerOptions: {
-    message: 'Please wait...'
-  },
   jumio: {
     apiToken: 'e3facdd9-292d-42da-80fd-6c356d9c8161',
     apiSecret: 'mhYjhzEd49svDm2Sh0T5nHWxM52tqigS',
