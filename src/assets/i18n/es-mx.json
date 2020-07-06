@@ -1158,6 +1158,7 @@
     "code-2109": "Verificar la estructura del correo electrónico",
     "code-2110": "No se encontraron registros de clientes con el correo electrónico proporcionado",
     "code-2111": "Datos insuficientes",
+    "code-2112": "The alias you have selected already exists. Please use another alias.",
     "code-2201": "Invalid phone number",
     "code-2202": "Invalid process date.",
     "code-4000": "Error desconocido",
