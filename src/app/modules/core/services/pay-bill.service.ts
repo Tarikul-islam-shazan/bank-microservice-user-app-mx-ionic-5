@@ -2,7 +2,7 @@ import { environment } from '@env/environment';
 import { flatMap, map, tap } from 'rxjs/operators';
 import { HeaderService } from './header-service.service';
 import { HttpClient } from '@angular/common/http';
-import { IBillPayee, IBillPayment, IOtp, IBiller } from '@app/core/models/dto/member';
+import { IBillPayee, IBillPayment, IBiller, BillerCategory } from '@app/core/models/dto/member';
 import { IHttpRequestMethod, IOtpVerificationRequest, OtpService } from './otp.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -13,78 +13,38 @@ import { Observable } from 'rxjs';
 export class PayBillService {
   billPayee: IBillPayee = {};
   biller: IBiller = {};
-  private billPayeeBaseUrl = environment.serviceUrl + '/bill-pay/payees';
-  private billPaymentBaseUrl = environment.serviceUrl + '/bill-pay/payments';
+  private billPayeeBaseUrl = `${environment.serviceUrl}/bill-pay/payees`;
+  private billPaymentBaseUrl = `${environment.serviceUrl}/bill-pay/payments`;
+  private billerSearchUrl = `${environment.serviceUrl}/bill-pay/billers/search`;
 
   constructor(private http: HttpClient, private headerService: HeaderService, private otpService: OtpService) {}
 
-  /**
-   * @summary returns bill payee list woth payments
-   *
-   * @param {string} [withPaymentMethodType='']
-   * @returns {Observable<IBillPayee[]>}
-   * @memberOf PayBillService
-   */
-  getPayeeList(withPaymentMethodType: string = ''): Observable<IBillPayee[]> {
-    const headers = this.headerService.getBillPayProviderHeader(),
-      params = { withPaymentMethodType };
-    return this.http
-      .get(this.billPaymentBaseUrl, {
-        headers,
-        params
-      })
-      .pipe(
-        flatMap((paymentList: IBillPayment[]) => {
-          return this.http
-            .get<IBillPayee[]>(this.billPayeeBaseUrl, {
-              headers,
-              params
-            })
-            .pipe(
-              map((billPayees: IBillPayee[]) => {
-                const payeeList = [];
-                if (billPayees.length > 0) {
-                  billPayees.forEach(payee => {
-                    const payment = paymentList.filter(_payment => {
-                      return payee.payeeId === _payment.payeeId;
-                    });
-                    if (payment.length > 0) {
-                      Object.assign(payee, payment[0]);
-                    }
-                    payeeList.push(payee);
-                  });
-                }
-                return payeeList;
-              })
-            );
-        })
-      );
+  addPayee(payee: IBillPayee): Observable<IBillPayee> {
+    return this.http.post<IBillPayee>(
+      this.billPayeeBaseUrl,
+      {
+        billerId: payee.biller.id,
+        accountNumber: payee.accountNumber
+      },
+      { headers: this.headerService.getMemberIdHeader() }
+    );
   }
 
-  getPayeeDetails(): Observable<IBillPayee> {
-    return this.http
-      .get(this.billPayeeBaseUrl + `/${this.billPayee.payeeId}`, {
-        headers: this.headerService.getBillPayProviderHeader()
-      })
-      .pipe(
-        tap(_billPayee => {
-          this.billPayee = _billPayee;
-        })
-      );
+  searchBillers(category: BillerCategory, name: string): Observable<IBiller[]> {
+    return this.http.get<IBiller[]>(this.billerSearchUrl, {
+      params: { category, name },
+      headers: this.headerService.getBankIdentifierHeader()
+    });
   }
-
-  addPayee(otp?: IOtp): Observable<IBillPayee> {
-    const otpVerificationRequest: IOtpVerificationRequest = {
-      url: this.billPayeeBaseUrl,
-      body: this.billPayee,
-      headers: this.headerService.getBillPayProviderHeader(),
-      requestMethod: IHttpRequestMethod.Post
-    };
-    return this.otpService.requestOtpCode(otpVerificationRequest);
+  getBillAccounts(category: BillerCategory): Observable<IBillPayee[]> {
+    return this.http.get<IBillPayee[]>(this.billPayeeBaseUrl, {
+      params: { category },
+      headers: this.headerService.getMemberIdHeader()
+    });
   }
 
   deletePayee() {
-    return this.http.delete(this.billPayeeBaseUrl + `/${this.billPayee.payeeId}`, {
+    return this.http.delete(this.billPayeeBaseUrl + `/${this.billPayee.biller.id}`, {
       headers: this.headerService.getBillPayProviderHeader()
     });
   }

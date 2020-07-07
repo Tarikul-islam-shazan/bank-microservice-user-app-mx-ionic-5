@@ -2,7 +2,6 @@ import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 import { IBillPayee, IBiller } from '@app/core';
 import { IMeedModalContent, ModalService, SuccessModalPage } from '@app/shared';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { PayBillService } from '@app/core/services/pay-bill.service';
 import { Router } from '@angular/router';
 
@@ -33,15 +32,6 @@ export class AddPayeeFacade {
   getBillPayee(): IBillPayee {
     return this.payBillService.billPayee;
   }
-  /**
-   * @summary returns payee details.
-   *
-   * @returns {Observable<IBillPayee>}
-   * @memberOf AddPayeeFacade
-   */
-  getPayeeDetails(): Observable<IBillPayee> {
-    return this.payBillService.getPayeeDetails();
-  }
 
   /**
    * @summary naviagtes to payee address page.
@@ -52,8 +42,10 @@ export class AddPayeeFacade {
    */
   continue(billPayee: IBillPayee): void {
     this.payBillService.billPayee = billPayee;
-    // show success modal
-    this.modalService.openModal(SuccessModalPage, this.getAddPayeeSuccessModalCompProps(billPayee.name));
+    this.payBillService.addPayee(billPayee).subscribe(payee => {
+      // show success modal
+      this.modalService.openModal(SuccessModalPage, this.getAddPayeeSuccessModalCompProps(billPayee.biller.name));
+    });
   }
 
   private getAddPayeeSuccessModalCompProps(billerName: string): IMeedModalContent {

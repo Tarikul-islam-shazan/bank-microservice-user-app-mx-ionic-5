@@ -41,15 +41,15 @@
         <ion-label><b>{{'move-money-module.pay-bills.bill-pay.my-bill-accounts-list-title' | translate}}</b></ion-label>
       </ion-item>
       <ion-list>
-        <ion-item *ngFor="let billAccount of facade.getMyBillAccoutns()">
+        <ion-item *ngFor="let billAccount of facade.myBillAccounts">
           <ion-label
             class="ion-padding-top  ion-padding-bottom ion-text-wrap"
             (click)="facade.goToBillPayment(billAccount)"
           >
-            {{billAccount.name}}
+            {{billAccount.biller.name}}
           </ion-label>
-          <ion-icon slot="end" name="pencil"></ion-icon>
-          <ion-icon slot="end" name="trash-outline"></ion-icon>
+          <ion-icon slot="end" name="pencil" (click)="facade.editBillAccount(billAccount)"></ion-icon>
+          <ion-icon slot="end" name="trash-outline" (click)="facade.deleteBillAccount()"></ion-icon>
         </ion-item>
       </ion-list>
     </div>

@@ -1,5 +1,5 @@
 import { AddPayeeFacade } from '../facade';
-import { BillPayeeType, CommonValidators, IBillPayee, IBiller } from '@app/core';
+import { CommonValidators, IBiller } from '@app/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
@@ -11,13 +11,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddPayeePage implements OnInit {
   addPayeeForm: FormGroup;
   biller: IBiller;
-  accountNumberMaxLength = 50;
   constructor(private facade: AddPayeeFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.biller = this.facade.getBiller();
     this.initForm();
-    // this.getPayeeDetails();
   }
 
   /**
@@ -49,7 +47,7 @@ export class AddPayeePage implements OnInit {
   gotoNext(): void {
     const { accountNumber } = this.addPayeeForm.value;
     const billPayee = {
-      name: this.biller.name,
+      biller: this.biller,
       accountNumber
     };
     this.facade.continue(billPayee);
