@@ -234,10 +234,10 @@ export class LoginFacade {
         this.navigateToRoute('/signup/account-selection');
         break;
       case ApplicationProgress.AccountLevelSelected:
-        if (member.accountLevel === AccountLevel.Full) {
-          this.navigateToRoute('/signup/personal-information');
-        } else {
+        if (member.accountLevel === AccountLevel.Express) {
           this.navigateToRoute('/signup/terms-conditions');
+        } else {
+          this.navigateToRoute('/signup/personal-information');
         }
         break;
       case ApplicationProgress.PersonalInfoCompleted:
