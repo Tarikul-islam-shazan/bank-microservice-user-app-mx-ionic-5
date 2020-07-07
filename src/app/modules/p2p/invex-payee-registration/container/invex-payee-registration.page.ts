@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DropdownOption } from '@app/signup/models/signup';
 import { InvexPayeeRegistrationFacade } from '../facade';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, PatternValidator } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { DropdownModalComponent } from '@app/shared';
 import { invexPayeeIdentifiers, ContactType } from '@app/p2p/models';
@@ -27,9 +26,9 @@ export class InvexPayeeRegistrationPage implements OnInit {
       alias: ['', Validators.required],
       identityName: ['', Validators.required],
       identityType: ['', Validators.required],
-      identityNumber: ['', Validators.required],
-      email: [''],
-      phone: [''],
+      identityNumber: ['', [Validators.required, Validators.pattern('[0-9]*')]],
+      email: ['', Validators.email],
+      phone: ['', Validators.pattern('[0-9]*')],
       contactType: [ContactType.Invex, Validators.required]
     });
   }

@@ -18,6 +18,9 @@ ion-list.form {
     &.item-has-focus {
       --border-color: var(--input-white-focus-border-color) !important;
     }
+    &.has-error {
+      --border-color: #fe4c55 !important;
+    }
     ion-input {
       height: 60px;
       --placeholder-color: var(--input-white-placeholder-color) !important;

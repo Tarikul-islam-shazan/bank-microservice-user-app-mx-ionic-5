@@ -60,7 +60,10 @@
         <ion-icon slot="end" name="chevron-down"></ion-icon>
       </ion-item>
 
-      <ion-item class="ion-no-padding">
+      <ion-item
+        class="ion-no-padding"
+        [ngClass]="{'has-error': companyForm.controls.identityNumber.errors && (companyForm.controls.identityNumber.dirty || companyForm.controls.identityNumber.touched)}"
+      >
         <ion-input
           formControlName="identityNumber"
           id="other-bank-payee-registration-page-identity-number-input"
@@ -68,7 +71,10 @@
           placeholder="{{'p2p-module.other-payee-registration-page.form.clabe-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
-      <ion-item class="ion-no-padding">
+      <ion-item
+        class="ion-no-padding"
+        [ngClass]="{'has-error': companyForm.controls.email.errors && (companyForm.controls.email.dirty || companyForm.controls.email.touched)}"
+      >
         <ion-input
           formControlName="email"
           id="other-bank-payee-registration-page-email-input"
@@ -82,7 +88,10 @@
       [formGroup]="clabeDebitCardForm"
       *ngIf="(payeeIdentifier && payeeIdentifier.value === identityTypes.Clabe) ||(payeeIdentifier && payeeIdentifier.value === identityTypes.DebitCard)"
     >
-      <ion-item class="ion-no-padding">
+      <ion-item
+        class="ion-no-padding"
+        [ngClass]="{'has-error': clabeDebitCardForm.controls.identityNumber.errors && (clabeDebitCardForm.controls.identityNumber.dirty || clabeDebitCardForm.controls.identityNumber.touched)}"
+      >
         <ion-input
           formControlName="identityNumber"
           class="ion-margin-start"
@@ -137,7 +146,10 @@
           placeholder="{{'p2p-module.other-payee-registration-page.form.maternal-last-name-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
-      <ion-item class="ion-no-padding">
+      <ion-item
+        class="ion-no-padding"
+        [ngClass]="{'has-error': clabeDebitCardForm.controls.email.errors && (clabeDebitCardForm.controls.email.dirty || clabeDebitCardForm.controls.email.touched)}"
+      >
         <ion-input
           formControlName="email"
           class="ion-margin-start"
@@ -145,7 +157,10 @@
           placeholder="{{'p2p-module.other-payee-registration-page.form.email-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
-      <ion-item class="ion-no-padding">
+      <ion-item
+        class="ion-no-padding"
+        [ngClass]="{'has-error': clabeDebitCardForm.controls.phone.errors && (clabeDebitCardForm.controls.phone.dirty || clabeDebitCardForm.controls.phone.touched)}"
+      >
         <ion-input
           formControlName="phone"
           class="ion-margin-start"
@@ -164,7 +179,10 @@
     </form>
     <!-- Mobile Number Form -->
     <form [formGroup]="mobileForm" *ngIf="payeeIdentifier && payeeIdentifier.value === identityTypes.Mobile">
-      <ion-item class="ion-no-padding">
+      <ion-item
+        class="ion-no-padding"
+        [ngClass]="{'has-error': mobileForm.controls.identityNumber.errors && (mobileForm.controls.identityNumber.dirty || mobileForm.controls.identityNumber.touched)}"
+      >
         <ion-input
           formControlName="identityNumber"
           id="other-bank-payee-registration-page-identity-Number-input"
@@ -216,7 +234,10 @@
           placeholder="{{'p2p-module.other-payee-registration-page.form.maternal-last-name-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
-      <ion-item class="ion-no-padding">
+      <ion-item
+        class="ion-no-padding"
+        [ngClass]="{'has-error': mobileForm.controls.email.errors && (mobileForm.controls.email.dirty || mobileForm.controls.email.touched)}"
+      >
         <ion-input
           formControlName="email"
           id="other-bank-payee-registration-page-email-input"
