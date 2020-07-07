@@ -7,6 +7,7 @@ import { LogoutService } from '@app/core/services/logout.service';
 import { AccountService } from '@app/core/services/account.service';
 import { MemberService } from '@app/core/services/member.service';
 import { IRegisteredMember, IMember, ApplicationProgress, ApplicationStatus } from '@app/core/models/dto/member';
+import { AccountLevel } from '@app/core/models/dto/account';
 import { SettingsService } from '@app/core/services/settings.service';
 import { BiometricAuthenticationService } from '@app/core/services/biometric-authentication.service';
 import { UrbanAirshipService } from '@app/core/services/urban-airship.service';
@@ -233,7 +234,11 @@ export class LoginFacade {
         this.navigateToRoute('/signup/account-selection');
         break;
       case ApplicationProgress.AccountLevelSelected:
-        this.navigateToRoute('/signup/personal-information');
+        if (member.accountLevel === AccountLevel.Full) {
+          this.navigateToRoute('/signup/personal-information');
+        } else {
+          this.navigateToRoute('/signup/terms-conditions');
+        }
         break;
       case ApplicationProgress.PersonalInfoCompleted:
         this.navigateToRoute('/signup/funding-information');
