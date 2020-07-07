@@ -96,7 +96,7 @@ export class P2pService {
   fetchContacts(): void {
     this.http
       .get<{ contacts: IContact[] }>(this.baseUrl + '/contacts', {
-        headers: this.headerService.getMemberIdHeader()
+        headers: this.headerService.getMemberICustomerIdHeader()
       })
       .subscribe(contactsResponse => (this.contactList = contactsResponse.contacts));
   }
