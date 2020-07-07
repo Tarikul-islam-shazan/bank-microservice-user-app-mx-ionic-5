@@ -33,7 +33,10 @@
       </ion-item>
 
       <div class="second-step" *ngIf="contactForm.value.identityName">
-        <ion-item class="ion-no-padding">
+        <ion-item
+          class="ion-no-padding"
+          [ngClass]="{'has-error': contactForm.controls.identityNumber.errors && (contactForm.controls.identityNumber.dirty || contactForm.controls.identityNumber.touched)}"
+        >
           <ion-input
             formControlName="identityNumber"
             id="invex-payee-registration-page-identit-Number-input"
@@ -41,7 +44,10 @@
             [placeholder]="contactForm.value.identityName"
           ></ion-input>
         </ion-item>
-        <ion-item class="ion-no-padding">
+        <ion-item
+          class="ion-no-padding"
+          [ngClass]="{'has-error': contactForm.controls.email.errors && (contactForm.controls.email.dirty || contactForm.controls.email.touched)}"
+        >
           <ion-input
             formControlName="email"
             id="invex-payee-registration-page-email-input"
@@ -49,7 +55,10 @@
             placeholder="{{'p2p-module.invex-payee-registration-page.form.email-placeholder' | translate}}"
           ></ion-input>
         </ion-item>
-        <ion-item class="ion-no-padding">
+        <ion-item
+          class="ion-no-padding"
+          [ngClass]="{'has-error': contactForm.controls.phone.errors && (contactForm.controls.phone.dirty || contactForm.controls.phone.touched)}"
+        >
           <ion-input
             formControlName="phone"
             id="invex-payee-registration-page-phone-input"

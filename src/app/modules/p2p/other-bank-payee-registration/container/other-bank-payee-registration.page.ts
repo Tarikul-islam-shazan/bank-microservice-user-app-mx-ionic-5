@@ -47,36 +47,36 @@ export class OtherBankPayeeRegistrationPage implements OnInit {
 
   initCompanyForm() {
     this.companyForm = this.formBuilder.group({
-      identityNumber: ['', Validators.required],
+      identityNumber: ['', [Validators.required, Validators.pattern('[0-9]*')]],
       companyName: ['', Validators.required],
       bankName: ['', Validators.required],
-      email: ['']
+      email: ['', Validators.email]
     });
   }
 
   initClabeDebitCardForm() {
     this.clabeDebitCardForm = this.formBuilder.group({
-      identityNumber: ['', Validators.required],
+      identityNumber: ['', [Validators.required, Validators.pattern('[0-9]*')]],
       bankName: ['', Validators.required],
       firstName: ['', Validators.required],
       secondName: [''],
       paternalLastName: ['', Validators.required],
       maternalLastName: [''],
-      email: [''],
-      phone: [''],
+      email: ['', Validators.email],
+      phone: ['', Validators.pattern('[0-9]*')],
       rfc: ['']
     });
   }
 
   initMobileForm() {
     this.mobileForm = this.formBuilder.group({
-      identityNumber: ['', Validators.required],
+      identityNumber: ['', [Validators.required, Validators.pattern('[0-9]*')]],
       bankName: ['', Validators.required],
       firstName: ['', Validators.required],
       secondName: [''],
       paternalLastName: ['', Validators.required],
       maternalLastName: [''],
-      email: [''],
+      email: ['', Validators.email],
       rfc: ['']
     });
   }
