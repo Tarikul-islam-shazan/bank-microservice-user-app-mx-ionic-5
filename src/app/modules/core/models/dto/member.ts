@@ -127,37 +127,37 @@ export interface IOtp {
   otpToken?: string;
 }
 
-export enum BillPayeeType {
-  Individual = 'Individual',
-  Company = 'Company'
-}
-export enum BillPaymentType {
-  Electronic = 'Electronic',
-  Check = 'Check'
-}
-
-export enum BillPaymentDeliveryInterval {
-  Electronic = '1',
-  Check = '5'
-}
-
-export interface IBillPayee extends IBillPayment {
-  payeeId?: string;
-  fullName?: string;
-  nickName?: string;
-  phone?: string;
-  type?: BillPayeeType;
-  street?: string;
-  postCode?: string;
-  city?: string;
-  state?: string;
+export interface IBillPayee {
+  biller?: IBiller;
   accountNumber?: string;
-  paymentMethodType?: BillPaymentType;
-  firstAvailableProcessDate?: string;
-  name?: string;
 }
+
+export enum BillerCategory {
+  Utility = 'Utility',
+  Topup = 'Topup',
+  Giftcard = 'Giftcard'
+}
+
 export interface IBiller {
+  category?: BillerCategory;
+  id?: number;
+  type?: string;
   name?: string;
+  biller_type?: string;
+  bill_type?: string;
+  country?: string;
+  currency?: string;
+  requires_name_on_account?: boolean;
+  hours_to_fulfill?: number;
+  account_number_digits?: string;
+  mask?: string;
+  can_check_balance?: boolean;
+  supports_partial_payments?: boolean;
+  has_xdata?: boolean;
+  available_topup_amounts?: string[];
+  topup_commission?: number;
+  available_gift_card_amounts?: string[];
+  gift_card_commission?: number;
 }
 export enum PaymentFrequency {
   Once = 'Once',

@@ -14,6 +14,8 @@ export class BillPayPage {
 
   ionViewWillEnter() {
     this.searchQuery = '';
+    this.facade.getBillers('');
+    this.facade.getMyBillAccoutns();
   }
 
   goToBillPayment(billPayee: IBillPayee) {
