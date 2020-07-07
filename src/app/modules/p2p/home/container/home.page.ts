@@ -11,10 +11,9 @@ export class HomePage implements OnInit {
   isEditable = false;
   constructor(public readonly facade: HomeP2PFacade) {}
 
-  ngOnInit() {}
-
-  ionViewWillEnter() {
+  ngOnInit() {
     this.searchQuery = '';
+    this.searchContact();
     this.facade.getAllContacts();
   }
 
