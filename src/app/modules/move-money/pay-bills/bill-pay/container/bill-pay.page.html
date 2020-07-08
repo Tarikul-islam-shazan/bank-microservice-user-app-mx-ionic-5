@@ -15,21 +15,22 @@
       <ion-item lines="none" class="icon-input">
         <ion-icon slot="start" name="search"></ion-icon>
         <ion-input
+          debounce="100"
           (ionChange)="searchBillers()"
           [(ngModel)]="searchQuery"
           placeholder="{{'move-money-module.pay-bills.bill-pay.search-input-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
     </div>
-    <div class="search-result-wrapper" *ngIf="searchQuery">
-      <ion-list *ngIf="facade.searchBillersResult.length > 0">
-        <ion-item *ngFor="let biller of facade.searchBillersResult">
+    <div class="search-result-wrapper" *ngIf="searchQuery && !this.facade.searching">
+      <ion-list *ngIf="facade.billers.length > 0">
+        <ion-item *ngFor="let biller of facade.billers">
           <ion-label class="ion-padding-top ion-padding-bottom ion-text-wrap" (click)="facade.addPayee(biller)">
             {{biller.name}}
           </ion-label>
         </ion-item>
       </ion-list>
-      <div class="no-result-block" *ngIf="facade.searchBillersResult.length === 0">
+      <div class="no-result-block" *ngIf="searchQuery && !this.facade.searching && facade.billers.length === 0">
         <ion-label class="ion-text-center ion-text-wrap"
           >{{'move-money-module.pay-bills.bill-pay.no-result-found-text' | translate}}</ion-label
         >

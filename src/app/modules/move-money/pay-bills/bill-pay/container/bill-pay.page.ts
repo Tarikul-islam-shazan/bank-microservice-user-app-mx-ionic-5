@@ -1,20 +1,21 @@
 import { BillPayFacade } from '../facade';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IBillPayee } from '@app/core';
-
 @Component({
   selector: 'mbc-bill-pay',
   templateUrl: './bill-pay.page.html',
   styleUrls: ['./bill-pay.page.scss']
 })
-export class BillPayPage {
-  payeeList: IBillPayee[] = [];
+export class BillPayPage implements OnInit {
   searchQuery: string;
   constructor(public facade: BillPayFacade) {}
 
+  ngOnInit() {
+    this.facade.searchBillersInit();
+  }
+
   ionViewWillEnter() {
     this.searchQuery = '';
-    this.facade.getBillers('');
     this.facade.getMyBillAccoutns();
   }
 
@@ -23,6 +24,11 @@ export class BillPayPage {
   }
 
   searchBillers() {
-    this.facade.searchBillers(this.searchQuery);
+    if (this.searchQuery) {
+      this.facade.searchBillers$.next(this.searchQuery);
+    } else {
+      this.facade.searching = false;
+      this.facade.billers = [];
+    }
   }
 }
