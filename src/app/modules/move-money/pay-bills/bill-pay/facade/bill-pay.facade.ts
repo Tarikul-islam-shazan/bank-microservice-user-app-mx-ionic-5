@@ -2,28 +2,27 @@ import { Injectable } from '@angular/core';
 import { PayBillService } from '@app/core/services/pay-bill.service';
 import { IBillPayee, IBiller, BillerCategory } from '@app/core/models/dto/member';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs/internal/Observable';
-import { map } from 'rxjs/operators';
+import { switchMap, tap } from 'rxjs/operators';
+import { Subject } from 'rxjs';
 
 @Injectable()
 export class BillPayFacade {
-  searchBillersResult: IBiller[];
+  billers: IBiller[] = [];
   myBillAccounts: IBillPayee[];
+  searchBillers$ = new Subject<string>();
+  searching: boolean;
   constructor(private payBillService: PayBillService, private router: Router) {}
 
-  searchBillers(billerName: string): void {
-    if (billerName) {
-      this.searchBillersResult = this.searchBillersResult.filter(
-        biller => biller.name.toLowerCase().indexOf(billerName.toLowerCase()) > -1
-      );
-    } else {
-      this.searchBillersResult = [];
-    }
-  }
-  getBillers(billerName: string): void {
-    this.payBillService
-      .searchBillers(BillerCategory.Utility, billerName)
-      .subscribe(billers => (this.searchBillersResult = billers));
+  searchBillersInit(): void {
+    this.searchBillers$
+      .pipe(
+        tap(() => (this.searching = true)),
+        switchMap(billerName => this.payBillService.searchBillers(BillerCategory.Utility, billerName)),
+        tap(() => (this.searching = false))
+      )
+      .subscribe(billers => {
+        this.billers = billers;
+      });
   }
 
   getMyBillAccoutns(): void {

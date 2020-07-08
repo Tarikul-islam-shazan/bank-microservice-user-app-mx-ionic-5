@@ -1,5 +1,4 @@
 import { environment } from '@env/environment';
-import { flatMap, map, tap } from 'rxjs/operators';
 import { HeaderService } from './header-service.service';
 import { HttpClient } from '@angular/common/http';
 import { IBillPayee, IBillPayment, IBiller, BillerCategory } from '@app/core/models/dto/member';
@@ -33,7 +32,7 @@ export class PayBillService {
   searchBillers(category: BillerCategory, name: string): Observable<IBiller[]> {
     return this.http.get<IBiller[]>(this.billerSearchUrl, {
       params: { category, name },
-      headers: this.headerService.getBankIdentifierHeader()
+      headers: this.headerService.getBankIdentifierHeader().set('skip-loader', '')
     });
   }
   getBillAccounts(category: BillerCategory): Observable<IBillPayee[]> {
