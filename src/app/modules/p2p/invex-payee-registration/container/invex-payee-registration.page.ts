@@ -46,6 +46,12 @@ export class InvexPayeeRegistrationPage implements OnInit {
     }
   }
 
+  focusOut(id: string) {
+    (document.getElementById(id) as HTMLInputElement).value = (document.getElementById(
+      id
+    ) as HTMLInputElement).value.trim();
+  }
+
   next() {
     const contact: any = {};
     Object.assign(contact, this.contactForm.value);

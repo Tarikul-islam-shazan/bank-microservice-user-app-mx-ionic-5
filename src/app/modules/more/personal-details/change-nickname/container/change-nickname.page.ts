@@ -85,6 +85,14 @@ export class ChangeNicknamePage implements OnInit, OnDestroy {
     }
   }
 
+  focusOut(): void {
+    (document.getElementById(
+      'change-nick-name-modal-page-nick-name-input'
+    ) as HTMLInputElement).value = (document.getElementById(
+      'change-nick-name-modal-page-nick-name-input'
+    ) as HTMLInputElement).value.trim();
+  }
+
   ngOnDestroy(): void {
     if (this.nicknameFromSubscription) {
       this.nicknameFromSubscription.unsubscribe();

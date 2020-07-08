@@ -26,6 +26,7 @@
             id="change-nick-name-modal-page-nick-name-input"
             type="text"
             [appInputMaxLength]="nickNameMaxLength"
+            (ionBlur)="focusOut()"
             required
           >
           </ion-input>

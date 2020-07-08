@@ -178,6 +178,12 @@ export class OtherBankPayeeRegistrationPage implements OnInit {
     return contact;
   }
 
+  focusOut(id: string) {
+    (document.getElementById(id) as HTMLInputElement).value = (document.getElementById(
+      id
+    ) as HTMLInputElement).value.trim();
+  }
+
   next() {
     const contact: IOtherContact = this.createOtherContactObject();
     this.facade.next(contact);

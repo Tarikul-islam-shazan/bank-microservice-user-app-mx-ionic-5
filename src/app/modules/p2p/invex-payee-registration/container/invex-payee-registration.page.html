@@ -18,6 +18,7 @@
           formControlName="alias"
           id="invex-payee-registration-page-alias-input"
           class="ion-margin-start"
+          (ionBlur)="focusOut('invex-payee-registration-page-alias-input')"
           placeholder="{{'p2p-module.invex-payee-registration-page.payee-alias-placeholder' | translate}}"
         ></ion-input>
       </ion-item>

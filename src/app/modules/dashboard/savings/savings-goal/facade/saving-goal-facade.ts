@@ -94,6 +94,7 @@ export class SavingGoalFacade {
   checkIsDisable(): boolean {
     return !(
       this.savingsGoalState.savingsGoal.name &&
+      this.savingsGoalState.savingsGoal.name.trim().length > 0 &&
       this.savingsGoalState.savingsGoal.yearOfSaving &&
       this.savingsGoalState.savingsGoal.targetAmount >= 10
     );
@@ -191,5 +192,11 @@ export class SavingGoalFacade {
         this.savingsGoalState.savingsGoal.targetAmount * ((Math.pow(1 + interest, tension) - 1) / interest);
     }
     return projectedAmount;
+  }
+
+  focusOut() {
+    this.savingsGoalState.savingsGoal.name = this.savingsGoalState.savingsGoal.name
+      ? this.savingsGoalState.savingsGoal.name.trim()
+      : '';
   }
 }
