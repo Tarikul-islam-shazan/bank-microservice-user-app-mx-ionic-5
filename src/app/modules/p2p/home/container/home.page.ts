@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeP2PFacade } from '../facade';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'mbc-home',
@@ -11,7 +12,9 @@ export class HomePage implements OnInit {
   isEditable = false;
   constructor(public readonly facade: HomeP2PFacade) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter() {
     this.searchQuery = '';
     this.searchContact();
     this.facade.getAllContacts();
@@ -27,5 +30,9 @@ export class HomePage implements OnInit {
 
   next() {
     this.facade.next(this.searchQuery);
+  }
+
+  ionViewWillLeave() {
+    this.facade.willLeave();
   }
 }
