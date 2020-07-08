@@ -134,10 +134,10 @@ export class SignupCompressedFacade {
     };
 
     if (!inviterFoundOwn) {
-      if (REG_EX_PATTERNS.INVITER_CODE.test(inviterEmailOrCode)) {
+      if (REG_EX_PATTERNS.EMAIL.test(inviterEmailOrCode)) {
+        member = Object.assign(member, { inviterEmail: inviterEmailOrCode.toLowerCase() });
+      } else {
         member = Object.assign(member, { inviterCode: inviterEmailOrCode });
-      } else if (REG_EX_PATTERNS.EMAIL.test(inviterEmailOrCode)) {
-        member = Object.assign(member, { inviterEmail: inviterEmailOrCode });
       }
     } else {
       member = Object.assign(member, { inviter: null });
