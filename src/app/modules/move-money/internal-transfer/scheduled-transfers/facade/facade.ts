@@ -42,11 +42,17 @@ export class ScheduledTransferFacade {
   }
   // From Fetch Scheduled transfer list we get debtor creditor account ID, based on this we can find their account type [DDA,SSA,LOC]
   getAccountType(accountId: string) {
+    return this.accountTypeTranslation(this.findAccountType(accountId));
+  }
+
+  findAccountType(accountId: string) {
     const accountinfo = this.accounts.find((account: IAccount) => account.accountId === accountId);
-    return this.accountTypeTranslation(accountinfo.accountType);
+    return accountinfo.accountType;
   }
   // Go-to modify schedule transfer screen, we re-use the internal transfer component.
   gotoConformDetails(scheduledTransfer: ITransfer): void {
+    this.internalTransferService.formAccountType = this.findAccountType(scheduledTransfer.debtorAccount);
+    this.internalTransferService.toAccountType = this.findAccountType(scheduledTransfer.creditorAccount);
     this.transferService.setTransfer(scheduledTransfer);
     this.transferService.setFromScheduledTransfers(true);
     this.router.navigate(['move-money/internal-transfer']);
