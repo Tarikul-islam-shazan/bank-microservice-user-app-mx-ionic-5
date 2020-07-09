@@ -2,15 +2,15 @@ import { P2PService } from '@app/p2p/services/p2p.service';
 import { Observable, Subscription } from 'rxjs';
 import { IContact } from '@app/p2p/models';
 import { Injectable, OnDestroy } from '@angular/core';
-import { map } from 'rxjs/operators';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { Router } from '@angular/router';
 import { MemberService, REG_EX_PATTERNS } from '@app/core';
 import { IMeedModalContent, ModalService } from '@app/shared';
+import { share } from 'rxjs/operators';
+
 @Injectable()
 export class HomeP2PFacade {
-  public myPayees: IContact[];
-  contactsListener: Subscription = new Subscription();
+  public myPayees$: Observable<IContact[]>;
   public searchResult: IContact[] = [];
   public startSearching = false;
   constructor(
@@ -21,8 +21,8 @@ export class HomeP2PFacade {
     private modalService: ModalService
   ) {}
 
-  getAllContacts() {
-    this.contactsListener = this.p2pService.getAllContacts().subscribe(t => (this.myPayees = t));
+  getAllContacts(): Observable<IContact[]> {
+    return this.p2pService.getAllContacts().pipe(share());
   }
 
   searchContact(query: string) {
@@ -58,9 +58,5 @@ export class HomeP2PFacade {
       this.analytics.logEvent(AnalyticsEventTypes.P2PSearchedNext);
       this.router.navigate(['/p2p/registration-type/', payeeTo]);
     }
-  }
-
-  willLeave() {
-    this.contactsListener.unsubscribe();
   }
 }

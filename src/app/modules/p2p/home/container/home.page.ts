@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeP2PFacade } from '../facade';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
+import { IContact } from '@app/p2p/models';
 
 @Component({
   selector: 'mbc-home',
@@ -9,6 +11,7 @@ import { map } from 'rxjs/operators';
 })
 export class HomePage implements OnInit {
   searchQuery: string;
+  myPayees$: Observable<IContact[]>;
   isEditable = false;
   constructor(public readonly facade: HomeP2PFacade) {}
 
@@ -17,7 +20,7 @@ export class HomePage implements OnInit {
   ionViewWillEnter() {
     this.searchQuery = '';
     this.searchContact();
-    this.facade.getAllContacts();
+    this.myPayees$ = this.facade.getAllContacts();
   }
 
   makeContactEditAble() {
@@ -30,9 +33,5 @@ export class HomePage implements OnInit {
 
   next() {
     this.facade.next(this.searchQuery);
-  }
-
-  ionViewWillLeave() {
-    this.facade.willLeave();
   }
 }
