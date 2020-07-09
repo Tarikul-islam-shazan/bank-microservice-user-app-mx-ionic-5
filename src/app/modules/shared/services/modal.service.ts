@@ -185,11 +185,15 @@ export class ModalService {
    * @memberof ModalService
    */
   async close(params?: any): Promise<boolean> {
-    // There is a need to pass an optional params, that's why added one
-    if (params) {
-      return this.modalCtrl.dismiss(params);
+    try {
+      // There is a need to pass an optional params, that's why added one
+      if (params) {
+        return this.modalCtrl.dismiss(params);
+      }
+      await this.modalCtrl.dismiss();
+    } catch (error) {
+      throw error;
     }
-    await this.modalCtrl.dismiss();
   }
 }
 

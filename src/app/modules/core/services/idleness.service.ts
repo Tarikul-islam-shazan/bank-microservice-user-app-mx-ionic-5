@@ -6,6 +6,7 @@ import { Logger } from './logger.service';
 import { environment } from '@env/environment';
 import { Router } from '@angular/router';
 import { LogoutService, LogoutReason } from '@app/core/services/logout.service';
+import { ModalService } from '@app/shared';
 const log = new Logger('IdlenessService');
 @Injectable({
   providedIn: 'root'
@@ -28,7 +29,8 @@ export class IdlenessService {
     private baseAppIdelness: Idle,
     private keepalive: Keepalive,
     private logoutService: LogoutService,
-    private router: Router
+    private router: Router,
+    private modalService: ModalService
   ) {
     this.idelnessTimeout = environment.appIdleness.idelnessTimeout;
     this.timeoutPeriod = environment.appIdleness.timeoutPeriod;
@@ -48,7 +50,7 @@ export class IdlenessService {
       // log.info('baseAppIdelness onIdleEnd');
     });
     this.onTimeoutSubscribe = this.baseAppIdelness.onTimeout.subscribe(() => {
-      // log.info('baseAppIdelness onTimeout');
+      // log.info('baseAppIdelness onTimeout');');
       this.appSessionTimeout();
     });
     this.onIdleStartSubscribe = this.baseAppIdelness.onIdleStart.subscribe(() => {
@@ -76,6 +78,11 @@ export class IdlenessService {
   }
 
   async appSessionTimeout() {
+    try {
+      this.modalService.close();
+    } catch (error) {
+      throw error;
+    }
     // Set logout reason: App Idelness session timeout and then redirect to login page
     this.logoutService.logoutReason = LogoutReason.AppSessionTimeOut;
     await this.router.navigateByUrl('login-user', { replaceUrl: true });
