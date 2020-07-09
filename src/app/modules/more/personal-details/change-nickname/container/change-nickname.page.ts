@@ -1,6 +1,6 @@
 import { ChangeNicknameFacade } from '../facade';
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { isEqual } from 'lodash';
 import { Subscription } from 'rxjs';
 
@@ -34,7 +34,12 @@ export class ChangeNicknamePage implements OnInit, OnDestroy {
     this.changeNicknameForm = this.formBuilder.group({
       nickname: [
         this.facade.customer.nickname,
-        [Validators.required, Validators.minLength(1), Validators.maxLength(this.nickNameMaxLength)]
+        [
+          Validators.required,
+          Validators.minLength(1),
+          Validators.maxLength(this.nickNameMaxLength),
+          this.noWhitespaceValidator
+        ]
       ]
     });
   }
@@ -81,16 +86,18 @@ export class ChangeNicknamePage implements OnInit, OnDestroy {
   save(): void {
     if (this.changeNicknameForm.valid) {
       const { nickname } = this.changeNicknameForm.value;
-      this.facade.updateCustomerNickname(nickname);
+      this.facade.updateCustomerNickname(nickname.trim());
     }
   }
 
-  focusOut(): void {
-    (document.getElementById(
-      'change-nick-name-modal-page-nick-name-input'
-    ) as HTMLInputElement).value = (document.getElementById(
-      'change-nick-name-modal-page-nick-name-input'
-    ) as HTMLInputElement).value.trim();
+  noWhitespaceValidator(control: FormControl) {
+    if (control.value) {
+      const isWhitespace = control.value.trim().length === 0;
+      const isValid = !isWhitespace;
+      return isValid ? null : { whitespace: true };
+    } else {
+      return null;
+    }
   }
 
   ngOnDestroy(): void {

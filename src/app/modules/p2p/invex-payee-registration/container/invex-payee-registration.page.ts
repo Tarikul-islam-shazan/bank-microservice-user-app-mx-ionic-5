@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InvexPayeeRegistrationFacade } from '../facade';
-import { FormGroup, FormBuilder, Validators, PatternValidator } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, PatternValidator, FormControl } from '@angular/forms';
 import { ModalController } from '@ionic/angular';
 import { DropdownModalComponent } from '@app/shared';
 import { invexPayeeIdentifiers, ContactType } from '@app/p2p/models';
@@ -23,7 +23,7 @@ export class InvexPayeeRegistrationPage implements OnInit {
 
   initForm() {
     this.contactForm = this.formBuilder.group({
-      alias: ['', Validators.required],
+      alias: ['', [Validators.required, this.noWhitespaceValidator]],
       identityName: ['', Validators.required],
       identityType: ['', Validators.required],
       identityNumber: ['', [Validators.required, Validators.pattern('[0-9]*')]],
@@ -46,13 +46,18 @@ export class InvexPayeeRegistrationPage implements OnInit {
     }
   }
 
-  focusOut(id: string) {
-    (document.getElementById(id) as HTMLInputElement).value = (document.getElementById(
-      id
-    ) as HTMLInputElement).value.trim();
+  noWhitespaceValidator(control: FormControl) {
+    if (control.value) {
+      const isWhitespace = control.value.trim().length === 0;
+      const isValid = !isWhitespace;
+      return isValid ? null : { whitespace: true };
+    } else {
+      return null;
+    }
   }
 
   next() {
+    this.contactForm.value.alias = this.contactForm.value.alias.trim();
     const contact: any = {};
     Object.assign(contact, this.contactForm.value);
     delete contact.identityName;
