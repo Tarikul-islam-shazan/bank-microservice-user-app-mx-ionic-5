@@ -13,6 +13,8 @@ import { BillPaymentPage } from './bill-pay/bill-payment/container/bill-payment.
 import { BillPaymentPageModule } from './bill-pay/bill-payment/bill-payment.module';
 import { AddPayeePage } from './bill-pay/add-payee/container/add-payee.page';
 import { AddPayeePageModule } from './bill-pay/add-payee/add-payee.module';
+import { EditPayeePageModule } from './bill-pay/edit-payee/add-payee.module';
+import { EditPayeePage } from './bill-pay/edit-payee/container/edit-payee.page';
 import { BillerDirectFacade } from './biller-direct/facade/facade';
 
 export const PAGE_CONTAINERS: any[] = [PayBillsHomePage, BillerDirectPage, CardSwapPage];
@@ -44,6 +46,11 @@ const routes: Routes = [
     component: AddPayeePage
   },
   {
+    path: 'edit-payee',
+    data: { title: PAGES.EDIT_PAYEE.NAME },
+    component: EditPayeePage
+  },
+  {
     path: 'bill-payment',
     data: { title: PAGES.BILL_PAYMENT.NAME },
     component: BillPaymentPage
@@ -51,7 +58,14 @@ const routes: Routes = [
 ];
 @NgModule({
   entryComponents: [],
-  imports: [SharedModule, RouterModule.forChild(routes), BillPayPageModule, AddPayeePageModule, BillPaymentPageModule],
+  imports: [
+    SharedModule,
+    RouterModule.forChild(routes),
+    BillPayPageModule,
+    AddPayeePageModule,
+    EditPayeePageModule,
+    BillPaymentPageModule
+  ],
   declarations: [...PAGE_CONTAINERS],
   providers: [...ALL_FACADES]
 })

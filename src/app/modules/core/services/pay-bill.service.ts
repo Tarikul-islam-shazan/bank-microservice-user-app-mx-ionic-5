@@ -29,6 +29,16 @@ export class PayBillService {
     );
   }
 
+  updatePayee(payee: IBillPayee): Observable<IBillPayee> {
+    return this.http.put<IBillPayee>(
+      `${this.billPayeeBaseUrl}/${this.billPayee._id}`,
+      {
+        accountNumber: payee.accountNumber
+      },
+      { headers: this.headerService.getMemberIdHeader() }
+    );
+  }
+
   searchBillers(category: BillerCategory, name: string): Observable<IBiller[]> {
     return this.http.get<IBiller[]>(this.billerSearchUrl, {
       params: { category, name },
@@ -42,9 +52,9 @@ export class PayBillService {
     });
   }
 
-  deletePayee() {
-    return this.http.delete(this.billPayeeBaseUrl + `/${this.billPayee.biller.id}`, {
-      headers: this.headerService.getBillPayProviderHeader()
+  deletePayee(id: string) {
+    return this.http.delete(`${this.billPayeeBaseUrl}/${id}`, {
+      headers: this.headerService.getMemberIdHeader()
     });
   }
 

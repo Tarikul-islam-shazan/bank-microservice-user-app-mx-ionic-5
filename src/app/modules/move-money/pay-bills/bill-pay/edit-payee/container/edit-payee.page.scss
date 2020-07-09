@@ -1,0 +1,54 @@
+.edit-payee-form {
+  .form-title {
+    margin: 20px 0;
+    font-family: 'Averta W05 Regular';
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    line-height: 16px;
+  }
+  ion-item {
+    ion-label {
+      opacity: 1;
+    }
+  }
+}
+.payee-type-radio {
+  display: flex;
+  .title {
+    padding-top: 5px;
+    margin-right: 10px;
+    font-family: 'Averta W05 Regular';
+    font-size: 1.6rem;
+    letter-spacing: 1px;
+    line-height: 16px;
+  }
+  ion-item {
+    --min-height: 30px;
+    --inner-padding-bottom: 0;
+    --inner-padding-end: 0;
+    --inner-padding-start: 0;
+    --inner-padding-top: 0;
+    --padding-bottom: 0;
+    --padding-end: 0;
+    --padding-start: 0;
+    --padding-top: 0;
+    ion-label {
+      color: #070a18 !important;
+      display: flex;
+      align-items: center;
+      height: 18px !important;
+      font-family: 'Averta W05 Regular' !important;
+      font-size: 1.5rem !important;
+      text-transform: capitalize !important;
+    }
+  }
+}
+
+.time-note {
+  color: #8c90a3 !important;
+  font-family: 'Averta W05 Semibold5179739';
+  font-size: 14px;
+  letter-spacing: -0.15px;
+  line-height: 16px;
+  padding: 5px;
+}
