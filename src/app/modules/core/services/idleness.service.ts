@@ -6,7 +6,7 @@ import { Logger } from './logger.service';
 import { environment } from '@env/environment';
 import { Router } from '@angular/router';
 import { LogoutService, LogoutReason } from '@app/core/services/logout.service';
-import { ModalService } from '@app/shared';
+import { ModalService } from '@app/shared/services/modal.service';
 const log = new Logger('IdlenessService');
 @Injectable({
   providedIn: 'root'
@@ -78,11 +78,11 @@ export class IdlenessService {
   }
 
   async appSessionTimeout() {
-    try {
-      this.modalService.close();
-    } catch (error) {
-      throw error;
+    const modal = await this.modalService.getTop();
+    if (modal) {
+      modal.dismiss();
     }
+
     // Set logout reason: App Idelness session timeout and then redirect to login page
     this.logoutService.logoutReason = LogoutReason.AppSessionTimeOut;
     await this.router.navigateByUrl('login-user', { replaceUrl: true });

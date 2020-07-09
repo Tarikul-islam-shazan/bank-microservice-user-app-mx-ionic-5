@@ -195,6 +195,10 @@ export class ModalService {
       throw error;
     }
   }
+
+  async getTop(): Promise<HTMLIonModalElement> {
+    return await this.modalCtrl.getTop();
+  }
 }
 
 // Export modal service interface
