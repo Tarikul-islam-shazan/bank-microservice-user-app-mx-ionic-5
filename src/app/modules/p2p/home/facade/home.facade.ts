@@ -1,15 +1,15 @@
 import { P2PService } from '@app/p2p/services/p2p.service';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { IContact } from '@app/p2p/models';
-import { Injectable } from '@angular/core';
-import { map } from 'rxjs/operators';
+import { Injectable, OnDestroy } from '@angular/core';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { Router } from '@angular/router';
 import { MemberService, REG_EX_PATTERNS } from '@app/core';
 import { IMeedModalContent, ModalService } from '@app/shared';
+import { share } from 'rxjs/operators';
+
 @Injectable()
 export class HomeP2PFacade {
-  public myPayees: IContact[] = [];
   public myPayees$: Observable<IContact[]>;
   public searchResult: IContact[] = [];
   public startSearching = false;
@@ -21,8 +21,8 @@ export class HomeP2PFacade {
     private modalService: ModalService
   ) {}
 
-  getAllContacts() {
-    this.myPayees$ = this.p2pService.getAllContacts().pipe(map(payees => (this.myPayees = payees)));
+  getAllContacts(): Observable<IContact[]> {
+    return this.p2pService.getAllContacts().pipe(share());
   }
 
   searchContact(query: string) {
