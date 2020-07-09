@@ -60,7 +60,7 @@ export class PayeeRegistrationTypeFacade {
         },
         {
           text: 'p2p-module.registration-type-page.done-button-text',
-          cssClass: 'gey-outline-button',
+          cssClass: 'grey-outline-button',
           handler: async () => {
             this.modalService.close();
             this.router.navigate(['/p2p/home']);
