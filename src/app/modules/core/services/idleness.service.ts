@@ -50,7 +50,7 @@ export class IdlenessService {
       // log.info('baseAppIdelness onIdleEnd');
     });
     this.onTimeoutSubscribe = this.baseAppIdelness.onTimeout.subscribe(() => {
-      // log.info('baseAppIdelness onTimeout');');
+      // log.info('baseAppIdelness onTimeout'));
       this.appSessionTimeout();
     });
     this.onIdleStartSubscribe = this.baseAppIdelness.onIdleStart.subscribe(() => {
