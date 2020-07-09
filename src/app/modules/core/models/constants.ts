@@ -319,13 +319,13 @@ export const PAGES: Page = {
     NAME: 'settings-dashboard',
     ROUTE_PATH: '/more/settings'
   },
-  ADD_PAY_ADDRESS: {
-    NAME: 'add-pay-address',
-    ROUTE_PATH: '/move-money/pay-bills/add-pay-address'
-  },
   ADD_PAYEE: {
     NAME: 'add-payee',
     ROUTE_PATH: '/move-money/pay-bills/add-payee'
+  },
+  EDIT_PAYEE: {
+    NAME: 'edit-payee',
+    ROUTE_PATH: '/move-money/pay-bills/edit-payee'
   },
   CHANGE_LANGUAGE: {
     NAME: 'change-language-dashboard',

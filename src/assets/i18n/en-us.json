@@ -1355,7 +1355,13 @@
         "search-input-placeholder": "Search to add new Bill Payer",
         "my-bill-accounts-list-title": "My Bill Accounts",
         "no-result-found-text": "No match found",
-        "continue-button-title": "Continue"
+        "continue-button-title": "Continue",
+        "delete-alert": {
+          "header": "Confirm!",
+          "message": "Are you sure to delete {{name}} bill account?",
+          "btn-cancel": "Cancel",
+          "btn-confirm": "Okay"
+        }
       },
       "add-payee": {
         "page-title": "Pay Bills",
@@ -1368,6 +1374,20 @@
         "next-button-title": "Next",
         "modal": {
           "title": "You've successfully added {{billerName}} to your saved bill accounts.",
+          "btn-pay-bill": "Pay Bill",
+          "btn-view-bill-account": "View Bill Accounts"
+        }
+      },
+      "edit-payee": {
+        "page-title": "Pay Bills",
+        "page-header": "Edit Bill Pay",
+        "account-number-placeholder": "Account Number",
+        "biller-label": "Biller",
+        "account-number-label": "Account Number",
+        "repeat-account-number-label": "Repeat Account Number",
+        "next-button-title": "Next",
+        "modal": {
+          "title": "You've successfully edited {{billerName}} to your saved bill accounts.",
           "btn-pay-bill": "Pay Bill",
           "btn-view-bill-account": "View Bill Accounts"
         }

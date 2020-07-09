@@ -1346,7 +1346,13 @@
         "search-input-placeholder": "Search to add new Bill Payer",
         "my-bill-accounts-list-title": "My Bill Accounts",
         "no-result-found-text": "No match found",
-        "continue-button-title": "Continuar"
+        "continue-button-title": "Continuar",
+        "delete-alert": {
+          "header": "¡confirmar!",
+          "message": "Are you sure to delete {{name}} bill account?",
+          "btn-cancel": "Cancelar",
+          "btn-confirm": "Correcto"
+        }
       },
       "add-payee": {
         "page-title": "Pagar recibo",

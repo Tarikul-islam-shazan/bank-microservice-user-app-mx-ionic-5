@@ -1,0 +1,76 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title id="edit-payee-page-haeder-title-text">
+      {{'move-money-module.pay-bills.edit-payee.page-title' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div class="edit-payee-form">
+      <div class="step-one">
+        <ion-item lines="none" class="ion-no-padding" id="edit-payee-page-form-haeder-title-text">
+          <ion-label><b>{{'move-money-module.pay-bills.edit-payee.page-header' | translate}}</b></ion-label>
+        </ion-item>
+        <form [formGroup]="editPayeeForm" novalidate>
+          <ion-list lines="none" class="input-list">
+            <ion-item>
+              <ion-label position="stacked" id="add-paye-page-biller-name-label">
+                {{ 'move-money-module.pay-bills.edit-payee.biller-label' | translate }}</ion-label
+              >
+              <ion-input
+                type="text"
+                class="white-input"
+                id="add-paye-page-biller-name-input"
+                formControlName="name"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked" id="add-paye-page-biller-name-label">
+                {{ 'move-money-module.pay-bills.edit-payee.account-number-label' | translate }}</ion-label
+              >
+              <ion-input
+                placeholder="{{ 'move-money-module.pay-bills.edit-payee.account-number-placeholder' | translate }}"
+                type="text"
+                class="white-input"
+                id="add-paye-page-biller-name-input"
+                formControlName="accountNumber"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked" id="add-paye-page-repeat-account-number-label">
+                {{ 'move-money-module.pay-bills.edit-payee.repeat-account-number-label' | translate }}</ion-label
+              >
+              <ion-input
+                placeholder="{{ 'move-money-module.pay-bills.edit-payee.account-number-placeholder' | translate }}"
+                type="text"
+                class="white-input"
+                id="add-paye-page-repeat-account-number-input"
+                formControlName="confirmAccountNumber"
+              ></ion-input>
+            </ion-item>
+          </ion-list>
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      [disabled]="editPayeeForm.invalid || !isAccountNumberChanged"
+      class="white-button"
+      id="edit-payee-page-next-btn"
+      expand="block"
+      (click)="gotoNext()"
+    >
+      {{'move-money-module.pay-bills.edit-payee.next-button-title' | translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>
