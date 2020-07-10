@@ -4,6 +4,6 @@
     {{ title }}
   </div>
   <div class="balance-amount ion-text-center" id="account-balance-amount" [style.color]="balanceColor">
-    {{ amount || 0 | negToPos }}
+    {{ balanceAmount() | negToPos }}
   </div>
 </div>
