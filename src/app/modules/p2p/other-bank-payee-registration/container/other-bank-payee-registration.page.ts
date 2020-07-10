@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DropdownOption } from '@app/signup/models/signup';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { DropdownModalComponent } from '@app/shared';
 import { ModalController } from '@ionic/angular';
 import { otherBankPayeeIdentifiers, IdentityType, IOtherContact, ContactType } from '@app/p2p/models';
@@ -39,7 +39,7 @@ export class OtherBankPayeeRegistrationPage implements OnInit {
 
   initInitialForm() {
     this.initialForm = this.formBuilder.group({
-      alias: ['', Validators.required],
+      alias: ['', [Validators.required, this.noWhitespaceValidator]],
       identityTypeName: ['', Validators.required],
       contactType: ContactType.Other
     });
@@ -48,7 +48,7 @@ export class OtherBankPayeeRegistrationPage implements OnInit {
   initCompanyForm() {
     this.companyForm = this.formBuilder.group({
       identityNumber: ['', [Validators.required, Validators.pattern('[0-9]*')]],
-      companyName: ['', Validators.required],
+      companyName: ['', [Validators.required, this.noWhitespaceValidator]],
       bankName: ['', Validators.required],
       email: ['', Validators.email]
     });
@@ -58,10 +58,10 @@ export class OtherBankPayeeRegistrationPage implements OnInit {
     this.clabeDebitCardForm = this.formBuilder.group({
       identityNumber: ['', [Validators.required, Validators.pattern('[0-9]*')]],
       bankName: ['', Validators.required],
-      firstName: ['', Validators.required],
-      secondName: [''],
-      paternalLastName: ['', Validators.required],
-      maternalLastName: [''],
+      firstName: ['', [Validators.required, this.noWhitespaceValidator]],
+      secondName: ['', this.noWhitespaceValidator],
+      paternalLastName: ['', [Validators.required, this.noWhitespaceValidator]],
+      maternalLastName: ['', this.noWhitespaceValidator],
       email: ['', Validators.email],
       phone: ['', Validators.pattern('[0-9]*')],
       rfc: ['']
@@ -72,10 +72,10 @@ export class OtherBankPayeeRegistrationPage implements OnInit {
     this.mobileForm = this.formBuilder.group({
       identityNumber: ['', [Validators.required, Validators.pattern('[0-9]*')]],
       bankName: ['', Validators.required],
-      firstName: ['', Validators.required],
-      secondName: [''],
-      paternalLastName: ['', Validators.required],
-      maternalLastName: [''],
+      firstName: ['', [Validators.required, this.noWhitespaceValidator]],
+      secondName: ['', this.noWhitespaceValidator],
+      paternalLastName: ['', [Validators.required, this.noWhitespaceValidator]],
+      maternalLastName: ['', this.noWhitespaceValidator],
       email: ['', Validators.email],
       rfc: ['']
     });
@@ -156,26 +156,45 @@ export class OtherBankPayeeRegistrationPage implements OnInit {
 
   createOtherContactObject(): IOtherContact {
     const contact: any = {
-      alias: this.initialForm.value.alias,
+      alias: this.initialForm.value.alias.trim(),
       contactType: ContactType.Other,
       identityType: this.payeeIdentifier.value,
       bankCode: this.selectedBank.value
     };
     switch (this.payeeIdentifier.value) {
       case IdentityType.Company:
+        this.companyForm.value.companyName = this.companyForm.value.companyName.trim();
         Object.assign(contact, this.companyForm.value);
         break;
       case IdentityType.Clabe:
       case IdentityType.DebitCard:
+        this.clabeDebitCardForm.value.firstName = this.clabeDebitCardForm.value.firstName.trim();
+        this.clabeDebitCardForm.value.secondName = this.clabeDebitCardForm.value.secondName.trim();
+        this.clabeDebitCardForm.value.paternalLastName = this.clabeDebitCardForm.value.paternalLastName.trim();
+        this.clabeDebitCardForm.value.maternalLastName = this.clabeDebitCardForm.value.maternalLastName.trim();
         Object.assign(contact, this.clabeDebitCardForm.value);
         break;
       case IdentityType.Mobile:
+        this.mobileForm.value.firstName = this.mobileForm.value.firstName.trim();
+        this.mobileForm.value.secondName = this.mobileForm.value.secondName.trim();
+        this.mobileForm.value.paternalLastName = this.mobileForm.value.paternalLastName.trim();
+        this.mobileForm.value.maternalLastName = this.mobileForm.value.maternalLastName.trim();
         Object.assign(contact, this.mobileForm.value);
         break;
     }
     delete contact.bankName;
 
     return contact;
+  }
+
+  noWhitespaceValidator(control: FormControl) {
+    if (control.value) {
+      const isWhitespace = control.value.trim().length === 0;
+      const isValid = !isWhitespace;
+      return isValid ? null : { whitespace: true };
+    } else {
+      return null;
+    }
   }
 
   next() {

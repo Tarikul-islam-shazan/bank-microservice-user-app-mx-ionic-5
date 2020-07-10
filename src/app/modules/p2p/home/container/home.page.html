@@ -83,7 +83,7 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar>
-    <ion-button class="white-button" id="p2p-home-page-next-btn" (click)="next()" [disabled]="!searchQuery">
+    <ion-button class="white-button" id="p2p-home-page-next-btn" (click)="next()" [disabled]="!searchQuery.trim()">
       {{'p2p-module.home-page.next-button-title' | translate}}
     </ion-button>
   </ion-toolbar>

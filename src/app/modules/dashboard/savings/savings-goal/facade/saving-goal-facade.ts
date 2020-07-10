@@ -61,6 +61,7 @@ export class SavingGoalFacade {
   }
 
   addSavingGoal() {
+    this.savingsGoalState.savingsGoal.name = this.savingsGoalState.savingsGoal.name.trim();
     this.savingGoalService.postSavingGoal(this.savingsGoalState.savingsGoal).subscribe((response: ISavingsGoal) => {
       this.analytics.logEvent(AnalyticsEventTypes.SavingsGoalCreated, {
         'goal-amount': this.savingsGoalState.savingsGoal.targetAmount,
@@ -77,6 +78,7 @@ export class SavingGoalFacade {
    * @memberOf SavingGoalFacade
    */
   editSavingGoal(): void {
+    this.savingsGoalState.savingsGoal.name = this.savingsGoalState.savingsGoal.name.trim();
     const savingsGoal = JSON.parse(
       JSON.stringify(
         omit(this.savingsGoalState.savingsGoal, ['startDate', 'endDate', 'createdDate', 'updatedDate', '__v'])
@@ -94,6 +96,7 @@ export class SavingGoalFacade {
   checkIsDisable(): boolean {
     return !(
       this.savingsGoalState.savingsGoal.name &&
+      this.savingsGoalState.savingsGoal.name.trim().length > 0 &&
       this.savingsGoalState.savingsGoal.yearOfSaving &&
       this.savingsGoalState.savingsGoal.targetAmount >= 10
     );
