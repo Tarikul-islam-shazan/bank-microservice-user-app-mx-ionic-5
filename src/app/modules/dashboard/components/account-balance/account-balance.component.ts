@@ -1,9 +1,10 @@
-import { Component, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 
 @Component({
   selector: 'account-balance',
   templateUrl: './account-balance.component.html',
-  styleUrls: ['./account-balance.component.scss']
+  styleUrls: ['./account-balance.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AccountBalanceComponent {
   @Input() title: string;
