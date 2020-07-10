@@ -3,7 +3,7 @@
   <div class="title ion-text-center" id="account-balance-transaction-title" [style.color]="balanceColor" translate>
     {{ title }}
   </div>
-  <div *ngIf="amount" class="balance-amount ion-text-center" id="account-balance-amount" [style.color]="balanceColor">
-    {{ amount | negToPos }}
+  <div class="balance-amount ion-text-center" id="account-balance-amount" [style.color]="balanceColor">
+    {{ balanceAmount() | negToPos }}
   </div>
 </div>

@@ -9,4 +9,8 @@ export class AccountBalanceComponent {
   @Input() title: string;
   @Input() amount: number;
   @Input() balanceColor? = '#070A18';
+
+  balanceAmount(): number {
+    return this.amount ? this.amount : 0;
+  }
 }
