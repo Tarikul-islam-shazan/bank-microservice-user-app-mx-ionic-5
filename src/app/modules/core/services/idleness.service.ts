@@ -78,6 +78,8 @@ export class IdlenessService {
   }
 
   async appSessionTimeout() {
+    // checks if there's a modal open or not,
+    // if there is then modal dismiss is being called
     const modal = await this.modalService.getTop();
     if (modal) {
       modal.dismiss();
