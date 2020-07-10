@@ -301,11 +301,10 @@ export class InternalTransferFacade {
     return this.toAccount.accountType === AccountType.LOC && !this.isLocPaymentOptionSelected;
   }
 
-  closeActionSheet() {
-    try {
-      this.actionSheetCtrl.dismiss();
-    } catch (error) {
-      throw error;
+  async closeActionSheet() {
+    const actionSheet = await this.actionSheetCtrl.getTop();
+    if (actionSheet) {
+      actionSheet.dismiss();
     }
   }
 }
