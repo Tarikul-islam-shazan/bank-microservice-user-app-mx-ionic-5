@@ -191,6 +191,15 @@ export class ModalService {
     }
     await this.modalCtrl.dismiss();
   }
+  /**
+   * returns the top overlay of the modal
+   *
+   * @returns {Promise<HTMLIonModalElement>}
+   * @memberof ModalService
+   */
+  async getTop(): Promise<HTMLIonModalElement> {
+    return await this.modalCtrl.getTop();
+  }
 }
 
 // Export modal service interface

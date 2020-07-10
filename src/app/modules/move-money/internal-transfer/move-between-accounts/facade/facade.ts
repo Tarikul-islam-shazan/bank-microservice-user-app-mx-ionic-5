@@ -300,4 +300,11 @@ export class InternalTransferFacade {
   get isShowLocPaymentSelectionOption(): boolean {
     return this.toAccount.accountType === AccountType.LOC && !this.isLocPaymentOptionSelected;
   }
+
+  async closeActionSheet() {
+    const actionSheet = await this.actionSheetCtrl.getTop();
+    if (actionSheet) {
+      actionSheet.dismiss();
+    }
+  }
 }

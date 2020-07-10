@@ -54,4 +54,8 @@ export class MoveBetweenAccountsPage implements OnInit, OnDestroy {
       this.amountInputElement.setFocus();
     }, 100);
   }
+
+  ionViewWillLeave() {
+    this.facade.closeActionSheet();
+  }
 }
