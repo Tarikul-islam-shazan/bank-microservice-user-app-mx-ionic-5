@@ -47,7 +47,18 @@ export class InternalTransferFacade {
       // Default fromAccount and toAccount Type;
       this.accountSwitch(AccountType.DDA, AccountType.SSA);
     }
-    this.accountService.fetchAccountSummary().subscribe(success => {});
+    this.accountService.fetchAccountSummary().subscribe(accounts => {
+      if (accounts) {
+        accounts.map(account => {
+          if (account.accountType === this.fromAccount.accountType) {
+            this.fromAccount = account;
+          }
+          if (account.accountType === this.toAccount.accountType) {
+            this.toAccount = account;
+          }
+        });
+      }
+    });
     this.internalTransferService.loadTransferFrequency();
   }
 
