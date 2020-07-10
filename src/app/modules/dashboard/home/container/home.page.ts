@@ -9,7 +9,9 @@ import { IAccount } from '@app/core/models/dto/account';
 export class HomePage implements OnInit {
   constructor(public homeFacade: HomeFacade) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  ionViewWillEnter() {
     this.homeFacade.initialize();
   }
 
