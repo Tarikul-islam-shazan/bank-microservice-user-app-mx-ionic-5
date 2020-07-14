@@ -11,11 +11,11 @@ export interface IContact {
   companyName?: string;
   bankCode?: string;
   alias?: string;
-  rfc?: string;
-  email?: string;
-  phone?: string;
   dateOfBirth?: string;
   address?: string;
+  email?: string;
+  phone?: string;
+  rfc?: string;
 }
 
 export enum ContactType {

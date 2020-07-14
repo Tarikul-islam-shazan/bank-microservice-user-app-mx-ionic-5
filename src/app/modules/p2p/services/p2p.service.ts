@@ -32,7 +32,7 @@ export class P2PService {
     return this.http.post<{}>(url, contact, { headers: this.headerService.getMemberICustomerIdHeader() });
   }
 
-  addInvexContact(contact: IInvexContact): Observable<void> {
+  addInvexContact(contact: IContact): Observable<void> {
     const url = this.baseUrl + '/contacts';
     return this.http.post<void>(url, contact, { headers: this.headerService.getMemberICustomerIdHeader() });
   }

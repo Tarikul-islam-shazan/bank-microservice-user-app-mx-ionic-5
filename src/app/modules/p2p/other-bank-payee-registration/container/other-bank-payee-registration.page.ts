@@ -3,7 +3,7 @@ import { DropdownOption } from '@app/signup/models/signup';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { DropdownModalComponent } from '@app/shared';
 import { ModalController } from '@ionic/angular';
-import { otherBankPayeeIdentifiers, IdentityType, IOtherContact, ContactType } from '@app/p2p/models';
+import { otherBankPayeeIdentifiers, IdentityType, IContact, ContactType } from '@app/p2p/models';
 import { OtherBankPayeeRegistrationFacade } from '../facade';
 
 @Component({
@@ -154,7 +154,7 @@ export class OtherBankPayeeRegistrationPage implements OnInit {
     }
   }
 
-  createOtherContactObject(): IOtherContact {
+  createOtherContactObject(): IContact {
     const contact: any = {
       alias: this.initialForm.value.alias.trim(),
       contactType: ContactType.Other,
@@ -198,7 +198,7 @@ export class OtherBankPayeeRegistrationPage implements OnInit {
   }
 
   next() {
-    const contact: IOtherContact = this.createOtherContactObject();
+    const contact: IContact = this.createOtherContactObject();
     this.facade.next(contact);
   }
 }

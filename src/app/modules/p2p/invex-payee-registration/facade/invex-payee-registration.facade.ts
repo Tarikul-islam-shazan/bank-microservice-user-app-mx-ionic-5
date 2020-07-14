@@ -2,13 +2,13 @@ import { Injectable } from '@angular/core';
 import { P2PService } from '@app/p2p/services/p2p.service';
 import { ModalService, IMeedModalContent, SuccessModalPage } from '@app/shared';
 import { Router } from '@angular/router';
-import { IInvexContact } from '@app/p2p/models';
+import { IContact } from '@app/p2p/models';
 
 @Injectable()
 export class InvexPayeeRegistrationFacade {
   constructor(private router: Router, private p2pService: P2PService, private modalService: ModalService) {}
 
-  next(contact: IInvexContact) {
+  next(contact: IContact) {
     this.p2pService.addInvexContact(contact).subscribe(resp => this.openSuccessModal());
   }
 
