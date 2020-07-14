@@ -35,6 +35,14 @@
       },
       "modal-action-btn": {
         "modal-dismiss-button-text": "Dismiss"
+      },
+      "biometric-alert": {
+        "title": "Face or Touch ID",
+        "message": "Do you want to use Face ID or Touch ID to unlock this app in the future?",
+        "buttons": {
+          "yes-button": "Yes",
+          "no-button": "No"
+        }
       }
     },
     "forgot-password-page": {
