@@ -16,6 +16,8 @@ import { AppPlatform } from '@app/core/util/app-platform';
 import { ModalService, IMeedModalComponentProps } from '@app/shared';
 import { CallNumber } from '@ionic-native/call-number/ngx';
 import { StaticDataService } from '@app/core/services/static-data.service';
+import { TranslateService } from '@ngx-translate/core';
+import { AlertController } from '@ionic/angular';
 @Injectable()
 export class LoginFacade {
   constructor(
@@ -32,7 +34,9 @@ export class LoginFacade {
     private appPlatform: AppPlatform,
     private modalService: ModalService,
     private callService: CallNumber,
-    private staticDataService: StaticDataService
+    private staticDataService: StaticDataService,
+    public alertController: AlertController,
+    private translateService: TranslateService
   ) {}
 
   /**
@@ -55,6 +59,59 @@ export class LoginFacade {
       this.memberService.setMember(member);
       this.checkApplicationStatus(member, accountSummary);
     });
+  }
+
+  /**
+   * Showing alert when user check on Touch ID or Face ID checkbox
+   * Ticket: VAST-24
+   * Details: Meed Redesign : Touch ID/ Face ID issues observed on both iOS and Android device
+   * Date: Jul 13, 2020
+   * Developer: Utpaul <Utpal.Sarker@brainstation23.com>
+   *
+   * @param {LoginForm} loginFormCredential
+   * @memberof LoginFacade
+   */
+  async openBiometricConfirmationAlert(loginFormCredential: LoginForm) {
+    const alert = await this.alertController.create({
+      header: this.translateService.instant('login-module.create-login-page.biometric-alert.title'),
+      backdropDismiss: false,
+      cssClass: 'biometric-alert',
+      message: this.translateService.instant('login-module.create-login-page.biometric-alert.message'),
+      buttons: [
+        {
+          text: this.translateService.instant('login-module.create-login-page.biometric-alert.buttons.yes-button'),
+          handler: () => {
+            this.authenticate(loginFormCredential);
+          }
+        },
+        {
+          text: this.translateService.instant('login-module.create-login-page.biometric-alert.buttons.no-button'),
+          handler: () => {
+            loginFormCredential.rememberBiometric = !loginFormCredential.rememberBiometric;
+            this.authenticate(loginFormCredential);
+          }
+        }
+      ]
+    });
+    await alert.present();
+  }
+
+  /**
+   * Checking is user check Touch ID or FaceID checkbox
+   * Ticket: VAST-24
+   * Details: Meed Redesign : Touch ID/ Face ID issues observed on both iOS and Android device
+   * Date: Jul 13, 2020
+   * Developer: Utpaul <Utpal.Sarker@brainstation23.com>
+   *
+   * @param {LoginForm} loginFormCredential
+   * @memberof LoginFacade
+   */
+  async requestForAuthentication(loginFormCredential: LoginForm) {
+    if (loginFormCredential.rememberBiometric) {
+      this.openBiometricConfirmationAlert(loginFormCredential);
+    } else {
+      this.authenticate(loginFormCredential);
+    }
   }
   /**
    * Plaform wise text showing in checkbox

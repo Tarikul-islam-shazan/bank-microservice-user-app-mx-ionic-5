@@ -84,10 +84,11 @@ export class LoginUserPage implements OnInit {
 
   async ionViewDidEnter() {
     this.updateLoginFormValue();
-    const isLoggedOut = await this.loginFacade.isLoggedOut();
-    if (isLoggedOut && this.loginFacade.useBiometric) {
-      this.loginFacade.requestBiometricAuthentication(this.loginForm.value);
+    await this.loginFacade.isLoggedOut();
+    if (this.loginFacade.useBiometric) {
+      await this.loginFacade.requestBiometricAuthentication(this.loginForm.value);
     }
+
     this.loginFacade.getBankConatactNumber();
   }
 
@@ -97,9 +98,15 @@ export class LoginUserPage implements OnInit {
    * @returns {void}
    * @memberOf LoginUserPage
    */
-  doLogin(): void {
+  async doLogin(): Promise<void> {
     if (this.loginForm.valid) {
-      this.loginFacade.authenticate(this.loginForm.value);
+      const { username, password, rememberBiometric, rememberUsername } = this.loginForm.value;
+      await this.loginFacade.requestForAuthentication({
+        username,
+        password,
+        rememberBiometric,
+        rememberUsername
+      });
     }
   }
 

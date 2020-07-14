@@ -14,6 +14,11 @@
   --padding-bottom: 0 !important;
 }
 
+.biometric-alert {
+  --min-width: 90% !important;
+  text-transform: none !important;
+}
+
 .header-title {
   color: #070a18 !important;
   font-family: 'Averta W05 ExtraBold' !important;
