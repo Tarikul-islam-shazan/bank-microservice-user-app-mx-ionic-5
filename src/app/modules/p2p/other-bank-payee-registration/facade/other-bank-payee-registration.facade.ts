@@ -4,7 +4,7 @@ import { StaticDataService, StaticDataCategory, IDropdownOption } from '@app/cor
 import { Observable } from 'rxjs';
 import { ModalService, IMeedModalContent, SuccessModalPage } from '@app/shared';
 import { Router } from '@angular/router';
-import { IOtherContact } from '@app/p2p/models';
+import { IContact } from '@app/p2p/models';
 
 @Injectable()
 export class OtherBankPayeeRegistrationFacade {
@@ -44,7 +44,7 @@ export class OtherBankPayeeRegistrationFacade {
     this.modalService.openModal(SuccessModalPage, componentProps);
   }
 
-  next(contact: IOtherContact) {
+  next(contact: IContact) {
     this.p2pService.addOtherDomesticContact(contact).subscribe(resp => this.openSuccessModal());
   }
 }

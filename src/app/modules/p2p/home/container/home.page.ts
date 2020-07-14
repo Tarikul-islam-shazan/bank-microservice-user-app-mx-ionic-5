@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeP2PFacade } from '../facade';
-import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { IContact } from '@app/p2p/models';
+import { IContact, ContactType } from '@app/p2p/models';
 
 @Component({
   selector: 'mbc-home',
@@ -10,15 +9,15 @@ import { IContact } from '@app/p2p/models';
   styleUrls: ['./home.page.scss']
 })
 export class HomePage implements OnInit {
-  searchQuery: string;
+  searchQuery = '';
   myPayees$: Observable<IContact[]>;
   isEditable = false;
+  contactType = ContactType;
   constructor(public readonly facade: HomeP2PFacade) {}
 
   ngOnInit() {}
 
   ionViewWillEnter() {
-    this.searchQuery = '';
     this.searchContact();
     this.myPayees$ = this.facade.getAllContacts();
   }
