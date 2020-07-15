@@ -18,6 +18,7 @@ export class HomePage implements OnInit {
   ngOnInit() {}
 
   ionViewWillEnter() {
+    this.searchQuery = '';
     this.searchContact();
     this.myPayees$ = this.facade.getAllContacts();
   }
