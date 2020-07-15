@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { HomeFacade } from '../facade/home-facade';
 import { IAccount } from '@app/core/models/dto/account';
 @Component({
@@ -6,10 +6,10 @@ import { IAccount } from '@app/core/models/dto/account';
   templateUrl: './home.page.html',
   styleUrls: ['./home.page.scss']
 })
-export class HomePage implements OnInit {
+export class HomePage {
   constructor(public homeFacade: HomeFacade) {}
 
-  ngOnInit() {
+  ionViewWillEnter() {
     this.homeFacade.initialize();
   }
 
