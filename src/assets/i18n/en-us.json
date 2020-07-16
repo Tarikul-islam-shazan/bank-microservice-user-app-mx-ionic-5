@@ -643,7 +643,7 @@
       "title-text": "Direct Deposit",
       "subtitle-text": "Please enter the name of your Employer below. We will email you a Direct Deposit form which you can submit to your employer.",
       "placeholder-text": "Employer Name",
-      "checkbox-text": "I agree to receive via email a Direct Deposit form which includes my Employer's Name, my Bank Account Number and Routing Number.",
+      "checkbox-text": "I agree to receive via email a Direct Deposit form which includes my Employer's Name, my Bank Account Number and InterBank Clabe.",
       "btn-text": "Email direct deposit form"
     },
     "direct-deposit-complete": {
