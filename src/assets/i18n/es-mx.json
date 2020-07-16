@@ -634,7 +634,7 @@
       "title-text": "Deposito directo",
       "subtitle-text": "Ingrese el nombre de su empleador a continuación. Le enviaremos un formulario de depósito directo que puede enviar a su empleador.",
       "placeholder-text": "Nombre del empleador",
-      "checkbox-text": "Acepto recibir por correo electrónico un formulario de depósito directo que incluye el nombre de mi empleador, mi número de cuenta bancaria y número de ruta.",
+      "checkbox-text": "Acepto recibir por correo electrónico un formulario de depósito directo que incluye el nombre de mi empleador, mi número de cuenta bancaria y InterBank Clabe.",
       "btn-text": "Enviar Formulario A Mi Correo Electrónico"
     },
     "direct-deposit-complete": {
