@@ -1052,6 +1052,7 @@
     "code-0": "No se puede conectar a la red. Comprueba tu conexión a Internet.",
     "code-100": "Unable to update sweep account state",
     "code-201": "Current user Session ID not found",
+    "code-202": "¡Huy! Algo ha fallado.",
     "code-301": "Unable to get access token",
     "code-302": "Headers must be set before accessing them",
     "code-303": "Session timeout",
