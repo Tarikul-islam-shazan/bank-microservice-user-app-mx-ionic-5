@@ -73,7 +73,8 @@
       <ion-list>
         <ion-item *ngFor="let payee of myPayees$ | async">
           <ion-label class="ion-padding-top ion-padding-bottom" id="p2p-home-page-payee-email-text">
-            {{payee.contactType === contactType.Meed ? payee.email : payee.alias}}
+            {{payee.contactType === contactType.Meed || payee.contactType === contactType.Domestic ? payee.email :
+            payee.alias}}
           </ion-label>
           <ion-icon *ngIf="isEditable" slot="end" name="pencil"></ion-icon>
         </ion-item>
