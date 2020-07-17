@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TncDocument } from '@app/core';
 import { SignUpTermsConditionFacade } from '../facade';
-import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
 
 @Component({
   selector: 'app-terms-conditions',
@@ -11,7 +11,7 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 export class TermsConditionsPage implements OnInit {
   termsConditions: TncDocument[] = [];
   termsConditionForm: FormGroup;
-  showCorporateTnc = false;
+  hasCorporateTnc = true;
   corporateTnCAccepted = false;
   corporateTnCNotAccepted = false;
   constructor(private formBuilder: FormBuilder, public facade: SignUpTermsConditionFacade) {}
@@ -36,15 +36,9 @@ export class TermsConditionsPage implements OnInit {
           new FormControl(false, [Validators.required, Validators.requiredTrue])
         );
       });
-      if (true) {
-        this.termsConditionForm.addControl(
-          'corporateTnCAccepted',
-          new FormControl(false, [Validators.required, Validators.requiredTrue])
-        );
-        this.termsConditionForm.addControl(
-          'corporateTnCNotAccepted',
-          new FormControl(false, [Validators.required, Validators.requiredTrue])
-        );
+      if (this.hasCorporateTnc) {
+        this.termsConditionForm.addControl('corporateTnCAccepted', new FormControl(false));
+        this.termsConditionForm.addControl('corporateTnCNotAccepted', new FormControl(false));
       }
       // if (resp.showCorporateTnc) {
       //   this.showCorporateTnc = resp.showCorporateTnc;
@@ -54,8 +48,18 @@ export class TermsConditionsPage implements OnInit {
   }
 
   async acceptTermsConditions() {
-    if (this.termsConditionForm.valid) {
-      this.facade.acceptTermsCondition();
+    if (
+      this.termsConditionForm.valid &&
+      (this.termsConditionForm.controls.corporateTnCAccepted.value === true ||
+        this.termsConditionForm.controls.corporateTnCNotAccepted.value === true)
+    ) {
+      // console.log(this.termsConditionForm);
+      // console.log('============================');
+      // console.log(
+      //   this.termsConditionForm.controls.corporateTnCAccepted.value === true ||
+      //     this.termsConditionForm.controls.corporateTnCNotAccepted.value === true
+      // );
+      // this.facade.acceptTermsCondition();
     }
   }
 
@@ -66,13 +70,12 @@ export class TermsConditionsPage implements OnInit {
    * @param null
    * @returns null
    */
-  onCorporateTnCAccepted(): void {
-    if (!this.corporateTnCAccepted) {
-      this.corporateTnCNotAccepted = true;
-      this.termsConditionForm.controls.corporateTnCAccepted.patchValue(true);
-      this.termsConditionForm.controls.corporateTnCNotAccepted.patchValue(false);
-    } else {
-      this.corporateTnCNotAccepted = false;
+  onCorporateTnCAccepted(event): void {
+    if (event.target.checked) {
+      this.corporateTnCAccepted = event.target.checked;
+      this.corporateTnCNotAccepted = !this.corporateTnCAccepted;
+      this.termsConditionForm.controls.corporateTnCAccepted.patchValue(this.corporateTnCAccepted);
+      this.termsConditionForm.controls.corporateTnCNotAccepted.patchValue(this.corporateTnCNotAccepted);
     }
   }
 
@@ -83,11 +86,12 @@ export class TermsConditionsPage implements OnInit {
    * @param null
    * @returns null
    */
-  onCorporateTnCNotAccepted(): void {
-    if (!this.corporateTnCNotAccepted) {
-      this.corporateTnCAccepted = true;
-    } else {
-      this.corporateTnCAccepted = false;
+  onCorporateTnCNotAccepted(event): void {
+    if (event.target.checked) {
+      this.corporateTnCNotAccepted = event.target.checked;
+      this.corporateTnCAccepted = !this.corporateTnCNotAccepted;
+      this.termsConditionForm.controls.corporateTnCAccepted.patchValue(this.corporateTnCAccepted);
+      this.termsConditionForm.controls.corporateTnCNotAccepted.patchValue(this.corporateTnCNotAccepted);
     }
   }
 }

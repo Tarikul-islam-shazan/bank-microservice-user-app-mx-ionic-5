@@ -36,7 +36,7 @@
               </span>
             </div>
 
-            <div class="checkbox-group">
+            <div class="checkbox-group" *ngIf="hasCorporateTnc">
               <ion-row>
                 <ion-col class="ion-no-padding">
                   <ion-item lines="none" class="check-box-1">
@@ -46,9 +46,9 @@
                     <ion-checkbox
                       slot="start"
                       mode="md"
-                      value="true"
+                      [value]="corporateTnCAccepted"
                       formControlName="corporateTnCAccepted"
-                      (ionChange)="onCorporateTnCAccepted()"
+                      (ionChange)="onCorporateTnCAccepted($event)"
                     ></ion-checkbox>
                   </ion-item>
                 </ion-col>
@@ -61,9 +61,9 @@
                     <ion-checkbox
                       slot="start"
                       mode="md"
-                      value="true"
+                      [value]="corporateTnCNotAccepted"
                       formControlName="corporateTnCNotAccepted"
-                      (ionChange)="onCorporateTnCNotAccepted()"
+                      (ionChange)="onCorporateTnCNotAccepted($event)"
                     ></ion-checkbox>
                   </ion-item>
                 </ion-col>
