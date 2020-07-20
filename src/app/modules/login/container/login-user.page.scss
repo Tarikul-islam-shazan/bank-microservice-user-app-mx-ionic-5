@@ -31,6 +31,9 @@
           --background: transparent;
           --color: white;
           --background-activated: var(--input-blue-border-color);
+          --padding-start: 8px;
+          --inner-padding-end: 8px;
+          --padding-end: 8px;
           .checkbox-checked {
             --background-checked: white !important;
             --border-color-checked: white !important;
@@ -52,6 +55,7 @@
             --size: 16px;
             --border-radius: 2px !important;
             --border-color: var(--input-blue-border-color);
+            margin-right: 16px;
             box-sizing: border-box;
           }
         }
