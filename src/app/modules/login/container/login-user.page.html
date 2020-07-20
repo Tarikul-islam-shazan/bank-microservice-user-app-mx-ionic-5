@@ -50,10 +50,10 @@
 
             <div class="checkbox-container">
               <ion-grid class="ion-no-padding ion-no-margin">
-                <ion-row>
-                  <ion-col size="5" class="ion-no-padding">
+                <ion-row class="ion-justify-content-between">
+                  <ion-col class="ion-no-padding">
                     <ion-item lines="none" class="login-option">
-                      <ion-label class="ion-text-wrap checkbox-square-label">
+                      <ion-label class="checkbox-square-label">
                         <ion-text>
                           {{ 'login-module.create-login-page.login-form.remember-username' | translate }}
                         </ion-text>
@@ -67,7 +67,7 @@
                       ></ion-checkbox>
                     </ion-item>
                   </ion-col>
-                  <ion-col size="7" class="ion-no-padding" *ngIf="loginFacade.isCordova">
+                  <ion-col class="ion-no-padding" *ngIf="loginFacade.isCordova">
                     <ion-item class="login-option" lines="none" [disabled]="!loginFacade.biometricAvailable">
                       <ion-label class="ion-text-wrap checkbox-square-label">
                         <ion-text translate>
