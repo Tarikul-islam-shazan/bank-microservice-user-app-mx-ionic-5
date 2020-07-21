@@ -20,6 +20,7 @@ export enum ErrorCode {
   LockedAccount = '401',
   OTPrequired = '403',
   SamePassword = '404',
+  AccountRecoveryInformationDoesNotMatch = '410',
   TexPayerIdAlreadyAssigned = '610',
   InviteeMemeber = '901',
   FaildInvitation = '902',

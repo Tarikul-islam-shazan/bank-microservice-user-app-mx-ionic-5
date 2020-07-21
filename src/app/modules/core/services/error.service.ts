@@ -11,6 +11,7 @@ import { MemberService } from './member.service';
 import { Router } from '@angular/router';
 import { LogoutReason, LogoutService } from '@app/core/services/logout.service';
 import * as StackTrace from 'stacktrace-js';
+import { SettingsService } from '@app/core/services/settings.service';
 
 /**
  * * Issue: GMA-4366
@@ -33,7 +34,8 @@ export class ErrorService {
     private memberService: MemberService,
     private modalService: ModalService,
     private router: Router,
-    private logoutService: LogoutService
+    private logoutService: LogoutService,
+    private settingsService: SettingsService
   ) {}
 
   /**
@@ -104,6 +106,9 @@ export class ErrorService {
         case ErrorCode.InvalidInviteeEmail:
           const componentProps = this.invalidInviteeEmailInfoModalComponentProps(code);
           this.modalService.openInfoModalComponent(componentProps);
+          break;
+        case ErrorCode.AccountRecoveryInformationDoesNotMatch:
+          this.modalService.openInfoModalComponent(this.accountRecoverInformationDoesNotMatchComponentProps(code));
           break;
         default:
           // default modal for all error handler except any custom case
@@ -256,6 +261,45 @@ export class ErrorService {
     };
 
     return modalComponentContent;
+  }
+
+  /**
+   * @summary
+   *  A function to get modal component props with contactNumber as bankIdentifier
+   *  Issue: MM2-581
+   *  Date: July 21, 2020
+   *  Developer: Md.Kausar <md.kausar@brainstation23.com>
+   * @private
+   * @param {string} errorCode
+   * @returns {IMeedModalComponentProps}
+   * @memberof ErrorService
+   */
+  private accountRecoverInformationDoesNotMatchComponentProps(errorCode: string): IMeedModalComponentProps {
+    const settings = this.settingsService.getSettings().userSettings;
+    const contactNumber =
+      settings && settings.bankIdentifier && settings.contacts ? settings.contacts[settings.bankIdentifier] : '';
+    const componentProps: IMeedModalComponentProps = {
+      componentProps: {
+        contents: [
+          {
+            title: 'error-message-module.error-title',
+            details: [`error-message-module.code-${errorCode}`],
+            values: { contactNumber }
+          }
+        ],
+        actionButtons: [
+          {
+            text: 'error-message-module.dismiss-button',
+            cssClass: 'white-button',
+            handler: () => {
+              this.modalService.close();
+            }
+          }
+        ]
+      }
+    };
+
+    return componentProps;
   }
 
   private invalidInviteeEmailInfoModalComponentProps(errorCode: string): IMeedModalComponentProps {
