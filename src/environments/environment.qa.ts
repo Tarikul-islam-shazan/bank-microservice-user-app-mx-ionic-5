@@ -12,7 +12,7 @@ export const environment = {
     apiToken: '10ccb140-096a-4cf2-b7a9-a8bb46ca0c44',
     apiSecret: 'iVcILnNS85u2d9l1naocBb7Td4SDqs8L',
     dataCenter: 'US', // Datacenter can either be US or EU
-    callbackUrl: 'https://services-mxqa.meedbankingclub.com/api/v1.0.0/jumio-verification',
+    callbackUrl: 'https://10.11.20.23:8452/InterCMaS_Invex/webresources/api/v1/jumio/data-in',
     customerIssuingCountry: 'MEX', // ISO 3166-1 alpha-3 country code
     documentTypes: ['DRIVER_LICENSE', 'PASSPORT', 'IDENTITY_CARD'], // ['DRIVER_LICENSE', 'PASSPORT', 'IDENTITY_CARD', 'VISA'],
     iframeOrigin: 'https://meed.netverify.com'
