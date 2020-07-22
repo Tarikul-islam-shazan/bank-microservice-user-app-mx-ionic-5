@@ -82,7 +82,7 @@
       id="terms-conditions-page-accept-btn"
       expand="block"
       (click)="acceptTermsConditions()"
-      [disabled]="termsConditionForm.invalid"
+      [disabled]="!validateTNC()"
     >
       {{ 'signup-module.terms-conditions-page.button-text' | translate }}
     </ion-button>

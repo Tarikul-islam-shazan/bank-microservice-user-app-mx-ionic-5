@@ -37,32 +37,17 @@ export class TermsConditionsPage implements OnInit {
         );
       });
       if (this.hasCorporateTnc) {
-        this.termsConditionForm.addControl('corporateTnCAccepted', new FormControl(false));
-        this.termsConditionForm.addControl('corporateTnCNotAccepted', new FormControl(false));
+        this.termsConditionForm.addControl('corporateTnCAccepted', new FormControl(false, Validators.required));
+        this.termsConditionForm.addControl('corporateTnCNotAccepted', new FormControl(false, Validators.required));
       }
-      // if (resp.showCorporateTnc) {
-      //   this.showCorporateTnc = resp.showCorporateTnc;
-      //   this.corporateTnCAccepted = true;
-      // }
     });
   }
 
-  async acceptTermsConditions() {
-    if (
-      this.termsConditionForm.valid &&
-      (this.termsConditionForm.controls.corporateTnCAccepted.value === true ||
-        this.termsConditionForm.controls.corporateTnCNotAccepted.value === true)
-    ) {
-      // console.log(this.termsConditionForm);
-      // console.log('============================');
-      // console.log(
-      //   this.termsConditionForm.controls.corporateTnCAccepted.value === true ||
-      //     this.termsConditionForm.controls.corporateTnCNotAccepted.value === true
-      // );
+  acceptTermsConditions(): void {
+    if (this.validateTNC()) {
       // this.facade.acceptTermsCondition();
     }
   }
-
   /**
    * This method check or uncheck "ion-checkbox" for
    * Ok to Share or Do Not Share checkbox.
@@ -76,6 +61,9 @@ export class TermsConditionsPage implements OnInit {
       this.corporateTnCNotAccepted = !this.corporateTnCAccepted;
       this.termsConditionForm.controls.corporateTnCAccepted.patchValue(this.corporateTnCAccepted);
       this.termsConditionForm.controls.corporateTnCNotAccepted.patchValue(this.corporateTnCNotAccepted);
+    } else {
+      this.corporateTnCAccepted = event.target.checked;
+      this.termsConditionForm.controls.corporateTnCAccepted.patchValue(this.corporateTnCAccepted);
     }
   }
 
@@ -92,6 +80,17 @@ export class TermsConditionsPage implements OnInit {
       this.corporateTnCAccepted = !this.corporateTnCNotAccepted;
       this.termsConditionForm.controls.corporateTnCAccepted.patchValue(this.corporateTnCAccepted);
       this.termsConditionForm.controls.corporateTnCNotAccepted.patchValue(this.corporateTnCNotAccepted);
+    } else {
+      this.corporateTnCNotAccepted = event.target.checked;
+      this.termsConditionForm.controls.corporateTnCNotAccepted.patchValue(this.corporateTnCNotAccepted);
+    }
+  }
+
+  validateTNC(): boolean {
+    if (this.hasCorporateTnc) {
+      return this.termsConditionForm.valid && (this.corporateTnCAccepted || this.corporateTnCNotAccepted);
+    } else {
+      return this.termsConditionForm.valid;
     }
   }
 }
