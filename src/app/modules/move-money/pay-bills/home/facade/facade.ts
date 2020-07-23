@@ -53,7 +53,7 @@ export class PayBillsHomeFacade {
         this.router.navigate(['/move-money/pay-bills/bill-pay']);
         break;
       case PayBillsOptions.TopUpMobile:
-        // this.router.navigate(['/move-money/pay-bills/top-up-mobile']);
+        this.router.navigate(['/move-money/pay-bills/top-up-mobile']);
         break;
       case PayBillsOptions.GiftCard:
         // this.router.navigate(['/move-money/pay-bills/gift-card']);

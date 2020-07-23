@@ -16,6 +16,8 @@ import { AddPayeePageModule } from './bill-pay/add-payee/add-payee.module';
 import { EditPayeePageModule } from './bill-pay/edit-payee/add-payee.module';
 import { EditPayeePage } from './bill-pay/edit-payee/container/edit-payee.page';
 import { BillerDirectFacade } from './biller-direct/facade/facade';
+import { TopUpMobilePage } from './top-up-mobile/container/top-up-mobile.page';
+import { TopUpMobilePageModule } from './top-up-mobile/bill-pay.module';
 
 export const PAGE_CONTAINERS: any[] = [PayBillsHomePage, BillerDirectPage, CardSwapPage];
 export const ALL_FACADES: any[] = [PayBillsHomeFacade, BillerDirectFacade]; // BillerDirectFacade facade injected
@@ -54,6 +56,11 @@ const routes: Routes = [
     path: 'bill-payment',
     data: { title: PAGES.BILL_PAYMENT.NAME },
     component: BillPaymentPage
+  },
+  {
+    path: 'top-up-mobile',
+    data: { title: PAGES.TOP_UP_MOBILE.NAME },
+    component: TopUpMobilePage
   }
 ];
 @NgModule({
@@ -64,7 +71,8 @@ const routes: Routes = [
     BillPayPageModule,
     AddPayeePageModule,
     EditPayeePageModule,
-    BillPaymentPageModule
+    BillPaymentPageModule,
+    TopUpMobilePageModule
   ],
   declarations: [...PAGE_CONTAINERS],
   providers: [...ALL_FACADES]
