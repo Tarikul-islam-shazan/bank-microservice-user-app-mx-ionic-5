@@ -515,7 +515,13 @@
       "terms_text_5": "Regarding my Taxpayer Identification Number, I have read and agree to:",
       "corporate-terms": "I acknowledge that participation in the MeedClub@Work rebate program requires certain information to be shared with my employer. I consent to Vast Bank, N.A. confirming to my employer that I have an account at the institution by sharing the legal name and e-mail address associated with my Meed Banking Club accounts.",
       "corporate-terms-share-checkbox": "OK to share.",
-      "corporate-terms-not-share-checkbox": "Do not share. I understand I will not be eligible for the fee rebate."
+      "corporate-terms-not-share-checkbox": "Do not share. I understand I will not be eligible for the fee rebate.",
+      "corporate-terms-not-accepted-assurance-modal": {
+        "corporate-terms-not-accepted-modal-text-1": "Are you sure you want to proceed without clicking \"OK to share\"?",
+        "corporate-terms-not-accepted-modal-text-2": "You will not receive the monthly fee rebate from your employer.",
+        "okay-button": "Okay",
+        "cancel-button": "Cancel"
+      }
     },
     "signup-deny-page": {
       "page-title": "Unfortunately…",

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TncDocument } from '@app/core';
+import { TncResponse } from '@app/core/models/dto/signup';
 import { SignUpTermsConditionFacade } from '../facade';
 import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@angular/forms';
 
@@ -9,9 +9,9 @@ import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@ang
   styleUrls: ['./terms-conditions.page.scss']
 })
 export class TermsConditionsPage implements OnInit {
-  termsConditions: TncDocument[] = [];
+  tncResponse: Partial<TncResponse> = {};
   termsConditionForm: FormGroup;
-  hasCorporateTnc = true;
+  hasCorporateTnc = false;
   corporateTnCAccepted = false;
   corporateTnCNotAccepted = false;
   constructor(private formBuilder: FormBuilder, public facade: SignUpTermsConditionFacade) {}
@@ -29,23 +29,31 @@ export class TermsConditionsPage implements OnInit {
   }
   getTermsConditions() {
     this.facade.getTermsConditions().subscribe(resp => {
-      this.termsConditions = resp;
-      this.termsConditions.forEach((tc, i) => {
+      this.tncResponse = { ...resp };
+      this.tncResponse.termsAndConditions.forEach((tc, i) => {
         this.termsConditionForm.addControl(
           `tc${i}`,
           new FormControl(false, [Validators.required, Validators.requiredTrue])
         );
       });
-      if (this.hasCorporateTnc) {
+      if (this.tncResponse.tncOptions.hasCorporateTnc) {
         this.termsConditionForm.addControl('corporateTnCAccepted', new FormControl(false, Validators.required));
         this.termsConditionForm.addControl('corporateTnCNotAccepted', new FormControl(false, Validators.required));
+        this.hasCorporateTnc = true;
+      } else {
+        this.hasCorporateTnc = false;
       }
     });
   }
 
   acceptTermsConditions(): void {
     if (this.validateTNC()) {
-      // this.facade.acceptTermsCondition();
+      // console.log(this.hasCorporateTnc);
+      this.facade.submitTermsCondition(
+        this.hasCorporateTnc,
+        this.corporateTnCAccepted,
+        this.tncResponse.tncOptions.nextPage
+      );
     }
   }
   /**
