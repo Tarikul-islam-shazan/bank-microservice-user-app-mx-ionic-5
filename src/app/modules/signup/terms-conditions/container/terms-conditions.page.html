@@ -27,7 +27,7 @@
           ></ion-checkbox>
         </ion-item>
       </ion-list>
-      <ion-list lines="none">
+      <ion-list lines="none" *ngIf="tncResponse.tncOptions.hasCorporateTnc">
         <div class="tnc-wrapper">
           <div class="tnc-item ack-item">
             <div class="tnc-content">
@@ -36,7 +36,7 @@
               </span>
             </div>
 
-            <div class="checkbox-group" *ngIf="tncResponse.tncOptions.hasCorporateTnc">
+            <div class="checkbox-group">
               <ion-row>
                 <ion-col class="ion-no-padding">
                   <ion-item lines="none" class="check-box-1">
