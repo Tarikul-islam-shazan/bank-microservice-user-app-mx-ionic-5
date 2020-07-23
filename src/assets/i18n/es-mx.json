@@ -1395,6 +1395,19 @@
           "reference-text": "Ref #{{referenceNumber}}",
           "btn-done": "Hecho"
         }
+      },
+      "top-up-mobile": {
+        "page-title": "Pay Bills",
+        "search-input-placeholder": "Search to add new Top Up Provider",
+        "my-bill-accounts-list-title": "My Top Up Accounts",
+        "no-result-found-text": "No match found",
+        "continue-button-title": "Continue",
+        "delete-alert": {
+          "header": "Confirm!",
+          "message": "Are you sure to delete {{name}} Top Up Mobile account?",
+          "btn-cancel": "Cancel",
+          "btn-confirm": "Okay"
+        }
       }
     },
     "send-money": {

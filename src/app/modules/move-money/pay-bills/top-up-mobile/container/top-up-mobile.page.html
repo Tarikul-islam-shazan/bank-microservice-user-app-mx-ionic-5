@@ -1,0 +1,62 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title id="top-up-page-header-title-text">
+      {{ 'move-money-module.pay-bills.top-up-mobile.page-title' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div class="top-up-provider-search-wrapper">
+      <ion-item lines="none" class="icon-input">
+        <ion-icon slot="start" name="search"></ion-icon>
+        <ion-input
+          debounce="100"
+          (ionChange)="facade.searchTopUpProviders(searchQuery)"
+          [(ngModel)]="searchQuery"
+          placeholder="{{'move-money-module.pay-bills.top-up-mobile.search-input-placeholder' | translate}}"
+        ></ion-input>
+      </ion-item>
+    </div>
+    <div class="search-result-wrapper" *ngIf="searchQuery && !this.facade.searching">
+      <ion-list *ngIf="facade.topUpProviders.length > 0">
+        <ion-item *ngFor="let topUpProvider of facade.topUpProviders">
+          <ion-label
+            class="ion-padding-top ion-padding-bottom ion-text-wrap"
+            (click)="facade.adTopUpMobile(topUpProvider)"
+          >
+            {{topUpProvider.name}}
+          </ion-label>
+        </ion-item>
+      </ion-list>
+      <div class="no-result-block" *ngIf="searchQuery && !this.facade.searching && facade.topUpProviders.length === 0">
+        <ion-label class="ion-text-center ion-text-wrap"
+          >{{'move-money-module.pay-bills.top-up-mobile.no-result-found-text' | translate}}</ion-label
+        >
+      </div>
+    </div>
+
+    <div class="my-top-up-accounts-wrapper">
+      <ion-item lines="none" class="ion-no-padding">
+        <ion-label
+          ><b>{{'move-money-module.pay-bills.top-up-mobile.my-bill-accounts-list-title' | translate}}</b></ion-label
+        >
+      </ion-item>
+      <ion-list>
+        <ion-item *ngFor="let topUpAccount of facade.myTopUpAccounts">
+          <ion-label
+            class="ion-padding-top  ion-padding-bottom ion-text-wrap"
+            (click)="facade.goToTopUpMobile(topUpAccount)"
+          >
+            {{topUpAccount.accountNumber}}
+          </ion-label>
+          <ion-icon slot="end" name="trash-outline" (click)="facade.deleteTopUpAccount(topUpAccount)"></ion-icon>
+        </ion-item>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>

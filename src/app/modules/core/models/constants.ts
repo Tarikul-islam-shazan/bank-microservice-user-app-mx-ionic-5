@@ -422,5 +422,9 @@ export const PAGES: Page = {
   P2P_OTHER_PAYEE_REGISTRATION: {
     NAME: 'p2p-other-bank-payee-registration',
     ROUTE_PATH: '/p2p/home'
+  },
+  TOP_UP_MOBILE: {
+    NAME: 'top-up-mobile',
+    ROUTE_PATH: '/move-money/pay-bills/top-up-mobile'
   }
 };
