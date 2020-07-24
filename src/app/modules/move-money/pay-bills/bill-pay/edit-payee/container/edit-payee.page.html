@@ -36,10 +36,11 @@
               >
               <ion-input
                 placeholder="{{ 'move-money-module.pay-bills.edit-payee.account-number-placeholder' | translate }}"
-                type="text"
+                type="tel"
                 class="white-input"
                 id="add-paye-page-biller-name-input"
                 formControlName="accountNumber"
+                [appMaskInput]="numberOnly"
               ></ion-input>
             </ion-item>
 
@@ -49,10 +50,11 @@
               >
               <ion-input
                 placeholder="{{ 'move-money-module.pay-bills.edit-payee.account-number-placeholder' | translate }}"
-                type="text"
+                type="tel"
                 class="white-input"
                 id="add-paye-page-repeat-account-number-input"
                 formControlName="confirmAccountNumber"
+                [appMaskInput]="numberOnly"
               ></ion-input>
             </ion-item>
           </ion-list>
