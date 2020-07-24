@@ -1408,6 +1408,21 @@
           "btn-cancel": "Cancel",
           "btn-confirm": "Okay"
         }
+      },
+      "add-top-up-payee": {
+        "page-title": "Pagar recibo",
+        "page-header": "Add New Top Up",
+        "phone-number-placeholder": "Phone Number",
+        "biller-label": "Biller",
+        "phone-number-label": "Phone Number",
+        "repeat-phone-number-label": "Repeat Phone Number",
+        "next-button-title": "Siguiente",
+        "modal": {
+          "title": "You've successfully added {{billerName}}.",
+          "reference": "Ref #{{referenceNumber}}",
+          "btn-pay-bill": "Top Up Account",
+          "btn-view-bill-account": "View Top Up Accounts"
+        }
       }
     },
     "send-money": {

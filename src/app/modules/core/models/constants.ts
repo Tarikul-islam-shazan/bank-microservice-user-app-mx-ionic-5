@@ -426,5 +426,13 @@ export const PAGES: Page = {
   TOP_UP_MOBILE: {
     NAME: 'top-up-mobile',
     ROUTE_PATH: '/move-money/pay-bills/top-up-mobile'
+  },
+  ADD_TOP_UP_PAYEE: {
+    NAME: 'add-top-up-payee',
+    ROUTE_PATH: '/move-money/pay-bills/add-top-up-payee'
+  },
+  TOP_UP_PAYMENT: {
+    NAME: 'top-up-payment',
+    ROUTE_PATH: '/move-money/pay-bills/top-up-payment'
   }
 };
