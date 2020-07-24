@@ -1,0 +1,78 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title id="add-top-up-payee-page-haeder-title-text">
+      {{'move-money-module.pay-bills.add-top-up-payee.page-title' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div class="add-top-up-payee-form">
+      <div class="step-one">
+        <ion-item lines="none" class="ion-no-padding" id="add-top-up-payee-page-form-haeder-title-text">
+          <ion-label><b>{{'move-money-module.pay-bills.add-top-up-payee.page-header' | translate}}</b></ion-label>
+        </ion-item>
+        <form [formGroup]="addPayeeForm" novalidate>
+          <ion-list lines="none" class="input-list">
+            <ion-item>
+              <ion-label position="stacked" id="add-paye-page-biller-name-label">
+                {{ 'move-money-module.pay-bills.add-top-up-payee.biller-label' | translate }}</ion-label
+              >
+              <ion-input
+                type="text"
+                class="white-input"
+                id="add-paye-page-biller-name-input"
+                formControlName="name"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked" id="add-paye-page-biller-name-label">
+                {{ 'move-money-module.pay-bills.add-top-up-payee.phone-number-label' | translate }}</ion-label
+              >
+              <ion-input
+                placeholder="{{ 'move-money-module.pay-bills.add-top-up-payee.phone-number-placeholder' | translate }}"
+                type="tel"
+                class="white-input"
+                id="add-paye-page-biller-name-input"
+                formControlName="phoneNumber"
+                [appMaskInput]="phoneNumber"
+              ></ion-input>
+            </ion-item>
+
+            <ion-item>
+              <ion-label position="stacked" id="add-paye-page-repeat-phone-number-label">
+                {{ 'move-money-module.pay-bills.add-top-up-payee.repeat-phone-number-label' | translate }}</ion-label
+              >
+              <ion-input
+                placeholder="{{ 'move-money-module.pay-bills.add-top-up-payee.phone-number-placeholder' | translate }}"
+                type="text"
+                class="white-input"
+                id="add-paye-page-repeat-phone-number-input"
+                formControlName="confirmPhoneNumber"
+                [appMaskInput]="phoneNumber"
+              ></ion-input>
+            </ion-item>
+          </ion-list>
+        </form>
+      </div>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      [disabled]="addPayeeForm.invalid"
+      class="white-button"
+      id="add-top-up-payee-page-next-btn"
+      expand="block"
+      (click)="gotoNext()"
+    >
+      {{'move-money-module.pay-bills.add-top-up-payee.next-button-title' | translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

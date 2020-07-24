@@ -25,9 +25,11 @@ export class TopUpMobileFacade {
 
   goToTopUpMobile(billAccount: IBillPayee) {
     this.payBillService.billPayee = billAccount;
-    this.router.navigate(['/move-money/pay-bills/bill-payment']);
+    this.router.navigate(['/move-money/pay-bills/top-up-payment']);
   }
-
-  adTopUpMobile(billAccount: IBillPayee): void {}
+  adTopUpMobile(biller: IBiller): void {
+    this.payBillService.biller = biller;
+    this.router.navigate(['/move-money/pay-bills/add-top-up-payee']);
+  }
   deleteTopUpAccount(billAccount: IBillPayee): void {}
 }
