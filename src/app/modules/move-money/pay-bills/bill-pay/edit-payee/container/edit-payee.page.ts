@@ -2,6 +2,7 @@ import { EditPayeeFacade } from '../facade';
 import { CommonValidators, IBillPayee } from '@app/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IinputOption, InputFormatType } from '@app/shared';
 
 @Component({
   selector: 'mbc-edit-payee',
@@ -12,6 +13,7 @@ export class EditPayeePage implements OnInit {
   editPayeeForm: FormGroup;
   billPayee: IBillPayee;
   isAccountNumberChanged: boolean;
+  numberOnly: IinputOption;
   constructor(private facade: EditPayeeFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -28,6 +30,9 @@ export class EditPayeePage implements OnInit {
    * @memberOf editPayeePage
    */
   private initForm(): void {
+    this.numberOnly = {
+      type: InputFormatType.ONLY_NUMBER
+    };
     this.editPayeeForm = this.formBuilder.group(
       {
         name: [{ value: this.billPayee.biller.name, disabled: true }, [Validators.required]],
