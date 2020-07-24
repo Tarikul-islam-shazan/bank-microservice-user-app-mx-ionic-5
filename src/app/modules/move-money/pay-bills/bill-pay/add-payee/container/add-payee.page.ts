@@ -1,5 +1,5 @@
 import { AddPayeeFacade } from '../facade';
-import { CommonValidators, IBiller, REG_EX_PATTERNS } from '@app/core';
+import { CommonValidators, IBiller } from '@app/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IinputOption, InputFormatType } from '@app/shared';
