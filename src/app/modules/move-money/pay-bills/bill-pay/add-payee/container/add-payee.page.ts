@@ -1,7 +1,8 @@
 import { AddPayeeFacade } from '../facade';
-import { CommonValidators, IBiller } from '@app/core';
+import { CommonValidators, IBiller, REG_EX_PATTERNS } from '@app/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IinputOption, InputFormatType } from '@app/shared';
 
 @Component({
   selector: 'add-payee',
@@ -11,6 +12,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddPayeePage implements OnInit {
   addPayeeForm: FormGroup;
   biller: IBiller;
+  numberOnly: IinputOption;
   constructor(private facade: AddPayeeFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -26,6 +28,9 @@ export class AddPayeePage implements OnInit {
    * @memberOf AddPayeePage
    */
   private initForm(): void {
+    this.numberOnly = {
+      type: InputFormatType.ONLY_NUMBER
+    };
     this.addPayeeForm = this.formBuilder.group(
       {
         name: [{ value: this.biller.name, disabled: true }, [Validators.required]],
