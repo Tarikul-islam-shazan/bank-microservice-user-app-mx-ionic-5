@@ -1446,6 +1446,21 @@
           "btn-pay-bill": "Top Up Account",
           "btn-view-bill-account": "View Top Up Accounts"
         }
+      },
+      "top-up-payment": {
+        "page-title": "Pay Bills",
+        "sending-to-title": "Sending To",
+        "account-number-title": "Phone Number",
+        "payment-amount-title": "Top Up Amount",
+        "payment-amount-placeholder": "Available amounts",
+        "btn-pay-bill": "Pay Bill",
+        "btn-cancel": "Cancel",
+        "modal": {
+          "title": "You've transfered {{paymentAmount}} to {{accountNumber}}.",
+          "content-1": "Submited on {{paymentExecutionDate}}",
+          "reference-text": "Ref #{{referenceNumber}}",
+          "btn-done": "Done"
+        }
       }
     },
     "send-money": {
