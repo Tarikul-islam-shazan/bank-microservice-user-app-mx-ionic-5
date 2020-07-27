@@ -11,7 +11,6 @@ import { FormGroup, FormBuilder, FormControl, Validators, FormArray } from '@ang
 export class TermsConditionsPage implements OnInit {
   tncResponse: Partial<TncResponse> = {};
   termsConditionForm: FormGroup;
-  hasCorporateTnc = false;
   corporateTnCAccepted = false;
   corporateTnCNotAccepted = false;
   constructor(private formBuilder: FormBuilder, public facade: SignUpTermsConditionFacade) {}
@@ -39,18 +38,14 @@ export class TermsConditionsPage implements OnInit {
       if (this.tncResponse.tncOptions.hasCorporateTnc) {
         this.termsConditionForm.addControl('corporateTnCAccepted', new FormControl(false, Validators.required));
         this.termsConditionForm.addControl('corporateTnCNotAccepted', new FormControl(false, Validators.required));
-        this.hasCorporateTnc = true;
-      } else {
-        this.hasCorporateTnc = false;
       }
     });
   }
 
   acceptTermsConditions(): void {
     if (this.validateTNC()) {
-      // console.log(this.hasCorporateTnc);
       this.facade.submitTermsCondition(
-        this.hasCorporateTnc,
+        this.tncResponse.tncOptions.hasCorporateTnc,
         this.corporateTnCAccepted,
         this.tncResponse.tncOptions.nextPage
       );
@@ -95,7 +90,7 @@ export class TermsConditionsPage implements OnInit {
   }
 
   validateTNC(): boolean {
-    if (this.hasCorporateTnc) {
+    if (this.tncResponse.tncOptions !== undefined && this.tncResponse.tncOptions.hasCorporateTnc) {
       return this.termsConditionForm.valid && (this.corporateTnCAccepted || this.corporateTnCNotAccepted);
     } else {
       return this.termsConditionForm.valid;
