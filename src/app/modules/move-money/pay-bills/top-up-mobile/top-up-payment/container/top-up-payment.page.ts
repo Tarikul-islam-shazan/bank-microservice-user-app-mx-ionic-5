@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonValidators } from '@app/core/util/common-validators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IBillPayee, IBillPayment } from '@app/core/models/dto';
-import { IDropdownOption } from '@app/core';
+import { IDropdownOption } from '@app/core/models/static-data';
 
 @Component({
   selector: 'top-up-payment',

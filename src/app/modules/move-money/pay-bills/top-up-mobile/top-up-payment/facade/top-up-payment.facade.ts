@@ -1,11 +1,12 @@
 import * as moment from 'moment';
 import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 import { CurrencyPipe } from '@angular/common';
-import { IBillPayee, IBillPayment, IDropdownOption } from '@app/core';
+import { IBillPayee, IBillPayment } from '@app/core/models/dto';
 import { IMeedModalContent, ModalService, SuccessModalPage, DropdownModalComponent } from '@app/shared';
 import { Injectable } from '@angular/core';
 import { PayBillService } from '@app/core/services/pay-bill.service';
 import { Router } from '@angular/router';
+import { IDropdownOption } from '@app/core/models/static-data';
 
 @Injectable()
 export class TopUpPaymentFacade {
