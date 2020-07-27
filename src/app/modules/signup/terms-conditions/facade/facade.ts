@@ -62,7 +62,6 @@ export class SignUpTermsConditionFacade {
     });
     modal.present();
     await modal.onDidDismiss();
-    // this.router.navigate(['/signup/account-funding']);
 
     if (corporateTnCAccepted) {
       if (nextPage) {
