@@ -72,7 +72,7 @@ const routes: Routes = [
   },
   {
     path: 'top-up-payment',
-    data: { title: PAGES.TOP_UP_PAYMENT },
+    data: { title: PAGES.TOP_UP_PAYMENT.NAME },
     component: TopUpPaymentPage
   }
 ];
