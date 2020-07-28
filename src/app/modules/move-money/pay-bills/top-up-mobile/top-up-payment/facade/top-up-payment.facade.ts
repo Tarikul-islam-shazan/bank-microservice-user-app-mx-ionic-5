@@ -1,5 +1,4 @@
 import * as moment from 'moment';
-import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 import { CurrencyPipe } from '@angular/common';
 import { IBillPayee, IBillPayment } from '@app/core/models/dto';
 import { IMeedModalContent, ModalService, SuccessModalPage, DropdownModalComponent } from '@app/shared';
@@ -14,7 +13,6 @@ export class TopUpPaymentFacade {
   availableAmountsOptions: IDropdownOption[] = [];
 
   constructor(
-    private analyticsService: AnalyticsService,
     private currencyPipe: CurrencyPipe,
     private modalService: ModalService,
     private payBillService: PayBillService,
@@ -87,7 +85,6 @@ export class TopUpPaymentFacade {
             text: 'move-money-module.pay-bills.top-up-payment.modal.btn-done',
             cssClass: 'white-button',
             handler: () => {
-              // this.analyticsService.logEvent(AnalyticsEventTypes.BillPaymentDone);
               this.modalService.close();
             }
           }
@@ -105,10 +102,6 @@ export class TopUpPaymentFacade {
    * @memberOf TopUpPaymentFacade
    */
   update(_paymentInfo: IBillPayment): void {
-    // this.updateBillPayment(_paymentInfo).subscribe(() => {
-    //   const componentProps = this.getEditSuccessCompProp();
-    //   this.modalService.openInfoModalComponent({ componentProps });
-    // });
     const componentProps = this.getPaymentSuccessModalCompProps(_paymentInfo);
     this.modalService.openModal(SuccessModalPage, componentProps);
   }
