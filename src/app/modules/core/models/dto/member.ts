@@ -130,7 +130,9 @@ export interface IOtp {
 export interface IBillPayee {
   biller?: IBiller;
   accountNumber?: string;
+  phoneNumber?: string;
   _id?: string;
+  referenceId?: string;
 }
 
 export enum BillerCategory {
