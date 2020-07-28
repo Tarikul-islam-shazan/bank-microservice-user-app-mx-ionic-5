@@ -33,7 +33,7 @@ export class PayBillService {
       this.billPayeeBaseUrl,
       {
         billerId: payee.biller.id,
-        phoneNumber: payee.accountNumber
+        phoneNumber: payee.phoneNumber
       },
       { headers: this.headerService.getMemberIdHeader() }
     );

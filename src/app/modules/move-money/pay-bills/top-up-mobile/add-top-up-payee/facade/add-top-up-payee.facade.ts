@@ -40,7 +40,7 @@ export class AddTopUpPayeeFacade {
       // show success modal
       this.modalService.openModal(
         SuccessModalPage,
-        this.getAddPayeeSuccessModalCompProps(payee.phoneNumber, payee.referenceId)
+        this.getAddPayeeSuccessModalCompProps(billPayee.phoneNumber, payee.referenceId)
       );
     });
   }

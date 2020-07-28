@@ -48,7 +48,7 @@ export class AddTopUpPayeePage implements OnInit {
     const { phoneNumber } = this.addPayeeForm.value;
     const billPayee = {
       biller: this.biller,
-      accountNumber: phoneNumber
+      phoneNumber
     };
     this.facade.continue(billPayee);
   }
