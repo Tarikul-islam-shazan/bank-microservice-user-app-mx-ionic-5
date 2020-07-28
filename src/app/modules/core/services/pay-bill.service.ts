@@ -28,6 +28,16 @@ export class PayBillService {
       { headers: this.headerService.getMemberIdHeader() }
     );
   }
+  addTopUpPayee(payee: IBillPayee): Observable<IBillPayee> {
+    return this.http.post<IBillPayee>(
+      this.billPayeeBaseUrl,
+      {
+        billerId: payee.biller.id,
+        phoneNumber: payee.accountNumber
+      },
+      { headers: this.headerService.getMemberIdHeader() }
+    );
+  }
 
   updatePayee(payee: IBillPayee): Observable<IBillPayee> {
     return this.http.put<IBillPayee>(

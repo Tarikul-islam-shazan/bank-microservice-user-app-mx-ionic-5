@@ -1441,7 +1441,7 @@
         "repeat-phone-number-label": "Repeat Phone Number",
         "next-button-title": "Next",
         "modal": {
-          "title": "You've successfully added {{billerName}}.",
+          "title": "You've successfully added {{phoneNumber}}.",
           "reference": "Ref #{{referenceNumber}}",
           "btn-pay-bill": "Top Up Account",
           "btn-view-bill-account": "View Top Up Accounts"

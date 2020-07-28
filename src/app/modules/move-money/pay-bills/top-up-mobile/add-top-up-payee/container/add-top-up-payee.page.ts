@@ -34,8 +34,8 @@ export class AddTopUpPayeePage implements OnInit {
     this.addPayeeForm = this.formBuilder.group(
       {
         name: [{ value: this.biller.name, disabled: true }, [Validators.required]],
-        phoneNumber: ['', Validators.required],
-        confirmPhoneNumber: ['', Validators.required]
+        phoneNumber: ['', [Validators.required, Validators.pattern('\\d{10}')]],
+        confirmPhoneNumber: ['', [Validators.required, Validators.pattern('\\d{10}')]]
       },
       {
         validator: CommonValidators.compareTwoFields('phoneNumber', 'confirmPhoneNumber')
@@ -53,7 +53,7 @@ export class AddTopUpPayeePage implements OnInit {
     const { phoneNumber } = this.addPayeeForm.value;
     const billPayee = {
       biller: this.biller,
-      phoneNumber
+      accountNumber: phoneNumber
     };
     this.facade.continue(billPayee);
   }
