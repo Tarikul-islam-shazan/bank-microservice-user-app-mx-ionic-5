@@ -9,7 +9,7 @@ import { switchMap, tap } from 'rxjs/operators';
 export class TopUpMobileFacade {
   searchTopUpProviders$ = new Subject<string>();
   topUpProviders: IBiller[] = [];
-  myTopUpAccounts: IBillPayee[] = [{ accountNumber: '555 525 5555' }, { accountNumber: '533 333 2222' }];
+  myTopUpAccounts: IBillPayee[] = [];
   searching: boolean;
   constructor(private payBillService: PayBillService, private router: Router) {}
   searchTopUpProvidersInit(): void {
