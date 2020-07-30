@@ -20,6 +20,9 @@ import { TopUpMobilePage } from './top-up-mobile/container/top-up-mobile.page';
 import { TopUpMobilePageModule } from './top-up-mobile/top-up-mobile.module';
 import { AddTopUpPayeePageModule } from './top-up-mobile/add-top-up-payee/add-top-up-payee.module';
 import { AddTopUpPayeePage } from './top-up-mobile/add-top-up-payee/container/add-top-up-payee.page';
+import { SendGiftCardPage } from './send-gift-card/container/send-gift-card.page';
+import { SendGiftCardPageModule } from './send-gift-card/send-gift-card.module';
+
 export const PAGE_CONTAINERS: any[] = [PayBillsHomePage, BillerDirectPage, CardSwapPage];
 export const ALL_FACADES: any[] = [PayBillsHomeFacade, BillerDirectFacade]; // BillerDirectFacade facade injected
 
@@ -67,6 +70,11 @@ const routes: Routes = [
     path: 'add-top-up-payee',
     data: { title: PAGES.ADD_TOP_UP_PAYEE.NAME },
     component: AddTopUpPayeePage
+  },
+  {
+    path: 'send-gift-card',
+    data: { title: PAGES.SEND_GIFT_CARD.NAME },
+    component: SendGiftCardPage
   }
 ];
 @NgModule({
@@ -79,7 +87,8 @@ const routes: Routes = [
     EditPayeePageModule,
     BillPaymentPageModule,
     TopUpMobilePageModule,
-    AddTopUpPayeePageModule
+    AddTopUpPayeePageModule,
+    SendGiftCardPageModule
   ],
   declarations: [...PAGE_CONTAINERS],
   providers: [...ALL_FACADES]

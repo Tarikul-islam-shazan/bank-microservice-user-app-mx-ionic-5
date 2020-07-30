@@ -1446,6 +1446,27 @@
           "btn-pay-bill": "Top Up Account",
           "btn-view-bill-account": "View Top Up Accounts"
         }
+      },
+      "send-gift-card": {
+        "page-title": "Pay Bills",
+        "content-title": "Buy a Gift Card",
+        "search-vendor-input-label": "Get Card Vendor",
+        "search-vendor-placeholder": "Search Gift Card Vendors",
+        "email-input-label": "Send Email To",
+        "email-input-placeholder": "Send Email To",
+        "gift-card-label": "Gift Card",
+        "email-label": "Send To Mail",
+        "amount-input-label": "Gift Card Amount",
+        "amount-input-placeholder": "Amount",
+        "next-button": "Next",
+        "buy-gift-card-button": "Buy Gift Card",
+        "cancel-button": "Cancel",
+        "success-modal": {
+          "title": "You've purchased {{giftCard}}.",
+          "date-text": "Submitted On {{date}}",
+          "ref-text": "Ref# {{refId}}",
+          "done-button": "Done"
+        }
       }
     },
     "send-money": {

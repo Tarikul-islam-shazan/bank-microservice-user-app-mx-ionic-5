@@ -2,7 +2,7 @@ import { ApplicationStatus, MemberAccountStatus } from '@app/core/models/dto/mem
 export enum PayBillsOptions {
   BillPay = 'billpay',
   TopUpMobile = 'topupmobile',
-  GiftCard = 'giftcard'
+  SendGiftCard = 'sendgiftcard'
 }
 
 export interface IQ2CreateTokenRequest {
