@@ -12,7 +12,22 @@ export class TopUpMobileFacade {
     { name: 'Virgin Mobile' }
   ];
   topUpProviders: IBiller[] = [];
-  myTopUpAccounts: IBillPayee[] = [{ accountNumber: '555 525 5555' }, { accountNumber: '533 333 2222' }];
+  myTopUpAccounts: IBillPayee[] = [
+    {
+      accountNumber: '555 525 5555',
+      biller: {
+        name: 'Telcel',
+        available_topup_amounts: ['20.00', '50.00', '150.00', '300.00', '500.00', '100.00', '200.00', '30.00']
+      }
+    },
+    {
+      accountNumber: '533 333 2222',
+      biller: {
+        name: 'Movistar',
+        available_topup_amounts: ['20.00', '50.00', '150.00', '300.00', '500.00', '100.00', '200.00', '30.00']
+      }
+    }
+  ];
   searching: boolean;
   constructor(private payBillService: PayBillService, private router: Router) {}
   searchTopUpProviders(searchQuery: string) {
