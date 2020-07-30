@@ -2,7 +2,6 @@ import { AddTopUpPayeeFacade } from '../facade';
 import { CommonValidators, IBiller } from '@app/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IinputOption, InputFormatType } from '@app/shared';
 
 @Component({
   selector: 'add-top-up-payee',
@@ -12,7 +11,6 @@ import { IinputOption, InputFormatType } from '@app/shared';
 export class AddTopUpPayeePage implements OnInit {
   addPayeeForm: FormGroup;
   biller: IBiller;
-  phoneNumber: IinputOption;
   constructor(private facade: AddTopUpPayeeFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -28,14 +26,11 @@ export class AddTopUpPayeePage implements OnInit {
    * @memberOf AddPayeePage
    */
   private initForm(): void {
-    this.phoneNumber = {
-      type: InputFormatType.PHONE_MASK
-    };
     this.addPayeeForm = this.formBuilder.group(
       {
         name: [{ value: this.biller.name, disabled: true }, [Validators.required]],
-        phoneNumber: ['', Validators.required],
-        confirmPhoneNumber: ['', Validators.required]
+        phoneNumber: ['', [Validators.required, Validators.pattern('\\d{10}')]],
+        confirmPhoneNumber: ['', [Validators.required, Validators.pattern('\\d{10}')]]
       },
       {
         validator: CommonValidators.compareTwoFields('phoneNumber', 'confirmPhoneNumber')
