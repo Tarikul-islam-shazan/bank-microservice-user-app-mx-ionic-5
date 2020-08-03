@@ -1427,7 +1427,7 @@
       "top-up-payment": {
         "page-title": "Pagar recibo",
         "sending-to-title": "Sending To",
-        "account-number-title": "Phone Number",
+        "phone-number-title": "Phone Number",
         "payment-amount-title": "Top Up Amount",
         "payment-amount-placeholder": "Available amounts",
         "btn-pay-bill": "Pay Bill",
