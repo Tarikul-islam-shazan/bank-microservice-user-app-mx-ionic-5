@@ -1181,7 +1181,7 @@
     "code-2114": "The CLABE must only contain numbers.",
     "code-2115": "The phone must only contain numbers.",
     "code-2116": "The account number must only contain numbers.",
-    "code-2201": "Invalid phone number",
+    "code-2201": "Payee already exists",
     "code-2202": "Invalid process date.",
     "code-4000": "unknown",
     "code-4004": "Url not found",
