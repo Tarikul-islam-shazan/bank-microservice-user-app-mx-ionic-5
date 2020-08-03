@@ -170,6 +170,9 @@ export interface IBillPayment {
   paymentId?: string;
   payeeId?: string;
   amount?: number;
+  category?: string;
+  accountNumber?: string;
+  phoneNumber?: string;
   currency?: string;
   executionDate?: string;
   frequency?: PaymentFrequency;

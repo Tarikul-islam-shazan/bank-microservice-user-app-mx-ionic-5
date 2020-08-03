@@ -37,6 +37,8 @@ export class AddTopUpPayeeFacade {
   continue(billPayee: IBillPayee): void {
     this.payBillService.billPayee = billPayee;
     this.payBillService.addTopUpPayee(billPayee).subscribe(payee => {
+      // set payee id
+      this.payBillService.billPayee._id = payee._id;
       // show success modal
       this.modalService.openModal(
         SuccessModalPage,

@@ -60,10 +60,8 @@ export class TopUpPaymentFacade {
    *
    * @memberOf TopUpPaymentFacade
    */
-  private getPaymentSuccessModalCompProps(_paymentInfo: IBillPayment): IMeedModalContent {
-    const { amount, executionDate } = _paymentInfo,
-      accountNumber = this.getBillPayee().accountNumber,
-      referenceNumber = '12345678910',
+  private getPaymentSuccessModalCompProps(_paymentInfo: IBillPayment, referenceNumber: string): IMeedModalContent {
+    const { amount, executionDate, phoneNumber } = _paymentInfo,
       paymentAmount = this.currencyPipe.transform(amount),
       paymentExecutionDate = moment(executionDate).format('MMM DD, YYYY'),
       componentProps: IMeedModalContent = {
@@ -74,7 +72,7 @@ export class TopUpPaymentFacade {
             reference: 'move-money-module.pay-bills.top-up-payment.modal.reference-text',
             values: {
               paymentAmount,
-              accountNumber,
+              phoneNumber,
               paymentExecutionDate,
               referenceNumber
             }
@@ -101,9 +99,11 @@ export class TopUpPaymentFacade {
    * @param {IBillPayment} _paymentInfo
    * @memberOf TopUpPaymentFacade
    */
-  update(_paymentInfo: IBillPayment): void {
-    const componentProps = this.getPaymentSuccessModalCompProps(_paymentInfo);
-    this.modalService.openModal(SuccessModalPage, componentProps);
+  payBill(_paymentInfo: IBillPayment): void {
+    this.payBillService.createTopUpPayment(_paymentInfo).subscribe(payment => {
+      const componentProps = this.getPaymentSuccessModalCompProps(_paymentInfo, payment.referenceId);
+      this.modalService.openModal(SuccessModalPage, componentProps);
+    });
   }
 
   /**
