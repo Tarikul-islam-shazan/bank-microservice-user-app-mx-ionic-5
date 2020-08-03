@@ -1456,7 +1456,7 @@
         "btn-pay-bill": "Pay Bill",
         "btn-cancel": "Cancel",
         "modal": {
-          "title": "You've transfered {{paymentAmount}} to {{accountNumber}}.",
+          "title": "You've transfered {{paymentAmount}} to {{phoneNumber}}.",
           "content-1": "Submited on {{paymentExecutionDate}}",
           "reference-text": "Ref #{{referenceNumber}}",
           "btn-done": "Done"

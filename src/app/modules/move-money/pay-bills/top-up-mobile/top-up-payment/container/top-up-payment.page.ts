@@ -54,8 +54,13 @@ export class TopUpPaymentPage implements OnInit {
   processPayment(): void {
     const amount = this.seletedAmount.value;
     const executionDate = moment.now();
-    const paymentInfo = Object.assign({ amount, executionDate });
-    this.facade.update(paymentInfo);
+    const paymentInfo = Object.assign({
+      amount,
+      executionDate,
+      payeeId: this.billPayee._id,
+      phoneNumber: this.billPayee.phoneNumber
+    });
+    this.facade.payBill(paymentInfo);
   }
 
   cancelPayment(): void {

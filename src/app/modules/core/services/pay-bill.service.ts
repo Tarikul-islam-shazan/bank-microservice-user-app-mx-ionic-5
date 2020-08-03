@@ -68,14 +68,12 @@ export class PayBillService {
     });
   }
 
-  createPayment(billPayment: IBillPayment): Observable<IBillPayment> {
-    const otpVerificationRequest: IOtpVerificationRequest = {
-      url: this.billPaymentBaseUrl,
-      body: billPayment,
-      headers: this.headerService.getBillPayProviderHeader(),
-      requestMethod: IHttpRequestMethod.Post
-    };
-    return this.otpService.requestOtpCode(otpVerificationRequest);
+  createTopUpPayment(billPayment: IBillPayment): Observable<IBillPayee> {
+    const { amount, payeeId, phoneNumber } = billPayment,
+      _billPayment = { payeeId, phoneNumber, amount, category: BillerCategory.Topup };
+    return this.http.post<IBillPayee>(this.billPaymentBaseUrl, _billPayment, {
+      headers: this.headerService.getBillPayProviderHeader()
+    });
   }
 
   updatePayment(billPayment: IBillPayment): Observable<IBillPayment> {
