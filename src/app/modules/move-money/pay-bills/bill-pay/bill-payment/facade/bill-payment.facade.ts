@@ -47,9 +47,9 @@ export class BillPaymentFacade {
    *
    * @private
    * @param {IBillPayment} _paymentInfo
+   * @param {string} referenceNumber
    * @returns {IMeedModalContent}
-   *
-   * @memberOf BillPaymentFacade
+   * @memberof BillPaymentFacade
    */
   private getPaymentSuccessModalCompProps(_paymentInfo: IBillPayment, referenceNumber: string): IMeedModalContent {
     const { amount, executionDate } = _paymentInfo,
@@ -75,7 +75,6 @@ export class BillPaymentFacade {
             text: 'move-money-module.pay-bills.bill-payment.modal.btn-done',
             cssClass: 'white-button',
             handler: () => {
-              // this.analyticsService.logEvent(AnalyticsEventTypes.BillPaymentDone);
               this.modalService.close();
             }
           }
