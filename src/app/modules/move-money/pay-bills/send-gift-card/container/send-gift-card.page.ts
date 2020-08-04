@@ -4,7 +4,6 @@ import { IinputOption, InputFormatType } from '@app/shared/directives/mask-input
 import { REG_EX_PATTERNS } from '@app/core/models/patterns';
 import { IMeedModalContent, ModalService } from '@app/shared/services/modal.service';
 import { DropdownModalComponent } from '@app/shared/components/dropdown-modal';
-import { IBiller } from '@app/core';
 
 @Component({
   selector: 'mbc-send-gift-card',

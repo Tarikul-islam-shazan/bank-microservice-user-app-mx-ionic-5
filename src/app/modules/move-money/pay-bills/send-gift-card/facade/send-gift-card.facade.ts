@@ -73,15 +73,14 @@ export class SendGiftCardFacade {
   }
 
   onClickBuyGiftCard(): void {
-    this.payBillService
-      .giftCardPurchase({
-        giftCardId: this.selectedGiftCardVendor.id,
-        email: this.email,
-        amount: this.amount
-      })
-      .subscribe((res: any) => {
-        this.openSuccessModal(res.referenceId);
-      });
+    const giftCardPayee: IGiftCardPayee = {
+      giftCardId: this.selectedGiftCardVendor.id,
+      email: this.email,
+      amount: this.amount
+    };
+    this.payBillService.giftCardPurchase(giftCardPayee).subscribe((res: any) => {
+      this.openSuccessModal(res.referenceId);
+    });
   }
 
   onClickCancel() {
