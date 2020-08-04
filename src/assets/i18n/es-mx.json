@@ -1419,6 +1419,7 @@
           "email-label": "Send To Mail",
           "amount-input-label": "Gift Card Amount",
           "amount-input-placeholder": "Amount",
+          "gift-card-amount": "${{amount}}",
           "next-button": "Next",
           "buy-gift-card-button": "Buy Gift Card",
           "cancel-button": "Cancel",

@@ -81,10 +81,10 @@ ion-content {
       }
     }
 
-    .version {
+    .vendor {
       height: 80px;
 
-      .version-num {
+      .vendor-num {
         font-family: 'Averta W05 Bold5204651' !important;
         font-size: 11px !important;
         letter-spacing: 1px;
@@ -94,7 +94,7 @@ ion-content {
         text-transform: uppercase;
       }
 
-      .version-data {
+      .vendor-data {
         font-family: 'Averta W05 Regular' !important;
         font-size: 16px;
         color: #070a18;

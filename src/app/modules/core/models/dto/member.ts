@@ -133,6 +133,12 @@ export interface IBillPayee {
   _id?: string;
 }
 
+export interface IGiftCardPayee {
+  giftCardId: number;
+  email: string;
+  amount: number;
+}
+
 export enum BillerCategory {
   Utility = 'Utility',
   Topup = 'Topup',
@@ -144,21 +150,21 @@ export interface IBiller {
   id?: number;
   type?: string;
   name?: string;
-  biller_type?: string;
-  bill_type?: string;
+  billerType?: string;
+  billType?: string;
   country?: string;
   currency?: string;
-  requires_name_on_account?: boolean;
-  hours_to_fulfill?: number;
-  account_number_digits?: string;
+  requiresNameOnAccount?: boolean;
+  hoursToFulfill?: number;
+  accountNumberDigits?: string;
   mask?: string;
-  can_check_balance?: boolean;
-  supports_partial_payments?: boolean;
-  has_xdata?: boolean;
-  available_topup_amounts?: string[];
-  topup_commission?: number;
-  available_gift_card_amounts?: string[];
-  gift_card_commission?: number;
+  canCheckBalance?: boolean;
+  supportsPartialPayments?: boolean;
+  hasXdata?: boolean;
+  availableTopupAmounts?: string[];
+  topupCommission?: number;
+  availableGiftCardAmounts?: string[];
+  giftCardCommission?: number;
 }
 export enum PaymentFrequency {
   Once = 'Once',
