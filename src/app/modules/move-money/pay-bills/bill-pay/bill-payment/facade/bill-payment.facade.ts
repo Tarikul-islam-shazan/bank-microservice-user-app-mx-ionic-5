@@ -51,10 +51,9 @@ export class BillPaymentFacade {
    *
    * @memberOf BillPaymentFacade
    */
-  private getPaymentSuccessModalCompProps(_paymentInfo: IBillPayment): IMeedModalContent {
+  private getPaymentSuccessModalCompProps(_paymentInfo: IBillPayment, referenceNumber: string): IMeedModalContent {
     const { amount, executionDate } = _paymentInfo,
       payeeName = this.getBillPayee().biller.name,
-      referenceNumber = '12345678910',
       paymentAmount = this.currencyPipe.transform(amount),
       paymentExecutionDate = moment(executionDate).format('MMM DD, YYYY'),
       componentProps: IMeedModalContent = {
@@ -93,13 +92,11 @@ export class BillPaymentFacade {
    * @param {IBillPayment} _paymentInfo
    * @memberOf BillPaymentFacade
    */
-  update(_paymentInfo: IBillPayment): void {
-    // this.updateBillPayment(_paymentInfo).subscribe(() => {
-    //   const componentProps = this.getEditSuccessCompProp();
-    //   this.modalService.openInfoModalComponent({ componentProps });
-    // });
-    const componentProps = this.getPaymentSuccessModalCompProps(_paymentInfo);
-    this.modalService.openModal(SuccessModalPage, componentProps);
+  payBill(_paymentInfo: IBillPayment): void {
+    this.payBillService.createUtilityPayment(_paymentInfo).subscribe(payee => {
+      const componentProps = this.getPaymentSuccessModalCompProps(_paymentInfo, payee.referenceId);
+      this.modalService.openModal(SuccessModalPage, componentProps);
+    });
   }
 
   /**
