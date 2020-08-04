@@ -1404,7 +1404,7 @@
         "continue-button-title": "Continue",
         "delete-alert": {
           "header": "Confirm!",
-          "message": "Are you sure to delete {{name}} Top Up Mobile account?",
+          "message": "Are you sure to delete {{phoneNumber}} Top Up Mobile account?",
           "btn-cancel": "Cancel",
           "btn-confirm": "Okay"
         }
