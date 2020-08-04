@@ -16,7 +16,7 @@
         <ion-icon slot="start" name="search"></ion-icon>
         <ion-input
           debounce="100"
-          (ionChange)="facade.searchTopUpProviders(searchQuery)"
+          (ionChange)="searchTopUpProviders()"
           [(ngModel)]="searchQuery"
           placeholder="{{'move-money-module.pay-bills.top-up-mobile.search-input-placeholder' | translate}}"
         ></ion-input>
@@ -52,7 +52,7 @@
             class="ion-padding-top  ion-padding-bottom ion-text-wrap"
             (click)="facade.goToTopUpMobile(topUpAccount)"
           >
-            {{topUpAccount.accountNumber}}
+            {{topUpAccount.phoneNumber}}
           </ion-label>
           <ion-icon slot="end" name="trash-outline" (click)="facade.deleteTopUpAccount(topUpAccount)"></ion-icon>
         </ion-item>

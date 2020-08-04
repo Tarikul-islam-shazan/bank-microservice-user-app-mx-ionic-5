@@ -40,7 +40,7 @@
                 class="white-input"
                 id="add-paye-page-biller-name-input"
                 formControlName="phoneNumber"
-                [appMaskInput]="phoneNumber"
+                appInputMaxLength="10"
               ></ion-input>
             </ion-item>
 
@@ -54,7 +54,7 @@
                 class="white-input"
                 id="add-paye-page-repeat-phone-number-input"
                 formControlName="confirmPhoneNumber"
-                [appMaskInput]="phoneNumber"
+                appInputMaxLength="10"
               ></ion-input>
             </ion-item>
           </ion-list>

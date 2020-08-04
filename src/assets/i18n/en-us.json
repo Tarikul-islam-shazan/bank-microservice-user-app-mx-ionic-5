@@ -1181,7 +1181,7 @@
     "code-2114": "The CLABE must only contain numbers.",
     "code-2115": "The phone must only contain numbers.",
     "code-2116": "The account number must only contain numbers.",
-    "code-2201": "Invalid phone number",
+    "code-2201": "Payee already exists",
     "code-2202": "Invalid process date.",
     "code-4000": "unknown",
     "code-4004": "Url not found",
@@ -1441,7 +1441,7 @@
         "repeat-phone-number-label": "Repeat Phone Number",
         "next-button-title": "Next",
         "modal": {
-          "title": "You've successfully added {{billerName}}.",
+          "title": "You've successfully added {{phoneNumber}}.",
           "reference": "Ref #{{referenceNumber}}",
           "btn-pay-bill": "Top Up Account",
           "btn-view-bill-account": "View Top Up Accounts"
@@ -1467,6 +1467,21 @@
           "date-text": "Submitted On {{date}}",
           "ref-text": "Ref #{{refId}}",
           "done-button": "Done"
+        }
+      },
+      "top-up-payment": {
+        "page-title": "Pay Bills",
+        "sending-to-title": "Sending To",
+        "phone-number-title": "Phone Number",
+        "payment-amount-title": "Top Up Amount",
+        "payment-amount-placeholder": "Available amounts",
+        "btn-pay-bill": "Pay Bill",
+        "btn-cancel": "Cancel",
+        "modal": {
+          "title": "You've transfered {{paymentAmount}} to {{phoneNumber}}.",
+          "content-1": "Submited on {{paymentExecutionDate}}",
+          "reference-text": "Ref #{{referenceNumber}}",
+          "btn-done": "Done"
         }
       }
     },

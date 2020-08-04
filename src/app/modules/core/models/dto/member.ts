@@ -130,7 +130,9 @@ export interface IOtp {
 export interface IBillPayee {
   biller?: IBiller;
   accountNumber?: string;
+  phoneNumber?: string;
   _id?: string;
+  referenceId?: string;
 }
 
 export interface IGiftCardPayee {
@@ -174,6 +176,9 @@ export interface IBillPayment {
   paymentId?: string;
   payeeId?: string;
   amount?: number;
+  category?: string;
+  accountNumber?: string;
+  phoneNumber?: string;
   currency?: string;
   executionDate?: string;
   frequency?: PaymentFrequency;

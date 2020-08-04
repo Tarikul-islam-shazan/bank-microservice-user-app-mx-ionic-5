@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        mode="md"
+        icon="arrow-back"
+        id="top-up-payment-page-back-btn"
+        (click)="facade.navigateToPage('/move-money/pay-bills/top-up-mobile')"
+      >
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title id="top-up-payment-page-header-title-text">
+      {{'move-money-module.pay-bills.top-up-payment.page-title' | translate}}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div class="payee-block">
+      <div class="payee-info">
+        <div class="title" id="top-up-payment-page-sending-to-title-text">
+          {{'move-money-module.pay-bills.top-up-payment.sending-to-title' | translate}}
+        </div>
+        <div class="details" id="top-up-payment-page-bill-payee-full-name">{{billPayee.biller.name}}</div>
+      </div>
+      <div class="payee-info">
+        <div class="title" id="top-up-payment-page-phone-number-title-text">
+          {{'move-money-module.pay-bills.top-up-payment.phone-number-title' | translate}}
+        </div>
+        <div class="details" id="top-up-payment-page-phone-number">{{billPayee.phoneNumber}}</div>
+      </div>
+    </div>
+    <div class="clearfix">
+      <form [formGroup]="billPaymentForm" novalidate>
+        <div class="payment-amount-block">
+          <div class="title" id="top-up-payment-page-payment-amount-title-text">
+            {{'move-money-module.pay-bills.top-up-payment.payment-amount-title' | translate}}
+          </div>
+          <div class="dropdown-input" (click)="openAmountOptionsModal()">
+            <ion-input
+              [ngClass]="getAmountCssClass()"
+              type="text"
+              id="top-up-payment-page-payment-amount-dropdown-input"
+              formControlName="amount"
+              readonly
+              placeholder="{{'move-money-module.pay-bills.top-up-payment.payment-amount-placeholder'|translate}}"
+            >
+            </ion-input>
+            <ion-icon name="chevron-down"></ion-icon>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</ion-content>
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      [disabled]="billPaymentForm.disabled || billPaymentForm.invalid"
+      (click)="processPayment()"
+      class="white-button"
+      id="top-up-payment-page-bill-pay-bill-btn"
+      expand="block"
+    >
+      {{'move-money-module.pay-bills.top-up-payment.btn-pay-bill' | translate}}
+    </ion-button>
+    <ion-button
+      (click)="cancelPayment()"
+      class="grey-outline-button"
+      id="top-up-payment-page-bill-cancel-btn"
+      expand="block"
+    >
+      {{'move-money-module.pay-bills.top-up-payment.btn-cancel' | translate}}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

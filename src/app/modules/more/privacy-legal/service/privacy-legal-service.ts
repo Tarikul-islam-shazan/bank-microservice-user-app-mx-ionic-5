@@ -11,7 +11,7 @@ export class PrivacyLegalService {
 
   fetchPrivacyAndLegalDocuments(): Observable<IPrivacyAndLegalDocument[]> {
     return this.http.get<IPrivacyAndLegalDocument[]>(this.privacyAndLegalUrl, {
-      headers: this.headerService.getUserNameCustomerIdHeader()
+      headers: this.headerService.getUserNameMemberICustomerIdHeader()
     });
   }
 }

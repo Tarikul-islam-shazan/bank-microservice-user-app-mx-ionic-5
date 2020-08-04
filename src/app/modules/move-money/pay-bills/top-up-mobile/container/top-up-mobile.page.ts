@@ -9,5 +9,21 @@ import { TopUpMobileFacade } from '../facade/top-up-mobile.facade';
 export class TopUpMobilePage implements OnInit {
   searchQuery: string;
   constructor(public facade: TopUpMobileFacade) {}
-  ngOnInit() {}
+  ngOnInit() {
+    this.facade.searchTopUpProvidersInit();
+  }
+
+  ionViewWillEnter() {
+    this.searchQuery = '';
+    this.facade.getTopUpBillAccoutns();
+  }
+
+  searchTopUpProviders() {
+    if (this.searchQuery) {
+      this.facade.searchTopUpProviders$.next(this.searchQuery);
+    } else {
+      this.facade.searching = false;
+      this.facade.topUpProviders = [];
+    }
+  }
 }

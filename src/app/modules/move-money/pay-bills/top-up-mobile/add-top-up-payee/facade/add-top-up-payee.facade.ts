@@ -1,4 +1,3 @@
-import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 import { IBillPayee, IBiller } from '@app/core';
 import { IMeedModalContent, ModalService, SuccessModalPage } from '@app/shared';
 import { Injectable } from '@angular/core';
@@ -7,12 +6,7 @@ import { Router } from '@angular/router';
 
 @Injectable()
 export class AddTopUpPayeeFacade {
-  constructor(
-    private analyticsService: AnalyticsService,
-    private modalService: ModalService,
-    private payBillService: PayBillService,
-    private router: Router
-  ) {}
+  constructor(private modalService: ModalService, private payBillService: PayBillService, private router: Router) {}
 
   /**
    *
@@ -41,22 +35,28 @@ export class AddTopUpPayeeFacade {
    * @memberOf AddTopUpPayeeFacade
    */
   continue(billPayee: IBillPayee): void {
-    billPayee._id = '1245678910';
-    this.modalService.openModal(
-      SuccessModalPage,
-      this.getAddPayeeSuccessModalCompProps(billPayee.biller.name, billPayee._id)
-    );
+    this.payBillService.billPayee = billPayee;
+    this.payBillService.addTopUpPayee(billPayee).subscribe(payee => {
+      // set payee id
+      this.payBillService.billPayee._id = payee._id;
+      // show success modal
+      this.modalService.openModal(
+        SuccessModalPage,
+        this.getAddPayeeSuccessModalCompProps(billPayee.phoneNumber, payee.referenceId)
+      );
+    });
   }
-
-  private getAddPayeeSuccessModalCompProps(billerName: string, referenceNumber: string): IMeedModalContent {
+  private getAddPayeeSuccessModalCompProps(phoneNumber: string, referenceNumber: string): IMeedModalContent {
+    const content = {
+      title: 'move-money-module.pay-bills.add-top-up-payee.modal.title',
+      values: { phoneNumber }
+    };
+    if (referenceNumber) {
+      Object.assign(content, { reference: 'move-money-module.pay-bills.add-top-up-payee.modal.reference' });
+      Object.assign(content.values, { referenceNumber });
+    }
     const componentProps: IMeedModalContent = {
-      contents: [
-        {
-          title: 'move-money-module.pay-bills.add-top-up-payee.modal.title',
-          reference: 'move-money-module.pay-bills.add-top-up-payee.modal.reference',
-          values: { billerName, referenceNumber }
-        }
-      ],
+      contents: [content],
       actionButtons: [
         {
           text: 'move-money-module.pay-bills.add-top-up-payee.modal.btn-pay-bill',
