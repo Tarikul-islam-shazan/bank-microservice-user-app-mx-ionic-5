@@ -52,8 +52,13 @@ export class BillPaymentPage implements OnInit {
   processPayment(): void {
     const amount = this.convertPaymentAmountToNumber(this.billPaymentForm.value.amount);
     const executionDate = moment.now();
-    const paymentInfo = Object.assign({ amount, executionDate });
-    this.facade.update(paymentInfo);
+    const paymentInfo = Object.assign({
+      amount,
+      executionDate,
+      payeeId: this.billPayee._id,
+      accountNumber: this.billPayee.accountNumber
+    });
+    this.facade.payBill(paymentInfo);
   }
 
   cancelPayment(): void {

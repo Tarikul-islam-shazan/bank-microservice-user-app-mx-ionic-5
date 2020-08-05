@@ -47,14 +47,13 @@ export class BillPaymentFacade {
    *
    * @private
    * @param {IBillPayment} _paymentInfo
+   * @param {string} referenceNumber
    * @returns {IMeedModalContent}
-   *
-   * @memberOf BillPaymentFacade
+   * @memberof BillPaymentFacade
    */
-  private getPaymentSuccessModalCompProps(_paymentInfo: IBillPayment): IMeedModalContent {
+  private getPaymentSuccessModalCompProps(_paymentInfo: IBillPayment, referenceNumber: string): IMeedModalContent {
     const { amount, executionDate } = _paymentInfo,
       payeeName = this.getBillPayee().biller.name,
-      referenceNumber = '12345678910',
       paymentAmount = this.currencyPipe.transform(amount),
       paymentExecutionDate = moment(executionDate).format('MMM DD, YYYY'),
       componentProps: IMeedModalContent = {
@@ -76,7 +75,6 @@ export class BillPaymentFacade {
             text: 'move-money-module.pay-bills.bill-payment.modal.btn-done',
             cssClass: 'white-button',
             handler: () => {
-              // this.analyticsService.logEvent(AnalyticsEventTypes.BillPaymentDone);
               this.modalService.close();
             }
           }
@@ -93,73 +91,10 @@ export class BillPaymentFacade {
    * @param {IBillPayment} _paymentInfo
    * @memberOf BillPaymentFacade
    */
-  update(_paymentInfo: IBillPayment): void {
-    // this.updateBillPayment(_paymentInfo).subscribe(() => {
-    //   const componentProps = this.getEditSuccessCompProp();
-    //   this.modalService.openInfoModalComponent({ componentProps });
-    // });
-    const componentProps = this.getPaymentSuccessModalCompProps(_paymentInfo);
-    this.modalService.openModal(SuccessModalPage, componentProps);
-  }
-
-  /**
-   * @summary calls delete payment api. navifates to mail check if deleted.
-   *
-   * @param {string} _paymentId
-   * @returns {void}
-   * @memberOf BillPaymentFacade
-   */
-  private deletePayment(_paymentId: string): void {
-    this.payBillService.deletePayment(_paymentId).subscribe(() => {
-      this.navigateToPage('/move-money/pay-bills/bill-pay');
+  payBill(_paymentInfo: IBillPayment): void {
+    this.payBillService.createUtilityPayment(_paymentInfo).subscribe(payee => {
+      const componentProps = this.getPaymentSuccessModalCompProps(_paymentInfo, payee.referenceId);
+      this.modalService.openModal(SuccessModalPage, componentProps);
     });
-  }
-
-  /**
-   * @summary gets component props for payment delete modal.
-   *
-   * @private
-   * @returns {IMeedModalContent}
-   * @memberOf BillPaymentFacade
-   */
-  private getDeleteCompProp(): IMeedModalContent {
-    const paymentId = '2971237';
-    const componentProps: IMeedModalContent = {
-      contents: [
-        {
-          details: ['move-money-module.pay-bills.bill-payment.modal.payment-delete-text']
-        }
-      ],
-      actionButtons: [
-        {
-          text: 'move-money-module.pay-bills.bill-payment.buttons.yes-button-text',
-          cssClass: 'white-button',
-          handler: () => {
-            this.deletePayment(paymentId);
-            this.modalService.close();
-          }
-        },
-        {
-          text: 'move-money-module.pay-bills.bill-payment.buttons.no-button-text',
-          cssClass: 'grey-outline-button',
-          handler: () => {
-            this.modalService.close();
-          }
-        }
-      ]
-    };
-
-    return componentProps;
-  }
-
-  /**
-   * @summary opens info modal to delete payment.
-   *
-   * @returns {void}
-   * @memberOf BillPaymentFacade
-   */
-  delete(): void {
-    const componentProps = this.getDeleteCompProp();
-    this.modalService.openInfoModalComponent({ componentProps });
   }
 }

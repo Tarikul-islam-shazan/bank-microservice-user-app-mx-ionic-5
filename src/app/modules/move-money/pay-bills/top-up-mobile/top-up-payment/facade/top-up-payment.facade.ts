@@ -35,7 +35,7 @@ export class TopUpPaymentFacade {
    * @memberof TopUpPaymentFacade
    */
   initAvailableDropDownAmountOptions() {
-    this.payBillService.billPayee.biller.available_topup_amounts.forEach((amount: string) => {
+    this.payBillService.billPayee.biller.availableTopupAmounts.forEach((amount: string) => {
       const text = this.currencyPipe.transform(parseFloat(amount)).toString();
       this.availableAmountsOptions.push({ text, value: amount });
     });
