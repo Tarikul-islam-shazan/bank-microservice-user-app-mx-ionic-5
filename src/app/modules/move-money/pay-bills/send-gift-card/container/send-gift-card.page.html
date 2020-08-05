@@ -1,0 +1,139 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title id="top-up-page-header-title-text">
+      {{ 'move-money-module.pay-bills.send-gift-card.page-title' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div *ngIf="facade.showCardVendorInput">
+      <div class="send-gift-card-title-text" id="send-gift-card-title-text">
+        {{ 'move-money-module.pay-bills.send-gift-card.content-title' | translate }}
+      </div>
+
+      <div class="form-group">
+        <div class="input-group">
+          <ion-label class="input-label">
+            {{ 'move-money-module.pay-bills.send-gift-card.search-vendor-input-label' | translate }}
+          </ion-label>
+          <ion-item lines="none" class="input-item icon-input">
+            <ion-icon slot="start" name="search"></ion-icon>
+            <ion-input
+              debounce="100"
+              (ionChange)="facade.searchGiftCardVendors($event.target.value)"
+              [(ngModel)]="facade.giftCardVendorName"
+              placeholder="{{ 'move-money-module.pay-bills.send-gift-card.search-vendor-placeholder' | translate }}"
+            ></ion-input>
+          </ion-item>
+          <div class="search-result" *ngIf="facade.searching">
+            <ion-list lines="none">
+              <ion-item
+                *ngFor="let giftCardVendor of facade.giftCardVendors"
+                (click)="facade.selectGiftCardVendor(giftCardVendor)"
+              >
+                <ion-label>{{ giftCardVendor.name }}</ion-label>
+              </ion-item>
+            </ion-list>
+          </div>
+        </div>
+        <div class="input-group">
+          <ion-label class="input-label"
+            >{{ 'move-money-module.pay-bills.send-gift-card.email-input-label' | translate }}</ion-label
+          >
+          <ion-item lines="none" class="input-item">
+            <ion-input
+              type="email"
+              [(ngModel)]="facade.email"
+              placeholder="{{ 'move-money-module.pay-bills.send-gift-card.email-input-placeholder' | translate }}"
+              [appMaskInput]="emailFormatMask"
+            ></ion-input>
+          </ion-item>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!facade.showCardVendorInput">
+      <ion-list lines="none">
+        <div class="vendor">
+          <div class="vendor-num">
+            <p id="version-info-page-version-text">
+              {{ 'move-money-module.pay-bills.send-gift-card.gift-card-label' | translate }}
+            </p>
+          </div>
+          <div class="vendor-data">
+            <p id="version-info-page-version">{{ facade.selectedGiftCardVendor.name }}</p>
+          </div>
+        </div>
+        <div class="vendor">
+          <div class="vendor-num">
+            <p id="version-info-page-version-text">
+              {{ 'move-money-module.pay-bills.send-gift-card.email-label' | translate }}
+            </p>
+          </div>
+          <div class="vendor-data">
+            <p id="version-info-page-version">{{ facade.email }}</p>
+          </div>
+        </div>
+      </ion-list>
+
+      <div class="form-group">
+        <div class="input-group">
+          <ion-label class="input-label"
+            >{{ 'move-money-module.pay-bills.send-gift-card.amount-input-label' | translate }}</ion-label
+          >
+          <div class="dropdown-input" (click)="giftCardAmountSelectionModal()">
+            <ion-input
+              class="white-input"
+              type="text"
+              [(ngModel)]="facade.amountText"
+              id="signup-personal-information-page-profession-dropdown-input"
+              readonly
+              placeholder="{{ 'move-money-module.pay-bills.send-gift-card.amount-input-placeholder' | translate }}"
+            >
+            </ion-input>
+            <ion-icon name="chevron-down"></ion-icon>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <ion-button
+      *ngIf="facade.showCardVendorInput"
+      (click)="facade.onClickNext()"
+      expand="block"
+      class="white-button"
+      [disabled]="facade.enableNextButton()"
+      id="invite-new-member-page-continue-btn"
+    >
+      {{ 'move-money-module.pay-bills.send-gift-card.next-button' | translate }}
+    </ion-button>
+    <div *ngIf="!facade.showCardVendorInput">
+      <ion-button
+        (click)="facade.onClickBuyGiftCard()"
+        expand="block"
+        class="white-button"
+        [disabled]="facade.amount <= 0"
+        id="invite-new-member-page-continue-btn"
+      >
+        {{ 'move-money-module.pay-bills.send-gift-card.buy-gift-card-button' | translate }}
+      </ion-button>
+      <ion-button
+        (click)="facade.onClickCancel()"
+        expand="block"
+        class="grey-outline-button"
+        id="invite-new-member-page-continue-btn"
+      >
+        {{ 'move-money-module.pay-bills.send-gift-card.cancel-button' | translate }}
+      </ion-button>
+    </div>
+  </ion-toolbar>
+</ion-footer>

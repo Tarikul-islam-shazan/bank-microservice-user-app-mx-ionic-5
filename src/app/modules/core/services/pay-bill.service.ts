@@ -1,7 +1,7 @@
 import { environment } from '@env/environment';
 import { HeaderService } from './header-service.service';
 import { HttpClient } from '@angular/common/http';
-import { IBillPayee, IBillPayment, IBiller, BillerCategory } from '@app/core/models/dto/member';
+import { IBillPayee, IBillPayment, IBiller, BillerCategory, IGiftCardPayee } from '@app/core/models/dto/member';
 import { IHttpRequestMethod, IOtpVerificationRequest, OtpService } from './otp.service';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
@@ -15,6 +15,7 @@ export class PayBillService {
   private billPayeeBaseUrl = `${environment.serviceUrl}/bill-pay/payees`;
   private billPaymentBaseUrl = `${environment.serviceUrl}/bill-pay/payments`;
   private billerSearchUrl = `${environment.serviceUrl}/bill-pay/billers/search`;
+  private giftCardPurchaseUrl = `${environment.serviceUrl}/bill-pay/gift-card/purchase`;
 
   constructor(private http: HttpClient, private headerService: HeaderService, private otpService: OtpService) {}
 
@@ -97,6 +98,12 @@ export class PayBillService {
   deletePayment(paymentId: string) {
     return this.http.delete<IBillPayment>(this.billPaymentBaseUrl + `/${paymentId}`, {
       headers: this.headerService.getBillPayProviderHeader()
+    });
+  }
+
+  giftCardPurchase(giftCardPayee: IGiftCardPayee): Observable<IGiftCardPayee> {
+    return this.http.post<IGiftCardPayee>(this.giftCardPurchaseUrl, giftCardPayee, {
+      headers: this.headerService.getBankIdentifierHeader()
     });
   }
 }

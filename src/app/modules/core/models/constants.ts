@@ -434,5 +434,9 @@ export const PAGES: Page = {
   TOP_UP_PAYMENT: {
     NAME: 'top-up-payment',
     ROUTE_PATH: '/move-money/pay-bills/top-up-payment'
+  },
+  SEND_GIFT_CARD: {
+    NAME: 'send-gift-card',
+    ROUTE_PATH: '/move-money/pay-bills/send-gift-card'
   }
 };
