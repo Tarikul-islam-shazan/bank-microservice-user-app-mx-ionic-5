@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { PayBillService } from '@app/core/services/pay-bill.service';
 import { Subject } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
+import { AlertController } from '@ionic/angular';
 
 @Injectable()
 export class TopUpMobileFacade {
@@ -11,7 +13,12 @@ export class TopUpMobileFacade {
   topUpProviders: IBiller[] = [];
   myTopUpAccounts: IBillPayee[] = [];
   searching: boolean;
-  constructor(private payBillService: PayBillService, private router: Router) {}
+  constructor(
+    private payBillService: PayBillService,
+    private router: Router,
+    private translate: TranslateService,
+    private alertController: AlertController
+  ) {}
   searchTopUpProvidersInit(): void {
     this.searchTopUpProviders$
       .pipe(
@@ -38,5 +45,61 @@ export class TopUpMobileFacade {
     this.payBillService.biller = biller;
     this.router.navigate(['/move-money/pay-bills/add-top-up-payee']);
   }
-  deleteTopUpAccount(billAccount: IBillPayee): void {}
+
+  /**
+   * @summary A function to delete My TopUp Account
+   *
+   * @param {IBillPayee} billAccount
+   * @memberof TopUpMobileFacade
+   */
+  deleteTopUpAccount(billAccount: IBillPayee): void {
+    const phoneNumber = billAccount.phoneNumber;
+    this.translate
+      .get(
+        [
+          'move-money-module.pay-bills.top-up-mobile.delete-alert.header',
+          'move-money-module.pay-bills.top-up-mobile.delete-alert.message',
+          'move-money-module.pay-bills.top-up-mobile.delete-alert.btn-cancel',
+          'move-money-module.pay-bills.top-up-mobile.delete-alert.btn-confirm'
+        ],
+        { phoneNumber }
+      )
+      .subscribe(messages => {
+        this.presentAlertConfirmToDelete(messages, billAccount._id);
+      });
+  }
+
+  /**
+   * @summary A function to get delete confirmation alert
+   *
+   * @param {string[]} messages
+   * @param {string} billAccountId
+   * @returns {Promise<void>}
+   * @memberof TopUpMobileFacade
+   */
+  async presentAlertConfirmToDelete(messages: string[], billAccountId: string): Promise<void> {
+    const alert = await this.alertController.create({
+      cssClass: 'delete-bill-account-alert',
+      header: messages['move-money-module.pay-bills.top-up-mobile.delete-alert.header'],
+      message: messages['move-money-module.pay-bills.top-up-mobile.delete-alert.message'],
+      buttons: [
+        {
+          text: messages['move-money-module.pay-bills.top-up-mobile.delete-alert.btn-cancel'],
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {}
+        },
+        {
+          text: messages['move-money-module.pay-bills.top-up-mobile.delete-alert.btn-confirm'],
+          handler: () => {
+            this.payBillService.deletePayee(billAccountId).subscribe(() => {
+              this.getTopUpBillAccoutns();
+            });
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 }
