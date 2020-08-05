@@ -25,7 +25,7 @@ export class NegativeToPositivePipe implements PipeTransform {
   transform(val: number): string {
     const formatConfig: ICurrencyFormat = {
       style: 'currency',
-      currency: this.settingService.getCurrentLocale().currency,
+      currency: this.settingService.getCurrentLocale().currencyCode,
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
       currencyDisplay: 'symbol'

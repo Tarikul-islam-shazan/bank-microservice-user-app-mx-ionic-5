@@ -13,7 +13,11 @@ export class ChangeLanguageFacade {
   ) {}
 
   get availableLanguage(): Locale[] {
-    return this.settingsService.getAvailableLocales();
+    // We are getting available Locales as associative array.
+    // We need to convert associative array to array of object, to fit the UI *ngFor
+    return Object.keys(this.settingsService.getAvailableLocales()).map((key: string) => {
+      return this.settingsService.getAvailableLocales()[key];
+    });
   }
 
   get selectedLanguage(): Locale {

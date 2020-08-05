@@ -13,11 +13,10 @@ import { StorageService } from './storage.service';
 import { StorageKey } from '@app/core/models/storage';
 import { Logger } from './logger.service';
 import { AnalyticsService, AnalyticsUserProperties } from '@app/analytics';
-import { getLocaleCurrencySymbol } from '@angular/common';
 const logger = new Logger('SettingsService');
 import { environment } from '@env/environment';
 import * as moment from 'moment';
-
+import { getCurrencySymbol } from '@angular/common';
 /**
  * Class to hold app wide User settings.
  *
@@ -52,7 +51,9 @@ export class SettingsService {
    * @returns {Locale[]}
    * @memberof SettingsService
    */
-  getAvailableLocales(): Locale[] {
+  getAvailableLocales(): {
+    [key: string]: Locale;
+  } {
     return this.settings.systemSettings.availableLocales;
   }
 
@@ -92,38 +93,29 @@ export class SettingsService {
   loadSystemSettings(): void {
     // the only default app setting we can load is the locales/languages
     // add currency filed for change currency according to the language
-    const locales: Locale[] = environment.availableLocales;
+    const locales: {
+      [key: string]: Locale;
+    } = environment.availableLocales;
 
     this.settings.systemSettings = {};
 
     this.settings.systemSettings.availableLocales = locales;
     let systemLang = this.translate.getBrowserCultureLang();
     const deviceLang = systemLang.split('-');
-    if (deviceLang[0] === locales[1].language) {
-      systemLang = locales[1].locale;
+    // special case on iOS device language Spanish: for iOS systemLang are not 'es-mx'
+    // it show resule as es-409, so we need to only check on language;
+    if (deviceLang[0] === locales['es-mx'].language) {
+      systemLang = locales['es-mx'].locale;
     }
+
+    systemLang = systemLang.toLocaleLowerCase();
     logger.debug(`system language is ${systemLang}`);
     // lets look if we have the sytem language in our current set of supported languages
-    const foundLocales = locales.filter((foundLocale: Locale) => {
-      if (foundLocale.locale === systemLang.toString().toLowerCase()) {
-        return foundLocale;
-      }
-    });
-
-    if (foundLocales && foundLocales.length > 0) {
-      // we should technically only find one locale
-      this.settings.systemSettings.selectedLocale = foundLocales[0];
+    if (this.settings.systemSettings.availableLocales[systemLang]) {
+      this.settings.systemSettings.selectedLocale = this.settings.systemSettings.availableLocales[systemLang];
     } else {
       // otherwise set it to the default which is always english
-      // add currency filed for change currency according to the language
-      this.settings.systemSettings.selectedLocale = {
-        country: 'us',
-        language: 'en',
-        name: 'more-module.change-language.english-text',
-        locale: 'en-us',
-        dialCode: 1,
-        currency: 'USD'
-      };
+      this.settings.systemSettings.selectedLocale = this.settings.systemSettings.availableLocales['en-us'];
     }
 
     // set default language on app startup
@@ -165,7 +157,7 @@ export class SettingsService {
    * @memberof SettingsService
    */
   get getCurrencySymbol(): string {
-    return getLocaleCurrencySymbol(this.settings.systemSettings.selectedLocale.locale);
+    return getCurrencySymbol(this.getCurrentLocale().currencyCode, 'narrow');
   }
 
   /**

@@ -25,7 +25,7 @@ export interface Locale {
   name: string;
   locale: string;
   dialCode: number;
-  currency: string;
+  currencyCode: string;
 }
 
 /**
@@ -39,7 +39,9 @@ export interface AppInfo {
 }
 
 export interface SystemSettings {
-  availableLocales?: Locale[];
+  availableLocales?: {
+    [key: string]: Locale;
+  };
   selectedLocale?: Locale;
   appInfo?: AppInfo;
   menus?: Menu[];
