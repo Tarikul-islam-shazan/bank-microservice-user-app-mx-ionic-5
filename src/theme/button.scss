@@ -110,3 +110,20 @@ ion-button.blue-button.button-disabled {
   --background-activated: transparent !important;
   --background-hover: transparent;
 }
+
+.cancel-button {
+  font-family: 'Averta W05 Bold5204651' !important;
+  font-size: 1.6rem !important;
+  letter-spacing: 0.2px !important;
+  line-height: 1.6rem !important;
+  --color: #fe4c55 !important;
+  --border-width: 2px;
+  --border-color: #ebedf2 !important;
+  --border-style: solid;
+  height: 60px !important;
+  width: 100%;
+  --border-radius: 12px !important;
+  --background: #ffffff !important;
+  text-transform: none;
+  white-space: normal;
+}

@@ -73,14 +73,18 @@ export interface AvailableAnswer {
   answer: string;
   id: string;
 }
+
+export interface TncOptions {
+  hasCorporateTnc: boolean;
+  nextPage: string;
+}
 export interface IdentityAnswer {
   questionId: string;
   answerId: string;
 }
 
 export interface TncResponse {
-  processId: string;
-  showCorporateTnc: boolean;
+  tncOptions?: TncOptions;
   termsAndConditions: TncDocument[];
 }
 

@@ -509,7 +509,13 @@
       "terms_text_5": "Con respecto a mi número de identificación de contribuyente, he leído y acepto: ",
       "corporate-terms": "Reconozco que la participación en el programa de descuento Meed@Work requiere que se comparta cierta información con mi empleador. Doy mi consentimiento para que Vast Bank, N.A. confirme a mi empleador que tengo una cuenta en la institución al compartir el nombre legal y la dirección del correo electrónico asociada con mis cuentas de Meed Banking Club.",
       "corporate-terms-share-checkbox": "Aceptar para compartir.",
-      "corporate-terms-not-share-checkbox": "No compartir. Entiendo que no seré elegible para el descuento de la tarifa."
+      "corporate-terms-not-share-checkbox": "No compartir. Entiendo que no seré elegible para el descuento de la tarifa.",
+      "corporate-terms-not-accepted-assurance-modal": {
+        "corporate-terms-not-accepted-modal-text-1": "¿Estás seguro de que deseas continuar sin hacer clic en \"Aceptar para compartir\"?",
+        "corporate-terms-not-accepted-modal-text-2": "No recibirás el reembolso mensual de su empleador.",
+        "okay-button": "Correcto",
+        "cancel-button": "Cancelar"
+      }
     },
     "signup-deny-page": {
       "page-title": "Desafortunadamente…",
