@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 import { CurrencyPipe } from '@angular/common';
 import { IBillPayee, IBillPayment } from '@app/core/models/dto';
-import { IMeedModalContent, ModalService, SuccessModalPage, DropdownModalComponent } from '@app/shared';
+import { IMeedModalContent, ModalService, SuccessModalPage, DropdownModalComponent, PhonePipe } from '@app/shared';
 import { Injectable } from '@angular/core';
 import { PayBillService } from '@app/core/services/pay-bill.service';
 import { Router } from '@angular/router';
@@ -16,7 +16,8 @@ export class TopUpPaymentFacade {
     private currencyPipe: CurrencyPipe,
     private modalService: ModalService,
     private payBillService: PayBillService,
-    private router: Router
+    private router: Router,
+    private phonePipe: PhonePipe
   ) {}
   /**
    * @summary navigates to the specified route.
@@ -61,7 +62,9 @@ export class TopUpPaymentFacade {
    * @memberOf TopUpPaymentFacade
    */
   private getPaymentSuccessModalCompProps(_paymentInfo: IBillPayment, referenceNumber: string): IMeedModalContent {
-    const { amount, executionDate, phoneNumber } = _paymentInfo,
+    let { phoneNumber } = _paymentInfo;
+    phoneNumber = this.phonePipe.transform(phoneNumber);
+    const { amount, executionDate } = _paymentInfo,
       paymentAmount = this.currencyPipe.transform(amount),
       paymentExecutionDate = moment(executionDate).format('MMM DD, YYYY'),
       componentProps: IMeedModalContent = {
@@ -104,67 +107,6 @@ export class TopUpPaymentFacade {
       const componentProps = this.getPaymentSuccessModalCompProps(_paymentInfo, payment.referenceId);
       this.modalService.openModal(SuccessModalPage, componentProps);
     });
-  }
-
-  /**
-   * @summary calls delete payment api. navifates to mail check if deleted.
-   *
-   * @param {string} _paymentId
-   * @returns {void}
-   * @memberOf TopUpPaymentFacade
-   */
-  private deletePayment(_paymentId: string): void {
-    this.payBillService.deletePayment(_paymentId).subscribe(() => {
-      this.navigateToPage('/move-money/pay-bills/bill-pay');
-    });
-  }
-
-  /**
-   * @summary gets component props for payment delete modal.
-   *
-   * @private
-   * @returns {IMeedModalContent}
-   * @memberOf TopUpPaymentFacade
-   */
-  private getDeleteCompProp(): IMeedModalContent {
-    const paymentId = '2971237';
-    const componentProps: IMeedModalContent = {
-      contents: [
-        {
-          details: ['move-money-module.pay-bills.top-up-payment.modal.payment-delete-text']
-        }
-      ],
-      actionButtons: [
-        {
-          text: 'move-money-module.pay-bills.top-up-payment.buttons.yes-button-text',
-          cssClass: 'white-button',
-          handler: () => {
-            this.deletePayment(paymentId);
-            this.modalService.close();
-          }
-        },
-        {
-          text: 'move-money-module.pay-bills.top-up-payment.buttons.no-button-text',
-          cssClass: 'grey-outline-button',
-          handler: () => {
-            this.modalService.close();
-          }
-        }
-      ]
-    };
-
-    return componentProps;
-  }
-
-  /**
-   * @summary opens info modal to delete payment.
-   *
-   * @returns {void}
-   * @memberOf TopUpPaymentFacade
-   */
-  delete(): void {
-    const componentProps = this.getDeleteCompProp();
-    this.modalService.openInfoModalComponent({ componentProps });
   }
 
   openAvailableAmountsModal(callback: (data) => void): void {

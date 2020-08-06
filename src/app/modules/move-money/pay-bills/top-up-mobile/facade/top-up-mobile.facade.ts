@@ -6,6 +6,7 @@ import { Subject } from 'rxjs';
 import { switchMap, tap } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertController } from '@ionic/angular';
+import { PhonePipe } from '@app/shared';
 
 @Injectable()
 export class TopUpMobileFacade {
@@ -17,7 +18,8 @@ export class TopUpMobileFacade {
     private payBillService: PayBillService,
     private router: Router,
     private translate: TranslateService,
-    private alertController: AlertController
+    private alertController: AlertController,
+    private phonePipe: PhonePipe
   ) {}
   searchTopUpProvidersInit(): void {
     this.searchTopUpProviders$
@@ -53,7 +55,7 @@ export class TopUpMobileFacade {
    * @memberof TopUpMobileFacade
    */
   deleteTopUpAccount(billAccount: IBillPayee): void {
-    const phoneNumber = billAccount.phoneNumber;
+    const phoneNumber = this.phonePipe.transform(billAccount.phoneNumber);
     this.translate
       .get(
         [

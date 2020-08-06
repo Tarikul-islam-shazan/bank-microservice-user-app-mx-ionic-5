@@ -52,7 +52,7 @@
             class="ion-padding-top  ion-padding-bottom ion-text-wrap"
             (click)="facade.goToTopUpMobile(topUpAccount)"
           >
-            {{topUpAccount.phoneNumber}}
+            {{topUpAccount.phoneNumber|phone}}
           </ion-label>
           <ion-icon slot="end" name="trash-outline" (click)="facade.deleteTopUpAccount(topUpAccount)"></ion-icon>
         </ion-item>
