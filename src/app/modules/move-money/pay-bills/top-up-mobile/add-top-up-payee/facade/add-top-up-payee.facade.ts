@@ -1,12 +1,17 @@
 import { IBillPayee, IBiller } from '@app/core';
-import { IMeedModalContent, ModalService, SuccessModalPage } from '@app/shared';
+import { IMeedModalContent, ModalService, SuccessModalPage, PhonePipe } from '@app/shared';
 import { Injectable } from '@angular/core';
 import { PayBillService } from '@app/core/services/pay-bill.service';
 import { Router } from '@angular/router';
 
 @Injectable()
 export class AddTopUpPayeeFacade {
-  constructor(private modalService: ModalService, private payBillService: PayBillService, private router: Router) {}
+  constructor(
+    private modalService: ModalService,
+    private payBillService: PayBillService,
+    private router: Router,
+    private phonePipe: PhonePipe
+  ) {}
 
   /**
    *
@@ -47,6 +52,7 @@ export class AddTopUpPayeeFacade {
     });
   }
   private getAddPayeeSuccessModalCompProps(phoneNumber: string, referenceNumber: string): IMeedModalContent {
+    phoneNumber = this.phonePipe.transform(phoneNumber);
     const content = {
       title: 'move-money-module.pay-bills.add-top-up-payee.modal.title',
       values: { phoneNumber }
