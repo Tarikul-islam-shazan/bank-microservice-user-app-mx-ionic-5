@@ -1380,6 +1380,7 @@
         "next-button-title": "Next",
         "modal": {
           "title": "You've successfully added {{billerName}} to your saved bill accounts.",
+          "reference": "Ref #{{referenceNumber}}",
           "btn-pay-bill": "Pay Bill",
           "btn-view-bill-account": "View Bill Accounts"
         }
