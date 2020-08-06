@@ -46,18 +46,24 @@ export class AddPayeeFacade {
       // set payee id
       this.payBillService.billPayee._id = payee._id;
       // show success modal
-      this.modalService.openModal(SuccessModalPage, this.getAddPayeeSuccessModalCompProps(billPayee.biller.name));
+      this.modalService.openModal(
+        SuccessModalPage,
+        this.getAddPayeeSuccessModalCompProps(billPayee.biller.name, payee.referenceId)
+      );
     });
   }
 
-  private getAddPayeeSuccessModalCompProps(billerName: string): IMeedModalContent {
+  private getAddPayeeSuccessModalCompProps(billerName: string, referenceNumber: string): IMeedModalContent {
+    const content = {
+      title: 'move-money-module.pay-bills.add-payee.modal.title',
+      values: { billerName }
+    };
+    if (referenceNumber) {
+      Object.assign(content, { reference: 'move-money-module.pay-bills.add-payee.modal.reference' });
+      Object.assign(content.values, { referenceNumber });
+    }
     const componentProps: IMeedModalContent = {
-      contents: [
-        {
-          title: 'move-money-module.pay-bills.add-payee.modal.title',
-          values: { billerName }
-        }
-      ],
+      contents: [content],
       actionButtons: [
         {
           text: 'move-money-module.pay-bills.add-payee.modal.btn-pay-bill',
