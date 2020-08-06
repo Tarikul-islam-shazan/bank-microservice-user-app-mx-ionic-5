@@ -40,7 +40,7 @@
                 class="white-input"
                 id="add-paye-page-biller-name-input"
                 formControlName="phoneNumber"
-                appInputMaxLength="10"
+                [appMaskInput]="phoneNumberInput"
               ></ion-input>
             </ion-item>
 
@@ -50,11 +50,11 @@
               >
               <ion-input
                 placeholder="{{ 'move-money-module.pay-bills.add-top-up-payee.phone-number-placeholder' | translate }}"
-                type="text"
+                type="tel"
                 class="white-input"
                 id="add-paye-page-repeat-phone-number-input"
                 formControlName="confirmPhoneNumber"
-                appInputMaxLength="10"
+                [appMaskInput]="phoneNumberInput"
               ></ion-input>
             </ion-item>
           </ion-list>

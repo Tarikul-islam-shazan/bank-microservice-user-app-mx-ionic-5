@@ -2,6 +2,7 @@ import { AddTopUpPayeeFacade } from '../facade';
 import { CommonValidators, IBiller } from '@app/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { IinputOption, InputFormatType } from '@app/shared/directives';
 
 @Component({
   selector: 'add-top-up-payee',
@@ -11,6 +12,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class AddTopUpPayeePage implements OnInit {
   addPayeeForm: FormGroup;
   biller: IBiller;
+  phoneNumberInput: IinputOption;
+  phoneNumberLength = 10;
   constructor(private facade: AddTopUpPayeeFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
@@ -26,6 +29,10 @@ export class AddTopUpPayeePage implements OnInit {
    * @memberOf AddPayeePage
    */
   private initForm(): void {
+    this.phoneNumberInput = {
+      type: InputFormatType.ONLY_NUMBER,
+      maxLength: this.phoneNumberLength
+    };
     this.addPayeeForm = this.formBuilder.group(
       {
         name: [{ value: this.biller.name, disabled: true }, [Validators.required]],
