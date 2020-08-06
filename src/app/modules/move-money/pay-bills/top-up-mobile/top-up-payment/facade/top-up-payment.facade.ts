@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 import { CurrencyPipe } from '@angular/common';
 import { IBillPayee, IBillPayment } from '@app/core/models/dto';
-import { IMeedModalContent, ModalService, SuccessModalPage, DropdownModalComponent } from '@app/shared';
+import { IMeedModalContent, ModalService, SuccessModalPage, DropdownModalComponent, PhonePipe } from '@app/shared';
 import { Injectable } from '@angular/core';
 import { PayBillService } from '@app/core/services/pay-bill.service';
 import { Router } from '@angular/router';
@@ -16,7 +16,8 @@ export class TopUpPaymentFacade {
     private currencyPipe: CurrencyPipe,
     private modalService: ModalService,
     private payBillService: PayBillService,
-    private router: Router
+    private router: Router,
+    private phoneNumber: PhonePipe
   ) {}
   /**
    * @summary navigates to the specified route.
@@ -61,7 +62,9 @@ export class TopUpPaymentFacade {
    * @memberOf TopUpPaymentFacade
    */
   private getPaymentSuccessModalCompProps(_paymentInfo: IBillPayment, referenceNumber: string): IMeedModalContent {
-    const { amount, executionDate, phoneNumber } = _paymentInfo,
+    let { phoneNumber } = _paymentInfo;
+    phoneNumber = this.phoneNumber.transform(phoneNumber);
+    const { amount, executionDate } = _paymentInfo,
       paymentAmount = this.currencyPipe.transform(amount),
       paymentExecutionDate = moment(executionDate).format('MMM DD, YYYY'),
       componentProps: IMeedModalContent = {
