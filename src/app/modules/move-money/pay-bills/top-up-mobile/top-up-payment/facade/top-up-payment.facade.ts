@@ -36,10 +36,15 @@ export class TopUpPaymentFacade {
    * @memberof TopUpPaymentFacade
    */
   initAvailableDropDownAmountOptions() {
-    this.payBillService.billPayee.biller.availableTopupAmounts.forEach((amount: string) => {
-      const text = this.currencyPipe.transform(parseFloat(amount)).toString();
-      this.availableAmountsOptions.push({ text, value: amount });
-    });
+    const { availableTopupAmounts } = this.payBillService.billPayee.biller;
+    if (availableTopupAmounts && availableTopupAmounts.length > 0) {
+      availableTopupAmounts
+        .sort((a, b) => parseFloat(a) - parseFloat(b))
+        .forEach((amount: string) => {
+          const text = this.currencyPipe.transform(parseFloat(amount)).toString();
+          this.availableAmountsOptions.push({ text, value: amount });
+        });
+    }
   }
 
   /**
