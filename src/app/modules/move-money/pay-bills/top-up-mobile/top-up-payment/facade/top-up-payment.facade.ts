@@ -36,6 +36,7 @@ export class TopUpPaymentFacade {
    * @memberof TopUpPaymentFacade
    */
   initAvailableDropDownAmountOptions() {
+    this.availableAmountsOptions = [];
     const { availableTopupAmounts } = this.payBillService.billPayee.biller;
     if (availableTopupAmounts && availableTopupAmounts.length > 0) {
       availableTopupAmounts
