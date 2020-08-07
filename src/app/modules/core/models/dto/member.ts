@@ -6,6 +6,15 @@ export interface IRegisteredMember extends IMember {
   accountSummary: IAccount[];
   meedRewardsEarned: number;
   configurationData?: IStaticData[];
+  preferences: IPreference[];
+}
+export type IPreference = {
+  [key in PreferenceKey]?: boolean;
+};
+
+export enum PreferenceKey {
+  DirectDepositPopupShown = 'DirectDepositPopupShown',
+  MeedExtraIntroPopupShown = 'MeedExtraIntroPopupShown'
 }
 
 export interface IMember {
@@ -31,6 +40,7 @@ export interface IMember {
   language?: string;
   createdDate?: string;
   updatedDate?: string;
+  meedExtraIntroPopupShown?: boolean;
 }
 
 export enum FundingType {

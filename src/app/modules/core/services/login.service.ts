@@ -60,16 +60,12 @@ export class LoginService {
     const menus = menuList as Menu[];
     const { password, username, rememberUsername } = userFormData;
     const exitingUserSettings = this.settingsService.getSettings().userSettings;
-    const meedExtraInfoNotShow = exitingUserSettings.meedExtraInfoNotShow
-      ? exitingUserSettings.meedExtraInfoNotShow
-      : false;
     const contacts = exitingUserSettings.contacts;
     const userSettings: UserSettings = {
       disabledSignUp: true, // after successful login signup would be disabled
       bankIdentifier,
       username,
       billPayProvider,
-      meedExtraInfoNotShow,
       rememberUsername,
       contacts
     };

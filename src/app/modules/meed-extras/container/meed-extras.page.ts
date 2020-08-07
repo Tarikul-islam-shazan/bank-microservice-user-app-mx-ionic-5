@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MeedExtraFacade } from '@app/meed-extras/facade';
-import { Router } from '@angular/router';
-import { Category, Offer, SettingsService } from '@app/core';
+import { MemberService } from '@app/core/services/member.service';
+import { Category, Offer } from '@app/core';
 import { Observable } from 'rxjs';
 @Component({
   selector: 'meed-extras',
@@ -23,10 +23,10 @@ export class MeedExtrasPage implements OnInit {
 
   featuredOffers$: Observable<Offer[]>;
   categories$: Observable<Category[]>;
-  constructor(public meedExtraFacade: MeedExtraFacade, private settingService: SettingsService) {}
+  constructor(public meedExtraFacade: MeedExtraFacade, private memberService: MemberService) {}
 
   ngOnInit() {
-    if (!this.settingService.getSettings().userSettings.meedExtraInfoNotShow) {
+    if (!this.memberService.getCachedMember().meedExtraIntroPopupShown) {
       this.meedExtraFacade.openExtraIntroModal();
     }
   }

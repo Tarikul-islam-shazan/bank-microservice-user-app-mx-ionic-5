@@ -53,7 +53,6 @@ export interface UserSettings {
   useBiometric?: boolean;
   billPayProvider?: string;
   disabledSignUp?: boolean;
-  meedExtraInfoNotShow?: boolean;
   rememberUsername?: boolean;
   contacts?: BankContacts;
 }
