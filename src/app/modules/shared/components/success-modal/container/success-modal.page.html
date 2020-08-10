@@ -3,17 +3,17 @@
 </ion-header>
 <ion-content>
   <div class="content-wrapper">
-    <div class="img-block">
+    <div id="success-img" class="img-block">
       <img src="assets/img/success.png" />
     </div>
-    <div class="title-block" *ngFor="let content of contents">
+    <div id="title-block" class="title-block" *ngFor="let content of contents">
       <span [innerHTML]="content.title | translate: content.values" class="title"> </span>
     </div>
     <div *ngFor="let content of contents">
-      <div class="subtitle-block" *ngFor="let detail of content.details">
+      <div id="subtitle-block" class="subtitle-block" *ngFor="let detail of content.details">
         <div class="subtitle-text" [innerHTML]="detail | translate: content.values"></div>
       </div>
-      <div class="subtitle-block" *ngIf="content.reference">
+      <div id="content-reference-subtitle-block" class="subtitle-block" *ngIf="content.reference">
         <div class="subtitle-ref" [innerHTML]="content.reference|translate: content.values"></div>
       </div>
     </div>
@@ -23,6 +23,7 @@
 <ion-footer class="ion-no-border" *ngIf="actionButtons?.length > 0">
   <ion-toolbar>
     <ion-button
+      id="action-btn"
       (click)="actionButton.handler($event)"
       *ngFor="let actionButton of actionButtons"
       class="{{ actionButton.cssClass }}"
