@@ -6,7 +6,14 @@ import { LoginService } from '@app/core/services/login.service';
 import { LogoutService } from '@app/core/services/logout.service';
 import { AccountService } from '@app/core/services/account.service';
 import { MemberService } from '@app/core/services/member.service';
-import { IRegisteredMember, IMember, ApplicationProgress, ApplicationStatus } from '@app/core/models/dto/member';
+import {
+  IRegisteredMember,
+  IMember,
+  ApplicationProgress,
+  ApplicationStatus,
+  PreferenceKey,
+  IPreference
+} from '@app/core/models/dto/member';
 import { AccountLevel } from '@app/core/models/dto/account';
 import { SettingsService } from '@app/core/services/settings.service';
 import { BiometricAuthenticationService } from '@app/core/services/biometric-authentication.service';
@@ -53,11 +60,27 @@ export class LoginFacade {
         faceId: creds.rememberBiometric,
         username: creds.rememberUsername
       });
-      const { accountSummary, configurationData, meedRewardsEarned, ...member } = data;
+      const { accountSummary, configurationData, meedRewardsEarned, preferences, ...member } = data;
       this.accountService.setAccountSummary(accountSummary);
       this.accountService.setReward(meedRewardsEarned);
       this.memberService.setMember(member);
+      this.setPreferences(preferences);
       this.checkApplicationStatus(member, accountSummary);
+    });
+  }
+  setPreferences(preferences: IPreference[]): void {
+    let meedExtraIntroPopupShown = false;
+    const member = this.memberService.getCachedMember();
+    if (preferences && preferences.length > 0) {
+      preferences.forEach(prefernce => {
+        if (PreferenceKey.MeedExtraIntroPopupShown in prefernce) {
+          meedExtraIntroPopupShown = prefernce[PreferenceKey.MeedExtraIntroPopupShown];
+        }
+      });
+    }
+    this.memberService.setMember({
+      ...member,
+      ...{ meedExtraIntroPopupShown }
     });
   }
 

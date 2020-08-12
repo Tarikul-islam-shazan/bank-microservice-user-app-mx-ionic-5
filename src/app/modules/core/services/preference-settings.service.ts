@@ -17,7 +17,8 @@ import {
   IUASNamedUserLookupResponse,
   ContactPreference,
   IUASAddRemoveTag,
-  ContactPreferenceRequest
+  ContactPreferenceRequest,
+  IPreference
 } from '../models';
 import { shareReplay } from 'rxjs/operators';
 
@@ -133,6 +134,22 @@ export class PreferenceSettingsService {
       `${this.baseUrl}/customer/contact-preference?type=${contactPreference.type}&&status=${contactPreference.status}`,
       {},
       { headers: this.headerService.getUserNameMemberICustomerIdHeader() }
+    );
+  }
+
+  /**
+   *
+   * @param {IPreference} preference
+   * @returns {Observable<IPreference[]>}
+   * @memberof PreferenceSettingsService
+   */
+  updateMeedPrefernces(preferences: IPreference): Observable<IPreference[]> {
+    return this.http.patch<IPreference[]>(
+      `${this.baseUrlPreferenceSettings}/preferences`,
+      { ...preferences },
+      {
+        headers: this.headerService.getMemberIdHeader()
+      }
     );
   }
 }

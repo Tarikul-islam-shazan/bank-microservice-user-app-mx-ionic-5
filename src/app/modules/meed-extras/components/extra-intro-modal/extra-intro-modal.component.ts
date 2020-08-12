@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { SettingsService } from '@app/core';
-import { UserSettings } from '@app/core/models/app-settings';
+import { MemberService } from '@app/core/services/member.service';
+import { PreferenceSettingsService } from '@app/core/services/preference-settings.service';
+import { PreferenceKey } from '@app/core/models/dto/member';
 
 @Component({
   selector: 'mbc-extra-intro-modal',
@@ -9,7 +10,11 @@ import { UserSettings } from '@app/core/models/app-settings';
   styleUrls: ['./extra-intro-modal.component.scss']
 })
 export class ExtraIntroModalComponent implements OnInit {
-  constructor(private modalCtrl: ModalController, private settingService: SettingsService) {}
+  constructor(
+    private modalCtrl: ModalController,
+    private memberService: MemberService,
+    private preferenceSettingsService: PreferenceSettingsService
+  ) {}
 
   ngOnInit() {}
 
@@ -23,12 +28,16 @@ export class ExtraIntroModalComponent implements OnInit {
    * @returns
    * @memberof ExtraIntroModalComponent
    */
-  async meedExtraInfoModelHide() {
-    const userSettings: UserSettings = {
-      ...this.settingService.getSettings().userSettings,
-      meedExtraInfoNotShow: true
-    };
-    this.settingService.setUserSettings(userSettings);
-    return await this.modalCtrl.dismiss();
+  async meedExtraInfoModelHide(): Promise<void> {
+    const member = this.memberService.getCachedMember();
+    this.preferenceSettingsService
+      .updateMeedPrefernces({ [PreferenceKey.MeedExtraIntroPopupShown]: true })
+      .subscribe(prefernces => {
+        this.memberService.setMember({
+          ...member,
+          meedExtraIntroPopupShown: true
+        });
+      });
+    await this.modalCtrl.dismiss();
   }
 }
