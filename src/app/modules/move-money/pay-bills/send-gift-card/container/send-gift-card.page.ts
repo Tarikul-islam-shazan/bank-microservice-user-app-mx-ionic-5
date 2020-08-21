@@ -35,6 +35,9 @@ export class SendGiftCardPage implements OnDestroy {
     };
     this.modalService.openModal(DropdownModalComponent, componentProps);
   }
+  getAmountCssClass() {
+    return this.facade.amount ? 'amount' : 'white-input';
+  }
 
   ngOnDestroy() {
     this.facade.resetData();
