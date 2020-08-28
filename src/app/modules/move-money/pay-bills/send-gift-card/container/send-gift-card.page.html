@@ -88,7 +88,7 @@
           >
           <div class="dropdown-input" (click)="giftCardAmountSelectionModal()">
             <ion-input
-              class="white-input"
+              [ngClass]="getAmountCssClass()"
               type="text"
               [(ngModel)]="facade.amountText"
               id="signup-personal-information-page-profession-dropdown-input"

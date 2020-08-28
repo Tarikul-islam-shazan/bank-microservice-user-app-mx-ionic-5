@@ -77,6 +77,38 @@ ion-content {
             letter-spacing: 0.16px;
             line-height: 30px;
           }
+          ion-input.amount {
+            height: 60px !important;
+            width: 100% !important;
+            padding-left: 10px !important;
+            margin-bottom: 10px !important;
+            border: 2px solid var(--input-white-border-color) !important;
+            border-radius: 12px !important;
+            font-family: 'Averta W05 Regular' !important;
+            line-height: 2rem !important;
+            caret-color: var(--input-white-caret-color) !important;
+            outline: none;
+            font-weight: bold;
+            font-size: 30px;
+            letter-spacing: 0.2px;
+            line-height: 30px;
+            color: #070a18;
+            &:focus {
+              border: 2px solid var(--input-white-focus-border-color) !important;
+            }
+            &::placeholder {
+              font-size: 1.5rem !important;
+              line-height: 2rem !important;
+              color: var(--input-white-placeholder-color) !important;
+            }
+            &::disabled {
+              font-family: 'Averta W05 Regular' !important;
+              font-size: 1.5rem !important;
+              color: #b7bbce !important;
+              line-height: 1.5rem !important;
+              opacity: 1 !important;
+            }
+          }
         }
       }
     }
