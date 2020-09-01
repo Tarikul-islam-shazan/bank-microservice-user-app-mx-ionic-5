@@ -5,12 +5,12 @@
         <span [class]="accountInfo.imageClass"> </span>
       </div>
       <div class="content">
-        <div class="title">{{ accountInfo.title | translate }}</div>
-        <div class="balance">
+        <div class="title" id="dashboard-home-page-account-title-text">{{ accountInfo.title | translate }}</div>
+        <div class="balance" id="dashboard-home-page-account-balance-text">
           {{ 'dashboard-module.account-card-component.available-text' | translate }}
           <span>{{ accountData.availableBalance | negToPos }}</span>
         </div>
-        <div class="sub-title">
+        <div class="sub-title" id="dashboard-home-page-account-sub-title-text">
           {{ 'dashboard-module.account-card-component.balance-text' | translate }}
           {{ accountData.currentBalance | negToPos }}
         </div>
