@@ -16,16 +16,18 @@ export class TermsConditionsPage implements OnInit {
   constructor(private formBuilder: FormBuilder, public facade: SignUpTermsConditionFacade) {}
 
   ngOnInit() {
-    this.getTermsConditions();
     this.initForm();
   }
   initForm() {
     this.termsConditionForm = this.formBuilder.group({});
+    this.getTermsConditions();
   }
+
   async showPdf(code: string, title: string) {
     const doc = await this.facade.getTermsConditionBase64String(code);
     this.facade.openPdfViewer({ base64DataOrUrl: doc.document, pdfTitle: title });
   }
+
   getTermsConditions() {
     this.facade.getTermsConditions().subscribe(resp => {
       this.tncResponse = { ...resp };
