@@ -268,8 +268,8 @@ export class SignUpService {
       );
   }
 
-  getTermsConditions(): Observable<TncResponse> {
-    return this.http.get<TncResponse>(this.baseUrl + '/bank/onboarding/terms-and-conditions', {
+  getTermsConditions(): Observable<TncDocument[]> {
+    return this.http.get<TncDocument[]>(this.baseUrl + '/bank/onboarding/terms-and-conditions', {
       headers: this.headerService.getMemberIdHeader() // backend changed the parameter from customer id to member id
     });
   }
@@ -282,10 +282,10 @@ export class SignUpService {
       .pipe(take(1));
   }
 
-  acceptTermsCondition(corporateTnCAccepted: boolean): Observable<ProductOnboardedResponse> {
+  acceptTermsCondition(): Observable<ProductOnboardedResponse> {
     return this.http.post<ProductOnboardedResponse>(
       this.baseUrl + '/bank/onboarding/terms-and-conditions',
-      { corporateTncAccepted: corporateTnCAccepted },
+      {},
       {
         headers: this.headerService.getMemberIdCustomerIdHeader()
       }

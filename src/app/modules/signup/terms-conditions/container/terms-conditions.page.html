@@ -12,9 +12,9 @@
     <p class="signup-terms-info" id="terms-conditions-page-signup-terms-info-second-text">
       {{ 'signup-module.terms-conditions-page.terms_text_1' | translate }}
     </p>
-    <form [formGroup]="termsConditionForm" *ngIf="tncResponse.termsAndConditions?.length > 0">
+    <form [formGroup]="termsConditionForm" *ngIf="termsConditions.length > 0">
       <ion-list lines="none">
-        <ion-item *ngFor="let tc of tncResponse.termsAndConditions; let i=index">
+        <ion-item *ngFor="let tc of termsConditions; let i=index">
           <ion-label (click)="showPdf(tc.code,tc.title)" id="terms-conditions-page-terms-conditions-{{ i }}-label"
             >{{tc.title}}</ion-label
           >
@@ -27,51 +27,6 @@
           ></ion-checkbox>
         </ion-item>
       </ion-list>
-      <ion-list lines="none" *ngIf="tncResponse.tncOptions.hasCorporateTnc">
-        <div class="tnc-wrapper">
-          <div class="tnc-item ack-item">
-            <div class="tnc-content">
-              <span class="tnc-title">
-                {{ 'signup-module.terms-conditions-page.corporate-terms' | translate }}
-              </span>
-            </div>
-
-            <div class="checkbox-group">
-              <ion-row>
-                <ion-col class="ion-no-padding">
-                  <ion-item lines="none" class="check-box-1">
-                    <ion-label class="ion-text-wrap">
-                      {{ 'signup-module.terms-conditions-page.corporate-terms-share-checkbox' | translate }}
-                    </ion-label>
-                    <ion-checkbox
-                      slot="start"
-                      mode="md"
-                      [value]="corporateTnCAccepted"
-                      formControlName="corporateTnCAccepted"
-                      (ionChange)="onCorporateTnCAccepted($event)"
-                    ></ion-checkbox>
-                  </ion-item>
-                </ion-col>
-
-                <ion-col class="ion-no-padding">
-                  <ion-item lines="none" class="check-box-2">
-                    <ion-label class="ion-text-wrap">
-                      {{ 'signup-module.terms-conditions-page.corporate-terms-not-share-checkbox' | translate }}
-                    </ion-label>
-                    <ion-checkbox
-                      slot="start"
-                      mode="md"
-                      [value]="corporateTnCNotAccepted"
-                      formControlName="corporateTnCNotAccepted"
-                      (ionChange)="onCorporateTnCNotAccepted($event)"
-                    ></ion-checkbox>
-                  </ion-item>
-                </ion-col>
-              </ion-row>
-            </div>
-          </div>
-        </div>
-      </ion-list>
     </form>
   </div>
 </ion-content>
@@ -82,7 +37,7 @@
       id="terms-conditions-page-accept-btn"
       expand="block"
       (click)="acceptTermsConditions()"
-      [disabled]="!validateTNC()"
+      [disabled]="termsConditionForm.invalid"
     >
       {{ 'signup-module.terms-conditions-page.button-text' | translate }}
     </ion-button>
