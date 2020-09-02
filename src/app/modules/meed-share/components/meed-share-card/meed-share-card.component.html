@@ -11,10 +11,10 @@
         [ngClass]="value ? (value == 0 ? 'meed-share-zero-data' : 'meed-share-data') : 'meed-share-zero-data'"
         translate
       >
-        <div *ngIf="valueType === 'integer'">
+        <div *ngIf="type === valueType.Integer">
           {{ value }}
         </div>
-        <div *ngIf="valueType === 'currency'">
+        <div *ngIf="type === valueType.Currency">
           {{ value | negToPos }}
         </div>
       </div>

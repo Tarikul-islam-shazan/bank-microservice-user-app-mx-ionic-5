@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { ValueType } from '@app/core/models/dto/share';
 
 @Component({
   selector: 'meed-share-card',
@@ -9,5 +10,9 @@ export class MeedShareCardComponent {
   @Input() title: string;
   @Input() value: number;
   @Input() image: string;
-  @Input() valueType: string;
+  @Input() type: ValueType;
+
+  get valueType(): typeof ValueType {
+    return ValueType;
+  }
 }
