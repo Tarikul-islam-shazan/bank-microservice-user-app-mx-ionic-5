@@ -22,19 +22,19 @@
         title="meed-share-page.main-page.active-share-text"
         value="{{meedShare.totalInvitees}}"
         image="assets/svg/active_share.svg"
-        serial="1"
+        [type]="meedShareFacade.valueType.Integer"
       ></meed-share-card>
       <meed-share-card
         title="meed-share-page.main-page.this-month-text"
         value="{{meedShare.lastMonthDistribution}}"
         image="assets/svg/this_month_share.svg"
-        serial="2"
+        [type]="meedShareFacade.valueType.Currency"
       ></meed-share-card>
       <meed-share-card
         title="meed-share-page.main-page.total-text"
         value="{{meedShare.totalDistribution}}"
         image="assets/svg/double-doller.svg"
-        serial="3"
+        [type]="meedShareFacade.valueType.Currency"
       ></meed-share-card>
     </div>
     <div class="invite-section" id="meed-share-page-invite-info-card">

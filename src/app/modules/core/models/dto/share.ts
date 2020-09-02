@@ -8,3 +8,8 @@ export interface IMeedShare {
   totalDistribution?: number;
   totalInvitees?: number;
 }
+
+export enum ValueType {
+  Integer = 'integer',
+  Currency = 'currency'
+}

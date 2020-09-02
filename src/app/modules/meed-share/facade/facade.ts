@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { MeedShareService } from '../services';
 import { Observable } from 'rxjs';
-import { IMeedShare } from '@app/core';
+import { IMeedShare, ValueType } from '@app/core/models/dto/share';
 import { IMeedModalContent, ModalService } from '@app/shared';
 
 @Injectable()
@@ -13,6 +13,10 @@ export class MeedShareFacade {
 
   loadShareData(): void {
     this.meedShare$ = this.meedShareService.getShareData();
+  }
+
+  get valueType(): typeof ValueType {
+    return ValueType;
   }
 
   /**
