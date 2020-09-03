@@ -66,7 +66,7 @@
             <div class="street-address" *ngIf="customer.addresses" id="personal-detail-page-street-address">
               <div>
                 {{customer.addresses[0].street}}
-                <span>
+                <span *ngIf="customer.addresses[0].outdoorNumber">
                   {{'more-module.personal-details.outdoor-number-with-prefix' |
                   translate:{outdoorNumber:customer.addresses[0].outdoorNumber} }}
                 </span>
