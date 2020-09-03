@@ -63,12 +63,7 @@
         >
         <ion-item class="ion-no-padding" lines="none">
           <ion-label class="details-info">
-            <div
-              class="street-address"
-              *ngIf="customer.addresses"
-              ngvar="let streetAddress=customer.addresses[0]"
-              id="personal-detail-page-street-address"
-            >
+            <div class="street-address" *ngIf="customer.addresses" id="personal-detail-page-street-address">
               <div>
                 {{customer.addresses[0].street}}
                 <span>
@@ -94,7 +89,6 @@
                 {{ customer.addresses[0].state }}.
               </div>
             </div>
-            <div class="street-address" *ngIf="customer.addresses"></div>
           </ion-label>
           <ion-button
             fill="clear"
