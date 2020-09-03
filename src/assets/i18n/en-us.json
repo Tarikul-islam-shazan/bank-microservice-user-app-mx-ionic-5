@@ -933,6 +933,9 @@
       "maternal-last-name": "Maternal Last Name",
       "name-or-nickname": "Name or Nickname",
       "street-address": "Street Address",
+      "outdoor-number-with-prefix": "No. {{outdoorNumber}}",
+      "interior-number-with-prefix": "Interior {{interiorNumber}}",
+      "postcode-with-prefix": "C.P. {{postCode}}",
       "email": "Email",
       "phone": "Mobile Number",
       "change-name-info-modal": {

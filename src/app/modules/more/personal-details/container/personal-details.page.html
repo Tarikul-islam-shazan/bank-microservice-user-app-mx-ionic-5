@@ -63,12 +63,38 @@
         >
         <ion-item class="ion-no-padding" lines="none">
           <ion-label class="details-info">
-            <div class="street-address" *ngIf="customer.addresses" id="personal-detail-page-street-address">
-              {{customer.addresses[0].street}}
+            <div
+              class="street-address"
+              *ngIf="customer.addresses"
+              ngvar="let streetAddress=customer.addresses[0]"
+              id="personal-detail-page-street-address"
+            >
+              <div>
+                {{customer.addresses[0].street}}
+                <span>
+                  {{'more-module.personal-details.outdoor-number-with-prefix' |
+                  translate:{outdoorNumber:customer.addresses[0].outdoorNumber} }}
+                </span>
+                <span *ngIf="customer.addresses[0].interiorNumber">
+                  {{'more-module.personal-details.interior-number-with-prefix' |
+                  translate:{interiorNumber:customer.addresses[0].interiorNumber} }}
+                </span>
+              </div>
+              <div>
+                {{ customer.addresses[0].city }}.
+              </div>
+              <div *ngIf="customer.addresses[0].postCode">
+                {{'more-module.personal-details.postcode-with-prefix' |
+                translate:{postCode:customer.addresses[0].postCode} }}
+              </div>
+              <div>
+                <span *ngIf="customer.addresses[0].municipality">
+                  {{ customer.addresses[0].municipality }},
+                </span>
+                {{ customer.addresses[0].state }}.
+              </div>
             </div>
-            <div class="street-address" *ngIf="customer.addresses">
-              {{ customer.addresses[0].city }}, {{ customer.addresses[0].state }} {{ customer.addresses[0].postCode }}
-            </div>
+            <div class="street-address" *ngIf="customer.addresses"></div>
           </ion-label>
           <ion-button
             fill="clear"
