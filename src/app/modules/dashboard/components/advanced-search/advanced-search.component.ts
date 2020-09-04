@@ -18,12 +18,14 @@ export class AdvancedSearchComponent implements OnInit {
   @Output() search = new EventEmitter();
   public transactionForm: FormGroup;
   public maxDate = new Date().toISOString();
+  public isFromVaild: boolean;
 
   private transactionQueries: ITransactionQueries = {};
   constructor(private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.initiateForm();
+    this.checkSearchFormValidation();
   }
 
   /**
@@ -40,6 +42,31 @@ export class AdvancedSearchComponent implements OnInit {
     this.transactionQueries = {};
   }
 
+  /**
+   * @summary A function to determine isFromVaild, whether amount range is given or Date range is given.
+   * @memberof AdvancedSearchComponent
+   */
+  checkSearchFormValidation(): boolean {
+    const value = this.transactionForm.value;
+    let isValid = false;
+    if (value.dateFrom) {
+      if (!value.dateTo) {
+        return false;
+      }
+      isValid = true;
+    } else if (value.dateTo) {
+      return false;
+    }
+    if (value.amountFrom && value.amountFrom !== '0' && value.amountFrom !== '$0.00') {
+      if (!(value.amountTo && value.amountTo !== '0' && value.amountTo !== '$0.00')) {
+        return false;
+      }
+      isValid = true;
+    } else if (value.amountTo && value.amountTo !== '0' && value.amountTo !== '$0.00') {
+      return false;
+    }
+    return isValid;
+  }
   /**
    * @description Clear all the values in the form
    * @memberof AdvancedSearchComponent
