@@ -924,6 +924,9 @@
       "maternal-last-name": "Maternal Last Name",
       "name-or-nickname": "Nombre o apodo",
       "street-address": "DIRECCIÓN",
+      "outdoor-number-with-prefix": "No. {{outdoorNumber}}",
+      "interior-number-with-prefix": "Interior {{interiorNumber}}",
+      "postcode-with-prefix": "C.P. {{postCode}}",
       "email": "Correo electrónico",
       "phone": "Número de teléfono móvil",
       "change-name-info-modal": {
