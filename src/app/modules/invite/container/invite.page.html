@@ -26,12 +26,15 @@
                   <p class="track-initials" id="invite-page-invitee-email">
                     {{invitation.inviteeEmail | emailName | uppercase}}
                   </p>
-                  <div *ngIf="invitation.status === facade.status.Read">
+                  <ng-container *ngIf="invitation.status === facade.status.Read">
                     <img src="assets/img/invite/success.png" class="track-icon" id="invite-page-success-img" />
-                  </div>
-                  <div *ngIf="invitation.status === facade.status.Sent">
+                  </ng-container>
+                  <ng-container *ngIf="invitation.status === facade.status.Applied">
+                    <img id="invite-page-applied-img" src="assets/img/invite/success.png" class="track-icon" />
+                  </ng-container>
+                  <ng-container *ngIf="invitation.status === facade.status.Sent">
                     <img src="assets/img/invite/pending.png" class="track-icon" id="invite-page-pending-img" />
-                  </div>
+                  </ng-container>
                 </div>
               </ion-item>
               <div class="track-email">
