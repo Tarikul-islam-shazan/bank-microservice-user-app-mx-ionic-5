@@ -18,8 +18,6 @@ export class AdvancedSearchComponent implements OnInit {
   @Output() search = new EventEmitter();
   public transactionForm: FormGroup;
   public maxDate = new Date().toISOString();
-  public isFromVaild: boolean;
-
   private transactionQueries: ITransactionQueries = {};
   constructor(private formBuilder: FormBuilder) {}
 
