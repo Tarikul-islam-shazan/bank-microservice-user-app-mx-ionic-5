@@ -83,7 +83,7 @@ export class CheckingFacade {
     const accounts = this.accountService.getCachedAccountSummary();
     const { accountId } = accounts.find((account: IAccount) => account.accountType === AccountType.DDA) as IAccount;
     this.accountService.getTransactions(accountId, transactionQueries).subscribe((transactions: AccountTransaction) => {
-      this.checkingState.setPostedTransactionsState((transactions as unknown) as ITransaction[]);
+      this.checkingState.setPostedTransactionsState(transactions.postedTransactions);
     });
   }
 
