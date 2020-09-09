@@ -81,6 +81,7 @@ export class CheckingFacade {
    */
   getSearchedTransactions(transactionQueries: ITransactionQueries) {
     const accounts = this.accountService.getCachedAccountSummary();
+    transactionQueries = { ...transactionQueries, ...{ accountType: AccountType.DDA } };
     const { accountId } = accounts.find((account: IAccount) => account.accountType === AccountType.DDA) as IAccount;
     this.accountService.getTransactions(accountId, transactionQueries).subscribe((transactions: AccountTransaction) => {
       this.checkingState.setPostedTransactionsState(transactions.postedTransactions);

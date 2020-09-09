@@ -45,25 +45,33 @@ export class AdvancedSearchComponent implements OnInit {
    * @memberof AdvancedSearchComponent
    */
   checkSearchFormValidation(): boolean {
-    const value = this.transactionForm.value;
+    const { amountFrom, amountTo, dateFrom, dateTo } = this.getSearchFormValues();
     let isValid = false;
-    if (value.dateFrom) {
-      if (!value.dateTo) {
+    if (dateFrom) {
+      if (!dateTo) {
         return false;
       }
       isValid = true;
-    } else if (value.dateTo) {
+    } else if (dateTo) {
       return false;
     }
-    if (value.amountFrom && value.amountFrom !== '0' && value.amountFrom !== '$0.00') {
-      if (!(value.amountTo && value.amountTo !== '0' && value.amountTo !== '$0.00')) {
+    if (amountFrom) {
+      if (!amountTo) {
         return false;
       }
       isValid = true;
-    } else if (value.amountTo && value.amountTo !== '0' && value.amountTo !== '$0.00') {
+    } else if (amountTo) {
       return false;
     }
     return isValid;
+  }
+
+  getSearchFormValues(): ITransactionQueries {
+    let { amountFrom, amountTo } = this.transactionForm.value;
+    amountFrom = amountFrom ? Number(amountFrom.replace(/[$,]/g, '')) : 0;
+    amountTo = amountTo ? Number(amountTo.replace(/[$,]/g, '')) : 0;
+    const { dateFrom, dateTo } = this.transactionForm.value;
+    return { amountFrom, amountTo, dateFrom, dateTo };
   }
   /**
    * @description Clear all the values in the form
@@ -78,28 +86,18 @@ export class AdvancedSearchComponent implements OnInit {
    * @memberof AdvancedSearchComponent
    */
   submitSearch() {
-    this.transactionQueries.accountType = AccountType.DDA;
-    if (
-      this.transactionForm.controls.amountFrom.value &&
-      this.transactionForm.controls.amountFrom.value !== '0' &&
-      this.transactionForm.controls.amountFrom.value !== '$0.00'
-    ) {
-      this.transactionQueries.amountFrom = Number(this.transactionForm.controls.amountFrom.value.replace(/[$,]/g, ''));
+    const { amountFrom, amountTo, dateFrom, dateTo } = this.getSearchFormValues();
+    if (amountFrom) {
+      this.transactionQueries.amountFrom = amountFrom;
     }
-    if (
-      this.transactionForm.controls.amountTo.value &&
-      this.transactionForm.controls.amountTo.value !== '0' &&
-      this.transactionForm.controls.amountTo.value !== '$0.00'
-    ) {
-      this.transactionQueries.amountTo = Number(this.transactionForm.controls.amountTo.value.replace(/[$,]/g, ''));
+    if (amountTo) {
+      this.transactionQueries.amountTo = amountTo;
     }
-    if (this.transactionForm.controls.dateFrom.value) {
-      this.transactionQueries.dateFrom = moment(this.transactionForm.controls.dateFrom.value).format(
-        'MM/DD/YYYY 00:00:00'
-      );
+    if (dateFrom) {
+      this.transactionQueries.dateFrom = moment(dateFrom).format('MM/DD/YYYY 00:00:00');
     }
-    if (this.transactionForm.controls.dateTo.value) {
-      this.transactionQueries.dateTo = moment(this.transactionForm.controls.dateTo.value).format('MM/DD/YYYY 00:00:00');
+    if (dateTo) {
+      this.transactionQueries.dateTo = moment(dateTo).format('MM/DD/YYYY 00:00:00');
     }
 
     this.search.emit(this.transactionQueries);
