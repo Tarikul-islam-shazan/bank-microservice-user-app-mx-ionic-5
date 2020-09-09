@@ -11,7 +11,8 @@ import { Invitation } from '../models/invite';
 
 export enum InviteStatus {
   Sent = 'SENT',
-  Read = 'READ'
+  Read = 'READ',
+  Applied = 'APPLIED'
 }
 
 @Injectable()
