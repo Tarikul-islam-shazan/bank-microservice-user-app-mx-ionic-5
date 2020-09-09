@@ -145,6 +145,8 @@ export class SavingTransactionsFacade {
     if (this.monthlySavingTarget > 0) {
       const savingProgress = Math.min((this.monthlyTotalSave * 100) / this.monthlySavingTarget, 100);
       this.progress = Number(savingProgress.toFixed(2));
+    } else {
+      this.progress = 0;
     }
   }
 
@@ -155,15 +157,19 @@ export class SavingTransactionsFacade {
       const m = d.getMonth();
       return new Date(y, m + 1, 0).getDate() + 1;
     }
-    if (this.monthlyTotalSave < this.monthlySavingTarget) {
+    if (this.monthlySavingTarget > 0 && this.monthlyTotalSave < this.monthlySavingTarget) {
       this.savingTarget.monthly = this.monthlySavingTarget - this.monthlyTotalSave;
       const remDays = daysInMonth() - new Date().getDate();
       this.savingTarget.daily = this.savingTarget.monthly / remDays;
       this.savingTarget.weekly = this.savingTarget.daily * (remDays < 7 ? remDays : 7);
-      this.calculateProgress();
     } else {
-      this.progress = 100;
+      this.savingTarget = {
+        monthly: 0,
+        weekly: 0,
+        daily: 0
+      };
     }
+    this.calculateProgress();
   }
 
   switchTab(tab: string) {
