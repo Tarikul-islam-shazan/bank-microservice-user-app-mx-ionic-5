@@ -9,6 +9,7 @@
           <ion-input
             id="advanced-search-lower-amount-range-input"
             class="white-input"
+            type="tel"
             appInputDecimalMask
             formControlName="amountFrom"
           >
@@ -26,6 +27,7 @@
           <ion-input
             id="advanced-search-upper-amount-range-input"
             class="white-input"
+            type="tel"
             appInputDecimalMask
             formControlName="amountTo"
           >
@@ -93,6 +95,7 @@
             fill="outline"
             class="white-button"
             id="advanced-search-clear-text-btn"
+            [disabled]="!checkSearchFormValidation()"
             (click)="submitSearch()"
           >
             {{ 'dashboard-module.advanced-search.search-text' | translate }}
