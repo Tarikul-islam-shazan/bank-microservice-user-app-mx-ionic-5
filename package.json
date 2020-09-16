@@ -10,7 +10,16 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "freshinstall": "./scripts/freshinstall.sh"
+    "freshinstall": "./scripts/freshinstall.sh",
+    "qa-local": "ionic serve --configuration qa",
+    "qa-ios": "ionic cordova build ios --configuration qa",
+    "qa-android": "ionic cordova build android --configuration qa",
+    "uat-local": "ionic serve --configuration uat",
+    "uat-ios": "ionic cordova build ios --configuration uat",
+    "uat-android": "ionic cordova build android --configuration uat",
+    "prod-local": "ionic serve --configuration prod",
+    "prod-ios": "ionic cordova build ios --configuration prod --prod --release",
+    "prod-android": "ionic cordova build android --configuration prod --prod --release"
   },
   "private": true,
   "dependencies": {
