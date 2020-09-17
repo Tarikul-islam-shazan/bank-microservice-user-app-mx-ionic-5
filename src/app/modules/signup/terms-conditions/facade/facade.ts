@@ -50,7 +50,7 @@ export class SignUpTermsConditionFacade {
     });
     modal.present();
     await modal.onDidDismiss();
-    this.router.navigate(['/signup/deposit/direct-deposit-start']);
+    this.router.navigate(['/signup/account-funding']);
   }
 
   openPdfViewer(pdfContent: IPDFContent): void {
