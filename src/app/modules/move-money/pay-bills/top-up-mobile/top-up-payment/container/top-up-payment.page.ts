@@ -58,7 +58,8 @@ export class TopUpPaymentPage implements OnInit {
       amount,
       executionDate,
       payeeId: this.billPayee._id,
-      phoneNumber: this.billPayee.phoneNumber
+      phoneNumber: this.billPayee.phoneNumber,
+      currency: this.billPayee.biller.currency
     });
     this.facade.payBill(paymentInfo);
   }

@@ -56,7 +56,8 @@ export class BillPaymentPage implements OnInit {
       amount,
       executionDate,
       payeeId: this.billPayee._id,
-      accountNumber: this.billPayee.accountNumber
+      accountNumber: this.billPayee.accountNumber,
+      currency: this.billPayee.biller.currency
     });
     this.facade.payBill(paymentInfo);
   }
