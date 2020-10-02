@@ -70,15 +70,15 @@ export class PayBillService {
   }
 
   createUtilityPayment(billPayment: IBillPayment): Observable<IBillPayee> {
-    const { amount, payeeId, accountNumber } = billPayment,
-      _billPayment = { payeeId, accountNumber, amount, category: BillerCategory.Utility };
+    const { amount, payeeId, accountNumber, currency } = billPayment,
+      _billPayment = { payeeId, accountNumber, amount, currency, category: BillerCategory.Utility };
     return this.http.post<IBillPayee>(this.billPaymentBaseUrl, _billPayment, {
       headers: this.headerService.getBillPayProviderHeader()
     });
   }
   createTopUpPayment(billPayment: IBillPayment): Observable<IBillPayee> {
-    const { amount, payeeId, phoneNumber } = billPayment,
-      _billPayment = { payeeId, phoneNumber, amount, category: BillerCategory.Topup };
+    const { amount, payeeId, phoneNumber, currency } = billPayment,
+      _billPayment = { payeeId, phoneNumber, amount, currency, category: BillerCategory.Topup };
     return this.http.post<IBillPayee>(this.billPaymentBaseUrl, _billPayment, {
       headers: this.headerService.getBillPayProviderHeader()
     });
