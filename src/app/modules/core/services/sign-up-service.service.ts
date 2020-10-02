@@ -367,7 +367,7 @@ export class SignUpService {
     return this.http.get<Partial<IAddressInfo[]>>(
       `${this.baseUrl}/bank/onboarding/${postalCode}/state-city-municipality`,
       {
-        headers: this.headerService.getBankIdentifierHeader()
+        headers: this.headerService.getMemberICustomerIdHeader()
       }
     );
   }
