@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GeneralInformationFacade } from '../facade';
 import { IGeneralInfo } from '@app/core';
 import * as moment from 'moment';
+import { IinputOption, InputFormatType } from '@app/shared/directives/mask-input.directive';
 /**
  * * Ticket: MM2-332
  * * Issue Details: CURP Verification issue
@@ -19,7 +20,12 @@ export class GeneralInformationPage implements OnInit {
   nameMaxLength = 26;
   curpMaxLength = 18;
   generalForm: FormGroup;
-  constructor(private formBuilder: FormBuilder, public facade: GeneralInformationFacade) {}
+  wordsInput: IinputOption;
+  constructor(private formBuilder: FormBuilder, public facade: GeneralInformationFacade) {
+    this.wordsInput = {
+      type: InputFormatType.WORDS
+    };
+  }
 
   ngOnInit() {
     this.initGeneralInfoForm();

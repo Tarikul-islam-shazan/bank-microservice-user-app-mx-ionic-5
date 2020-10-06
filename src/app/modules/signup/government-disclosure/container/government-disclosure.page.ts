@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { GovernmentDisclosureFacade } from '../facade/government-disclosure-facade';
+import { IinputOption, InputFormatType } from '@app/shared/directives/mask-input.directive';
 
 @Component({
   selector: 'mbc-government-disclosure',
@@ -7,5 +8,10 @@ import { GovernmentDisclosureFacade } from '../facade/government-disclosure-faca
   styleUrls: ['./government-disclosure.page.scss']
 })
 export class GovernmentDisclosurePage {
-  constructor(public facade: GovernmentDisclosureFacade) {}
+  wordsInput: IinputOption;
+  constructor(public facade: GovernmentDisclosureFacade) {
+    this.wordsInput = {
+      type: InputFormatType.WORDS
+    };
+  }
 }
