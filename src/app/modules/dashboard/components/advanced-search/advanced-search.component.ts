@@ -23,7 +23,6 @@ export class AdvancedSearchComponent implements OnInit {
 
   ngOnInit() {
     this.initiateForm();
-    this.checkSearchFormValidation();
   }
 
   /**
@@ -38,32 +37,6 @@ export class AdvancedSearchComponent implements OnInit {
       dateTo: [null]
     });
     this.transactionQueries = {};
-  }
-
-  /**
-   * @summary A function to determine isFromVaild, whether amount range is given or Date range is given.
-   * @memberof AdvancedSearchComponent
-   */
-  checkSearchFormValidation(): boolean {
-    const { amountFrom, amountTo, dateFrom, dateTo } = this.getSearchFormValues();
-    let isValid = false;
-    if (dateFrom) {
-      if (!dateTo) {
-        return false;
-      }
-      isValid = true;
-    } else if (dateTo) {
-      return false;
-    }
-    if (amountFrom) {
-      if (!amountTo) {
-        return false;
-      }
-      isValid = true;
-    } else if (amountTo) {
-      return false;
-    }
-    return isValid;
   }
 
   getSearchFormValues(): ITransactionQueries {
