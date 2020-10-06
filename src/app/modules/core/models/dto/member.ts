@@ -193,6 +193,7 @@ export interface IBillPayment {
   executionDate?: string;
   frequency?: PaymentFrequency;
   recurringPaymentDate?: string;
+  email?: string;
 }
 export enum BillPayProvider {
   IPAY = 'IPAY',

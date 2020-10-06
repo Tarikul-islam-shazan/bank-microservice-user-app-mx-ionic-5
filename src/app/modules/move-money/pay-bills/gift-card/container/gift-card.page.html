@@ -1,0 +1,149 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mode="md" icon="arrow-back"></ion-back-button>
+    </ion-buttons>
+    <ion-title id="gift-card-page-header-title-text">
+      {{ 'move-money-module.pay-bills.gift-card.page-title' | translate }}
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="content-wrapper">
+    <div *ngIf="!isNextPage" class="buy-gift-card-title-text" id="gift-card-page-buy-gift-card-title">
+      {{ 'move-money-module.pay-bills.gift-card.content-title' | translate }}
+    </div>
+    <form [formGroup]="buyGiftCardForm" novalidate>
+      <div *ngIf="!isNextPage" class="biller-search-wrapper">
+        <ion-item lines="none" class="search-vendors-label">
+          <ion-label id="gift-card-page-search-vendor-input-label"
+            >{{ 'move-money-module.pay-bills.gift-card.search-vendor-input-label' | translate }}</ion-label
+          >
+        </ion-item>
+        <ion-item lines="none" class="icon-input">
+          <ion-icon slot="start" name="search"></ion-icon>
+          <ion-input
+            id="gift-card-page-search-vendor-input"
+            debounce="100"
+            (ionChange)="searchVendors($event.target.value)"
+            formControlName="vendorName"
+            placeholder="{{'move-money-module.pay-bills.gift-card.search-vendor-input-placeholder' | translate}}"
+          ></ion-input>
+        </ion-item>
+      </div>
+      <div class="search-result-wrapper" *ngIf="!facade.isGiftCardVendorSeleted && !facade.searching">
+        <ion-list *ngIf="facade.billers.length > 0" id="gift-card-page-search-vendor-list">
+          <ion-item *ngFor="let biller of facade.billers">
+            <ion-label class="ion-padding-top ion-padding-bottom ion-text-wrap" (click)="selectGiftCardVendor(biller)">
+              {{biller.name}}
+            </ion-label>
+          </ion-item>
+        </ion-list>
+      </div>
+      <ion-list *ngIf="!isNextPage" lines="none" class="input-list">
+        <ion-item>
+          <ion-label position="stacked" id="gift-card-page-email-input-label">
+            {{'move-money-module.pay-bills.gift-card.email-input-label' | translate}}</ion-label
+          >
+          <ion-input
+            id="gift-card-page-email-input"
+            type="email"
+            class="white-input"
+            formControlName="email"
+            placeholder="{{ 'move-money-module.pay-bills.gift-card.email-input-placeholder' | translate }}"
+            [appMaskInput]="emailFormatMask"
+          ></ion-input>
+        </ion-item>
+        <ion-item lines="none">
+          <ion-label position="stacked" id="gift-card-page-phone-number-lable">
+            {{ 'move-money-module.pay-bills.gift-card.phone-number-input-label' | translate }}</ion-label
+          >
+          <ion-input
+            placeholder="{{ 'move-money-module.pay-bills.gift-card.phone-number-input-placeholder' | translate }}"
+            type="tel"
+            class="white-input"
+            id="gift-card-page-phone-number-input"
+            formControlName="phoneNumber"
+            [appMaskInput]="phoneNumberInput"
+          ></ion-input>
+        </ion-item>
+      </ion-list>
+
+      <div class="gift-card-amount-block" *ngIf="isNextPage">
+        <div class="vendor-block">
+          <div class="vendor-info">
+            <div class="title" id="gift-card-page-card-name-label">
+              {{'move-money-module.pay-bills.gift-card.gift-card-label' | translate}}
+            </div>
+            <div class="details" id="gift-card-page-gift-card-name">{{facade.selectedGiftCardVendor.name}}</div>
+          </div>
+          <div class="vendor-info">
+            <div class="title" id="gift-card-page-email-lablel">
+              {{'move-money-module.pay-bills.gift-card.email-input-label' | translate}}
+            </div>
+            <div class="details" id="gift-card-page-email-value">{{buyGiftCardForm.get("email").value}}</div>
+          </div>
+          <div class="vendor-info">
+            <div class="title" id="gift-card-page-phone-number-lable">
+              {{'move-money-module.pay-bills.gift-card.phone-number-input-label' | translate}}
+            </div>
+            <div class="details" id="gift-card-page-phone-number-value">
+              {{buyGiftCardForm.get("phoneNumber").value}}
+            </div>
+          </div>
+        </div>
+
+        <div class="title" id="gift-card-page-amount-title-text">
+          {{'move-money-module.pay-bills.gift-card.amount-input-label' | translate}}
+        </div>
+        <div class="dropdown-input" (click)="openAmountOptionsModal()">
+          <ion-input
+            [ngClass]="getAmountCssClass()"
+            type="text"
+            id="gift-card-page-payment-dropdown-input"
+            readonly
+            formControlName="amountText"
+            placeholder="{{'move-money-module.pay-bills.gift-card.amount-input-placeholder'|translate}}"
+          >
+          </ion-input>
+          <ion-icon name="chevron-down"></ion-icon>
+        </div>
+      </div>
+    </form>
+  </div>
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar *ngIf="!isNextPage">
+    <ion-button
+      (click)="gotoNext()"
+      expand="block"
+      class="white-button"
+      [disabled]="!buyGiftCardForm.valid"
+      id="gift-card-page-continue-btn"
+    >
+      {{ 'move-money-module.pay-bills.gift-card.next-button' | translate }}
+    </ion-button>
+  </ion-toolbar>
+
+  <ion-toolbar *ngIf="isNextPage">
+    <ion-button
+      (click)="processGiftCardSend()"
+      expand="block"
+      class="white-button"
+      [disabled]="!(buyGiftCardForm.value && buyGiftCardForm.value.amount>0)"
+      id="gift-card-page-continue-btn"
+    >
+      {{ 'move-money-module.pay-bills.gift-card.buy-gift-card-button' | translate }}
+    </ion-button>
+    <ion-button
+      (click)="cancelGiftCardSend()"
+      expand="block"
+      class="grey-outline-button"
+      id="gift-card-page-continue-btn"
+    >
+      {{ 'move-money-module.pay-bills.gift-card.cancel-button' | translate }}
+    </ion-button>
+  </ion-toolbar>
+</ion-footer>

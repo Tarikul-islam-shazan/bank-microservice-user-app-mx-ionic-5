@@ -1,0 +1,146 @@
+.content-wrapper {
+  .buy-gift-card-title-text {
+    margin-bottom: 20px;
+    margin-top: 10px;
+    color: #070a18;
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 24px;
+    letter-spacing: 0.16px;
+    line-height: 30px;
+  }
+  .biller-search-wrapper {
+    ion-item {
+      margin-top: -5px;
+      margin-bottom: 2px;
+    }
+    ion-item.icon-input {
+      --border-color: var(--input-white-border-color) !important;
+      --inner-padding-bottom: 0 !important;
+      --inner-padding-end: 0 !important;
+      --inner-padding-start: 0 !important;
+      --inner-padding-top: 0 !important;
+      --border-width: 2px;
+      --border-style: solid;
+      --border-radius: 12px;
+      &.item-has-focus {
+        --border-color: var(--input-white-focus-border-color) !important;
+      }
+      ion-input {
+        height: 60px;
+        --placeholder-color: var(--input-white-placeholder-color) !important;
+      }
+      ion-icon {
+        font-size: 2rem !important;
+        color: var(--input-white-placeholder-color) !important;
+      }
+    }
+  }
+
+  ion-list.input-list {
+    ion-item {
+      margin-bottom: -15px !important;
+    }
+  }
+
+  .search-result-wrapper {
+    width: 100%;
+    position: absolute;
+    z-index: 1000;
+    ion-item {
+      --padding-start: 0 !important;
+      --inner-padding-end: 0 !important;
+      span {
+        font-size: 1.4rem;
+      }
+      ion-label {
+        font-size: 1.4rem !important;
+        span {
+          font-size: 1.2rem;
+          color: var(--input-white-placeholder-color) !important;
+        }
+      }
+      ion-icon {
+        color: #3880ff;
+        font-size: 2.2rem;
+        font-weight: bolder;
+      }
+    }
+  }
+}
+
+// form{
+//   margin-top: 30px;
+// }
+
+.search-vendors-label {
+  --padding-end: 0;
+  --padding-start: 0;
+  --padding-top: 0;
+  ion-label {
+    margin-bottom: 6px !important;
+    color: #8c90a3 !important;
+    font-family: 'Averta W05 Bold5204651' !important;
+    font-size: 1.1rem !important;
+    letter-spacing: 1px !important;
+    line-height: 1.1rem !important;
+    text-transform: uppercase !important;
+  }
+}
+
+.gift-card-amount-block {
+  .title {
+    color: #8c90a3;
+    font-family: 'Averta W05 Regular';
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    line-height: 16px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+  .vendor-block {
+    font-size: 1.4rem;
+    .vendor-info {
+      margin-bottom: 15px;
+      .details {
+        font-family: 'Averta W05 Regular' !important;
+        font-size: 16px;
+        color: #070a18;
+        letter-spacing: -0.25px;
+      }
+    }
+  }
+  margin-top: 10px;
+  ion-input.amount {
+    height: 60px !important;
+    width: 100% !important;
+    padding-left: 10px !important;
+    margin-bottom: 10px !important;
+    border: 2px solid var(--input-white-border-color) !important;
+    border-radius: 12px !important;
+    font-family: 'Averta W05 Regular' !important;
+    line-height: 2rem !important;
+    caret-color: var(--input-white-caret-color) !important;
+    outline: none;
+    font-weight: bold;
+    font-size: 30px;
+    letter-spacing: 0.2px;
+    line-height: 30px;
+    color: #070a18;
+    &:focus {
+      border: 2px solid var(--input-white-focus-border-color) !important;
+    }
+    &::placeholder {
+      font-size: 1.5rem !important;
+      line-height: 2rem !important;
+      color: var(--input-white-placeholder-color) !important;
+    }
+    &::disabled {
+      font-family: 'Averta W05 Regular' !important;
+      font-size: 1.5rem !important;
+      color: #b7bbce !important;
+      line-height: 1.5rem !important;
+      opacity: 1 !important;
+    }
+  }
+}

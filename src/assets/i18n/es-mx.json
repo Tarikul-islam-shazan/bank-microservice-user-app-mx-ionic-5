@@ -1470,6 +1470,28 @@
           "reference-text": "Referencia #{{referenceNumber}}",
           "btn-done": "Hecho"
         }
+      },
+      "gift-card": {
+        "page-title": "Pay Bills",
+        "content-title": "Buy a Gift Card",
+        "gift-card-label": "Gift Card",
+        "search-vendor-input-label": "Gift Card Vendor",
+        "search-vendor-input-placeholder": "Search Gift Card Vendors",
+        "email-input-label": "Email Gift Card To",
+        "email-input-placeholder": "Email Address",
+        "phone-number-input-label": "Phone Number",
+        "phone-number-input-placeholder": "Phone Number",
+        "amount-input-label": "Gift Card Amount",
+        "amount-input-placeholder": "Amount",
+        "next-button": "Next",
+        "buy-gift-card-button": "Buy Gift Card",
+        "cancel-button": "Cancel",
+        "success-modal": {
+          "title": "You've purchased {{giftCardVendorName}}.",
+          "date-text": "Submitted On {{date}}",
+          "ref-text": "Ref #{{refId}}",
+          "done-button": "Done"
+        }
       }
     },
     "send-money": {

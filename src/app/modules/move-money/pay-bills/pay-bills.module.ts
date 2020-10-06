@@ -24,6 +24,8 @@ import { SendGiftCardPage } from './send-gift-card/container/send-gift-card.page
 import { SendGiftCardPageModule } from './send-gift-card/send-gift-card.module';
 import { TopUpPaymentPage } from './top-up-mobile/top-up-payment/container/top-up-payment.page';
 import { TopUpPaymentPageModule } from './top-up-mobile/top-up-payment/top-up-payment.module';
+import { GiftCardPage } from './gift-card/container/gift-card.page';
+import { GiftCardPageModule } from './gift-card/gift-card.module';
 export const PAGE_CONTAINERS: any[] = [PayBillsHomePage, BillerDirectPage, CardSwapPage];
 export const ALL_FACADES: any[] = [PayBillsHomeFacade, BillerDirectFacade]; // BillerDirectFacade facade injected
 
@@ -78,6 +80,11 @@ const routes: Routes = [
     component: SendGiftCardPage
   },
   {
+    path: 'gift-card',
+    data: { title: PAGES.GIFT_CARD },
+    component: GiftCardPage
+  },
+  {
     path: 'top-up-payment',
     data: { title: PAGES.TOP_UP_PAYMENT.NAME },
     component: TopUpPaymentPage
@@ -95,7 +102,8 @@ const routes: Routes = [
     TopUpMobilePageModule,
     AddTopUpPayeePageModule,
     SendGiftCardPageModule,
-    TopUpPaymentPageModule
+    TopUpPaymentPageModule,
+    GiftCardPageModule
   ],
   declarations: [...PAGE_CONTAINERS],
   providers: [...ALL_FACADES]
