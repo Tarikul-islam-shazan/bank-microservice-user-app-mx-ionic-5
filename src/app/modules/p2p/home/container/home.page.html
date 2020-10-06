@@ -76,7 +76,7 @@
             {{payee.contactType === contactType.Meed || payee.contactType === contactType.Domestic ? payee.email :
             payee.alias}}
           </ion-label>
-          <ion-icon *ngIf="isEditable" slot="end" name="pencil"></ion-icon>
+          <ion-icon (click)="edit(payee)" *ngIf="isEditable" slot="end" name="pencil"></ion-icon>
         </ion-item>
       </ion-list>
     </div>

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { HomeP2PFacade } from '../facade';
 import { Observable } from 'rxjs';
 import { IContact, ContactType } from '@app/p2p/models';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'mbc-home',
@@ -13,7 +14,7 @@ export class HomePage implements OnInit {
   myPayees$: Observable<IContact[]>;
   isEditable = false;
   contactType = ContactType;
-  constructor(public readonly facade: HomeP2PFacade) {}
+  constructor(public readonly facade: HomeP2PFacade, private router: Router) {}
 
   ngOnInit() {}
 
@@ -33,5 +34,14 @@ export class HomePage implements OnInit {
 
   next() {
     this.facade.next(this.searchQuery);
+  }
+
+  edit(payee: IContact) {
+    if (payee.contactType === this.contactType.Invex) {
+      this.router.navigate(['/p2p/edit-invex-payee-registration/', payee]);
+    }
+    if (payee.contactType === this.contactType.Other) {
+      this.router.navigate(['/p2p/edit-other-bank-payee-registration/', payee]);
+    }
   }
 }

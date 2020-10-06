@@ -1,0 +1,29 @@
+.title {
+  font-family: 'Averta W05 Bold';
+  font-size: 1.8rem;
+  text-align: left;
+  margin: 20px 0;
+}
+ion-list.form {
+  ion-item {
+    --border-color: var(--input-white-border-color) !important;
+    --inner-padding-bottom: 0 !important;
+    --inner-padding-end: 0 !important;
+    --inner-padding-start: 0 !important;
+    --inner-padding-top: 0 !important;
+    --border-width: 2px;
+    --border-style: solid;
+    --border-radius: 12px;
+    margin-bottom: 10px;
+    &.item-has-focus {
+      --border-color: var(--input-white-focus-border-color) !important;
+    }
+    &.has-error {
+      --border-color: #fe4c55 !important;
+    }
+    ion-input {
+      height: 60px;
+      --placeholder-color: var(--input-white-placeholder-color) !important;
+    }
+  }
+}
