@@ -20,8 +20,6 @@ import { TopUpMobilePage } from './top-up-mobile/container/top-up-mobile.page';
 import { TopUpMobilePageModule } from './top-up-mobile/top-up-mobile.module';
 import { AddTopUpPayeePageModule } from './top-up-mobile/add-top-up-payee/add-top-up-payee.module';
 import { AddTopUpPayeePage } from './top-up-mobile/add-top-up-payee/container/add-top-up-payee.page';
-import { SendGiftCardPage } from './send-gift-card/container/send-gift-card.page';
-import { SendGiftCardPageModule } from './send-gift-card/send-gift-card.module';
 import { TopUpPaymentPage } from './top-up-mobile/top-up-payment/container/top-up-payment.page';
 import { TopUpPaymentPageModule } from './top-up-mobile/top-up-payment/top-up-payment.module';
 import { GiftCardPage } from './gift-card/container/gift-card.page';
@@ -75,11 +73,6 @@ const routes: Routes = [
     component: AddTopUpPayeePage
   },
   {
-    path: 'send-gift-card',
-    data: { title: PAGES.SEND_GIFT_CARD.NAME },
-    component: SendGiftCardPage
-  },
-  {
     path: 'gift-card',
     data: { title: PAGES.GIFT_CARD },
     component: GiftCardPage
@@ -101,7 +94,6 @@ const routes: Routes = [
     BillPaymentPageModule,
     TopUpMobilePageModule,
     AddTopUpPayeePageModule,
-    SendGiftCardPageModule,
     TopUpPaymentPageModule,
     GiftCardPageModule
   ],
