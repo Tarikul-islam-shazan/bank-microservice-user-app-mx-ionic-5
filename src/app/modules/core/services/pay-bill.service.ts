@@ -101,9 +101,9 @@ export class PayBillService {
     });
   }
 
-  giftCardPurchase(giftCardDeatils: IBillPayment): Observable<IBillPayment> {
-    giftCardDeatils.category = BillerCategory.Giftcard;
-    return this.http.post<IBillPayment>(this.billPaymentBaseUrl, giftCardDeatils, {
+  giftCardPurchase(giftCardDetails: IBillPayment): Observable<IBillPayment> {
+    giftCardDetails.category = BillerCategory.Giftcard;
+    return this.http.post<IBillPayment>(this.billPaymentBaseUrl, giftCardDetails, {
       headers: this.headerService.getBillPayProviderHeader()
     });
   }
