@@ -94,6 +94,7 @@ export class GiftCardPage implements OnInit {
       this.buyGiftCardForm.get('email').disable();
       this.buyGiftCardForm.get('phoneNumber').disable();
     } else {
+      this.facade.billers = [];
       this.facade.updateGiftCardVendorSelection(null);
       this.buyGiftCardForm.enable();
       this.buyGiftCardForm.reset();
