@@ -123,6 +123,7 @@
                 id="signup-module-government-disclosure-page-first-name-input"
                 type="text"
                 placeholder="{{ 'signup-module.government-disclosure.relative-hold-govt-position.first-name-placeholder' | translate }}"
+                [appMaskInput]="wordsInput"
               ></ion-input>
             </ion-item>
             <ion-item>
@@ -134,6 +135,7 @@
                 id="signup-module-government-disclosure-page-second-name-input"
                 type="text"
                 placeholder="{{ 'signup-module.government-disclosure.relative-hold-govt-position.second-name-placeholder' | translate }}"
+                [appMaskInput]="wordsInput"
               ></ion-input>
             </ion-item>
             <ion-item>
@@ -145,6 +147,7 @@
                 id="signup-module-government-disclosure-paternal-last-name-input"
                 type="text"
                 placeholder="{{ 'signup-module.government-disclosure.relative-hold-govt-position.paternal-last-name' | translate }}"
+                [appMaskInput]="wordsInput"
               ></ion-input>
             </ion-item>
             <ion-item>
@@ -156,6 +159,7 @@
                 id="signup-module-government-disclosure-maternal-last-name-input"
                 type="text"
                 placeholder="{{ 'signup-module.government-disclosure.relative-hold-govt-position.maternal-last-name' | translate }}"
+                [appMaskInput]="wordsInput"
               ></ion-input>
             </ion-item>
             <ion-item (click)="facade.openPositionSelectionModal('relative')">
