@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 import { CurrencyPipe } from '@angular/common';
-import { IBillPayee, IBillPayment, PaymentFrequency } from '@app/core';
+import { IBiller, IBillPayee, IBillPayment, PaymentFrequency } from '@app/core';
 import { IMeedModalContent, ModalService, SuccessModalPage } from '@app/shared';
 import { Injectable } from '@angular/core';
 import { noop, Observable, Subscription } from 'rxjs';
@@ -53,7 +53,7 @@ export class BillPaymentFacade {
    */
   private getPaymentSuccessModalCompProps(_paymentInfo: IBillPayment, referenceNumber: string): IMeedModalContent {
     const { amount, executionDate } = _paymentInfo,
-      payeeName = this.getBillPayee().biller.name,
+      payeeName = (this.getBillPayee().biller as IBiller).name,
       paymentAmount = this.currencyPipe.transform(amount),
       paymentExecutionDate = moment(executionDate).format('MMM DD, YYYY'),
       componentProps: IMeedModalContent = {

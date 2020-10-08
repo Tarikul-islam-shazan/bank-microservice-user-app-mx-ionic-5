@@ -3,7 +3,7 @@ import { BillPaymentFacade } from '../facade';
 import { Component, OnInit } from '@angular/core';
 import { CommonValidators } from '@app/core/util/common-validators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IBillPayee, IBillPayment } from '@app/core/models/dto';
+import { IBiller, IBillPayee, IBillPayment } from '@app/core/models/dto';
 
 @Component({
   selector: 'bill-payment',
@@ -55,9 +55,9 @@ export class BillPaymentPage implements OnInit {
     const paymentInfo = Object.assign({
       amount,
       executionDate,
-      payeeId: this.billPayee._id,
+      biller: (this.billPayee.biller as IBiller).id,
       accountNumber: this.billPayee.accountNumber,
-      currency: this.billPayee.biller.currency
+      currency: (this.billPayee.biller as IBiller).currency
     });
     this.facade.payBill(paymentInfo);
   }

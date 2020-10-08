@@ -1,6 +1,6 @@
 import * as moment from 'moment';
 import { CurrencyPipe } from '@angular/common';
-import { IBillPayee, IBillPayment } from '@app/core/models/dto';
+import { IBiller, IBillPayee, IBillPayment } from '@app/core/models/dto';
 import { IMeedModalContent, ModalService, SuccessModalPage, DropdownModalComponent, PhonePipe } from '@app/shared';
 import { Injectable } from '@angular/core';
 import { PayBillService } from '@app/core/services/pay-bill.service';
@@ -37,7 +37,7 @@ export class TopUpPaymentFacade {
    */
   initAvailableDropDownAmountOptions() {
     this.availableAmountsOptions = [];
-    const { availableTopupAmounts } = this.payBillService.billPayee.biller;
+    const { availableTopupAmounts } = this.payBillService.billPayee.biller as IBiller;
     if (availableTopupAmounts && availableTopupAmounts.length > 0) {
       availableTopupAmounts
         .sort((a, b) => parseFloat(a) - parseFloat(b))

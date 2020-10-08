@@ -3,7 +3,7 @@ import { TopUpPaymentFacade } from '../facade';
 import { Component, OnInit } from '@angular/core';
 import { CommonValidators } from '@app/core/util/common-validators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IBillPayee, IBillPayment } from '@app/core/models/dto';
+import { IBiller, IBillPayee, IBillPayment } from '@app/core/models/dto';
 import { IDropdownOption } from '@app/core/models/static-data';
 
 @Component({
@@ -57,9 +57,9 @@ export class TopUpPaymentPage implements OnInit {
     const paymentInfo = Object.assign({
       amount,
       executionDate,
-      payeeId: this.billPayee._id,
+      biller: (this.billPayee.biller as IBiller).id,
       phoneNumber: this.billPayee.phoneNumber,
-      currency: this.billPayee.biller.currency
+      currency: (this.billPayee.biller as IBiller).currency
     });
     this.facade.payBill(paymentInfo);
   }

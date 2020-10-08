@@ -30,7 +30,7 @@ export class GiftCardPage implements OnInit {
     };
     this.buyGiftCardForm = this.formBuilder.group({
       vendorName: [''],
-      payeeId: ['', Validators.required],
+      biller: [0, Validators.required],
       email: [
         '',
         [
@@ -62,7 +62,7 @@ export class GiftCardPage implements OnInit {
 
   selectGiftCardVendor(giftCardVendor: IBiller): void {
     this.facade.updateGiftCardVendorSelection(giftCardVendor);
-    this.buyGiftCardForm.patchValue({ payeeId: giftCardVendor.id.toString(), vendorName: giftCardVendor.name });
+    this.buyGiftCardForm.patchValue({ biller: giftCardVendor.id, vendorName: giftCardVendor.name });
   }
 
   getAmountCssClass(): string {
@@ -79,8 +79,8 @@ export class GiftCardPage implements OnInit {
     this.togglePage(true);
   }
   processGiftCardSend(): void {
-    const { payeeId, amount, email, phoneNumber } = this.buyGiftCardForm.getRawValue();
-    this.facade.buyGiftCard({ payeeId, amount, email, phoneNumber });
+    const { biller, amount, email, phoneNumber } = this.buyGiftCardForm.getRawValue();
+    this.facade.buyGiftCard({ biller, amount, email, phoneNumber });
   }
 
   cancelGiftCardSend(): void {
