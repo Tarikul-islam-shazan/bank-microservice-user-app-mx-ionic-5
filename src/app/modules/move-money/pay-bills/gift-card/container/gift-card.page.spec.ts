@@ -1,19 +1,19 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
-import { SendGiftCardPage } from './send-gift-card.page';
+import { GiftCardPage } from './gift-card.page';
 
-describe('TopUpMobilePage', () => {
-  let component: SendGiftCardPage;
-  let fixture: ComponentFixture<SendGiftCardPage>;
+describe('GiftCardPage', () => {
+  let component: GiftCardPage;
+  let fixture: ComponentFixture<GiftCardPage>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [SendGiftCardPage],
+      declarations: [GiftCardPage],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(SendGiftCardPage);
+    fixture = TestBed.createComponent(GiftCardPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));

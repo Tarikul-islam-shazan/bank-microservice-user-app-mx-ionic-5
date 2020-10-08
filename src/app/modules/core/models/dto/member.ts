@@ -145,12 +145,6 @@ export interface IBillPayee {
   referenceId?: string;
 }
 
-export interface IGiftCardPayee {
-  giftCardId: number;
-  email: string;
-  amount: number;
-}
-
 export enum BillerCategory {
   Utility = 'Utility',
   Topup = 'Topup',
@@ -193,6 +187,7 @@ export interface IBillPayment {
   executionDate?: string;
   frequency?: PaymentFrequency;
   recurringPaymentDate?: string;
+  email?: string;
 }
 export enum BillPayProvider {
   IPAY = 'IPAY',
