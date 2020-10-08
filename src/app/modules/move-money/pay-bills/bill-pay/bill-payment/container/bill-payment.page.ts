@@ -12,12 +12,15 @@ import { IBiller, IBillPayee, IBillPayment } from '@app/core/models/dto';
 })
 export class BillPaymentPage implements OnInit {
   billPayee: IBillPayee;
+  biller: IBiller;
   billPayment: IBillPayment;
   billPaymentForm: FormGroup;
   constructor(public facade: BillPaymentFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.billPayee = this.facade.getBillPayee();
+    this.biller = this.billPayee.biller as IBiller;
+
     this.initBillPaymentForm();
   }
 
@@ -55,9 +58,9 @@ export class BillPaymentPage implements OnInit {
     const paymentInfo = Object.assign({
       amount,
       executionDate,
-      biller: (this.billPayee.biller as IBiller).id,
+      biller: this.biller.id,
       accountNumber: this.billPayee.accountNumber,
-      currency: (this.billPayee.biller as IBiller).currency
+      currency: this.biller.currency
     });
     this.facade.payBill(paymentInfo);
   }

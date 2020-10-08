@@ -13,6 +13,7 @@ import { IDropdownOption } from '@app/core/models/static-data';
 })
 export class TopUpPaymentPage implements OnInit {
   billPayee: IBillPayee;
+  biller: IBiller;
   billPayment: IBillPayment;
   billPaymentForm: FormGroup;
   seletedAmount: IDropdownOption;
@@ -20,6 +21,7 @@ export class TopUpPaymentPage implements OnInit {
 
   ngOnInit() {
     this.billPayee = this.facade.getBillPayee();
+    this.biller = this.billPayee.biller as IBiller;
     this.initBillPaymentForm();
     this.facade.initAvailableDropDownAmountOptions();
   }
@@ -57,9 +59,9 @@ export class TopUpPaymentPage implements OnInit {
     const paymentInfo = Object.assign({
       amount,
       executionDate,
-      biller: (this.billPayee.biller as IBiller).id,
+      biller: this.biller.id,
       phoneNumber: this.billPayee.phoneNumber,
-      currency: (this.billPayee.biller as IBiller).currency
+      currency: this.biller.currency
     });
     this.facade.payBill(paymentInfo);
   }
