@@ -55,7 +55,7 @@ export class PayBillsHomeFacade {
       case PayBillsOptions.TopUpMobile:
         this.router.navigate(['/move-money/pay-bills/top-up-mobile']);
         break;
-      case PayBillsOptions.SendGiftCard:
+      case PayBillsOptions.GiftCard:
         this.router.navigate(['/move-money/pay-bills/gift-card']);
         break;
     }
