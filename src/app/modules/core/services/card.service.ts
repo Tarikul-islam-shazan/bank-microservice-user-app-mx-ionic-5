@@ -49,4 +49,7 @@ export class CardService {
   get supportNumber() {
     return this._supportNumber;
   }
+  clearCardDetails() {
+    this.cards$ = null;
+  }
 }

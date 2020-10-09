@@ -13,6 +13,7 @@ export class CardStatusPage implements OnInit {
 
   ngOnInit(): void {
     this.isCardFreeze = false;
+    this.cardStatusFacade.getCardDetails();
   }
 
   updateCardStatus(cardId, cardStatus): void {
