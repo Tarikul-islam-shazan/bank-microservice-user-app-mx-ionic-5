@@ -3,76 +3,80 @@
     <ion-buttons slot="start">
       <ion-back-button id="edit-invex-payee-registration-page-back-btn" mode="md"></ion-back-button>
     </ion-buttons>
-    <ion-title id="invex-payee-registration-page-header-title"
-      >{{"p2p-module.invex-payee-registration-page.page-title" | translate}}</ion-title
+    <ion-title id="edit-invex-payee-registration-page-header-title"
+      >{{"p2p-module.edit-invex-payee-registration-page.page-title" | translate}}</ion-title
     >
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div class="title">Edit Payee</div>
   <ion-list lines="none" class="form" mode="ios">
     <form [formGroup]="contactForm">
+      <div class="title">{{'p2p-module.edit-invex-payee-registration-page.form.payee-alias-label' | translate}}</div>
       <ion-item class="ion-no-padding">
         <ion-input
           formControlName="alias"
-          id="invex-payee-registration-page-alias-input"
+          id="edit-invex-payee-registration-page-alias-input"
           class="ion-margin-start"
-          placeholder="{{'p2p-module.invex-payee-registration-page.payee-alias-placeholder' | translate}}"
+          placeholder="{{'p2p-module.edit-invex-payee-registration-page.form.payee-alias-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
-      <ion-item class="ion-no-padding" (click)="openIdentifierModal()">
+      <div class="title">{{'p2p-module.edit-invex-payee-registration-page.form.identifier-label' | translate}}</div>
+      <ion-item class="ion-no-padding">
         <ion-input
           formControlName="identityName"
           readonly
           class="ion-margin-start"
-          id="invex-payee-registration-page-identity-Name-input"
-          placeholder="{{'p2p-module.invex-payee-registration-page.identifier-placeholder' | translate}}"
+          id="edit-invex-payee-registration-page-identity-Name-input"
+          placeholder="{{'p2p-module.edit-invex-payee-registration-page.form.identifier-placeholder' | translate}}"
         ></ion-input>
         <ion-icon slot="end" name="chevron-down"></ion-icon>
       </ion-item>
-
+      <div class="title">{{'p2p-module.edit-invex-payee-registration-page.form.bank-label' | translate}}</div>
       <ion-item class="ion-no-padding">
         <ion-input
           formControlName="bank"
           id="edit-invex-payee-registration-page-bank-input"
           class="ion-margin-start"
-          placeholder="Bank"
+          placeholder="{{'p2p-module.edit-invex-payee-registration-page.form.bank-placeholder' | translate}}"
         ></ion-input>
       </ion-item>
 
       <div class="second-step" *ngIf="contactForm.value.identityName">
+        <div class="title">{{'p2p-module.edit-invex-payee-registration-page.form.payee-number-label' | translate}}</div>
         <ion-item
           class="ion-no-padding"
           [ngClass]="{'has-error': contactForm.controls.identityNumber.errors && (contactForm.controls.identityNumber.dirty || contactForm.controls.identityNumber.touched)}"
         >
           <ion-input
             formControlName="identityNumber"
-            id="invex-payee-registration-page-identit-Number-input"
+            id="edit-invex-payee-registration-page-identit-Number-input"
             class="ion-margin-start"
             [placeholder]="contactForm.value.identityName"
           ></ion-input>
         </ion-item>
+        <div class="title">{{'p2p-module.edit-invex-payee-registration-page.form.email-label' | translate}}</div>
         <ion-item
           class="ion-no-padding"
           [ngClass]="{'has-error': contactForm.controls.email.errors && (contactForm.controls.email.dirty || contactForm.controls.email.touched)}"
         >
           <ion-input
             formControlName="email"
-            id="invex-payee-registration-page-email-input"
+            id="edit-invex-payee-registration-page-email-input"
             class="ion-margin-start"
-            placeholder="{{'p2p-module.invex-payee-registration-page.form.email-placeholder' | translate}}"
+            placeholder="{{'p2p-module.edit-invex-payee-registration-page.form.email-placeholder' | translate}}"
           ></ion-input>
         </ion-item>
+        <div class="title">{{'p2p-module.edit-invex-payee-registration-page.form.mobile-label' | translate}}</div>
         <ion-item
           class="ion-no-padding"
           [ngClass]="{'has-error': contactForm.controls.phone.errors && (contactForm.controls.phone.dirty || contactForm.controls.phone.touched)}"
         >
           <ion-input
             formControlName="phone"
-            id="invex-payee-registration-page-phone-input"
+            id="edit-invex-payee-registration-page-phone-input"
             class="ion-margin-start"
-            placeholder="{{'p2p-module.invex-payee-registration-page.form.mobile-placeholder' | translate}}"
+            placeholder="{{'p2p-module.edit-invex-payee-registration-page.form.mobile-placeholder' | translate}}"
           ></ion-input>
         </ion-item>
       </div>
@@ -83,12 +87,11 @@
   <ion-toolbar>
     <ion-button
       class="white-button"
-      id="invex-payee-registration-page-next-btn"
+      id="edit-invex-payee-registration-page-next-btn"
       [disabled]="contactForm.invalid"
       (click)="next()"
     >
-      Edit
-      <!-- {{"p2p-module.invex-payee-registration-page.next-button-title" | translate}} -->
+      {{"p2p-module.edit-invex-payee-registration-page.next-button-title" | translate}}
     </ion-button>
   </ion-toolbar>
 </ion-footer>

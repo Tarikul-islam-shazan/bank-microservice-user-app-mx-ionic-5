@@ -53,4 +53,9 @@ export class P2PService {
     delete contact._id;
     return this.http.patch<void>(url, contact, { headers: this.headerService.getMemberICustomerIdHeader() });
   }
+
+  deleteInvexOrOtherDomesticContact(contactId): Observable<void> {
+    const url = this.baseUrl + '/contacts/' + contactId + '?contactType=meed';
+    return this.http.delete<void>(url, { headers: this.headerService.getMemberICustomerIdHeader() });
+  }
 }

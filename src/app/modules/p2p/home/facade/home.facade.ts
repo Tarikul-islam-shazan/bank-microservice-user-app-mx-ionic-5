@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { MemberService, REG_EX_PATTERNS } from '@app/core';
 import { IMeedModalContent, ModalService } from '@app/shared';
 import { share } from 'rxjs/operators';
+import { TranslateService } from '@ngx-translate/core';
+import { AlertController } from '@ionic/angular';
 
 @Injectable()
 export class HomeP2PFacade {
@@ -18,7 +20,9 @@ export class HomeP2PFacade {
     private analytics: AnalyticsService,
     private router: Router,
     private memberService: MemberService,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private translate: TranslateService,
+    public alertController: AlertController
   ) {}
 
   getAllContacts(): Observable<IContact[]> {
@@ -49,6 +53,55 @@ export class HomeP2PFacade {
       ]
     };
     this.modalService.openInfoModalComponent({ componentProps });
+  }
+
+  /**
+   *
+   * @summary A function to delete my bill Account
+   * @param {IBillPayee} billAccount
+   * @memberof BillPayFacade
+   */
+
+  deletePayee(payee: IContact) {
+    this.translate
+      .get(
+        [
+          'p2p-module.home-page.delete-alert.header',
+          'p2p-module.home-page.delete-alert.message',
+          'p2p-module.home-page.delete-alert.btn-cancel',
+          'p2p-module.home-page.delete-alert.btn-confirm'
+        ],
+        { name }
+      )
+      .subscribe(messages => {
+        this.presentAlertConfirmToDelete(messages, payee._id);
+      });
+  }
+
+  async presentAlertConfirmToDelete(messages: string[], payeeId: string) {
+    const alert = await this.alertController.create({
+      cssClass: 'delete-bill-account-alert',
+      header: messages['p2p-module.home-page.delete-alert.header'],
+      message: messages['p2p-module.home-page.delete-alert.message'],
+      buttons: [
+        {
+          text: messages['p2p-module.home-page.delete-alert.btn-cancel'],
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: () => {}
+        },
+        {
+          text: messages['p2p-module.home-page.delete-alert.btn-confirm'],
+          handler: () => {
+            this.p2pService.deleteInvexOrOtherDomesticContact(payeeId).subscribe(() => {
+              this.myPayees$ = this.getAllContacts();
+            });
+          }
+        }
+      ]
+    });
+
+    await alert.present();
   }
 
   next(payeeTo: string) {

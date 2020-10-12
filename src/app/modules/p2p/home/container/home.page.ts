@@ -21,7 +21,7 @@ export class HomePage implements OnInit {
   ionViewWillEnter() {
     this.searchQuery = '';
     this.searchContact();
-    this.myPayees$ = this.facade.getAllContacts();
+    this.facade.myPayees$ = this.facade.getAllContacts();
   }
 
   makeContactEditAble() {

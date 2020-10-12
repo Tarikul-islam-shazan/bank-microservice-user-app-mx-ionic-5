@@ -77,7 +77,7 @@ export class TopUpPaymentFacade {
         contents: [
           {
             title: 'move-money-module.pay-bills.top-up-payment.modal.title',
-            details: ['move-money-module.pay-bills.top-up-payment.modal.content-1'],
+            details: ['move-money-module.pay-bills.c.modal.content-1'],
             reference: 'move-money-module.pay-bills.top-up-payment.modal.reference-text',
             values: {
               paymentAmount,

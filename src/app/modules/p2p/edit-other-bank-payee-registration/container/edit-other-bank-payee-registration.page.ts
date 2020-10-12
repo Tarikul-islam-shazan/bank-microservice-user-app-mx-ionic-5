@@ -122,6 +122,9 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
           bankName: params.get('bankName'),
           email: params.get('email')
         });
+        this.companyForm.controls.identityNumber.disable();
+        this.companyForm.controls.companyName.disable();
+        this.companyForm.controls.bankName.disable();
         break;
       case IdentityType.Clabe:
       case IdentityType.DebitCard:
@@ -137,6 +140,12 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
           phone: params.get('phone'),
           rfc: params.get('rfc')
         });
+        this.companyForm.controls.identityNumber.disable();
+        this.companyForm.controls.bankName.disable();
+        this.companyForm.controls.firstName.disable();
+        this.companyForm.controls.secondName.disable();
+        this.companyForm.controls.paternalLastName.disable();
+        this.companyForm.controls.maternalLastName.disable();
         break;
       case IdentityType.Mobile:
         this.initMobileForm();
@@ -148,37 +157,15 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
           paternalLastName: params.get('paternalLastName'),
           maternalLastName: params.get('maternalLastName'),
           email: params.get('email'),
-          phone: params.get('phone'),
           rfc: params.get('rfc')
         });
+        this.mobileForm.controls.identityNumber.disable();
+        this.mobileForm.controls.bankName.disable();
+        this.mobileForm.controls.firstName.disable();
+        this.mobileForm.controls.secondName.disable();
+        this.mobileForm.controls.paternalLastName.disable();
+        this.mobileForm.controls.maternalLastName.disable();
         break;
-    }
-  }
-
-  async openIdentifierModal(): Promise<any> {
-    const modal = await this.modalCtrl.create({
-      component: DropdownModalComponent,
-      componentProps: { data: otherBankPayeeIdentifiers }
-    });
-    await modal.present();
-    const { data } = await modal.onWillDismiss();
-    if (data) {
-      this.payeeIdentifier = data;
-      this.initialForm.controls.identityTypeName.patchValue(this.payeeIdentifier.text);
-      this.initFormByIdentifier(this.routingParam);
-    }
-  }
-
-  async openBankListModal(): Promise<any> {
-    const modal = await this.modalCtrl.create({
-      component: DropdownModalComponent,
-      componentProps: { data: this.banks }
-    });
-    await modal.present();
-    const { data } = await modal.onWillDismiss();
-    if (data) {
-      this.selectedBank = data;
-      this.patchBankNameFormValue();
     }
   }
 
@@ -222,22 +209,24 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
     };
     switch (this.payeeIdentifier.value) {
       case IdentityType.Company:
-        this.companyForm.value.companyName = this.companyForm.value.companyName.trim();
+        this.companyForm.value.companyName = this.routingParam.get('companyName').trim();
         Object.assign(contact, this.companyForm.value);
         break;
       case IdentityType.Clabe:
       case IdentityType.DebitCard:
-        this.clabeDebitCardForm.value.firstName = this.clabeDebitCardForm.value.firstName.trim();
-        this.clabeDebitCardForm.value.secondName = this.clabeDebitCardForm.value.secondName.trim();
-        this.clabeDebitCardForm.value.paternalLastName = this.clabeDebitCardForm.value.paternalLastName.trim();
-        this.clabeDebitCardForm.value.maternalLastName = this.clabeDebitCardForm.value.maternalLastName.trim();
+        this.clabeDebitCardForm.value.identityNumber = this.routingParam.get('identityNumber');
+        this.clabeDebitCardForm.value.firstName = this.routingParam.get('firstName').trim();
+        this.clabeDebitCardForm.value.secondName = this.routingParam.get('secondName').trim();
+        this.clabeDebitCardForm.value.paternalLastName = this.routingParam.get('paternalLastName').trim();
+        this.clabeDebitCardForm.value.maternalLastName = this.routingParam.get('maternalLastName').trim();
         Object.assign(contact, this.clabeDebitCardForm.value);
         break;
       case IdentityType.Mobile:
-        this.mobileForm.value.firstName = this.mobileForm.value.firstName.trim();
-        this.mobileForm.value.secondName = this.mobileForm.value.secondName.trim();
-        this.mobileForm.value.paternalLastName = this.mobileForm.value.paternalLastName.trim();
-        this.mobileForm.value.maternalLastName = this.mobileForm.value.maternalLastName.trim();
+        this.mobileForm.value.identityNumber = this.routingParam.get('identityNumber');
+        this.mobileForm.value.firstName = this.routingParam.get('firstName').trim();
+        this.mobileForm.value.secondName = this.routingParam.get('secondName').trim();
+        this.mobileForm.value.paternalLastName = this.routingParam.get('paternalLastName').trim();
+        this.mobileForm.value.maternalLastName = this.routingParam.get('maternalLastName').trim();
         Object.assign(contact, this.mobileForm.value);
         break;
     }

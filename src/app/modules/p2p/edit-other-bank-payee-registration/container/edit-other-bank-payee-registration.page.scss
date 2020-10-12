@@ -5,6 +5,15 @@
   margin: 20px 0;
 }
 ion-list.form {
+  .title {
+    font-family: 'Averta W05 Bold5204651';
+    font-size: 11px;
+    color: #8c90a3;
+    letter-spacing: 1px;
+    line-height: 16px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
   ion-item {
     --border-color: var(--input-white-border-color) !important;
     --inner-padding-bottom: 0 !important;
