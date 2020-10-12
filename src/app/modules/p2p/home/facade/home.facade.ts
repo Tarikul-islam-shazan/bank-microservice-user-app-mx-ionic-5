@@ -63,6 +63,7 @@ export class HomeP2PFacade {
    */
 
   deletePayee(payee: IContact) {
+    const name = payee.alias;
     this.translate
       .get(
         [
