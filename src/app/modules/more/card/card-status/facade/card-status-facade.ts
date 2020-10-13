@@ -8,9 +8,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class CardStatusFacade {
   cards$: Observable<ICard>;
-  constructor(private cardService: CardService, private router: Router, private analytics: AnalyticsService) {
-    this.getCardDetails();
-  }
+  constructor(private cardService: CardService, private router: Router, private analytics: AnalyticsService) {}
 
   /**
    * @summary gets card details

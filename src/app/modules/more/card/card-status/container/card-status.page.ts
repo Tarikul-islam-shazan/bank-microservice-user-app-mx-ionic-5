@@ -8,11 +8,10 @@ import { ICardParams, CardStatus } from '@app/core';
   styleUrls: ['./card-status.page.scss']
 })
 export class CardStatusPage implements OnInit {
-  isCardFreeze: boolean;
   constructor(public cardStatusFacade: CardStatusFacade) {}
 
   ngOnInit(): void {
-    this.isCardFreeze = false;
+    this.cardStatusFacade.getCardDetails();
   }
 
   updateCardStatus(cardId, cardStatus): void {

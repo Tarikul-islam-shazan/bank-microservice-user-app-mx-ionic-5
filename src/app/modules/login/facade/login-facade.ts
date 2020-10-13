@@ -1,6 +1,6 @@
 import { LoginForm, LoginRequest } from '../models/login';
 import { Injectable } from '@angular/core';
-import { SignUpService, IAccount } from '@app/core';
+import { SignUpService, IAccount, CardService } from '@app/core';
 import { Router } from '@angular/router';
 import { LoginService } from '@app/core/services/login.service';
 import { LogoutService } from '@app/core/services/logout.service';
@@ -43,7 +43,8 @@ export class LoginFacade {
     private callService: CallNumber,
     private staticDataService: StaticDataService,
     public alertController: AlertController,
-    private translateService: TranslateService
+    private translateService: TranslateService,
+    private cardService: CardService
   ) {}
 
   /**
@@ -403,6 +404,14 @@ export class LoginFacade {
    */
   async isLoggedOut(): Promise<boolean> {
     return await this.logoutReason.isLoggedOut();
+  }
+
+  /**
+   * @summary clearing user cash data as required
+   * @memberof LoginFacade
+   */
+  clearUserCashData(): void {
+    this.cardService.clearCardDetails();
   }
 
   /**

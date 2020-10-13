@@ -14,6 +14,7 @@ export class CardDetailsPage implements OnInit {
   constructor(private router: Router, public cardDetailsFacade: CardDetailsFacade) {}
 
   ngOnInit(): void {
+    this.cardDetailsFacade.getCardDetails();
     this.cardImgSrc = 'assets/img/Card.png';
   }
 

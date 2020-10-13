@@ -85,6 +85,7 @@ export class LoginUserPage implements OnInit {
   async ionViewDidEnter() {
     this.updateLoginFormValue();
     await this.loginFacade.isLoggedOut();
+    this.loginFacade.clearUserCashData();
     if (this.loginFacade.useBiometric) {
       await this.loginFacade.requestBiometricAuthentication(this.loginForm.value);
     }
