@@ -1,11 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { DropdownOption } from '@app/signup/models/signup';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import { DropdownModalComponent } from '@app/shared';
-import { ModalController } from '@ionic/angular';
 import { otherBankPayeeIdentifiers, IdentityType, IContact, ContactType } from '@app/p2p/models';
 import { EditOtherBankPayeeRegistrationFacade } from '../facade';
-import { ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'mbc-edit-other-bank-payee-registration',
@@ -23,13 +20,8 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
   mobileForm: FormGroup;
   contactId: string;
   bankCode: string;
-  routingParam: ParamMap;
-  constructor(
-    private formBuilder: FormBuilder,
-    private modalCtrl: ModalController,
-    private facade: EditOtherBankPayeeRegistrationFacade,
-    private route: ActivatedRoute
-  ) {}
+  payee: any;
+  constructor(private formBuilder: FormBuilder, private facade: EditOtherBankPayeeRegistrationFacade) {}
 
   ngOnInit() {
     this.initInitialForm();
@@ -49,28 +41,26 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
   }
 
   getPayee() {
-    this.route.paramMap.subscribe(params => {
-      this.routingParam = params;
-      this.getBankList(params.get('bankCode'));
-      const data = otherBankPayeeIdentifiers;
-      this.contactId = params.get('_id');
-      for (const payeeType of data) {
-        if (payeeType.value === params.get('identityType')) {
-          this.payeeIdentifier = payeeType;
-          this.initialForm.patchValue({
-            alias: params.get('alias'),
-            identityTypeName: this.payeeIdentifier.text
-          });
-          this.initFormByIdentifier(this.routingParam);
-          return;
-        }
+    this.payee = window.history.state;
+    this.getBankList(this.payee.bankCode);
+    const data = otherBankPayeeIdentifiers;
+    this.contactId = this.payee._id;
+    for (const payeeType of data) {
+      if (payeeType.value === this.payee.identityType) {
+        this.payeeIdentifier = payeeType;
+        this.initialForm.patchValue({
+          alias: this.payee.alias,
+          identityTypeName: this.payeeIdentifier.text
+        });
+        this.initFormByIdentifier();
+        return;
       }
-    });
+    }
   }
 
   initInitialForm() {
     this.initialForm = this.formBuilder.group({
-      alias: ['', [Validators.required, this.noWhitespaceValidator]],
+      alias: ['', [Validators.required]],
       identityTypeName: ['', Validators.required],
       contactType: ContactType.Other
     });
@@ -79,7 +69,7 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
   initCompanyForm() {
     this.companyForm = this.formBuilder.group({
       identityNumber: ['', [Validators.required, Validators.pattern('[0-9]*')]],
-      companyName: ['', [Validators.required, this.noWhitespaceValidator]],
+      companyName: ['', [Validators.required]],
       bankName: ['', Validators.required],
       email: ['', Validators.email]
     });
@@ -89,10 +79,10 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
     this.clabeDebitCardForm = this.formBuilder.group({
       identityNumber: ['', [Validators.required, Validators.pattern('[0-9]*')]],
       bankName: ['', Validators.required],
-      firstName: ['', [Validators.required, this.noWhitespaceValidator]],
-      secondName: ['', this.noWhitespaceValidator],
-      paternalLastName: ['', [Validators.required, this.noWhitespaceValidator]],
-      maternalLastName: ['', this.noWhitespaceValidator],
+      firstName: ['', [Validators.required]],
+      secondName: [''],
+      paternalLastName: ['', [Validators.required]],
+      maternalLastName: [''],
       email: ['', Validators.email],
       phone: ['', Validators.pattern('[0-9]*')],
       rfc: ['']
@@ -103,24 +93,24 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
     this.mobileForm = this.formBuilder.group({
       identityNumber: ['', [Validators.required, Validators.pattern('[0-9]*')]],
       bankName: ['', Validators.required],
-      firstName: ['', [Validators.required, this.noWhitespaceValidator]],
-      secondName: ['', this.noWhitespaceValidator],
-      paternalLastName: ['', [Validators.required, this.noWhitespaceValidator]],
-      maternalLastName: ['', this.noWhitespaceValidator],
+      firstName: ['', [Validators.required]],
+      secondName: ['', Validators.pattern('^[A-Za-z][A-Za-z0-9]*$')],
+      paternalLastName: ['', [Validators.required, Validators.pattern('^[A-Za-z][A-Za-z0-9]*$')]],
+      maternalLastName: ['', Validators.pattern('^[A-Za-z][A-Za-z0-9]*$')],
       email: ['', Validators.email],
       rfc: ['']
     });
   }
 
-  initFormByIdentifier(params) {
+  initFormByIdentifier() {
     switch (this.payeeIdentifier.value) {
       case IdentityType.Company:
         this.initCompanyForm();
         this.companyForm.patchValue({
-          identityNumber: params.get('identityNumber'),
-          companyName: params.get('companyName'),
-          bankName: params.get('bankName'),
-          email: params.get('email')
+          identityNumber: this.payee.identityNumber,
+          companyName: this.payee.companyName,
+          bankName: this.payee.bankName,
+          email: this.payee.email
         });
         this.companyForm.controls.identityNumber.disable();
         this.companyForm.controls.companyName.disable();
@@ -130,15 +120,15 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
       case IdentityType.DebitCard:
         this.initClabeDebitCardForm();
         this.clabeDebitCardForm.patchValue({
-          identityNumber: params.get('identityNumber'),
-          bankName: params.get('bankName'),
-          firstName: params.get('firstName'),
-          secondName: params.get('secondName'),
-          paternalLastName: params.get('paternalLastName'),
-          maternalLastName: params.get('maternalLastName'),
-          email: params.get('email'),
-          phone: params.get('phone'),
-          rfc: params.get('rfc')
+          identityNumber: this.payee.identityNumber,
+          bankName: this.payee.bankName,
+          firstName: this.payee.firstName,
+          secondName: this.payee.secondName,
+          paternalLastName: this.payee.paternalLastName,
+          maternalLastName: this.payee.maternalLastName,
+          email: this.payee.email,
+          phone: this.payee.phone,
+          rfc: this.payee.rfc
         });
         this.companyForm.controls.identityNumber.disable();
         this.companyForm.controls.bankName.disable();
@@ -150,14 +140,14 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
       case IdentityType.Mobile:
         this.initMobileForm();
         this.mobileForm.patchValue({
-          identityNumber: params.get('identityNumber'),
-          bankName: params.get('bankName'),
-          firstName: params.get('firstName'),
-          secondName: params.get('secondName'),
-          paternalLastName: params.get('paternalLastName'),
-          maternalLastName: params.get('maternalLastName'),
-          email: params.get('email'),
-          rfc: params.get('rfc')
+          identityNumber: this.payee.identityNumber,
+          bankName: this.payee.bankName,
+          firstName: this.payee.firstName,
+          secondName: this.payee.secondName,
+          paternalLastName: this.payee.paternalLastName,
+          maternalLastName: this.payee.maternalLastName,
+          email: this.payee.email,
+          rfc: this.payee.rfc
         });
         this.mobileForm.controls.identityNumber.disable();
         this.mobileForm.controls.bankName.disable();
@@ -209,40 +199,30 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
     };
     switch (this.payeeIdentifier.value) {
       case IdentityType.Company:
-        this.companyForm.value.companyName = this.routingParam.get('companyName').trim();
+        this.companyForm.value.companyName = this.payee.companyName.trim();
         Object.assign(contact, this.companyForm.value);
         break;
       case IdentityType.Clabe:
       case IdentityType.DebitCard:
-        this.clabeDebitCardForm.value.identityNumber = this.routingParam.get('identityNumber');
-        this.clabeDebitCardForm.value.firstName = this.routingParam.get('firstName').trim();
-        this.clabeDebitCardForm.value.secondName = this.routingParam.get('secondName').trim();
-        this.clabeDebitCardForm.value.paternalLastName = this.routingParam.get('paternalLastName').trim();
-        this.clabeDebitCardForm.value.maternalLastName = this.routingParam.get('maternalLastName').trim();
+        this.clabeDebitCardForm.value.identityNumber = this.payee.identityNumber;
+        this.clabeDebitCardForm.value.firstName = this.payee.firstName.trim();
+        this.clabeDebitCardForm.value.secondName = this.payee.secondName.trim();
+        this.clabeDebitCardForm.value.paternalLastName = this.payee.paternalLastName.trim();
+        this.clabeDebitCardForm.value.maternalLastName = this.payee.maternalLastName.trim();
         Object.assign(contact, this.clabeDebitCardForm.value);
         break;
       case IdentityType.Mobile:
-        this.mobileForm.value.identityNumber = this.routingParam.get('identityNumber');
-        this.mobileForm.value.firstName = this.routingParam.get('firstName').trim();
-        this.mobileForm.value.secondName = this.routingParam.get('secondName').trim();
-        this.mobileForm.value.paternalLastName = this.routingParam.get('paternalLastName').trim();
-        this.mobileForm.value.maternalLastName = this.routingParam.get('maternalLastName').trim();
+        this.mobileForm.value.identityNumber = this.payee.identityNumber;
+        this.mobileForm.value.firstName = this.payee.firstName.trim();
+        this.mobileForm.value.secondName = this.payee.secondName.trim();
+        this.mobileForm.value.paternalLastName = this.payee.paternalLastName.trim();
+        this.mobileForm.value.maternalLastName = this.payee.maternalLastName.trim();
         Object.assign(contact, this.mobileForm.value);
         break;
     }
     delete contact.bankName;
 
     return contact;
-  }
-
-  noWhitespaceValidator(control: FormControl) {
-    if (control.value) {
-      const isWhitespace = control.value.trim().length === 0;
-      const isValid = !isWhitespace;
-      return isValid ? null : { whitespace: true };
-    } else {
-      return null;
-    }
   }
 
   next() {

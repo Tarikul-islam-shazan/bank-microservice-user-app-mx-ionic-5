@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { invexPayeeIdentifiers, ContactType } from '@app/p2p/models';
 import { EditInvexPayeeRegistrationFacade } from '../facade/edit-invex-payee-registration.facade';
-import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DropdownOption } from '@app/signup/models/signup';
 
 @Component({
@@ -15,14 +14,10 @@ export class EditInvexPayeeRegistrationPage implements OnInit {
   contactId: string;
   bankCode: string;
   options: DropdownOption[];
-  routingParam: ParamMap;
+  payee: any;
   editButtonEnable = true;
 
-  constructor(
-    private facade: EditInvexPayeeRegistrationFacade,
-    private formBuilder: FormBuilder,
-    private route: ActivatedRoute
-  ) {}
+  constructor(private facade: EditInvexPayeeRegistrationFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
     this.initForm();
@@ -43,30 +38,26 @@ export class EditInvexPayeeRegistrationPage implements OnInit {
   }
 
   getPayee() {
-    this.route.paramMap.subscribe(params => {
-      const data = invexPayeeIdentifiers;
-      this.routingParam = params;
-      this.contactId = params.get('_id');
-      this.bankCode = params.get('bankCode');
-      let payeeIdentityName;
-      for (const payeeType of data) {
-        if (payeeType.value === params.get('identityType')) {
-          payeeIdentityName = payeeType.text;
-          this.contactForm.patchValue({
-            alias: params.get('alias'),
-            identityName: payeeIdentityName,
-            identityType: params.get('identityType'),
-            identityNumber: params.get('identityNumber'),
-            bank: params.get('contactType'),
-            email: params.get('email'),
-            phone: params.get('phone'),
-            contactType: params.get('contactType')
-          });
-          this.disbleFormFiled();
-          return;
-        }
+    this.payee = window.history.state;
+    const data = invexPayeeIdentifiers;
+    let payeeIdentityName;
+    for (const payeeType of data) {
+      if (payeeType.value === this.payee.identityType) {
+        payeeIdentityName = payeeType.text;
+        this.contactForm.patchValue({
+          alias: this.payee.alias,
+          identityName: payeeIdentityName,
+          identityType: this.payee.identityType,
+          identityNumber: this.payee.identityNumber,
+          bank: this.payee.contactType,
+          email: this.payee.email,
+          phone: this.payee.phone,
+          contactType: this.payee.contactType
+        });
+        this.disbleFormFiled();
+        return;
       }
-    });
+    }
   }
 
   disbleFormFiled() {
@@ -89,9 +80,9 @@ export class EditInvexPayeeRegistrationPage implements OnInit {
     const contact: any = {};
     Object.assign(contact, this.contactForm.value);
     delete contact.identityName;
-    contact._id = this.routingParam.get('_id');
-    contact.bankCode = this.routingParam.get('bankCode');
-    contact.identityNumber = this.routingParam.get('identityNumber');
+    contact._id = this.payee._id;
+    contact.bankCode = this.payee.bankCode;
+    contact.identityNumber = this.payee.identityNumber;
     this.facade.next(contact);
   }
 }

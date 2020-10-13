@@ -21,7 +21,7 @@ export class EditInvexPayeeRegistrationFacade {
         {
           title: 'p2p-module.edit-invex-payee-registration-page.meed-update-success-title',
           details: [
-            'p2p-module.edit-invex-payee-registration-page.update-success-description',
+            'p2p-module.edit-invex-payee-registration-page.registration-success-description',
             'p2p-module.edit-invex-payee-registration-page.update-date'
           ],
           reference: 'p2p-module.edit-invex-payee-registration-page.update-ref',

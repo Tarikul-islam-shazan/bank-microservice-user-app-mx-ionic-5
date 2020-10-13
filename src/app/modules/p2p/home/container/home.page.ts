@@ -38,9 +38,9 @@ export class HomePage implements OnInit {
 
   edit(payee: IContact) {
     if (payee.contactType === this.contactType.Invex || payee.contactType === this.contactType.Domestic) {
-      this.router.navigate(['/p2p/edit-invex-payee-registration/', payee]);
+      this.router.navigate(['/p2p/edit-invex-payee-registration/'], { state: payee });
     } else {
-      this.router.navigate(['/p2p/edit-other-bank-payee-registration/', payee]);
+      this.router.navigate(['/p2p/edit-other-bank-payee-registration/'], { state: payee });
     }
   }
 }
