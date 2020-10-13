@@ -55,7 +55,7 @@ export class BillPayFacade {
    * @memberof BillPayFacade
    */
   deleteBillAccount(billAccount: IBillPayee): void {
-    const name = billAccount.biller.name;
+    const name = (billAccount.biller as IBiller).name;
     this.translate
       .get(
         [

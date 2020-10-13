@@ -3,7 +3,7 @@ import { TopUpPaymentFacade } from '../facade';
 import { Component, OnInit } from '@angular/core';
 import { CommonValidators } from '@app/core/util/common-validators';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { IBillPayee, IBillPayment } from '@app/core/models/dto';
+import { IBiller, IBillPayee, IBillPayment } from '@app/core/models/dto';
 import { IDropdownOption } from '@app/core/models/static-data';
 
 @Component({
@@ -13,6 +13,7 @@ import { IDropdownOption } from '@app/core/models/static-data';
 })
 export class TopUpPaymentPage implements OnInit {
   billPayee: IBillPayee;
+  biller: IBiller;
   billPayment: IBillPayment;
   billPaymentForm: FormGroup;
   seletedAmount: IDropdownOption;
@@ -20,6 +21,7 @@ export class TopUpPaymentPage implements OnInit {
 
   ngOnInit() {
     this.billPayee = this.facade.getBillPayee();
+    this.biller = this.billPayee.biller as IBiller;
     this.initBillPaymentForm();
     this.facade.initAvailableDropDownAmountOptions();
   }
@@ -57,9 +59,9 @@ export class TopUpPaymentPage implements OnInit {
     const paymentInfo = Object.assign({
       amount,
       executionDate,
-      payeeId: this.billPayee._id,
+      biller: this.biller.id,
       phoneNumber: this.billPayee.phoneNumber,
-      currency: this.billPayee.biller.currency
+      currency: this.biller.currency
     });
     this.facade.payBill(paymentInfo);
   }

@@ -1,5 +1,5 @@
 import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
-import { IBillPayee, IBiller } from '@app/core';
+import { IBillPayee, IBiller, BillerCategory } from '@app/core';
 import { IMeedModalContent, ModalService, SuccessModalPage } from '@app/shared';
 import { Injectable } from '@angular/core';
 import { PayBillService } from '@app/core/services/pay-bill.service';
@@ -33,9 +33,12 @@ export class EditPayeeFacade {
    */
   continue(billPayee: IBillPayee): void {
     this.payBillService.billPayee = billPayee;
+    billPayee.category = BillerCategory.Utility;
+    const biller = billPayee.biller as IBiller;
+    billPayee.biller = biller.id;
     this.payBillService.updatePayee(billPayee).subscribe(payee => {
       // show success modal
-      this.modalService.openModal(SuccessModalPage, this.getEditPayeeSuccessModalCompProps(billPayee.biller.name));
+      this.modalService.openModal(SuccessModalPage, this.getEditPayeeSuccessModalCompProps(biller.name));
     });
   }
 

@@ -138,9 +138,10 @@ export interface IOtp {
 }
 
 export interface IBillPayee {
-  biller?: IBiller;
+  biller?: number | IBiller;
   accountNumber?: string;
   phoneNumber?: string;
+  category?: BillerCategory;
   _id?: string;
   referenceId?: string;
 }
@@ -178,7 +179,7 @@ export enum PaymentFrequency {
 }
 export interface IBillPayment {
   paymentId?: string;
-  payeeId?: string;
+  biller?: number;
   amount?: number;
   category?: string;
   accountNumber?: string;

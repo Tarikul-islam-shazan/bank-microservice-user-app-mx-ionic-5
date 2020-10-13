@@ -23,7 +23,7 @@ export class PayBillService {
     return this.http.post<IBillPayee>(
       this.billPayeeBaseUrl,
       {
-        billerId: payee.biller.id,
+        biller: payee.biller,
         accountNumber: payee.accountNumber
       },
       { headers: this.headerService.getMemberIdHeader() }
@@ -33,7 +33,7 @@ export class PayBillService {
     return this.http.post<IBillPayee>(
       this.billPayeeBaseUrl,
       {
-        billerId: payee.biller.id,
+        biller: payee.biller,
         phoneNumber: payee.phoneNumber
       },
       { headers: this.headerService.getMemberIdHeader() }
@@ -44,6 +44,8 @@ export class PayBillService {
     return this.http.put<IBillPayee>(
       `${this.billPayeeBaseUrl}/${this.billPayee._id}`,
       {
+        category: payee.category,
+        biller: payee.biller as number,
         accountNumber: payee.accountNumber
       },
       { headers: this.headerService.getMemberIdHeader() }
@@ -70,15 +72,15 @@ export class PayBillService {
   }
 
   createUtilityPayment(billPayment: IBillPayment): Observable<IBillPayee> {
-    const { amount, payeeId, accountNumber, currency } = billPayment,
-      _billPayment = { payeeId, accountNumber, amount, currency, category: BillerCategory.Utility };
+    const { amount, biller, accountNumber, currency } = billPayment,
+      _billPayment = { biller, accountNumber, amount, currency, category: BillerCategory.Utility };
     return this.http.post<IBillPayee>(this.billPaymentBaseUrl, _billPayment, {
       headers: this.headerService.getBillPayProviderHeader()
     });
   }
   createTopUpPayment(billPayment: IBillPayment): Observable<IBillPayee> {
-    const { amount, payeeId, phoneNumber, currency } = billPayment,
-      _billPayment = { payeeId, phoneNumber, amount, currency, category: BillerCategory.Topup };
+    const { amount, biller, phoneNumber, currency } = billPayment,
+      _billPayment = { biller, phoneNumber, amount, currency, category: BillerCategory.Topup };
     return this.http.post<IBillPayee>(this.billPaymentBaseUrl, _billPayment, {
       headers: this.headerService.getBillPayProviderHeader()
     });

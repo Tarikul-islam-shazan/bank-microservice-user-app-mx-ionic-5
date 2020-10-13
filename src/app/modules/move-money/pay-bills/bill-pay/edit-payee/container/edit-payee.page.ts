@@ -1,5 +1,5 @@
 import { EditPayeeFacade } from '../facade';
-import { CommonValidators, IBillPayee } from '@app/core';
+import { CommonValidators, IBiller, IBillPayee } from '@app/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { IinputOption, InputFormatType } from '@app/shared';
@@ -35,7 +35,7 @@ export class EditPayeePage implements OnInit {
     };
     this.editPayeeForm = this.formBuilder.group(
       {
-        name: [{ value: this.billPayee.biller.name, disabled: true }, [Validators.required]],
+        name: [{ value: (this.billPayee.biller as IBiller).name, disabled: true }, [Validators.required]],
         accountNumber: [this.billPayee.accountNumber, Validators.required],
         confirmAccountNumber: ['', Validators.required]
       },

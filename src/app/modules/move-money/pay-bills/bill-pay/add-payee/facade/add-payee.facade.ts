@@ -42,13 +42,15 @@ export class AddPayeeFacade {
    */
   continue(billPayee: IBillPayee): void {
     this.payBillService.billPayee = billPayee;
+    const biller = billPayee.biller as IBiller;
+    billPayee.biller = biller.id;
     this.payBillService.addPayee(billPayee).subscribe(payee => {
       // set payee id
       this.payBillService.billPayee._id = payee._id;
       // show success modal
       this.modalService.openModal(
         SuccessModalPage,
-        this.getAddPayeeSuccessModalCompProps(billPayee.biller.name, payee.referenceId)
+        this.getAddPayeeSuccessModalCompProps(biller.name, payee.referenceId)
       );
     });
   }
