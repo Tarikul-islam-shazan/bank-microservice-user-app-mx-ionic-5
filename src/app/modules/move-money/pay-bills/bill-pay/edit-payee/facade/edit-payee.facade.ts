@@ -32,7 +32,7 @@ export class EditPayeeFacade {
    * @memberOf EditPayeeFacade
    */
   continue(billPayee: IBillPayee): void {
-    this.payBillService.billPayee = billPayee;
+    this.payBillService.billPayee = { ...billPayee };
     billPayee.category = BillerCategory.Utility;
     const biller = billPayee.biller as IBiller;
     billPayee.biller = biller.id;
