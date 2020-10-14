@@ -36,10 +36,7 @@ export class TopUpPaymentPage implements OnInit {
    */
   private initBillPaymentForm(): void {
     this.billPaymentForm = this.formBuilder.group({
-      amount: [
-        '',
-        [Validators.required, CommonValidators.minimumTransferAmount(1), CommonValidators.maximumTransferAmount(1000)]
-      ]
+      amount: ['', [Validators.required, CommonValidators.minimumTransferAmount(1)]]
     });
   }
 
