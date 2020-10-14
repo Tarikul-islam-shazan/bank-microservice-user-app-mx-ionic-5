@@ -35,8 +35,10 @@ export class TopUpPaymentFacade {
     this.accountService.fetchAccountSummary().subscribe();
   }
 
-  isAmountExistFund(amount: number): boolean {
-    return this.accountService.getAccountSummary(AccountType.DDA).availableBalance < amount ? true : false;
+  isAmountExistFund(amount: string): boolean {
+    return this.accountService.getAccountSummary(AccountType.DDA).availableBalance < Number.parseFloat(amount)
+      ? true
+      : false;
   }
 
   /**
