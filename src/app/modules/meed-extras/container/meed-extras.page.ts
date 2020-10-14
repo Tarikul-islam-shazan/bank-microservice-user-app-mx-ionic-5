@@ -20,9 +20,8 @@ export class MeedExtrasPage implements OnInit {
     speed: 400,
     slidesPerView: 4
   };
-
-  featuredOffers$: Observable<Offer[]>;
-  categories$: Observable<Category[]>;
+  featuredOffers: Offer[] = [];
+  categories: Category[] = [];
   constructor(public meedExtraFacade: MeedExtraFacade, private memberService: MemberService) {}
 
   ngOnInit() {
@@ -31,9 +30,9 @@ export class MeedExtrasPage implements OnInit {
     }
   }
 
-  ionViewWillEnter() {
-    this.featuredOffers$ = this.meedExtraFacade.loadFeaturedOffer();
-    this.categories$ = this.meedExtraFacade.loadCategory();
+  async ionViewWillEnter() {
+    this.categories = await this.meedExtraFacade.loadCategory().toPromise();
+    this.featuredOffers = await this.meedExtraFacade.loadFeaturedOffer().toPromise();
   }
 
   goToAllOffer() {
