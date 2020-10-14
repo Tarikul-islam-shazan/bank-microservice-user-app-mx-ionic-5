@@ -49,7 +49,8 @@ export class GiftCardFacade {
   }
 
   isAmountExistFund(amount: number): boolean {
-    return this.accountService.getAccountSummary(AccountType.DDA).availableBalance < amount ? true : false;
+    const checkingSummary = this.accountService.getAccountSummary(AccountType.DDA);
+    return checkingSummary && checkingSummary.availableBalance < amount ? true : false;
   }
 
   initAvailableDropDownAmountOptions(): void {

@@ -49,8 +49,8 @@ export class BillPaymentFacade {
   }
 
   isAmountExistFund(amount: string): boolean {
-    return this.accountService.getAccountSummary(AccountType.DDA).availableBalance <
-      this.convertPaymentAmountToNumber(amount)
+    const checkingSummary = this.accountService.getAccountSummary(AccountType.DDA);
+    return checkingSummary && checkingSummary.availableBalance < this.convertPaymentAmountToNumber(amount)
       ? true
       : false;
   }
