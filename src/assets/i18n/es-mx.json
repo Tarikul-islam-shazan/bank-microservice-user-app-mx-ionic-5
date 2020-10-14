@@ -1183,6 +1183,7 @@
     "code-2116": "The account number must only contain numbers.",
     "code-2201": "Payee already exists",
     "code-2202": "Invalid process date.",
+    "code-2203": "There are insufficient funds available to make the requested transfer",
     "code-4000": "Error desconocido",
     "code-4004": "Url not found",
     "code-5000": "¡Huy! Algo ha fallado.",
