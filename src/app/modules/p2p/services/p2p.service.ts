@@ -37,8 +37,25 @@ export class P2PService {
     return this.http.post<void>(url, contact, { headers: this.headerService.getMemberICustomerIdHeader() });
   }
 
+  editInvexContact(contact: IContact): Observable<void> {
+    const url = this.baseUrl + '/contacts/' + contact._id;
+    delete contact._id;
+    return this.http.patch<void>(url, contact, { headers: this.headerService.getMemberICustomerIdHeader() });
+  }
+
   addOtherDomesticContact(contact): Observable<void> {
     const url = this.baseUrl + '/contacts';
     return this.http.post<void>(url, contact, { headers: this.headerService.getMemberICustomerIdHeader() });
+  }
+
+  editOtherDomesticContact(contact): Observable<void> {
+    const url = this.baseUrl + '/contacts/' + contact._id;
+    delete contact._id;
+    return this.http.patch<void>(url, contact, { headers: this.headerService.getMemberICustomerIdHeader() });
+  }
+
+  deleteInvexOrOtherDomesticContact(contactId): Observable<void> {
+    const url = this.baseUrl + '/contacts/' + contactId + '?contactType=meed';
+    return this.http.delete<void>(url, { headers: this.headerService.getMemberICustomerIdHeader() });
   }
 }

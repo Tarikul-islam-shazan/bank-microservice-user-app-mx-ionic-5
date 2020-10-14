@@ -32,6 +32,20 @@ const routes: Routes = [
       import('./other-bank-payee-registration/other-bank-payee-registration.module').then(
         m => m.OtherBankPayeeRegistrationPageModule
       )
+  },
+  {
+    path: 'edit-invex-payee-registration',
+    loadChildren: () =>
+      import('./edit-invex-payee-registration/edit-invex-payee-registration.module').then(
+        m => m.EditInvexPayeeRegistrationPageModule
+      )
+  },
+  {
+    path: 'edit-other-bank-payee-registration',
+    loadChildren: () =>
+      import('./edit-other-bank-payee-registration/edit-other-bank-payee-registration.module').then(
+        m => m.EditOtherBankPayeeRegistrationPageModule
+      )
   }
 ];
 

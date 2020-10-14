@@ -1867,7 +1867,13 @@
       "next-button-title": "Next",
       "no-result-found-text": "No match found. You can still send money hit next register your friend",
       "modal-title": "Oops!",
-      "modal-description": "Sorry you can't add your own account"
+      "modal-description": "Sorry you can't add your own account",
+      "delete-alert": {
+        "header": "Confirm!",
+        "message": "Are you sure to delete {{name}} payee account?",
+        "btn-cancel": "Cancel",
+        "btn-confirm": "Okay"
+      }
     },
     "registration-type-page": {
       "page-title": "Send Money",
@@ -1894,6 +1900,29 @@
       "next-button-title": "Next",
       "registration-success-description": "The clock starts now! You can send the moolah anytime after 30 minutes have elapsed"
     },
+    "edit-invex-payee-registration-page": {
+      "page-title": "Send Money",
+      "content-title": "New Payee Registration",
+      "form": {
+        "payee-alias-label": "Alias",
+        "payee-alias-placeholder": "Payee Alias",
+        "identifier-label": "Payee identifier",
+        "identifier-placeholder": "Payee Identifier",
+        "email-label": "Email",
+        "email-placeholder": "Email Address (Optional)",
+        "mobile-label": "Phone",
+        "mobile-placeholder": "Mobile Number (Optional)",
+        "bank-label": "Bank",
+        "bank-placeholder": "Bank",
+        "payee-number-label": "Payee Number"
+      },
+      "next-button-title": "Next",
+      "meed-update-success-title": "Thanks for Updating!",
+      "registration-success-description": "The clock starts now! You can send the moolah anytime after 30 minutes have elapsed",
+      "update-date": "{{updateExecutionDate}}",
+      "update-ref": "Ref# {{referenceNumber}}",
+      "done-button-text": "Done"
+    },
     "other-payee-registration-page": {
       "page-title": "Send Money",
       "content-title": "New Payee Registration",
@@ -1912,6 +1941,41 @@
       },
       "next-button-title": "Next",
       "registration-success-description": "The clock starts now! You can send the moolah anytime after 30 minutes have elapsed"
+    },
+    "edit-other-bank-payee-registration-page": {
+      "page-title": "Send Money",
+      "content-title": "New Payee Registration",
+      "form": {
+        "payee-alias-label": "Alias",
+        "payee-alias-placeholder": "Payee Alias",
+        "identifier-label": "Payee identifier",
+        "identifier-placeholder": "Payee Identifier",
+        "company-name-label": "company Name",
+        "payee-number-label": "Payee Number",
+        "bank-label": "Bank",
+        "bank-placeholder": "Bank",
+        "clabe-placeholder": "Clabe",
+        "email-label": "Email",
+        "email-placeholder": "Email Address (Optional)",
+        "mobile-label": "Phone",
+        "mobile-placeholder": "Mobile Number (Optional)",
+        "first-name-label": "First Name",
+        "first-name-placeholder": "First Name",
+        "second-name-label": "Second Name",
+        "second-name-placeholder": "Second Name (Optional)",
+        "paternal-last-name-label": "Paternal Last Name",
+        "paternal-last-name-placeholder": "Paternal Last Name",
+        "maternal-last-name-label": "Maternal Last Name",
+        "maternal-last-name-placeholder": "Maternal Last Name (Optional)",
+        "rfc-label": "RFC",
+        "rfc-placeholder": "RFC (Optional)"
+      },
+      "next-button-title": "Next",
+      "meed-update-success-title": "Thanks for Updating!",
+      "update-success-description": "The clock starts now! You can send the moolah anytime after 30 minutes have elapsed",
+      "update-date": "{{updateExecutionDate}}",
+      "update-ref": "Ref# {{referenceNumber}}",
+      "done-button-text": "Done"
     }
   }
 }
