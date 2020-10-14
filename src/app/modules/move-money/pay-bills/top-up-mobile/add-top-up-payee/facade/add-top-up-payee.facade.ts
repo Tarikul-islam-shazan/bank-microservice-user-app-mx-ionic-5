@@ -40,10 +40,8 @@ export class AddTopUpPayeeFacade {
    * @memberOf AddTopUpPayeeFacade
    */
   continue(billPayee: IBillPayee): void {
-    this.payBillService.billPayee = billPayee;
+    this.payBillService.billPayee.phoneNumber = billPayee.phoneNumber;
     this.payBillService.addTopUpPayee(billPayee).subscribe(payee => {
-      // set payee id
-      this.payBillService.billPayee._id = payee._id;
       // show success modal
       this.modalService.openModal(
         SuccessModalPage,
@@ -69,6 +67,7 @@ export class AddTopUpPayeeFacade {
           cssClass: 'white-button',
           handler: () => {
             this.payBillService.billPayee = this.getBillPayee();
+            this.payBillService.billPayee.biller = this.getBiller();
             this.navigateToPage('/move-money/pay-bills/top-up-payment');
             this.modalService.close();
           }

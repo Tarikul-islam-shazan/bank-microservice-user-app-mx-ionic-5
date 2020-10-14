@@ -60,9 +60,9 @@
           <div
             class="error-msg"
             id="bill-payment-page-max-amount-limit-text"
-            *ngIf="billPaymentForm.controls.amount.hasError('maximumTransferAmount')"
+            *ngIf="facade.isAmountExistFund(billPaymentForm.controls.amount.value)"
           >
-            {{'move-money-module.pay-bills.bill-payment.errors.max-amount-limit-text' | translate}}
+            {{'move-money-module.pay-bills.bill-payment.errors.insufficient-fund' | translate}}
           </div>
         </div>
       </form>
@@ -72,7 +72,7 @@
 <ion-footer class="ion-no-border">
   <ion-toolbar>
     <ion-button
-      [disabled]="billPaymentForm.disabled || billPaymentForm.invalid"
+      [disabled]="facade.isAmountExistFund(billPaymentForm.controls.amount.value)|| billPaymentForm.disabled || billPaymentForm.invalid"
       (click)="processPayment()"
       class="white-button"
       id="bill-payment-page-bill-pay-bill-btn"

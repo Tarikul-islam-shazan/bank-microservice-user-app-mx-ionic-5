@@ -1,11 +1,12 @@
 import * as moment from 'moment';
 import { CurrencyPipe } from '@angular/common';
-import { IBiller, IBillPayee, IBillPayment } from '@app/core/models/dto';
+import { AccountType, IAccount, IBiller, IBillPayee, IBillPayment } from '@app/core/models/dto';
 import { IMeedModalContent, ModalService, SuccessModalPage, DropdownModalComponent, PhonePipe } from '@app/shared';
 import { Injectable } from '@angular/core';
 import { PayBillService } from '@app/core/services/pay-bill.service';
 import { Router } from '@angular/router';
 import { IDropdownOption } from '@app/core/models/static-data';
+import { AccountService } from '@app/core/services/account.service';
 
 @Injectable()
 export class TopUpPaymentFacade {
@@ -17,7 +18,8 @@ export class TopUpPaymentFacade {
     private modalService: ModalService,
     private payBillService: PayBillService,
     private router: Router,
-    private phonePipe: PhonePipe
+    private phonePipe: PhonePipe,
+    private accountService: AccountService
   ) {}
   /**
    * @summary navigates to the specified route.
@@ -27,6 +29,14 @@ export class TopUpPaymentFacade {
    */
   navigateToPage(_pageToNavigate: string): void {
     this.router.navigate([_pageToNavigate]);
+  }
+
+  updateAccountSummary(): void {
+    this.accountService.fetchAccountSummary().subscribe();
+  }
+
+  isAmountExistFund(amount: number): boolean {
+    return this.accountService.getAccountSummary(AccountType.DDA).availableBalance < amount ? true : false;
   }
 
   /**

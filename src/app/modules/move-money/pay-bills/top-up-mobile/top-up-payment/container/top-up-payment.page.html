@@ -50,6 +50,13 @@
             <ion-icon name="chevron-down"></ion-icon>
           </div>
         </div>
+        <div
+          *ngIf="seletedAmount && facade.isAmountExistFund(seletedAmount.value)"
+          class="error-msg"
+          id="internal-transfer-move-between-accounts-amount-error-text"
+        >
+          {{'move-money-module.pay-bills.top-up-payment.insufficient-fund' | translate}}
+        </div>
       </form>
     </div>
   </div>
@@ -57,7 +64,7 @@
 <ion-footer class="ion-no-border">
   <ion-toolbar>
     <ion-button
-      [disabled]="billPaymentForm.disabled || billPaymentForm.invalid"
+      [disabled]="(seletedAmount && facade.isAmountExistFund(seletedAmount.value))|| billPaymentForm.invalid"
       (click)="processPayment()"
       class="white-button"
       id="top-up-payment-page-bill-pay-bill-btn"

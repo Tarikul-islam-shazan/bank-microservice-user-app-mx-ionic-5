@@ -41,7 +41,7 @@ export class AddPayeeFacade {
    * @memberOf AddPayeeFacade
    */
   continue(billPayee: IBillPayee): void {
-    this.payBillService.billPayee = billPayee;
+    this.payBillService.billPayee = { ...billPayee };
     const biller = billPayee.biller as IBiller;
     billPayee.biller = biller.id;
     this.payBillService.addPayee(billPayee).subscribe(payee => {

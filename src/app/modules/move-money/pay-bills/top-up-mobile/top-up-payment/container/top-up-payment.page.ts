@@ -20,6 +20,7 @@ export class TopUpPaymentPage implements OnInit {
   constructor(public facade: TopUpPaymentFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.facade.updateAccountSummary();
     this.billPayee = this.facade.getBillPayee();
     this.biller = this.billPayee.biller as IBiller;
     this.initBillPaymentForm();
