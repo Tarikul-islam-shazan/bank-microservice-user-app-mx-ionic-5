@@ -5,7 +5,6 @@ import { Observable } from 'rxjs';
 import { ModalService, IMeedModalContent, SuccessModalPage } from '@app/shared';
 import { Router } from '@angular/router';
 import { IContact } from '@app/p2p/models';
-import * as moment from 'moment';
 
 @Injectable()
 export class EditOtherBankPayeeRegistrationFacade {
@@ -21,8 +20,6 @@ export class EditOtherBankPayeeRegistrationFacade {
   }
 
   openSuccessModal(): void {
-    const updateExecutionDate = moment().format('MMM DD, YYYY');
-    const referenceNumber = '1234551';
     const componentProps: IMeedModalContent = {
       contents: [
         {
