@@ -37,18 +37,6 @@ export class BillPaymentPage implements OnInit {
     });
   }
 
-  /**
-   * @summary convert payment amount from string to number by replacing
-   * ',', '$'
-   *
-   * @param {string} amount
-   * @returns {number}
-   * @memberOf BillPaymentPage
-   */
-  convertPaymentAmountToNumber(amount: string): number {
-    return Number(amount.replace(/[$,]/g, ''));
-  }
-
   processPayment(): void {
     const amount = this.facade.convertPaymentAmountToNumber(this.billPaymentForm.value.amount);
     const executionDate = moment.now();

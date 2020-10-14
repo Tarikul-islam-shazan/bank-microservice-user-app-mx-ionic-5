@@ -47,6 +47,7 @@ export class BillPaymentFacade {
   updatedAccountSummary() {
     this.accountService.fetchAccountSummary().subscribe();
   }
+
   isAmountExistFund(amount: string): boolean {
     return this.accountService.getAccountSummary(AccountType.DDA).availableBalance <
       this.convertPaymentAmountToNumber(amount)
