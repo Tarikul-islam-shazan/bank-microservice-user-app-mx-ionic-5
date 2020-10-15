@@ -27,7 +27,7 @@
         <ion-slide
           class="featured-slider-wrapper"
           id="meed-extra-page-featured-offer-slide"
-          *ngFor="let featuredOffer of featuredOffers$ | async"
+          *ngFor="let featuredOffer of featuredOffers"
           (click)="setOffer(featuredOffer)"
         >
           <feature-offer-card
@@ -47,7 +47,7 @@
         <ion-slide
           class="categories-slider-wrapper"
           id="meed-extra-page-categories-slide"
-          *ngFor="let category of categories$ | async"
+          *ngFor="let category of categories"
           (click)="setCategory(category)"
         >
           <category-card id="meed-extra-page-category-card" [category]="category"></category-card>
