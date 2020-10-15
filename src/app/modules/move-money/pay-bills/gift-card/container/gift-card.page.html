@@ -109,6 +109,13 @@
           </ion-input>
           <ion-icon name="chevron-down"></ion-icon>
         </div>
+        <div
+          *ngIf="facade.isAmountExistFund(buyGiftCardForm.controls.amount.value)"
+          class="error-msg"
+          id="internal-transfer-move-between-accounts-amount-error-text"
+        >
+          {{'move-money-module.pay-bills.gift-card.insufficient-fund' | translate}}
+        </div>
       </div>
     </form>
   </div>
@@ -120,7 +127,7 @@
       (click)="gotoNext()"
       expand="block"
       class="white-button"
-      [disabled]="!buyGiftCardForm.valid"
+      [disabled]="buyGiftCardForm.invalid"
       id="gift-card-page-continue-btn"
     >
       {{ 'move-money-module.pay-bills.gift-card.next-button' | translate }}
@@ -132,7 +139,7 @@
       (click)="processGiftCardSend()"
       expand="block"
       class="white-button"
-      [disabled]="!(buyGiftCardForm.value && buyGiftCardForm.value.amount>0)"
+      [disabled]="facade.isAmountExistFund(buyGiftCardForm.controls.amount.value)"
       id="gift-card-page-continue-btn"
     >
       {{ 'move-money-module.pay-bills.gift-card.buy-gift-card-button' | translate }}

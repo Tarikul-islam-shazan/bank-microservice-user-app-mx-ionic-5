@@ -20,6 +20,7 @@ export class TopUpPaymentPage implements OnInit {
   constructor(public facade: TopUpPaymentFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.facade.updateAccountSummary();
     this.billPayee = this.facade.getBillPayee();
     this.biller = this.billPayee.biller as IBiller;
     this.initBillPaymentForm();
@@ -35,10 +36,7 @@ export class TopUpPaymentPage implements OnInit {
    */
   private initBillPaymentForm(): void {
     this.billPaymentForm = this.formBuilder.group({
-      amount: [
-        '',
-        [Validators.required, CommonValidators.minimumTransferAmount(1), CommonValidators.maximumTransferAmount(1000)]
-      ]
+      amount: ['', [Validators.required, CommonValidators.minimumTransferAmount(1)]]
     });
   }
 

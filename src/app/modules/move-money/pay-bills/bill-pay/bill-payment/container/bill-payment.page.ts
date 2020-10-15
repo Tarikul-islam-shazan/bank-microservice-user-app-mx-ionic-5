@@ -18,9 +18,9 @@ export class BillPaymentPage implements OnInit {
   constructor(public facade: BillPaymentFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.facade.updatedAccountSummary();
     this.billPayee = this.facade.getBillPayee();
     this.biller = this.billPayee.biller as IBiller;
-
     this.initBillPaymentForm();
   }
 
@@ -33,27 +33,12 @@ export class BillPaymentPage implements OnInit {
    */
   private initBillPaymentForm(): void {
     this.billPaymentForm = this.formBuilder.group({
-      amount: [
-        '',
-        [Validators.required, CommonValidators.minimumTransferAmount(1), CommonValidators.maximumTransferAmount(1000)]
-      ]
+      amount: ['', [Validators.required, CommonValidators.minimumTransferAmount(1)]]
     });
   }
 
-  /**
-   * @summary convert payment amount from string to number by replacing
-   * ',', '$'
-   *
-   * @param {string} amount
-   * @returns {number}
-   * @memberOf BillPaymentPage
-   */
-  convertPaymentAmountToNumber(amount: string): number {
-    return Number(amount.replace(/[$,]/g, ''));
-  }
-
   processPayment(): void {
-    const amount = this.convertPaymentAmountToNumber(this.billPaymentForm.value.amount);
+    const amount = this.facade.convertPaymentAmountToNumber(this.billPaymentForm.value.amount);
     const executionDate = moment.now();
     const paymentInfo = Object.assign({
       amount,

@@ -1397,6 +1397,7 @@
         "btn-pay-bill": "Pay Bill",
         "btn-cancel": "Cancelar",
         "errors": {
+          "insufficient-fund": "There are insufficient funds available to make the requested transfer.",
           "min-amount-limit-text": "La cantidad mínima no debe ser inferior a $1.00 USD.",
           "max-amount-limit-text": "La cantidad que introdujiste supera el límite de 1,000.00 USD por pago. Por favor, introduce una cantidad menor que esa."
         },
@@ -1443,6 +1444,7 @@
         "payment-amount-placeholder": "Available amounts",
         "btn-pay-bill": "Pay Bill",
         "btn-cancel": "Cancelar",
+        "insufficient-fund": "There are insufficient funds available to make the requested transfer.",
         "modal": {
           "title": "You've transfered {{paymentAmount}} to {{phoneNumber}}.",
           "content-1": "Submited on {{paymentExecutionDate}}",
@@ -1465,6 +1467,7 @@
         "next-button": "Next",
         "buy-gift-card-button": "Buy Gift Card",
         "cancel-button": "Cancel",
+        "insufficient-fund": "There are insufficient funds available to make the requested transfer.",
         "success-modal": {
           "title": "You've purchased {{giftCardVendorName}}.",
           "date-text": "Submitted On {{date}}",

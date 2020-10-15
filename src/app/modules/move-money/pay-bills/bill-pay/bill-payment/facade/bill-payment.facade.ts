@@ -1,7 +1,7 @@
 import * as moment from 'moment';
 import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 import { CurrencyPipe } from '@angular/common';
-import { IBiller, IBillPayee, IBillPayment, PaymentFrequency } from '@app/core';
+import { AccountService, AccountType, IAccount, IBiller, IBillPayee, IBillPayment, PaymentFrequency } from '@app/core';
 import { IMeedModalContent, ModalService, SuccessModalPage } from '@app/shared';
 import { Injectable } from '@angular/core';
 import { noop, Observable, Subscription } from 'rxjs';
@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 @Injectable()
 export class BillPaymentFacade {
   billPayment: IBillPayment;
+  checkingAccount: IAccount;
   otpCodeSubscription: Subscription;
 
   constructor(
@@ -19,7 +20,8 @@ export class BillPaymentFacade {
     private currencyPipe: CurrencyPipe,
     private modalService: ModalService,
     private payBillService: PayBillService,
-    private router: Router
+    private router: Router,
+    private accountService: AccountService
   ) {}
 
   /**
@@ -40,6 +42,21 @@ export class BillPaymentFacade {
    */
   getBillPayee(): IBillPayee {
     return this.payBillService.billPayee;
+  }
+
+  updatedAccountSummary() {
+    this.accountService.fetchAccountSummary().subscribe();
+  }
+
+  isAmountExistFund(amount: string): boolean {
+    const checkingSummary = this.accountService.getAccountSummary(AccountType.DDA);
+    return checkingSummary && checkingSummary.availableBalance < this.convertPaymentAmountToNumber(amount)
+      ? true
+      : false;
+  }
+
+  convertPaymentAmountToNumber(amount: string): number {
+    return Number(amount.replace(/[$,]/g, ''));
   }
 
   /**

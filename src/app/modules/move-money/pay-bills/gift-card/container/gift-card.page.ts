@@ -20,6 +20,7 @@ export class GiftCardPage implements OnInit {
   constructor(public facade: GiftCardFacade, private formBuilder: FormBuilder) {}
 
   ngOnInit() {
+    this.facade.updatedAccountSummary();
     this.facade.searchGiftCardVendorsInit();
     this.emailFormatMask = {
       type: InputFormatType.EMAIL_ADDRESS_FORMAT

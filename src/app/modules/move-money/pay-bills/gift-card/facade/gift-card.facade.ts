@@ -10,6 +10,7 @@ import { CurrencyPipe } from '@angular/common';
 import { IDropdownOption } from '@app/core/models/static-data';
 import { DropdownModalComponent, IMeedModalContent, ModalService, SuccessModalPage } from '@app/shared';
 import * as moment from 'moment';
+import { AccountService, AccountType } from '@app/core';
 
 @Injectable()
 export class GiftCardFacade {
@@ -24,7 +25,8 @@ export class GiftCardFacade {
     private router: Router,
     public alertController: AlertController,
     private currencyPipe: CurrencyPipe,
-    private modalService: ModalService
+    private modalService: ModalService,
+    private accountService: AccountService
   ) {}
 
   searchGiftCardVendorsInit(): void {
@@ -38,10 +40,17 @@ export class GiftCardFacade {
         this.billers = billers;
       });
   }
-
+  updatedAccountSummary() {
+    this.accountService.fetchAccountSummary().subscribe();
+  }
   updateGiftCardVendorSelection(giftCardVendor: IBiller): void {
     this.selectedGiftCardVendor = giftCardVendor;
     this.initAvailableDropDownAmountOptions();
+  }
+
+  isAmountExistFund(amount: number): boolean {
+    const checkingSummary = this.accountService.getAccountSummary(AccountType.DDA);
+    return checkingSummary && checkingSummary.availableBalance < amount ? true : false;
   }
 
   initAvailableDropDownAmountOptions(): void {
