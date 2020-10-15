@@ -63,6 +63,9 @@ export class EditInvexPayeeRegistrationPage implements OnInit {
   disbleFormFiled() {
     this.contactForm.controls.identityNumber.disable();
     this.contactForm.controls.bank.disable();
+    if (this.payee.contactType === ContactType.Domestic) {
+      this.contactForm.controls.email.disable();
+    }
   }
 
   noWhitespaceValidator(control: FormControl) {

@@ -115,6 +115,9 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
         this.companyForm.controls.identityNumber.disable();
         this.companyForm.controls.companyName.disable();
         this.companyForm.controls.bankName.disable();
+        if (this.payee.contactType === ContactType.Meed) {
+          this.companyForm.controls.email.disable();
+        }
         break;
       case IdentityType.Clabe:
       case IdentityType.DebitCard:
@@ -136,6 +139,9 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
         this.companyForm.controls.secondName.disable();
         this.companyForm.controls.paternalLastName.disable();
         this.companyForm.controls.maternalLastName.disable();
+        if (this.payee.contactType === ContactType.Meed) {
+          this.clabeDebitCardForm.controls.email.disable();
+        }
         break;
       case IdentityType.Mobile:
         this.initMobileForm();
@@ -155,6 +161,9 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
         this.mobileForm.controls.secondName.disable();
         this.mobileForm.controls.paternalLastName.disable();
         this.mobileForm.controls.maternalLastName.disable();
+        if (this.payee.contactType === ContactType.Meed) {
+          this.mobileForm.controls.email.disable();
+        }
         break;
     }
   }
