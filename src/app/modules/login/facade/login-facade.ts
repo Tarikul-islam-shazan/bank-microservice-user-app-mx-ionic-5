@@ -412,6 +412,7 @@ export class LoginFacade {
    */
   clearUserCashData(): void {
     this.cardService.clearCardDetails();
+    this.accountService.setAccountSummary(null);
   }
 
   /**

@@ -73,7 +73,12 @@ export class HomeFacade {
     this.router.navigate(['/login-user']);
   }
   accountSummaryReadDecider() {
-    if (this.routerListener.getPreviousUrl() === '/login-user') {
+    const cashAccountSummary = this.accountService.getCachedAccountSummary();
+    if (
+      this.routerListener.getPreviousUrl() === '/login-user' &&
+      cashAccountSummary &&
+      Array.isArray(cashAccountSummary)
+    ) {
       this.setAccountSummary();
     } else {
       this.accountService.fetchAccountSummary().subscribe((accountSummary: IAccount[]) => {
