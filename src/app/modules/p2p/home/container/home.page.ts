@@ -16,12 +16,13 @@ export class HomePage implements OnInit {
   contactType = ContactType;
   constructor(public readonly facade: HomeP2PFacade, private router: Router) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.facade.myPayees$ = this.facade.getAllContacts();
+  }
 
   ionViewWillEnter() {
     this.searchQuery = '';
     this.searchContact();
-    this.facade.myPayees$ = this.facade.getAllContacts();
   }
 
   makeContactEditAble() {
