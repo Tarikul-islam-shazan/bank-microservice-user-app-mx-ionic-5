@@ -59,7 +59,8 @@ export class EditPayeePage implements OnInit {
    */
   gotoNext(): void {
     const { accountNumber } = this.editPayeeForm.value;
-    this.billPayee.accountNumber = accountNumber;
-    this.facade.continue(this.billPayee);
+    const _billPayee = { ...this.billPayee };
+    _billPayee.accountNumber = accountNumber;
+    this.facade.continue(_billPayee);
   }
 }
