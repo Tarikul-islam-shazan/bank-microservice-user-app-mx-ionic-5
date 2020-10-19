@@ -30,7 +30,7 @@ export class SignupEmailFacade {
       .subscribe(data => {
         this.signupService.member = data;
         this.analyticsService.setUserId(data._id);
-        this.analyticsService.logEvent(AnalyticsEventTypes.EmailSubmitted, { email });
+        this.analyticsService.logEvent(AnalyticsEventTypes.EmailSubmitted);
         const route = this.memberSignupProgressRoute(data.applicationProgress);
         this.router.navigate([route]);
       });

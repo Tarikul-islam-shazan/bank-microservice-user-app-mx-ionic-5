@@ -72,11 +72,7 @@ export class ConfirmFacade {
   async tranferSuccess(p2pTransferResponse: IP2PTransfer): Promise<void> {
     const { amount, receiverEmail, senderEmail } = this.p2pTransfer;
     const { confirmationCode, createdAt } = p2pTransferResponse;
-    this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundTransferCompleted, {
-      amount,
-      senderEmail,
-      receiverEmail
-    });
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundTransferCompleted);
     const componentProps = {
       data: {
         amount,
@@ -85,7 +81,7 @@ export class ConfirmFacade {
         createdAt
       } as IP2PTransfer
     };
-    await this.modalService.openModal(TransferSuccessModalComponent, componentProps, onDidDismiss => {
+    await this.modalService.openModal(TransferSuccessModalComponent, componentProps, () => {
       this.p2pService.fetchContacts();
       this.router.navigate(['move-money/send-money']);
     });

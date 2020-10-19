@@ -47,7 +47,7 @@ export class HomeFacade {
   // Select a fund request to me for accept or decline
   selectRequest(fundRequest: IFundRequest): void {
     this.p2pService.fundRequests = fundRequest;
-    this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundRequestSelected, { fundRequest });
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundRequestSelected);
     this.router.navigate(['move-money/send-money/request-details']);
   }
   // Set the transfer type internal or external for receiver email
@@ -82,7 +82,7 @@ export class HomeFacade {
         };
         break;
     }
-    this.analyticsService.logEvent(AnalyticsEventTypes.P2PContactSelected, { contact });
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PContactSelected);
     this.router.navigate(['move-money/send-money/edit']);
   }
   // Ipay or meed contact modify

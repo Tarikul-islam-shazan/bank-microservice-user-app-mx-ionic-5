@@ -21,7 +21,7 @@ export class SignupCreateLoginFacade {
 
   createLogin(formValue: { username$: string; password$: string }) {
     this.signupService.createLogin(formValue).subscribe(() => {
-      this.analyticsService.logEvent(AnalyticsEventTypes.LoginCreated, { username: formValue.username$ });
+      this.analyticsService.logEvent(AnalyticsEventTypes.LoginCreated);
       this.router.navigate(['/signup/scanid']);
     });
   }

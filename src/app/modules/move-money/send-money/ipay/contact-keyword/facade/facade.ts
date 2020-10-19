@@ -33,7 +33,7 @@ export class ContactKeywordFacade {
           this.modalService.openModal(OtpVerificationModalPage, {}, async dismissResp => {
             const { data: contactAdded } = dismissResp;
             if (contactAdded) {
-              this.analyticsService.logEvent(AnalyticsEventTypes.IPayContactAdded, { contact: contactAdded });
+              this.analyticsService.logEvent(AnalyticsEventTypes.IPayContactAdded);
               this.tranferSuccess(contactAdded as IContact);
             }
           });

@@ -144,7 +144,7 @@ export class SignupCompressedFacade {
     }
 
     this.signupService.assignCompressed(member).subscribe(() => {
-      this.analyticsService.logEvent(AnalyticsEventTypes.CompressedSubmitted, { nickname, country });
+      this.analyticsService.logEvent(AnalyticsEventTypes.CompressedSubmitted);
       this.router.navigate(['/signup/verification']);
     });
   }

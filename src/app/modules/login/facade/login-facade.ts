@@ -57,10 +57,7 @@ export class LoginFacade {
   async authenticate(creds: LoginForm): Promise<void> {
     creds.username = creds.username.toLowerCase();
     this.auth.login(creds).subscribe((data: IRegisteredMember) => {
-      this.analyticsService.logEvent(AnalyticsEventTypes.LoginOptionClicked, {
-        faceId: creds.rememberBiometric,
-        username: creds.rememberUsername
-      });
+      this.analyticsService.logEvent(AnalyticsEventTypes.LoginOptionClicked);
       const { accountSummary, configurationData, meedRewardsEarned, preferences, ...member } = data;
       this.accountService.setAccountSummary(accountSummary);
       this.accountService.setReward(meedRewardsEarned);

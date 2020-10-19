@@ -32,10 +32,8 @@ export class FundingInformationFacade {
    */
 
   fundInformationSubmit(fundInformation: IFundInfo) {
-    this.signupService.fundingInformationSubmission(fundInformation).subscribe(res => {
-      this.analyticsService.logEvent(AnalyticsEventTypes.FundingProviderSelect, {
-        fundMyself: fundInformation.fundMyself
-      });
+    this.signupService.fundingInformationSubmission(fundInformation).subscribe(() => {
+      this.analyticsService.logEvent(AnalyticsEventTypes.FundingProviderSelect);
       this.router.navigate(['/signup/government-disclosure']);
     });
   }
