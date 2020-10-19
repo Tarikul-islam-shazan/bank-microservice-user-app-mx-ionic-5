@@ -14,6 +14,7 @@ import { ActionSheetController } from '@ionic/angular';
 import { TranslateService } from '@ngx-translate/core';
 import { ModalService } from '@app/shared/services/modal.service';
 import { ScheduleTypeModalComponent } from '@app/move-money/internal-transfer/components';
+import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 const log = new Logger('TransfTransferFacadeer');
 
 @Injectable()
@@ -34,7 +35,8 @@ export class InternalTransferFacade {
     private translate: TranslateService,
     private modalService: ModalService,
     private internalTransferService: InternalTransferService,
-    private router: Router
+    private router: Router,
+    private readonly analyticsService: AnalyticsService
   ) {}
 
   initialize(): void {
@@ -67,6 +69,7 @@ export class InternalTransferFacade {
   }
 
   goToCancel() {
+    this.analyticsService.logEvent(AnalyticsEventTypes.InternalTransferCancelled);
     this.router.navigate(['move-money/internal-transfer/cancel-transfer']);
   }
 
@@ -281,6 +284,7 @@ export class InternalTransferFacade {
         this.transfer.amount = 0;
         break;
     }
+    this.analyticsService.logEvent(AnalyticsEventTypes.InternalTransferPaymentOptionSelected, { paymentOption });
     this.isLocPaymentOptionSelected = true;
   }
   /**

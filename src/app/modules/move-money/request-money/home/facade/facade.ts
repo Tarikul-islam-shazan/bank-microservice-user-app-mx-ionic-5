@@ -8,13 +8,18 @@
 
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 import { P2pService } from '@app/core/services/p2p.service';
 import { IFundRequest } from '@app/move-money/request-money/models';
 import { IContact, ContactType } from '@app/move-money/send-money/models';
 @Injectable()
 export class HomeFacade {
   receiverEmails: string[] = [];
-  constructor(private router: Router, private p2pService: P2pService) {}
+  constructor(
+    private router: Router,
+    private p2pService: P2pService,
+    private readonly analyticsService: AnalyticsService
+  ) {}
 
   // Contact search input emails on changes events
   onInputEmailsChanges(emails: string[]) {
@@ -38,6 +43,7 @@ export class HomeFacade {
 
   // Select contacts from contact list
   contactSelected(contact: IContact): void {
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PContactSelected, { contact });
     if (!this.receiverEmails.includes(contact.email)) {
       this.receiverEmails.push(contact.email);
     }
@@ -70,11 +76,14 @@ export class HomeFacade {
   fetchFundRequests(): void {
     this.p2pService.fetchFundRequests();
     this.p2pService.fetchContacts();
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundRequestsLoaded);
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PContactsLoaded);
   }
 
   // Select pending fund request from list for modifications
   selectRequest(fundRequest: IFundRequest) {
     this.p2pService.fundRequests = fundRequest;
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundRequestSelected, { fundRequest });
     this.router.navigate(['move-money/request-money/cancel']);
   }
 }

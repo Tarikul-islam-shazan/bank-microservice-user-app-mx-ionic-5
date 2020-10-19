@@ -10,12 +10,12 @@ export class CardLostFacade {
     private callNumber: CallNumber,
     private appPlatform: AppPlatform,
     private cardService: CardService,
-    private analytics: AnalyticsService,
+    private readonly analyticsService: AnalyticsService,
     private modalService: ModalService
   ) {}
 
   async callANumber(): Promise<void> {
-    this.analytics.logEvent(AnalyticsEventTypes.CallInitiated);
+    this.analyticsService.logEvent(AnalyticsEventTypes.CallInitiated);
     if (this.appPlatform.isIos()) {
       await this.callANumberFromIOS();
     } else if (this.appPlatform.isAndroid()) {

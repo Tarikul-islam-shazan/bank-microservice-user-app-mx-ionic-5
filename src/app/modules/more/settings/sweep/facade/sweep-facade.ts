@@ -17,7 +17,7 @@ export class SweepFacade {
   constructor(
     private accountService: AccountService,
     private modalService: ModalService,
-    private analytics: AnalyticsService,
+    private readonly analyticsService: AnalyticsService,
     private router: Router
   ) {
     // this.loadSweepState();
@@ -47,7 +47,7 @@ export class SweepFacade {
     const { accountId } = this.accountService.getAccountSummary(AccountType.LOC);
     const apiParms: ISweepState = { state: this.sweepStatus ? SweepState.Activate : SweepState.Deactivate };
     this.accountService.updateAccountSweepStatus(accountId, apiParms).subscribe(data => {
-      this.analytics.logEvent(AnalyticsEventTypes.SweepStatusUpdated, data);
+      this.analyticsService.logEvent(AnalyticsEventTypes.SweepStatusUpdated, data);
 
       const componentProps: IMeedModalContent = {
         contents: [
@@ -60,7 +60,7 @@ export class SweepFacade {
           {
             text: 'more-module.sweep.sweep-modal-btn-text',
             cssClass: 'white-button',
-            handler: event => {
+            handler: () => {
               this.modalService.close();
             }
           }

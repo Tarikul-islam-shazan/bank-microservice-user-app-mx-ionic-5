@@ -30,7 +30,7 @@ export class UtilityUploadFacade {
     private changeAddressService: ChangeAddressService,
     private personalDetailsState: PersonalDetailsState,
     private memberService: MemberService,
-    private analyticsService: AnalyticsService
+    private readonly analyticsService: AnalyticsService
   ) {
     this.getCustomer();
   }
