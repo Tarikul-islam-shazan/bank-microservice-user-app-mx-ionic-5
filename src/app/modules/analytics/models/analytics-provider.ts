@@ -123,7 +123,18 @@ export enum AnalyticsEventTypes {
   InternalTransferSubmitted = 'internal_transfer_submitted',
   ScheduleTransferModifyed = 'internal_transfer_modifyed',
   ScheduleTransferDeleted = 'schedule_transfer_deleted',
-  P2PSearchedNext = 'email_existing_contact_search_clicked_next'
+  P2PSearchedNext = 'email_existing_contact_search_clicked_next',
+  P2PFundRequestDeclined = 'p2p_fund_request_declined',
+  IPayContactSubmitted = 'ipay_contact_submitted',
+  IPayContactAdded = 'ipay_contact_added',
+  IPayContactUpdated = 'ipay_contact_updated',
+  IPayContactDeleted = 'ipay_contact_deleted',
+  P2PFundRequestsLoaded = 'p2p_fund_requests_loaded',
+  P2PContactsLoaded = 'p2p_contacts_loaded',
+  P2PFundRequestSelected = 'p2p_fund_request_selected',
+  P2PContactSelected = 'p2p_contact_selected',
+  P2PFundTransferSubmitted = 'p2p_fund_transfer_submitted',
+  P2PFundTransferCompleted = 'p2p_fund_transfer_completed'
 }
 export interface AnalyticsNavigationParameters {
   from: string;

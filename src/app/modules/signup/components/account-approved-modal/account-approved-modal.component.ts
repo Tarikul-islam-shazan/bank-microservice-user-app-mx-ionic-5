@@ -7,14 +7,14 @@ import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
   styleUrls: ['./account-approved-modal.component.scss']
 })
 export class AccountApprovedModalComponent {
-  constructor(private modalCtrl: ModalController, private analytics: AnalyticsService) {}
+  constructor(private modalCtrl: ModalController, private readonly analyticsService: AnalyticsService) {}
 
   async dismiss() {
     return await this.modalCtrl.dismiss();
   }
 
   next() {
-    this.analytics.logEvent(AnalyticsEventTypes.ApplicationStatusDetermined, { status: 'approved' });
+    this.analyticsService.logEvent(AnalyticsEventTypes.ApplicationStatusDetermined, { status: 'approved' });
     this.dismiss();
   }
 }

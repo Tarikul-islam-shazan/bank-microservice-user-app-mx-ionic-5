@@ -21,7 +21,7 @@ export class SignUpTermsConditionFacade {
     private service: SignUpService,
     private router: Router,
     private modalCtrl: ModalController,
-    private analytics: AnalyticsService,
+    private readonly analyticsService: AnalyticsService,
     private settingsService: SettingsService,
     private pdfService: PdfViewerService
   ) {}
@@ -36,7 +36,7 @@ export class SignUpTermsConditionFacade {
 
   acceptTermsCondition() {
     this.service.acceptTermsCondition().subscribe(resp => {
-      this.analytics.logEvent(AnalyticsEventTypes.TermsAndConditionsAgreed);
+      this.analyticsService.logEvent(AnalyticsEventTypes.TermsAndConditionsAgreed);
       this.openApprovedModal();
     });
   }

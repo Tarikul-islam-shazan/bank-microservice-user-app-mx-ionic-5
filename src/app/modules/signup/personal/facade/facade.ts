@@ -10,7 +10,7 @@ export class SignUpPersonalFacade {
     private router: Router,
     private jumioService: JumioApiService,
     private signUpService: SignUpService,
-    private analytics: AnalyticsService
+    private readonly analyticsService: AnalyticsService
   ) {
     this.maxDate = moment()
       .subtract(18, 'year')
@@ -23,7 +23,7 @@ export class SignUpPersonalFacade {
 
   goToNext(memberApp: IMemberApplication) {
     Object.assign(this.signUpService.memberApplication, memberApp);
-    // this.analytics.logEvent(AnalyticsEventTypes.GeneralInfoSubmitted);
+    this.analyticsService.logEvent(AnalyticsEventTypes.GeneralInfoSubmitted);
     this.router.navigate(['/signup/address']);
   }
 }

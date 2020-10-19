@@ -17,7 +17,7 @@ export class SignupAddressFacade {
     private signUpService: SignUpService,
     private jumioService: JumioApiService,
     private router: Router,
-    private analytics: AnalyticsService
+    private readonly analyticsService: AnalyticsService
   ) {
     this.maxDate = moment()
       .subtract(18, 'year')
@@ -36,7 +36,7 @@ export class SignupAddressFacade {
 
   goToNext(memberApp: IMemberApplication) {
     Object.assign(this.signUpService.memberApplication, memberApp);
-    // this.analytics.logEvent(AnalyticsEventTypes.AddressInfoSubmitted);
+    this.analyticsService.logEvent(AnalyticsEventTypes.AddressInfoSubmitted);
     this.router.navigate(['/signup/confirm-identity']);
   }
 }

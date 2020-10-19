@@ -7,11 +7,17 @@ import { P2PTransferType, IContact } from '@app/move-money/send-money/models';
 import { Subscription } from 'rxjs';
 import { ModalService } from '@app/shared/services/modal.service';
 import { OtpVerificationModalPage } from '@app/shared/components/otp-verification-modal/container';
+import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 
 @Injectable()
 export class ContactKeywordFacade {
   otpCodeSubscription: Subscription;
-  constructor(private router: Router, private p2pService: P2pService, private modalService: ModalService) {}
+  constructor(
+    private router: Router,
+    private p2pService: P2pService,
+    private modalService: ModalService,
+    private readonly analyticsService: AnalyticsService
+  ) {}
 
   continue(sharedSecret: string): void {
     this.p2pService.contact = { ...this.p2pService.contact, sharedSecret };
@@ -19,6 +25,7 @@ export class ContactKeywordFacade {
   }
 
   addIpayContact(): void {
+    this.analyticsService.logEvent(AnalyticsEventTypes.IPayContactSubmitted);
     this.sendOtp().subscribe(
       contactAdded => {},
       error => {
@@ -26,6 +33,7 @@ export class ContactKeywordFacade {
           this.modalService.openModal(OtpVerificationModalPage, {}, async dismissResp => {
             const { data: contactAdded } = dismissResp;
             if (contactAdded) {
+              this.analyticsService.logEvent(AnalyticsEventTypes.IPayContactAdded, { contact: contactAdded });
               this.tranferSuccess(contactAdded as IContact);
             }
           });

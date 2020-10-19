@@ -8,12 +8,12 @@ const logger = new Logger('EventTrackingDirective');
   selector: '[appEventTracking]'
 })
 export class EventTrackingDirective {
-  constructor(private analytics: AnalyticsService) {}
+  constructor(private readonly analyticsService: AnalyticsService) {}
 
   @Input('appEventTracking') eventData: any;
 
   @HostListener('click', ['$event']) onClick($event) {
     logger.info(`event data: ${JSON.stringify(this.eventData)}`);
-    this.analytics.logEvent(this.eventData.eventName, this.eventData.params);
+    this.analyticsService.logEvent(this.eventData.eventName, this.eventData.params);
   }
 }

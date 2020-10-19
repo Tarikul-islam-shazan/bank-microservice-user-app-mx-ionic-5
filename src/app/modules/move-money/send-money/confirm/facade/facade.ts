@@ -13,9 +13,15 @@ import { Observable } from 'rxjs/internal/Observable';
 import { TransferSuccessModalComponent } from '@app/move-money/send-money/components/transfer-success-modal';
 import { ModalService } from '@app/shared/services/modal.service';
 import { OtpVerificationModalPage } from '@app/shared/components/otp-verification-modal/container';
+import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 @Injectable()
 export class ConfirmFacade {
-  constructor(private router: Router, private p2pService: P2pService, private modalService: ModalService) {}
+  constructor(
+    private router: Router,
+    private p2pService: P2pService,
+    private modalService: ModalService,
+    private readonly analyticsService: AnalyticsService
+  ) {}
 
   // Back to modify p2p transfer before submit
   backToEdit(): void {
@@ -41,6 +47,7 @@ export class ConfirmFacade {
   }
   // Submit p2p transfer external or internal and handle the OTP verification
   submitP2PTransfer(): void {
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundTransferSubmitted);
     this.sendOtp().subscribe(
       p2pTransferResponse => {
         this.tranferSuccess(p2pTransferResponse);
@@ -63,8 +70,13 @@ export class ConfirmFacade {
   }
   // Showing success modal if send money p2p transfer success
   async tranferSuccess(p2pTransferResponse: IP2PTransfer): Promise<void> {
-    const { amount, receiverEmail } = this.p2pTransfer;
+    const { amount, receiverEmail, senderEmail } = this.p2pTransfer;
     const { confirmationCode, createdAt } = p2pTransferResponse;
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundTransferCompleted, {
+      amount,
+      senderEmail,
+      receiverEmail
+    });
     const componentProps = {
       data: {
         amount,

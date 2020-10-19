@@ -8,14 +8,14 @@ import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
   styleUrls: ['./account-deny-modal.component.scss']
 })
 export class AccountDenyModalComponent {
-  constructor(private modalCtrl: ModalController, private analytics: AnalyticsService) {}
+  constructor(private modalCtrl: ModalController, private readonly analyticsService: AnalyticsService) {}
 
   async dismiss() {
     return await this.modalCtrl.dismiss();
   }
 
   next() {
-    this.analytics.logEvent(AnalyticsEventTypes.ApplicationStatusDetermined, { status: 'denied' });
+    this.analyticsService.logEvent(AnalyticsEventTypes.ApplicationStatusDetermined, { status: 'denied' });
     this.dismiss();
   }
 }

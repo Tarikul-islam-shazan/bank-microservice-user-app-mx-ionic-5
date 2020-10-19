@@ -13,15 +13,16 @@ import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
  */
 @Injectable()
 export class SignupCreateLoginFacade {
-  constructor(private signupService: SignUpService, private router: Router, private analytics: AnalyticsService) {}
+  constructor(
+    private signupService: SignUpService,
+    private router: Router,
+    private readonly analyticsService: AnalyticsService
+  ) {}
 
   createLogin(formValue: { username$: string; password$: string }) {
-    this.signupService.createLogin(formValue).subscribe(
-      member => {
-        this.analytics.logEvent(AnalyticsEventTypes.LoginCreated, { username: formValue.username$ });
-        this.router.navigate(['/signup/scanid']);
-      },
-      err => {}
-    );
+    this.signupService.createLogin(formValue).subscribe(() => {
+      this.analyticsService.logEvent(AnalyticsEventTypes.LoginCreated, { username: formValue.username$ });
+      this.router.navigate(['/signup/scanid']);
+    });
   }
 }
