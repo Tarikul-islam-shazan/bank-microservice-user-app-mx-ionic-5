@@ -43,7 +43,7 @@ export class HomeFacade {
 
   // Select contacts from contact list
   contactSelected(contact: IContact): void {
-    this.analyticsService.logEvent(AnalyticsEventTypes.P2PContactSelected, { contact });
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PContactSelected);
     if (!this.receiverEmails.includes(contact.email)) {
       this.receiverEmails.push(contact.email);
     }
@@ -83,7 +83,7 @@ export class HomeFacade {
   // Select pending fund request from list for modifications
   selectRequest(fundRequest: IFundRequest) {
     this.p2pService.fundRequests = fundRequest;
-    this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundRequestSelected, { fundRequest });
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundRequestSelected);
     this.router.navigate(['move-money/request-money/cancel']);
   }
 }

@@ -284,7 +284,7 @@ export class InternalTransferFacade {
         this.transfer.amount = 0;
         break;
     }
-    this.analyticsService.logEvent(AnalyticsEventTypes.InternalTransferPaymentOptionSelected, { paymentOption });
+    this.analyticsService.logEvent(AnalyticsEventTypes.InternalTransferPaymentOptionSelected);
     this.isLocPaymentOptionSelected = true;
   }
   /**

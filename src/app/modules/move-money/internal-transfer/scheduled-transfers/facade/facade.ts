@@ -58,7 +58,7 @@ export class ScheduledTransferFacade {
     this.internalTransferService.toAccountType = this.findAccountType(scheduledTransfer.creditorAccount);
     this.transferService.setTransfer(scheduledTransfer);
     this.transferService.setFromScheduledTransfers(true);
-    this.analyticsService.logEvent(AnalyticsEventTypes.ScheduledTransferSelected, { scheduledTransfer });
+    this.analyticsService.logEvent(AnalyticsEventTypes.ScheduledTransferSelected);
     this.router.navigate(['move-money/internal-transfer']);
   }
 

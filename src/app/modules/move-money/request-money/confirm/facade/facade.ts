@@ -54,7 +54,7 @@ export class ConfirmFacade {
       data: fundRequestsResponse
     };
     await this.modalService.openModal(TransferSuccessModalComponent, componentProps, () => {
-      this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundTransferCompleted, { fundRequestsResponse });
+      this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundTransferCompleted);
       this.p2pService.fetchFundRequests();
       this.router.navigate(['move-money/request-money']);
     });
