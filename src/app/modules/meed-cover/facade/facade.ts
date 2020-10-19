@@ -4,7 +4,7 @@ import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { PdfViewerService, IPDFContent } from '@app/core/services/pdf-viewer.service';
 @Injectable()
 export class MeedCoverFacade {
-  constructor(private analytics: AnalyticsService, private pdfViewerService: PdfViewerService) {}
+  constructor(private readonly analyticsService: AnalyticsService, private pdfViewerService: PdfViewerService) {}
 
   loadPdf() {
     const url = environment.meedPolicy.coverPolicy.url + environment.meedPolicy.coverPolicy.name;
@@ -13,6 +13,6 @@ export class MeedCoverFacade {
       pdfTitle: 'MeedCover Policy'
     };
     this.pdfViewerService.openPDFFromUrl(pdfData);
-    this.analytics.logEvent(AnalyticsEventTypes.MeedCoverPdfViewed, { name: 'MeedCover Policy' });
+    this.analyticsService.logEvent(AnalyticsEventTypes.MeedCoverPdfViewed, { name: 'MeedCover Policy' });
   }
 }

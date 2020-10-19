@@ -12,6 +12,8 @@ import { Router } from '@angular/router';
 import { SettingsService } from '@app/core';
 import { IMeedModalContent, ModalService, SuccessModalPage } from '@app/shared';
 import { TranslateService } from '@ngx-translate/core';
+import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
+import { map, partialRight, pick } from 'lodash';
 
 @Injectable()
 export class InviteNewMemberConfirmFacade {
@@ -22,7 +24,8 @@ export class InviteNewMemberConfirmFacade {
     private inviteService: InviteService,
     private settingServices: SettingsService,
     private modalService: ModalService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private readonly analyticsService: AnalyticsService
   ) {
     this.inviteMessage = this.translate.instant('invite-module.invite-new-member-confirm.invite-textbox-message');
   }
@@ -56,6 +59,8 @@ export class InviteNewMemberConfirmFacade {
     // Send invitations to the Backend server
     this.inviteService.sendInvitation(invitations).subscribe((success: boolean) => {
       if (success) {
+        const inviteeEmails = map(invitations, partialRight(pick, ['inviteeEmail']));
+        this.analyticsService.logEvent(AnalyticsEventTypes.InvitationSent, { inviteeEmails });
         this.inviteService.inviteeContacts = [];
         this.openSuccessModal();
       }

@@ -5,7 +5,11 @@ import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { DirectDepositInfoComponent } from '../components/direct-deposit-info';
 @Injectable()
 export class DirectDepositSetupFacade {
-  constructor(private router: Router, private modalService: ModalService, private analytics: AnalyticsService) {}
+  constructor(
+    private router: Router,
+    private modalService: ModalService,
+    private readonly analyticsService: AnalyticsService
+  ) {}
   /**
    * Fix: GMA-4663
    *  Direct Deposit Modal implemented for question mark.
@@ -23,7 +27,7 @@ export class DirectDepositSetupFacade {
    */
 
   setupDirectDeposit() {
-    this.analytics.logEvent(AnalyticsEventTypes.DirectDepositSelected);
+    this.analyticsService.logEvent(AnalyticsEventTypes.DirectDepositSelected);
     this.router.navigate(['/signup/deposit/direct-deposit']);
   }
 

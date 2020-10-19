@@ -14,7 +14,7 @@ export class LineOfCreditFacade {
   constructor(
     private accountService: AccountService,
     private lineOfCreditState: LineOfCreditState,
-    private analytics: AnalyticsService,
+    private readonly analyticsService: AnalyticsService,
     private modalService: ModalService,
     private interestRateService: InterestRateService,
     public router: Router,
@@ -82,6 +82,7 @@ export class LineOfCreditFacade {
     transactionQueries = { ...transactionQueries, ...{ accountType: AccountType.LOC } };
     const accounts = this.accountService.getCachedAccountSummary();
     const { accountId } = accounts.find((account: IAccount) => account.accountType === AccountType.LOC) as IAccount;
+    this.analyticsService.logEvent(AnalyticsEventTypes.LOCAdvanceSearch, { search: transactionQueries });
     this.accountService.getTransactions(accountId, transactionQueries).subscribe((transactions: AccountTransaction) => {
       this.lineOfCreditState.setPendingTransactionsState(transactions.pendingTransactions);
       this.lineOfCreditState.setPostedTransactionsState(transactions.postedTransactions);
@@ -131,7 +132,7 @@ export class LineOfCreditFacade {
     });
   }
   makePayment() {
-    this.analytics.logEvent(AnalyticsEventTypes.TransferStarted, { source: 'loc-payment' });
+    this.analyticsService.logEvent(AnalyticsEventTypes.TransferStarted, { source: 'loc-payment' });
     // Setting Account transfer form and to Acccount Type For Make Payment
     this.internalTransferService.formAccountType = AccountType.DDA;
     this.internalTransferService.toAccountType = AccountType.LOC;

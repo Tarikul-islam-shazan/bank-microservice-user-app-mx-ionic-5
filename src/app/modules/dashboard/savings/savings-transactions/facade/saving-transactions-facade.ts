@@ -50,7 +50,7 @@ export class SavingTransactionsFacade {
     private accountService: AccountService,
     public savingGoalService: SavingGoalService,
     private router: Router,
-    private analytics: AnalyticsService,
+    private readonly analyticsService: AnalyticsService,
     private modalService: ModalService
   ) {}
 
@@ -105,10 +105,10 @@ export class SavingTransactionsFacade {
 
   goToSelectedPage() {
     if (this.selectedTab === TabPage.TargetTab) {
-      this.analytics.logEvent(AnalyticsEventTypes.TransferStarted, { source: 'save-now' });
+      this.analyticsService.logEvent(AnalyticsEventTypes.TransferStarted, { source: 'save-now' });
       this.router.navigate(['/move-money/internal-transfer']);
     } else if (this.selectedTab === TabPage.GoalTab) {
-      this.analytics.logEvent(AnalyticsEventTypes.SavingsGoalStarted);
+      this.analyticsService.logEvent(AnalyticsEventTypes.SavingsGoalStarted);
       this.savingGoalService.initializeSavingGoal();
       this.modalService.openModal(SavingsGoalPage, this.getModalContent());
     }

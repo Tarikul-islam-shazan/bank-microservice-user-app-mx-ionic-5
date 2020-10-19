@@ -12,7 +12,7 @@ export class MeedTravelFacade {
   constructor(
     private iab: InAppBrowser,
     private modalService: ModalService,
-    private analytics: AnalyticsService,
+    private readonly analyticsService: AnalyticsService,
     private pdfViewerService: PdfViewerService,
     private memberService: MemberService,
     private customerService: CustomerService,
@@ -108,11 +108,11 @@ export class MeedTravelFacade {
       pdfTitle: 'MeedTravel Policy'
     };
     this.pdfViewerService.openPDFFromUrl(pdfData);
-    this.analytics.logEvent(AnalyticsEventTypes.MeedTravelPdfViewed, { name: 'MeedTravel Policy' });
+    this.analyticsService.logEvent(AnalyticsEventTypes.MeedTravelPdfViewed, { name: 'MeedTravel Policy' });
   }
 
   async book() {
-    this.analytics.logEvent(AnalyticsEventTypes.ExternalSiteViewed, { name: 'MeedTravel' });
+    this.analyticsService.logEvent(AnalyticsEventTypes.ExternalSiteViewed, { name: 'MeedTravel' });
     const componentProps = {
       contents: [
         {
@@ -127,7 +127,7 @@ export class MeedTravelFacade {
           handler: async (event: any) => {
             componentProps.dismissModal();
             this.bookTravel();
-            this.analytics.logEvent(AnalyticsEventTypes.MeedTravelPageVisited);
+            this.analyticsService.logEvent(AnalyticsEventTypes.MeedTravelPageVisited);
             await this.modalService.close();
           }
         }

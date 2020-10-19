@@ -12,14 +12,14 @@ export class DirectDepositFacade {
     private signupService: SignUpService,
     private memberService: MemberService,
     private accountService: AccountService,
-    private analytics: AnalyticsService,
+    private readonly analyticsService: AnalyticsService,
     private modalService: ModalService
   ) {}
 
   fundDeposit(_businessName: string) {
     const depositFund = this.getDepositFund(_businessName);
-    this.signupService.fundDeposit(depositFund).subscribe(res => {
-      this.analytics.logEvent(AnalyticsEventTypes.DirectDepositEmailed, { employer: _businessName });
+    this.signupService.fundDeposit(depositFund).subscribe(() => {
+      this.analyticsService.logEvent(AnalyticsEventTypes.DirectDepositEmailed, { employer: _businessName });
       this.router.navigate(['/signup/deposit/direct-deposit-complete']);
     });
   }

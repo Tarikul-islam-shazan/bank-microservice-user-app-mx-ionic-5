@@ -7,7 +7,7 @@ import { RouteListenerService } from '@app/core/services/route-listener.service'
 export class DirectDepositFacade {
   constructor(
     private router: Router,
-    private analytics: AnalyticsService,
+    private readonly analyticsService: AnalyticsService,
     private routerListener: RouteListenerService
   ) {}
 
@@ -19,7 +19,7 @@ export class DirectDepositFacade {
    * @memberof DirectDepositFacade
    */
   continue() {
-    this.analytics.logEvent(AnalyticsEventTypes.DirectDepositViewed);
+    this.analyticsService.logEvent(AnalyticsEventTypes.DirectDepositViewed);
     if (this.routerListener.getPreviousUrl() === '/dashboard/move-money') {
       this.router.navigate(['/move-money/deposit/direct-deposit']);
     } else {
