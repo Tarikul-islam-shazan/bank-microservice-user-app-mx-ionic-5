@@ -10,12 +10,12 @@ export class SignupEmailVerificationFacade {
     private signupService: SignUpService,
     private router: Router,
     private urbanAirshipService: UrbanAirshipService,
-    private analytics: AnalyticsService
+    private readonly analyticsService: AnalyticsService
   ) {}
 
   createEmailVerificationCode() {
     this.signupService.createEmailVerificationCode().subscribe(resp => {
-      this.analytics.logEvent(AnalyticsEventTypes.VerificationCodeSent);
+      this.analyticsService.logEvent(AnalyticsEventTypes.VerificationCodeSent);
     });
   }
 
@@ -24,14 +24,14 @@ export class SignupEmailVerificationFacade {
   }
 
   logAnalyticsForWrongCodeError() {
-    this.analytics.logEvent(AnalyticsEventTypes.EmailVerificationCodeFailed, {
+    this.analyticsService.logEvent(AnalyticsEventTypes.EmailVerificationCodeFailed, {
       message: 'User attempted wrong email verification code 3 times'
     });
   }
 
   emailVerificationSuccess(): void {
     this.urbanAirshipService.registerEmailChannel();
-    this.analytics.logEvent(AnalyticsEventTypes.EmailVerified);
+    this.analyticsService.logEvent(AnalyticsEventTypes.EmailVerified);
     this.router.navigate(['signup/log-in-success']);
   }
 }

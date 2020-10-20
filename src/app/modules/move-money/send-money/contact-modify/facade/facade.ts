@@ -3,9 +3,15 @@ import { Router } from '@angular/router';
 import { P2pService } from '@app/core/services/p2p.service';
 import { ModalService, IMeedModalContent } from '@app/shared/services/modal.service';
 import { IContact } from '@app/move-money/send-money/models';
+import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 @Injectable()
 export class ContactModifyFacade {
-  constructor(private router: Router, private p2pService: P2pService, private modalService: ModalService) {}
+  constructor(
+    private router: Router,
+    private p2pService: P2pService,
+    private modalService: ModalService,
+    private readonly analyticsService: AnalyticsService
+  ) {}
   get ipayContact(): Partial<IContact> {
     return this.p2pService.contact;
   }
@@ -17,7 +23,8 @@ export class ContactModifyFacade {
     this.p2pService.contact = { ...this.p2pService.contact, email };
     this.promptConformation('move-money-module.send-money.contact-modify.modal.content-update', confirmed => {
       if (confirmed) {
-        this.p2pService.updateIpayContact().subscribe(updated => {
+        this.p2pService.updateIpayContact().subscribe(() => {
+          this.analyticsService.logEvent(AnalyticsEventTypes.IPayContactUpdated);
           this.modifySuccessed();
         });
       }
@@ -26,7 +33,8 @@ export class ContactModifyFacade {
   deleteContact(): void {
     this.promptConformation('move-money-module.send-money.contact-modify.modal.content-delete', confirmed => {
       if (confirmed) {
-        this.p2pService.deleteIpayContact().subscribe(deleted => {
+        this.p2pService.deleteIpayContact().subscribe(() => {
+          this.analyticsService.logEvent(AnalyticsEventTypes.IPayContactDeleted);
           this.modifySuccessed();
         });
       }

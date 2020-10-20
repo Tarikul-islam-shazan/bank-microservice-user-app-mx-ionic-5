@@ -11,10 +11,15 @@ import { Router } from '@angular/router';
 import { P2pService } from '@app/core/services/p2p.service';
 import { P2PTransferType, IContact, ContactType } from '@app/move-money/send-money/models';
 import { IFundRequest } from '@app/move-money/request-money/models';
+import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 @Injectable()
 export class HomeFacade {
   enableContactsEditUpdate = false;
-  constructor(private router: Router, private p2pService: P2pService) {}
+  constructor(
+    private router: Router,
+    private p2pService: P2pService,
+    private readonly analyticsService: AnalyticsService
+  ) {}
 
   // Contacts selected, continue to the send money p2p transfer process
   continue(receiverEmail: string): void {
@@ -36,10 +41,13 @@ export class HomeFacade {
   fetchFundRequests(): void {
     this.p2pService.fetchFundRequests();
     this.p2pService.fetchContacts();
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundRequestsLoaded);
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PContactsLoaded);
   }
   // Select a fund request to me for accept or decline
   selectRequest(fundRequest: IFundRequest): void {
     this.p2pService.fundRequests = fundRequest;
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundRequestSelected);
     this.router.navigate(['move-money/send-money/request-details']);
   }
   // Set the transfer type internal or external for receiver email
@@ -74,6 +82,7 @@ export class HomeFacade {
         };
         break;
     }
+    this.analyticsService.logEvent(AnalyticsEventTypes.P2PContactSelected);
     this.router.navigate(['move-money/send-money/edit']);
   }
   // Ipay or meed contact modify

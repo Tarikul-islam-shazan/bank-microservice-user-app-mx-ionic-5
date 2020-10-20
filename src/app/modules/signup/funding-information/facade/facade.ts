@@ -10,13 +10,16 @@ import { Router } from '@angular/router';
 import { SignUpService } from '@app/core';
 import { IFundInfo } from '../model/fundinfo';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
-import * as moment from 'moment';
 
 @Injectable()
 export class FundingInformationFacade {
   fundInfo: IFundInfo;
 
-  constructor(private signupService: SignUpService, private router: Router, private analytics: AnalyticsService) {}
+  constructor(
+    private signupService: SignUpService,
+    private router: Router,
+    private readonly analyticsService: AnalyticsService
+  ) {}
 
   /**
    * @method fundInformationSubmit Initialization funding information form
@@ -29,8 +32,8 @@ export class FundingInformationFacade {
    */
 
   fundInformationSubmit(fundInformation: IFundInfo) {
-    this.signupService.fundingInformationSubmission(fundInformation).subscribe(res => {
-      this.analytics.logEvent(AnalyticsEventTypes.FundingProviderSelect, { fundMyself: fundInformation.fundMyself });
+    this.signupService.fundingInformationSubmission(fundInformation).subscribe(() => {
+      this.analyticsService.logEvent(AnalyticsEventTypes.FundingProviderSelect);
       this.router.navigate(['/signup/government-disclosure']);
     });
   }

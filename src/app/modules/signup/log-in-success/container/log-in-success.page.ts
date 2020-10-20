@@ -17,10 +17,9 @@ import { LogInSuccessFacade } from '../facade';
   styleUrls: ['./log-in-success.page.scss']
 })
 export class LogInSuccessPage {
-  constructor(private router: Router, private analytics: AnalyticsService, public facade: LogInSuccessFacade) {}
+  constructor(public facade: LogInSuccessFacade) {}
 
   continue() {
-    this.analytics.logEvent(AnalyticsEventTypes.ApplicationStarted);
-    this.router.navigate(['/signup/create-login']);
+    this.facade.continue();
   }
 }

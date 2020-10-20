@@ -136,17 +136,21 @@ export enum AnalyticsEventTypes {
   ScheduledTransfersLoaded = 'scheduled_transfers_loaded',
   ScheduleTransferDeleted = 'schedule_transfer_deleted',
   P2PSearchedNext = 'email_existing_contact_search_clicked_next',
+  P2PFundRequestDeclined = 'p2p_fund_request_declined',
+  IPayContactSubmitted = 'ipay_contact_submitted',
+  IPayContactAdded = 'ipay_contact_added',
+  IPayContactUpdated = 'ipay_contact_updated',
+  IPayContactDeleted = 'ipay_contact_deleted',
+  P2PFundRequestsLoaded = 'p2p_fund_requests_loaded',
+  P2PContactsLoaded = 'p2p_contacts_loaded',
+  P2PFundRequestSelected = 'p2p_fund_request_selected',
+  P2PContactSelected = 'p2p_contact_selected',
+  P2PFundTransferSubmitted = 'p2p_fund_transfer_submitted',
+  P2PFundTransferCompleted = 'p2p_fund_transfer_completed',
   EmailChangeCompleted = 'email_change_completed',
   InternalTransferPaymentOptionSelected = 'internal_transfer_payment_option_selected',
   InternalTransferCancelled = 'internal_transfer_celcelled',
-  ScheduledTransferSelected = 'scheduled_transfer_selected',
-  IPayContactDeleted = 'ipay_contact_deleted',
-  P2PFundTransferSubmitted = 'p2p_fund_transfer_submitted',
-  P2PFundTransferCompleted = 'p2p_fund_transfer_completed',
-  P2PFundRequestSelected = 'p2p_fund_request_selected',
-  P2PContactSelected = 'p2p_contact_selected',
-  P2PFundRequestsLoaded = 'p2p_fund_requests_loaded',
-  P2PContactsLoaded = 'p2p_contacts_loaded'
+  ScheduledTransferSelected = 'scheduled_transfer_selected'
 }
 export interface AnalyticsNavigationParameters {
   from: string;

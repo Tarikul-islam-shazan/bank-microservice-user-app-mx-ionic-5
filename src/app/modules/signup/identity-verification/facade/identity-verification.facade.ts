@@ -14,7 +14,11 @@ import { IdentityQuestion, IdentityAnswer } from '@app/core/models/dto/signup';
 export class IdentityVerificationFacade {
   answerdQestions: IdentityAnswer[] = [];
 
-  constructor(private signUpService: SignUpService, private router: Router, private analytics: AnalyticsService) {}
+  constructor(
+    private signUpService: SignUpService,
+    private router: Router,
+    private readonly analyticsService: AnalyticsService
+  ) {}
 
   /**
    * Getter of Identity questions form Signup service.
@@ -48,7 +52,7 @@ export class IdentityVerificationFacade {
       if (resp.customerId) {
         // GMA-4688 Md.Kausar - calling the function clearQuestionAnswer() to clear question answer array
         this.clearQuestionAnswer();
-        this.analytics.logEvent(AnalyticsEventTypes.VerifyIndentityQuestionnaireEnd);
+        this.analyticsService.logEvent(AnalyticsEventTypes.VerifyIndentityQuestionnaireEnd);
         this.router.navigate(['/signup/terms-conditions']);
         this.signUpService.identityQuestions = [];
       }
@@ -70,7 +74,7 @@ export class IdentityVerificationFacade {
         if (!this.identityQuestions && this.identityQuestions.length === 0) {
           this.router.navigate(['/login-user']);
         } else {
-          this.analytics.logEvent(AnalyticsEventTypes.VerifyIndentityQuestionnaireStated);
+          this.analyticsService.logEvent(AnalyticsEventTypes.VerifyIndentityQuestionnaireStated);
         }
       },
       err => {

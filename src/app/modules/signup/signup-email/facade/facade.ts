@@ -17,7 +17,7 @@ export class SignupEmailFacade {
   constructor(
     private signupService: SignUpService,
     private router: Router,
-    private analytics: AnalyticsService,
+    private readonly analyticsService: AnalyticsService,
     private urbanAirshipService: UrbanAirshipService,
     private settingsService: SettingsService
   ) {}
@@ -29,8 +29,8 @@ export class SignupEmailFacade {
       .pipe() // do any mappings here
       .subscribe(data => {
         this.signupService.member = data;
-        this.analytics.setUserId(data._id);
-        this.analytics.logEvent(AnalyticsEventTypes.EmailSubmitted, { email });
+        this.analyticsService.setUserId(data._id);
+        this.analyticsService.logEvent(AnalyticsEventTypes.EmailSubmitted);
         const route = this.memberSignupProgressRoute(data.applicationProgress);
         this.router.navigate([route]);
       });

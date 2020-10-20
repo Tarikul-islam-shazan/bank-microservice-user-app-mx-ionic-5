@@ -9,7 +9,7 @@ export class SignupIdentityConfirmFacade {
     private router: Router,
     private signUpService: SignUpService,
     private jumioService: JumioApiService,
-    private analytics: AnalyticsService
+    private readonly analyticsService: AnalyticsService
   ) {}
 
   applyForBank(memberApp: IMemberApplication) {
@@ -21,7 +21,7 @@ export class SignupIdentityConfirmFacade {
     };
     this.signUpService.ApplyForBankAccount(bankApplication).subscribe(resp => {
       if (resp.customerId) {
-        this.analytics.logEvent(AnalyticsEventTypes.IdDocumentSubmitted);
+        this.analyticsService.logEvent(AnalyticsEventTypes.IdDocumentSubmitted);
         this.router.navigate(['/signup/terms-conditions']);
       }
       if (resp.questions) {

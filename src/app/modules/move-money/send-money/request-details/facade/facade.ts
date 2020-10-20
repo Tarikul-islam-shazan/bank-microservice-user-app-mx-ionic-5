@@ -11,9 +11,15 @@ import { P2pService } from '@app/core/services/p2p.service';
 import { ModalService, IMeedModalContent } from '@app/shared/services/modal.service';
 import { IFundRequest, RequestStatus } from '@app/move-money/request-money/models';
 import { P2PTransferType } from '@app/move-money/send-money/models';
+import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 @Injectable()
 export class RequestDetailsFacade {
-  constructor(private router: Router, private p2pService: P2pService, private modalService: ModalService) {}
+  constructor(
+    private router: Router,
+    private p2pService: P2pService,
+    private modalService: ModalService,
+    private readonly analyticsService: AnalyticsService
+  ) {}
 
   // Get the selected fund request to me
   get fundRequest(): IFundRequest {
@@ -51,7 +57,8 @@ export class RequestDetailsFacade {
           ...(this.p2pService.fundRequests as IFundRequest),
           requestStatus: RequestStatus.DECLINED
         };
-        this.p2pService.updateFundRequest().subscribe(success => {
+        this.p2pService.updateFundRequest().subscribe(() => {
+          this.analyticsService.logEvent(AnalyticsEventTypes.P2PFundRequestDeclined);
           this.p2pService.fetchFundRequests();
           this.router.navigate(['move-money/send-money']);
         });

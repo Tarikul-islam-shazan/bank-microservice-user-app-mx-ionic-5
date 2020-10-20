@@ -15,7 +15,7 @@ export class SignupCompressedFacade {
   private infoModalOpened = false;
 
   constructor(
-    private analytics: AnalyticsService,
+    private readonly analyticsService: AnalyticsService,
     private modalService: ModalService,
     private router: Router,
     private signupService: SignUpService
@@ -144,7 +144,7 @@ export class SignupCompressedFacade {
     }
 
     this.signupService.assignCompressed(member).subscribe(() => {
-      this.analytics.logEvent(AnalyticsEventTypes.CompressedSubmitted, { nickname, country });
+      this.analyticsService.logEvent(AnalyticsEventTypes.CompressedSubmitted);
       this.router.navigate(['/signup/verification']);
     });
   }
