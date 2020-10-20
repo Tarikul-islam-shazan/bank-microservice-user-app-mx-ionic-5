@@ -61,7 +61,7 @@
       <ion-item lines="none" class="ion-no-padding">
         <ion-label><b>{{'p2p-module.home-page.my-payee-title' | translate}}</b></ion-label>
         <ion-label
-          *ngIf="(facade.myPayees$ | async)?.length > 0"
+          *ngIf="facade.myPayees.length > 0"
           [ngClass]="{'contactEditable': isEditable}"
           class="ion-text-right"
           slot="end"
@@ -71,7 +71,7 @@
         >
       </ion-item>
       <ion-list>
-        <ion-item *ngFor="let payee of facade.myPayees$ | async">
+        <ion-item *ngFor="let payee of facade.myPayees">
           <ion-label class="ion-padding-top ion-padding-bottom" id="p2p-home-page-payee-email-text">
             {{payee.contactType === contactType.Meed || payee.contactType === contactType.Domestic ? payee.email :
             payee.alias}}
