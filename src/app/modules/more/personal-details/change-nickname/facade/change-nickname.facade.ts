@@ -10,7 +10,7 @@ export class ChangeNicknameFacade {
   customer: ICustomer;
 
   constructor(
-    private analytics: AnalyticsService,
+    private readonly analyticsService: AnalyticsService,
     private customerService: CustomerService,
     private modalService: ModalService,
     private personalDetailsState: PersonalDetailsState
@@ -39,7 +39,7 @@ export class ChangeNicknameFacade {
    */
   updateCustomerNickname(nickname: string): void {
     this.customerService.updateNickname(nickname).subscribe(res => {
-      this.analytics.logEvent(AnalyticsEventTypes.NameChangeCompleted);
+      this.analyticsService.logEvent(AnalyticsEventTypes.NicknameChangeCompleted);
       Object.assign(this.customer, res);
       this.personalDetailsState.updateCustomer(this.customer);
       this.dismissModal();

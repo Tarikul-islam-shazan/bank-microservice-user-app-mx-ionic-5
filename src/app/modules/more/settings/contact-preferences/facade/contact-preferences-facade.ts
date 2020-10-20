@@ -23,7 +23,10 @@ export class ContactPreferencesFacade {
   isEmail = false;
   isBankPushNotify = false;
   isBankEmail = false;
-  constructor(private preferenceSettingsService: PreferenceSettingsService, private analytics: AnalyticsService) {
+  constructor(
+    private preferenceSettingsService: PreferenceSettingsService,
+    private readonly analyticsService: AnalyticsService
+  ) {
     this.getNameduser();
     this.getContactPreferences();
   }
@@ -43,30 +46,30 @@ export class ContactPreferencesFacade {
 
   changeMeedEmailStatus(): void {
     if (this.isEmail) {
-      this.preferenceSettingsService.deleteNamedUserTag(IMeedPreferenceTag.MeedEmail).subscribe(data => {
+      this.preferenceSettingsService.deleteNamedUserTag(IMeedPreferenceTag.MeedEmail).subscribe(() => {
         this.isEmail = false;
-        this.analytics.logEvent(AnalyticsEventTypes.ChangeMeedEmailStatus, { email_status: this.isEmail });
+        this.analyticsService.logEvent(AnalyticsEventTypes.ChangeMeedEmailStatus, { email_status: this.isEmail });
       });
     } else {
-      this.preferenceSettingsService.addNamedUserTag(IMeedPreferenceTag.MeedEmail).subscribe(data => {
+      this.preferenceSettingsService.addNamedUserTag(IMeedPreferenceTag.MeedEmail).subscribe(() => {
         this.isEmail = true;
-        this.analytics.logEvent(AnalyticsEventTypes.ChangeMeedEmailStatus, { email_status: this.isEmail });
+        this.analyticsService.logEvent(AnalyticsEventTypes.ChangeMeedEmailStatus, { email_status: this.isEmail });
       });
     }
   }
 
   changeMeedPushStatus(): void {
     if (this.isPushNotify) {
-      this.preferenceSettingsService.deleteNamedUserTag(IMeedPreferenceTag.MeedPush).subscribe(data => {
+      this.preferenceSettingsService.deleteNamedUserTag(IMeedPreferenceTag.MeedPush).subscribe(() => {
         this.isPushNotify = false;
-        this.analytics.logEvent(AnalyticsEventTypes.ChangeMeedPushNotificationStatus, {
+        this.analyticsService.logEvent(AnalyticsEventTypes.ChangeMeedPushNotificationStatus, {
           push_notification_status: this.isPushNotify
         });
       });
     } else {
-      this.preferenceSettingsService.addNamedUserTag(IMeedPreferenceTag.MeedPush).subscribe(data => {
+      this.preferenceSettingsService.addNamedUserTag(IMeedPreferenceTag.MeedPush).subscribe(() => {
         this.isPushNotify = true;
-        this.analytics.logEvent(AnalyticsEventTypes.ChangeMeedPushNotificationStatus, {
+        this.analyticsService.logEvent(AnalyticsEventTypes.ChangeMeedPushNotificationStatus, {
           push_notification_status: this.isPushNotify
         });
       });
@@ -86,8 +89,8 @@ export class ContactPreferencesFacade {
       type: ContactType.Email,
       status: this.isBankEmail === true ? Status.Inactive : Status.Active
     };
-    this.preferenceSettingsService.updateContactPreference(apiParms).subscribe(data => {
-      this.analytics.logEvent(AnalyticsEventTypes.ChangeBankEmailStatus, { email_status: this.isBankEmail });
+    this.preferenceSettingsService.updateContactPreference(apiParms).subscribe(() => {
+      this.analyticsService.logEvent(AnalyticsEventTypes.ChangeBankEmailStatus, { email_status: this.isBankEmail });
     });
   }
 
@@ -97,8 +100,8 @@ export class ContactPreferencesFacade {
       type: ContactType.Push,
       status: this.isBankPushNotify === true ? Status.Inactive : Status.Active
     };
-    this.preferenceSettingsService.updateContactPreference(apiParms).subscribe(data => {
-      this.analytics.logEvent(AnalyticsEventTypes.ChangeBankPushNotificationStatus, {
+    this.preferenceSettingsService.updateContactPreference(apiParms).subscribe(() => {
+      this.analyticsService.logEvent(AnalyticsEventTypes.ChangeBankPushNotificationStatus, {
         push_notification_status: this.isBankPushNotify
       });
     });

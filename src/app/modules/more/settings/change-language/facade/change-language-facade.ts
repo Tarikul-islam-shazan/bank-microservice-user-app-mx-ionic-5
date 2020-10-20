@@ -9,7 +9,7 @@ export class ChangeLanguageFacade {
   constructor(
     private settingsService: SettingsService,
     private preferenceSettingsService: PreferenceSettingsService,
-    private analytics: AnalyticsService
+    private readonly analyticsService: AnalyticsService
   ) {}
 
   get availableLanguage(): Locale[] {
@@ -27,7 +27,7 @@ export class ChangeLanguageFacade {
   updateLanguage(language: Locale): void {
     this.preferenceSettingsService.updateLanguage(language.locale).subscribe(() => {
       this.settingsService.setLocale(language);
-      this.analytics.logEvent(AnalyticsEventTypes.LanguageChanged, { language });
+      this.analyticsService.logEvent(AnalyticsEventTypes.LanguageChanged, { language });
     });
   }
 }

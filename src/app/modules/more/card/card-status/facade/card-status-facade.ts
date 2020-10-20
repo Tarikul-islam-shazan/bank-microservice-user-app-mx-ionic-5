@@ -8,7 +8,11 @@ import { Router } from '@angular/router';
 @Injectable()
 export class CardStatusFacade {
   cards$: Observable<ICard>;
-  constructor(private cardService: CardService, private router: Router, private analytics: AnalyticsService) {}
+  constructor(
+    private cardService: CardService,
+    private router: Router,
+    private readonly analyticsService: AnalyticsService
+  ) {}
 
   /**
    * @summary gets card details
@@ -46,7 +50,7 @@ export class CardStatusFacade {
    * @memberOf CardStatusFacade
    */
   updateCardStatus(apiData: ICardParams): void {
-    this.analytics.logEvent(AnalyticsEventTypes.CardStatusChanged);
+    this.analyticsService.logEvent(AnalyticsEventTypes.CardStatusChanged);
     this.cardService
       .updateCardStatus(apiData)
       .pipe(

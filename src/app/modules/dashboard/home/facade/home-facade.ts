@@ -3,7 +3,7 @@ import { IMember } from '@app/core/models/dto/member';
 import { Router } from '@angular/router';
 import { AccountService } from '@app/core/services/account.service';
 import { MemberService } from '@app/core/services/member.service';
-import { AccountType, IAccount, BankAccountStatus } from '@app/core/models/dto/account';
+import { AccountType, IAccount } from '@app/core/models/dto/account';
 import { Logger } from '@app/core/services/logger.service';
 import { ModalService, IMeedModalContent } from '@app/shared';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
@@ -29,7 +29,7 @@ export class HomeFacade {
     private memberService: MemberService,
     private router: Router,
     private modalService: ModalService,
-    private analytics: AnalyticsService,
+    private readonly analyticsService: AnalyticsService,
     private cardService: CardService,
     private routerListener: RouteListenerService
   ) {}
@@ -37,22 +37,22 @@ export class HomeFacade {
   pageTransaction(account: IAccount) {
     switch (account.accountType) {
       case AccountType.DDA:
-        this.analytics.logEvent(AnalyticsEventTypes.AccountSelected, { 'account-type': account.accountType });
+        this.analyticsService.logEvent(AnalyticsEventTypes.AccountSelected, { 'account-type': account.accountType });
         this.router.navigate(['/home/checking-history']);
         break;
       case AccountType.LOC:
-        this.analytics.logEvent(AnalyticsEventTypes.AccountSelected, { 'account-type': account.accountType });
+        this.analyticsService.logEvent(AnalyticsEventTypes.AccountSelected, { 'account-type': account.accountType });
         this.router.navigate(['/home/loc-history']);
         break;
       case AccountType.SSA:
-        this.analytics.logEvent(AnalyticsEventTypes.AccountSelected, { 'account-type': account.accountType });
+        this.analyticsService.logEvent(AnalyticsEventTypes.AccountSelected, { 'account-type': account.accountType });
         this.router.navigate(['/home/savings-transactions']);
         break;
     }
   }
 
   initialize(): void {
-    this.analytics.logEvent(AnalyticsEventTypes.MenuItemSelected, { menu: 'main', option: 'Home' });
+    this.analyticsService.logEvent(AnalyticsEventTypes.MenuItemSelected, { menu: 'main', option: 'Home' });
     this.member = this.memberService.getCachedMember();
     this.accountSummaryReadDecider();
   }

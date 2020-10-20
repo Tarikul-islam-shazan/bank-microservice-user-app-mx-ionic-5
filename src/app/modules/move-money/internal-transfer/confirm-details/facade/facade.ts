@@ -27,7 +27,7 @@ export class ConfirmDetailsFacade {
     private transferService: TransferService,
     private translate: TranslateService,
     private modalService: ModalService,
-    private analytics: AnalyticsService
+    private readonly analyticsService: AnalyticsService
   ) {}
 
   // Submit internal transfer
@@ -42,7 +42,7 @@ export class ConfirmDetailsFacade {
     this.internalTransferService
       .submitInternalTransfer(this.transfer as ITransfer)
       .subscribe((transferResponse: ITransfer) => {
-        this.analytics.logEvent(AnalyticsEventTypes.InternalTransferSubmitted);
+        this.analyticsService.logEvent(AnalyticsEventTypes.InternalTransferSubmitted);
         this.transferSuccess(transferResponse);
       });
   }
@@ -52,7 +52,7 @@ export class ConfirmDetailsFacade {
     this.internalTransferService
       .modifyInternalTransfer(this.transfer as ITransfer)
       .subscribe((transferResponse: ITransfer) => {
-        this.analytics.logEvent(AnalyticsEventTypes.ScheduleTransferModifyed);
+        this.analyticsService.logEvent(AnalyticsEventTypes.ScheduleTransferModifyed);
         this.transferSuccess(transferResponse);
       });
   }

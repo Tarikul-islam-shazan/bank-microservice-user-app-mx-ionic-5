@@ -5,6 +5,7 @@ import { ModalController } from '@ionic/angular';
 import { Offer, Category } from '@app/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 
 @Injectable()
 export class SearchOffersFacade {
@@ -24,7 +25,12 @@ export class SearchOffersFacade {
       value: 'online'
     }
   ];
-  constructor(private meedExtraService: MeedExtraService, private modalCtrl: ModalController, private router: Router) {}
+  constructor(
+    private meedExtraService: MeedExtraService,
+    private modalCtrl: ModalController,
+    private router: Router,
+    private readonly analyticsService: AnalyticsService
+  ) {}
 
   /**
    * @summary opens filter modal
@@ -71,6 +77,7 @@ export class SearchOffersFacade {
           }
         }
       });
+      this.analyticsService.logEvent(AnalyticsEventTypes.SearchDealCategoriesSelected);
       this.searchOffer();
     } else {
       this.categoryFieldText = this.categoryFieldText;
@@ -106,6 +113,7 @@ export class SearchOffersFacade {
           }
         }
       });
+      this.analyticsService.logEvent(AnalyticsEventTypes.SearchDealTypesSelected);
       this.searchOffer();
     } else {
       this.typeFieldText = this.typeFieldText;

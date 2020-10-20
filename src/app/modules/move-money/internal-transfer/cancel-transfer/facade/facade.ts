@@ -22,14 +22,14 @@ export class CancelTransferFacade {
     private transferService: TransferService,
     private translate: TranslateService,
     private modalService: ModalService,
-    private analytics: AnalyticsService
+    private readonly analyticsService: AnalyticsService
   ) {}
 
   // Delete a Scheduled  transfer
   deleteInternalTransfer() {
     const { transferId, transferType, debtorAccount } = this.transfer;
     this.internalTransferService.deleteInternalTransfer({ transferId, transferType, debtorAccount }).subscribe(() => {
-      this.analytics.logEvent(AnalyticsEventTypes.ScheduleTransferDeleted);
+      this.analyticsService.logEvent(AnalyticsEventTypes.ScheduleTransferDeleted);
       this.deleteSuccess(this.transfer);
     });
   }
@@ -39,8 +39,7 @@ export class CancelTransferFacade {
   async deleteSuccess(transferResponse: Partial<ITransfer>) {
     const componentProps: IMeedModalContent = {
       data: transferResponse,
-      onDidDismiss: onDidDismissResponse => {
-        const { data: hasResponseData } = onDidDismissResponse;
+      onDidDismiss: () => {
         this.resetTransfer();
         /**
          * When transfer success modal closed, we always return to move money tab [by default].

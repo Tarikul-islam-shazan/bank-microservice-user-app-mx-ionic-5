@@ -21,7 +21,7 @@ export class NearbyOfferFacade {
     private geolocation: Geolocation,
     private nativeGeocoder: NativeGeocoder,
     private router: Router,
-    private analytics: AnalyticsService,
+    private readonly analyticsService: AnalyticsService,
     private alphabiticalSortService: AlphabiticalSortService,
     private appPlatform: AppPlatform,
     private platform: Platform
@@ -75,7 +75,7 @@ export class NearbyOfferFacade {
         per_page: '10000'
       };
     }
-    this.analytics.logEvent(AnalyticsEventTypes.NearbyZipSearchInitiated, { zipCode });
+    this.analyticsService.logEvent(AnalyticsEventTypes.NearbyZipSearchInitiated, { zipCode });
     return this.meedExtraService.searchOffer(params).pipe(
       map((offers: Offer[]) => {
         return this.alphabiticalSortService.sortOfferList(offers);

@@ -133,12 +133,12 @@ export class EditOtherBankPayeeRegistrationPage implements OnInit {
           phone: this.payee.phone,
           rfc: this.payee.rfc
         });
-        this.companyForm.controls.identityNumber.disable();
-        this.companyForm.controls.bankName.disable();
-        this.companyForm.controls.firstName.disable();
-        this.companyForm.controls.secondName.disable();
-        this.companyForm.controls.paternalLastName.disable();
-        this.companyForm.controls.maternalLastName.disable();
+        this.clabeDebitCardForm.controls.identityNumber.disable();
+        this.clabeDebitCardForm.controls.bankName.disable();
+        this.clabeDebitCardForm.controls.firstName.disable();
+        this.clabeDebitCardForm.controls.secondName.disable();
+        this.clabeDebitCardForm.controls.paternalLastName.disable();
+        this.clabeDebitCardForm.controls.maternalLastName.disable();
         if (this.payee.contactType === ContactType.Meed) {
           this.clabeDebitCardForm.controls.email.disable();
         }

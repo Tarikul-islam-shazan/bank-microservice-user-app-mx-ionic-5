@@ -4,6 +4,7 @@ import { Injectable } from '@angular/core';
 import { ModalService } from '@app/shared';
 import { Observable, Subscription } from 'rxjs';
 import { PersonalDetailsState } from '@app/more/personal-details/facade/personal-details.state';
+import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 
 @Injectable()
 export class ChangePhoneFacade {
@@ -12,7 +13,8 @@ export class ChangePhoneFacade {
   constructor(
     private customerService: CustomerService,
     private modalService: ModalService,
-    private personalDetailsState: PersonalDetailsState
+    private personalDetailsState: PersonalDetailsState,
+    private readonly analyticsService: AnalyticsService
   ) {
     this.getCustomer();
   }
@@ -61,6 +63,7 @@ export class ChangePhoneFacade {
   save(formValue: ICustomer): void {
     this.updatePhone(formValue).subscribe((customer: ICustomer) => {
       Object.assign(this.customer, customer);
+      this.analyticsService.logEvent(AnalyticsEventTypes.PhoneNumberChangeCompleted);
       this.dismissModal();
     });
   }

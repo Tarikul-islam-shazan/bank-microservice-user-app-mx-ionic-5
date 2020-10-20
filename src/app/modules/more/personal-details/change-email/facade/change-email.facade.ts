@@ -1,9 +1,10 @@
 import { CustomerService } from '@app/core/services/customer-service.service';
-import { ICustomer, MemberService } from '@app/core';
+import { ICustomer } from '@app/core';
 import { Injectable } from '@angular/core';
 import { ModalService } from '@app/shared';
-import { noop, Observable, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { PersonalDetailsState } from '@app/more/personal-details/facade/personal-details.state';
+import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 
 @Injectable()
 export class ChangeEmailFacade {
@@ -11,9 +12,9 @@ export class ChangeEmailFacade {
 
   constructor(
     private customerService: CustomerService,
-    private memberService: MemberService,
     private modalService: ModalService,
-    private personalDetailsState: PersonalDetailsState
+    private personalDetailsState: PersonalDetailsState,
+    private readonly analyticsService: AnalyticsService
   ) {
     this.getCustomer();
   }
@@ -52,6 +53,7 @@ export class ChangeEmailFacade {
    */
   save(email: string): void {
     this.customerService.updateEmail(email).subscribe(_customer => {
+      this.analyticsService.logEvent(AnalyticsEventTypes.EmailChangeCompleted);
       this.personalDetailsState.updateCustomer({ ...this.customer, ..._customer });
       this.dismissModal();
     });

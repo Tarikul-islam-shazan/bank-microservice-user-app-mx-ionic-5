@@ -28,12 +28,12 @@
     </ion-item>
     <ion-list class="schedule-transfer-list">
       <ion-list-header class="list-header">
-        <ion-label id="internal-transfer-scheduled-transfers-active-transfer-label-text"
-          >{{'move-money-module.internal-transfer.scheduled-transfers.active-transfer-header' | translate}}
+        <ion-label id="internal-transfer-scheduled-transfers-active-transfer-label-text">
+          {{'move-money-module.internal-transfer.scheduled-transfers.active-transfer-header' | translate}}
         </ion-label>
       </ion-list-header>
       <ion-item
-        (click)="scheduledTransferFacade.gotoConformDetails(transaction)"
+        (click)="scheduledTransferFacade.gotoConfirmDetails(transaction)"
         *ngFor="let transaction of scheduledTransferFacade.transactionList"
         button="true"
         lines="full"
