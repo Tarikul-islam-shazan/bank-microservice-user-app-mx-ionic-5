@@ -6,6 +6,7 @@ import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { Iindex } from '@app/meed-extras/models/meed-extra';
 import { AlphabiticalSortService } from '@app/meed-extras/services';
+import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 
 @Injectable()
 export class AllOffersFacade {
@@ -13,7 +14,8 @@ export class AllOffersFacade {
   constructor(
     private meedExtraService: MeedExtraService,
     private router: Router,
-    private alphabiticalSortService: AlphabiticalSortService
+    private alphabiticalSortService: AlphabiticalSortService,
+    private readonly analyticsService: AnalyticsService
   ) {
     this.offers$ = this.loadOffers();
   }
@@ -35,6 +37,7 @@ export class AllOffersFacade {
     };
     return this.meedExtraService.getallOffers(params).pipe(
       map((offers: Offer[]) => {
+        this.analyticsService.logEvent(AnalyticsEventTypes.AllOfferLoaded);
         return this.alphabiticalSortService.sortOfferList(offers);
       })
     );

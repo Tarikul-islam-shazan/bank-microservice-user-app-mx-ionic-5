@@ -8,7 +8,7 @@ export class OnlineOfferFacade {
   constructor(
     private meedExtraService: MeedExtraService,
     private iab: InAppBrowser,
-    private analytics: AnalyticsService
+    private readonly analyticsService: AnalyticsService
   ) {}
 
   get offer(): Offer {
@@ -20,7 +20,7 @@ export class OnlineOfferFacade {
       zoom: 'no',
       location: 'yes'
     };
-    const browser = this.iab.create(this.offer.outsideLink, '_blank', options);
-    this.analytics.logEvent(AnalyticsEventTypes.ExternalSiteViewed, { name: this.offer.merchant });
+    this.iab.create(this.offer.outsideLink, '_blank', options);
+    this.analyticsService.logEvent(AnalyticsEventTypes.ExternalSiteViewed, { name: this.offer.merchant });
   }
 }

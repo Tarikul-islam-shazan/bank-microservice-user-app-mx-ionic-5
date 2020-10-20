@@ -6,8 +6,8 @@
  */
 import { Injectable } from '@angular/core';
 import { InviteService } from '../services/invite.service';
-import { Observable } from 'rxjs';
 import { Invitation } from '../models/invite';
+import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 
 export enum InviteStatus {
   Sent = 'SENT',
@@ -18,7 +18,7 @@ export enum InviteStatus {
 @Injectable()
 export class InviteFacade {
   private _invitations: Invitation[];
-  constructor(private inviteService: InviteService) {
+  constructor(private inviteService: InviteService, private readonly analyticsService: AnalyticsService) {
     this._invitations = [];
   }
 
@@ -44,6 +44,7 @@ export class InviteFacade {
 
   initialize() {
     this.inviteService.getInvitations().subscribe((invitations: Invitation[]) => {
+      this.analyticsService.logEvent(AnalyticsEventTypes.AllInvitationsLoaded);
       this.invitations = invitations;
     });
   }

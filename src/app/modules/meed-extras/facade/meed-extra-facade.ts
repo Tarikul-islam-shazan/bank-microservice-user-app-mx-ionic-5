@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { ModalController } from '@ionic/angular';
 import { ExtraIntroModalComponent } from '../components';
 import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
+import { tap } from 'rxjs/operators';
 
 @Injectable()
 export class MeedExtraFacade {
@@ -14,26 +15,30 @@ export class MeedExtraFacade {
     private meedExtraService: MeedExtraService,
     private router: Router,
     private modalCtrl: ModalController,
-    private analytics: AnalyticsService
+    private readonly analyticsService: AnalyticsService
   ) {}
 
   loadCategory(): Observable<Category[]> {
-    return this.meedExtraService.categories;
+    return this.meedExtraService.categories.pipe(
+      tap(() => this.analyticsService.logEvent(AnalyticsEventTypes.MeedExtrasCategoriesLoaded))
+    );
   }
 
   loadFeaturedOffer(): Observable<Offer[]> {
-    return this.meedExtraService.featuredOffers;
+    return this.meedExtraService.featuredOffers.pipe(
+      tap(() => this.analyticsService.logEvent(AnalyticsEventTypes.MeedExtrasFeaturedOffersLoaded))
+    );
   }
 
   setCategory(category: Category): void {
     this.meedExtraService.category = category;
-    this.analytics.logEvent(AnalyticsEventTypes.ExtrasCategorySelected, { category });
+    this.analyticsService.logEvent(AnalyticsEventTypes.ExtrasCategorySelected, { category });
     this.router.navigate(['/meed-extras/categories-offer']);
   }
 
   setOffer(offer: Offer): void {
     this.meedExtraService.offer = offer;
-    this.analytics.logEvent(AnalyticsEventTypes.OfferViewed, { name: offer.merchant, value: offer.title });
+    this.analyticsService.logEvent(AnalyticsEventTypes.OfferViewed, { name: offer.merchant, value: offer.title });
     if (offer.shopType === 'online') {
       this.router.navigate(['/meed-extras/online-offer']);
     } else if (offer.shopType === 'instore') {
@@ -53,12 +58,12 @@ export class MeedExtraFacade {
   }
 
   goToNearbyOffersPage() {
-    this.analytics.logEvent(AnalyticsEventTypes.NearbyOffersSelected);
+    this.analyticsService.logEvent(AnalyticsEventTypes.NearbyOffersSelected);
     this.router.navigate(['/meed-extras/nearby-offers']);
   }
 
   goToAllOffer() {
-    this.analytics.logEvent(AnalyticsEventTypes.AllOfferSelected);
+    this.analyticsService.logEvent(AnalyticsEventTypes.AllOfferSelected);
     this.router.navigate(['/meed-extras/all-offers']);
   }
 }
