@@ -109,6 +109,8 @@ export enum AnalyticsEventTypes {
   EmailChanged = 'email_changed',
   PhoneNumberChanged = 'phone_number_changed',
   NameChangeCompleted = 'name_change_completed',
+  NicknameChangeCompleted = 'nickname_change_completed',
+  PhoneNumberChangeCompleted = 'phone_number_change_completed',
   LanguageChanged = 'language_changed',
   LoginOptionClicked = 'login_option_clicked',
   MenuItemSelected = 'menu_item_selected',
@@ -131,8 +133,20 @@ export enum AnalyticsEventTypes {
   InvitationSent = 'invitation_sent',
   InternalTransferSubmitted = 'internal_transfer_submitted',
   ScheduleTransferModifyed = 'internal_transfer_modifyed',
+  ScheduledTransfersLoaded = 'scheduled_transfers_loaded',
   ScheduleTransferDeleted = 'schedule_transfer_deleted',
-  P2PSearchedNext = 'email_existing_contact_search_clicked_next'
+  P2PSearchedNext = 'email_existing_contact_search_clicked_next',
+  EmailChangeCompleted = 'email_change_completed',
+  InternalTransferPaymentOptionSelected = 'internal_transfer_payment_option_selected',
+  InternalTransferCancelled = 'internal_transfer_celcelled',
+  ScheduledTransferSelected = 'scheduled_transfer_selected',
+  IPayContactDeleted = 'ipay_contact_deleted',
+  P2PFundTransferSubmitted = 'p2p_fund_transfer_submitted',
+  P2PFundTransferCompleted = 'p2p_fund_transfer_completed',
+  P2PFundRequestSelected = 'p2p_fund_request_selected',
+  P2PContactSelected = 'p2p_contact_selected',
+  P2PFundRequestsLoaded = 'p2p_fund_requests_loaded',
+  P2PContactsLoaded = 'p2p_contacts_loaded'
 }
 export interface AnalyticsNavigationParameters {
   from: string;

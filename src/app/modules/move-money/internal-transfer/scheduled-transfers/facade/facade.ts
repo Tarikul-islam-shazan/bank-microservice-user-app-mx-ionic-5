@@ -7,6 +7,7 @@ import { TransferService } from '@app/move-money/internal-transfer/services';
 import { AccountService } from '@app/core/services/account.service';
 import { IAccount, AccountType } from '@app/core/models/dto/account';
 import { TranslateService } from '@ngx-translate/core';
+import { AnalyticsEventTypes, AnalyticsService } from '@app/analytics';
 const log = new Logger('ScheduledTransferFacade');
 @Injectable()
 export class ScheduledTransferFacade {
@@ -16,13 +17,15 @@ export class ScheduledTransferFacade {
     private router: Router,
     private transferService: TransferService,
     private accountService: AccountService,
-    private translate: TranslateService
+    private translate: TranslateService,
+    private readonly analyticsService: AnalyticsService
   ) {}
 
   // Fetch Scheduled transfer list
   fetchScheduledTransfers(): void {
     this.internalTransferService.getInternalTransfers().subscribe((response: ITransfer[]) => {
       this.transactionList = response;
+      this.analyticsService.logEvent(AnalyticsEventTypes.ScheduledTransfersLoaded);
     });
   }
   // Get the accounts, for query account type name
@@ -50,11 +53,12 @@ export class ScheduledTransferFacade {
     return accountinfo.accountType;
   }
   // Go-to modify schedule transfer screen, we re-use the internal transfer component.
-  gotoConformDetails(scheduledTransfer: ITransfer): void {
+  gotoConfirmDetails(scheduledTransfer: ITransfer): void {
     this.internalTransferService.formAccountType = this.findAccountType(scheduledTransfer.debtorAccount);
     this.internalTransferService.toAccountType = this.findAccountType(scheduledTransfer.creditorAccount);
     this.transferService.setTransfer(scheduledTransfer);
     this.transferService.setFromScheduledTransfers(true);
+    this.analyticsService.logEvent(AnalyticsEventTypes.ScheduledTransferSelected);
     this.router.navigate(['move-money/internal-transfer']);
   }
 
