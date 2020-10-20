@@ -11,18 +11,16 @@ import { Router } from '@angular/router';
 })
 export class HomePage implements OnInit {
   searchQuery = '';
-  myPayees$: Observable<IContact[]>;
   isEditable = false;
   contactType = ContactType;
   constructor(public readonly facade: HomeP2PFacade, private router: Router) {}
 
-  ngOnInit() {
-    this.facade.myPayees$ = this.facade.getAllContacts();
-  }
+  ngOnInit() {}
 
   ionViewWillEnter() {
     this.searchQuery = '';
     this.searchContact();
+    this.facade.getAllContacts();
   }
 
   makeContactEditAble() {

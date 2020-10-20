@@ -12,7 +12,7 @@ import { AlertController } from '@ionic/angular';
 
 @Injectable()
 export class HomeP2PFacade {
-  public myPayees$: Observable<IContact[]>;
+  public myPayees: IContact[] = [];
   public searchResult: IContact[] = [];
   public startSearching = false;
   constructor(
@@ -25,8 +25,10 @@ export class HomeP2PFacade {
     public alertController: AlertController
   ) {}
 
-  getAllContacts(): Observable<IContact[]> {
-    return this.p2pService.getAllContacts().pipe(share());
+  getAllContacts(): void {
+    this.p2pService.getAllContacts().subscribe((contacts: IContact[]) => {
+      this.myPayees = contacts;
+    });
   }
 
   searchContact(query: string) {
@@ -95,7 +97,7 @@ export class HomeP2PFacade {
           text: messages['p2p-module.home-page.delete-alert.btn-confirm'],
           handler: () => {
             this.p2pService.deleteInvexOrOtherDomesticContact(payeeId).subscribe(() => {
-              this.myPayees$ = this.getAllContacts();
+              this.getAllContacts();
             });
           }
         }
