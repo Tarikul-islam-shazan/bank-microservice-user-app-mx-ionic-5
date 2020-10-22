@@ -22,7 +22,12 @@ export class HomePage implements OnInit {
     this.searchContact();
     this.facade.getAllContacts();
   }
-
+  selectPayee(payee: IContact) {
+    this.searchQuery = '';
+    this.facade.startSearching = false;
+    this.facade.searchResult = [];
+    // go to send money with selected payee
+  }
   makeContactEditAble() {
     this.isEditable = !this.isEditable;
   }
