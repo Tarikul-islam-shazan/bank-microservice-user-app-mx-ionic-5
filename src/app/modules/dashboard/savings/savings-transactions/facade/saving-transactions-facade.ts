@@ -129,7 +129,9 @@ export class SavingTransactionsFacade {
     this.transactions.postedTransactions.forEach((postedTransaction: ITransaction) => {
       const savingDate = new Date(postedTransaction.dateTime);
       if (savingDate.getMonth() === currentDate.getMonth() && savingDate.getFullYear() === currentDate.getFullYear()) {
-        this.monthlyTotalSave += postedTransaction.amount;
+        if (postedTransaction.amount > 0) {
+          this.monthlyTotalSave += postedTransaction.amount;
+        }
       }
     });
   }
