@@ -25,7 +25,11 @@
   <div class="search-result-wrapper" *ngIf="facade.startSearching">
     <ion-list *ngIf="facade.searchResult.length > 0">
       <ion-item *ngFor="let payee of facade.searchResult">
-        <ion-label class="ion-padding-top ion-padding-bottom ion-text-wrap" id="p2p-home-page-payee-email">
+        <ion-label
+          class="ion-padding-top ion-padding-bottom ion-text-wrap"
+          id="p2p-home-page-payee-email"
+          (click)="selectPayee(payee)"
+        >
           {{payee.alias}} <br />
           {{payee.email}}
         </ion-label>

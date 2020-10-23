@@ -6,7 +6,6 @@ import { AnalyticsService, AnalyticsEventTypes } from '@app/analytics';
 import { Router } from '@angular/router';
 import { MemberService, REG_EX_PATTERNS } from '@app/core';
 import { IMeedModalContent, ModalService } from '@app/shared';
-import { share } from 'rxjs/operators';
 import { TranslateService } from '@ngx-translate/core';
 import { AlertController } from '@ionic/angular';
 
@@ -34,15 +33,26 @@ export class HomeP2PFacade {
   searchContact(query: string) {
     if (query) {
       this.startSearching = true;
+      if (this.isEmail(query)) {
+        this.searchResult = this.myPayees.filter(payee => payee.email && payee.email.indexOf(query) > -1);
+      } else {
+        this.searchResult = this.myPayees.filter(
+          payee => (payee.email && payee.email.indexOf(query) > -1) || (payee.alias && payee.alias.indexOf(query) > -1)
+        );
+      }
     } else {
+      this.searchResult = [];
       this.startSearching = false;
     }
   }
 
-  checkIsSelfEmail(email: string): boolean {
+  isEmail(value: string) {
     const regex = new RegExp(REG_EX_PATTERNS.EMAIL);
-    const isEmail = regex.test(email);
-    return isEmail ? this.memberService.member.email === email : false;
+    return regex.test(value);
+  }
+
+  checkIsSelfEmail(email: string): boolean {
+    return this.isEmail(email) ? this.memberService.member.email === email : false;
   }
 
   showSelfEmailAddError() {
